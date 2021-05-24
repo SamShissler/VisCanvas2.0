@@ -9,6 +9,7 @@ Purpose: CS 481 Project
 #include "stdafx.h"
 #include <atlstr.h>
 #include <vector>
+#include <unordered_map>
 #include <windows.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -68,6 +69,7 @@ namespace OpenGLForm
 			this->textBottom = true;
 			this->invertDimensionToggled = false;
 			this->hypercubeToggle = true;
+			this->nominalSetsToggle = true;
 
 			this->zoom = 0;
 
@@ -877,6 +879,7 @@ namespace OpenGLForm
 		double shiftAmount;
 
 		bool hypercubeToggle;
+		bool nominalSetsToggle;
 		bool uploadFile; // Checks to see if the file has been uploaded
 		bool applied; // checks if changes to the class have been applied
 		bool drawingDragged; // Is made true via mouselistener when dragging the mouse
@@ -1215,6 +1218,10 @@ namespace OpenGLForm
 		// Graphs the data to the world
 		GLvoid drawData(GLvoid) 
 		{
+			//For testing.
+			drawNominalSetData();
+			return;
+
 			int dimensionCount = 0;
 			glLineWidth(3.0);
 			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1);
@@ -1543,6 +1550,138 @@ namespace OpenGLForm
 			}// end if histogram else
 
 		} // end drawData()
+
+
+		//===Draw Nominal Set Data===
+		//Desc: Draws nominal set bars for eacha attribute.
+		GLvoid drawNominalSetData(GLvoid)
+		{
+			int dimensionCount = 0; // Variable for the dimension index.
+			glLineWidth(3.0); //Seting line width.
+			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
+
+			//Create a vector of unordered maps to hold the attributes:
+			vector<unordered_map<double,double>*> *blockHeights = new vector<unordered_map<double, double>*>();
+			
+			//Fill the vector with unordered maps:
+			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			{
+				blockHeights->push_back(new unordered_map<double, double>());
+			}
+
+			//Go over every row (set).
+			for (int j = 0; j < this->file->getSetAmount(); j++)
+			{
+				//Go over every attribute of the row.
+				for (int i = 0; i < this->file->getDimensionAmount(); i++)
+				{
+					//Get the current value at the attribute(i) for this row(j).
+					double currentData = this->file->getData(j, i);
+
+					//Get current unordered map:
+					unordered_map<double, double>* curMap = blockHeights->at(i);
+
+					//Check to see if current data is already in the unordered map.
+					if (curMap->find(currentData) == blockHeights->at(i)->end())
+					{
+						//If not insert it.
+						curMap->insert({ currentData, 1 });
+					}
+					else
+					{
+						//Increment by the curent data if it is already present.
+						std::unordered_map<double, double>::iterator it = curMap->find(currentData);
+						it->second++;
+					}
+				}
+			}
+
+			//At this point, there is a vector containing maps with the frequencies of the values.
+
+			//==Draw the rectangles==.
+	
+			//Go over every attribute.
+			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			{
+
+				//Get current unordered map:
+				unordered_map<double, double>* curMap = blockHeights->at(i);
+
+				//Iterate over unordered map to find valus.
+				for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
+				{
+					//Get key and frequency and draw a rectangle.
+					double key = iter->first;
+					double freq = iter->second;
+
+					//Draw the rectangle.
+					glBegin(GL_QUADS);
+
+					// draw bottom left
+					glVertex2d(
+						(-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - (xAxisIncrement / 4),
+						(freq * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight)
+					);
+
+					// draw top left
+					glVertex2d(
+						(-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - (xAxisIncrement / 4),
+						(100 * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight)
+					);
+
+					// draw top right
+					glVertex2d(
+						(-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + (xAxisIncrement / 4),
+						(100 * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight)
+					);
+
+					// draw bottom right
+					glVertex2d(
+						(-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + (xAxisIncrement / 4),
+						(freq * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight)
+					);
+
+					glEnd();
+
+
+					/*glBegin(GL_LINES);
+					glVertex2f(100, 100);
+					glVertex2f(20, 20);
+					glEnd();
+					break;*/
+				}
+				return;
+			}
+
+			//Reset dimension count.
+			dimensionCount = 0;
+
+				////Get each sets color.
+				//std::vector<double>* colorOfCurrent = this->file->getSetColor(j);
+				//glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], (*colorOfCurrent)[3]);
+
+				////Go over each attribute:
+				//glBegin(GL_LINE_STRIP); // begins drawing lines
+				//for (int i = 0; i < this->file->getDimensionAmount(); i++)
+				//{
+				//	int x = this->file->getDimensionAmount();
+
+				//	//Make sure that the attribute is set to visible:
+				//	if (this->file->getDataDimensions()->at(i)->isVisible())
+				//	{
+				//		//Get the value of the current data point in the dimension.
+				//		double currentData = this->file->getData(j, i);
+				//		glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+
+				//		dimensionCount++;
+				//	}
+				//}
+				//glEnd(); // ends drawing line
+				//dimensionCount = 0;
+
+			//Draw visualization here:
+
+		}
 
 		GLvoid drawQuadData(GLvoid) {
 			
