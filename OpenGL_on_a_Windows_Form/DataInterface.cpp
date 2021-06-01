@@ -1446,6 +1446,7 @@ void DataInterface::init() {
 	frequencyMode = false;
 	quadMode = false;
 	overlapMode = false;
+	nominalSetsMode = false;
 
 	hideSelectorLine = false;
 	isDrawBorders = true;
@@ -3545,6 +3546,14 @@ void DataInterface::setOverlapMode(bool overlapMode) {
 
 bool DataInterface::getOverlapMode() {
 	return this->overlapMode;
+}
+
+void DataInterface::setNominalSetsMode(bool NominalSetsMode) {
+	this->nominalSetsMode = NominalSetsMode;
+}
+
+bool DataInterface::getNominalSetsMode() {
+	return this->nominalSetsMode;
 }
 
 vector<SetCluster> * DataInterface::getOverlaps() {

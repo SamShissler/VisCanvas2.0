@@ -2356,7 +2356,8 @@ namespace VisCanvas {
 		OpenGL->file->setFrequencyMode(false);
 		OpenGL->file->toggleHistogramMode(false);
 		OpenGL->file->setOverlapMode(false);
-		OpenGL->file->setQuadMode(!(OpenGL->file->getQuadMode()));
+		OpenGL->file->setQuadMode(false);
+		OpenGL->file->setNominalSetsMode(!(OpenGL->file->getNominalSetsMode()));
 	}
 
 	private: System::Void click_hist(System::Object^ sender, System::EventArgs^ e) {

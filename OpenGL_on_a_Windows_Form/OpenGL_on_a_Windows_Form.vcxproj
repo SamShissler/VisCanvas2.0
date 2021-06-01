@@ -339,6 +339,7 @@
     <Image Include="..\Button Icons\histogram.png" />
     <Image Include="..\Button Icons\linguistic.png" />
     <Image Include="..\Button Icons\middle.png" />
+    <Image Include="..\Button Icons\nominalSets.png" />
     <Image Include="..\Button Icons\nonoverlapping.png" />
     <Image Include="..\Button Icons\reset.png" />
     <Image Include="..\Button Icons\subset.png" />

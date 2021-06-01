@@ -85,10 +85,19 @@ void Dimension::calibrateData() {
 		minimum = artificialMinimum;
 	}
 	double range = maximum - minimum;
-	for (unsigned int i = 0; i < data.size(); i++) {
-		(*data[i]).setData(((*data[i]).getData() - minimum) / range);
-		//(*data[i]).addToData(-minimum);
-		//(*data[i]).divideData(range);
+
+	if (fabs(maximum - minimum) < 0.01)
+	{
+		for (int i = 0; i < data.size(); i++)
+		{
+			(*data[i]).setData(0.5);
+		}
+	}
+	else
+	{
+		for (unsigned int i = 0; i < data.size(); i++) {
+			(*data[i]).setData(((*data[i]).getData() - minimum) / range);
+		}
 	}
 }
 

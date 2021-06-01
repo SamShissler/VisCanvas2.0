@@ -349,6 +349,8 @@ public:
 	void createOverlaps();
 	void setOverlapMode(bool);
 	bool getOverlapMode();
+	void setNominalSetsMode(bool);
+	bool getNominalSetsMode();
 	vector<SetCluster> * getOverlaps();
 	int getImpurities(int index);
 private:
@@ -356,6 +358,7 @@ private:
 	vector<SetCluster> overlaps;
 
 	bool overlapMode;
+	bool nominalSetsMode;
 	bool histogramMode;
 	bool frequencyMode;
 	bool quadMode;
