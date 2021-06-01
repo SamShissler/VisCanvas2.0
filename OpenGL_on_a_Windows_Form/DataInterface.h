@@ -351,8 +351,12 @@ public:
 	bool getOverlapMode();
 	vector<SetCluster> * getOverlaps();
 	int getImpurities(int index);
+	map<string, double> getAboveOne();
+	
 private:
-
+	
+	map<string, double> aboveOne;
+	
 	vector<SetCluster> overlaps;
 
 	bool overlapMode;
