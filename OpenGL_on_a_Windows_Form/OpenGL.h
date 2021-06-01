@@ -1162,10 +1162,41 @@ namespace OpenGLForm
 
 				dimensionCount = 0;
 
+				glColor4d(125.0/255.0, 125.0/255.0, 125.0/255.0, 155.0/255.0);
+				for (auto entry : file->getAboveOne())
+				{
+					dimensionCount = 0;
+					glBegin(GL_LINE_STRIP);
+					for (int i = 0; i < this->file->getDimensionAmount(); i++)
+					{
+						if (file->getDataDimensions()->at(i)->isVisible())
+						{
+							double shiftAmount = this->file->getDimensionShift(i);
+							// was (xAxisIncrement) * (i + 1)
+							glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), ((entry.second + shiftAmount) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+							dimensionCount++;
+						}
+					}
+					glEnd();
+
+				}
+
+				dimensionCount = 0;
+
 				// this will display the text for the dimension
 				if (this->textEnabled) {
 					glTextColor2d(0.0, 0.0, 0.0, 1.0);
 					for (int i = 0; i < this->file->getDimensionAmount(); i++) {
+
+						if (i == 0 && !(file->getAboveOne().empty()))
+						{
+							double shiftAmount = this->file->getDimensionShift(i);
+							this->textBottom = false;
+							for (auto entry : file->getAboveOne())
+							{
+								glText2d(((-this->worldWidth - (entry.first.length() * 10.0)) / 1.9) + ((xAxisIncrement) * (dimensionCount + 1)), ((entry.second + shiftAmount) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight), entry.first.c_str());	
+							}
+						}
 
 						if (file->getDataDimensions()->at(i)->isVisible())
 						{
