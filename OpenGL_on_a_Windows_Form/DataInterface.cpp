@@ -1549,82 +1549,13 @@ void DataInterface::removeDuplicates(std::vector<std::string>* stringList) {
 bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileContents) {
 
 	try {
-		// ensure file has data
-		if (fileContents->size() < 2) {
-			return false;
-		}
-		int lastDataLine = 0;
-		// find the last line of data
-		int tokenNumber = (*fileContents)[0]->size();
-		for (int i = 1; i < fileContents->size(); i++) {
-			if (tokenNumber != (*fileContents)[i]->size()) {
-				i = fileContents->size();
-			}
-			else {
-				lastDataLine = i;
-			}
-		}
-		if (lastDataLine < 1) {
-			return false;
-		}
-
 		// get number of sets
 		int setNumber = fileContents->size();
-		if (readDimensionNamesBasic) {
-			setNumber--;
-		}
 		int startRow = 0;
-		if (readDimensionNamesBasic) {
-			startRow = 1;
-		}
 		int startColumn = 0;
-		if (readSetNamesBasic) {
-			startColumn = 1;
-		}
 		int endColumn = (*fileContents)[0]->size();
-		if (readClassNamesBasic) {
-			endColumn--;
-		}
-		// get dimension names
-		if (readDimensionNamesBasic) {
-			std::vector<std::string> headers = (*(*fileContents)[0]);
-
-			for (int i = startColumn; i < endColumn; i++) {
-				std::string newDimensionName = (*(*fileContents)[0])[i];
-				if(readSetNamesBasic) {
-					dataDimensions.push_back(new Dimension(i - 1, setNumber));
-				}else{
-					dataDimensions.push_back(new Dimension(i, setNumber));
-				}
-			}
-			for (int i = startColumn; i < endColumn; i++) {
-				if(readSetNamesBasic) {
-					dataDimensions[i-1]->setName(&headers[i]);
-				}else{
-					dataDimensions[i]->setName(&headers[i]);
-				}
-			}
-		}
-
-		// read data into dimensions
-		for (int i = startColumn; i < endColumn; i++) {
-			Dimension *currentDimension;
-			if(readSetNamesBasic) {
-				currentDimension = dataDimensions[i - 1];
-			}else{
-				currentDimension = dataDimensions[i];
-			}
-			for (int j = startRow; j <= lastDataLine; j++) {
-				double newData = std::stod((*(*fileContents)[j])[i]);
-				if (readSetNamesBasic) {
-					currentDimension->setData(j - 1, newData);
-				}
-				else {
-					currentDimension->setData(j, newData);
-				}
-			}
-			currentDimension->calibrateData();
-		}
+		int off = 0;
+		int dimOff;
 
 		// create data classes
 		// create default class
@@ -1637,53 +1568,110 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 		newColor.push_back(1.0);
 		dataClasses[0].setColor(newColor);
 
-		// create the classes
-		if (readClassNamesBasic) {
-			for (int i = startRow; i <= lastDataLine; i++) {
-				std::string setClassName = (*(*fileContents)[i])[(*fileContents)[i]->size() - 1];
-				bool newClass = true;
-				for (int j = 0; j < dataClasses.size(); j++) {
-					if (dataClasses[j].getName()->compare(setClassName) == 0) {
-						newClass = false;
-						j = dataClasses.size();
+		if (readSetNamesBasic)
+		{
+			off = 1;
+			startColumn = 1; // actual data starts here
+		}
+
+		std::map<std::string, int> classIdx;
+		if (readClassNamesBasic)
+		{
+			endColumn--; // actual data ends here
+
+			std::set<std::string> classes;
+			for (int i = startRow; i < fileContents->size(); i++)
+			{
+				classes.insert((*fileContents)[i]->back());
+			}
+
+			for (auto x : classes)
+			{
+				addClass();
+				dataClasses[getClassAmount() - 1].setName(&x);
+				classIdx[x] = getClassAmount() - 1;
+				cout << x << endl;
+			}
+		}
+
+		if (readDimensionNamesBasic) 
+		{
+			dimOff = 1;
+			setNumber--; // first row is not data
+			startRow = 1; // data starts here
+		}
+
+		
+		// create dimensions
+		vector<map<int, std::string>> dimensionsToClean;
+		aboveOne.clear();
+		for (int i = startColumn; i < endColumn; i++)
+		{
+
+			dataDimensions.push_back(new Dimension(i - off, setNumber));
+			dataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
+			dimensionsToClean.push_back(map<int, std::string>());
+
+			// populate dimensions with data
+			for (int j = startRow; j < fileContents->size(); j++)
+			{
+				double newData;
+				std::string content = (*(*fileContents)[j])[i];
+				if (content.empty() || content[0] < 48 || content[0] > 57) // doesn't start with a number
+				{
+					if (content.empty())
+					{
+						content = "Empty";
 					}
+					
+					dimensionsToClean[dimensionsToClean.size() - 1][j - off] = content;
+					
+					if (aboveOne.find(content) == aboveOne.end())
+					{
+						aboveOne[content] = 0.0 - ((aboveOne.size() + 1.0) * 0.1);
+					}
+					newData = 0;
 				}
-				if (newClass) {
-					this->addClass();
-					dataClasses[getClassAmount() - 1].setName(&setClassName);
+				else
+				{
+					newData = std::stod(content);
+				}
+
+				dataDimensions[i - off]->setData(j - off, newData);
+			}
+
+			dataDimensions[i - off]->calibrateData();
+
+			for (int j = 0; j < dimensionsToClean.size(); j++)
+			{
+				for (auto entry : dimensionsToClean[j])
+				{
+					dataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
 				}
 			}
 		}
 
-		// create data sets
-		for (int i = startRow; i <= lastDataLine; i++) {
-			int setIndex = i;
-			if (readDimensionNamesBasic) {
-				setIndex = i-1;
-			}
-			std::string newSetName = std::to_string(setIndex);
-			if (readSetNamesBasic) {
+		// Create classes 
+		for (int i = startRow; i < fileContents->size(); i++)
+		{
+			std::string idx = std::string((*fileContents)[i]->back());
+			std::string newSetName;
+			int val = i - dimOff;
+			if (readSetNamesBasic)
+			{
 				newSetName = (*(*fileContents)[i])[0];
 			}
-			int classIndex = 0;
-			std::string setClassName = "Default";
-			if (readClassNamesBasic) {
-				setClassName = (*(*fileContents)[i])[(*fileContents)[i]->size() - 1];
-				for (int j = 0; j < dataClasses.size(); j++) {
-					if (dataClasses[j].getName()->compare(setClassName) == 0) {
-						classIndex = j;
-						j = dataClasses.size();
-					}
-				}
+			else
+			{
+				newSetName = std::to_string(val);
 			}
-			dataSets.push_back(DataSet(setIndex, classIndex));
-			dataSets[setIndex].setName(newSetName);
-			dataClasses[classIndex].addSet(setIndex);
+
+			dataSets.push_back(DataSet(val, classIdx[idx]));
+			dataSets[val].setName(newSetName);
+			dataClasses[classIdx[idx]].addSet(val);
 		}
 
 		autoColor();
-
-		//createOverlaps();
 	}
 	catch (...) {
 		return false;
