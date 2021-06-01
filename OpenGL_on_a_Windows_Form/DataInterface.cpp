@@ -3556,3 +3556,7 @@ int DataInterface::getImpurities(int index) {
 	return count;
 
 }
+
+map<std::string, double> DataInterface::getAboveOne() {
+	return this->aboveOne;
+}
