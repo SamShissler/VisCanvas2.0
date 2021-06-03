@@ -235,5 +235,8 @@
     <Image Include="..\Button Icons\subset.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\Button Icons\nominalSets.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -9,9 +9,11 @@ Purpose: CS 481 Project
 #include "stdafx.h"
 #include <atlstr.h>
 #include <vector>
+#include <unordered_map>
 #include <windows.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <utility>
 
 using namespace System::Windows::Forms;
 
@@ -68,6 +70,7 @@ namespace OpenGLForm
 			this->textBottom = true;
 			this->invertDimensionToggled = false;
 			this->hypercubeToggle = true;
+			this->nominalSetsToggle = true;
 
 			this->zoom = 0;
 
@@ -877,6 +880,7 @@ namespace OpenGLForm
 		double shiftAmount;
 
 		bool hypercubeToggle;
+		bool nominalSetsToggle;
 		bool uploadFile; // Checks to see if the file has been uploaded
 		bool applied; // checks if changes to the class have been applied
 		bool drawingDragged; // Is made true via mouselistener when dragging the mouse
@@ -1246,10 +1250,19 @@ namespace OpenGLForm
 		// Graphs the data to the world
 		GLvoid drawData(GLvoid) 
 		{
+			////For testing.
+			//drawNominalSetData();
+			//return;
+
 			int dimensionCount = 0;
 			glLineWidth(3.0);
 			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1);
-			if (file->getOverlapMode())
+
+			if (file->getNominalSetsMode())
+			{
+				drawNominalSetData();
+			}
+			else if (file->getOverlapMode())
 			{
 				vector<SetCluster> * overlaps = this->file->getOverlaps();
 				for (int j = 0; j < overlaps->size(); j++)
@@ -1574,6 +1587,335 @@ namespace OpenGLForm
 			}// end if histogram else
 
 		} // end drawData()
+
+		//===Draw Nominal Set Data===
+		//Desc: Draws nominal set bars for eacha attribute.
+		GLvoid drawNominalSetData(GLvoid)
+		{
+			int dimensionCount = 0; // Variable for the dimension index.
+			glLineWidth(3.0); //Seting line width.
+			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
+
+			//Create a vector of unordered maps to hold the attributes:
+			vector<unordered_map<double,double>*> *blockHeights = new vector<unordered_map<double, double>*>();
+			
+			//Fill the vector with unordered maps:
+			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			{
+				blockHeights->push_back(new unordered_map<double, double>());
+			}
+
+			//Go over every row (set).
+			for (int j = 0; j < this->file->getSetAmount(); j++)
+			{
+				//Go over every attribute of the row.
+				for (int i = 0; i < this->file->getDimensionAmount(); i++)
+				{
+					//Get the current value at the attribute(i) for this row(j).
+					double currentData = this->file->getData(j, i);
+
+					//Get current unordered map:
+					unordered_map<double, double>* curMap = blockHeights->at(i);
+
+					//Check to see if current data is already in the unordered map.
+					if (curMap->find(currentData) == blockHeights->at(i)->end())
+					{
+						//If not insert it.
+						curMap->insert({ currentData, 1 });
+					}
+					else
+					{
+						//Increment by the curent data if it is already present.
+						std::unordered_map<double, double>::iterator it = curMap->find(currentData);
+						it->second++;
+					}
+				}
+			}
+
+			//At this point, there is a vector containing maps with the frequencies of the values.
+
+			
+			//====Get percentages for data and Normalazie data between 1 and 0:====
+		
+			//Iterate over vector:
+			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			{
+
+				double allValues = 0; //Recording all values to section block heights.
+
+				//Get current unordered map:
+				unordered_map<double, double>* curMap = blockHeights->at(i);
+
+				//Iterate over unordered map to find valus.
+				for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
+				{
+					double freq = iter->second;
+					allValues += freq;
+				}
+
+				//Apply the normilized values.
+				for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
+				{
+					iter->second = (iter->second / allValues);
+				}
+			}
+
+			//====Sort the kv pairs:====
+			vector<pair<double, double>> sortVec;//Vector for sorting.
+			vector<vector<pair<double, double>>> sortedVector;//Vector to hold sorted values.
+
+			//Go over every attribute of the row.
+			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			{
+				//Get current unordered map:
+				unordered_map<double, double>* curMap = blockHeights->at(i);
+				vector<pair<double, double>> toInsert;
+
+				unordered_map<double, double>::iterator it;
+
+				//add all kv to a vector:
+				for (it = curMap->begin(); it != curMap->end(); it++)
+				{
+					sortVec.push_back(make_pair(it->second, it->first));
+				}
+
+				//Sort the vector.
+				sort(sortVec.begin(), sortVec.end());
+
+				//Insert sorted values into a new vector.
+				for (int k = sortVec.size() - 1; k >= 0; k--)
+				{
+					toInsert.push_back( {sortVec[k].second, sortVec[k].first} );
+				}
+
+				//Insert sorted sub vector into vector.
+				sortedVector.push_back(toInsert);
+
+				sortVec.clear();
+			}
+			
+			//====Draw the rectangles====.
+	
+			const int HEIGHT_OF_ALL_BLOCKS = 435;
+
+			//Go over every attribute.
+			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			{
+
+				//Get current vector (attribute we are working with making blocks):
+				vector<pair<double, double>> curVec = sortedVector[i];
+
+				//Values to calculate where to put values.
+				double blockOffsetVertical = 80;
+				double prevHeight = 80;
+				double colorIncR = 220;
+				double colorIncG = 0;
+				double colorIncB = 0;
+				int state = 0;
+				const int INC_DEC = 130; //Variable for color Increment / Decrement.
+
+				//Iterate over vector to find valus.
+				for (int j = 0; j < curVec.size(); j++)
+				{
+					//Get key and frequency and draw a rectangle.
+					double key = curVec[j].first;
+					double freq = curVec[j].second;
+
+					//Draw the rectangle.
+					glBegin(GL_QUADS);
+
+					//Set Color:
+					glColor3f(colorIncR / 255, colorIncG / 255, colorIncB / 255);
+
+					// draw bottom left
+					glVertex2d(
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20),
+						(blockOffsetVertical)
+					);
+
+					// draw top left
+					glVertex2d(
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+					);
+
+					// draw top right
+					glVertex2d(
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+					);
+
+					// draw bottom right
+					glVertex2d(
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20),
+						(blockOffsetVertical)
+					);
+
+					glEnd();
+
+					//==Draw border==:
+					glBegin(GL_LINE_STRIP);
+
+					glColor3f(0, 0, 0);
+					glLineWidth(.5);
+
+					//Top Left Point:
+					glVertex2d(
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20),
+						((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical) - 2)
+					);
+
+					glVertex2d(
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20),
+						((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical) - 2)
+					);
+					
+					//Top Right Point:
+					glEnd();
+
+					//Mutate vector to draw lines in next step.
+					curVec[j].second = (((freq / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
+					sortedVector[i] = curVec;
+
+					//Record the previous height.
+					blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight) ;
+					prevHeight = blockOffsetVertical;
+
+					//Change color.
+					if (state == 0)
+					{
+						colorIncB += INC_DEC;
+						
+						//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+						if (colorIncB >= 255)
+						{
+							colorIncB = 255;
+							state = 1;
+						}
+
+					}
+					else if (state == 1)
+					{
+						colorIncR -= INC_DEC;
+
+						//IF we get to the min of red, start incrementing green. (0, 255, 0)
+						if (colorIncR <= 0)
+						{
+							colorIncR = 0;
+							state = 2;
+						}
+
+					}
+					else if (state == 2)
+					{
+						colorIncG += INC_DEC;
+
+						//If we get to the max of green, start decrementing blue. (0, 255, 255)
+						if (colorIncG >= 255)
+						{
+							colorIncG = 255;
+							state = 3;
+						}
+
+					}
+					else if(state == 3)
+					{
+						colorIncB -= INC_DEC;
+
+						//If we get to the min of blue, start incrementing red. (0, 0, 255)
+						if (colorIncB <= 255)
+						{
+							colorIncB = 0;
+							state = 4;
+						}
+					}
+					else if(state == 4)
+					{
+						colorIncR += INC_DEC;
+
+						//If we get to the max of red, decrement green. (255, 0, 255)
+						if (colorIncR >= 255)
+						{
+							colorIncR = 220;
+							state = 5;
+						}
+					}
+					else
+					{
+						colorIncG -= INC_DEC;
+
+						//If we get to the min of green, restart with inc red. (255, 0, 0)
+						if (colorIncG <= 0)
+						{
+							colorIncG = 0;
+							state = 0;
+						}
+					}
+				}
+
+				dimensionCount++;
+
+			}
+
+			//Reset dimension count.
+			dimensionCount = 0;
+
+			//Now, all of the unordered maps have the value and what position the top of the block stops at.
+
+
+			//====Draw lines to show data:=====
+		
+			//Iterate over rows in data.
+			for (int j = 0; j < this->file->getSetAmount(); j++)
+			{
+
+				//Get the colors for each class line.
+				std::vector<double>* colorOfCurrent = this->file->getSetColor(j);
+				glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], (*colorOfCurrent)[3]);
+
+				//Iterate over attribute values for the row.
+				glBegin(GL_LINE_STRIP); // begins drawing lines
+				for (int i = 0; i < this->file->getDimensionAmount(); i++)
+				{
+					//Get current vecotor.
+					vector<pair<double, double>> curVec = sortedVector[i];
+
+					//Values to calculate where to put point for line.
+					double blockOffsetVertical = 0;
+
+					if (this->file->getDataDimensions()->at(i)->isVisible())
+					{
+						double currentData = this->file->getData(j, i);
+						double valueOfCurrent;
+
+						//find value in curVec iterating over kv pairs:
+						for (int k = 0; k < curVec.size(); k++)
+						{
+							pair<double, double> p = curVec.at(k);
+
+							if (p.first == currentData)
+							{
+								valueOfCurrent = p.second;
+								break;
+							}
+						}
+
+						double calcOfYCord = (  ((valueOfCurrent / 2) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight)  );
+
+						glVertex2d(
+						(  (-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1))  ), //X - val is correct since its just going off the attribute line.
+						(  valueOfCurrent  )  
+						);
+
+						dimensionCount++;
+					}
+				}
+				glEnd();
+
+				dimensionCount = 0;
+			}
+
+		}
 
 		GLvoid drawQuadData(GLvoid) {
 			
