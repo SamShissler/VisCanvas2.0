@@ -16,6 +16,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <map>
 /*
 Author: Daniel Ortyn
 Last Update: 2018/22/01
@@ -281,6 +282,10 @@ public:
 	void setClusterName(int clusterIndex, std::string* newName);
 	// gets a list of the sets in the class
 	std::vector<int>* getClusterSets(int clusterIndex);
+	// sets nominal color
+	void setNominalColorChoice(int i);
+	// gets nominal color
+	int getNominalColor();
 
 
 
@@ -375,6 +380,7 @@ private:
 	bool readSetNamesBasic;
 	bool readDimensionNamesBasic;
 	bool readClassNamesBasic;
+	int nominalColorChoice;
 
 
 	// a vector to hold the dimensions containing the data for the sets

@@ -14,6 +14,7 @@ Purpose: CS 481 Project
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <utility>
+#include "NominalColorPicker.h"
 
 using namespace System::Windows::Forms;
 
@@ -24,7 +25,6 @@ namespace OpenGLForm
 	{
 
 	public:		
-
 		/**
 		 * This sets up the OpenGL viewport that is used in conjuction with the DataInterface class
 		 * @param parentForm
@@ -1592,7 +1592,9 @@ namespace OpenGLForm
 		//Desc: Draws nominal set bars for eacha attribute.
 		GLvoid drawNominalSetData(GLvoid)
 		{
+
 			int dimensionCount = 0; // Variable for the dimension index.
+			int colorChoice = file->getNominalColor();
 			glLineWidth(3.0); //Seting line width.
 			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
 
@@ -1708,11 +1710,45 @@ namespace OpenGLForm
 				//Values to calculate where to put values.
 				double blockOffsetVertical = 80;
 				double prevHeight = 80;
-				double colorIncR = 220;
+
+				double colorIncR = 0;
 				double colorIncG = 0;
 				double colorIncB = 0;
+				
+				//Starting colors:
+				if (colorChoice == 1)
+				{
+					colorIncR = 220;
+					colorIncG = 0;
+					colorIncB = 0;
+				}
+				else if (colorChoice == 2)
+				{
+					colorIncR = 0;
+					colorIncG = 220;
+					colorIncB = 0;
+				}
+				else if (colorChoice == 3)
+				{
+					colorIncR = 0;
+					colorIncG = 0;
+					colorIncB = 220;
+				}
+				else if (colorChoice == 4)
+				{
+					colorIncR = 50;
+					colorIncG = 50;
+					colorIncB = 50;
+				}
+				else
+				{
+					colorIncR = 220;
+					colorIncG = 0;
+					colorIncB = 0;
+				}
+
 				int state = 0;
-				const int INC_DEC = 130; //Variable for color Increment / Decrement.
+				const int INC_DEC = 80; //Variable for color Increment / Decrement.
 
 				//Iterate over vector to find valus.
 				for (int j = 0; j < curVec.size(); j++)
@@ -1729,49 +1765,56 @@ namespace OpenGLForm
 
 					// draw bottom left
 					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20),
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
 						(blockOffsetVertical)
 					);
 
 					// draw top left
 					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20),
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
 						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 					);
 
 					// draw top right
 					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20),
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
 						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 					);
 
 					// draw bottom right
 					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20),
+						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
 						(blockOffsetVertical)
 					);
 
 					glEnd();
 
-					//==Draw border==:
-					glBegin(GL_LINE_STRIP);
 
-					glColor3f(0, 0, 0);
-					glLineWidth(.5);
+					if (!(freq <= 0.014))
+					{
 
-					//Top Left Point:
-					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20),
-						((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical) - 2)
-					);
+						//==Draw border==:
+						glBegin(GL_LINE_STRIP);
 
-					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20),
-						((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical) - 2)
-					);
+						glColor3f(0, 0, 0);
+						glLineWidth(.5);
+
+						//Top Left Point:
+						glVertex2d(
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+						);
+
+						glVertex2d(
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+							((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+						);
+
+						//Top Right Point:
+						glEnd();
+					}
+
 					
-					//Top Right Point:
-					glEnd();
 
 					//Mutate vector to draw lines in next step.
 					curVec[j].second = (((freq / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
@@ -1781,76 +1824,181 @@ namespace OpenGLForm
 					blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight) ;
 					prevHeight = blockOffsetVertical;
 
-					//Change color.
-					if (state == 0)
+			
+					if (colorChoice == 1) //RED SCHEME
 					{
-						colorIncB += INC_DEC;
-						
-						//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-						if (colorIncB >= 255)
+						if (state == 0)
 						{
-							colorIncB = 255;
-							state = 1;
+							colorIncR += INC_DEC;
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncR >= 255)
+							{
+								colorIncR = 255;
+								state = 1;
+							}
+
 						}
-
-					}
-					else if (state == 1)
-					{
-						colorIncR -= INC_DEC;
-
-						//IF we get to the min of red, start incrementing green. (0, 255, 0)
-						if (colorIncR <= 0)
+						else if (state == 1)
 						{
-							colorIncR = 0;
-							state = 2;
-						}
+							colorIncG += INC_DEC;
 
-					}
-					else if (state == 2)
-					{
-						colorIncG += INC_DEC;
-
-						//If we get to the max of green, start decrementing blue. (0, 255, 255)
-						if (colorIncG >= 255)
-						{
-							colorIncG = 255;
-							state = 3;
-						}
-
-					}
-					else if(state == 3)
-					{
-						colorIncB -= INC_DEC;
-
-						//If we get to the min of blue, start incrementing red. (0, 0, 255)
-						if (colorIncB <= 255)
-						{
-							colorIncB = 0;
-							state = 4;
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncG >= 255)
+							{
+								colorIncG = 0;
+								colorIncR = 220;
+								state = 0;
+							}
 						}
 					}
-					else if(state == 4)
+					else if (colorChoice == 2) //GREEN SCHEME
 					{
-						colorIncR += INC_DEC;
-
-						//If we get to the max of red, decrement green. (255, 0, 255)
-						if (colorIncR >= 255)
+						if (state == 0)
 						{
-							colorIncR = 220;
-							state = 5;
+							colorIncG += INC_DEC;
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncG >= 255)
+							{
+								colorIncG = 255;
+								state = 1;
+							}
+
+						}
+						else if (state == 1)
+						{
+							colorIncB += INC_DEC;
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncB >= 255)
+							{
+								colorIncB = 0;
+								colorIncG = 220;
+								state = 0;
+							}
 						}
 					}
-					else
+					else if (colorChoice == 3) //BLUE SCHEME
 					{
-						colorIncG -= INC_DEC;
-
-						//If we get to the min of green, restart with inc red. (255, 0, 0)
-						if (colorIncG <= 0)
+						if (state == 0)
 						{
-							colorIncG = 0;
-							state = 0;
+							colorIncB += INC_DEC;
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncB >= 255)
+							{
+								colorIncB = 255;
+								state = 1;
+							}
+
+						}
+						else if (state == 1)
+						{
+							colorIncG += INC_DEC;
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncG >= 255)
+							{
+								colorIncG = 0;
+								colorIncB = 220;
+								state = 0;
+							}
 						}
 					}
+					else if (colorChoice == 4) //BLUE SCHEME
+					{
+						if (state == 0)
+						{
+							colorIncR += 20;
+							colorIncG += 20;
+							colorIncB += 20;
+							
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncR >= 255)
+							{
+								colorIncR = 0;
+								colorIncG = 0;
+								colorIncB = 0;
+							}
+
+						}
+					}
+					else //ALL SCHEME
+					{
+						//Change color.
+						if (state == 0)
+						{
+							colorIncB += INC_DEC;
+
+							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
+							if (colorIncB >= 255)
+							{
+								colorIncB = 255;
+								state = 1;
+							}
+
+						}
+						else if (state == 1)
+						{
+							colorIncR -= INC_DEC;
+
+							//IF we get to the min of red, start incrementing green. (0, 255, 0)
+							if (colorIncR <= 0)
+							{
+								colorIncR = 0;
+								state = 2;
+							}
+
+						}
+						else if (state == 2)
+						{
+							colorIncG += INC_DEC;
+
+							//If we get to the max of green, start decrementing blue. (0, 255, 255)
+							if (colorIncG >= 255)
+							{
+								colorIncG = 255;
+								state = 3;
+							}
+
+						}
+						else if (state == 3)
+						{
+							colorIncB -= INC_DEC;
+
+							//If we get to the min of blue, start incrementing red. (0, 0, 255)
+							if (colorIncB <= 255)
+							{
+								colorIncB = 0;
+								state = 4;
+							}
+						}
+						else if (state == 4)
+						{
+							colorIncR += INC_DEC;
+
+							//If we get to the max of red, decrement green. (255, 0, 255)
+							if (colorIncR >= 255)
+							{
+								colorIncR = 220;
+								state = 5;
+							}
+						}
+						else
+						{
+							colorIncG -= INC_DEC;
+
+							//If we get to the min of green, restart with inc red. (255, 0, 0)
+							if (colorIncG <= 0)
+							{
+								colorIncG = 0;
+								state = 0;
+							}
+						}
+					}
+
 				}
 
 				dimensionCount++;
@@ -2637,7 +2785,6 @@ namespace OpenGLForm
 			NativeWindow::WndProc( msg );
 
 		}
-
 	};
 }
 

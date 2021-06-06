@@ -35,6 +35,11 @@ Class CppCLRWinformsProjekt.ClassScheme: AutoLayout, AnsiClass, Class, Public, B
     Void .ctor(System.String, System.Windows.Forms.DataGridView, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getSchemeMap(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.NominalColorPicker: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getResult(): PrivateScope, Public, HideBySig
 Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.NativeWindow
     Void .ctor(System.Windows.Forms.Form, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
