@@ -1625,7 +1625,7 @@ namespace OpenGLForm
 				classValFreq->push_back(new vector<unordered_map<double, double>*>());
 
 				//Add classes to vector for this dimension.
-				for (int k = 0; k < 2; k++)
+				for (int k = 0; k < file->getClassAmount() - 2; k++) // -2 because of Default and 'class' Column.
 				{
 					classValFreq->at(j)->push_back(new unordered_map<double, double>());
 				}
@@ -1668,7 +1668,7 @@ namespace OpenGLForm
 
 			}
 
-			//At this point, we have how often values show up in each class. Now we need to calculate block heights wit the following.
+			//At this point, we have how often values show up in each class. Now we need to calculate block heights with the following.
 			//Block height ratio of class one to class two.
 
 			//Itterate over dimensions.
@@ -1709,43 +1709,28 @@ namespace OpenGLForm
 				//Go over classes:
 				vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
 
-				double calculatedPer = 0;
-
-				unordered_map<double, double>* mapOne = curDimensionVec->at(0);
-				unordered_map<double, double>* mapTwo = curDimensionVec->at(1);
-
-				//Go over class values and combine.
-				for (std::unordered_map<double, double>::iterator iter = mapOne->begin(); iter != mapOne->end(); ++iter)
+				//Combine all values:
+				for (int j = 0; j < curDimensionVec->size(); j++)
 				{
-					double key = iter->first;
-					double first_Val = iter->second;
-					
-					
-					if (mapTwo->find(key) == mapTwo->end())
+
+					unordered_map<double, double>* nextClass = curDimensionVec->at(j);
+
+					for (std::unordered_map<double, double>::iterator iter = nextClass->begin(); iter != nextClass->end(); ++iter)
 					{
-						calculatedPer = 0;
-					}
-					else
-					{
-						calculatedPer = first_Val / mapTwo->at(key);;
+						double key = iter->first;
+						if (blockHeights->at(i)->find(key) == blockHeights->at(i)->end())
+						{
+							blockHeights->at(i)->insert({ key, iter->second });
+						}
+						else
+						{
+							double curVal = blockHeights->at(i)->at(key);
+							blockHeights->at(i)->at(key) = curVal + nextClass->at(key);
+						}
+						
 					}
 
-					blockHeights->at(i)->insert({ key, calculatedPer });
 				}
-
-				//Make sure no values that are exclusivly in map 2 arent missed.
-
-				for (std::unordered_map<double, double>::iterator iter = mapTwo->begin(); iter != mapTwo->end(); ++iter)
-				{
-					double key = iter->first;
-
-					//If the value is not in block heights, insert.
-					if (blockHeights->at(i)->find(key) == blockHeights->at(i)->end())
-					{
-						blockHeights->at(i)->insert({ key, iter->second });
-					}
-				}
-
 				
 			}
 
@@ -1808,11 +1793,10 @@ namespace OpenGLForm
 				sortVec.clear();
 			}
 
-
-
 			//====Draw the rectangles====.
 
 			const int HEIGHT_OF_ALL_BLOCKS = 435;
+			bool sidesPlaced = false; // Boolean to record if we have placed the sides of the small frequency blocks.
 
 			//Go over every attribute.
 			for (int i = 0; i < this->file->getDimensionAmount(); i++)
@@ -1825,57 +1809,39 @@ namespace OpenGLForm
 				double blockOffsetVertical = 80;
 				double prevHeight = 80;
 
-				double colorIncR = 0;
-				double colorIncG = 0;
-				double colorIncB = 0;
-
-				//Starting colors:
-				if (colorChoice == 1)
-				{
-					colorIncR = 220;
-					colorIncG = 0;
-					colorIncB = 0;
-				}
-				else if (colorChoice == 2)
-				{
-					colorIncR = 0;
-					colorIncG = 220;
-					colorIncB = 0;
-				}
-				else if (colorChoice == 3)
-				{
-					colorIncR = 0;
-					colorIncG = 0;
-					colorIncB = 220;
-				}
-				else if (colorChoice == 4)
-				{
-					colorIncR = 50;
-					colorIncG = 50;
-					colorIncB = 50;
-				}
-				else
-				{
-					colorIncR = 220;
-					colorIncG = 0;
-					colorIncB = 0;
-				}
-
-				int state = 0;
-				const int INC_DEC = 80; //Variable for color Increment / Decrement.
-
 				//Iterate over vector to find valus.
 				for (int j = 0; j < curVec.size(); j++)
 				{
 					//Get key and frequency and draw a rectangle.
 					double key = curVec[j].first;
 					double freq = curVec[j].second;
+					double dominantFreq = 0;
+					double dominantClass = -1;
+					const double GRAY_VAL = 0.5;
+
+					//Go over classes and find dominant class:
+					vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
+
+					for (int m = 0; m < curDimensionVec->size(); m++)
+					{
+						unordered_map<double, double>* nextClass = curDimensionVec->at(m);
+
+						if (nextClass->find(key) != nextClass->end())
+						{
+							if (nextClass->at(key) >= dominantFreq)
+							{
+								dominantFreq = nextClass->at(key);
+								dominantClass = m + 1;
+							}
+						}
+					}
 
 					//Draw the rectangle.
 					glBegin(GL_QUADS);
 
 					//Set Color:
-					glColor3f(colorIncR / 255, colorIncG / 255, colorIncB / 255);
+					std::vector<double>* colorOfCurrent = this->file->getClassColor(dominantClass);
+					glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], 0.5);
 
 					// draw bottom left
 					glVertex2d(
@@ -1886,13 +1852,13 @@ namespace OpenGLForm
 					// draw top left
 					glVertex2d(
 						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+						((dominantFreq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 					);
 
 					// draw top right
 					glVertex2d(
 						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+						((dominantFreq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 					);
 
 					// draw bottom right
@@ -1906,11 +1872,10 @@ namespace OpenGLForm
 					//Check if we need to draw the border.
 					if (!(freq <= 0.014))
 					{
-
 						//==Draw border==:
 						glBegin(GL_LINE_STRIP);
 
-						glColor3f(0, 0, 0);
+						glColor4d(0, 0, 0, GRAY_VAL);
 						glLineWidth(.5);
 
 						//Top Left Point:
@@ -1926,194 +1891,82 @@ namespace OpenGLForm
 
 						//Top Right Point:
 						glEnd();
+
+					}
+					else //We dont need to draw the devider.
+					{
+
+						//==Draw Sides==:
+						glBegin(GL_LINE_STRIP);
+
+						glColor4d(0, 0, 0, GRAY_VAL);
+						glLineWidth(.5);
+
+						glVertex2d(
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+						);
+
+						glVertex2d(
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+							(prevHeight - 2)
+						);
+
+						glEnd();
+
+						//==Draw Sides==:
+						glBegin(GL_LINE_STRIP);
+
+						glColor4d(0, 0, 0, GRAY_VAL);
+						glLineWidth(.5);
+
+						glVertex2d(
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+						);
+
+						glVertex2d(
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							(prevHeight - 3)
+						);
+
+						glEnd();
+
+						if (j == curVec.size() - 1)
+						{
+							//==Draw border==:
+							glBegin(GL_LINE_STRIP);
+
+							glColor4d(0, 0, 0, GRAY_VAL);
+							glLineWidth(.5);
+
+							//Top Left Point:
+							glVertex2d(
+								((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+								((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+							);
+
+							glVertex2d(
+								((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+								((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+							);
+
+							//Top Right Point:
+							glEnd();
+						}
+
 					}
 
 					//Mutate vector to draw lines in next step.
-					curVec[j].second = (((freq / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
+					curVec[j].second = (((dominantFreq / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
 					sortedVector[i] = curVec;
 
 					//Record the previous height.
 					blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
 					prevHeight = blockOffsetVertical;
-
-					if (colorChoice == 1) //RED SCHEME
-					{
-						if (state == 0)
-						{
-							colorIncR += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncR >= 255)
-							{
-								colorIncR = 255;
-								state = 1;
-							}
-
-						}
-						else if (state == 1)
-						{
-							colorIncG += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncG >= 255)
-							{
-								colorIncG = 0;
-								colorIncR = 220;
-								state = 0;
-							}
-						}
-					}
-					else if (colorChoice == 2) //GREEN SCHEME
-					{
-						if (state == 0)
-						{
-							colorIncG += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncG >= 255)
-							{
-								colorIncG = 255;
-								state = 1;
-							}
-
-						}
-						else if (state == 1)
-						{
-							colorIncB += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncB >= 255)
-							{
-								colorIncB = 0;
-								colorIncG = 220;
-								state = 0;
-							}
-						}
-					}
-					else if (colorChoice == 3) //BLUE SCHEME
-					{
-						if (state == 0)
-						{
-							colorIncB += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncB >= 255)
-							{
-								colorIncB = 255;
-								state = 1;
-							}
-
-						}
-						else if (state == 1)
-						{
-							colorIncG += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncG >= 255)
-							{
-								colorIncG = 0;
-								colorIncB = 220;
-								state = 0;
-							}
-						}
-					}
-					else if (colorChoice == 4) //BLUE SCHEME
-					{
-						if (state == 0)
-						{
-							colorIncR += 20;
-							colorIncG += 20;
-							colorIncB += 20;
-
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncR >= 255)
-							{
-								colorIncR = 0;
-								colorIncG = 0;
-								colorIncB = 0;
-							}
-
-						}
-					}
-					else //ALL SCHEME
-					{
-						//Change color.
-						if (state == 0)
-						{
-							colorIncB += INC_DEC;
-
-							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
-							if (colorIncB >= 255)
-							{
-								colorIncB = 255;
-								state = 1;
-							}
-
-						}
-						else if (state == 1)
-						{
-							colorIncR -= INC_DEC;
-
-							//IF we get to the min of red, start incrementing green. (0, 255, 0)
-							if (colorIncR <= 0)
-							{
-								colorIncR = 0;
-								state = 2;
-							}
-
-						}
-						else if (state == 2)
-						{
-							colorIncG += INC_DEC;
-
-							//If we get to the max of green, start decrementing blue. (0, 255, 255)
-							if (colorIncG >= 255)
-							{
-								colorIncG = 255;
-								state = 3;
-							}
-
-						}
-						else if (state == 3)
-						{
-							colorIncB -= INC_DEC;
-
-							//If we get to the min of blue, start incrementing red. (0, 0, 255)
-							if (colorIncB <= 255)
-							{
-								colorIncB = 0;
-								state = 4;
-							}
-						}
-						else if (state == 4)
-						{
-							colorIncR += INC_DEC;
-
-							//If we get to the max of red, decrement green. (255, 0, 255)
-							if (colorIncR >= 255)
-							{
-								colorIncR = 220;
-								state = 5;
-							}
-						}
-						else
-						{
-							colorIncG -= INC_DEC;
-
-							//If we get to the min of green, restart with inc red. (255, 0, 0)
-							if (colorIncG <= 0)
-							{
-								colorIncG = 0;
-								state = 0;
-							}
-						}
-					}
-
 				}
 
 				dimensionCount++;
-
 			}
 
 			//Reset dimension count.
@@ -2363,7 +2216,7 @@ namespace OpenGLForm
 					glBegin(GL_QUADS);
 
 					//Set Color:
-					glColor3f(colorIncR / 255, colorIncG / 255, colorIncB / 255);
+					glColor4f(colorIncR / 255, colorIncG / 255, colorIncB / 255, 0.55);
 
 					// draw bottom left
 					glVertex2d(
