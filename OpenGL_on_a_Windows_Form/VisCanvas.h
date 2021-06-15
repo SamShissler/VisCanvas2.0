@@ -1800,6 +1800,12 @@ namespace VisCanvas {
 				 toolTip->SetToolTip(this->button1, "Reset Zoom/Pan");
 				 toolTip->SetToolTip(this->toggleClassColors,"Toggle Hypercube Cluster Color");
 				 toolTip->SetToolTip(this->autoCluster,"Auto-Generate Hypercube Clusters");
+				 toolTip->SetToolTip(this->subsetButton, "Hide Occluded Dimensions");
+				 toolTip->SetToolTip(this->histButton, "Histogram Frequency Analysis");
+				 toolTip->SetToolTip(this->freqButton, "Line Width Frequency Analysis");
+				 toolTip->SetToolTip(this->ling, "Linguistic Analysis");
+				 toolTip->SetToolTip(this->sideButton, "Side by Side View of Hypercubes");
+				 toolTip->SetToolTip(this->overlapButton, "Pair Wise Hypercube Analysis");
 
 				 // Set default view text
 				 this->currentView->Text = "View: All Data";
