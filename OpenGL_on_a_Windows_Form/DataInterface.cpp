@@ -1687,6 +1687,7 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 		}
 
 		autoColor();
+		createOverlaps();
 	}
 	catch (...) {
 		return false;
