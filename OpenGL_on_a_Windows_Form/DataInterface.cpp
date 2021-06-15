@@ -978,6 +978,8 @@ bool DataInterface::hypercube(int setIndex, double radius) {
 		clusters[clusters.size() - 1].calculateValues(&dataDimensions);
 	}
 
+	this->selectedSetIndex = 0;
+	this->selectedClusterIndex = clusters.size() - 1;
 
 	return true;
 }
