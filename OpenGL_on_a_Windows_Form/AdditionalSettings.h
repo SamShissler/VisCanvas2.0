@@ -113,7 +113,7 @@ namespace VisCanvas {
 				 this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage1->Size = System::Drawing::Size(404, 203);
 				 this->tabPage1->TabIndex = 0;
-				 this->tabPage1->Text = L"Hypercube";
+				 this->tabPage1->Text = L"Hyperblock";
 				 // 
 				 // applyButton
 				 // 
@@ -193,7 +193,7 @@ namespace VisCanvas {
 				 this->checkBox4->Name = L"checkBox4";
 				 this->checkBox4->Size = System::Drawing::Size(87, 19);
 				 this->checkBox4->TabIndex = 54;
-				 this->checkBox4->Text = L"Set Names";
+				 this->checkBox4->Text = L"Case Names";
 				 this->checkBox4->UseVisualStyleBackColor = true;
 				 // 
 				 // checkBox3
@@ -215,7 +215,7 @@ namespace VisCanvas {
 				 this->checkBox2->Name = L"checkBox2";
 				 this->checkBox2->Size = System::Drawing::Size(129, 19);
 				 this->checkBox2->TabIndex = 52;
-				 this->checkBox2->Text = L"Dimension Names";
+				 this->checkBox2->Text = L"Coordinate Names";
 				 this->checkBox2->UseVisualStyleBackColor = true;
 				 // 
 				 // label3
@@ -261,7 +261,7 @@ namespace VisCanvas {
 				 this->label2->Name = L"label2";
 				 this->label2->Size = System::Drawing::Size(148, 17);
 				 this->label2->TabIndex = 2;
-				 this->label2->Text = L"Selected Set Color:";
+				 this->label2->Text = L"Selected Case Color:";
 				  
 				 // checkBox1
 				 // 
@@ -274,7 +274,7 @@ namespace VisCanvas {
 				 this->checkBox1->Name = L"checkBox1";
 				 this->checkBox1->Size = System::Drawing::Size(214, 21);
 				 this->checkBox1->TabIndex = 0;
-				 this->checkBox1->Text = L"Display Dimension Names";
+				 this->checkBox1->Text = L"Display Coordinate Names";
 				 this->checkBox1->UseVisualStyleBackColor = true;
 				 this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &AdditionalSettings::checkBox1_CheckedChanged);
 				 // 
