@@ -317,7 +317,7 @@ namespace VisCanvas {
 				 this->tabPage3->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage3->Size = System::Drawing::Size(326, 385);
 				 this->tabPage3->TabIndex = 3;
-				 this->tabPage3->Text = L"Dimension";
+				 this->tabPage3->Text = L"Coordinate";
 				 this->tabPage3->Click += gcnew System::EventHandler(this, &Settings::tabPage3_Click);
 				 // 
 				 // edit clusters tab page
@@ -343,7 +343,7 @@ namespace VisCanvas {
 				 this->clusterList->Padding = System::Windows::Forms::Padding(3);
 				 this->clusterList->Size = System::Drawing::Size(230, 280);
 				 this->clusterList->TabIndex = 3;
-				 this->clusterList->Text = L"Cluster Selection";
+				 this->clusterList->Text = L"Block Selection";
 				 this->clusterList->CheckOnClick = true;
 				 // 
 				 // select/deselect all clusters
@@ -785,7 +785,7 @@ namespace VisCanvas {
 				 this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage1->Size = System::Drawing::Size(326, 385);
 				 this->tabPage1->TabIndex = 2;
-				 this->tabPage1->Text = L"Set";
+				 this->tabPage1->Text = L"Case";
 				 // 
 				 // label11
 				 // 
@@ -1068,7 +1068,7 @@ namespace VisCanvas {
 				 this->tabPage5->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage5->Size = System::Drawing::Size(326, 385);
 				 this->tabPage5->TabIndex = 5;
-				 this->tabPage5->Text = L"Class Set";
+				 this->tabPage5->Text = L"Class Case";
 				 // listBox1
 				 // 
 				 this->listBox1->FormattingEnabled = true;
@@ -1086,7 +1086,7 @@ namespace VisCanvas {
 				 this->label26->Name = L"label26";
 				 this->label26->Size = System::Drawing::Size(79, 15);
 				 this->label26->TabIndex = 48;
-				 this->label26->Text = L"Visible Set:";
+				 this->label26->Text = L"Visible Case:";
 				 // 
 				 // label25
 				 // 
@@ -1132,7 +1132,7 @@ namespace VisCanvas {
 				 this->tabPage4->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage4->Size = System::Drawing::Size(326, 385);
 				 this->tabPage4->TabIndex = 4;
-				 this->tabPage4->Text = L"Hypercube Cluster";
+				 this->tabPage4->Text = L"Hyperblock";
 				 this->tabPage4->Click += gcnew System::EventHandler(this, &Settings::tabPage4_Click);
 				 
 				 // label24
