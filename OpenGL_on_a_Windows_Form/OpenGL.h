@@ -256,8 +256,8 @@ namespace OpenGLForm
 		 */
 		System::Void toggleClusters(System::Void)
 		{
+			if (this->file->getClusterAmount() <= 0 && !(this->file->togglePaintClusters())) return;
 			this->hypercubeToggle = !(this->file->togglePaintClusters());
-			//this->hypercubeToggle = (!this->hypercubeToggle) ? true : false;
 		}
 
 		/**
@@ -296,21 +296,9 @@ namespace OpenGLForm
 		 */
 		System::Void hypercube(System::Void)
 		{
-			if (this->file->isPaintClusters())
-			{
-				int prev = file->getSelectedClusterIndex();
-				this->file->subHypercube(file->getSelectedSetIndex(),file->getSelectedClusterIndex(),/*file->getHypercubeThreshold()*0.01*/file->getRadius());
-				this->hypercubeToggle = false;
-				//this->file->xorClusters(prev, file->getClusters().size() - 1);
-			}
-			else
-			{
-				int selectedSetIndex = this->file->getSelectedSetIndex();
-				this->file->hypercube(selectedSetIndex, /*file->getHypercubeThreshold()*0.01*/file->getRadius());
-				this->hypercubeToggle = false;
-			}
-				
-			
+			int selectedSetIndex = this->file->getSelectedSetIndex();
+			this->file->hypercube(selectedSetIndex, file->getRadius());
+			this->hypercubeToggle = false;	
 		}
 
 		// Set the toggle for manual sort
