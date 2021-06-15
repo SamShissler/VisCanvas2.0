@@ -1871,64 +1871,55 @@ void DataInterface::highlightOverlap(double threshold)
 	selectedSetIndex = 0;
 	totalCubeCount = 0;
 	overlappingCubeCount = 0;
+	double accThreshold = 0.90;
+	selectedSetIndex = 0;
 	vector<int> selectedInstances = vector<int>();
-	set<int> classesInCube = set<int>();
+	vector<SetCluster> blocks = vector<SetCluster>();
 
 	for (int i = 0; i < getSetAmount(); i++) // selected instances
 	{
 		selectedInstances.clear();
-		classesInCube.clear();
+		selectedInstances.push_back(i);
 
-		// define hypercube
-		for (int j = 0; j < getSetAmount(); j++) // all other instances
-		{
-			bool withinCube = true;
+		ColorCustom clusterColor = ColorCustom();
+		std::vector<double>* colorConponents = dataClasses[getClassOfSet(i)].getColor();
+		clusterColor.setRed((*colorConponents)[0]);
+		clusterColor.setGreen((*colorConponents)[1]);
+		clusterColor.setBlue((*colorConponents)[2]);
+		clusterColor.setAlpha((*colorConponents)[3]);
+		blocks.push_back(SetCluster(clusterColor, &selectedInstances, &dataDimensions));
+		blocks[blocks.size() - 1].setRadius(0.0);
+		string name = to_string(i);
+		blocks[blocks.size() - 1].setName(&name);
+		blocks[blocks.size() - 1].setOriginalSet(i);
 
-			for (int k = 0; k < getDimensionAmount(); k++)
-			{
-				if (!(getData(j, k) >= (getData(i, k) - threshold) && getData(j, k) <= (getData(i, k) + threshold)))
-				{
-					withinCube = false;
-				}
-			}
-
-			if (withinCube)
-			{
-				selectedInstances.push_back(j);
-				classesInCube.insert(getClassOfSet(j));
-			}
-		}
-
-		identicalCubes(&classesInCube, &selectedInstances);
-
-		createAutoCube(&classesInCube, &selectedInstances, threshold, i);
 	}
 
 	bool actionTaken = false;
 	set<int> toBeDeleted = set<int>();
-	int count = pureCubes.size();
+	int count = blocks.size();
 	do
 	{
 		if (count <= 0)
 		{
-			count = pureCubes.size();
+			count = blocks.size();
 		}
 
 		toBeDeleted.clear();
 		actionTaken = false;
 
-		if (pureCubes.size() <= 0)
+		if (blocks.size() <= 0)
 			break;
 
-		SetCluster temp = pureCubes.front();
+		SetCluster temp = blocks.front();
 
-		pureCubes.erase(pureCubes.begin());
+		blocks.erase(blocks.begin());
 
 		int tempClass = getClassOfSet(temp.getSets()->at(0));
 
-		for (int i = 0; i < pureCubes.size(); i++)
+		for (int i = 0; i < blocks.size(); i++)
 		{
-			int currCubeClass = getClassOfSet(pureCubes[i].getSets()->at(0));
+			int currCubeClass = getClassOfSet(blocks[i].getSets()->at(0));
 			if (tempClass != currCubeClass)
 			{
 				continue;
@@ -1940,8 +1931,8 @@ void DataInterface::highlightOverlap(double threshold)
 			// define combined space
 			for (int j = 0; j < getDimensionAmount(); j++)
 			{
-				double newLocalMax = max(temp.getMaximum(j), pureCubes[i].getMaximum(j));
-				double newLocalMin = min(temp.getMinimum(j), pureCubes[i].getMinimum(j));
+				double newLocalMax = max(temp.getMaximum(j), blocks[i].getMaximum(j));
+				double newLocalMin = min(temp.getMinimum(j), blocks[i].getMinimum(j));
 
 				maxPoint.push_back(newLocalMax);
 				minPoint.push_back(newLocalMin);
@@ -2003,22 +1994,213 @@ void DataInterface::highlightOverlap(double threshold)
 		int offset = 0;
 		for (auto x : toBeDeleted)
 		{
-			pureCubes.erase(pureCubes.begin() + (x - offset));
+			blocks.erase(blocks.begin() + (x - offset));
 			offset++;
 		}
 
-		pureCubes.push_back(temp);
+		blocks.push_back(temp);
 
 		count--;
 
 	} while (actionTaken || count > 0);
 
-	for (int i = 0; i < pureCubes.size(); i++)
+	// impure
+
+	actionTaken = false;
+	toBeDeleted = set<int>();
+	count = blocks.size();
+	do
 	{
-		clusters.push_back(pureCubes.at(i));
+		if (count <= 0)
+		{
+			count = blocks.size();
+		}
+
+		toBeDeleted.clear();
+		actionTaken = false;
+
+		if (blocks.size() <= 0)
+			break;
+
+		SetCluster temp = blocks.front();
+
+		blocks.erase(blocks.begin());
+
+		vector<double> acc = vector<double>();
+		for (int i = 0; i < blocks.size(); i++)
+		{
+			// get majority class
+			int majorityClass = 0;
+			map<int, int> classCount = map<int, int>();
+			for (int j = 0; j < blocks[i].getSetNumber(); j++)
+			{
+				int currClass = getClassOfSet(blocks[i].getSets()->at(j));
+				if (classCount.find(currClass) != classCount.end())
+				{
+					classCount[currClass] += 1;
+				}
+				else
+				{
+					classCount[currClass] = 1;
+				}
+			}
+
+			int majorityCount = INT_MIN;
+			for (auto entry : classCount)
+			{
+				if (entry.second > majorityCount)
+				{
+					majorityCount = entry.second;
+					majorityClass = entry.first;
+				}
+			}
+
+			int currCubeClass = getClassOfSet(blocks[i].getSets()->at(0));
+
+			vector<double> maxPoint = vector<double>();
+			vector<double> minPoint = vector<double>();
+
+			// define combined space
+			for (int j = 0; j < getDimensionAmount(); j++)
+			{
+				double newLocalMax = max(temp.getMaximum(j), blocks[i].getMaximum(j));
+				double newLocalMin = min(temp.getMinimum(j), blocks[i].getMinimum(j));
+
+				maxPoint.push_back(newLocalMax);
+				minPoint.push_back(newLocalMin);
+			}
+
+			vector<int> pointsInSpace = vector<int>();
+
+			// define all points in combined space
+			for (int j = 0; j < getSetAmount(); j++)
+			{
+				bool withinSpace = true;
+				for (int k = 0; k < getDimensionAmount(); k++)
+				{
+					double currData = getData(j, k);
+					if (!(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
+					{
+						withinSpace = false;
+						break;
+					}
+				}
+				if (withinSpace)
+				{
+					pointsInSpace.push_back(j);
+				}
+			}
+
+			classCount.clear();
+
+			// check if new space is pure enough
+			for (int j = 0; j < pointsInSpace.size(); j++)
+			{
+				int currClass = getClassOfSet(pointsInSpace.at(j));
+
+				if (classCount.find(currClass) != classCount.end())
+				{
+					classCount[currClass] += 1;
+				}
+				else
+				{
+					classCount[currClass] = 1;
+				}
+			}
+
+			double currClassTotal = 0;
+			double classTotal = 0;
+			for (auto entry : classCount)
+			{
+				if (entry.first == majorityClass)
+				{
+					currClassTotal = entry.second;
+				}
+
+				classTotal += entry.second;
+			}
+
+			acc.push_back(currClassTotal / classTotal);
+		}
+
+		int highestAccIdx = 0;
+		for (int j = 0; j < acc.size(); j++)
+		{
+			if (acc[j] > acc[highestAccIdx])
+			{
+				highestAccIdx = j;
+			}
+		}
+
+		// if acc meets threshold
+		if (acc[highestAccIdx] >= accThreshold)
+		{
+			actionTaken = true;
+
+			vector<double> maxPoint = vector<double>();
+			vector<double> minPoint = vector<double>();
+
+			// define combined space
+			for (int j = 0; j < getDimensionAmount(); j++)
+			{
+				double newLocalMax = max(temp.getMaximum(j), blocks[highestAccIdx].getMaximum(j));
+				double newLocalMin = min(temp.getMinimum(j), blocks[highestAccIdx].getMinimum(j));
+
+				maxPoint.push_back(newLocalMax);
+				minPoint.push_back(newLocalMin);
+			}
+
+			vector<int> pointsInSpace = vector<int>();
+
+			// define all points in combined space
+			for (int j = 0; j < getSetAmount(); j++)
+			{
+				bool withinSpace = true;
+				for (int k = 0; k < getDimensionAmount(); k++)
+				{
+					double currData = getData(j, k);
+					if (!(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
+					{
+						withinSpace = false;
+						break;
+					}
+				}
+				if (withinSpace)
+				{
+					pointsInSpace.push_back(j);
+				}
+			}
+
+			temp.getSets()->clear();
+			for (int j = 0; j < pointsInSpace.size(); j++)
+			{
+				temp.addSet(pointsInSpace.at(j));
+			}
+			temp.calculateValues(&dataDimensions);
+
+			// store this index, to delete the cube that was combined
+			toBeDeleted.insert(highestAccIdx);
+		}
+
+		int offset = 0;
+		for (auto x : toBeDeleted)
+		{
+			blocks.erase(blocks.begin() + (x - offset));
+			offset++;
+		}
+
+		blocks.push_back(temp);
+
+		count--;
+
+	} while (actionTaken || count > 0);
+
+
+	for (int i = 0; i < blocks.size(); i++)
+	{
+		clusters.push_back(blocks.at(i));
 	}
-
-
+	
 	// count cubes that share instance of data
 	overlappingCubeCount = 0;
 	for (int i = 0; i < getSetAmount(); i++)
@@ -2052,7 +2234,6 @@ void DataInterface::highlightOverlap(double threshold)
 	}
 
 	paintClusters = true;
-
 }
 
 void DataInterface::identicalCubes(set<int> * classesInCube, vector<int> * selectedInstances) {

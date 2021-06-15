@@ -53,6 +53,7 @@ namespace VisCanvas {
 		/// </summary>
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::Button^ applyButton;
+	private: System::Windows::Forms::Button^ applyButton2;
 	private: System::Windows::Forms::RadioButton^  radioButton2;
 	private: System::Windows::Forms::RadioButton^  radioButton1;
 	private: System::Windows::Forms::Label^  label3;
@@ -71,6 +72,7 @@ namespace VisCanvas {
 				 this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 				 this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 				 this->applyButton = (gcnew System::Windows::Forms::Button());
+				 this->applyButton2 = (gcnew System::Windows::Forms::Button());
 				 this->label1 = (gcnew System::Windows::Forms::Label());
 				 this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 				 this->button1 = (gcnew System::Windows::Forms::Button());
@@ -111,7 +113,7 @@ namespace VisCanvas {
 				 this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage1->Size = System::Drawing::Size(404, 203);
 				 this->tabPage1->TabIndex = 0;
-				 this->tabPage1->Text = L"Hypercube";
+				 this->tabPage1->Text = L"Hyperblock";
 				 // 
 				 // applyButton
 				 // 
@@ -120,7 +122,18 @@ namespace VisCanvas {
 				 this->applyButton->Name = L"nButtonControl13";
 				 this->applyButton->Size = System::Drawing::Size(56, 23);
 				 this->applyButton->TabIndex = 47;
+				 this->applyButton->Text = L"Apply";
 				 this->applyButton->Click += gcnew System::EventHandler(this, &AdditionalSettings::applyButton_Click);
+				 // 
+				 // applyButton2
+				 // 
+				 this->applyButton2->AutoSize = false;
+				 this->applyButton2->Location = System::Drawing::Point(340, 174);
+				 this->applyButton2->Name = L"nButtonControl13";
+				 this->applyButton2->Size = System::Drawing::Size(56, 23);
+				 this->applyButton2->TabIndex = 47;
+				 this->applyButton2->Text = L"Apply";
+				 this->applyButton2->Click += gcnew System::EventHandler(this, &AdditionalSettings::AdditionalSettings_Apply);
 				 
 				 // 
 				 // label1
@@ -180,7 +193,7 @@ namespace VisCanvas {
 				 this->checkBox4->Name = L"checkBox4";
 				 this->checkBox4->Size = System::Drawing::Size(87, 19);
 				 this->checkBox4->TabIndex = 54;
-				 this->checkBox4->Text = L"Set Names";
+				 this->checkBox4->Text = L"Case Names";
 				 this->checkBox4->UseVisualStyleBackColor = true;
 				 // 
 				 // checkBox3
@@ -202,7 +215,7 @@ namespace VisCanvas {
 				 this->checkBox2->Name = L"checkBox2";
 				 this->checkBox2->Size = System::Drawing::Size(129, 19);
 				 this->checkBox2->TabIndex = 52;
-				 this->checkBox2->Text = L"Dimension Names";
+				 this->checkBox2->Text = L"Coordinate Names";
 				 this->checkBox2->UseVisualStyleBackColor = true;
 				 // 
 				 // label3
@@ -248,7 +261,7 @@ namespace VisCanvas {
 				 this->label2->Name = L"label2";
 				 this->label2->Size = System::Drawing::Size(148, 17);
 				 this->label2->TabIndex = 2;
-				 this->label2->Text = L"Selected Set Color:";
+				 this->label2->Text = L"Selected Case Color:";
 				  
 				 // checkBox1
 				 // 
@@ -261,7 +274,7 @@ namespace VisCanvas {
 				 this->checkBox1->Name = L"checkBox1";
 				 this->checkBox1->Size = System::Drawing::Size(214, 21);
 				 this->checkBox1->TabIndex = 0;
-				 this->checkBox1->Text = L"Display Dimension Names";
+				 this->checkBox1->Text = L"Display Coordinate Names";
 				 this->checkBox1->UseVisualStyleBackColor = true;
 				 this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &AdditionalSettings::checkBox1_CheckedChanged);
 				 // 
@@ -371,6 +384,25 @@ namespace VisCanvas {
 				 }
 
 			 }
+	private: System::Void AdditionalSettings_Apply(System::Object^ sender, System::EventArgs^ e) {
+
+		DataInterface * x = OpenGL->file;
+		x->setReadDimensionNames(this->checkBox2->Checked);
+		x->setReadClassNames(this->checkBox3->Checked);
+		x->setReadSetNames(this->checkBox4->Checked);
+
+		if (OpenGL->uploadedFile())
+		{
+			OpenGL->setTextOnEnabled(this->checkBox1->Checked);
+			OpenGL->setTextOnTop(this->radioButton1->Checked);
+			OpenGL->setTextOnBottom(this->radioButton2->Checked);
+
+			std::string str = std::to_string(OpenGL->file->getRadius());
+
+			this->textBox1->Text = gcnew System::String(str.c_str());
+		}
+
+	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 bool useMeanState = OpenGL->file->isUseMeanForClusters();
 				 if (useMeanState)

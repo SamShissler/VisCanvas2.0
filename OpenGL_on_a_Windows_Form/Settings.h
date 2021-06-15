@@ -70,6 +70,12 @@ namespace VisCanvas {
 	private: System::Windows::Forms::Button^ applySelection;
 	private: System::Windows::Forms::Button^ deleteSelection;
 	
+	private: System::Windows::Forms::Button^ menuApply;
+	private: System::Windows::Forms::Button^ menuApply1;
+	private: System::Windows::Forms::Button^ menuApply2;
+	private: System::Windows::Forms::Button^ menuApply3;
+	private: System::Windows::Forms::Button^ menuApply4;
+	
 	private: System::Windows::Forms::Label^  label9;
 	private: System::Windows::Forms::TextBox^  textBox7;
 	private: System::Windows::Forms::Label^  label10;
@@ -203,6 +209,12 @@ namespace VisCanvas {
 				 this->toggleAllClusters = (gcnew System::Windows::Forms::Button());
 				 this->applySelection = (gcnew System::Windows::Forms::Button());
 				 this->deleteSelection = (gcnew System::Windows::Forms::Button());
+				 
+				 this->menuApply = (gcnew System::Windows::Forms::Button());
+				 this->menuApply1 = (gcnew System::Windows::Forms::Button());
+				 this->menuApply2 = (gcnew System::Windows::Forms::Button());
+				 this->menuApply3 = (gcnew System::Windows::Forms::Button());
+				 this->menuApply4 = (gcnew System::Windows::Forms::Button());
 
 				 this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 
@@ -305,7 +317,7 @@ namespace VisCanvas {
 				 this->tabPage3->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage3->Size = System::Drawing::Size(326, 385);
 				 this->tabPage3->TabIndex = 3;
-				 this->tabPage3->Text = L"Dimension";
+				 this->tabPage3->Text = L"Coordinate";
 				 this->tabPage3->Click += gcnew System::EventHandler(this, &Settings::tabPage3_Click);
 				 // 
 				 // edit clusters tab page
@@ -331,7 +343,7 @@ namespace VisCanvas {
 				 this->clusterList->Padding = System::Windows::Forms::Padding(3);
 				 this->clusterList->Size = System::Drawing::Size(230, 280);
 				 this->clusterList->TabIndex = 3;
-				 this->clusterList->Text = L"Cluster Selection";
+				 this->clusterList->Text = L"Block Selection";
 				 this->clusterList->CheckOnClick = true;
 				 // 
 				 // select/deselect all clusters
@@ -368,6 +380,61 @@ namespace VisCanvas {
 				 this->deleteSelection->Text = L"Del";
 				 this->deleteSelection->UseVisualStyleBackColor = false;
 				 this->deleteSelection->Click += gcnew System::EventHandler(this, &Settings::deleteSelection_Click);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply->Location = System::Drawing::Point(250, 350);
+				 this->menuApply->Name = L"applyAll";
+				 this->menuApply->Size = System::Drawing::Size(45, 22);
+				 this->menuApply->TabIndex = 22;
+				 this->menuApply->Text = L"Apply";
+				 this->menuApply->UseVisualStyleBackColor = false;
+				 this->menuApply->Click += gcnew System::EventHandler(this, &Settings::applyDimension);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply1->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply1->Location = System::Drawing::Point(250, 350);
+				 this->menuApply1->Name = L"applyAll";
+				 this->menuApply1->Size = System::Drawing::Size(45, 22);
+				 this->menuApply1->TabIndex = 22;
+				 this->menuApply1->Text = L"Apply";
+				 this->menuApply1->UseVisualStyleBackColor = false;
+				 this->menuApply1->Click += gcnew System::EventHandler(this, &Settings::applySet);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply2->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply2->Location = System::Drawing::Point(250, 350);
+				 this->menuApply2->Name = L"applyAll";
+				 this->menuApply2->Size = System::Drawing::Size(45, 22);
+				 this->menuApply2->TabIndex = 22;
+				 this->menuApply2->Text = L"Apply";
+				 this->menuApply2->UseVisualStyleBackColor = false;
+				 this->menuApply2->Click += gcnew System::EventHandler(this, &Settings::applyClass);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply3->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply3->Location = System::Drawing::Point(250, 350);
+				 this->menuApply3->Name = L"applyAll";
+				 this->menuApply3->Size = System::Drawing::Size(45, 22);
+				 this->menuApply3->TabIndex = 22;
+				 this->menuApply3->Text = L"Apply";
+				 this->menuApply3->UseVisualStyleBackColor = false;
+				 this->menuApply3->Click += gcnew System::EventHandler(this, &Settings::applyClassSet);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply4->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply4->Location = System::Drawing::Point(250, 350);
+				 this->menuApply4->Name = L"applyAll";
+				 this->menuApply4->Size = System::Drawing::Size(45, 22);
+				 this->menuApply4->TabIndex = 22;
+				 this->menuApply4->Text = L"Apply";
+				 this->menuApply4->UseVisualStyleBackColor = false;
+				 this->menuApply4->Click += gcnew System::EventHandler(this, &Settings::applyCluster);
 				 // 
 				 // label27
 				 // 
@@ -718,7 +785,7 @@ namespace VisCanvas {
 				 this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage1->Size = System::Drawing::Size(326, 385);
 				 this->tabPage1->TabIndex = 2;
-				 this->tabPage1->Text = L"Set";
+				 this->tabPage1->Text = L"Case";
 				 // 
 				 // label11
 				 // 
@@ -1001,7 +1068,7 @@ namespace VisCanvas {
 				 this->tabPage5->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage5->Size = System::Drawing::Size(326, 385);
 				 this->tabPage5->TabIndex = 5;
-				 this->tabPage5->Text = L"Class Set";
+				 this->tabPage5->Text = L"Class Case";
 				 // listBox1
 				 // 
 				 this->listBox1->FormattingEnabled = true;
@@ -1019,7 +1086,7 @@ namespace VisCanvas {
 				 this->label26->Name = L"label26";
 				 this->label26->Size = System::Drawing::Size(79, 15);
 				 this->label26->TabIndex = 48;
-				 this->label26->Text = L"Visible Set:";
+				 this->label26->Text = L"Visible Case:";
 				 // 
 				 // label25
 				 // 
@@ -1065,7 +1132,7 @@ namespace VisCanvas {
 				 this->tabPage4->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage4->Size = System::Drawing::Size(326, 385);
 				 this->tabPage4->TabIndex = 4;
-				 this->tabPage4->Text = L"Hypercube Cluster";
+				 this->tabPage4->Text = L"Hyperblock";
 				 this->tabPage4->Click += gcnew System::EventHandler(this, &Settings::tabPage4_Click);
 				 
 				 // label24
@@ -1517,7 +1584,30 @@ namespace VisCanvas {
 	private: System::Void classRemoveLeave(System::Object^  sender, System::EventArgs^  e) {
 				 this->label12->ForeColor = System::Drawing::Color::Black;
 			 }
+	private: System::Void applyClass(System::Object^ sender, System::EventArgs^ e) {
+		applyClass();
+		
+	}
 
+	private: System::Void applyClassSet(System::Object^ sender, System::EventArgs^ e) {
+		
+		applyClassSet();
+		
+	}
+
+	private: System::Void applyCluster(System::Object^ sender, System::EventArgs^ e) {
+		
+		applyCluster();
+	}
+
+	private: System::Void applyDimension(System::Object^ sender, System::EventArgs^ e) {
+	
+		applyDimension();
+	}
+
+	private: System::Void applySet(System::Object^ sender, System::EventArgs^ e) {
+		applySet();
+	}
 
 	protected:
 		bool changedColor;
