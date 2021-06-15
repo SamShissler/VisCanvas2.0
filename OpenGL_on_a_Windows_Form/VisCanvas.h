@@ -14,6 +14,7 @@ Purpose: CS 481 Project
 #include "Linguistic.h"
 #include "Subsets.h"
 #include "SchemeEditor.h"
+#include "NominalColorPicker.h"
 
 namespace VisCanvas {
 
@@ -2358,6 +2359,17 @@ namespace VisCanvas {
 		OpenGL->file->setOverlapMode(false);
 		OpenGL->file->setQuadMode(false);
 		OpenGL->file->setNominalSetsMode(!(OpenGL->file->getNominalSetsMode()));
+
+		if (!(OpenGL->file->getNominalSetsMode()) == false)
+		{
+			//Get Color Scheme from user:
+			CppCLRWinformsProjekt::NominalColorPicker^ ncp = gcnew CppCLRWinformsProjekt::NominalColorPicker();
+			ncp->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			ncp->ShowDialog();
+
+			OpenGL->file->setNominalColorChoice(ncp->getResult());
+		}
+
 	}
 
 	private: System::Void click_hist(System::Object^ sender, System::EventArgs^ e) {

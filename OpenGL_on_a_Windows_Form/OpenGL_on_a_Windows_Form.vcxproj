@@ -237,7 +237,9 @@
     <ClCompile Include="AdditionalSettings.cpp" />
     <ClCompile Include="IntervalGrouping.cpp" />
     <ClCompile Include="IntervalGroupStarting.cpp" />
+    <ClCompile Include="NominalColorPicker.cpp" />
     <ClCompile Include="NominalGrouping.cpp" />
+    <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="OrderScheme.cpp" />
     <ClCompile Include="OrdinalGrouping.cpp" />
     <ClCompile Include="pch.cpp" />
@@ -272,6 +274,7 @@
     <ClInclude Include="IntervalGrouping.h" />
     <ClInclude Include="IntervalGroupStarting.h" />
     <ClInclude Include="KVPair.h" />
+    <ClInclude Include="NominalColorPicker.h" />
     <ClInclude Include="NominalGrouping.h" />
     <ClInclude Include="OrderScheme.h" />
     <ClInclude Include="OrdinalGrouping.h" />

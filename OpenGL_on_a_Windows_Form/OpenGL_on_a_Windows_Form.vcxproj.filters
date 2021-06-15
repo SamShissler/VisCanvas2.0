@@ -91,6 +91,12 @@
     <ClCompile Include="NominalGrouping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NominalColorPicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGL.h">
@@ -181,6 +187,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NominalGrouping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NominalColorPicker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

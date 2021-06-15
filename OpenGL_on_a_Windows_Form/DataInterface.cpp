@@ -1372,6 +1372,18 @@ void DataInterface::setClusterName(int clusterIndex, std::string* newName) {
 	return clusters[clusterIndex].setName(newName);
 }
 
+// sets the color of nominal sets
+void DataInterface::setNominalColorChoice(int i)
+{
+	nominalColorChoice = i;
+}
+
+// gets nominal color
+int DataInterface::getNominalColor()
+{
+	return nominalColorChoice;
+}
+
 // gets a list of the sets in the class
 std::vector<int>* DataInterface::getClusterSets(int clusterIndex) {
 	if (clusterIndex < 0 || clusterIndex >= getClusterAmount()) {
