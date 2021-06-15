@@ -1109,7 +1109,7 @@ namespace VisCanvas {
 				 this->goToCube->Name = L"goToCube";
 				 this->goToCube->Size = System::Drawing::Size(42, 10);
 				 this->goToCube->TabIndex = 6;
-				 this->goToCube->Text = L"Go To Cube: ";
+				 this->goToCube->Text = L"Go To Block: ";
 				 // 
 				 // Current Cube Label
 				 // 
@@ -1119,7 +1119,7 @@ namespace VisCanvas {
 				 this->currentCube->Name = L"currentCube";
 				 this->currentCube->Size = System::Drawing::Size(42, 15);
 				 this->currentCube->TabIndex = 6;
-				 this->currentCube->Text = L"Current Cube: ";
+				 this->currentCube->Text = L"Current Block: ";
 				 // 
 				// Current Cube Total Label
 				// 
@@ -1129,7 +1129,7 @@ namespace VisCanvas {
 				 this->currentCubeTotal->Name = L"currentCubeTotal";
 				 this->currentCubeTotal->Size = System::Drawing::Size(42, 15);
 				 this->currentCubeTotal->TabIndex = 6;
-				 this->currentCubeTotal->Text = L"Total Points: ";
+				 this->currentCubeTotal->Text = L"Total Cases: ";
 				 // 
 				// Current Cube Ratio Label
 				// 
@@ -1149,7 +1149,7 @@ namespace VisCanvas {
 				 this->cubeRatio->Name = L"cubeRatio";
 				 this->cubeRatio->Size = System::Drawing::Size(42, 15);
 				 this->cubeRatio->TabIndex = 6;
-				 this->cubeRatio->Text = L"Total Cubes: ";
+				 this->cubeRatio->Text = L"Total Blocks: ";
 				 // 
 				// Go To Point Label
 				// 
@@ -1159,7 +1159,7 @@ namespace VisCanvas {
 				 this->goToPoint->Name = L"cubeRatio";
 				 this->goToPoint->Size = System::Drawing::Size(42, 15);
 				 this->goToPoint->TabIndex = 6;
-				 this->goToPoint->Text = L"Go To Point: ";
+				 this->goToPoint->Text = L"Go To Case: ";
 				 // 
 				// Current Point Label
 				// 
@@ -1169,7 +1169,7 @@ namespace VisCanvas {
 				 this->currentPoint->Name = L"cubeRatio";
 				 this->currentPoint->Size = System::Drawing::Size(42, 15);
 				 this->currentPoint->TabIndex = 6;
-				 this->currentPoint->Text = L"Current Point: ";
+				 this->currentPoint->Text = L"Current Case: ";
 				 // 
 				 // stats list
 				 // 
