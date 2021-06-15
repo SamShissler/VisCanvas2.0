@@ -70,6 +70,12 @@ namespace VisCanvas {
 	private: System::Windows::Forms::Button^ applySelection;
 	private: System::Windows::Forms::Button^ deleteSelection;
 	
+	private: System::Windows::Forms::Button^ menuApply;
+	private: System::Windows::Forms::Button^ menuApply1;
+	private: System::Windows::Forms::Button^ menuApply2;
+	private: System::Windows::Forms::Button^ menuApply3;
+	private: System::Windows::Forms::Button^ menuApply4;
+	
 	private: System::Windows::Forms::Label^  label9;
 	private: System::Windows::Forms::TextBox^  textBox7;
 	private: System::Windows::Forms::Label^  label10;
@@ -203,6 +209,12 @@ namespace VisCanvas {
 				 this->toggleAllClusters = (gcnew System::Windows::Forms::Button());
 				 this->applySelection = (gcnew System::Windows::Forms::Button());
 				 this->deleteSelection = (gcnew System::Windows::Forms::Button());
+				 
+				 this->menuApply = (gcnew System::Windows::Forms::Button());
+				 this->menuApply1 = (gcnew System::Windows::Forms::Button());
+				 this->menuApply2 = (gcnew System::Windows::Forms::Button());
+				 this->menuApply3 = (gcnew System::Windows::Forms::Button());
+				 this->menuApply4 = (gcnew System::Windows::Forms::Button());
 
 				 this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 
@@ -368,6 +380,61 @@ namespace VisCanvas {
 				 this->deleteSelection->Text = L"Del";
 				 this->deleteSelection->UseVisualStyleBackColor = false;
 				 this->deleteSelection->Click += gcnew System::EventHandler(this, &Settings::deleteSelection_Click);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply->Location = System::Drawing::Point(250, 350);
+				 this->menuApply->Name = L"applyAll";
+				 this->menuApply->Size = System::Drawing::Size(45, 22);
+				 this->menuApply->TabIndex = 22;
+				 this->menuApply->Text = L"Apply";
+				 this->menuApply->UseVisualStyleBackColor = false;
+				 this->menuApply->Click += gcnew System::EventHandler(this, &Settings::applyDimension);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply1->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply1->Location = System::Drawing::Point(250, 350);
+				 this->menuApply1->Name = L"applyAll";
+				 this->menuApply1->Size = System::Drawing::Size(45, 22);
+				 this->menuApply1->TabIndex = 22;
+				 this->menuApply1->Text = L"Apply";
+				 this->menuApply1->UseVisualStyleBackColor = false;
+				 this->menuApply1->Click += gcnew System::EventHandler(this, &Settings::applySet);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply2->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply2->Location = System::Drawing::Point(250, 350);
+				 this->menuApply2->Name = L"applyAll";
+				 this->menuApply2->Size = System::Drawing::Size(45, 22);
+				 this->menuApply2->TabIndex = 22;
+				 this->menuApply2->Text = L"Apply";
+				 this->menuApply2->UseVisualStyleBackColor = false;
+				 this->menuApply2->Click += gcnew System::EventHandler(this, &Settings::applyClass);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply3->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply3->Location = System::Drawing::Point(250, 350);
+				 this->menuApply3->Name = L"applyAll";
+				 this->menuApply3->Size = System::Drawing::Size(45, 22);
+				 this->menuApply3->TabIndex = 22;
+				 this->menuApply3->Text = L"Apply";
+				 this->menuApply3->UseVisualStyleBackColor = false;
+				 this->menuApply3->Click += gcnew System::EventHandler(this, &Settings::applyClassSet);
+				 // 
+				 // menu apply
+				 // 
+				 this->menuApply4->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->menuApply4->Location = System::Drawing::Point(250, 350);
+				 this->menuApply4->Name = L"applyAll";
+				 this->menuApply4->Size = System::Drawing::Size(45, 22);
+				 this->menuApply4->TabIndex = 22;
+				 this->menuApply4->Text = L"Apply";
+				 this->menuApply4->UseVisualStyleBackColor = false;
+				 this->menuApply4->Click += gcnew System::EventHandler(this, &Settings::applyCluster);
 				 // 
 				 // label27
 				 // 
@@ -1517,7 +1584,30 @@ namespace VisCanvas {
 	private: System::Void classRemoveLeave(System::Object^  sender, System::EventArgs^  e) {
 				 this->label12->ForeColor = System::Drawing::Color::Black;
 			 }
+	private: System::Void applyClass(System::Object^ sender, System::EventArgs^ e) {
+		applyClass();
+		
+	}
 
+	private: System::Void applyClassSet(System::Object^ sender, System::EventArgs^ e) {
+		
+		applyClassSet();
+		
+	}
+
+	private: System::Void applyCluster(System::Object^ sender, System::EventArgs^ e) {
+		
+		applyCluster();
+	}
+
+	private: System::Void applyDimension(System::Object^ sender, System::EventArgs^ e) {
+	
+		applyDimension();
+	}
+
+	private: System::Void applySet(System::Object^ sender, System::EventArgs^ e) {
+		applySet();
+	}
 
 	protected:
 		bool changedColor;
