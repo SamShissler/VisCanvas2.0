@@ -978,6 +978,8 @@ bool DataInterface::hypercube(int setIndex, double radius) {
 		clusters[clusters.size() - 1].calculateValues(&dataDimensions);
 	}
 
+	this->selectedSetIndex = 0;
+	this->selectedClusterIndex = clusters.size() - 1;
 
 	return true;
 }
@@ -1685,6 +1687,7 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 		}
 
 		autoColor();
+		createOverlaps();
 	}
 	catch (...) {
 		return false;
