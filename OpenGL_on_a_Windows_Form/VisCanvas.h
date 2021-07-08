@@ -15,6 +15,7 @@ Purpose: CS 481 Project
 #include "Subsets.h"
 #include "SchemeEditor.h"
 #include "NominalColorPicker.h"
+#include "UserInputPopUp.h"
 
 namespace VisCanvas {
 
@@ -137,6 +138,7 @@ namespace VisCanvas {
 	private: System::Windows::Forms::Button^ histButton;
 	private: System::Windows::Forms::Button^ overlapButton;
 	private: System::Windows::Forms::Button^ nominalSetsButton;
+	private: System::Windows::Forms::Button^ domNominalSetsButton;
 	private: System::Windows::Forms::Button^ sideButton;
 	private: System::Windows::Forms::Button^ subsetButton;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
@@ -203,6 +205,7 @@ namespace VisCanvas {
 				 this->histButton = (gcnew System::Windows::Forms::Button());
 				 this->overlapButton = (gcnew System::Windows::Forms::Button());
 				 this->nominalSetsButton = (gcnew System::Windows::Forms::Button());
+				 this->domNominalSetsButton = (gcnew System::Windows::Forms::Button());
 				 this->sideButton = (gcnew System::Windows::Forms::Button());
 				 this->subsetButton = (gcnew System::Windows::Forms::Button());
 
@@ -613,6 +616,7 @@ namespace VisCanvas {
 				 this->Tools->Controls->Add(this->sideButton);
 				 this->Tools->Controls->Add(this->overlapButton);
 				 this->Tools->Controls->Add(this->nominalSetsButton);
+				 this->Tools->Controls->Add(this->domNominalSetsButton);
 				 this->Tools->Controls->Add(this->button3);
 				 this->Tools->Controls->Add(this->label3);
 				 this->Tools->Controls->Add(this->button2);
@@ -675,7 +679,7 @@ namespace VisCanvas {
 				 // 
 				 this->origData->BackColor = System::Drawing::SystemColors::ButtonFace;
 				 this->origData->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"reset.Image")));
-				 this->origData->Location = System::Drawing::Point(14, 488);
+				 this->origData->Location = System::Drawing::Point(14, 538);
 				 this->origData->Name = L"origData";
 				 this->origData->Size = System::Drawing::Size(45, 45);
 				 this->origData->TabIndex = 23;
@@ -757,6 +761,17 @@ namespace VisCanvas {
 				 this->nominalSetsButton->TabIndex = 23;
 				 this->nominalSetsButton->UseVisualStyleBackColor = false;
 				 this->nominalSetsButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_nominalSets);
+				 // 
+				//  dominant nominal sets PC button
+				// 
+				 this->domNominalSetsButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->domNominalSetsButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"domNominalSets.Image")));
+				 this->domNominalSetsButton->Location = System::Drawing::Point(14, 488);
+				 this->domNominalSetsButton->Name = L"domNominalSetsButton";
+				 this->domNominalSetsButton->Size = System::Drawing::Size(45, 45);
+				 this->domNominalSetsButton->TabIndex = 23;
+				 this->domNominalSetsButton->UseVisualStyleBackColor = false;
+				 this->domNominalSetsButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_domNominalSets);
 				 // 
 				 // sortAscend
 				 // 
@@ -2376,6 +2391,49 @@ namespace VisCanvas {
 			OpenGL->file->setNominalColorChoice(ncp->getResult());
 		}
 
+	}
+
+	private: System::Void click_domNominalSets(System::Object^ sender, System::EventArgs^ e) {
+		
+		OpenGL->file->setFrequencyMode(false);
+		OpenGL->file->toggleHistogramMode(false);
+		OpenGL->file->setOverlapMode(false);
+		OpenGL->file->setQuadMode(false);
+		OpenGL->file->setNominalSetsMode(false);
+
+		//Ask User for percentage
+		CppCLRWinformsProjekt::UserInputPopUp^ popupG = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What purity percentage would you like \nfor green borders?");
+		CppCLRWinformsProjekt::UserInputPopUp^ popupPS = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What frequency percentage would you like \nfor purity sorting?");
+		CppCLRWinformsProjekt::UserInputPopUp^ popupTL = gcnew CppCLRWinformsProjekt::UserInputPopUp("Transparent Lines", "What line percentage would you like \nas a threshold to make lines transparent?");
+		
+		popupG->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+		popupG->ShowDialog();
+
+		popupPS->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+		popupPS->ShowDialog();
+
+		popupTL->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+		popupTL->ShowDialog();
+
+		String^ resultFromUserM = popupG->getResult();
+		string resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+		int userInG = stoi(resultFromUser);
+		
+		resultFromUserM = popupPS->getResult();
+		resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+		int userInPS = stoi(resultFromUser);
+
+		resultFromUserM = popupTL->getResult();
+		resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+		int userInTL = stoi(resultFromUser);
+
+		//Set values in datainterface.
+		OpenGL->file->setPurityPerc(userInG);
+		OpenGL->file->setFreqSmall(userInPS);
+		OpenGL->file->setTranspLineThresh(userInTL);
+		
+
+		OpenGL->file->setDomNominalSetsMode(!(OpenGL->file->getDomNominalSetsMode()));
 	}
 
 	private: System::Void click_hist(System::Object^ sender, System::EventArgs^ e) {

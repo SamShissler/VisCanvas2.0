@@ -169,17 +169,178 @@ System::Void CppCLRWinformsProjekt::SchemeEditor::loadSchemeToolStripMenuItem_Cl
 
 // ===applyScheme===:
 // Desc: Applys the scheme to the existing data.
-System::Void CppCLRWinformsProjekt::SchemeEditor::applyScheme(int attributeVal)
+System::Void CppCLRWinformsProjekt::SchemeEditor::applyScheme(int columnVal)
 {
 	try
 	{
+		boolean containsBinary = false;
+		int binaryLength = 0;
+
+		//Check if any of the values are binary.
+		for (int i = 0; i < this->dataGridView->RowCount; i++)
+		{
+			//Grab current val:
+			String^ curValM = this->dataGridView->Rows[i]->Cells["X" + columnVal]->Value->ToString();
+			string curVal = msclr::interop::marshal_as<std::string>(curValM);
+			string toCheck = "";
+
+			//Get from scheme:
+			if (this->schemeMap->find(curVal) != this->schemeMap->end())
+			{
+				toCheck = this->schemeMap->at(curVal);
+			}
+			else
+			{
+				continue;
+			}
+
+			if (toCheck[toCheck.length() - 1] == 'b')
+			{
+				containsBinary = true;
+				binaryLength = toCheck.length() - 2;
+				break;
+			}
+		}
+
+
+		//If the values contain any binary, we need to add columns for them.
+		if (containsBinary)
+		{
+
+			//Add columns
+			this->dataGridView->ColumnCount += binaryLength;
+
+			//Keep track of class vals.
+			vector<string> classVals;
+
+			for (int i = 0; i < this->dataGridView->RowCount; i++)
+			{
+				classVals.push_back(msclr::interop::marshal_as<std::string>(this->dataGridView->Rows[i]->Cells["class"]->Value->ToString()));
+			}
+
+			//Re-label the columns.
+			for (int i = 1; i < this->dataGridView->ColumnCount - 1; i++)
+			{
+				this->dataGridView->Columns[i]->Name = ("X" + i);
+			}
+
+			this->dataGridView->Columns[this->dataGridView->ColumnCount - 1]->Name = ("class");
+
+			//Shift over data and insert values.
+			for (int i = 0; i < this->dataGridView->RowCount; i++)
+			{
+				//Grab current val:
+				String^ curValM = this->dataGridView->Rows[i]->Cells["X" + columnVal]->Value->ToString();
+				string curVal = msclr::interop::marshal_as<std::string>(curValM);
+				string toCheck = "";
+
+				//Get from scheme:
+				if (this->schemeMap->find(curVal) != this->schemeMap->end())
+				{
+					toCheck = this->schemeMap->at(curVal);
+				}
+				else
+				{
+
+					//Apply the new scheme value.
+					for (int j = 0; j < binaryLength + 1; j++)
+					{
+						this->dataGridView->Rows[i]->Cells["X" + (columnVal + j)]->Value = curValM;
+					}
+
+					continue;
+				}
+
+				//If this is one of the binary values
+				if (toCheck[toCheck.length() - 1] == 'b')
+				{
+					//Make sure there is attributes being added.
+					if (toCheck.length() > 2)
+					{
+						//Go over all rows:
+						for (int i = 0; i < this->dataGridView->RowCount; i++)
+						{
+
+							//Shift all values after current attribute:
+							for (int j = this->dataGridView->ColumnCount - 2 - binaryLength; j > columnVal; j--)
+							{
+
+								//Grab current val:
+								String^ curVal = this->dataGridView->Rows[i]->Cells["X" + j]->Value->ToString();
+
+								//Move it over:
+								this->dataGridView->Rows[i]->Cells["X" + (j + binaryLength)]->Value = curVal;
+
+								//Clear current spot:
+								this->dataGridView->Rows[i]->Cells["X" + j]->Value = "";
+
+							}
+						}
+					}
+
+					//Replace class vals:
+					for (int i = 0; i < this->dataGridView->RowCount; i++)
+					{
+						this->dataGridView->Rows[i]->Cells["class"]->Value = gcnew String(classVals.at(i).c_str());
+					}
+
+					//Remove the b.
+					toCheck.pop_back();
+
+
+					int valToReplaceStaticLength = toCheck.length();
+					//Apply the new scheme value.
+					for (int j = 0; j < binaryLength + 1; j++)
+					{
+						string s = toCheck.substr(0, 1);
+
+						this->dataGridView->Rows[i]->Cells["X" + (columnVal + j)]->Value = gcnew String(s.c_str());
+						toCheck = toCheck.substr(1, toCheck.length() - 1);//Remove val used.
+
+					}
+
+				}
+				else
+				{
+					//Apply the new scheme value.
+					for (int j = 0; j < binaryLength; j++)
+					{
+						this->dataGridView->Rows[i]->Cells["X" + (columnVal + j)]->Value = gcnew String(toCheck.c_str());
+					}
+				}
+			}
+
+			//Update attribute offset:
+			numDimensions += binaryLength;
+			attributeAddOffset += binaryLength;
+
+		}
+		else
+		{
+
+
+		}
+		return;
+
 		//Get the first scheme value of the attribute.
-		string firstValue = schemeMap->at(msclr::interop::marshal_as<std::string>(
-			this->dataGridView->Rows[0]->Cells["X" + (attributeVal)]->Value->ToString()
-		));
+		string firstValue;
+
+		if (schemeMap->find(msclr::interop::marshal_as<std::string>(
+			this->dataGridView->Rows[0]->Cells["X" + (columnVal)]->Value->ToString())) != schemeMap->end())
+		{
+			firstValue = schemeMap->at(msclr::interop::marshal_as<std::string>(
+				this->dataGridView->Rows[0]->Cells["X" + (columnVal)]->Value->ToString()));
+		}
+		else
+		{
+			firstValue = msclr::interop::marshal_as<std::string>(
+				this->dataGridView->Rows[0]->Cells["X" + (columnVal)]->Value->ToString());
+		}
 
 		//Keep track of class vals.
 		vector<string> classVals;
+
+		int longestBinary = 0;
 
 		//Check to see if values are in binarys so that we must add attributes.
 		if (firstValue[firstValue.size() - 1] == 'b')
@@ -204,8 +365,7 @@ System::Void CppCLRWinformsProjekt::SchemeEditor::applyScheme(int attributeVal)
 			this->dataGridView->Columns[this->dataGridView->ColumnCount - 1]->Name = ("class");
 
 			//Shift data over:
-
-			//Make sure there is attributes being added:
+			//Make sure there is attributes being added.
 			if (firstValue.length() > 2)
 			{
 				//Go over all rows:
@@ -213,7 +373,7 @@ System::Void CppCLRWinformsProjekt::SchemeEditor::applyScheme(int attributeVal)
 				{
 
 					//Shift all values after current attribute:
-					for (int j = this->dataGridView->ColumnCount - 2 - numAttributesToAdd; j > attributeVal; j--)
+					for (int j = this->dataGridView->ColumnCount - 2 - numAttributesToAdd; j > columnVal; j--)
 					{
 
 						//Grab current val:
@@ -240,22 +400,44 @@ System::Void CppCLRWinformsProjekt::SchemeEditor::applyScheme(int attributeVal)
 			{
 				//Get curent key in curent row.
 				DataGridViewRow^ curRow = this->dataGridView->Rows[i];
-				String^ toMarshal = curRow->Cells["X" + attributeVal]->Value->ToString();
+				String^ toMarshal = curRow->Cells["X" + columnVal]->Value->ToString();
 				std::string curVal = msclr::interop::marshal_as<std::string>(toMarshal);
 
-				//Get the scheme we decided to replace with.
-				std::string valToReplace = schemeMap->at(curVal);
+				boolean binary = true;
 
-				//Remove last letter.
-				valToReplace.pop_back();
+				//Get the scheme we decided to replace with.
+				std::string valToReplace;
+				if (schemeMap->find(curVal) != schemeMap->end())
+				{
+					valToReplace = schemeMap->at(curVal);
+					//Remove last letter.
+					valToReplace.pop_back();
+
+					longestBinary = valToReplace.length();
+
+				}
+				else
+				{
+					binary = false;
+					valToReplace = curVal;
+				}
 
 				int valToReplaceStaticLength = valToReplace.length();
 				//Apply the new scheme value.
-				for (int j = 0; j < valToReplaceStaticLength; j++)
+				for (int j = 0; j < longestBinary; j++)
 				{
 					string s = valToReplace.substr(0, 1);
-					this->dataGridView->Rows[i]->Cells["X" + (attributeVal + j)]->Value = gcnew String(s.c_str());
-					valToReplace = valToReplace.substr(1, valToReplace.length() - 1);//Remove val used.
+
+					if (!binary)
+					{
+						this->dataGridView->Rows[i]->Cells["X" + (columnVal + j)]->Value = gcnew String(valToReplace.c_str());
+					}
+					else
+					{
+						this->dataGridView->Rows[i]->Cells["X" + (columnVal + j)]->Value = gcnew String(s.c_str());
+						valToReplace = valToReplace.substr(1, valToReplace.length() - 1);//Remove val used.
+					}
+
 				}
 			}
 
@@ -271,14 +453,22 @@ System::Void CppCLRWinformsProjekt::SchemeEditor::applyScheme(int attributeVal)
 			{
 				//Get curent key in curent row.
 				DataGridViewRow^ curRow = this->dataGridView->Rows[i];
-				String^ toMarshal = curRow->Cells["X" + attributeVal]->Value->ToString();
+				String^ toMarshal = curRow->Cells["X" + columnVal]->Value->ToString();
 				std::string curVal = msclr::interop::marshal_as<std::string>(toMarshal);
 
 				//Get the scheme we decided to replace with.
-				std::string valToReplace = schemeMap->at(curVal);
 
-				//Apply the new scheme value.
-				curRow->Cells["X" + attributeVal]->Value = gcnew String(valToReplace.c_str());
+				if (schemeMap->find(curVal) != schemeMap->end())
+				{
+					std::string valToReplace = schemeMap->at(curVal);
+					//Apply the new scheme value.
+					curRow->Cells["X" + columnVal]->Value = gcnew String(valToReplace.c_str());
+				}
+				else
+				{
+					curRow->Cells["X" + columnVal]->Value = gcnew String(curVal.c_str());
+				}
+				
 			}
 
 		}
