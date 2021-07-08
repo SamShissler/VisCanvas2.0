@@ -35,11 +35,6 @@ Class CppCLRWinformsProjekt.ClassScheme: AutoLayout, AnsiClass, Class, Public, B
     Void .ctor(System.String, System.Windows.Forms.DataGridView, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getSchemeMap(): PrivateScope, Public, HideBySig
-Class CppCLRWinformsProjekt.NominalColorPicker: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    getResult(): PrivateScope, Public, HideBySig
 Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.NativeWindow
     Void .ctor(System.Windows.Forms.Form, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -135,6 +130,16 @@ Class VisCanvas.Subsets: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
 Class CppCLRWinformsProjekt.SchemeEditor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CppCLRWinformsProjekt.NominalColorPicker: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getResult(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.UserInputPopUp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getResult(): PrivateScope, Public, HideBySig
 Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -170,6 +175,19 @@ Class CppCLRWinformsProjekt.NominalGrouping: AutoLayout, AnsiClass, Class, Publi
   Methods:
     getNominalVector(): PrivateScope, Public, HideBySig
     toBinary(basic_string<char\,std::char_traits<char>\,std::allocator<char> >*, Int32): PrivateScope, Public, HideBySig
+Struct NSG: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Class CppCLRWinformsProjekt.NSGGroupAssingment: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, std.vector<NSG\,std::allocator<NSG> >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getNominalVector(): PrivateScope, Public, HideBySig
+    getNumGroups(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.NominalSubGroupBuilder: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(NSG*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getSchemeMap(vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig
 Class CppCLRWinformsProjekt.RatioGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

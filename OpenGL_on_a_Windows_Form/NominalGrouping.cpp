@@ -8,15 +8,15 @@
 System::Void CppCLRWinformsProjekt::NominalGrouping::buildSchemeTable()
 {
 	this->dataGridView->ColumnCount = 2;
-	this->dataGridView->Columns[0]->Name = "Key";
-	this->dataGridView->Columns[1]->Name = "Group";
+	this->dataGridView->Columns[0]->Name = "Key (Value of Coordinate)";
+	this->dataGridView->Columns[1]->Name = "Group of Values";
 
 	for (int i = 0; i < this->ids->size(); i++)
 	{
 		this->dataGridView->Rows->Add();
 		std::string s = this->ids->at(i);
-		this->dataGridView->Rows[i]->Cells["Key"]->Value = gcnew String(s.c_str());
-		this->dataGridView->Rows[i]->Cells["Group"]->Value = "";
+		this->dataGridView->Rows[i]->Cells["Key (Value of Coordinate)"]->Value = gcnew String(s.c_str());
+		this->dataGridView->Rows[i]->Cells["Group of Values"]->Value = "";
 	}
 
 }
@@ -32,7 +32,7 @@ System::Void CppCLRWinformsProjekt::NominalGrouping::updateScheme(System::Object
 	//Iterate over rows and find number of groups:
 	for (int i = 0; i < this->dataGridView->RowCount; i++)
 	{
-		String^ groM = this->dataGridView->Rows[i]->Cells["Group"]->Value->ToString();
+		String^ groM = this->dataGridView->Rows[i]->Cells["Group of Values"]->Value->ToString();
 		std::string group = msclr::interop::marshal_as<std::string>(groM);
 		int valGroup = stoi(group);
 		if (valGroup >= numGroups)
@@ -54,8 +54,8 @@ System::Void CppCLRWinformsProjekt::NominalGrouping::updateScheme(System::Object
 		DataGridViewRow^ curRow = this->dataGridView->Rows[i];
 
 		//Get the data for current key and group.
-		String^ keyM = this->dataGridView->Rows[i]->Cells["Key"]->Value->ToString();
-		String^ groM= this->dataGridView->Rows[i]->Cells["Group"]->Value->ToString();
+		String^ keyM = this->dataGridView->Rows[i]->Cells["Key (Value of Coordinate)"]->Value->ToString();
+		String^ groM= this->dataGridView->Rows[i]->Cells["Group of Values"]->Value->ToString();
 
 		std::string key = msclr::interop::marshal_as<std::string>(keyM);
 		std::string group = msclr::interop::marshal_as<std::string>(groM);

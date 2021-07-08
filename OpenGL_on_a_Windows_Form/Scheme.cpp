@@ -78,7 +78,15 @@ System::Void CppCLRWinformsProjekt::Scheme::updateTable()
 		String^ keyM = this->dataGridView->Rows[i]->Cells["Key"]->Value->ToString();
 		std::string key = msclr::interop::marshal_as<std::string>(keyM);
 
-		string val = schemeMap->at(key);
+		string val;
+		if (this->schemeMap->find(key) == this->schemeMap->end())
+		{
+			val = key;
+		}
+		else
+		{
+			val = this->schemeMap->at(key);
+		}
 
 		curRow->Cells["Value"]->Value = gcnew String(val.c_str());
 	}

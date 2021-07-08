@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "stdafx.h"
 #include "DataNode.h"
 #include "Dimension.h"
 #include "ColorCustom.h"
@@ -978,8 +979,6 @@ bool DataInterface::hypercube(int setIndex, double radius) {
 		clusters[clusters.size() - 1].calculateValues(&dataDimensions);
 	}
 
-	this->selectedSetIndex = 0;
-	this->selectedClusterIndex = clusters.size() - 1;
 
 	return true;
 }
@@ -1461,6 +1460,7 @@ void DataInterface::init() {
 	quadMode = false;
 	overlapMode = false;
 	nominalSetsMode = false;
+	domNominalSetsMode = false;
 
 	hideSelectorLine = false;
 	isDrawBorders = true;
@@ -1687,7 +1687,6 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 		}
 
 		autoColor();
-		createOverlaps();
 	}
 	catch (...) {
 		return false;
@@ -3503,8 +3502,286 @@ bool DataInterface::getQuadMode() {
 	return this->quadMode;
 }
 
+string DataInterface::domNominalSetLinguistic()
+{
+	//Create the visualization:
+	DomNominalSet visualization = DomNominalSet(this);
+
+	//String to add to the descrption:
+	string toReturn = "--- Dominant Nominal Sets ---\n";
+
+	//Create a vector of vectors to hold the dimensions to hold the values of class frequencies.
+	vector<vector<unordered_map<double, double>*>*>* classValFreq = new vector<vector<unordered_map<double, double>*>*>();
+
+	//We will be working with two classes for now.
+
+	//Itterate over number of dimensions.
+	for (int j = 0; j < this->getDimensionAmount(); j++)
+	{
+		//Add the vector of classes to the dimension.
+		classValFreq->push_back(new vector<unordered_map<double, double>*>());
+
+		//Add classes to vector for this dimension.
+		for (int k = 0; k < getClassAmount() - 2; k++) // -2 because of Default and 'class' Column.
+		{
+			classValFreq->at(j)->push_back(new unordered_map<double, double>());
+		}
+	}
+
+	//Itterate over all attributes:
+	for (int i = 0; i < getDimensionAmount(); i++)
+	{
+
+		//Itterate over rows and add value to class vector.
+		for (int j = 0; j < getSetAmount(); j++)
+		{
+			//Get the current value of the row at this attribute.
+			double currentData = this->getData(j, i);
+			//Get the current class of the row at this attribute.
+			double currentClass = this->getClassOfSet(j) - 1;
+
+			//Now we have the values of each class and how freqently they appear.
+			//Now add them to a vector of maps.
+
+			//Get current class map.
+			unordered_map<double, double>* curMap = classValFreq->at(i)->at(currentClass);
+
+			//Check to see if current data is already in the unordered map.
+			if (curMap->find(currentData) == curMap->end())
+			{
+				//If not insert it.
+				curMap->insert({ currentData, 1 });
+			}
+			else
+			{
+				//Increment occurance of current data.
+				std::unordered_map<double, double>::iterator it = curMap->find(currentData);
+				it->second++;
+			}
+
+		}
+
+	}
+
+	//At this point, we have how often values show up in each class. Now we need to calculate block heights with the following.
+	//Block height ratio of class one to class two.
+
+	//Itterate over dimensions.
+	for (int i = 0; i < getDimensionAmount(); i++)
+	{
+		//Get the dimension data.
+		vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
+
+		//Go over each map in the dimension vector and turn to percentages.
+		for (int j = 0; j < curDimensionVec->size(); j++)
+		{
+			unordered_map<double, double>* curMap = curDimensionVec->at(j);
+
+			//Go over map and calculate percentages.
+			for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
+			{
+				iter->second = (iter->second / getSetAmount());
+			}
+
+		}
+	}
+
+	//Add all values together and add to the blockHeights vector.
+
+	//Create a vector of unordered maps to hold the attributes:
+	vector<unordered_map<double, double>*>* blockHeights = new vector<unordered_map<double, double>*>();
+
+	//Fill the vector with unordered maps:
+	for (int i = 0; i < this->getDimensionAmount(); i++)
+	{
+		blockHeights->push_back(new unordered_map<double, double>());
+	}
+
+	//Go over attributes.
+	for (int i = 0; i < this->getDimensionAmount(); i++)
+	{
+
+		//Go over classes:
+		vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
+
+		//Combine all values:
+		for (int j = 0; j < curDimensionVec->size(); j++)
+		{
+
+			unordered_map<double, double>* nextClass = curDimensionVec->at(j);
+
+			for (std::unordered_map<double, double>::iterator iter = nextClass->begin(); iter != nextClass->end(); ++iter)
+			{
+				double key = iter->first;
+				if (blockHeights->at(i)->find(key) == blockHeights->at(i)->end())
+				{
+					blockHeights->at(i)->insert({ key, iter->second });
+				}
+				else
+				{
+					double curVal = blockHeights->at(i)->at(key);
+					blockHeights->at(i)->at(key) = curVal + nextClass->at(key);
+				}
+
+			}
+
+		}
+
+	}
+
+	//===Normailize data===
+
+	//Iterate over vector:
+	for (int i = 0; i < this->getDimensionAmount(); i++)
+	{
+
+		double allValues = 0; //Recording all values to section block heights.
+
+		//Get current unordered map:
+		unordered_map<double, double>* curMap = blockHeights->at(i);
+
+		//Iterate over unordered map to find valus.
+		for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
+		{
+			double freq = iter->second;
+			allValues += freq;
+		}
+
+		//Apply the normilized values.
+		for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
+		{
+			iter->second = (iter->second / allValues);
+		}
+	}
+
+	//====Sort the kv pairs:====
+	vector<pair<double, double>> sortVec;//Vector for sorting.
+	vector<vector<pair<double, double>>> sortedVector;//Vector to hold sorted values.
+
+	//Go over every attribute of the row.
+	for (int i = 0; i < this->getDimensionAmount(); i++)
+	{
+		//Get current unordered map:
+		unordered_map<double, double>* curMap = blockHeights->at(i);
+		vector<pair<double, double>> toInsert;
+
+		unordered_map<double, double>::iterator it;
+
+		//add all kv to a vector:
+		for (it = curMap->begin(); it != curMap->end(); it++)
+		{
+			sortVec.push_back(make_pair(it->second, it->first));
+		}
+
+		//Sort the vector.
+		sort(sortVec.begin(), sortVec.end());
+
+		//Insert sorted values into a new vector.
+		for (int k = sortVec.size() - 1; k >= 0; k--)
+		{
+			toInsert.push_back({ sortVec[k].second, sortVec[k].first });
+		}
+
+		//Insert sorted sub vector into vector.
+		sortedVector.push_back(toInsert);
+
+		sortVec.clear();
+	}
+
+	vector<vector<pair<double, double>>> middleOther; //Vector to hold possition of middle of other block.
+	vector<vector<pair<double, double>>> domClass; // Vector to hold what the dominant class is for each attribute.
+	int currDim = 0;
+
+	//Go over every attribute.
+	for (int i = 0; i < this->getDimensionAmount(); i++)
+	{
+
+		//Get current vector (attribute we are working with making blocks):
+		vector<pair<double, double>> curVec = sortedVector[i];
+
+		//Values to calculate where to put values.
+		double blockOffsetVertical = 80;
+		double prevHeight = 80;
+
+		//Push back vectors:
+		domClass.push_back(vector<pair<double, double>>());
+		middleOther.push_back(vector<pair<double, double>>());
+
+		//Iterate over vector to find valus.
+		for (int j = 0; j < curVec.size(); j++)
+		{
+			double key = curVec[j].first;
+			double freq = curVec[j].second;
+			double dominantFreq = 0;
+
+			//Go over classes and find dominant class:
+			vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
+
+			for (int m = 0; m < curDimensionVec->size(); m++)
+			{
+				unordered_map<double, double>* nextClass = curDimensionVec->at(m);
+
+				if (nextClass->find(key) != nextClass->end())
+				{
+					if (nextClass->at(key) >= dominantFreq) dominantFreq = nextClass->at(key);
+				}
+			}
+
+			//Dominant freq over 80%.
+			if ((dominantFreq/freq) >= 0.8 && freq > 0.10)
+			{
+				double calc = (dominantFreq / freq) * 100;
+				int res = calc;
+
+				toReturn += msclr::interop::marshal_as<std::string>("X" + (i + 1) + ", block, "+ (j + 1) +" has a purity of " + res + "%\n");
+			}
+
+			//Total freq over 75%.
+			if (freq >= 0.75 && !freq <= 0.014)
+			{
+				double calc = freq * 100;
+				int res = calc;
+				toReturn += msclr::interop::marshal_as<std::string>("X" + (i + 1) + ", block, " + (j + 1) + " has a total frequency of " + res + "%\n");
+			}
+
+			//Small freq block exists.
+			if (freq <= 0.014 && currDim != i)
+			{
+				currDim = i;
+				toReturn += msclr::interop::marshal_as<std::string>("X" + (i + 1) + " has a small frequency block.\n");
+			}
+		
+		}
+
+	}
+
+	//Get Rules.
+	vector<string> rules = visualization.determineRules();
+
+	for (int i = 0; i < rules.size(); i++)
+	{
+		toReturn += rules.at(i);
+	}
+
+	toReturn += msclr::interop::marshal_as<std::string>("Number of Lines Set Transparent: " + this->getDNSLinesTransparent() + "\n");
+	int percent = 100.0 - ((double(this->getDNSLinesTransparent()) / double(DNSSmallLines)) * 100.0);
+	toReturn += msclr::interop::marshal_as<std::string>("Percentage of data being visualized: " + percent  + "%\n");
+	toReturn += msclr::interop::marshal_as<std::string>("Number of Full Sets Visualized: " + DNSNumSetsVisualized + "\n");
+
+	toReturn += "---------------------------------------\n\n";
+
+	return toReturn;
+}
+
 string DataInterface::getLinguisticDescription() {
 	string description = "";
+	
+	//Check if dominant nomial sets:
+	if (this->domNominalSetsMode)
+	{
+		description += domNominalSetLinguistic();
+	}
+	
 	vector<vector<string>> dims = vector<vector<string>>();
 	for (int i = 0; i < 3; i++) dims.push_back(vector<string>());
 
@@ -3738,6 +4015,84 @@ void DataInterface::setNominalSetsMode(bool NominalSetsMode) {
 
 bool DataInterface::getNominalSetsMode() {
 	return this->nominalSetsMode;
+}
+
+void DataInterface::setDomNominalSetsMode(bool toSet) {
+	this->domNominalSetsMode = toSet;
+}
+
+bool DataInterface::getDomNominalSetsMode() {
+	return this->domNominalSetsMode;
+}
+
+void DataInterface::setPurityPerc(int p)
+{
+	this->purityPerc = p;
+}
+
+int DataInterface::getPurityPerc()
+{
+	return this->purityPerc;
+}
+
+void DataInterface::setFreqSmall(int fs)
+{
+	this->freqSmall = fs;
+}
+
+int DataInterface::getFreqSmall()
+{
+	return this->freqSmall;
+}
+
+void DataInterface::setTranspLineThresh(int LT)
+{
+	this->transpLineThresh = LT;
+}
+
+int DataInterface::getTranspLineThresh()
+{
+	return this->transpLineThresh;
+}
+
+void DataInterface::setDNSCompleteLines(int complete)
+{
+	this->DNSCompleteLines = complete;
+}
+
+int DataInterface::getDNSCompleteLines()
+{
+	return this->DNSCompleteLines;
+}
+
+void DataInterface::setDNSNumSmallLines(int sl)
+{
+	this->DNSSmallLines = sl;
+}
+
+int DataInterface::getDNSNumSmallLines()
+{
+	return this->DNSSmallLines;
+}
+
+void DataInterface::setDNSNumSetsVisualized(int lv)
+{
+	this->DNSNumSetsVisualized = lv;
+}
+
+int DataInterface::getDNSNumSetsVisualized()
+{
+	return this->DNSNumSetsVisualized;
+}
+
+void DataInterface::setDNSLinesTransparent(int LT)
+{
+	this->DNSLinesTransparent = LT;
+}
+
+int DataInterface::getDNSLinesTransparent()
+{
+	return this->DNSLinesTransparent;
 }
 
 vector<SetCluster> * DataInterface::getOverlaps() {

@@ -97,6 +97,15 @@
     <ClCompile Include="OpenGL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DomNominalSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NominalSubgroupBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NSGGroupAssingment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGL.h">
@@ -192,6 +201,21 @@
     <ClInclude Include="NominalColorPicker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DomNominalSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NominalSubgroupBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NSG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NSGGroupAssingment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInputPopUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VisCanvas.resX">
@@ -245,6 +269,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Button Icons\nominalSets.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="nominalSetsImage.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\Button Icons\domNominalSets.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

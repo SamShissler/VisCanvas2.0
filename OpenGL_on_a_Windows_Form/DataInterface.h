@@ -54,6 +54,9 @@ public:
 
 	void confusion();
 
+	//A string to add to edit to add to a linguistic description.
+	string linguisticAddition = "";
+
 
 	// get the amounts of class for the data
 	int getClassAmount() const;
@@ -349,6 +352,7 @@ public:
 	
 	void findSubsetOfDimensions(bool isOverlapping);
 	string getLinguisticDescription();
+	string domNominalSetLinguistic();
 	int getOverlappingCount(int pointIndex);
 
 	void createOverlaps();
@@ -356,6 +360,22 @@ public:
 	bool getOverlapMode();
 	void setNominalSetsMode(bool);
 	bool getNominalSetsMode();
+	void setDomNominalSetsMode(bool);
+	bool getDomNominalSetsMode();
+	void setPurityPerc(int);
+	int getPurityPerc();
+	void setTranspLineThresh(int);
+	int getTranspLineThresh();
+	void setDNSCompleteLines(int);
+	int getDNSLinesTransparent();
+	void setDNSLinesTransparent(int);
+	int getDNSCompleteLines();
+	void setDNSNumSmallLines(int);
+	int getDNSNumSmallLines();
+	void setDNSNumSetsVisualized(int);
+	int getDNSNumSetsVisualized();
+	void setFreqSmall(int);
+	int getFreqSmall();
 	vector<SetCluster> * getOverlaps();
 	int getImpurities(int index);
 	map<string, double> getAboveOne();
@@ -368,9 +388,18 @@ private:
 
 	bool overlapMode;
 	bool nominalSetsMode;
+	bool domNominalSetsMode;
 	bool histogramMode;
 	bool frequencyMode;
 	bool quadMode;
+
+	int purityPerc;
+	int freqSmall;
+	int transpLineThresh;
+	int DNSCompleteLines;
+	int DNSLinesTransparent;
+	int DNSSmallLines;
+	int DNSNumSetsVisualized;
 
 	int combinationMode;
 	bool willCombine;

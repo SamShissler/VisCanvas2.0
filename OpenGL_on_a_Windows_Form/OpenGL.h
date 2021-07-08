@@ -7,6 +7,7 @@ Purpose: CS 481 Project
 */
 
 #include "stdafx.h"
+#include "DomNominalSet.h"
 #include <atlstr.h>
 #include <vector>
 #include <unordered_map>
@@ -14,26 +15,24 @@ Purpose: CS 481 Project
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <utility>
-#include "NominalColorPicker.h"
 
 using namespace System::Windows::Forms;
 
-namespace OpenGLForm 
+namespace OpenGLForm
 {
 
-	public ref class COpenGL: public System::Windows::Forms::NativeWindow
+	public ref class COpenGL : public System::Windows::Forms::NativeWindow
 	{
 
-	public:		
+	public:
 		/**
 		 * This sets up the OpenGL viewport that is used in conjuction with the DataInterface class
 		 * @param parentForm
 		 * @param iWidth
 		 * @param iHeight
 		 */
-		COpenGL(System::Windows::Forms::Form ^ parentForm, GLsizei iWidth, GLsizei iHeight)
-		{				
-
+		COpenGL(System::Windows::Forms::Form^ parentForm, GLsizei iWidth, GLsizei iHeight)
+		{
 			CreateParams^ cp = gcnew CreateParams;
 
 			//Set the position on the form
@@ -61,7 +60,7 @@ namespace OpenGLForm
 			this->uploadFile = false;
 
 			// disable the toggle buttons by default
-			this->drawingDragged = false;		
+			this->drawingDragged = false;
 			this->shiftHorizontal = false;
 			this->shiftVertical = false;
 
@@ -82,7 +81,7 @@ namespace OpenGLForm
 			m_hDC = GetDC((HWND)this->Handle.ToPointer());
 
 			// check if everything went A-Okay when creating the Child Handle
-			if(m_hDC)
+			if (m_hDC)
 			{
 				this->MySetPixelFormat(m_hDC);
 				this->Reshape(iWidth, iHeight);
@@ -90,10 +89,10 @@ namespace OpenGLForm
 			}
 		}
 
-		
+
 		// SET THE FILE PATH THAT WILL BE USED TO GRAPH THE DATA
 		bool SetFilePath(std::string filepath)
-		{	
+		{
 
 			this->zoom = 0;
 			this->tempXWorldMouseDifference = 0;
@@ -102,14 +101,16 @@ namespace OpenGLForm
 			try
 			{
 				// read the file
-				if (!(this->file->readFile(&filepath))) 
+				if (!(this->file->readFile(&filepath)))
 				{
 					throw std::exception();
-				} else {
+				}
+				else {
 					this->uploadFile = true;
 					return false;
 				}
-			} catch(...) {
+			}
+			catch (...) {
 				// display an error message
 				DialogResult result = MessageBox::Show("WARNING: VisCanvas is unable to open the file. Click 'Retry' to try again.", "Trouble Opening File", MessageBoxButtons::RetryCancel, MessageBoxIcon::Warning);
 				this->uploadFile = false;
@@ -148,7 +149,7 @@ namespace OpenGLForm
 		System::Void decrementSelectedSet(System::Void)
 		{
 			this->file->decrementSelectedSetIndex();
-		} 
+		}
 
 		/**
 		 * Controls doing ascending sort of dimensions
@@ -199,7 +200,7 @@ namespace OpenGLForm
 
 			vector<int> * sets = selected.getSets();
 			int currMin = 0;
-		
+
 			for (int i = 0; i < sets->size(); i++)
 			{
 				int minCount = 0;
@@ -217,13 +218,13 @@ namespace OpenGLForm
 			}*/
 
 			// sort dimensions
-			
+
 
 			// file->setSelectedSetIndex(currMin);
 
 			int selectedSetIndex = this->file->getSelectedSetIndex();
-			
-			this->file->sortAscending(selectedSetIndex);			
+
+			this->file->sortAscending(selectedSetIndex);
 
 			double meanOfSet = this->file->getMean(selectedSetIndex);
 			this->file->level(selectedSetIndex, meanOfSet);
@@ -256,8 +257,8 @@ namespace OpenGLForm
 		 */
 		System::Void toggleClusters(System::Void)
 		{
-			if (this->file->getClusterAmount() <= 0 && !(this->file->togglePaintClusters())) return;
 			this->hypercubeToggle = !(this->file->togglePaintClusters());
+			//this->hypercubeToggle = (!this->hypercubeToggle) ? true : false;
 		}
 
 		/**
@@ -296,9 +297,21 @@ namespace OpenGLForm
 		 */
 		System::Void hypercube(System::Void)
 		{
-			int selectedSetIndex = this->file->getSelectedSetIndex();
-			this->file->hypercube(selectedSetIndex, file->getRadius());
-			this->hypercubeToggle = false;	
+			if (this->file->isPaintClusters())
+			{
+				int prev = file->getSelectedClusterIndex();
+				this->file->subHypercube(file->getSelectedSetIndex(), file->getSelectedClusterIndex(),/*file->getHypercubeThreshold()*0.01*/file->getRadius());
+				this->hypercubeToggle = false;
+				//this->file->xorClusters(prev, file->getClusters().size() - 1);
+			}
+			else
+			{
+				int selectedSetIndex = this->file->getSelectedSetIndex();
+				this->file->hypercube(selectedSetIndex, /*file->getHypercubeThreshold()*0.01*/file->getRadius());
+				this->hypercubeToggle = false;
+			}
+
+
 		}
 
 		// Set the toggle for manual sort
@@ -374,7 +387,7 @@ namespace OpenGLForm
 		 * @param filePath
 		 * @return
 		 */
-		System::Void save(std::string *filePath)
+		System::Void save(std::string* filePath)
 		{
 			this->file->saveToFile(filePath);
 		}
@@ -385,7 +398,7 @@ namespace OpenGLForm
 		 */
 		System::Void addClass(System::Void)
 		{
-			this->file->addClass();	
+			this->file->addClass();
 		}
 
 		/**
@@ -404,7 +417,7 @@ namespace OpenGLForm
 		 * @param newName
 		 * @return
 		 */
-		System::Void setClassName(int classIndex, std::string *newName)
+		System::Void setClassName(int classIndex, std::string* newName)
 		{
 			this->file->setClassName(classIndex, newName);
 		}
@@ -415,7 +428,7 @@ namespace OpenGLForm
 		 * @param newColor
 		 * @return
 		 */
-		System::Void setClassColor(int classIndex, std::vector<double> *newColor)
+		System::Void setClassColor(int classIndex, std::vector<double>* newColor)
 		{
 			this->file->setClassColor(classIndex, newColor);
 		}
@@ -436,7 +449,7 @@ namespace OpenGLForm
 		 * @param newName
 		 * @return
 		 */
-		System::Void setSetName(int setIndex, std::string &newName)
+		System::Void setSetName(int setIndex, std::string& newName)
 		{
 			this->file->setSetName(setIndex, newName);
 		}
@@ -468,7 +481,7 @@ namespace OpenGLForm
 		 * @param newColor
 		 * @return
 		 */
-		System::Void setClusterColor(int clusterIndex, std::vector<double> *newColor)
+		System::Void setClusterColor(int clusterIndex, std::vector<double>* newColor)
 		{
 			this->file->setClusterColor(clusterIndex, newColor);
 		}
@@ -519,7 +532,7 @@ namespace OpenGLForm
 		 * @param newName
 		 * @return
 		 */
-		System::Void setDimensionName(int dimensionIndex, string *newName) {
+		System::Void setDimensionName(int dimensionIndex, string* newName) {
 			this->file->setDimensionName(dimensionIndex, newName);
 		}
 
@@ -528,7 +541,7 @@ namespace OpenGLForm
 		 * @param dimensionIndex
 		 * @return The dimension name
 		 */
-		std::string *getDimensionName(int dimensionIndex)
+		std::string* getDimensionName(int dimensionIndex)
 		{
 			std::string* str = this->file->getDimensionName(dimensionIndex);
 			return str;
@@ -612,7 +625,7 @@ namespace OpenGLForm
 		 * @param setIndex
 		 * @return The set name
 		 */
-		std::string *getSetName(int setIndex)
+		std::string* getSetName(int setIndex)
 		{
 			std::string* str = this->file->getSetName(setIndex);
 			return str;
@@ -632,7 +645,7 @@ namespace OpenGLForm
 		 * @param classIndex
 		 * @return The class name
 		 */
-		std::string *getClassName(int classIndex)
+		std::string* getClassName(int classIndex)
 		{
 			std::string* str = this->file->getClassName(classIndex);
 			return str;
@@ -677,9 +690,9 @@ namespace OpenGLForm
 		 * @param setIndex
 		 * @return The set name for the class
 		 */
-		std::string *getSetOfClass(int classIndex, int setIndex)
+		std::string* getSetOfClass(int classIndex, int setIndex)
 		{
-			std::string *str = this->file->getSetOfClass(classIndex, setIndex);
+			std::string* str = this->file->getSetOfClass(classIndex, setIndex);
 			return str;
 		}
 
@@ -692,9 +705,9 @@ namespace OpenGLForm
 		 */
 		System::Void Background(int r, int g, int b)
 		{
-			GLfloat red =   ((GLfloat)r) / 255.0f;
+			GLfloat red = ((GLfloat)r) / 255.0f;
 			GLfloat green = ((GLfloat)g) / 255.0f;
-			GLfloat blue =  ((GLfloat)b) / 255.0f;
+			GLfloat blue = ((GLfloat)b) / 255.0f;
 			glClearColor(red, green, blue, 0.0f);
 		}
 
@@ -705,7 +718,7 @@ namespace OpenGLForm
 		 * @param blue
 		 * @return
 		 */
-		System::Void SetRGB(GLdouble red, GLdouble green, GLdouble blue) 
+		System::Void SetRGB(GLdouble red, GLdouble green, GLdouble blue)
 		{
 			this->R = red;
 			this->G = green;
@@ -728,7 +741,7 @@ namespace OpenGLForm
 		bool textOnTop(System::Void)
 		{
 			return this->textTop;
-		}	
+		}
 
 		/**
 		 * both text enabled
@@ -757,7 +770,7 @@ namespace OpenGLForm
 		System::Void setTextOnTop(bool enable)
 		{
 			this->textTop = enable;
-		}	
+		}
 
 		/**
 		 * Sets the text on bottom
@@ -810,7 +823,7 @@ namespace OpenGLForm
 		 * @param uFlags
 		 * @return
 		 */
-		System::Void Resize(int x, int y, int width, int height, UINT uFlags)		
+		System::Void Resize(int x, int y, int width, int height, UINT uFlags)
 		{
 			this->worldHeight = height;
 			this->worldWidth = width;
@@ -878,7 +891,7 @@ namespace OpenGLForm
 		bool shiftVertical;
 
 		int font_list_base_2d; // set the start of the display lists for the 2d font
-		const char *font; // sets the font
+		const char* font; // sets the font
 		int size; // sets the size of the font
 
 		// text for dimensions
@@ -903,7 +916,7 @@ namespace OpenGLForm
 		/* IN WINDOWS FORMS             */
 		GLint MySetPixelFormat(HDC hdc)
 		{
-			PIXELFORMATDESCRIPTOR pfd = { 
+			PIXELFORMATDESCRIPTOR pfd = {
 				sizeof(PIXELFORMATDESCRIPTOR),  //  size of this pfd  
 				1,                     // version number  
 				PFD_DRAW_TO_WINDOW |   // support window  
@@ -922,32 +935,32 @@ namespace OpenGLForm
 				PFD_MAIN_PLANE,        // main layer  
 				0,                     // reserved  
 				0, 0, 0                // layer masks ignored  
-			}; 
+			};
 
 
-			GLint  iPixelFormat; 
+			GLint  iPixelFormat;
 
 			// get the device context's best, available pixel format match 
-			if((iPixelFormat = ChoosePixelFormat(hdc, &pfd)) == 0)
+			if ((iPixelFormat = ChoosePixelFormat(hdc, &pfd)) == 0)
 			{
 				MessageBox::Show("ChoosePixelFormat Failed");
 				return 0;
 			}
 
 			// make that match the device context's current pixel format 
-			if(SetPixelFormat(hdc, iPixelFormat, &pfd) == FALSE)
+			if (SetPixelFormat(hdc, iPixelFormat, &pfd) == FALSE)
 			{
 				MessageBox::Show("SetPixelFormat Failed");
 				return 0;
 			}
 
-			if((m_hglrc = wglCreateContext(m_hDC)) == NULL)
+			if ((m_hglrc = wglCreateContext(m_hDC)) == NULL)
 			{
 				MessageBox::Show("wglCreateContext Failed");
 				return 0;
 			}
 
-			if((wglMakeCurrent(m_hDC, m_hglrc)) == NULL)
+			if ((wglMakeCurrent(m_hDC, m_hglrc)) == NULL)
 			{
 				MessageBox::Show("wglMakeCurrent Failed");
 				return 0;
@@ -961,7 +974,7 @@ namespace OpenGLForm
 		}
 
 		// Call this to enable the text such as its font and size
-		System::Void glEnableText(const char *font, int size) 
+		System::Void glEnableText(const char* font, int size)
 		{
 			if (size < 0)
 			{
@@ -972,17 +985,17 @@ namespace OpenGLForm
 		}
 
 		// call this to create the handle of the text to be drawn
-		System::Void glTextBegin(System::Void) 
+		System::Void glTextBegin(System::Void)
 		{
 			HFONT font = CreateFont(this->size, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, ANSI_CHARSET, 0, 0, 0, 0, (LPCTSTR)this->font); // can only use true type fonts 
 
 			// make the system font the device context's selected font  
-			SelectObject (m_hDC, font); 
+			SelectObject(m_hDC, font);
 
 			// create the bitmap display lists  
 			// we're making images of glyphs 0 thru 254  
 			// the display list numbering starts at 2000, an arbitrary choice  
-			wglUseFontBitmaps (m_hDC, 0, 255, this->font_list_base_2d); 
+			wglUseFontBitmaps(m_hDC, 0, 255, this->font_list_base_2d);
 		}
 
 		System::Void glTextColor2d(double red, double green, double blue, double alpha)
@@ -991,7 +1004,7 @@ namespace OpenGLForm
 		}
 
 
-		System::Void glText2d(double x, double y, const char *text)
+		System::Void glText2d(double x, double y, const char* text)
 		{
 			glRasterPos2d(x, y);
 			int length = (int)std::strlen(text);
@@ -1039,7 +1052,7 @@ namespace OpenGLForm
 
 
 		// this method takes the passed mouse click coordinates and finds the dimension clicked on
-		int findClickedDimension(double xMouseWorldPosition, double yMouseWorldPosition){
+		int findClickedDimension(double xMouseWorldPosition, double yMouseWorldPosition) {
 			double xAxisIncrement = (this->worldWidth) / (this->file->getDimensionAmount() + 1); // +1 instead of +2
 
 			for (int i = 0; i < file->getDimensionAmount(); i++)
@@ -1059,7 +1072,7 @@ namespace OpenGLForm
 		}
 
 		GLvoid drawDraggedDimension(double x, int dimensionIndex)
-		{			
+		{
 
 			double xAxisIncrement = this->worldWidth / (this->file->getDimensionAmount() + 1);
 			double shiftAmount = this->file->getDimensionShift(dimensionIndex);
@@ -1083,13 +1096,16 @@ namespace OpenGLForm
 				if (this->textBottom) {
 					if (this->file->isDimensionInverted(dimensionIndex)) {
 						glText2d(x - ((temp.length() * 10.0) / 2.0), (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.05), temp.c_str());
-					} else {
+					}
+					else {
 						glText2d(x - ((name.length() * 10.0) / 2.0), (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.05), name.c_str());
 					}
-				} else {
+				}
+				else {
 					if (this->file->isDimensionInverted(dimensionIndex)) {
 						glText2d(x - ((temp.length() * 10.0) / 2.0), (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.78), temp.c_str());
-					} else {
+					}
+					else {
 						glText2d(x - ((name.length() * 10.0) / 2.0), (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.78), name.c_str());
 					}
 				}
@@ -1103,7 +1119,7 @@ namespace OpenGLForm
 				double colorAlpha = (*colorOfCurrent)[3];
 				colorAlpha *= 0.5;
 				double currentData = this->file->getData(j, dimensionIndex);
-				glColor4d((*colorOfCurrent)[0],(*colorOfCurrent)[1],(*colorOfCurrent)[2], colorAlpha);
+				glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], colorAlpha);
 				glBegin(GL_POINTS); // draws points
 				glVertex2d(x, currentData * (worldHeight * 0.5) + (0.175 * worldHeight));
 				glEnd(); // ends drawing line
@@ -1154,7 +1170,7 @@ namespace OpenGLForm
 
 				dimensionCount = 0;
 
-				glColor4d(125.0/255.0, 125.0/255.0, 125.0/255.0, 155.0/255.0);
+				glColor4d(125.0 / 255.0, 125.0 / 255.0, 125.0 / 255.0, 155.0 / 255.0);
 				for (auto entry : file->getAboveOne())
 				{
 					dimensionCount = 0;
@@ -1186,7 +1202,7 @@ namespace OpenGLForm
 							this->textBottom = false;
 							for (auto entry : file->getAboveOne())
 							{
-								glText2d(((-this->worldWidth - (entry.first.length() * 10.0)) / 1.9) + ((xAxisIncrement) * (dimensionCount + 1)), ((entry.second + shiftAmount) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight), entry.first.c_str());	
+								glText2d(((-this->worldWidth - (entry.first.length() * 10.0)) / 1.9) + ((xAxisIncrement) * (dimensionCount + 1)), ((entry.second + shiftAmount) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight), entry.first.c_str());
 							}
 						}
 
@@ -1214,7 +1230,7 @@ namespace OpenGLForm
 								}
 							}
 							glEnd();
-							
+
 							dimensionCount++;
 						}
 					}
@@ -1224,38 +1240,38 @@ namespace OpenGLForm
 				drawData();
 				glFlush();
 
-				if(this->drawingDragged && shiftHorizontal) {
+				if (this->drawingDragged && shiftHorizontal) {
 
-					if (this->clickedDimension != -1){
+					if (this->clickedDimension != -1) {
 						this->drawDraggedDimension(this->worldMouseX, this->clickedDimension);
 						glFlush();
-					} 
+					}
 
 				}
 			}
 		}
 
 		// Graphs the data to the world
-		GLvoid drawData(GLvoid) 
+		GLvoid drawData(GLvoid)
 		{
-			////For testing.
-			//drawNominalSetData();
-			//return;
-
 			int dimensionCount = 0;
 			glLineWidth(3.0);
 			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1);
 
 			if (file->getNominalSetsMode())
 			{
+				drawNominalSetData(); // Dominant Nominal Sets.
+			}
+			else if (file->getDomNominalSetsMode())
+			{
 				drawNominalSetCorrelation();
 			}
 			else if (file->getOverlapMode())
 			{
-				vector<SetCluster> * overlaps = this->file->getOverlaps();
+				vector<SetCluster>* overlaps = this->file->getOverlaps();
 				for (int j = 0; j < overlaps->size(); j++)
 				{
-					SetCluster * currCube = &overlaps->at(j);
+					SetCluster* currCube = &overlaps->at(j);
 					std::vector<double>* colorOfCurrent = currCube->getColor();
 					glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], /*0.3*/(*colorOfCurrent)[3]);
 					glColor4d(192.0, 192.0, 192.0, 0.01);
@@ -1308,8 +1324,8 @@ namespace OpenGLForm
 				dimensionCount = 0;
 
 				if (this->file->isPaintClusters()) {
-					
-					for (int j = 0; j < this->file->getClusterAmount(); j++) 
+
+					for (int j = 0; j < this->file->getClusterAmount(); j++)
 					{
 						std::vector<double>* colorOfCurrent = this->file->getClusterColor(j);
 						glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], /*0.3*/(*colorOfCurrent)[3]);
@@ -1346,24 +1362,52 @@ namespace OpenGLForm
 					} // end hyper block loop
 					dimensionCount = 0;
 
-						// re-draw selected cluster border on top
+					// re-draw selected cluster border on top
 
-						if (this->file->drawBorders() && this->file->getDisplayed(this->file->getSelectedClusterIndex()))
+					if (this->file->drawBorders() && this->file->getDisplayed(this->file->getSelectedClusterIndex()))
+					{
+						std::vector<double>* colorOfCurrent = this->file->getClusterColor(this->file->getDisplayed(this->file->getSelectedClusterIndex()));
+						glColor4d(192.0, 192.0, 192.0, 1.0);
+
+						glBegin(GL_QUAD_STRIP);
+						for (int i = 0; i < this->file->getDimensionAmount(); i++)
 						{
-							std::vector<double>* colorOfCurrent = this->file->getClusterColor(this->file->getSelectedClusterIndex());
-							glColor4d(192.0, 192.0, 192.0, 1.0);
-
-							glBegin(GL_QUAD_STRIP);
-							for (int i = 0; i < this->file->getDimensionAmount(); i++)
+							if (this->file->getDataDimensions()->at(i)->isVisible())
 							{
-								if (this->file->getDataDimensions()->at(i)->isVisible())
+								double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+
+								currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
+								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+
+								dimensionCount++;
+							}
+						}
+						glEnd();
+						dimensionCount = 0;
+					}
+
+
+					if (this->file->getDisplayed(this->file->getSelectedClusterIndex()))
+					{
+
+						// re-draw selected cluster on top
+
+						std::vector<int> list = *this->file->getClusters().at(this->file->getSelectedClusterIndex()).getSets();
+						for (int i = 0; i < list.size(); i++) {
+							int currentIndex = list[i];
+
+							std::vector<double>* colorOfCurrent = this->file->getSetColor(currentIndex);
+							glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], (*colorOfCurrent)[3]);
+
+							glBegin(GL_LINE_STRIP);
+							for (int j = 0; j < this->file->getDimensionAmount(); j++)
+							{
+								if (this->file->getDataDimensions()->at(j)->isVisible())
 								{
-									double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+									double currentData = this->file->getData(currentIndex, j);
 									glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
-									currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
-									glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-									
 									dimensionCount++;
 								}
 							}
@@ -1371,18 +1415,16 @@ namespace OpenGLForm
 							dimensionCount = 0;
 						}
 
+						// redraw selected class on top
 
-						if (this->file->getDisplayed(this->file->getSelectedClusterIndex()))
-						{
+						for (int i = 0; i < list.size(); i++) {
+							int currentIndex = list[i];
 
-							// re-draw selected cluster on top
-
-							std::vector<int> list = *this->file->getClusters().at(this->file->getSelectedClusterIndex()).getSets();
-							for (int i = 0; i < list.size(); i++) {
-								int currentIndex = list[i];
-								
+							if (this->file->getSelectedClusterClassIndex() == this->file->getClassOfSet(currentIndex))
+							{
 								std::vector<double>* colorOfCurrent = this->file->getSetColor(currentIndex);
 								glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], (*colorOfCurrent)[3]);
+
 
 								glBegin(GL_LINE_STRIP);
 								for (int j = 0; j < this->file->getDimensionAmount(); j++)
@@ -1391,106 +1433,80 @@ namespace OpenGLForm
 									{
 										double currentData = this->file->getData(currentIndex, j);
 										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-										
+
 										dimensionCount++;
 									}
 								}
 								glEnd();
 								dimensionCount = 0;
 							}
+						} // end if displayed
 
-							// redraw selected class on top
+						// draw min, center, and max lines on top
+						if (this->file->getDisplayed(this->file->getSelectedClusterIndex()))
+						{
+							std::vector<double>* colorOfCurrent = this->file->getClusterColor(this->file->getSelectedClusterIndex());
+							glColor4d(0.0, 0.0, 0.0, 1.0);
 
-							for (int i = 0; i < list.size(); i++) {
-								int currentIndex = list[i];
-								
-								if (this->file->getSelectedClusterClassIndex() == this->file->getClassOfSet(currentIndex))
-								{
-									std::vector<double>* colorOfCurrent = this->file->getSetColor(currentIndex);
-									glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], (*colorOfCurrent)[3]);
-
-							
-									glBegin(GL_LINE_STRIP);
-									for (int j = 0; j < this->file->getDimensionAmount(); j++)
-									{
-										if (this->file->getDataDimensions()->at(j)->isVisible())
-										{
-											double currentData = this->file->getData(currentIndex, j);
-											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-											
-											dimensionCount++;
-										}
-									}
-									glEnd();
-									dimensionCount = 0;
-								}
-							} // end if displayed
-
-							// draw min, center, and max lines on top
-							if (this->file->getDisplayed(this->file->getSelectedClusterIndex()))
+							if (this->file->drawMaxLine())
 							{
-								std::vector<double>* colorOfCurrent = this->file->getClusterColor(this->file->getSelectedClusterIndex());
-								glColor4d(0.0, 0.0, 0.0, 1.0);
-
-								if (this->file->drawMaxLine())
+								glBegin(GL_LINE_STRIP);
+								for (int i = 0; i < this->file->getDimensionAmount(); i++)
 								{
-									glBegin(GL_LINE_STRIP);
-									for (int i = 0; i < this->file->getDimensionAmount(); i++)
+									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
-										if (this->file->getDataDimensions()->at(i)->isVisible())
-										{
-											double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
-											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
-											dimensionCount++;
-										}
+										dimensionCount++;
 									}
-									glEnd();
-									dimensionCount = 0;
-								} // end draw max line 
+								}
+								glEnd();
+								dimensionCount = 0;
+							} // end draw max line 
 
-								if (this->file->drawCenterLine())
+							if (this->file->drawCenterLine())
+							{
+								glBegin(GL_LINE_STRIP);
+								for (int i = 0; i < this->file->getDimensionAmount(); i++)
 								{
-									glBegin(GL_LINE_STRIP);
-									for (int i = 0; i < this->file->getDimensionAmount(); i++)
+									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
-										if (this->file->getDataDimensions()->at(i)->isVisible())
-										{
-											double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getVirtualCenter(file->getDimensionAmount()).at(i);
-											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getVirtualCenter(file->getDimensionAmount()).at(i);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
-											dimensionCount++;
-										}
+										dimensionCount++;
 									}
-									glEnd();
-									dimensionCount = 0;
-								} // end draw center line
+								}
+								glEnd();
+								dimensionCount = 0;
+							} // end draw center line
 
-								if (this->file->drawMinLine())
+							if (this->file->drawMinLine())
+							{
+								glBegin(GL_LINE_STRIP);
+								for (int i = 0; i < this->file->getDimensionAmount(); i++)
 								{
-									glBegin(GL_LINE_STRIP);
-									for (int i = 0; i < this->file->getDimensionAmount(); i++)
+									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
-										if (this->file->getDataDimensions()->at(i)->isVisible())
-										{
-											double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
-											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
-											dimensionCount++;
-										}
+										dimensionCount++;
 									}
-									glEnd();
-									dimensionCount = 0;
-								} // end draw mine line
-							}
+								}
+								glEnd();
+								dimensionCount = 0;
+							} // end draw mine line
 						}
+					}
 
-					
+
 				}
 				else {
 
 					// draw classes
-					
+
 					double red = 255.0;
 					double blue = 0.0;
 					double green = 0.0;
@@ -1513,14 +1529,14 @@ namespace OpenGLForm
 							{
 								double currentData = this->file->getData(j, i);
 								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-							
+
 								dimensionCount++;
 							}
 						}
 						glEnd(); // ends drawing line
 						dimensionCount = 0;
 
-					
+
 					}
 				}
 
@@ -1541,7 +1557,7 @@ namespace OpenGLForm
 							{
 								double currentData = this->file->getData(currentIndex, j);
 								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-							
+
 								dimensionCount++;
 							}
 						}
@@ -1563,7 +1579,7 @@ namespace OpenGLForm
 						{
 							double currentData = this->file->getData(selectedSetIndex, i);
 							glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-						
+
 							dimensionCount++;
 						}
 					}
@@ -1581,105 +1597,59 @@ namespace OpenGLForm
 
 
 
-
-
-
-
-
-
-
-
-
-
 		//NOMINAL SETS WITH CORRELATION:
 		GLvoid drawNominalSetCorrelation(GLvoid)
 		{
+			//Create the visualization:
+			DomNominalSet visualization = DomNominalSet(this->file);
 
-			//Set-up drawing variables.
+			//Local Vars:
+			vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass;
+			vector<vector<unordered_map<double, double>*>*>* classPercPerBlock;
+			vector<unordered_map<double, double>*>* blockHeights;
+			vector<vector<pair<double, double>>> sortedByPurityVector;
+			vector<vector<pair<double, double>>> sortedByFreqVector;
+			vector<vector<pair<double, double>>> sortedByClassVector;
+
+			//Get the frequency of values per class to use to calulate dominance percentage and 
+			//overall block height:
+			valueFreqPerClass = visualization.getValuePerClassFreq();
+
+			//At this point, we have how often values show up for each class. Now we need to calculate the percentage of the block that the
+			//dominant class will take up. To do this, we find dominant class nnumber and devide it by the number of times the value shows
+			//up in the block that we are working with.
+			classPercPerBlock = visualization.getClassPercPerBlock(valueFreqPerClass);
+
+			//Now we have both the percentages of how much each dominant set will take up of the block as well as the value frequencies for each
+			//class. Now we need to calculate the actual height of the blocks. To do this, we will be adding all the values together and then 
+			//normalizing the ammount from 0 to 1 to be able to draw it using OpenGL.
+			blockHeights = visualization.getBlockHeights(valueFreqPerClass);
+
+			//At this point we have both the class freqencies by block as well as the block overall percentage so we can draw
+			//the blocks. This means we know what percentage of the coordinate is made by the block and what percentage of 
+			//each block will be filled by the dominant class.
+			sortedByPurityVector = visualization.getSortByPurity(blockHeights, classPercPerBlock);
+
+			//Sorting normally by freqency.
+			sortedByFreqVector = visualization.getSortByFreqency(blockHeights);
+
+			//Sorting by class on top and bottom (2 class max, testing case).
+			sortedByClassVector = visualization.getSortByClass(blockHeights, classPercPerBlock);
+
+			//Draw Visualizaiton.
+			visualization.drawVisualization(sortedByPurityVector, classPercPerBlock, this->worldWidth);
+
+		}//end Dom Nominal Sets.
+
+		//===Draw Nominal Set Data===
+		//Desc: Draws nominal set bars for eacha attribute.
+		GLvoid drawNominalSetData(GLvoid)
+		{
+
 			int dimensionCount = 0; // Variable for the dimension index.
 			int colorChoice = file->getNominalColor();
 			glLineWidth(3.0); //Seting line width.
-			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
-
-			//Create a vector of vectors to hold the dimensions to hold the values of class frequencies.
-			vector<vector<unordered_map<double, double>*>*>* classValFreq = new vector<vector<unordered_map<double, double>*>*>();
-
-			//We will be working with two classes for now.
-
-			//Itterate over number of dimensions.
-			for (int j = 0; j < this->file->getDimensionAmount(); j++)
-			{
-				//Add the vector of classes to the dimension.
-				classValFreq->push_back(new vector<unordered_map<double, double>*>());
-
-				//Add classes to vector for this dimension.
-				for (int k = 0; k < file->getClassAmount() - 2; k++) // -2 because of Default and 'class' Column.
-				{
-					classValFreq->at(j)->push_back(new unordered_map<double, double>());
-				}
-			}
-
-			//Itterate over all attributes:
-			for (int i = 0; i < file->getDimensionAmount(); i++)
-			{
-
-				//Itterate over rows and add value to class vector.
-				for (int j = 0; j < file->getSetAmount(); j++)
-				{
-					//Get the current value of the row at this attribute.
-					double currentData = this->file->getData(j, i);
-					//Get the current class of the row at this attribute.
-					double currentClass = this->getClassOfSet(j) - 1;
-
-					//Now we have the values of each class and how freqently they appear.
-					//Now add them to a vector of maps.
-					
-					//Get current class map.
-					unordered_map<double,double> *curMap = classValFreq->at(i)->at(currentClass);
-
-					//Check to see if current data is already in the unordered map.
-					if (curMap->find(currentData) == curMap->end())
-					{
-						//If not insert it.
-						curMap->insert({ currentData, 1 });
-					}
-					else
-					{
-						//Increment occurance of current data.
-						std::unordered_map<double, double>::iterator it = curMap->find(currentData);
-						it->second++;
-					}
-
-
-				}
-
-
-			}
-
-			//At this point, we have how often values show up in each class. Now we need to calculate block heights with the following.
-			//Block height ratio of class one to class two.
-
-			//Itterate over dimensions.
-			for (int i = 0; i < file->getDimensionAmount(); i++)
-			{
-				//Get the dimension data.
-				vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
-				
-				//Go over each map in the dimension vector and turn to percentages.
-				for (int j = 0; j < curDimensionVec->size(); j++)
-				{
-					unordered_map<double, double>* curMap = curDimensionVec->at(j);
-
-					//Go over map and calculate percentages.
-					for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
-					{
-						iter->second = (iter->second / getSetAmount());
-					}
-
-				}
-			}
-
-			//Add all values together and add to the blockHeights vector.
+			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
 
 			//Create a vector of unordered maps to hold the attributes:
 			vector<unordered_map<double, double>*>* blockHeights = new vector<unordered_map<double, double>*>();
@@ -1690,39 +1660,36 @@ namespace OpenGLForm
 				blockHeights->push_back(new unordered_map<double, double>());
 			}
 
-			//Go over attributes.
-			for (int i = 0; i < this->file->getDimensionAmount(); i++)
+			//Go over every row (set).
+			for (int j = 0; j < this->file->getSetAmount(); j++)
 			{
-				
-				//Go over classes:
-				vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
-
-				//Combine all values:
-				for (int j = 0; j < curDimensionVec->size(); j++)
+				//Go over every attribute of the row.
+				for (int i = 0; i < this->file->getDimensionAmount(); i++)
 				{
+					//Get the current value at the attribute(i) for this row(j).
+					double currentData = this->file->getData(j, i);
 
-					unordered_map<double, double>* nextClass = curDimensionVec->at(j);
+					//Get current unordered map:
+					unordered_map<double, double>* curMap = blockHeights->at(i);
 
-					for (std::unordered_map<double, double>::iterator iter = nextClass->begin(); iter != nextClass->end(); ++iter)
+					//Check to see if current data is already in the unordered map.
+					if (curMap->find(currentData) == blockHeights->at(i)->end())
 					{
-						double key = iter->first;
-						if (blockHeights->at(i)->find(key) == blockHeights->at(i)->end())
-						{
-							blockHeights->at(i)->insert({ key, iter->second });
-						}
-						else
-						{
-							double curVal = blockHeights->at(i)->at(key);
-							blockHeights->at(i)->at(key) = curVal + nextClass->at(key);
-						}
-						
+						//If not insert it.
+						curMap->insert({ currentData, 1 });
 					}
-
+					else
+					{
+						//Increment by the curent data if it is already present.
+						std::unordered_map<double, double>::iterator it = curMap->find(currentData);
+						it->second++;
+					}
 				}
-				
 			}
 
-			//===Normailize data===
+			//At this point, there is a vector containing maps with the frequencies of the values.
+
+			//====Get percentages for data and Normalazie data between 1 and 0:====
 
 			//Iterate over vector:
 			for (int i = 0; i < this->file->getDimensionAmount(); i++)
@@ -1784,364 +1751,6 @@ namespace OpenGLForm
 			//====Draw the rectangles====.
 
 			const int HEIGHT_OF_ALL_BLOCKS = 435;
-			bool sidesPlaced = false; // Boolean to record if we have placed the sides of the small frequency blocks.
-
-			//Go over every attribute.
-			for (int i = 0; i < this->file->getDimensionAmount(); i++)
-			{
-
-				//Get current vector (attribute we are working with making blocks):
-				vector<pair<double, double>> curVec = sortedVector[i];
-
-				//Values to calculate where to put values.
-				double blockOffsetVertical = 80;
-				double prevHeight = 80;
-
-				//Iterate over vector to find valus.
-				for (int j = 0; j < curVec.size(); j++)
-				{
-					//Get key and frequency and draw a rectangle.
-					double key = curVec[j].first;
-					double freq = curVec[j].second;
-					double dominantFreq = 0;
-					double dominantClass = -1;
-					const double GRAY_VAL = 0.5;
-
-					//Go over classes and find dominant class:
-					vector<unordered_map<double, double>*>* curDimensionVec = classValFreq->at(i);
-
-					for (int m = 0; m < curDimensionVec->size(); m++)
-					{
-						unordered_map<double, double>* nextClass = curDimensionVec->at(m);
-
-						if (nextClass->find(key) != nextClass->end())
-						{
-							if (nextClass->at(key) >= dominantFreq)
-							{
-								dominantFreq = nextClass->at(key);
-								dominantClass = m + 1;
-							}
-						}
-					}
-
-					//Draw the rectangle.
-					glBegin(GL_QUADS);
-
-					//Set Color:
-					std::vector<double>* colorOfCurrent = this->file->getClassColor(dominantClass);
-					glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], 0.5);
-
-					// draw bottom left
-					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-						(blockOffsetVertical)
-					);
-
-					// draw top left
-					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-						((dominantFreq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-					);
-
-					// draw top right
-					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-						((dominantFreq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-					);
-
-					// draw bottom right
-					glVertex2d(
-						((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-						(blockOffsetVertical)
-					);
-
-					glEnd();
-
-					//Check if we need to draw the border.
-					if (!(freq <= 0.014))
-					{
-						//==Draw border==:
-						glBegin(GL_LINE_STRIP);
-
-						glColor4d(0, 0, 0, GRAY_VAL);
-						glLineWidth(.5);
-
-						//Top Left Point:
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
-						);
-
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
-						);
-
-						//Top Right Point:
-						glEnd();
-
-					}
-					else //We dont need to draw the devider.
-					{
-
-						//==Draw Sides==:
-						glBegin(GL_LINE_STRIP);
-
-						glColor4d(0, 0, 0, GRAY_VAL);
-						glLineWidth(.5);
-
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-						);
-
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-							(prevHeight - 2)
-						);
-
-						glEnd();
-
-						//==Draw Sides==:
-						glBegin(GL_LINE_STRIP);
-
-						glColor4d(0, 0, 0, GRAY_VAL);
-						glLineWidth(.5);
-
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-						);
-
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-							(prevHeight - 3)
-						);
-
-						glEnd();
-
-						if (j == curVec.size() - 1)
-						{
-							//==Draw border==:
-							glBegin(GL_LINE_STRIP);
-
-							glColor4d(0, 0, 0, GRAY_VAL);
-							glLineWidth(.5);
-
-							//Top Left Point:
-							glVertex2d(
-								((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-								((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
-							);
-
-							glVertex2d(
-								((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-								((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
-							);
-
-							//Top Right Point:
-							glEnd();
-						}
-
-					}
-
-					//Mutate vector to draw lines in next step.
-					curVec[j].second = (((dominantFreq / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
-					sortedVector[i] = curVec;
-
-					//Record the previous height.
-					blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
-					prevHeight = blockOffsetVertical;
-				}
-
-				dimensionCount++;
-			}
-
-			//Reset dimension count.
-			dimensionCount = 0;
-
-			//Now, all of the unordered maps have the value and what position the top of the block stops at.
-
-
-			//====Draw lines to show data:=====
-
-			//Iterate over rows in data.
-			for (int j = 0; j < this->file->getSetAmount(); j++)
-			{
-
-				//Get the colors for each class line.
-				std::vector<double>* colorOfCurrent = this->file->getSetColor(j);
-				glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], (*colorOfCurrent)[3]);
-
-				//Iterate over attribute values for the row.
-				glBegin(GL_LINE_STRIP); // begins drawing lines
-				for (int i = 0; i < this->file->getDimensionAmount(); i++)
-				{
-					//Get current vecotor.
-					vector<pair<double, double>> curVec = sortedVector[i];
-
-					//Values to calculate where to put point for line.
-					double blockOffsetVertical = 0;
-
-					if (this->file->getDataDimensions()->at(i)->isVisible())
-					{
-						double currentData = this->file->getData(j, i);
-						double valueOfCurrent;
-
-						//find value in curVec iterating over kv pairs:
-						for (int k = 0; k < curVec.size(); k++)
-						{
-							pair<double, double> p = curVec.at(k);
-
-							if (p.first == currentData)
-							{
-								valueOfCurrent = p.second;
-								break;
-							}
-						}
-
-						double calcOfYCord = (((valueOfCurrent / 2) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
-						glVertex2d(
-							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1))), //X - val is correct since its just going off the attribute line.
-							(valueOfCurrent)
-						);
-
-						dimensionCount++;
-					}
-				}
-				glEnd();
-
-				dimensionCount = 0;
-			}
-
-		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//===Draw Nominal Set Data===
-		//Desc: Draws nominal set bars for eacha attribute.
-		GLvoid drawNominalSetData(GLvoid)
-		{
-
-			int dimensionCount = 0; // Variable for the dimension index.
-			int colorChoice = file->getNominalColor();
-			glLineWidth(3.0); //Seting line width.
-			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
-
-			//Create a vector of unordered maps to hold the attributes:
-			vector<unordered_map<double,double>*> *blockHeights = new vector<unordered_map<double, double>*>();
-			
-			//Fill the vector with unordered maps:
-			for (int i = 0; i < this->file->getDimensionAmount(); i++)
-			{
-				blockHeights->push_back(new unordered_map<double, double>());
-			}
-
-			//Go over every row (set).
-			for (int j = 0; j < this->file->getSetAmount(); j++)
-			{
-				//Go over every attribute of the row.
-				for (int i = 0; i < this->file->getDimensionAmount(); i++)
-				{
-					//Get the current value at the attribute(i) for this row(j).
-					double currentData = this->file->getData(j, i);
-
-					//Get current unordered map:
-					unordered_map<double, double>* curMap = blockHeights->at(i);
-
-					//Check to see if current data is already in the unordered map.
-					if (curMap->find(currentData) == blockHeights->at(i)->end())
-					{
-						//If not insert it.
-						curMap->insert({ currentData, 1 });
-					}
-					else
-					{
-						//Increment by the curent data if it is already present.
-						std::unordered_map<double, double>::iterator it = curMap->find(currentData);
-						it->second++;
-					}
-				}
-			}
-
-			//At this point, there is a vector containing maps with the frequencies of the values.
-
-			
-			//====Get percentages for data and Normalazie data between 1 and 0:====
-		
-			//Iterate over vector:
-			for (int i = 0; i < this->file->getDimensionAmount(); i++)
-			{
-
-				double allValues = 0; //Recording all values to section block heights.
-
-				//Get current unordered map:
-				unordered_map<double, double>* curMap = blockHeights->at(i);
-
-				//Iterate over unordered map to find valus.
-				for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
-				{
-					double freq = iter->second;
-					allValues += freq;
-				}
-
-				//Apply the normilized values.
-				for (std::unordered_map<double, double>::iterator iter = curMap->begin(); iter != curMap->end(); ++iter)
-				{
-					iter->second = (iter->second / allValues);
-				}
-			}
-
-			//====Sort the kv pairs:====
-			vector<pair<double, double>> sortVec;//Vector for sorting.
-			vector<vector<pair<double, double>>> sortedVector;//Vector to hold sorted values.
-
-			//Go over every attribute of the row.
-			for (int i = 0; i < this->file->getDimensionAmount(); i++)
-			{
-				//Get current unordered map:
-				unordered_map<double, double>* curMap = blockHeights->at(i);
-				vector<pair<double, double>> toInsert;
-
-				unordered_map<double, double>::iterator it;
-
-				//add all kv to a vector:
-				for (it = curMap->begin(); it != curMap->end(); it++)
-				{
-					sortVec.push_back(make_pair(it->second, it->first));
-				}
-
-				//Sort the vector.
-				sort(sortVec.begin(), sortVec.end());
-
-				//Insert sorted values into a new vector.
-				for (int k = sortVec.size() - 1; k >= 0; k--)
-				{
-					toInsert.push_back( {sortVec[k].second, sortVec[k].first} );
-				}
-
-				//Insert sorted sub vector into vector.
-				sortedVector.push_back(toInsert);
-
-				sortVec.clear();
-			}
-			
-			//====Draw the rectangles====.
-	
-			const int HEIGHT_OF_ALL_BLOCKS = 435;
 
 			//Go over every attribute.
 			for (int i = 0; i < this->file->getDimensionAmount(); i++)
@@ -2157,7 +1766,7 @@ namespace OpenGLForm
 				double colorIncR = 0;
 				double colorIncG = 0;
 				double colorIncB = 0;
-				
+
 				//Starting colors:
 				if (colorChoice == 1)
 				{
@@ -2245,12 +1854,12 @@ namespace OpenGLForm
 						//Top Left Point:
 						glVertex2d(
 							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-							((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
 						);
 
 						glVertex2d(
 							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-							((freq* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
 						);
 
 						//Top Right Point:
@@ -2262,9 +1871,9 @@ namespace OpenGLForm
 					sortedVector[i] = curVec;
 
 					//Record the previous height.
-					blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight) ;
+					blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
 					prevHeight = blockOffsetVertical;
-			
+
 					if (colorChoice == 1) //RED SCHEME
 					{
 						if (state == 0)
@@ -2353,7 +1962,7 @@ namespace OpenGLForm
 							colorIncR += 20;
 							colorIncG += 20;
 							colorIncB += 20;
-							
+
 
 							//IF we get to the max of blue, start to decriment red. (255, 255, 0)
 							if (colorIncR >= 255)
@@ -2452,7 +2061,7 @@ namespace OpenGLForm
 
 
 			//====Draw lines to show data:=====
-		
+
 			//Iterate over rows in data.
 			for (int j = 0; j < this->file->getSetAmount(); j++)
 			{
@@ -2488,11 +2097,11 @@ namespace OpenGLForm
 							}
 						}
 
-						double calcOfYCord = (  ((valueOfCurrent / 2) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight)  );
+						double calcOfYCord = (((valueOfCurrent / 2) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
 						glVertex2d(
-						(  (-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1))  ), //X - val is correct since its just going off the attribute line.
-						(  valueOfCurrent  )  
+							((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1))), //X - val is correct since its just going off the attribute line.
+							(valueOfCurrent)
 						);
 
 						dimensionCount++;
@@ -2506,16 +2115,16 @@ namespace OpenGLForm
 		}
 
 		GLvoid drawQuadData(GLvoid) {
-			
+
 			vector<SetCluster> blocks = file->getClusters();
 			int dimensionCount = 0;
 			glLineWidth(3.0);
 			double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1);
 			glLineWidth(3.0);
 			glColor4d(0.0, 0.0, 0.0, 0.1);
-			
+
 			vector<vector<int>> pairs = vector<vector<int>>();
-			
+
 			// find the set of all pairs
 			for (int i = 0; i < file->getClusterAmount(); i++)
 			{
@@ -2533,9 +2142,9 @@ namespace OpenGLForm
 							alreadyExists = true;
 						}
 					}
-					
+
 					if (alreadyExists) continue;
-					
+
 					vector<int> pair = { i , j };
 					pairs.push_back(pair);
 				}
@@ -2552,7 +2161,7 @@ namespace OpenGLForm
 
 				for (int j = 0; j < file->getDimensionAmount(); j++)
 				{
-						// if blocks overlapping, then draw openql quads
+					// if blocks overlapping, then draw openql quads
 					if (blocks[firstIdx].getMaximum(j) <= blocks[secondIdx].getMinimum(j) ||
 						blocks[firstIdx].getMinimum(j) >= blocks[secondIdx].getMaximum(j))
 					{
@@ -2563,7 +2172,7 @@ namespace OpenGLForm
 						glColor4d(0.0, 0.0, 0.0, (1.0 / 5));
 
 						glBegin(GL_QUADS);
-						
+
 						// draw bottom left
 						glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - (xAxisIncrement / 4),
 							(floor * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
@@ -2617,7 +2226,7 @@ namespace OpenGLForm
 					double span = max - min;
 					if (max != min)
 						quantileSize = min(quantileSize, (span / (split * 1.0)));
-				}	
+				}
 
 				for (int i = 0; i < file->getDimensionAmount(); i++)
 				{
@@ -2628,7 +2237,7 @@ namespace OpenGLForm
 					double min = currCluster.getMinimum(i);
 					double span = max - min;
 
-					split = (int) round(span / quantileSize) + 1;
+					split = (int)round(span / quantileSize) + 1;
 
 					for (int k = 1; k <= split; k++)
 					{
@@ -2846,7 +2455,7 @@ namespace OpenGLForm
 			double xAxisIncrement = worldWidth / (file->getVisibleDimensionCount() + 1);
 
 			glColor4d(0.0, 0.0, 0.0, 1.0);
-				
+
 			if (file->isPaintClusters()) // hyper blocks
 			{
 
@@ -2879,7 +2488,7 @@ namespace OpenGLForm
 					double min = currCluster.getMinimum(i);
 					double span = max - min;
 
-					split = (int) round(span / quantileSize) + 1;
+					split = (int)round(span / quantileSize) + 1;
 
 					for (int k = 1; k <= split; k++)
 					{
@@ -2898,7 +2507,7 @@ namespace OpenGLForm
 
 						if (count == 1) count = 2;
 
-						glColor4d(255.0/255.0, 255.0/255.0, 255.0/255.0, 1.0);
+						glColor4d(255.0 / 255.0, 255.0 / 255.0, 255.0 / 255.0, 1.0);
 						glBegin(GL_QUADS);
 
 						// draw bottom left
@@ -3019,7 +2628,7 @@ namespace OpenGLForm
 
 				if (this->file->drawCenterLine())
 				{
-					vector<int> * currSets = currCluster.getSets();
+					vector<int>* currSets = currCluster.getSets();
 					glLineWidth(3.0);
 					glColor4d(0.0, 0.0, 0.0, 1.0);
 					glBegin(GL_LINE_STRIP);
@@ -3031,7 +2640,7 @@ namespace OpenGLForm
 							double avgData = 0.0;
 							double total = 0.0;
 							int amount = currCluster.getSetNumber();
-							
+
 							for (int j = 0; j < amount; j++)
 							{
 								total += file->getData(currSets->at(j), i);
@@ -3039,7 +2648,7 @@ namespace OpenGLForm
 
 							avgData = total / amount;
 
-							glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), 
+							glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)),
 								(avgData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
 							dimensionCount++;
@@ -3126,16 +2735,16 @@ namespace OpenGLForm
 		} // end draw frequency
 
 		// INITIALIZE THE GL SETTINGS
-		GLvoid Init(GLvoid)										
+		GLvoid Init(GLvoid)
 		{
 			this->Background(194, 206, 218);	        // background is blue-ish gray
 		}
 
 		// RESIZE AND INITIALIZE THE GL WINDOW
-		GLvoid Reshape(GLsizei width, GLsizei height)		    
+		GLvoid Reshape(GLsizei width, GLsizei height)
 		{
 			// compute aspect ratio of the new window
-			if (height == 0) 
+			if (height == 0)
 			{
 				height = 1; // To prevent divide by 0
 			}
@@ -3151,7 +2760,7 @@ namespace OpenGLForm
 
 
 		// THIS IS WHERE ANY BUTTON CLICKS GO // the parent window will need to handle the other key presses
-		virtual void WndProc( Message %msg ) override
+		virtual void WndProc(Message% msg) override
 		{
 
 
@@ -3159,70 +2768,72 @@ namespace OpenGLForm
 			{
 
 			case WM_LBUTTONDOWN:
+			{
+				// get the X and Y coordinates of the mouse position
+				this->worldMouseX = this->getWorldMouseX();
+				this->worldMouseY = this->getWorldMouseY();
+
+				this->worldMouseYOnClick = this->getWorldMouseY();
+				this->worldMouseXOnClick = this->getWorldMouseX();
+
+				// ensures that the clicked dimension is valid
+				this->clickedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY); //1					
+
+
+				if (this->invertDimensionToggled)
 				{
-					// get the X and Y coordinates of the mouse position
-					this->worldMouseX = this->getWorldMouseX();
-					this->worldMouseY = this->getWorldMouseY();
-
-					this->worldMouseYOnClick = this->getWorldMouseY();
-					this->worldMouseXOnClick = this->getWorldMouseX();
-
-					// ensures that the clicked dimension is valid
-					this->clickedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY); //1					
-
-
-					if (this->invertDimensionToggled)
-					{
-						this->file->invertDimension(this->clickedDimension);
-					}
-
-
-					double shiftAmount = this->file->getDimensionShift(clickedDimension);
-					this->drawingDragged = true;								
+					this->file->invertDimension(this->clickedDimension);
 				}
-				break;
+
+
+				double shiftAmount = this->file->getDimensionShift(clickedDimension);
+				this->drawingDragged = true;
+			}
+			break;
 
 			case WM_MOUSEMOVE:
-				{					
+			{
 
-					// get the X and Y coordinates of the mouse position
-					this->worldMouseX = this->getWorldMouseX();
-					this->worldMouseY = this->getWorldMouseY();
+				// get the X and Y coordinates of the mouse position
+				this->worldMouseX = this->getWorldMouseX();
+				this->worldMouseY = this->getWorldMouseY();
 
-					// get the dropped dimension
-					int droppedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY);
+				// get the dropped dimension
+				int droppedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY);
 
-					// update by swapping while passing over dimension
-					if (this->drawingDragged && this->shiftHorizontal && this->file->moveData(this->clickedDimension, droppedDimension)) {
-						this->clickedDimension = droppedDimension;							
-					} else if (this->drawingDragged && this->shiftVertical) {
-						this->file->setDimensionShift(this->clickedDimension, (this->shiftAmount + (this->worldMouseYOnClick - this->worldMouseY)/(this->worldHeight * 0.65)));
-					} else if (this->drawingDragged && !this->shiftVertical && !this->shiftHorizontal && !this->invertDimensionToggled) {
-						this->tempXWorldMouseDifference = worldMouseXOnClick - this->getWorldMouseX();
-						this->tempYWorldMouseDifference = worldMouseYOnClick - this->getWorldMouseY();
-					}
-
+				// update by swapping while passing over dimension
+				if (this->drawingDragged && this->shiftHorizontal && this->file->moveData(this->clickedDimension, droppedDimension)) {
+					this->clickedDimension = droppedDimension;
 				}
-				break;
+				else if (this->drawingDragged && this->shiftVertical) {
+					this->file->setDimensionShift(this->clickedDimension, (this->shiftAmount + (this->worldMouseYOnClick - this->worldMouseY) / (this->worldHeight * 0.65)));
+				}
+				else if (this->drawingDragged && !this->shiftVertical && !this->shiftHorizontal && !this->invertDimensionToggled) {
+					this->tempXWorldMouseDifference = worldMouseXOnClick - this->getWorldMouseX();
+					this->tempYWorldMouseDifference = worldMouseYOnClick - this->getWorldMouseY();
+				}
+
+			}
+			break;
 			case WM_LBUTTONUP:
-				{
+			{
 
-					if (this->drawingDragged) {
-						// get the X and Y coordinates of the mouse position
-						/*this->worldMouseX = this->getWorldMouseX();
-						this->worldMouseY = this->getWorldMouseY();
-						int droppedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY);
-						this->file->moveData(this->clickedDimension, droppedDimension);*/
-						shiftAmount = 0.0;
-						this->drawingDragged = false;
-					}
-
+				if (this->drawingDragged) {
+					// get the X and Y coordinates of the mouse position
+					/*this->worldMouseX = this->getWorldMouseX();
+					this->worldMouseY = this->getWorldMouseY();
+					int droppedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY);
+					this->file->moveData(this->clickedDimension, droppedDimension);*/
+					shiftAmount = 0.0;
+					this->drawingDragged = false;
 				}
-				break;
+
+			}
+			break;
 			}
 
 
-			NativeWindow::WndProc( msg );
+			NativeWindow::WndProc(msg);
 
 		}
 	};

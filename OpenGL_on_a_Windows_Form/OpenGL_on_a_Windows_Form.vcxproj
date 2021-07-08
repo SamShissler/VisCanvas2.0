@@ -233,12 +233,15 @@
     <ClCompile Include="DataNode.cpp" />
     <ClCompile Include="DataSet.cpp" />
     <ClCompile Include="Dimension.cpp" />
+    <ClCompile Include="DomNominalSet.cpp" />
     <ClCompile Include="GraphNote.cpp" />
     <ClCompile Include="AdditionalSettings.cpp" />
     <ClCompile Include="IntervalGrouping.cpp" />
     <ClCompile Include="IntervalGroupStarting.cpp" />
     <ClCompile Include="NominalColorPicker.cpp" />
     <ClCompile Include="NominalGrouping.cpp" />
+    <ClCompile Include="NominalSubgroupBuilder.cpp" />
+    <ClCompile Include="NSGGroupAssingment.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="OrderScheme.cpp" />
     <ClCompile Include="OrdinalGrouping.cpp" />
@@ -267,6 +270,7 @@
     <ClInclude Include="DataNode.h" />
     <ClInclude Include="DataSet.h" />
     <ClInclude Include="Dimension.h" />
+    <ClInclude Include="DomNominalSet.h" />
     <ClInclude Include="GraphNote.h" />
     <ClInclude Include="AdditionalSettings.h">
       <FileType>CppForm</FileType>
@@ -276,6 +280,9 @@
     <ClInclude Include="KVPair.h" />
     <ClInclude Include="NominalColorPicker.h" />
     <ClInclude Include="NominalGrouping.h" />
+    <ClInclude Include="NominalSubgroupBuilder.h" />
+    <ClInclude Include="NSG.h" />
+    <ClInclude Include="NSGGroupAssingment.h" />
     <ClInclude Include="OrderScheme.h" />
     <ClInclude Include="OrdinalGrouping.h" />
     <ClInclude Include="pch.h" />
@@ -289,6 +296,7 @@
     </ClInclude>
     <ClInclude Include="Linguistic.h" />
     <ClInclude Include="Subsets.h" />
+    <ClInclude Include="UserInputPopUp.h" />
     <ClInclude Include="VisCanvas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -338,6 +346,7 @@
     <Image Include="..\Button Icons\auto.png" />
     <Image Include="..\Button Icons\average.png" />
     <Image Include="..\Button Icons\color.png" />
+    <Image Include="..\Button Icons\domNominalSets.png" />
     <Image Include="..\Button Icons\frequency.png" />
     <Image Include="..\Button Icons\histogram.png" />
     <Image Include="..\Button Icons\linguistic.png" />
@@ -347,6 +356,7 @@
     <Image Include="..\Button Icons\reset.png" />
     <Image Include="..\Button Icons\subset.png" />
     <Image Include="..\Button Icons\tile.png" />
+    <Image Include="nominalSetsImage.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

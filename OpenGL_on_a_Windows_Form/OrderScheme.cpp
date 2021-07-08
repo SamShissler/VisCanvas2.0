@@ -5,6 +5,8 @@
 #include "OrdinalGrouping.h"
 #include "IntervalGrouping.h"
 #include "RatioGrouping.h"
+#include "NominalSubgroupBuilder.h"
+#include "NSG.h"
 #include <msclr\marshal_cppstd.h>
 
 // ===loadData===
@@ -141,27 +143,120 @@ System::Void  CppCLRWinformsProjekt::OrderScheme::allNominalVals(System::Object^
 // Desc: Assigns nominal values with binary attributes.
 System::Void CppCLRWinformsProjekt::OrderScheme::handleNominalBinary(std::vector<std::string> nominalVector)
 {
-	//Create a new dialog window to load the scheme.
-	this->Hide();
+	//Create a initial vector of groups.
+	vector<NSG>* g = new vector<NSG>();
+	vector<string>* toAdd = new vector<string>();
+
+	//Create an inital group.
+	NSG* initGroup = new NSG("Initial Group", nominalVector, *g);
+
+	//Fill the subgroup with values of initial data.
+	for (int i = 0; i < nominalVector.size(); i++)
+	{
+		NSG newNominalSubGroup = NSG(nominalVector.at(i));
+		newNominalSubGroup.values.push_back(nominalVector.at(i));
+		initGroup->subGroups.push_back(newNominalSubGroup);
+	}
+
+	//Create the dialog window to show the nominal groups and allow user to make a subgroup.
+	NominalSubGroupBuilder^ nominalSGB = gcnew NominalSubGroupBuilder(initGroup);
+	nominalSGB->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+	nominalSGB->ShowDialog();
+
+	//Get the scheme map the user chose.
+	vector<string> schemeSelected = nominalSGB->getSchemeMap();
+
+	//Assign binary values.
+	int numGroups = 0;
+	unordered_map<string, int> groups;
+
+
+	//Count the number of groups we have.
+	for (int i = 0; i < schemeSelected.size(); i+= 2)
+	{
+		//If we havent found it yet.
+		if (groups.find(schemeSelected.at(i)) == groups.end())
+		{
+			numGroups++;
+			groups.insert({ schemeSelected.at(i), numGroups });// Start each group at one.
+		}
+	}
+
+	//Iterate over data.
+	for (int i = 0; i < schemeSelected.size(); i+=2)
+	{
+		//Get key and group
+		std::string key = schemeSelected.at(i + 1);
+		std::string group = schemeSelected.at(i);
+
+		//Get current counter to make binary.
+		int valToConvert = groups.at(group);
+
+		//Get current number that is being used:
+		string curToBinary = toBinary(valToConvert) + "b";
+
+		//increment for next use:
+		/*groups.at(group) = valToConvert + 1;*/
+
+		toAdd->push_back(key);
+		toAdd->push_back(curToBinary);
+
+	}
+
+	//At this point, there are all calculated binary values for each key. 
+	//Now we want to add preceding zeros.
+
+	int largestBinaryLength = 0;
+
+	//Go over binary vals to find largest in size
+	for (int i = 1; i < toAdd->size(); i += 2)
+	{
+		string s = toAdd->at(i);
+		if (s.length() > largestBinaryLength)
+		{
+			largestBinaryLength = s.length();
+		}
+	}
+
+	//Go over values again and add preceding zeros.
+	for (int i = 1; i < toAdd->size(); i += 2)
+	{
+		string s = toAdd->at(i);
+		if (s.length() < largestBinaryLength)
+		{
+			int diff = largestBinaryLength - s.length();
+
+			for (int j = 0; j < diff; j++)
+			{
+				s = "0" + s;
+			}
+
+			toAdd->at(i) = s;
+		}
+	}
+
+
+	//PREV VERSION.
+	/*this->Hide();
 	NominalGrouping^ nominalGroupingWindow = gcnew NominalGrouping(this->dataGridView, &nominalVector);
 	nominalGroupingWindow->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-	nominalGroupingWindow->ShowDialog();
+	nominalGroupingWindow->ShowDialog();*/
 
 	//Add results to scheme.
-	std::vector<std::string>* v = nominalGroupingWindow->getNominalVector();
+	//std::vector<std::string>* v = nominalGroupingWindow->getNominalVector();
 
 	//Assign values to scheme:
-	for (int i = 0; i < v->size(); i = i + 2)
+	for (int i = 0; i < toAdd->size(); i = i + 2)
 	{
 
-		auto it = this->schemeMap->find(v->at(i));
+		auto it = this->schemeMap->find(toAdd->at(i));
 		if (it != schemeMap->end())
 		{
-			it->second = v->at(i + 1);
+			it->second = toAdd->at(i + 1);
 		}
 		else
 		{
-			schemeMap->insert({ v->at(i), v->at(i + 1) });
+			schemeMap->insert({ toAdd->at(i), toAdd->at(i + 1) });
 		}
 	}
 
