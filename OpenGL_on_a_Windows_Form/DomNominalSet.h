@@ -31,6 +31,7 @@ public:
 	
 	//Analysis:
 	vector<string> determineRules();
+	vector<string> determineAllPossibleRules();
 
 private:
 	DataInterface* file;

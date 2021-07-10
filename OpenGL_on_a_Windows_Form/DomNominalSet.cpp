@@ -1087,6 +1087,7 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 // the linguistic description.
 vector<string> DomNominalSet::determineRules()
 {
+	//Sort coordinates by their number of purity blocks.
 	vector<string> toReturn;
 	vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass = getValuePerClassFreq();
 	vector<vector<unordered_map<double, double>*>*>* classPercPerBlock = getClassPercPerBlock(valueFreqPerClass);
@@ -1113,20 +1114,27 @@ vector<string> DomNominalSet::determineRules()
 			double purityLeftBlock = classPercPerBlock->at(i)->at(classOfCur)->at(left);
 			double purityRightBlock = classPercPerBlock->at(j)->at(classOfCur)->at(right);
 
-			//Going from dominantly pink block to dominantly yellow block, line is yellow.
-			if (purityLeftBlock <= 0.10 && purityRightBlock > 0.85)
+			//Get Cord names:
+			string firstCord = *(file->getDimensionName(i));
+			string secondCord = *(file->getDimensionName(j));
+
+			//Going from dominantly other class to dominantly current class, line is current class.
+			if (purityLeftBlock <= 0.15 && purityRightBlock >= 0.85)
 			{
 				boolean exist = false;
 				int otherClass = 1;
 				if (file->getClassOfSet(k) == 1) otherClass = 2;
 
 				//Make sure the string has not been added.
-				string s = msclr::interop::marshal_as<std::string>("If A is in X" + i + " in block dominantly class " + otherClass + " and A is in X" + j +
-					" in block dominantly class " + (file->getClassOfSet(k)) + " then A is " + (file->getClassOfSet(k)) + ".\n");
+				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n";
+
+				string solutionTwo = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(otherClass) + ".\n";
 
 				for (int m = 0; m < toReturn.size(); m++)
 				{
-					if (toReturn.at(m) == s)
+					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
 					{
 						exist = true;
 						break;
@@ -1135,11 +1143,169 @@ vector<string> DomNominalSet::determineRules()
 
 				if (!exist)
 				{
-					toReturn.push_back(s);
+					toReturn.push_back(solutionOne);
+					toReturn.push_back(solutionTwo);
 				}
 			}
+
+			//Going from dominantly current class to dominantly other class, line is other class.
+			else if (purityLeftBlock >= 0.85 && purityRightBlock <= 0.15)
+			{
+				boolean exist = false;
+				int otherClass = 1;
+				if (file->getClassOfSet(k) == 1) otherClass = 2;
+
+				//Make sure the string has not been added.
+				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(otherClass) + ".\n";
+
+				string solutionTwo ="If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(file->getClassOfSet(k)) +".\n";
+
+				for (int m = 0; m < toReturn.size(); m++)
+				{
+					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
+					{
+						exist = true;
+						break;
+					}
+				}
+
+				if (!exist)
+				{
+					toReturn.push_back(solutionOne);
+					toReturn.push_back(solutionTwo);
+				}
+
+			}
+
 		}
 	
+	}
+
+	return toReturn;
+
+}
+
+//determineAllPossibleRules
+//Desc: Tries every permutation of the cooordinates to come up with all rules.
+// the linguistic description.
+vector<string> DomNominalSet::determineAllPossibleRules()
+{
+
+	vector<string> toReturn;
+	int numDimensions = file->getDimensionAmount();
+
+	//add all dimensions to the vector
+	vector<double> dimensionNumbers;
+	vector<vector<double>> permutations;
+	for (int i = 0; i < numDimensions; i++)
+	{
+		dimensionNumbers.push_back(i);
+	}
+
+	do {
+		permutations.push_back(dimensionNumbers);
+	} while (std::next_permutation(dimensionNumbers.begin(), dimensionNumbers.end()));
+
+
+	//Go over every permutation and append the rules.
+
+
+
+	//Sort coordinates by their number of purity blocks.
+	vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass = getValuePerClassFreq();
+	vector<vector<unordered_map<double, double>*>*>* classPercPerBlock = getClassPercPerBlock(valueFreqPerClass);
+
+	//Iterate over the dimensions.
+	for (int i = 0; i < file->getDimensionAmount() - 1; i++)
+	{
+		//Make sure we don't go out of bounds.
+		if (!(file->getDataDimensions()->at(i)->isVisible())) continue;
+		if (file->getVisibleDimensionCount() < 2) break;
+
+		int j = i + 1;
+		while (j < file->getDimensionAmount() && !(file->getDataDimensions()->at(j)->isVisible())) j++;
+		if (j >= file->getDimensionAmount()) continue;
+
+		//Itterate over sets.
+		for (int k = 0; k < this->file->getSetAmount(); k++)
+		{
+			double left = file->getData(k, i);
+			double right = file->getData(k, j);
+			double classOfCur = file->getClassOfSet(k) - 1;
+
+			//Get the purity percentage of each left and right blocks.
+			double purityLeftBlock = classPercPerBlock->at(i)->at(classOfCur)->at(left);
+			double purityRightBlock = classPercPerBlock->at(j)->at(classOfCur)->at(right);
+
+			//Get Cord names:
+			string firstCord = *(file->getDimensionName(i));
+			string secondCord = *(file->getDimensionName(j));
+
+			//Going from dominantly other class to dominantly current class, line is current class.
+			if (purityLeftBlock <= 0.15 && purityRightBlock >= 0.85)
+			{
+				boolean exist = false;
+				int otherClass = 1;
+				if (file->getClassOfSet(k) == 1) otherClass = 2;
+
+				//Make sure the string has not been added.
+				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n";
+
+				string solutionTwo = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(otherClass) + ".\n";
+
+				for (int m = 0; m < toReturn.size(); m++)
+				{
+					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
+					{
+						exist = true;
+						break;
+					}
+				}
+
+				if (!exist)
+				{
+					toReturn.push_back(solutionOne);
+					toReturn.push_back(solutionTwo);
+				}
+			}
+
+			//Going from dominantly current class to dominantly other class, line is other class.
+			else if (purityLeftBlock >= 0.85 && purityRightBlock <= 0.15)
+			{
+				boolean exist = false;
+				int otherClass = 1;
+				if (file->getClassOfSet(k) == 1) otherClass = 2;
+
+				//Make sure the string has not been added.
+				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(otherClass) + ".\n";
+
+				string solutionTwo = "If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n";
+
+				for (int m = 0; m < toReturn.size(); m++)
+				{
+					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
+					{
+						exist = true;
+						break;
+					}
+				}
+
+				if (!exist)
+				{
+					toReturn.push_back(solutionOne);
+					toReturn.push_back(solutionTwo);
+				}
+
+			}
+
+		}
+
 	}
 
 	return toReturn;

@@ -3756,7 +3756,7 @@ string DataInterface::domNominalSetLinguistic()
 	}
 
 	//Get Rules.
-	vector<string> rules = visualization.determineRules();
+	vector<string> rules = visualization.determineAllPossibleRules();
 
 	for (int i = 0; i < rules.size(); i++)
 	{
