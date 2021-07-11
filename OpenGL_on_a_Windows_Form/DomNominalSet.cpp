@@ -8,9 +8,10 @@ DomNominalSet::DomNominalSet()
 }
 
 //Constructor:
-DomNominalSet::DomNominalSet(DataInterface *file)
+DomNominalSet::DomNominalSet(DataInterface *file, int worldHeight)
 {
 	this->file = file;
+	this->worldHeight = worldHeight;
 }
 
 //getClassPerPercBlock
@@ -528,8 +529,8 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 		vector<pair<double, double>> curVec = sortedByPurityVector[i];
 
 		//Values to calculate where to put values.
-		double blockOffsetVertical = 80;
-		double prevHeight = 80;
+		double blockOffsetVertical = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5) )); //Account for shifting.
+		double prevHeight = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5) ));
 
 		//Push back vectors:
 		domClass.push_back(vector<pair<double, double>>());
@@ -565,11 +566,6 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 
 			//Record what the dominant class was.
 			domClass.at(i).push_back({ key, dominantClass });
-
-			if (dominantClass != 2)
-			{
-
-			}
 
 			//Draw the dominant set rectangle.
 			glBegin(GL_QUADS);
@@ -801,12 +797,12 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 		//Top Left Point:
 		glVertex2d(
 			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-			(80)
+			((80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)))) //Accounts for shift.
 		);
 
 		glVertex2d(
 			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-			(80)
+			((80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)))) //Accounts for shift.
 		);
 
 		glEnd();
@@ -1187,127 +1183,241 @@ vector<string> DomNominalSet::determineRules()
 
 }
 
-//determineAllPossibleRules
-//Desc: Tries every permutation of the cooordinates to come up with all rules.
-// the linguistic description.
-vector<string> DomNominalSet::determineAllPossibleRules()
+//drawGrayRectangles
+//Desc: Draws the gray rectangles for gray block visualization.
+GLvoid DomNominalSet::drawGrayRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
 {
+	int dimensionCount = 0; // Variable for the dimension index.
+	int colorChoice = file->getNominalColor();
+	glLineWidth(3.0); //Seting line width.
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
 
-	vector<string> toReturn;
-	int numDimensions = file->getDimensionAmount();
+	//====Draw the rectangles====.
+	const int HEIGHT_OF_ALL_BLOCKS = 435;
+	vector<vector<pair<double, double>>> middleOther; //Vector to hold possition of middle of other block.
+	vector<vector<pair<double, double>>> domClass; // Vector to hold what the dominant class is for each attribute.
 
-	//add all dimensions to the vector
-	vector<double> dimensionNumbers;
-	vector<vector<double>> permutations;
-	for (int i = 0; i < numDimensions; i++)
+	//Go over every attribute.
+	for (int i = 0; i < this->file->getDimensionAmount(); i++)
 	{
-		dimensionNumbers.push_back(i);
-	}
 
-	do {
-		permutations.push_back(dimensionNumbers);
-	} while (std::next_permutation(dimensionNumbers.begin(), dimensionNumbers.end()));
+		//Get current vector (attribute we are working with making blocks):
+		vector<pair<double, double>> curVec = sortedByPurityVector[i];
 
+		//Values to calculate where to put values.
+		double blockOffsetVertical = 80;
+		double prevHeight = 80;
 
-	//Go over every permutation and append the rules.
+		//Push back vectors:
+		domClass.push_back(vector<pair<double, double>>());
+		middleOther.push_back(vector<pair<double, double>>());
 
-
-
-	//Sort coordinates by their number of purity blocks.
-	vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass = getValuePerClassFreq();
-	vector<vector<unordered_map<double, double>*>*>* classPercPerBlock = getClassPercPerBlock(valueFreqPerClass);
-
-	//Iterate over the dimensions.
-	for (int i = 0; i < file->getDimensionAmount() - 1; i++)
-	{
-		//Make sure we don't go out of bounds.
-		if (!(file->getDataDimensions()->at(i)->isVisible())) continue;
-		if (file->getVisibleDimensionCount() < 2) break;
-
-		int j = i + 1;
-		while (j < file->getDimensionAmount() && !(file->getDataDimensions()->at(j)->isVisible())) j++;
-		if (j >= file->getDimensionAmount()) continue;
-
-		//Itterate over sets.
-		for (int k = 0; k < this->file->getSetAmount(); k++)
+		//Iterate over vector to find valus.
+		for (int j = 0; j < curVec.size(); j++)
 		{
-			double left = file->getData(k, i);
-			double right = file->getData(k, j);
-			double classOfCur = file->getClassOfSet(k) - 1;
+			//Get key and frequency and draw a rectangle.
+			double key = curVec[j].first;
+			double freq = curVec[j].second;
+			double domPerc = 0;
+			double dominantClass = -1;
+			const double GRAY_VAL = 1;
 
-			//Get the purity percentage of each left and right blocks.
-			double purityLeftBlock = classPercPerBlock->at(i)->at(classOfCur)->at(left);
-			double purityRightBlock = classPercPerBlock->at(j)->at(classOfCur)->at(right);
+			//Go over classes and find dominant class:
+			vector<unordered_map<double, double>*>* curDimensionVec = classPercPerBlock->at(i);
 
-			//Get Cord names:
-			string firstCord = *(file->getDimensionName(i));
-			string secondCord = *(file->getDimensionName(j));
-
-			//Going from dominantly other class to dominantly current class, line is current class.
-			if (purityLeftBlock <= 0.15 && purityRightBlock >= 0.85)
+			for (int m = 0; m < curDimensionVec->size(); m++)
 			{
-				boolean exist = false;
-				int otherClass = 1;
-				if (file->getClassOfSet(k) == 1) otherClass = 2;
+				unordered_map<double, double>* nextClass = curDimensionVec->at(m);
 
-				//Make sure the string has not been added.
-				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is in " + secondCord +
-					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n";
-
-				string solutionTwo = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is not in " + secondCord +
-					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(otherClass) + ".\n";
-
-				for (int m = 0; m < toReturn.size(); m++)
+				if (nextClass->find(key) != nextClass->end())
 				{
-					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
+					if (nextClass->at(key) >= domPerc)
 					{
-						exist = true;
-						break;
-					}
-				}
+						domPerc = nextClass->at(key);
+						dominantClass = m + 1;
 
-				if (!exist)
-				{
-					toReturn.push_back(solutionOne);
-					toReturn.push_back(solutionTwo);
+					}
 				}
 			}
 
-			//Going from dominantly current class to dominantly other class, line is other class.
-			else if (purityLeftBlock >= 0.85 && purityRightBlock <= 0.15)
+			//Record what the dominant class was.
+			domClass.at(i).push_back({ key, dominantClass });
+
+
+			//Draw the grey other class rectangle.
+			glBegin(GL_QUADS);
+
+			//Set Color
+			glColor4d(0, 0, 0, 0.15);
+
+			// draw bottom left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+				(blockOffsetVertical)
+			);
+
+			// draw bottom right
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+				(blockOffsetVertical)
+			);
+
+			//(  (freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2) -  ((((domPerc * freq)* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) / 2))
+
+			// draw top right
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+				((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+			);
+
+			// draw top left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+				((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+			);
+
+			glEnd();
+
+			//Check if we need to draw the border.
+			if (!(freq <= 0.014))
 			{
-				boolean exist = false;
-				int otherClass = 1;
-				if (file->getClassOfSet(k) == 1) otherClass = 2;
+				//==Draw border==:
+				glBegin(GL_LINE_STRIP);
 
-				//Make sure the string has not been added.
-				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is in " + secondCord +
-					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(otherClass) + ".\n";
+				glColor4d(0, 0, 0, GRAY_VAL);
+				glLineWidth(.5);
 
-				string solutionTwo = "If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is not in " + secondCord +
-					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n";
+				//Top Left Point:
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+				);
 
-				for (int m = 0; m < toReturn.size(); m++)
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+				);
+
+				//Top Right Point:
+				glEnd();
+
+			}
+			else //We must draw the border.
+			{
+
+				//==Draw Sides==:
+				glBegin(GL_LINE_STRIP);
+
+				glColor4d(0, 0, 0, GRAY_VAL);
+
+				glLineWidth(.5);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+				);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					(prevHeight - 2)
+				);
+
+				glEnd();
+
+				//==Draw Sides==:
+				glBegin(GL_LINE_STRIP);
+
+				glColor4d(0, 0, 0, GRAY_VAL);
+				glLineWidth(.5);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+				);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					(prevHeight - 3)
+				);
+
+				glEnd();
+				 
+				if (j == curVec.size() - 1 || curVec.at(j+1).second > 0.014)
 				{
-					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
-					{
-						exist = true;
-						break;
-					}
-				}
+					//==Draw border==:
+					glBegin(GL_LINE_STRIP);
 
-				if (!exist)
-				{
-					toReturn.push_back(solutionOne);
-					toReturn.push_back(solutionTwo);
+					glColor4d(0, 0, 0, GRAY_VAL);
+					glLineWidth(100);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+					);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+					);
+
+					//Top Right Point:
+					glEnd();
 				}
 
 			}
+
+
+			//Calculate the top third position.
+
+			//Block Height:
+			double currentBlockHeight = (freq * HEIGHT_OF_ALL_BLOCKS);
+
+			//Get a third of the block height:
+			double thirdBlockHeight = currentBlockHeight / 3;
+
+			//Calculate a sixth block height:
+			double sixthBlockHeight = currentBlockHeight / 6;
+
+			//Calcualte the first color position:
+			double firstColorPosition = sixthBlockHeight + blockOffsetVertical;
+
+			//Calculate the second color position:
+			double secondColorPosition = (thirdBlockHeight * 2)+ sixthBlockHeight + blockOffsetVertical;
+
+			//Mutate vector to draw lines in next step.
+			curVec[j].second = firstColorPosition;
+			sortedByPurityVector[i] = curVec;
+			middleOther.at(i).push_back({ key, secondColorPosition });
+
+			//Record the previous height.
+			blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
+			prevHeight = blockOffsetVertical;
 
 		}
 
+		//==Draw bottom border==:
+		glBegin(GL_LINE_STRIP);
+
+		glColor4d(0, 0, 0, 1);
+		glLineWidth(.5);
+
+		glVertex2d(
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+			(80)
+		);
+
+		glVertex2d(
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+			(80)
+		);
+
+		glEnd();
+
+		dimensionCount++;
 	}
 
-	return toReturn;
-
+	//Record vectors for line drawing.
+	this->middleOther = middleOther;
+	this->domClass = domClass;
+	this->sortedVector = sortedByPurityVector;
 }

@@ -679,8 +679,6 @@ double DataInterface::getDimensionShift(int dimensionIndex) {
 		return 0.0;
 	}
 	return (*dataDimensions[dimensionIndex]).getShift();
-
-
 }
 
 // changes the shift of the dimension at the passed int to the passsed double
@@ -3505,7 +3503,7 @@ bool DataInterface::getQuadMode() {
 string DataInterface::domNominalSetLinguistic()
 {
 	//Create the visualization:
-	DomNominalSet visualization = DomNominalSet(this);
+	DomNominalSet visualization = DomNominalSet(this, 0);
 
 	//String to add to the descrption:
 	string toReturn = "--- Dominant Nominal Sets ---\n";
@@ -3756,17 +3754,17 @@ string DataInterface::domNominalSetLinguistic()
 	}
 
 	//Get Rules.
-	vector<string> rules = visualization.determineAllPossibleRules();
+	vector<string> rules = visualization.determineRules();
 
 	for (int i = 0; i < rules.size(); i++)
 	{
 		toReturn += rules.at(i);
 	}
 
-	toReturn += msclr::interop::marshal_as<std::string>("Number of Lines Set Transparent: " + this->getDNSLinesTransparent() + "\n");
+	toReturn += msclr::interop::marshal_as<std::string>("Number of Segment Poly-Lines Set Transparent: " + this->getDNSLinesTransparent() + "\n");
 	int percent = 100.0 - ((double(this->getDNSLinesTransparent()) / double(DNSSmallLines)) * 100.0);
 	toReturn += msclr::interop::marshal_as<std::string>("Percentage of data being visualized: " + percent  + "%\n");
-	toReturn += msclr::interop::marshal_as<std::string>("Number of Full Sets Visualized: " + DNSNumSetsVisualized + "\n");
+	toReturn += msclr::interop::marshal_as<std::string>("Number of Full n-D points being Visualized: " + DNSNumSetsVisualized + "\n");
 
 	toReturn += "---------------------------------------\n\n";
 

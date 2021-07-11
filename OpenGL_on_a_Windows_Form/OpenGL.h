@@ -1601,7 +1601,7 @@ namespace OpenGLForm
 		GLvoid drawNominalSetCorrelation(GLvoid)
 		{
 			//Create the visualization:
-			DomNominalSet visualization = DomNominalSet(this->file);
+			DomNominalSet visualization = DomNominalSet(this->file, this->worldHeight);
 
 			//Local Vars:
 			vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass;
@@ -1628,16 +1628,16 @@ namespace OpenGLForm
 			//At this point we have both the class freqencies by block as well as the block overall percentage so we can draw
 			//the blocks. This means we know what percentage of the coordinate is made by the block and what percentage of 
 			//each block will be filled by the dominant class.
-			sortedByPurityVector = visualization.getSortByPurity(blockHeights, classPercPerBlock);
+			//   sortedByPurityVector = visualization.getSortByPurity(blockHeights, classPercPerBlock);
 
 			//Sorting normally by freqency.
-			sortedByFreqVector = visualization.getSortByFreqency(blockHeights);
+			//   sortedByFreqVector = visualization.getSortByFreqency(blockHeights);
 
 			//Sorting by class on top and bottom (2 class max, testing case).
 			sortedByClassVector = visualization.getSortByClass(blockHeights, classPercPerBlock);
 
 			//Draw Visualizaiton.
-			visualization.drawVisualization(sortedByPurityVector, classPercPerBlock, this->worldWidth);
+			visualization.drawVisualization(sortedByClassVector, classPercPerBlock, this->worldWidth);
 
 		}//end Dom Nominal Sets.
 

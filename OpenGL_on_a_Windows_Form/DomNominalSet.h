@@ -14,7 +14,7 @@ public:
 
 	//Constructors:
 	DomNominalSet();
-	DomNominalSet(DataInterface* file);
+	DomNominalSet(DataInterface* file, int worldHeight);
 	
 	//Data Compiling:
 	vector<unordered_map<double, double>*>* getBlockHeights(vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass);
@@ -27,13 +27,15 @@ public:
 	//Drawing:
 	GLvoid drawVisualization(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
 	GLvoid drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
+	GLvoid drawGrayRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
 	GLvoid drawLines(double worldWidth);
 	
 	//Analysis:
 	vector<string> determineRules();
-	vector<string> determineAllPossibleRules();
+	
 
 private:
+	int worldHeight;
 	DataInterface* file;
 	vector<vector<pair<double, double>>> middleOther; 
 	vector<vector<pair<double, double>>> domClass;
