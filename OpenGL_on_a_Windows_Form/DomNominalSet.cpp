@@ -467,6 +467,7 @@ vector<vector<pair<double, double>>> DomNominalSet::getSortByClass(vector<unorde
 	for (int i = 0; i < file->getDimensionAmount(); i++)
 	{
 		sort(testVector.at(i).begin(), testVector.at(i).end());
+		reverse(testVector.at(i).begin(), testVector.at(i).end());
 	}
 
 
@@ -998,8 +999,6 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 
 		} // end k loop
 
-
-
 		// draw the data between these two dimensions, scaling width to count
 		for (int k = 0; k < frequency.size(); k++)
 		{
@@ -1075,6 +1074,215 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 	}
 
 	file->setDNSNumSetsVisualized(numFullSets);
+}
+
+//Currently only works with two classes.
+GLvoid DomNominalSet::drawColorPercentVisualization(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
+{
+	drawColorPercentRectangles(sortedByPurityVector, classPercPerBlock, worldWidth);
+	//drawLines(worldWidth);
+}
+
+
+GLvoid DomNominalSet::drawColorPercentRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
+{
+	int dimensionCount = 0; // Variable for the dimension index.
+	int colorChoice = file->getNominalColor();
+	glLineWidth(3.0); //Seting line width.
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
+
+	//====Draw the rectangles====.
+	const int HEIGHT_OF_ALL_BLOCKS = 435;
+
+	//Go over every attribute.
+	for (int i = 0; i < this->file->getDimensionAmount(); i++)
+	{
+		//Get current vector (attribute we are working with making blocks):
+		vector<pair<double, double>> curVec = sortedByPurityVector[i];
+
+		//Values to calculate where to put values.
+		double blockOffsetVertical = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5))); //Account for shifting.
+		double prevHeight = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)));
+		//Iterate over vector to find valus.
+		for (int j = 0; j < curVec.size(); j++)
+		{
+			//Get key and frequency and draw a rectangle.
+			double key = curVec[j].first;
+			double freq = curVec[j].second;
+
+			//Value to record offset of each color.
+			double offSetColor = blockOffsetVertical;
+
+			//Get the current dimensions class percentages.
+			vector<unordered_map<double, double>*>* curDimensionVec = classPercPerBlock->at(i);
+
+			//Iterate over classes and draw color perc.
+			for (int m = 0; m < curDimensionVec->size(); m++)
+			{
+				unordered_map<double, double>* nextClass = curDimensionVec->at(m);
+				if (nextClass->find(key) != nextClass->end())
+				{
+
+					double classPerc = nextClass->at(key);
+					double classNum = m + 1;
+
+					//Draw current rectangle.
+					glBegin(GL_QUADS);
+
+					//Set Color:
+					std::vector<double>* colorOfCurrent = this->file->getClassColor(classNum);
+					glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], 0.5);
+
+					// draw bottom left
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						(offSetColor)
+					);
+
+					// draw top left
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						(((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor))
+					);
+
+					// draw top right
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						(((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor))
+					);
+
+					// draw bottom right
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						(offSetColor)
+					);
+
+					glEnd();
+
+					offSetColor = offSetColor + (((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS));
+				}
+		
+			}
+
+			//Check if we need to draw the border.
+			if (!(freq <= 0.014))
+			{
+				//==Draw border==:
+				glBegin(GL_LINE_STRIP);
+
+				glColor4d(0, 0, 0, 1);
+				glLineWidth(.5);
+
+				//Top Left Point:
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+				);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+				);
+
+				//Top Right Point:
+				glEnd();
+
+			}
+			else //We dont need to draw the devider.
+			{
+
+				//==Draw Sides==:
+				glBegin(GL_LINE_STRIP);
+
+				glColor4d(0, 0, 0, 1);
+
+				glLineWidth(.5);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+				);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					(prevHeight - 2)
+				);
+
+				glEnd();
+
+				//==Draw Sides==:
+				glBegin(GL_LINE_STRIP);
+
+				glColor4d(0, 0, 0, 1);
+				glLineWidth(.5);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+				);
+
+				glVertex2d(
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					(prevHeight - 3)
+				);
+
+				glEnd();
+
+				if (j == curVec.size() - 1 || curVec.at(j + 1).second > 0.014)
+				{
+					//==Draw border==:
+					glBegin(GL_LINE_STRIP);
+
+					glColor4d(0, 0, 0, 1);
+					glLineWidth(.5);
+
+					//Top Left Point:
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+					);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+					);
+
+					//Top Right Point:
+					glEnd();
+				}
+
+			}
+
+			//Record the previous height of the block.
+			blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
+			prevHeight = blockOffsetVertical;
+
+		}
+
+		//==Draw bottom border==:
+		glBegin(GL_LINE_STRIP);
+
+		glColor4d(0, 0, 0, 1);
+		glLineWidth(.5);
+
+		//Top Left Point:
+		glVertex2d(
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+			((80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)))) //Accounts for shift.
+		);
+
+		glVertex2d(
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+			((80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)))) //Accounts for shift.
+		);
+
+		glEnd();
+		//====================
+
+
+		dimensionCount++;
+	}
+
 }
 
 

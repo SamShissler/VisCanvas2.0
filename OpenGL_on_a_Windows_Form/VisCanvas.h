@@ -2401,37 +2401,40 @@ namespace VisCanvas {
 		OpenGL->file->setQuadMode(false);
 		OpenGL->file->setNominalSetsMode(false);
 
-		//Ask User for percentage
-		CppCLRWinformsProjekt::UserInputPopUp^ popupG = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What purity percentage would you like \nfor green borders?");
-		CppCLRWinformsProjekt::UserInputPopUp^ popupPS = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What frequency percentage would you like \nfor purity sorting?");
-		CppCLRWinformsProjekt::UserInputPopUp^ popupTL = gcnew CppCLRWinformsProjekt::UserInputPopUp("Transparent Lines", "What line percentage would you like \nas a threshold to make lines transparent?");
-		
-		popupG->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-		popupG->ShowDialog();
+		//If the dominiant nominal sets is being turned on, get information from the user.
+		if (OpenGL->file->getDomNominalSetsMode() != true)
+		{
+			//Ask User for percentage
+			CppCLRWinformsProjekt::UserInputPopUp^ popupG = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What purity percentage would you like \nfor green borders?");
+			CppCLRWinformsProjekt::UserInputPopUp^ popupPS = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What frequency percentage would you like \nfor purity sorting?");
+			CppCLRWinformsProjekt::UserInputPopUp^ popupTL = gcnew CppCLRWinformsProjekt::UserInputPopUp("Transparent Lines", "What line percentage would you like \nas a threshold to make lines transparent?");
 
-		popupPS->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-		popupPS->ShowDialog();
+			popupG->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			popupG->ShowDialog();
 
-		popupTL->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-		popupTL->ShowDialog();
+			popupPS->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			popupPS->ShowDialog();
 
-		String^ resultFromUserM = popupG->getResult();
-		string resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
-		int userInG = stoi(resultFromUser);
-		
-		resultFromUserM = popupPS->getResult();
-		resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
-		int userInPS = stoi(resultFromUser);
+			popupTL->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			popupTL->ShowDialog();
 
-		resultFromUserM = popupTL->getResult();
-		resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
-		int userInTL = stoi(resultFromUser);
+			String^ resultFromUserM = popupG->getResult();
+			string resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+			int userInG = stoi(resultFromUser);
 
-		//Set values in datainterface.
-		OpenGL->file->setPurityPerc(userInG);
-		OpenGL->file->setFreqSmall(userInPS);
-		OpenGL->file->setTranspLineThresh(userInTL);
-		
+			resultFromUserM = popupPS->getResult();
+			resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+			int userInPS = stoi(resultFromUser);
+
+			resultFromUserM = popupTL->getResult();
+			resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+			int userInTL = stoi(resultFromUser);
+
+			//Set values in datainterface.
+			OpenGL->file->setPurityPerc(userInG);
+			OpenGL->file->setFreqSmall(userInPS);
+			OpenGL->file->setTranspLineThresh(userInTL);
+		}
 
 		OpenGL->file->setDomNominalSetsMode(!(OpenGL->file->getDomNominalSetsMode()));
 	}

@@ -1637,7 +1637,7 @@ namespace OpenGLForm
 			sortedByClassVector = visualization.getSortByClass(blockHeights, classPercPerBlock);
 
 			//Draw Visualizaiton.
-			visualization.drawVisualization(sortedByClassVector, classPercPerBlock, this->worldWidth);
+			visualization.drawColorPercentVisualization(sortedByClassVector, classPercPerBlock, this->worldWidth);
 
 		}//end Dom Nominal Sets.
 

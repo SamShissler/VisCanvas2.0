@@ -29,7 +29,10 @@ public:
 	GLvoid drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
 	GLvoid drawGrayRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
 	GLvoid drawLines(double worldWidth);
-	
+
+	GLvoid drawColorPercentVisualization(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
+	GLvoid drawColorPercentRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
+
 	//Analysis:
 	vector<string> determineRules();
 	
