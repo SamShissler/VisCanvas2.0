@@ -3503,7 +3503,7 @@ bool DataInterface::getQuadMode() {
 string DataInterface::domNominalSetLinguistic()
 {
 	//Create the visualization:
-	DomNominalSet visualization = DomNominalSet(this, 0);
+	DomNominalSet visualization = DomNominalSet(this, 0, 0);
 
 	//String to add to the descrption:
 	string toReturn = "--- Dominant Nominal Sets ---\n";
@@ -3754,16 +3754,21 @@ string DataInterface::domNominalSetLinguistic()
 	}
 
 	//Get Rules.
-	vector<string> rules = visualization.determineRules();
+	/*vector<string> rules = visualization.determineRules();
 
 	for (int i = 0; i < rules.size(); i++)
 	{
 		toReturn += rules.at(i);
-	}
+	}*/
 
-	toReturn += msclr::interop::marshal_as<std::string>("Number of Segment Poly-Lines Set Transparent: " + this->getDNSLinesTransparent() + "\n");
-	int percent = 100.0 - ((double(this->getDNSLinesTransparent()) / double(DNSSmallLines)) * 100.0);
-	toReturn += msclr::interop::marshal_as<std::string>("Percentage of data being visualized: " + percent  + "%\n");
+	toReturn += msclr::interop::marshal_as<std::string>("Number of Segment Polylines Set Transparent: " + this->getDNSLinesTransparent() + "\n");
+	toReturn += "Total Number of Segment Polylines: " + to_string(DNSSmallLines) + "\n";
+	int percent = ((double(this->getDNSLinesTransparent()) / double(DNSSmallLines)) * 100.0);
+	toReturn += "Percentage of Transparent Segments: " + to_string(percent) + "%\n";
+	double numnDPont = (this->getDNSnDPointsVisualized());
+	double dimAM = ((this->getDimensionAmount() - 1) * this->getSetAmount());
+	int nDPercent = ((numnDPont / dimAM) * 100.0);
+	toReturn += "Percentage of n-D Points Visualized: " + to_string(nDPercent) + "%\n";
 	toReturn += msclr::interop::marshal_as<std::string>("Number of Full n-D points being Visualized: " + DNSNumSetsVisualized + "\n");
 
 	toReturn += "---------------------------------------\n\n";
@@ -3772,6 +3777,7 @@ string DataInterface::domNominalSetLinguistic()
 }
 
 string DataInterface::getLinguisticDescription() {
+	
 	string description = "";
 	
 	//Check if dominant nomial sets:
@@ -4007,6 +4013,26 @@ bool DataInterface::getOverlapMode() {
 	return this->overlapMode;
 }
 
+void DataInterface::setReOrderMode(bool rom)
+{
+	reOrderMode = rom;
+}
+
+bool DataInterface::getReOrderMode()
+{
+	return this->reOrderMode;
+}
+
+void DataInterface::setShiftMode(bool sm)
+{
+	shiftMode = sm;
+}
+
+bool DataInterface::getShiftMode()
+{
+	return this->shiftMode;
+}
+
 void DataInterface::setNominalSetsMode(bool NominalSetsMode) {
 	this->nominalSetsMode = NominalSetsMode;
 }
@@ -4082,6 +4108,17 @@ int DataInterface::getDNSNumSetsVisualized()
 {
 	return this->DNSNumSetsVisualized;
 }
+
+void DataInterface::setDNSnDPointsVisualized(int ndP)
+{
+	DNSnDPointsVisualized = ndP;
+}
+
+int DataInterface::getDNSnDPointsVisualized()
+{
+	return this->DNSnDPointsVisualized;
+}
+
 
 void DataInterface::setDNSLinesTransparent(int LT)
 {

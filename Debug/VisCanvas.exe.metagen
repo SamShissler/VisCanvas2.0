@@ -60,6 +60,8 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getClusters(vector<SetCluster\,std::allocator<SetCluster> >*): PrivateScope, Public, HideBySig
     autoCluster(): PrivateScope, Public, HideBySig
     getDisplayed(Int32): PrivateScope, Public, HideBySig
+    getWorldWidth(): PrivateScope, Public, HideBySig
+    getWorldHeight(): PrivateScope, Public, HideBySig
     hypercube(): PrivateScope, Public, HideBySig
     setManualSortToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     setManualInvertToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
@@ -112,6 +114,7 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Resize(Int32, Int32, Int32, Int32, UInt32): PrivateScope, Public, HideBySig
     Render(): PrivateScope, Public, HideBySig
     SwapOpenGLBuffers(): PrivateScope, Public, HideBySig
+    setDomNomSetVisualization(DataInterface*, Double, Double): PrivateScope, Public, HideBySig
 Class VisCanvas.AdditionalSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(OpenGLForm.COpenGL): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

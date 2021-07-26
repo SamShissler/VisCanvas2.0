@@ -2172,9 +2172,11 @@ namespace VisCanvas {
 				this->toggleDimensionInvertToolStripMenuItem->Checked = false;
 				this->manualShift->BackColor = System::Drawing::SystemColors::ButtonFace;
 				this->button3->BackColor = System::Drawing::SystemColors::ButtonFace;
+				this->OpenGL->file->setReOrderMode(true);
 				this->sortManual();
 			} else {
 				this->reorderToolStripMenuItem->Checked = false;
+				this->OpenGL->file->setReOrderMode(false);
 				this->sortManual();
 			}
 		}
@@ -2200,9 +2202,11 @@ namespace VisCanvas {
 				this->toggleDimensionInvertToolStripMenuItem->Checked = false;
 				this->manualSort->BackColor = System::Drawing::SystemColors::ButtonFace;
 				this->button3->BackColor = System::Drawing::SystemColors::ButtonFace;
+				OpenGL->file->setShiftMode(true);
 				this->shiftManual();
 			} else {
 				this->dimensionShiftingToolStripMenuItem->Checked = false;
+				OpenGL->file->setShiftMode(false);
 				this->shiftManual();
 			}
 		}
@@ -2434,6 +2438,9 @@ namespace VisCanvas {
 			OpenGL->file->setPurityPerc(userInG);
 			OpenGL->file->setFreqSmall(userInPS);
 			OpenGL->file->setTranspLineThresh(userInTL);
+
+			//Calculate positions of the lines to draw and give them to OpenGL->file
+			OpenGL->setDomNomSetVisualization(OpenGL->file, OpenGL->getWorldHeight(), OpenGL->getWorldWidth());
 		}
 
 		OpenGL->file->setDomNominalSetsMode(!(OpenGL->file->getDomNominalSetsMode()));

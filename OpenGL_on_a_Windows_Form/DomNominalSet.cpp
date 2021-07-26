@@ -8,10 +8,38 @@ DomNominalSet::DomNominalSet()
 }
 
 //Constructor:
-DomNominalSet::DomNominalSet(DataInterface *file, int worldHeight)
+DomNominalSet::DomNominalSet(DataInterface *file, double worldHeight, double worldWidth)
 {
+	//Save passed values.
 	this->file = file;
 	this->worldHeight = worldHeight;
+	this->worldWidth = worldWidth;
+
+	//Calculate data.
+	//Get the frequency of values per class to use to calulate dominance percentage and 
+	//overall block height:
+	this->valueFreqPerClass = getValuePerClassFreq();
+
+	//At this point, we have how often values show up for each class. Now we need to calculate the percentage of the block that the
+	//dominant class will take up. To do this, we find dominant class nnumber and devide it by the number of times the value shows
+	//up in the block that we are working with.
+	this->classPercPerBlock = getClassPercPerBlock(this->valueFreqPerClass);
+
+	//Now we have both the percentages of how much each dominant set will take up of the block as well as the value frequencies for each
+	//class. Now we need to calculate the actual height of the blocks. To do this, we will be adding all the values together and then 
+	//normalizing the ammount from 0 to 1 to be able to draw it using OpenGL.
+	this->blockHeights = getBlockHeights(this->valueFreqPerClass);
+
+	//At this point we have both the class freqencies by block as well as the block overall percentage so we can draw
+	//the blocks. This means we know what percentage of the coordinate is made by the block and what percentage of 
+	//each block will be filled by the dominant class.
+	sortedByPurityVector = getSortByPurity(this->blockHeights, this->classPercPerBlock);
+
+	//Sorting normally by freqency.
+	//sortedByFreqVector = getSortByFreqency(this->blockHeights);
+
+	//Sorting by class on top and bottom (2 class max, testing case).
+	//this->sortedByClassVector = getSortByClass(this->blockHeights, this->classPercPerBlock);
 }
 
 //getClassPerPercBlock
@@ -504,10 +532,89 @@ vector<vector<pair<double, double>>> DomNominalSet::getSortByClass(vector<unorde
 	return sortedVector;
 }
 
-GLvoid DomNominalSet::drawVisualization(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
+void DomNominalSet::calculateClassColorPositionByBlock(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
 {
-	drawRectangles(sortedByPurityVector, classPercPerBlock, worldWidth);
-	drawLines(worldWidth);
+	int dimensionCount = 0; // Variable for the dimension index.
+	int colorChoice = file->getNominalColor();
+	glLineWidth(3.0); //Seting line width.
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
+
+	//Make a vector to hold positions of blocks.
+	vector<unordered_map<double, unordered_map<double, double>>> classColorPositionByBlock;
+
+	//====Draw the rectangles====.
+	const int HEIGHT_OF_ALL_BLOCKS = 435;
+
+	//Go over every attribute.
+	for (int i = 0; i < this->file->getDimensionAmount(); i++)
+	{
+		//Add the dimension to the vector.
+		classColorPositionByBlock.push_back(unordered_map<double, unordered_map<double, double>>());
+
+		//Get current vector (attribute we are working with making blocks):
+		vector<pair<double, double>> curVec = sortedByPurityVector[i];
+
+		//Values to calculate where to put values.
+		double blockOffsetVertical = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5))); //Account for shifting.
+		double prevHeight = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)));
+
+		//Iterate over vector to find valus.
+		for (int j = 0; j < curVec.size(); j++)
+		{
+			//Get key and frequency and draw a rectangle.
+			double key = curVec[j].first;
+			double freq = curVec[j].second;
+
+			//Get vector for storing positions.
+			unordered_map<double, double> currentBlockColorPositions;
+
+			//Value to record offset of each color.
+			double offSetColor = blockOffsetVertical;
+
+			//Get the current dimensions class percentages.
+			vector<unordered_map<double, double>*>* curDimensionVec = classPercPerBlock->at(i);
+
+			//Iterate over classes and draw color perc.
+			for (int m = 0; m < curDimensionVec->size(); m++)
+			{
+				unordered_map<double, double>* nextClass = curDimensionVec->at(m);
+				if (nextClass->find(key) != nextClass->end())
+				{
+
+					double classPerc = nextClass->at(key);
+					double classNum = m + 1;
+
+					double topPixelPosition = (((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor));
+					double middlePixelPosition = ((((classPerc / 2) * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor));
+
+
+					//Record the position of this class block.
+					currentBlockColorPositions.insert({ classNum, middlePixelPosition });
+					offSetColor = offSetColor + (((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS));
+				}
+
+			}
+
+			//Save the generated values.
+			classColorPositionByBlock.at(i).insert({ key, currentBlockColorPositions });
+
+			//Record the previous height of the block.
+			blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
+			prevHeight = blockOffsetVertical;
+
+		}
+
+		dimensionCount++;
+	}
+
+	this->classColorPositionByBlock = classColorPositionByBlock;
+}
+
+
+GLvoid DomNominalSet::drawVisualization()
+{
+	drawRectangles(this->sortedByPurityVector, this->classPercPerBlock, this->worldWidth);
+	drawLines(this->worldWidth);
 }
 
 GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
@@ -825,7 +932,7 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 	int dimensionCount = 0; // Variable for the dimension index.
 	int colorChoice = file->getNominalColor();
 	glLineWidth(3.0); //Seting line width.
-	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
 
 	vector<double> leftCoordinate = vector<double>();
 	vector<double> rightCoordinate = vector<double>();
@@ -838,6 +945,7 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 	bool alreadyExists = false;
 	int numOfLinesSetTransparent = 0;
 	int numSmallLines = 0; // count number of lines.
+	int numNDPoints = 0;
 
 	//Set up vector to make keep track of lines.
 	for (int i = 0; i < this->file->getSetAmount(); i++)
@@ -1041,6 +1149,12 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 
 			}
 
+			//Check to see if we have less then percent, record:
+			if (alpha != 0.1)
+			{
+				numNDPoints += frequency.at(k);
+			}
+
 			glColor4d((*color)[0], (*color)[1], (*color)[2], alpha);
 			double width = (frequency[k] / (file->getSetAmount(classVal) / 15));
 			glLineWidth(width);
@@ -1063,6 +1177,7 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 	//Add the number of lines set transparent to the dominant nominal sets.
 	file->setDNSLinesTransparent(numOfLinesSetTransparent);
 	file->setDNSNumSmallLines(numSmallLines);
+	file->setDNSnDPointsVisualized(numNDPoints);
 
 	int numFullSets = 0;
 	for (int i = 0; i < remainingFullLines.size(); i++)
@@ -1077,10 +1192,10 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 }
 
 //Currently only works with two classes.
-GLvoid DomNominalSet::drawColorPercentVisualization(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
+GLvoid DomNominalSet::drawColorPercentVisualization()
 {
-	drawColorPercentRectangles(sortedByPurityVector, classPercPerBlock, worldWidth);
-	//drawLines(worldWidth);
+	drawColorPercentRectangles(sortedByPurityVector, this->classPercPerBlock, worldWidth);
+	drawColorPercentLines(this->worldWidth);
 }
 
 
@@ -1091,30 +1206,58 @@ GLvoid DomNominalSet::drawColorPercentRectangles(vector<vector<pair<double, doub
 	glLineWidth(3.0); //Seting line width.
 	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
 
+	//Make a vector to hold positions of blocks.
+	vector<unordered_map<double,unordered_map<double, double>>> classColorPositionByBlock;
+
 	//====Draw the rectangles====.
 	const int HEIGHT_OF_ALL_BLOCKS = 435;
 
 	//Go over every attribute.
 	for (int i = 0; i < this->file->getDimensionAmount(); i++)
 	{
+		//Add the dimension to the vector.
+		classColorPositionByBlock.push_back(unordered_map<double, unordered_map<double,double>>());
+
 		//Get current vector (attribute we are working with making blocks):
 		vector<pair<double, double>> curVec = sortedByPurityVector[i];
 
 		//Values to calculate where to put values.
 		double blockOffsetVertical = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5))); //Account for shifting.
 		double prevHeight = (80 + (file->getDimensionShift(i) * (this->worldHeight * 0.5)));
+
 		//Iterate over vector to find valus.
 		for (int j = 0; j < curVec.size(); j++)
 		{
 			//Get key and frequency and draw a rectangle.
 			double key = curVec[j].first;
 			double freq = curVec[j].second;
+			double domPerc = 0;
+			double dominantClass = -1;
+			const double GRAY_VAL = 1;
 
-			//Value to record offset of each color.
-			double offSetColor = blockOffsetVertical;
-
+			//Go over classes and find dominant class:
 			//Get the current dimensions class percentages.
 			vector<unordered_map<double, double>*>* curDimensionVec = classPercPerBlock->at(i);
+
+			for (int m = 0; m < curDimensionVec->size(); m++)
+			{
+				unordered_map<double, double>* nextClass = curDimensionVec->at(m);
+
+				if (nextClass->find(key) != nextClass->end())
+				{
+					if (nextClass->at(key) >= domPerc)
+					{
+						domPerc = nextClass->at(key);
+						dominantClass = m + 1;
+					}
+				}
+			}
+
+			//Get vector for storing positions.
+			unordered_map<double, double> currentBlockColorPositions;
+			
+			//Value to record offset of each color.
+			double offSetColor = blockOffsetVertical;
 
 			//Iterate over classes and draw color perc.
 			for (int m = 0; m < curDimensionVec->size(); m++)
@@ -1125,6 +1268,13 @@ GLvoid DomNominalSet::drawColorPercentRectangles(vector<vector<pair<double, doub
 
 					double classPerc = nextClass->at(key);
 					double classNum = m + 1;
+
+					double topPixelPosition = (((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor));
+					double middlePixelPosition = ((((classPerc/2) * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor));
+
+
+					//Record the position of this class block.
+					currentBlockColorPositions.insert({ classNum, middlePixelPosition });
 
 					//Draw current rectangle.
 					glBegin(GL_QUADS);
@@ -1142,13 +1292,13 @@ GLvoid DomNominalSet::drawColorPercentRectangles(vector<vector<pair<double, doub
 					// draw top left
 					glVertex2d(
 						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-						(((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor))
+						(topPixelPosition)
 					);
 
 					// draw top right
 					glVertex2d(
 						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-						(((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (offSetColor))
+						(topPixelPosition)
 					);
 
 					// draw bottom right
@@ -1159,10 +1309,60 @@ GLvoid DomNominalSet::drawColorPercentRectangles(vector<vector<pair<double, doub
 
 					glEnd();
 
+					//===CHECK IF WE NEED GREEN BORDER===
+					
+					//Get perc from user.
+					double percFU = file->getPurityPerc();
+
+					if ((domPerc) >= (percFU / 100) && !(freq <= 0.014) && domPerc == classPerc)
+					{
+						//==Draw border==:
+						glBegin(GL_LINE_STRIP);
+
+						glColor4d(0, 255, 0, GRAY_VAL);
+						glLineWidth(.5);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							(offSetColor)
+						);
+
+						// draw top left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							(topPixelPosition)
+						);
+
+						// draw top right
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+							(topPixelPosition)
+						);
+
+						// draw bottom right
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+							(offSetColor)
+						);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							(offSetColor + 3)
+						);
+
+						glEnd();
+
+					}
+
 					offSetColor = offSetColor + (((classPerc * freq) * HEIGHT_OF_ALL_BLOCKS));
 				}
 		
 			}
+			
+			//Save the generated values.
+			classColorPositionByBlock.at(i).insert({ key, currentBlockColorPositions });
 
 			//Check if we need to draw the border.
 			if (!(freq <= 0.014))
@@ -1283,6 +1483,114 @@ GLvoid DomNominalSet::drawColorPercentRectangles(vector<vector<pair<double, doub
 		dimensionCount++;
 	}
 
+	this->classColorPositionByBlock = classColorPositionByBlock;
+}
+
+GLvoid DomNominalSet::drawColorPercentLines(double worldWidth)
+{
+	int dimensionCount = 0; // Variable for the dimension index.
+	int colorChoice = file->getNominalColor();
+	glLineWidth(3.0); //Seting line width.
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
+
+	vector<unordered_map<double, unordered_map<double, double>>> classColorPositionByBlock = this->classColorPositionByBlock;
+
+	vector<double> leftCoordinate = vector<double>();
+	vector<double> rightCoordinate = vector<double>();
+	vector<double> frequency = vector<double>();
+	vector<double> classVec = vector<double>();
+	vector<int> colorIdx = vector<int>();
+	bool alreadyExists = false;
+	int numOfLinesSetTransparent = 0;
+	int numSmallLines = 0; // count number of lines.
+
+	//Create Array of coordinates and Counts.
+	for (int i = 0; i < file->getDimensionAmount() - 1; i++) // file->getDimensionAmount()
+	{
+		if (!(file->getDataDimensions()->at(i)->isVisible())) continue;
+		if (file->getVisibleDimensionCount() < 2) break;
+
+		leftCoordinate.clear();
+		rightCoordinate.clear();
+		frequency.clear();
+		classVec.clear();
+		colorIdx.clear();
+		alreadyExists = false;
+
+		int j = i + 1;
+		while (j < file->getDimensionAmount() && !(file->getDataDimensions()->at(j)->isVisible())) j++;
+		if (j >= file->getDimensionAmount()) continue;
+
+		unordered_map<double, unordered_map<double, double>> leftCoordinateBlocks = classColorPositionByBlock.at(i);
+		unordered_map<double, unordered_map<double, double>>  rightCoordinateBlocks = classColorPositionByBlock.at(j);
+
+		//Itterate over sets.
+		for (int k = 0; k < this->file->getSetAmount(); k++)
+		{
+			double left = file->getData(k, i);
+			double right = file->getData(k, j);
+			double classOfCur = file->getClassOfSet(k);
+
+			double leftPosition = leftCoordinateBlocks.at(left).at(classOfCur);
+			double rightPosition = rightCoordinateBlocks.at(right).at(classOfCur);
+
+			// see if exists already, if so increment count;else add and count = 1
+			alreadyExists = false;
+			for (int l = 0; l < frequency.size(); l++)
+			{
+				if (leftCoordinate[l] == leftPosition &&
+					rightCoordinate[l] == rightPosition && classVec[l] == classOfCur)
+				{
+					alreadyExists = true;
+					frequency[l] = frequency[l] + 1.0;
+					break; // break out of l loop
+				}
+			} // end l loop
+
+			if (!alreadyExists)
+			{
+				leftCoordinate.push_back(leftPosition);
+				rightCoordinate.push_back(rightPosition);
+				frequency.push_back(1.0);
+				classVec.push_back(classOfCur);
+				colorIdx.push_back(k);
+			}
+
+		} // end k loop
+
+		// draw the data between these two dimensions, scaling width to count
+		for (int k = 0; k < frequency.size(); k++)
+		{
+			//Keep track of how many small lines are shown.
+			numSmallLines += frequency.size();
+
+			int classVal = classVec.at(k);
+			vector<double>* color = file->getSetColor(colorIdx[k]);
+
+			double alpha = 1.0;// Alpha here incase we want to use it.
+
+			glColor4d((*color)[0], (*color)[1], (*color)[2], alpha);
+			double width = (frequency[k] / (file->getSetAmount(classVal) / 15));
+			glLineWidth(width);
+			double leftData = leftCoordinate[k];
+			double rightData = rightCoordinate[k];
+
+			// draw a line using both points
+			glBegin(GL_LINE_STRIP);
+			glVertex2d((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)),
+				(leftData));
+			glVertex2d((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 2)),
+				(rightData));
+			glEnd();
+		}
+
+		dimensionCount++;
+
+	}
+
+	//Add the number of lines set transparent to the dominant nominal sets.
+	file->setDNSLinesTransparent(numOfLinesSetTransparent);
+	file->setDNSNumSmallLines(numSmallLines);
 }
 
 
@@ -1325,16 +1633,63 @@ vector<string> DomNominalSet::determineRules()
 			//Going from dominantly other class to dominantly current class, line is current class.
 			if (purityLeftBlock <= 0.15 && purityRightBlock >= 0.85)
 			{
+				//Determine how many cases are covered by these points:
+				double numberCases = 0;
+				double numCur = 0;
+				double numOther = 0;
+				double totalCur = 0;
+				double totalOther = 0;
+
+				for (int m = 0; m <= this->file->getSetAmount(); m++)
+				{
+					//If visiting the same blocks.
+					if (file->getData(m, i) == left && file->getData(m, j) == right)
+					{
+						if (file->getClassOfSet(m) == classOfCur)
+						{
+							numCur++;
+						}
+						else
+						{
+							numOther++;
+						}
+
+						numberCases++;
+					}
+
+					//Record total number of cases per class.
+					if (file->getClassOfSet(m) - 1 == classOfCur)
+					{
+						totalCur++;
+					}
+					else
+					{
+						totalOther++;
+					}
+
+				}
+
+				double curPercision = (numCur / numberCases) * 100.0;
+				double curCoverage = (numCur / totalCur) * 100.0;
+				double otherPercision = (numOther / numberCases) * 100.0;
+				double otherCoverage = (numOther / totalOther) * 100.0;
+
 				boolean exist = false;
 				int otherClass = 1;
 				if (file->getClassOfSet(k) == 1) otherClass = 2;
 
 				//Make sure the string has not been added.
-				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is in " + secondCord +
-					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n";
+				string solutionOne = "R1a: If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(file->getClassOfSet(k)) + ".\n" +
+					"Precision = " + to_string(curPercision) + "%, Coverage = " + to_string(curCoverage) + "%\n" +
+					"Predicted Class " + to_string(file->getClassOfSet(k)) + ": " + to_string(int(numCur)) + ", Predicted Class " + to_string(otherClass) + ": " + to_string(int(numOther)) + "\n" +
+					"Total Predicted: " + to_string(int(numberCases)) + "\n\n";
 
-				string solutionTwo = "If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is not in " + secondCord +
-					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(otherClass) + ".\n";
+				string solutionTwo = "R1b: If A is in " + firstCord + " in block dominantly class " + to_string(otherClass) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(otherClass) + "\n"
+					"Precision = " + to_string(otherPercision) + "%, Coverage = " + to_string(otherCoverage) + "%\n" +
+					"Predicted Class " + to_string(file->getClassOfSet(k)) + ": " + to_string(int(numCur)) + ", Predicted Class " + to_string(otherClass) + ": " + to_string(int(numOther)) + "\n" +
+					"Total Predicted: " + to_string(int(numberCases)) + "\n\n";
 
 				for (int m = 0; m < toReturn.size(); m++)
 				{
@@ -1355,16 +1710,63 @@ vector<string> DomNominalSet::determineRules()
 			//Going from dominantly current class to dominantly other class, line is other class.
 			else if (purityLeftBlock >= 0.85 && purityRightBlock <= 0.15)
 			{
+				//Determine how many cases are covered by these points:
+				double numberCases = 0;
+				double numCur = 0;
+				double numOther = 0;
+				double totalCur = 0;
+				double totalOther = 0;
+
+				for (int m = 0; m <= this->file->getSetAmount(); m++)
+				{
+					//If visiting the same blocks.
+					if (file->getData(m, i) == left && file->getData(m, j) == right)
+					{
+						if (file->getClassOfSet(m) == classOfCur)
+						{
+							numCur++;
+						}
+						else
+						{
+							numOther++;
+						}
+
+						numberCases++;
+					}
+
+					//Record total number of cases per class.
+					if (file->getClassOfSet(m) - 1 == classOfCur)
+					{
+						totalCur++;
+					}
+					else
+					{
+						totalOther++;
+					}
+
+				}
+
+				double curPercision = (numCur / numberCases) * 100.0;
+				double curCoverage = (numCur / totalCur) * 100.0;
+				double otherPercision = (numOther / numberCases) * 100.0;
+				double otherCoverage = (numOther / totalOther) * 100.0;
+
 				boolean exist = false;
 				int otherClass = 1;
 				if (file->getClassOfSet(k) == 1) otherClass = 2;
 
 				//Make sure the string has not been added.
-				string solutionOne = "If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is in " + secondCord +
-					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(otherClass) + ".\n";
+				string solutionOne = "R2a: If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(otherClass) + "\n"
+					"Precision = " + to_string(otherPercision) + "%, Coverage = " + to_string(otherCoverage) + "%\n" +
+					"Predicted Class " + to_string(file->getClassOfSet(k)) + ": " + to_string(int(numCur)) + ", Predicted Class " + to_string(otherClass) + ": " + to_string(int(numOther)) + "\n" +
+					"Total Predicted: " + to_string(int(numberCases)) + "\n\n";
 
-				string solutionTwo ="If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is not in " + secondCord +
-					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(file->getClassOfSet(k)) +".\n";
+				string solutionTwo ="R2b: If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(otherClass) + " then A is " + to_string(file->getClassOfSet(k)) + "\n"
+					"Precision = " + to_string(curPercision) + "%, Coverage = " + to_string(curCoverage) + "%\n" +
+					"Predicted Class " + to_string(file->getClassOfSet(k)) + ": " + to_string(int(numCur)) + ", Predicted Class " + to_string(otherClass) + ": " + to_string(int(numOther)) + "\n" +
+					"Total Predicted: " + to_string(int(numberCases)) + "\n\n";
 
 				for (int m = 0; m < toReturn.size(); m++)
 				{
@@ -1383,12 +1785,89 @@ vector<string> DomNominalSet::determineRules()
 
 			}
 
+			//Going from dominantly current class to dominantly current class, line is current class.
+			else if (purityLeftBlock >= 0.85 && purityRightBlock >= 0.85)
+			{
+
+				//Determine how many cases are covered by these points:
+				double numberCases = 0;
+				double numCur = 0;
+				double numOther = 0;
+				double totalCur = 0;
+				double totalOther = 0;
+
+				for (int m = 0; m <= this->file->getSetAmount(); m++)
+				{
+					//If visiting the same blocks.
+					if (file->getData(m, i) == left && file->getData(m, j) == right)
+					{
+						if (file->getClassOfSet(m) == classOfCur)
+						{
+							numCur++;
+						}
+						else
+						{
+							numOther++;
+						}
+
+						numberCases++;
+					}
+
+					//Record total number of cases per class.
+					if (file->getClassOfSet(m) - 1 == classOfCur)
+					{
+						totalCur++;
+					}
+					else
+					{
+						totalOther++;
+					}
+
+				}
+
+				double curPercision = (numCur / numberCases) * 100.0;
+				double curCoverage = (numCur / totalCur) * 100.0;
+				double otherPercision = (numOther / numberCases) * 100.0;
+				double otherCoverage = (numOther / totalOther) * 100.0;
+
+				boolean exist = false;
+				int otherClass = 1;
+				if (file->getClassOfSet(k) == 1) otherClass = 2;
+
+				//Make sure the string has not been added.
+				string solutionOne = "R3a: If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(file->getClassOfSet(k)) + "\n"
+					"Precision = " + to_string(curCoverage) + "%, Coverage = " + to_string(curPercision) + "%\n" +
+					"Predicted Class " + to_string(file->getClassOfSet(k)) + ": " + to_string(int(numCur)) + ", Predicted Class " + to_string(otherClass) + ": " + to_string(int(numOther)) + "\n" +
+					"Total Predicted: " + to_string(int(numberCases)) + "\n\n";
+
+				string solutionTwo = "R3b: If A is in " + firstCord + " in block dominantly class " + to_string(file->getClassOfSet(k)) + " and A is not in " + secondCord +
+					" in block dominantly class " + to_string(file->getClassOfSet(k)) + " then A is " + to_string(otherClass) + "\n"
+					"Precision = " + to_string(otherPercision) + "%, Coverage = " + to_string(otherCoverage) + "%\n" +
+					"Predicted Class " + to_string(file->getClassOfSet(k)) + ": " + to_string(int(numCur)) + ", Predicted Class " + to_string(otherClass) + ": " + to_string(int(numOther)) + "\n" +
+					"Total Predicted: " + to_string(int(numberCases)) + "\n\n";
+
+				for (int m = 0; m < toReturn.size(); m++)
+				{
+					if (toReturn.at(m) == solutionOne || toReturn.at(m) == solutionTwo)
+					{
+						exist = true;
+						break;
+					}
+				}
+
+				if (!exist)
+				{
+					toReturn.push_back(solutionOne);
+					toReturn.push_back(solutionTwo);
+				}
+			}
+
 		}
 	
 	}
 
 	return toReturn;
-
 }
 
 //drawGrayRectangles
@@ -1451,7 +1930,6 @@ GLvoid DomNominalSet::drawGrayRectangles(vector<vector<pair<double, double>>> so
 			//Record what the dominant class was.
 			domClass.at(i).push_back({ key, dominantClass });
 
-
 			//Draw the grey other class rectangle.
 			glBegin(GL_QUADS);
 
@@ -1469,8 +1947,6 @@ GLvoid DomNominalSet::drawGrayRectangles(vector<vector<pair<double, double>>> so
 				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
 				(blockOffsetVertical)
 			);
-
-			//(  (freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2) -  ((((domPerc * freq)* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) / 2))
 
 			// draw top right
 			glVertex2d(
@@ -1580,17 +2056,23 @@ GLvoid DomNominalSet::drawGrayRectangles(vector<vector<pair<double, double>>> so
 			//Block Height:
 			double currentBlockHeight = (freq * HEIGHT_OF_ALL_BLOCKS);
 
-			//Get a third of the block height:
-			double thirdBlockHeight = currentBlockHeight / 3;
+			////Get a third of the block height:
+			//double thirdBlockHeight = currentBlockHeight / 3;
 
-			//Calculate a sixth block height:
-			double sixthBlockHeight = currentBlockHeight / 6;
+			////Calculate a sixth block height:
+			//double sixthBlockHeight = currentBlockHeight / 6;
 
-			//Calcualte the first color position:
-			double firstColorPosition = sixthBlockHeight + blockOffsetVertical;
+			////Calcualte the first color position:
+			//double firstColorPosition = sixthBlockHeight + blockOffsetVertical;
 
-			//Calculate the second color position:
-			double secondColorPosition = (thirdBlockHeight * 2)+ sixthBlockHeight + blockOffsetVertical;
+			////Calculate the second color position:
+			//double secondColorPosition = (thirdBlockHeight * 2)+ sixthBlockHeight + blockOffsetVertical;
+
+			//Testing!
+			const double INCDEC = (currentBlockHeight / 100) * 2;
+			double middleBlockHeight = (currentBlockHeight / 2);
+			double firstColorPosition = (middleBlockHeight + INCDEC) + blockOffsetVertical;
+			double secondColorPosition = (middleBlockHeight - INCDEC) + blockOffsetVertical;
 
 			//Mutate vector to draw lines in next step.
 			curVec[j].second = firstColorPosition;

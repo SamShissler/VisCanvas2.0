@@ -358,6 +358,10 @@ public:
 	void createOverlaps();
 	void setOverlapMode(bool);
 	bool getOverlapMode();
+	void setReOrderMode(bool);
+	bool getReOrderMode();
+	void setShiftMode(bool);
+	bool getShiftMode();
 	void setNominalSetsMode(bool);
 	bool getNominalSetsMode();
 	void setDomNominalSetsMode(bool);
@@ -374,6 +378,8 @@ public:
 	int getDNSNumSmallLines();
 	void setDNSNumSetsVisualized(int);
 	int getDNSNumSetsVisualized();
+	void setDNSnDPointsVisualized(int);
+	int getDNSnDPointsVisualized();
 	void setFreqSmall(int);
 	int getFreqSmall();
 	vector<SetCluster> * getOverlaps();
@@ -387,6 +393,8 @@ private:
 	vector<SetCluster> overlaps;
 
 	bool overlapMode;
+	bool reOrderMode = false;
+	bool shiftMode = false;
 	bool nominalSetsMode;
 	bool domNominalSetsMode;
 	bool histogramMode;
@@ -400,6 +408,7 @@ private:
 	int DNSLinesTransparent;
 	int DNSSmallLines;
 	int DNSNumSetsVisualized;
+	int DNSnDPointsVisualized;
 
 	int combinationMode;
 	bool willCombine;
