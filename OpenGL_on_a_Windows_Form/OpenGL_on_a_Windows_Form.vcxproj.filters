@@ -14,15 +14,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Header Files\Data Editor Feature">
+      <UniqueIdentifier>{ae19d44e-f40b-47c0-b3da-c8ef6c976212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dominant Nominal Set Visualization">
+      <UniqueIdentifier>{aa5c6146-a990-4647-9ff0-32395e3e3577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Data Editor Feature">
+      <UniqueIdentifier>{d01050b2-96ac-453c-9f39-e6a459186e3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dominant Nominal Set Visualization">
+      <UniqueIdentifier>{0df37888-9758-4bae-83ea-8a3cdea6b757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main UI / Graphics">
+      <UniqueIdentifier>{83ae7376-32e5-46af-9f14-9039a9210ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main UI / Graphics">
+      <UniqueIdentifier>{cac2f694-fa91-4343-93a2-4506fd9146b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VisCanvas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ColorCustom.cpp">
@@ -52,65 +67,65 @@
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VisCanvasHelp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AdditionalSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scheme.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SchemeEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OrdinalGrouping.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OrderScheme.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IntervalGrouping.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RatioGrouping.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RatioGroupStarting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="IntervalGroupStarting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ClassScheme.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NominalGrouping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NominalColorPicker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OpenGL.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="IntervalGrouping.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
     </ClCompile>
-    <ClCompile Include="DomNominalSet.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="IntervalGroupStarting.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="NominalGrouping.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
     </ClCompile>
     <ClCompile Include="NominalSubgroupBuilder.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Data Editor Feature</Filter>
     </ClCompile>
     <ClCompile Include="NSGGroupAssingment.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="OrdinalGrouping.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderScheme.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="RatioGrouping.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="RatioGroupStarting.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="Scheme.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="SchemeEditor.cpp">
+      <Filter>Source Files\Data Editor Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="DomNominalSet.cpp">
+      <Filter>Source Files\Dominant Nominal Set Visualization</Filter>
+    </ClCompile>
+    <ClCompile Include="VisCanvas.cpp">
+      <Filter>Source Files\Main UI / Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="VisCanvasHelp.cpp">
+      <Filter>Source Files\Main UI / Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL.cpp">
+      <Filter>Source Files\Main UI / Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="OpenGL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -162,59 +177,62 @@
     <ClInclude Include="..\..\..\..\..\..\source\repos\CarData_Project\CarData_Project\Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="KVPair.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scheme.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SchemeEditor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OrdinalGrouping.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OrderScheme.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IntervalGrouping.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RatioGrouping.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RatioGroupStarting.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="IntervalGroupStarting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ClassScheme.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NominalGrouping.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NominalColorPicker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DomNominalSet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NominalSubgroupBuilder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NSG.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NSGGroupAssingment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserInputPopUp.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KVPair.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="NominalGrouping.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="NominalSubgroupBuilder.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="NSGGroupAssingment.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="IntervalGroupStarting.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="IntervalGrouping.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="DomNominalSet.h">
+      <Filter>Header Files\Dominant Nominal Set Visualization</Filter>
+    </ClInclude>
+    <ClInclude Include="Scheme.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="SchemeEditor.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="RatioGrouping.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="RatioGroupStarting.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="OrdinalGrouping.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderScheme.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="NSG.h">
+      <Filter>Header Files\Data Editor Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGL.h">
+      <Filter>Header Files\Main UI / Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -231,7 +249,7 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="SchemeEditor.resx">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Data Editor Feature</Filter>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +293,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="..\Button Icons\domNominalSets.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DNSRuleVisualization.Image.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="button1.Image.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

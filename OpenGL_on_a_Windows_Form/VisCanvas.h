@@ -139,6 +139,7 @@ namespace VisCanvas {
 	private: System::Windows::Forms::Button^ overlapButton;
 	private: System::Windows::Forms::Button^ nominalSetsButton;
 	private: System::Windows::Forms::Button^ domNominalSetsButton;
+	private: System::Windows::Forms::Button^ DNSRuleVisualizationButton;
 	private: System::Windows::Forms::Button^ sideButton;
 	private: System::Windows::Forms::Button^ subsetButton;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
@@ -206,6 +207,7 @@ namespace VisCanvas {
 				 this->overlapButton = (gcnew System::Windows::Forms::Button());
 				 this->nominalSetsButton = (gcnew System::Windows::Forms::Button());
 				 this->domNominalSetsButton = (gcnew System::Windows::Forms::Button());
+				 this->DNSRuleVisualizationButton = (gcnew System::Windows::Forms::Button());
 				 this->sideButton = (gcnew System::Windows::Forms::Button());
 				 this->subsetButton = (gcnew System::Windows::Forms::Button());
 
@@ -617,6 +619,7 @@ namespace VisCanvas {
 				 this->Tools->Controls->Add(this->overlapButton);
 				 this->Tools->Controls->Add(this->nominalSetsButton);
 				 this->Tools->Controls->Add(this->domNominalSetsButton);
+				 this->Tools->Controls->Add(this->DNSRuleVisualizationButton);
 				 this->Tools->Controls->Add(this->button3);
 				 this->Tools->Controls->Add(this->label3);
 				 this->Tools->Controls->Add(this->button2);
@@ -772,6 +775,18 @@ namespace VisCanvas {
 				 this->domNominalSetsButton->TabIndex = 23;
 				 this->domNominalSetsButton->UseVisualStyleBackColor = false;
 				 this->domNominalSetsButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_domNominalSets);
+				 //
+				 // DNSRuleGenerationButton
+				 this->DNSRuleVisualizationButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->DNSRuleVisualizationButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DNSRuleVisualization.Image")));
+				 this->DNSRuleVisualizationButton->Location = System::Drawing::Point(14 + 50, 239 - 103);
+				 this->DNSRuleVisualizationButton->Name = L"DNS Rule Visualization";
+				 this->DNSRuleVisualizationButton->Size = System::Drawing::Size(45, 45);
+				 this->DNSRuleVisualizationButton->TabIndex = 23;
+				 this->DNSRuleVisualizationButton->UseVisualStyleBackColor = false;
+				 this->DNSRuleVisualizationButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSRuleVisualization);
+				 this->DNSRuleVisualizationButton->Visible = false;
+				 //
 				 // 
 				 // sortAscend
 				 // 
@@ -2397,6 +2412,11 @@ namespace VisCanvas {
 
 	}
 
+	private: System::Void click_DNSRuleVisualization(System::Object^ sender, System::EventArgs^ e) 
+	{
+		OpenGL->file->setDNSRuleVisualizationMode(!(OpenGL->file->getDNSRuleVisualizationMode()));
+	}
+
 	private: System::Void click_domNominalSets(System::Object^ sender, System::EventArgs^ e) {
 		
 		OpenGL->file->setFrequencyMode(false);
@@ -2439,8 +2459,58 @@ namespace VisCanvas {
 			OpenGL->file->setFreqSmall(userInPS);
 			OpenGL->file->setTranspLineThresh(userInTL);
 
+			//Hide other UI buttons:
+			nominalSetsButton->Visible = false;
+			autoCluster->Visible = false;
+			origData->Visible = false;
+			sortAscend->Visible = false;
+			hypercube->Visible = false;
+			medianLevel->Visible = false;
+			meanLevel->Visible = false;
+			sortDescend->Visible = false;
+			sortOrig->Visible = false;
+			freqButton->Visible = false;
+			autoCluster->Visible = false;
+			toggleClassColors->Visible = false;
+			button2->Visible = false;
+			overlapButton->Visible = false;
+			sideButton->Visible = false;
+			histButton->Visible = false;
+			subsetButton->Visible = false;
+			DNSRuleVisualizationButton->Visible = true;
+
+			//Re-Position Buttons:
+			domNominalSetsButton->Location = System::Drawing::Point(14, 187 - 51); 
+			ling->Location = System::Drawing::Point(14 + 50, 290 - 206);
+
 			//Calculate positions of the lines to draw and give them to OpenGL->file
 			OpenGL->setDomNomSetVisualization(OpenGL->file, OpenGL->getWorldHeight(), OpenGL->getWorldWidth());
+		}
+		else
+		{
+			//Un-hide other UI buttons:
+			nominalSetsButton->Visible = true;
+			autoCluster->Visible = true;
+			origData->Visible = true;
+			sortAscend->Visible = true;
+			hypercube->Visible = true;
+			medianLevel->Visible = true;
+			meanLevel->Visible = true;
+			sortDescend->Visible = true;
+			sortOrig->Visible = true;
+			freqButton->Visible = true;
+			autoCluster->Visible = true;
+			toggleClassColors->Visible = true;
+			button2->Visible = true;
+			overlapButton->Visible = true;
+			sideButton->Visible = true;
+			histButton->Visible = true;
+			subsetButton->Visible = true;
+			DNSRuleVisualizationButton->Visible = false;
+
+			//Return buttons to original position:
+			domNominalSetsButton->Location = System::Drawing::Point(14, 488);
+			ling->Location = System::Drawing::Point(64, 388);
 		}
 
 		OpenGL->file->setDomNominalSetsMode(!(OpenGL->file->getDomNominalSetsMode()));

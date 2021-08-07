@@ -115,6 +115,7 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Render(): PrivateScope, Public, HideBySig
     SwapOpenGLBuffers(): PrivateScope, Public, HideBySig
     setDomNomSetVisualization(DataInterface*, Double, Double): PrivateScope, Public, HideBySig
+    visualizeDomNomVisualization(): PrivateScope, Public, HideBySig
 Class VisCanvas.AdditionalSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(OpenGLForm.COpenGL): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

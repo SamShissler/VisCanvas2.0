@@ -865,10 +865,9 @@ namespace OpenGLForm
 		DataInterface* file; // Create the DataInterface for reading the file
 
 		//Testing Dom Nom Sets.
-		void setDomNomSetVisualization(DataInterface* file, double worldHeight, double worldWidth)
-		{
-			domNomVisualization = new DomNominalSet(file, worldHeight, worldWidth);
-		}
+		void setDomNomSetVisualization(DataInterface* file, double worldHeight, double worldWidth);
+
+		void visualizeDomNomVisualization();
 
 	private:
 
@@ -1613,12 +1612,8 @@ namespace OpenGLForm
 		//NOMINAL SETS WITH CORRELATION:
 		GLvoid drawNominalSetCorrelation(GLvoid)
 		{
-			DomNominalSet visualization = DomNominalSet(file, worldHeight, worldWidth);
-			visualization.drawVisualization();
-			
-			//Breaks with VisCanvas line edits.
-			//this->domNomVisualization->drawColorPercentVisualization();
-
+			//DomNominalSet visualization = DomNominalSet(file, worldHeight, worldWidth);
+			this->visualizeDomNomVisualization();
 		}//end Dom Nominal Sets.
 
 		//===Draw Nominal Set Data===
@@ -2737,7 +2732,6 @@ namespace OpenGLForm
 			glLoadIdentity();
 			gluOrtho2D((((GLdouble)-width + this->tempXWorldMouseDifference) + this->zoom) / 2.0, (((GLdouble)width + this->tempXWorldMouseDifference) - this->zoom) / 2.0, ((((GLdouble)-height / 2.5) + this->zoom) - this->tempYWorldMouseDifference), ((((GLdouble)height - this->zoom) + 100) - this->tempYWorldMouseDifference));
 		}
-
 
 		// THIS IS WHERE ANY BUTTON CLICKS GO // the parent window will need to handle the other key presses
 		virtual void WndProc(Message% msg) override

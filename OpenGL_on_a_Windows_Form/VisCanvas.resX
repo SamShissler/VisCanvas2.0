@@ -659,19 +659,13 @@
   <data name="Column2.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAAd0SU1FB+IDAwMhIHf6TmUAAACkSURBVEhL1Y2xEcMwDAO9k/afLbF9Ag+in7TK
-        pPhCDxA6xhi7fCaUPUBZ8D/DGsxQN0A56Ua67AblSXtklL2HONkdFdhfHpNqtPvwdZiO5TLUCefhRT6Q
-        I6gXb4nqIGeZskvHZRkoux4oJEdQL94eXNCRXIY64TwU+ch9ly1ueUy6AQL7y8PYHS97D2HoiA677AZl
-        wkcc6gYoC7YGBcqCXxgexxcD+qDUbBNvIwAAAABJRU5ErkJggg==
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button1.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>button1.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="auto.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Button Icons\auto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -710,5 +704,8 @@
   </data>
   <data name="nominalSets.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Button Icons\nominalSets.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DNSRuleVisualization.Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>DNSRuleVisualization.Image.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
