@@ -291,6 +291,16 @@ namespace OpenGLForm
 			return this->file->getDisplayed(index);
 		}
 
+		double getWorldWidth()
+		{
+			return this->worldWidth;
+		}
+
+		double getWorldHeight()
+		{
+			return this->worldHeight;
+		}
+
 		/**
 		 * This creates a hypercube analysis pertaining to a particular cluster of data
 		 * @return
@@ -854,7 +864,15 @@ namespace OpenGLForm
 		 */
 		DataInterface* file; // Create the DataInterface for reading the file
 
+		//Testing Dom Nom Sets.
+		void setDomNomSetVisualization(DataInterface* file, double worldHeight, double worldWidth);
+
+		void visualizeDomNomVisualization();
+
 	private:
+
+		//Visualization Objects:
+		DomNominalSet* domNomVisualization;
 
 		double worldWidth;  // Set the world width
 		double worldHeight; // Set the world height
@@ -862,7 +880,6 @@ namespace OpenGLForm
 		GLdouble R; // Red
 		GLdouble G; // Green
 		GLdouble B; // Blue
-
 
 		int clickedDimension; // Holds the clicked dimension
 
@@ -967,7 +984,7 @@ namespace OpenGLForm
 			}
 
 
-			this->glEnableText("Callibri", 22);
+			this->glEnableText("Callibri", 17);
 			this->glTextBegin();
 
 			return 1;
@@ -1592,53 +1609,11 @@ namespace OpenGLForm
 
 		} // end drawData()
 
-
-
-
-
-
 		//NOMINAL SETS WITH CORRELATION:
 		GLvoid drawNominalSetCorrelation(GLvoid)
 		{
-			//Create the visualization:
-			DomNominalSet visualization = DomNominalSet(this->file);
-
-			//Local Vars:
-			vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass;
-			vector<vector<unordered_map<double, double>*>*>* classPercPerBlock;
-			vector<unordered_map<double, double>*>* blockHeights;
-			vector<vector<pair<double, double>>> sortedByPurityVector;
-			vector<vector<pair<double, double>>> sortedByFreqVector;
-			vector<vector<pair<double, double>>> sortedByClassVector;
-
-			//Get the frequency of values per class to use to calulate dominance percentage and 
-			//overall block height:
-			valueFreqPerClass = visualization.getValuePerClassFreq();
-
-			//At this point, we have how often values show up for each class. Now we need to calculate the percentage of the block that the
-			//dominant class will take up. To do this, we find dominant class nnumber and devide it by the number of times the value shows
-			//up in the block that we are working with.
-			classPercPerBlock = visualization.getClassPercPerBlock(valueFreqPerClass);
-
-			//Now we have both the percentages of how much each dominant set will take up of the block as well as the value frequencies for each
-			//class. Now we need to calculate the actual height of the blocks. To do this, we will be adding all the values together and then 
-			//normalizing the ammount from 0 to 1 to be able to draw it using OpenGL.
-			blockHeights = visualization.getBlockHeights(valueFreqPerClass);
-
-			//At this point we have both the class freqencies by block as well as the block overall percentage so we can draw
-			//the blocks. This means we know what percentage of the coordinate is made by the block and what percentage of 
-			//each block will be filled by the dominant class.
-			sortedByPurityVector = visualization.getSortByPurity(blockHeights, classPercPerBlock);
-
-			//Sorting normally by freqency.
-			sortedByFreqVector = visualization.getSortByFreqency(blockHeights);
-
-			//Sorting by class on top and bottom (2 class max, testing case).
-			sortedByClassVector = visualization.getSortByClass(blockHeights, classPercPerBlock);
-
-			//Draw Visualizaiton.
-			visualization.drawVisualization(sortedByPurityVector, classPercPerBlock, this->worldWidth);
-
+			//DomNominalSet visualization = DomNominalSet(file, worldHeight, worldWidth);
+			this->visualizeDomNomVisualization();
 		}//end Dom Nominal Sets.
 
 		//===Draw Nominal Set Data===
@@ -2757,7 +2732,6 @@ namespace OpenGLForm
 			glLoadIdentity();
 			gluOrtho2D((((GLdouble)-width + this->tempXWorldMouseDifference) + this->zoom) / 2.0, (((GLdouble)width + this->tempXWorldMouseDifference) - this->zoom) / 2.0, ((((GLdouble)-height / 2.5) + this->zoom) - this->tempYWorldMouseDifference), ((((GLdouble)height - this->zoom) + 100) - this->tempYWorldMouseDifference));
 		}
-
 
 		// THIS IS WHERE ANY BUTTON CLICKS GO // the parent window will need to handle the other key presses
 		virtual void WndProc(Message% msg) override

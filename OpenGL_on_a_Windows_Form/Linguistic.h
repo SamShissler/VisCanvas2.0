@@ -50,7 +50,7 @@ namespace VisCanvas {
 		}
 	private: System::ComponentModel::IContainer^ components;
 	
-	private: System::Windows::Forms::Label^ description;
+	private: System::Windows::Forms::RichTextBox^ description;
 
 	protected:
 
@@ -75,11 +75,11 @@ namespace VisCanvas {
 			   this->drawingTimer->Interval = 10;
 			   this->drawingTimer->Tick += gcnew System::EventHandler(this, &Linguistic::timer_tick);
 
-			   this->description = (gcnew System::Windows::Forms::Label());
-			   this->description->AutoSize = true;
+			   this->description = (gcnew System::Windows::Forms::RichTextBox());
+			   this->description->Size = System::Drawing::Size(760, 340);
 			   this->description->Text = gcnew String(OpenGL->file->getLinguisticDescription().c_str());
 			   this->description->Location = System::Drawing::Point(10, 10);
-			   this->description->Font = gcnew System::Drawing::Font(L"Eras Demi ITC", 10);
+			   this->description->Font = gcnew System::Drawing::Font(L"Eras Demi ITC", 8);
 
 			   this->Controls->Add(this->description);
 		   }

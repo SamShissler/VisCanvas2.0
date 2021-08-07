@@ -358,10 +358,16 @@ public:
 	void createOverlaps();
 	void setOverlapMode(bool);
 	bool getOverlapMode();
+	void setReOrderMode(bool);
+	bool getReOrderMode();
+	void setShiftMode(bool);
+	bool getShiftMode();
 	void setNominalSetsMode(bool);
 	bool getNominalSetsMode();
 	void setDomNominalSetsMode(bool);
 	bool getDomNominalSetsMode();
+	void setDNSRuleVisualizationMode(bool);
+	bool getDNSRuleVisualizationMode();
 	void setPurityPerc(int);
 	int getPurityPerc();
 	void setTranspLineThresh(int);
@@ -374,6 +380,9 @@ public:
 	int getDNSNumSmallLines();
 	void setDNSNumSetsVisualized(int);
 	int getDNSNumSetsVisualized();
+	void setDNSnDPointsVisualized(int);
+	int getDNSnDPointsVisualized();
+	vector<pair<double, pair<double, double>>> getRuleData(); //Rule Data.
 	void setFreqSmall(int);
 	int getFreqSmall();
 	vector<SetCluster> * getOverlaps();
@@ -387,8 +396,11 @@ private:
 	vector<SetCluster> overlaps;
 
 	bool overlapMode;
+	bool reOrderMode = false;
+	bool shiftMode = false;
 	bool nominalSetsMode;
 	bool domNominalSetsMode;
+	bool DNSRuleVisualizationMode;
 	bool histogramMode;
 	bool frequencyMode;
 	bool quadMode;
@@ -400,6 +412,8 @@ private:
 	int DNSLinesTransparent;
 	int DNSSmallLines;
 	int DNSNumSetsVisualized;
+	int DNSnDPointsVisualized;
+	vector<pair<double, pair<double, double>>> ruleData;
 
 	int combinationMode;
 	bool willCombine;
