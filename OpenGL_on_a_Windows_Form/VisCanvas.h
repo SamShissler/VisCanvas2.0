@@ -140,6 +140,7 @@ namespace VisCanvas {
 	private: System::Windows::Forms::Button^ nominalSetsButton;
 	private: System::Windows::Forms::Button^ domNominalSetsButton;
 	private: System::Windows::Forms::Button^ DNSRuleVisualizationButton;
+	private: System::Windows::Forms::Button^ DNSGenerateRulesButton;
 	private: System::Windows::Forms::Button^ sideButton;
 	private: System::Windows::Forms::Button^ subsetButton;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
@@ -208,6 +209,7 @@ namespace VisCanvas {
 				 this->nominalSetsButton = (gcnew System::Windows::Forms::Button());
 				 this->domNominalSetsButton = (gcnew System::Windows::Forms::Button());
 				 this->DNSRuleVisualizationButton = (gcnew System::Windows::Forms::Button());
+				 this->DNSGenerateRulesButton = (gcnew System::Windows::Forms::Button());
 				 this->sideButton = (gcnew System::Windows::Forms::Button());
 				 this->subsetButton = (gcnew System::Windows::Forms::Button());
 
@@ -620,6 +622,7 @@ namespace VisCanvas {
 				 this->Tools->Controls->Add(this->nominalSetsButton);
 				 this->Tools->Controls->Add(this->domNominalSetsButton);
 				 this->Tools->Controls->Add(this->DNSRuleVisualizationButton);
+				 this->Tools->Controls->Add(this->DNSGenerateRulesButton);
 				 this->Tools->Controls->Add(this->button3);
 				 this->Tools->Controls->Add(this->label3);
 				 this->Tools->Controls->Add(this->button2);
@@ -777,6 +780,7 @@ namespace VisCanvas {
 				 this->domNominalSetsButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_domNominalSets);
 				 //
 				 // DNSRuleGenerationButton
+				 //
 				 this->DNSRuleVisualizationButton->BackColor = System::Drawing::SystemColors::ButtonFace;
 				 this->DNSRuleVisualizationButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DNSRuleVisualization.Image")));
 				 this->DNSRuleVisualizationButton->Location = System::Drawing::Point(14 + 50, 239 - 103);
@@ -787,6 +791,17 @@ namespace VisCanvas {
 				 this->DNSRuleVisualizationButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSRuleVisualization);
 				 this->DNSRuleVisualizationButton->Visible = false;
 				 //
+				 // DNSGenerateRulesButton
+				 //
+				 this->DNSGenerateRulesButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->DNSGenerateRulesButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DNSGenerateRules.Image")));
+				 this->DNSGenerateRulesButton->Location = System::Drawing::Point(14, 187 - 51);
+				 this->DNSGenerateRulesButton->Name = L"DNS GenerateRulesButton";
+				 this->DNSGenerateRulesButton->Size = System::Drawing::Size(45, 45);
+				 this->DNSGenerateRulesButton->TabIndex = 23;
+				 this->DNSGenerateRulesButton->UseVisualStyleBackColor = false;
+				 this->DNSGenerateRulesButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSGenerateRulesButton);
+				 this->DNSGenerateRulesButton->Visible = false;
 				 // 
 				 // sortAscend
 				 // 
@@ -2417,6 +2432,11 @@ namespace VisCanvas {
 		OpenGL->file->setDNSRuleVisualizationMode(!(OpenGL->file->getDNSRuleVisualizationMode()));
 	}
 
+	private: System::Void click_DNSGenerateRulesButton(System::Object^ sender, System::EventArgs^ e)
+	{
+		OpenGL->generateRulesDNS();
+	}
+
 	private: System::Void click_domNominalSets(System::Object^ sender, System::EventArgs^ e) {
 		
 		OpenGL->file->setFrequencyMode(false);
@@ -2478,9 +2498,10 @@ namespace VisCanvas {
 			histButton->Visible = false;
 			subsetButton->Visible = false;
 			DNSRuleVisualizationButton->Visible = true;
+			DNSGenerateRulesButton->Visible = true;
 
 			//Re-Position Buttons:
-			domNominalSetsButton->Location = System::Drawing::Point(14, 187 - 51); 
+			domNominalSetsButton->Location = System::Drawing::Point(14, 393 - 205); 
 			ling->Location = System::Drawing::Point(14 + 50, 290 - 206);
 
 			//Calculate positions of the lines to draw and give them to OpenGL->file
@@ -2507,6 +2528,7 @@ namespace VisCanvas {
 			histButton->Visible = true;
 			subsetButton->Visible = true;
 			DNSRuleVisualizationButton->Visible = false;
+			DNSGenerateRulesButton->Visible = false;
 
 			//Return buttons to original position:
 			domNominalSetsButton->Location = System::Drawing::Point(14, 488);

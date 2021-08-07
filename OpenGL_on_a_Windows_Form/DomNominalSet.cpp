@@ -564,9 +564,6 @@ vector<vector<pair<double, double>>> DomNominalSet::getSortByClass(vector<unorde
 //Desc: Draws the Dominant Nominal Sets Visualization by first drawing rectangles then lines.
 GLvoid DomNominalSet::drawVisualization()
 {
-	//Get rule data from file (Seperate object used to generate rule data.)
-	ruleData = file->getRuleData();
-
 	//Refresh the calculated positions:
 	reCalculateData();
 
@@ -1723,9 +1720,32 @@ vector<string> DomNominalSet::determineRules()
 							if (Precision > (leftFreqForCur * 100.0))
 							{
 								//Record rule in rule data.
+								double leftPosition = 0;
+								double rightPosition = 0;
+
+								vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+								for (int c = 0; c < currentVecLeft.size(); c++)
+								{
+									if (currentVecLeft.at(c).first == left)
+									{
+										leftPosition = currentVecLeft.at(c).second;
+										break;
+									}
+								}
+
+								vector<pair<double, double>> currentVecRight = sortedVector.at(j);
+								for (int c = 0; c < currentVecRight.size(); c++)
+								{
+									if (currentVecRight.at(c).first == right)
+									{
+										rightPosition = currentVecRight.at(c).second;
+										break;
+									}
+								}
+
 								pair<double, double> values;
-								values.first = left;
-								values.second = right;
+								values.first = leftPosition;
+								values.second = rightPosition;
 
 								pair<double, pair<double, double>> toAdd;
 								toAdd.first = i;
@@ -1815,9 +1835,33 @@ vector<string> DomNominalSet::determineRules()
 							if (Precision > (leftFreqForCur * 100.0))
 							{
 								//Record rule in rule data.
+								double leftPosition = 0;
+								double rightPosition = 0;
+
+								vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+								for (int c = 0; c < currentVecLeft.size(); c++)
+								{
+									if (currentVecLeft.at(c).first == left)
+									{
+										leftPosition = currentVecLeft.at(c).second;
+										break;
+									}
+								}
+
+
+								vector<pair<double, double>> currentVecRight = sortedVector.at(j);
+								for (int c = 0; c < currentVecRight.size(); c++)
+								{
+									if (currentVecRight.at(c).first == right)
+									{
+										rightPosition = currentVecRight.at(c).second;
+										break;
+									}
+								}
+
 								pair<double, double> values;
-								values.first = left;
-								values.second = right;
+								values.first = leftPosition;
+								values.second = rightPosition;
 
 								pair<double, pair<double, double>> toAdd;
 								toAdd.first = i;
@@ -1907,19 +1951,93 @@ vector<string> DomNominalSet::determineRules()
 									r3Cases.push_back(currentPairCases.at(m));
 								}
 
-								//Figure out the position of the gray block.
-								double grayBlockposition = 0;
-
-								for (int m = 0; m < middleOther.at(j).size(); m++)
-								{
-									pair<double, double> curPair = middleOther.at(i + 1).at(m);
-									if (curPair.first == right)grayBlockposition = curPair.second;
-								}
-
 								//Record rule in rule data.
 								pair<double, double> values;
-								values.first = left;
-								values.second = right;
+
+								double leftPosition = 0;
+								double rightPosition = 0;
+								double dominantLeft = -1;
+								double dominantRight = -1;
+
+								//Find what the dominant class is for left and right data
+								vector<pair<double, double>>leftDC = domClass.at(i);
+								for (int c = 0; c < leftDC.size(); c++)
+								{
+									pair<double, double> p = leftDC.at(c);
+
+									if (p.first == left)
+									{
+										dominantLeft = p.second;
+										break;
+									}
+								}
+
+								vector<pair<double, double>>rightDC = domClass.at(j);
+								for (int c = 0; c < rightDC.size(); c++)
+								{
+									pair<double, double> p = rightDC.at(c);
+
+									if (p.first == right)
+									{
+										dominantRight = p.second;
+										break;
+									}
+								}
+
+								if (dominantLeft == k + 1)
+								{
+									//Determine the positions.
+									vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+									for (int c = 0; c < currentVecLeft.size(); c++)
+									{
+										if (currentVecLeft.at(c).first == left)
+										{
+											leftPosition = currentVecLeft.at(c).second;
+											break;
+										}
+									}
+								}
+								else
+								{
+									vector<pair<double, double>> currentVecLeft = middleOther.at(i);
+									for (int c = 0; c < currentVecLeft.size(); c++)
+									{
+										if (currentVecLeft.at(c).first == right)
+										{
+											leftPosition = currentVecLeft.at(c).second;
+											break;
+										}
+									}
+								}
+
+								if (dominantRight == k + 1)
+								{
+									//Determine the positions.
+									vector<pair<double, double>> currentVecRight = sortedVector.at(j);
+									for (int c = 0; c < currentVecRight.size(); c++)
+									{
+										if (currentVecRight.at(c).first == right)
+										{
+											rightPosition = currentVecRight.at(c).second;
+											break;
+										}
+									}
+								}
+								else
+								{
+									vector<pair<double, double>> currentVecRight = middleOther.at(j);
+									for (int c = 0; c < currentVecRight.size(); c++)
+									{
+										if (currentVecRight.at(c).first == right)
+										{
+											rightPosition = currentVecRight.at(c).second;
+											break;
+										}
+									}
+								}
+
+								values.first = leftPosition;
+								values.second = rightPosition;
 
 								pair<double, pair<double, double>> toAdd;
 								toAdd.first = i;
@@ -3005,42 +3123,8 @@ GLvoid DomNominalSet::visualizeRules()
 		double firstCord = currentRule.first;
 		double secondCord = firstCord + 1;
 
-		double leftData = currentRule.second.first;
-		double rightData = currentRule.second.second;
-
-		double leftPosition = 0;
-		double rightPosition = 0;
-
-		//Check to see if the rule contains more blocks.
-		if (i != ruleData.size() - 1)
-		{
-			//If the rule lines are coming from the same coordinate and have the same value
-			if (ruleData.at(i + 1).first == firstCord && ruleData.at(i + 1).second.first == leftData)
-			{
-				int x = x + 1;
-			}
-		}
-
-		//Determine the positions.
-		vector<pair<double, double>> currentVecLeft = sortedVector.at(firstCord);
-		for (int j = 0; j < currentVecLeft.size(); j++)
-		{
-			if (currentVecLeft.at(j).first == leftData)
-			{
-				leftPosition = currentVecLeft.at(j).second;
-				break;
-			}
-		}
-
-		vector<pair<double, double>> currentVecRight = sortedVector.at(secondCord);
-		for (int j = 0; j < currentVecRight.size(); j++)
-		{
-			if (currentVecRight.at(j).first == rightData)
-			{
-				rightPosition = currentVecRight.at(j).second;
-				break;
-			}
-		}
+		double leftPosition = currentRule.second.first;
+		double rightPosition = currentRule.second.second;
 
 		//Set Width:
 		GLdouble width = 3.0;

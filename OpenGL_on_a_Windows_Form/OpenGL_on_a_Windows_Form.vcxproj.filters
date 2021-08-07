@@ -301,5 +301,8 @@
     <Image Include="button1.Image.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="DNSGenerateRules.Image.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

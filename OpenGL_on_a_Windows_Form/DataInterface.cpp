@@ -3866,7 +3866,6 @@ int DataInterface::getDNSnDPointsVisualized()
 	return this->DNSnDPointsVisualized;
 }
 
-
 void DataInterface::setDNSLinesTransparent(int LT)
 {
 	this->DNSLinesTransparent = LT;
