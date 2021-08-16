@@ -669,9 +669,18 @@ bool DataInterface::setVisible(int setIndex, bool newVisible) {
 	return dataSets[setIndex].setVisible(newVisible);
 }
 
+void DataInterface::setDimensionVisible(int dimensionIndex, bool newVisible)
+{
+	if (dimensionIndex < this->getDimensionAmount() && dimensionIndex >= 0)
+	{
+		this->dataDimensions[dimensionIndex]->setVisibility(newVisible);
+	}
+}
 
-
-
+bool DataInterface::isDimensionVisible(int dimensionIndex)
+{
+	return this->dataDimensions[dimensionIndex]->isVisible();
+}
 
 // gets the amount the dimension is shifted by
 double DataInterface::getDimensionShift(int dimensionIndex) {
@@ -3508,8 +3517,6 @@ string DataInterface::domNominalSetLinguistic()
 	//Get lingusitic description:
 	string toReturn = visualization.linguisticDesc();
 
-	ruleData = visualization.getRuleData();
-
 	return toReturn;
 }
 
@@ -3796,6 +3803,16 @@ bool DataInterface::getDNSRuleVisualizationMode()
 	return this->DNSRuleVisualizationMode;
 }
 
+void DataInterface::setDNSHideCoordinatesMode(bool toSet)
+{
+	this->DNSHideCoordinatesMode = toSet;
+}
+
+bool DataInterface::getDNSHideCoordinatesMode()
+{
+	return this->DNSHideCoordinatesMode;
+}
+
 void DataInterface::setPurityPerc(int p)
 {
 	this->purityPerc = p;
@@ -3866,6 +3883,60 @@ int DataInterface::getDNSnDPointsVisualized()
 	return this->DNSnDPointsVisualized;
 }
 
+void DataInterface::addDimensionToHideDNS(int index)
+{
+	this->dimensionsHide.push_back(index);
+}
+
+void DataInterface::hideListedDimensionsDNS()
+{
+	for (int i = 0; i < this->dimensionsHide.size(); i++)
+	{
+		if (dimensionsHide.at(i) != -1)
+		{
+			this->dataDimensions[dimensionsHide.at(i)]->setVisibility(false);
+		}
+	}
+}
+
+bool DataInterface::dimensionInHideListDNS(int index)
+{
+	for (int i = 0; i < dimensionsHide.size(); i++)
+	{
+		if (dimensionsHide.at(i) == index) return true;
+	}
+	return false;
+}
+
+void DataInterface::resetHideDimensionDataDNS()
+{
+	this->dimensionsHide.clear();
+	for (int i = 0; i < dataDimensions.size(); i++)
+	{
+		this->dataDimensions[i]->setVisibility(true);
+	}
+}
+
+void DataInterface::setDNSRulesGenerated(vector<string> toSet)
+{
+	this->DNSRulesGenerated = toSet;
+}
+
+vector<string> DataInterface::getDNSRulesGenerated()
+{
+	return DNSRulesGenerated;
+}
+
+void DataInterface::setDimensionHover(int index)
+{
+	DNSDimensionHover = index;
+}
+
+int DataInterface::getDimensionHover()
+{
+	return DNSDimensionHover;
+}
+
 void DataInterface::setDNSLinesTransparent(int LT)
 {
 	this->DNSLinesTransparent = LT;
@@ -3879,6 +3950,16 @@ int DataInterface::getDNSLinesTransparent()
 vector<pair<double, pair<double, double>>> DataInterface::getRuleData()
 {
 	return ruleData;
+}
+
+void DataInterface::setDNSRulesByCoordinate(unordered_map<int, string> toSet)
+{
+	DNSRulesByCoordinate = toSet;
+}
+
+unordered_map<int, string> DataInterface::getDNSRulesByCoordinate()
+{
+	return DNSRulesByCoordinate;
 }
 
 vector<SetCluster> * DataInterface::getOverlaps() {

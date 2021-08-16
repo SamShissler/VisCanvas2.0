@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "DomNominalSet.h"
+#include "MonotoneBooleanChains.h"
+#include "DNSRule.h"
 #include <msclr\marshal_cppstd.h>
 
 using namespace System::Windows::Forms;
@@ -227,8 +229,8 @@ vector<unordered_map<double, double>*>* DomNominalSet::getBlockHeights(vector<ve
 	return toReturn;
 }
 
-// getValuePerClassFreq
-// Desc: Gets how often classes show up for each frequency.
+//getValuePerClassFreq
+//Desc: Gets how often classes show up for each frequency.
 vector<vector<unordered_map<double, double>*>*>* DomNominalSet::getValuePerClassFreq()
 {
 	vector<vector<unordered_map<double, double>*>*>* toReturn = new vector<vector<unordered_map<double, double>*>*>();
@@ -577,12 +579,16 @@ GLvoid DomNominalSet::drawVisualization()
 		{
 			drawRectangles(this->sortedByPurityVector, this->classPercPerBlock, this->worldWidth);
 			drawLines(this->worldWidth);
+			if (this->file->getDNSHideCoordinatesMode()) drawSelectorBoxes(this->worldWidth);
 			if (ruleData.size() != 0 && file->getDNSRuleVisualizationMode()) visualizeRules();
+			drawHoverInfo(this->worldWidth);
 
 		}
 		else
 		{
 			drawRectangles(this->sortedByPurityVector, this->classPercPerBlock, this->worldWidth);
+			if (this->file->getDNSHideCoordinatesMode()) drawSelectorBoxes(this->worldWidth);
+			drawHoverInfo(this->worldWidth);
 		}
 	}
 	else
@@ -590,7 +596,9 @@ GLvoid DomNominalSet::drawVisualization()
 		//If less than 15 dimensions:
 		drawRectangles(this->sortedByPurityVector, this->classPercPerBlock, this->worldWidth);
 		drawLines(this->worldWidth);
+		if (this->file->getDNSHideCoordinatesMode()) drawSelectorBoxes(this->worldWidth);
 		if (ruleData.size() != 0 && file->getDNSRuleVisualizationMode()) visualizeRules();
+		drawHoverInfo(this->worldWidth);
 	}
 
 }
@@ -611,235 +619,176 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 	//Go over every attribute.
 	for (int i = 0; i < this->file->getDimensionAmount(); i++)
 	{
-		//Calculate the hight of coordinate for all of the blocks to be in.
-		int HEIGHT_OF_ALL_BLOCKS = (file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.75) - ((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1));
-
-		//Get current vector (attribute we are working with making blocks):
-		vector<pair<double, double>> curVec = sortedByPurityVector[i];
-
-		//Values to calculate where to put values.
-		double blockOffsetVertical = ((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1)); //Account for shifting.
-		double prevHeight = ((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1));
-
-		//Push back vectors:
-		domClass.push_back(vector<pair<double, double>>());
-		middleOther.push_back(vector<pair<double, double>>());
-
-		//Iterate over vector to find valus.
-		for (int j = 0; j < curVec.size(); j++)
+		//If the dimension is set to visible.
+		if (this->file->isDimensionVisible(i))
 		{
-			//Get key and frequency and draw a rectangle.
-			double key = curVec[j].first;
-			double freq = curVec[j].second;
-			double domPerc = 0;
-			double dominantClass = -1;
-			const double GRAY_VAL = 1;
+			//Calculate the hight of coordinate for all of the blocks to be in.
+			int HEIGHT_OF_ALL_BLOCKS = (file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.75) - ((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1));
 
-			//Go over classes and find dominant class:
-			vector<unordered_map<double, double>*>* curDimensionVec = classPercPerBlock->at(i);
+			//Get current vector (attribute we are working with making blocks):
+			vector<pair<double, double>> curVec = sortedByPurityVector[i];
 
-			for (int m = 0; m < curDimensionVec->size(); m++)
+			//Values to calculate where to put values.
+			double blockOffsetVertical = ((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1)); //Account for shifting.
+			double prevHeight = ((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1));
+
+			//Push back vectors:
+			domClass.push_back(vector<pair<double, double>>());
+			middleOther.push_back(vector<pair<double, double>>());
+
+			//Iterate over vector to find valus.
+			for (int j = 0; j < curVec.size(); j++)
 			{
-				unordered_map<double, double>* nextClass = curDimensionVec->at(m);
+				//Get key and frequency and draw a rectangle.
+				double key = curVec[j].first;
+				double freq = curVec[j].second;
+				double domPerc = 0;
+				double dominantClass = -1;
+				const double GRAY_VAL = 1;
 
-				if (nextClass->find(key) != nextClass->end())
+				//Go over classes and find dominant class:
+				vector<unordered_map<double, double>*>* curDimensionVec = classPercPerBlock->at(i);
+
+				for (int m = 0; m < curDimensionVec->size(); m++)
 				{
-					if (nextClass->at(key) >= domPerc)
-					{
-						domPerc = nextClass->at(key);
-						dominantClass = m + 1;
+					unordered_map<double, double>* nextClass = curDimensionVec->at(m);
 
+					if (nextClass->find(key) != nextClass->end())
+					{
+						if (nextClass->at(key) >= domPerc)
+						{
+							domPerc = nextClass->at(key);
+							dominantClass = m + 1;
+
+						}
 					}
 				}
-			}
 
-			//Record what the dominant class was.
-			domClass.at(i).push_back({ key, dominantClass });
+				//Record what the dominant class was.
+				domClass.at(i).push_back({ key, dominantClass });
 
-			//Draw the dominant set rectangle.
-			glBegin(GL_QUADS);
+				//Draw the dominant set rectangle.
+				glBegin(GL_QUADS);
 
-			//Set Color:
-			std::vector<double>* colorOfCurrent = this->file->getClassColor(dominantClass);
-			glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], 0.5);
-
-			// draw bottom left
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-				(blockOffsetVertical)
-			);
-
-			// draw top left
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-				(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-			);
-
-			// draw top right
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-				(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-			);
-
-			// draw bottom right
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-				(blockOffsetVertical)
-			);
-
-			glEnd();
-
-			//CHECK IF WE NEED GREEN BORDER.
-			//Get perc from user.
-			double percFU = file->getPurityPerc();
-
-
-			if ((domPerc) >= (percFU / 100) && !(freq <= 0.014))
-			{
-				//==Draw border==:
-				glBegin(GL_LINE_STRIP);
-
-				glColor4d(0, 255, 0, GRAY_VAL);
-				glLineWidth(.5);
+				//Set Color:
+				std::vector<double>* colorOfCurrent = this->file->getClassColor(dominantClass);
+				glColor4d((*colorOfCurrent)[0], (*colorOfCurrent)[1], (*colorOfCurrent)[2], 0.5);
 
 				// draw bottom left
 				glVertex2d(
 					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-					(blockOffsetVertical - 4)
+					(blockOffsetVertical)
 				);
 
-				// draw bottom right
+				// draw top left
 				glVertex2d(
-					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-					(blockOffsetVertical - 4)
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+					(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 				);
 
 				// draw top right
 				glVertex2d(
 					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-4)
+					(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 				);
 
-
-				// draw top left
+				// draw bottom right
 				glVertex2d(
-					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-4)
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					(blockOffsetVertical)
 				);
+
+				glEnd();
+
+				//CHECK IF WE NEED GREEN BORDER.
+				//Get perc from user.
+				double percFU = file->getPurityPerc();
+
+
+				if ((domPerc) >= (percFU / 100) && !(freq <= 0.014))
+				{
+					//==Draw border==:
+					glBegin(GL_LINE_STRIP);
+
+					glColor4d(0, 255, 0, GRAY_VAL);
+					glLineWidth(.5);
+
+					// draw bottom left
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						(blockOffsetVertical - 4)
+					);
+
+					// draw bottom right
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						(blockOffsetVertical - 4)
+					);
+
+					// draw top right
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-4)
+					);
+
+
+					// draw top left
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-4)
+					);
+
+					// draw bottom left
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						(blockOffsetVertical - 4)
+					);
+
+					glEnd();
+
+				}
+
+				//Draw the grey other class rectangle.
+				glBegin(GL_QUADS);
+
+				//Set Color
+				glColor4d(0, 0, 0, 0.15);
 
 				// draw bottom left
 				glVertex2d(
 					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-					(blockOffsetVertical - 4)
+					(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 				);
 
-				glEnd();
-
-			}
-
-			//Draw the grey other class rectangle.
-			glBegin(GL_QUADS);
-
-			//Set Color
-			glColor4d(0, 0, 0, 0.15);
-
-			// draw bottom left
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-				(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-			);
-
-			// draw bottom right
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-				(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-			);
-
-			//(  (freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2) -  ((((domPerc * freq)* HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) / 2))
-
-			// draw top right
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-				((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
-			);
-
-			// draw top left
-			glVertex2d(
-				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-				((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
-			);
-
-			glEnd();
-
-			//Check if we need to draw the border.
-			if (!(freq <= 0.014))
-			{
-				//==Draw border==:
-				glBegin(GL_LINE_STRIP);
-
-				glColor4d(0, 0, 0, GRAY_VAL);
-				glLineWidth(.5);
-
+				// draw bottom right
 				glVertex2d(
-					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+					(((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
 				);
 
+
+				// draw top right
 				glVertex2d(
 					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
 					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
 				);
 
-				glEnd();
-
-			}
-			else //We dont need to draw the devider.
-			{
-
-				//==Draw Sides==:
-				glBegin(GL_LINE_STRIP);
-
-				glColor4d(0, 0, 0, GRAY_VAL);
-
-				glLineWidth(.5);
-
-				glVertex2d(
-					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-				);
-
-				glVertex2d(
-					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-					(prevHeight - 2)
-				);
-
-				glEnd();
-
-				//==Draw Sides==:
-				glBegin(GL_LINE_STRIP);
-
-				glColor4d(0, 0, 0, GRAY_VAL);
-				glLineWidth(.5);
-
+				// draw top left
 				glVertex2d(
 					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
-				);
-
-				glVertex2d(
-					((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-					(prevHeight - 2)
+					((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
 				);
 
 				glEnd();
 
-				if (j == curVec.size() - 1 || curVec.at(j + 1).second > 0.014)
+				//Check if we need to draw the border.
+				if (!(freq <= 0.014))
 				{
 					//==Draw border==:
 					glBegin(GL_LINE_STRIP);
 
 					glColor4d(0, 0, 0, GRAY_VAL);
-					glLineWidth(100);
+					glLineWidth(.5);
 
 					glVertex2d(
 						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
@@ -852,47 +801,146 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 					);
 
 					glEnd();
+
 				}
+				else //We dont need to draw the devider.
+				{
+
+					//==Draw Sides==:
+					glBegin(GL_LINE_STRIP);
+
+					glColor4d(0, 0, 0, GRAY_VAL);
+
+					glLineWidth(.5);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+					);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+						(prevHeight - 2)
+					);
+
+					glEnd();
+
+					//==Draw Sides==:
+					glBegin(GL_LINE_STRIP);
+
+					glColor4d(0, 0, 0, GRAY_VAL);
+					glLineWidth(.5);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))
+					);
+
+					glVertex2d(
+						((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+						(prevHeight - 2)
+					);
+
+					glEnd();
+
+					if (j == curVec.size() - 1 || curVec.at(j + 1).second > 0.014)
+					{
+						//==Draw border==:
+						glBegin(GL_LINE_STRIP);
+
+						glColor4d(0, 0, 0, GRAY_VAL);
+						glLineWidth(100);
+
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+						);
+
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+							((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2)
+						);
+
+						glEnd();
+					}
+
+				}
+
+				//Put lines at intersection of dominant class and gray block.
+				double firstColorPosition = (((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
+				double secondColorPosition = (((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
+
+				//make sure specific color always goes on top.
+				if (dominantClass == 2)
+				{
+					//Mutate vector to draw lines in next step.
+					curVec[j].second = firstColorPosition;
+					sortedByPurityVector[i] = curVec;
+					middleOther.at(i).push_back({ key, secondColorPosition });
+				}
+				else
+				{
+					//Mutate vector to draw lines in next step.
+					curVec[j].second = secondColorPosition;
+					sortedByPurityVector[i] = curVec;
+					middleOther.at(i).push_back({ key, firstColorPosition });
+				}
+
+				//Record the previous height.
+				blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
+				prevHeight = blockOffsetVertical;
+
+				//////////////////Old Calcualtions////////////////////////:
+
+				/*
+				//Mutate vector to draw lines in next step.
+				curVec[j].second = ((((domPerc * freq) / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
+				sortedByPurityVector[i] = curVec;
+
+				//Calculate the position of greyRec.
+				double x = (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2) - (((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))) / 2;
+				double middleGrey = (x + (((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + blockOffsetVertical));
+
+				//Add the middle of the grey block to middle.
+				middleOther.at(i).push_back({ key, middleGrey });
+
+				//Record the previous height.
+				blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
+				prevHeight = blockOffsetVertical;
+				*/
 
 			}
 
-			//Mutate vector to draw lines in next step.
-			curVec[j].second = ((((domPerc * freq) / 2) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical));
-			sortedByPurityVector[i] = curVec;
+			//==Draw bottom border==:
+			glBegin(GL_LINE_STRIP);
 
-			//Calculate the position of greyRec.
-			double x = (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)-2) - (((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical))) / 2;
-			double middleGrey = (x + (((domPerc * freq) * HEIGHT_OF_ALL_BLOCKS) + blockOffsetVertical));
+			glColor4d(0, 0, 0, 1);
+			glLineWidth(.5);
 
-			//Add the middle of the grey block to middle.
-			middleOther.at(i).push_back({ key, middleGrey });
+			//Top Left Point:
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
+				(((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1))) //Accounts for shift.
+			);
 
-			//Record the previous height.
-			blockOffsetVertical += (((freq * HEIGHT_OF_ALL_BLOCKS) + (blockOffsetVertical)) - prevHeight);
-			prevHeight = blockOffsetVertical;
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
+				(((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1))) //Accounts for shift.
+			);
+
+			glEnd();
+
+			dimensionCount++;
+		}
+		else
+		{
+			//Push back vectors:
+			domClass.push_back(vector<pair<double, double>>());
+			middleOther.push_back(vector<pair<double, double>>());
+			domClass.at(i).push_back({ -1, -1 });
+			middleOther.at(i).push_back({ -1, -1 });
 
 		}
-
-		//==Draw bottom border==:
-		glBegin(GL_LINE_STRIP);
-
-		glColor4d(0, 0, 0, 1);
-		glLineWidth(.5);
-
-		//Top Left Point:
-		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10),
-			(((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1))) //Accounts for shift.
-		);
-
-		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10),
-			(((file->getDimensionShift(i) * (this->worldHeight * 0.5) + this->worldHeight * 0.1))) //Accounts for shift.
-		);
-
-		glEnd();
-
-		dimensionCount++;
 	}
 
 	//Record vectors for line drawing.
@@ -1140,13 +1188,159 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 			double rightCoordinateX = (-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 2));
 			rightCoordinateX = rightCoordinateX * -1;
 
+			//===Determine the equation of the perpendicular line=== (Y = mX + b);
+			//Start with calculating the slope: (m)
+			double slope = (leftData - rightData) / (leftCoordinateX - rightCoordinateX);
+			double perpSlope = 0;
+			if (slope != 0)
+			{
+				width = width / 2; //Adjust the width for drawing since the line width is drawn both ways from the center.
+
+				//TWO CASES: 
+				//1.) Slope > 0.
+				//2.) Slope < 0.
+
+				//Perpendicular slope is opposite reciprical.
+				perpSlope = 1 / (slope * -1);
+
+				if (slope < 0) // 1.) Slope > 0
+				{
+					//Determine what (b) is using one of the given points.
+					double bLeft = leftData - (perpSlope * leftCoordinateX); //Where leftData is Y and leftCoordinateX is X.
+
+					//We now have m and b. Thus, if we have a x position we can find a y position.
+					//With our width as our distance, we will use the equation of a circle to calculate the x position
+					//on the line that is distance d from the origin point (left point.
+
+					//Calculate the x position.
+					double newXPositionLeft;
+					if (classVal == 2)
+					{
+						newXPositionLeft = leftCoordinateX + sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+					else
+					{
+						newXPositionLeft = leftCoordinateX - sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+
+					//Calculate the y position.
+					double newYPositionLeft = (perpSlope * newXPositionLeft) + bLeft;
+
+					//===DO THE SAME FOR THE RIGHT===
+
+					//Determine what (b) is using one of the given points.
+					double bRight = rightData - (perpSlope * rightCoordinateX); //Where leftData is Y and leftCoordinateX is X.
+
+					//We now have m and b. Thus, if we have a x position we can find a y position.
+					//With our width as our distance, we will use the equation of a circle to calculate the x position
+					//on the line that is distance d from the origin point (left point.
+
+					//Calculate the x position.
+					double newXPositionRight = 0;
+					if (classVal == 2)
+					{
+						newXPositionRight = rightCoordinateX + sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+					else
+					{
+						newXPositionRight = rightCoordinateX - sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+
+					//Calculate the y position.
+					double newYPositionRight = (perpSlope * newXPositionRight) + bRight;
+
+					// draw a line using both points
+					glBegin(GL_LINE_STRIP);
+					glVertex2d(-newXPositionLeft, newYPositionLeft);
+					glVertex2d(-newXPositionRight, newYPositionRight);
+					glEnd();
+
+				}
+				else //2.) SLOPE < 0
+				{
+					//Determine what (b) is using one of the given points.
+					double bLeft = leftData - (perpSlope * leftCoordinateX); //Where leftData is Y and leftCoordinateX is X.
+
+					//We now have m and b. Thus, if we have a x position we can find a y position.
+					//With our width as our distance, we will use the equation of a circle to calculate the x position
+					//on the line that is distance d from the origin point (left point.
+
+					//Calculate the x position.
+					double newXPositionLeft;
+					if (classVal == 2)
+					{
+						newXPositionLeft = leftCoordinateX - sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+					else
+					{
+						newXPositionLeft = leftCoordinateX + sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+
+					//Calculate the y position.
+					double newYPositionLeft = (perpSlope * newXPositionLeft) + bLeft;
+
+					//===DO THE SAME FOR THE RIGHT===
+
+					//Determine what (b) is using one of the given points.
+					double bRight = rightData - (perpSlope * rightCoordinateX); //Where leftData is Y and leftCoordinateX is X.
+
+					//We now have m and b. Thus, if we have a x position we can find a y position.
+					//With our width as our distance, we will use the equation of a circle to calculate the x position
+					//on the line that is distance d from the origin point (left point.
+
+					//Calculate the x position.
+					double newXPositionRight = 0;
+					if (classVal == 2)
+					{
+						newXPositionRight = rightCoordinateX - sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+					else
+					{
+						newXPositionRight = rightCoordinateX + sqrt((width * width) / (1 + (perpSlope * perpSlope)));
+					}
+
+					//Calculate the y position.
+					double newYPositionRight = (perpSlope * newXPositionRight) + bRight;
+
+					// draw a line using both points
+					glBegin(GL_LINE_STRIP);
+					glVertex2d(-newXPositionLeft, newYPositionLeft);
+					glVertex2d(-newXPositionRight, newYPositionRight);
+					glEnd();
+				}
+
+			}
+			else //Slope == 0. Shift Y value.
+			{
+				if (width <= 2) width = 5;
+				if (classVal == 2)
+				{
+					// draw a line using both points
+					glBegin(GL_LINE_STRIP);
+					glVertex2d(-leftCoordinateX, leftData + (width / 2) + 1);
+					glVertex2d(-rightCoordinateX, rightData + (width / 2) + 1); //aDDED +1 
+					glEnd();
+				}
+				else
+				{
+					// draw a line using both points
+					glBegin(GL_LINE_STRIP);
+					glVertex2d(-leftCoordinateX, leftData - (width / 2));
+					glVertex2d(-rightCoordinateX, rightData - (width / 2));
+					glEnd();
+				}
+
+			} // End of slope being 0.
+
+			/////////////////////////Old Drawing://///////////////
+			/*
 			// draw a line using both points
 			glBegin(GL_LINE_STRIP);
 			glVertex2d(-leftCoordinateX, leftData);
 			glVertex2d(-rightCoordinateX, rightData);
 			glEnd();
-				
-
+			*/
+			
 		}
 
 		dimensionCount++;
@@ -1168,6 +1362,242 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 	}
 
 	file->setDNSNumSetsVisualized(numFullSets);
+}
+
+//drawSelectorBoxes:
+//Desc: Draws marker for selected and unselected dimensions. Currently only used with hiding dimensions.
+GLvoid DomNominalSet::drawSelectorBoxes(double worldWidth)
+{
+	int dimensionCount = 0; // Variable for the dimension index.
+	glLineWidth(2.0); //Seting line width.
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.0
+
+	//Go over every attribute.
+	for (int i = 0; i < this->file->getDimensionAmount(); i++)
+	{
+		//If the dimension is set to be hidden.
+		if (this->file->dimensionInHideListDNS(i))
+		{
+			//Draw a box.
+			glBegin(GL_QUADS);
+
+			//Set Color:
+			glColor4d(0.0, 0.0, 1.0, 1.0);//Blue
+
+			// draw bottom left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 5),
+				(-10)
+			);
+
+			// draw top left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 5),
+				(10)
+			);
+
+			// draw top right
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 5),
+				(10)
+			);
+
+			// draw bottom right
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 5),
+				(-10)
+			);
+
+			glEnd();
+
+		}
+		else
+		{
+			//Draw a box.
+			glBegin(GL_LINE_STRIP);
+
+			//Set Color:
+			glColor4d(0.0, 0.0, 1.0, 1.0);//Blue
+
+			// draw bottom left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 5),
+				(-10)
+			);
+
+			// draw top left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 5),
+				(10)
+			);
+
+			// draw top right
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 5),
+				(10)
+			);
+
+			// draw bottom right
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 5),
+				(-10)
+			);
+
+			// draw bottom left
+			glVertex2d(
+				((-worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 5),
+				(-10)
+			);
+
+			glEnd();
+
+		}
+
+		dimensionCount++;
+	}
+}
+
+//drawHoverInfo:
+//Desc: Draws info about blocks on hover of mouse over the block.
+GLvoid DomNominalSet::drawHoverInfo(double worldWidth)
+{
+	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Value fro drawing.
+
+	//Check to see if the dimensions being hovered over is in the dimensions.
+	if (file->getDimensionHover() >= 0 && file->getDimensionHover() < file->getDimensionAmount())
+	{
+		string temp = "Number of cases in each block in dimension " + to_string(file->getDimensionHover() + 1) + ": ";
+
+		vector<unordered_map<double, double>*>* valuesPerDimension = new vector<unordered_map<double, double>*>();
+
+		//Fill the vector with unordered maps:
+		for (int i = 0; i < this->file->getDimensionAmount(); i++)
+		{
+			valuesPerDimension->push_back(new unordered_map<double, double>());
+		}
+
+		//Go over attributes.
+		for (int i = 0; i < this->file->getDimensionAmount(); i++)
+		{
+
+			//Go over classes:
+			vector<unordered_map<double, double>*>* curDimensionVec = valueFreqPerClass->at(i);
+
+			//Combine all values:
+			for (int j = 0; j < curDimensionVec->size(); j++)
+			{
+
+				unordered_map<double, double>* nextClass = curDimensionVec->at(j);
+
+				for (std::unordered_map<double, double>::iterator iter = nextClass->begin(); iter != nextClass->end(); ++iter)
+				{
+					//Add the values together.
+					double key = iter->first;
+					if (valuesPerDimension->at(i)->find(key) == valuesPerDimension->at(i)->end())
+					{
+						valuesPerDimension->at(i)->insert({ key, iter->second });
+					}
+					else
+					{
+						double curVal = valuesPerDimension->at(i)->at(key);
+						valuesPerDimension->at(i)->at(key) = curVal + nextClass->at(key);
+					}
+
+				}//End of iteration over values in curDimesnionVec.
+
+			}//End of iteration over each attribue value freq per class.
+
+		}//End of iteration over attributes.
+
+		//Iterate over the combined values at the current hovered dimension.
+		auto iterator = valuesPerDimension->at(file->getDimensionHover())->begin();
+		for (auto iterator = valuesPerDimension->at(file->getDimensionHover())->begin(); iterator != valuesPerDimension->at(file->getDimensionHover())->end(); iterator++)
+		{
+			//Add the values to the output string.
+			auto next = ++iterator;//Check the next position.
+			iterator--;//Return iterator to current element.
+			if(next == valuesPerDimension->at(file->getDimensionHover())->end()) temp += to_string(int(iterator->second)) + ".\n";
+			else temp += to_string(int(iterator->second)) + ", ";
+		}
+
+		//Check to see if there are other UI in the way.
+		int shiftDownVal = 0;
+		if (file->getDNSHideCoordinatesMode())
+		{
+			shiftDownVal = 40;
+		}
+
+		//Draw text of block cases.:
+		const char* text = temp.c_str();
+		glColor4d(0.0, 0.0, 0.0, 1.0);//Black
+		glRasterPos2d((-worldWidth / 2.0) + ((xAxisIncrement)) - 10, (0 - shiftDownVal));
+		int length = (int)std::strlen(text);
+		glListBase(2000);
+		glCallLists(length, GL_UNSIGNED_BYTE, text);
+		glEnd();
+
+		//Check to see if DNS Rule Visualziation is selected.
+		if (file->getDNSRuleVisualizationMode() == true)
+		{
+			//Check to see if any rules are visualizaed on this coordinate.
+			unordered_map<int, string> rulesByCoordinate = file->getDNSRulesByCoordinate();
+			int decVal = 1;
+
+			//Iterate over rules and see if any are from the current hovered dimension.
+			for (auto it = rulesByCoordinate.begin(); it != rulesByCoordinate.end(); it++)
+			{
+				//If this key is the coordinate, add the rule.
+				if (it->first == file->getDimensionHover())
+				{
+					//Get current rule.
+					temp = it->second;
+					string token = "";
+					//Parse the rule so it does not go off the screen.
+					for (int i = 0; i < temp.size() - 1; i++)
+					{
+						token += temp.at(i);
+
+						//If we get to seventy chars,
+						if (temp.at(i) == '.' && temp.at(i+1) == ' ')
+						{
+							//Draw text:
+							const char* text = token.c_str();
+							glColor4d(0.0, 0.0, 0.0, 1.0);//Black
+							glRasterPos2d((-worldWidth / 2.0) + ((xAxisIncrement)) - 10, (-25 * decVal));
+							int length = (int)std::strlen(text);
+							glListBase(2000);
+							glCallLists(length, GL_UNSIGNED_BYTE, text);
+							glEnd();
+
+							token = "";
+							decVal++;
+							
+							i++; // skips next " ".
+						}
+
+					}
+
+					if (token != "")
+					{
+						//Draw text:
+						const char* text = token.c_str();
+						glColor4d(0.0, 0.0, 0.0, 1.0);//Black
+						glRasterPos2d((-worldWidth / 2.0) + ((xAxisIncrement)) - 10, (-25 * decVal));
+						int length = (int)std::strlen(text);
+						glListBase(2000);
+						glCallLists(length, GL_UNSIGNED_BYTE, text);
+						glEnd();
+
+						decVal++;
+						token = "";
+					}
+
+				}
+			}
+		}
+
+	}// End of dimesion inclusion check.
+
 }
 
 //drawColorPercentVisualization:
@@ -1597,7 +2027,6 @@ GLvoid DomNominalSet::drawColorPercentLines(double worldWidth)
 //Desc: Iterates over data and determines logical classification rules to add to the linguistic description.
 vector<string> DomNominalSet::determineRules()
 {
-	//Sort coordinates by their number of purity blocks.
 	vector<string> toReturn;
 
 	//Record the number of rules.
@@ -2200,12 +2629,844 @@ vector<string> DomNominalSet::determineRules()
 	return toReturn;
 }
 
+//ruleGenerationSequential:
+//Desc: Generates rules sequentially so that no rules overlap with a goal to get highest coverage.
+vector<string> DomNominalSet::ruleGenerationSequential()
+{
+	ruleData.clear();//Clear the previous rule data if any.
+
+	//Consts:
+	const double FREQ_THRESHOLD = 0.85; //Block frequency for rule generation.
+	const double PRECISION_THRESHOLD = 95.0; //Threashold for keeping a rule. 
+
+	vector<string> toReturn; //Vector to hold the rules after generating them.
+	vector<int> casesAlreadyUsed; //Vector to hold the cases that are already conained in other rules.
+	vector<int> currentCasesAlreadyUsed; //Vector to hold the cases that are in the best current rule.
+	double highestPrecision = 0; //Var to keep track of highest precision.
+	double highestCoverage = 0; //Var to keep track of highest coverage.
+	pair<double, pair<double, double>> currentBestRuleData; //Data recorded for best rule to be visualized.
+	currentBestRuleData.first = -1; //Marking unused.
+	string currentBestRuleGenerated = ""; //Holds the best rule generated.
+	int ruleCount = 1; //Keep track of what number of rule we are on.
+	bool ruleGenerated = true;
+	int numRulesGenerated = 0;
+	unordered_map<int, string> rulesByCoordinate;
+	
+	//=====Rule Generation=====//
+
+	//While there are still cases to make a rule out of and we previously created a rule.
+	while (casesAlreadyUsed.size() < file->getSetAmount() && ruleGenerated == true)
+	{
+		ruleGenerated = false;//Set flag to false.
+
+		//Iterate over the dimensions.
+		for (int i = 0; i < file->getDimensionAmount() - 1; i++)
+		{
+			//Make sure we don't go out of bounds and dimensions are visible.
+			if (!(file->getDataDimensions()->at(i)->isVisible())) continue;
+			if (file->getVisibleDimensionCount() < 2) break;
+			int j = i + 1;
+			while (j < file->getDimensionAmount() && !(file->getDataDimensions()->at(j)->isVisible())) j++;
+			if (j >= file->getDimensionAmount()) continue;
+
+			//Get class frequency per block per coordinate for our current left and right coordinates.
+			vector<unordered_map<double, double>*>* leftCoordinateBlocks = classPercPerBlock->at(i);
+			vector<unordered_map<double, double>*>* rightCoordinateBlocks = classPercPerBlock->at(j);
+
+			//Get coordinate names as strings.
+			string firstCord = *(file->getDimensionName(i));
+			string secondCord = *(file->getDimensionName(j));
+
+			//Iterate over the number of classes there are and try to determine rules for each class.
+			for (int k = 1; k < file->getClassAmount() - 1; k++) // -2 for default and 'class' 
+			{
+				//Record class numbers as strings.
+				string currentClassAsString = to_string(k);
+				int currentClassAsInt = k;
+				vector<string> otherClassesAsStrings;
+				vector<int> otherClassesAsInts;
+				for (int m = 1; m < file->getClassAmount() - 1; m++)
+				{
+					if (m == k) continue;
+					otherClassesAsStrings.push_back(to_string(m));
+					otherClassesAsInts.push_back(m);
+				}
+
+				//Get frequencies for the left and rights coordinates blocks for the class we are working with.
+				unordered_map <double, double>* leftCoordinateBlocksFreqsForCurClass = leftCoordinateBlocks->at(k - 1);
+				unordered_map <double, double>* rightCoordinateBlocksFreqsForCurClass = rightCoordinateBlocks->at(k - 1);
+
+				//Iterate over each block combination between the two cooridnates and check if there are rules.
+				for (auto leftCoordinateIt = leftCoordinateBlocksFreqsForCurClass->begin();
+					leftCoordinateIt != leftCoordinateBlocksFreqsForCurClass->end(); leftCoordinateIt++)
+				{
+					for (auto rightCoordinateIt = rightCoordinateBlocksFreqsForCurClass->begin();
+						rightCoordinateIt != rightCoordinateBlocksFreqsForCurClass->end(); rightCoordinateIt++)
+					{
+						//Bool to check if the rule cannot be used.
+						bool ruleIncludesCaseAlreadyUsed = false;
+
+						//Normalized Attribute Values:
+						double leftAttributeVal = leftCoordinateIt->first;
+						double rightAttributeVal = rightCoordinateIt->first;
+
+						//Frequency of this current class (k) in the left and right block pair.
+						double freqOfCurClassLeft = leftCoordinateIt->second;
+						double freqOfCurClassRight = rightCoordinateIt->second;
+
+						//===Check to see if these frequencies pass any conditions===//
+
+						//Condition 1 - dominantly current class to dominantly current class. Result - current class:
+						if (freqOfCurClassLeft >= FREQ_THRESHOLD && freqOfCurClassRight >= FREQ_THRESHOLD)
+						{
+							//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+							int correctlyPredicted = 0;
+							int incorreclyPredicted = 0;
+							int totalPredicted = 0;
+							int correctlyPredictedFirst = 0;//Value for only single element.
+							int totalPredictedFirst = 0;//Value for only single element.
+							vector<int> numberOfCasesPerClass;
+							vector<int> casesInRule;
+
+							//Fill the vector with the number of classes.
+							for (int m = 0; m < file->getClassAmount() - 2; m++)
+							{
+								numberOfCasesPerClass.push_back(0);
+							}
+
+							//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+							for (int m = 0; m < file->getSetAmount(); m++)
+							{
+								//Check to see if the case has been used in a previous rule, flag.
+								bool hasBeenUsed = false;
+
+								//Get data about currrent set.
+								double curSetLeft = file->getData(m, i);
+								double curSetRight = file->getData(m, j);
+								int curSetClass = file->getClassOfSet(m);
+
+								//Check if the value is in the first element to be able to check if both attributes together is better
+								//than just the first attibute.
+								if (curSetLeft == leftAttributeVal && curSetClass == currentClassAsInt)
+								{
+									correctlyPredictedFirst++;
+									totalPredictedFirst++;
+								}
+								else
+								{
+									totalPredictedFirst++;
+								}
+
+								//If the attribute values are the same and the class is the expected result.
+								if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+									curSetClass == currentClassAsInt)
+								{
+									correctlyPredicted++;
+									totalPredicted++;
+									casesInRule.push_back(m);
+
+									//Check if current case has already been used.
+									for (int n = 0; n < casesAlreadyUsed.size(); n++)
+									{
+										if (m == casesAlreadyUsed.at(n))
+										{
+											hasBeenUsed = true;
+											break;
+										}
+									}
+
+								}
+								//If the attribute values are the same and the class is not the expected result.
+								else if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+									curSetClass != currentClassAsInt)
+								{
+									incorreclyPredicted++;
+									totalPredicted++;
+									casesInRule.push_back(m);
+
+									//Check if current case has already been used.
+									for (int n = 0; n < casesAlreadyUsed.size(); n++)
+									{
+										if (m == casesAlreadyUsed.at(n))
+										{
+											hasBeenUsed = true;
+											break;
+										}
+									}
+								}
+
+								//Record the number of sets in each class to be able to in each class.
+								numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+								//If a case in this rule has been used before, then we cannot include it.
+								if (hasBeenUsed)
+								{
+									ruleIncludesCaseAlreadyUsed = true;
+									break;
+								}
+
+							}//End of iteration over sets.
+
+							//If the rule includes a case that is in an already generated rule, continue to try next combination.
+							if (ruleIncludesCaseAlreadyUsed)
+							{
+								ruleIncludesCaseAlreadyUsed = false;
+								continue;
+							}
+
+							//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+							//then the current best rule generated.
+							if (totalPredicted != 0)
+							{
+								//Calculate precision of only first attribute and pir of attributes.
+								double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+								double precisionFirst = (double(correctlyPredictedFirst) / double(totalPredictedFirst)) * 100.0;
+
+								//If the second attribute inclusion increases precision.
+								if (precision > precisionFirst)
+								{
+
+									if (precision >= PRECISION_THRESHOLD)
+									{
+										numRulesGenerated++;
+									}
+
+									double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+									if (precision >= PRECISION_THRESHOLD && precision >= highestPrecision && totalCoverage >= highestCoverage)
+									{
+										//Compute other values needed for rule description.
+										double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+										double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+
+										//Make this rule the new optimal rule generated.
+										string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+											" and A goes to a block in " + secondCord + " that is dominantly class " + currentClassAsString + " then set A is" +
+											" class: " + currentClassAsString + ". \n" +
+											"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+											"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+											"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+											"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+
+										//Record the current highest precision, current highest coverage, and current cases covered.
+										highestPrecision = precision;
+										highestCoverage = totalCoverage;
+										currentCasesAlreadyUsed = casesInRule;
+										currentBestRuleGenerated = ruleStatement;
+										ruleGenerated = true; // Set flag that a rule was generated.
+
+										//Determine the position if this line for rule visuazliation and save it under the current best rule.
+										double leftPosition = 0;
+										double rightPosition = 0;
+										vector<pair<double, double>> currentVecRight = sortedVector.at(j);
+										vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+										for (int c = 0; c < currentVecLeft.size(); c++)
+										{
+											if (currentVecLeft.at(c).first == leftAttributeVal)
+											{
+												leftPosition = currentVecLeft.at(c).second;
+												break;
+											}
+										}
+										for (int c = 0; c < currentVecRight.size(); c++)
+										{
+											if (currentVecRight.at(c).first == rightAttributeVal)
+											{
+												rightPosition = currentVecRight.at(c).second;
+												break;
+											}
+										}
+
+										pair<double, double> values;
+										values.first = leftPosition;
+										values.second = rightPosition;
+										pair<double, pair<double, double>> toAdd;
+										toAdd.first = i;
+										toAdd.second = values;
+										currentBestRuleData = toAdd;
+
+									}
+								}
+								
+							}//End of total predicted != 0.
+
+						}//End of Condition 1.
+
+						//Condition 2 - dominantly current class to dominantly other class. Result - other class:
+						if (freqOfCurClassLeft >= FREQ_THRESHOLD && freqOfCurClassRight <= (1 - FREQ_THRESHOLD))
+						{
+							//We need to check this for each class that is not the current class.
+							for (int q = 0; q < otherClassesAsInts.size(); q++)
+							{
+								//If the current 'other' class is the class we are currently using, skip.
+								if (otherClassesAsInts.at(q) == currentClassAsInt) continue;
+
+								//Get the number of the other class.
+								int otherClassAsInt = otherClassesAsInts.at(q);
+								string otherClassAsString = to_string(otherClassAsInt);
+
+								//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+								int correctlyPredicted = 0;
+								int incorreclyPredicted = 0;
+								int totalPredicted = 0;
+								int correctlyPredictedFirst = 0;//Value for first attribute.
+								int totalPredictedFirst = 0;//Value for first attribute.
+								vector<int> numberOfCasesPerClass;
+								vector<int> casesInRule;
+
+								//Fill the vector with the number of classes.
+								for (int m = 0; m < file->getClassAmount() - 2; m++)
+								{
+									numberOfCasesPerClass.push_back(0);
+								}
+
+								//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+								for (int m = 0; m < file->getSetAmount(); m++)
+								{
+									//Check to see if the case has been used in a previous rule, flag.
+									bool hasBeenUsed = false;
+
+									//Get data about currrent set.
+									double curSetLeft = file->getData(m, i);
+									double curSetRight = file->getData(m, j);
+									int curSetClass = file->getClassOfSet(m);
+
+									//Check if the value is in the first element to be able to check if both attributes together is better
+									//than just the first attibute.
+									if (curSetLeft == leftAttributeVal && curSetClass == otherClassAsInt)
+									{
+										correctlyPredictedFirst++;
+										totalPredictedFirst++;
+									}
+									else
+									{
+										totalPredictedFirst++;
+									}
+
+									//If the attribute values are the same and the class is the expected result.
+									if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+										curSetClass == otherClassAsInt)
+									{
+										correctlyPredicted++;
+										totalPredicted++;
+										casesInRule.push_back(m);
+
+										//Check if current case has already been used.
+										for (int n = 0; n < casesAlreadyUsed.size(); n++)
+										{
+											if (m == casesAlreadyUsed.at(n))
+											{
+												hasBeenUsed = true;
+												break;
+											}
+										}
+
+									}
+									//If the attribute values are the same and the class is not the expected result.
+									else if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+										curSetClass != otherClassAsInt)
+									{
+										incorreclyPredicted++;
+										totalPredicted++;
+										casesInRule.push_back(m);
+
+										//Check if current case has already been used.
+										for (int n = 0; n < casesAlreadyUsed.size(); n++)
+										{
+											if (m == casesAlreadyUsed.at(n))
+											{
+												hasBeenUsed = true;
+												break;
+											}
+										}
+									}
+
+									//Record the number of sets in each class to be able to in each class.
+									numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+									//If a case in this rule has been used before, then we cannot include it.
+									if (hasBeenUsed)
+									{
+										ruleIncludesCaseAlreadyUsed = true;
+										break;
+									}
+
+								}//End of iteration over sets.
+							
+								//If the rule includes a case that is in an already generated rule, continue to try next combination.
+								if (ruleIncludesCaseAlreadyUsed)
+								{
+									ruleIncludesCaseAlreadyUsed = false;
+									continue;
+								}
+
+								//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+								//then the current best rule generated.
+								if (totalPredicted != 0)
+								{
+									double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+									double precisionFirst = (double(correctlyPredictedFirst) / double(totalPredictedFirst)) * 100.0;
+								
+									//If the precision of only the first attribute is less then the two combined.
+									if (precision > precisionFirst)
+									{
+
+										if (precision >= PRECISION_THRESHOLD)
+										{
+											numRulesGenerated++;
+										}
+
+										double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+										if (precision >= PRECISION_THRESHOLD && precision >= highestPrecision && totalCoverage >= highestCoverage)
+										{
+											//Compute other values needed for rule description.
+											double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(otherClassAsInt - 1))) * 100.0;
+											double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(otherClassAsInt - 1))) * 100.0;
+
+											//Make this rule the new optimal rule generated.
+											string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+												" and A goes to a block in " + secondCord + " that is dominantly class " + otherClassAsString + " then set A is" +
+												" class: " + otherClassAsString + ". \n" +
+												"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+												"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+												"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+												"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+
+											//Record the current highest precision, current highest coverage, and current cases covered.
+											highestPrecision = precision;
+											highestCoverage = totalCoverage;
+											currentCasesAlreadyUsed = casesInRule;
+											currentBestRuleGenerated = ruleStatement;
+											ruleGenerated = true; // Set flag that a rule was generated.
+
+											//Determine the position of the rule line and save it under the current best rule data.
+											double leftPosition = 0;
+											double rightPosition = 0;
+
+											vector<pair<double, double>> currentVecRight = middleOther.at(j);
+											vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+											for (int c = 0; c < currentVecLeft.size(); c++)
+											{
+												if (currentVecLeft.at(c).first == leftAttributeVal)
+												{
+													leftPosition = currentVecLeft.at(c).second;
+													break;
+												}
+											}
+											for (int c = 0; c < currentVecRight.size(); c++)
+											{
+												if (currentVecRight.at(c).first == rightAttributeVal)
+												{
+													rightPosition = currentVecRight.at(c).second;
+													break;
+												}
+											}
+
+											pair<double, double> values;
+											values.first = leftPosition;
+											values.second = rightPosition;
+											pair<double, pair<double, double>> toAdd;
+											toAdd.first = i;
+											toAdd.second = values;
+											currentBestRuleData = toAdd;
+
+										}
+									}
+
+								}//End of total predicted != 0.
+
+							}//End of iteration over other classes.
+
+						}//End of Condition 2.
+
+						//Condition 3 - dominantly current class to not dominantly other class. Result - current class class:
+						if (freqOfCurClassLeft >= FREQ_THRESHOLD && freqOfCurClassRight > (1 - FREQ_THRESHOLD))
+						{
+							//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+							int correctlyPredicted = 0;
+							int incorreclyPredicted = 0;
+							int totalPredicted = 0;
+							int correctlyPredictedFirst = 0;//Value for first attribute.
+							int totalPredictedFirst = 0;//Value for first attribute.
+							vector<int> numberOfCasesPerClass;
+							vector<int> casesInRule;
+
+							//Fill the vector with the number of classes.
+							for (int m = 0; m < file->getClassAmount() - 2; m++)
+							{
+								numberOfCasesPerClass.push_back(0);
+							}
+
+							//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+							for (int m = 0; m < file->getSetAmount(); m++)
+							{
+								//Check to see if the case has been used in a previous rule, flag.
+								bool hasBeenUsed = false;
+
+								//Get data about currrent set.
+								double curSetLeft = file->getData(m, i);
+								double curSetRight = file->getData(m, j);
+								int curSetClass = file->getClassOfSet(m);
+
+
+								//Check if the value is in the first element to be able to check if both attributes together is better
+								//than just the first attibute.
+								if (curSetLeft == leftAttributeVal && curSetClass == currentClassAsInt)
+								{
+									correctlyPredictedFirst++;
+									totalPredictedFirst++;
+								}
+								else
+								{
+									totalPredictedFirst++;
+								}
+
+								//If the attribute values are the same and the class is the expected result.
+								if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+									curSetClass == currentClassAsInt)
+								{
+									correctlyPredicted++;
+									totalPredicted++;
+									casesInRule.push_back(m);
+
+									//Check if current case has already been used.
+									for (int n = 0; n < casesAlreadyUsed.size(); n++)
+									{
+										if (m == casesAlreadyUsed.at(n))
+										{
+											hasBeenUsed = true;
+											break;
+										}
+									}
+
+								}
+								//If the attribute values are the same and the class is not the expected result.
+								else if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+									curSetClass != currentClassAsInt)
+								{
+									incorreclyPredicted++;
+									totalPredicted++;
+									casesInRule.push_back(m);
+
+									//Check if current case has already been used.
+									for (int n = 0; n < casesAlreadyUsed.size(); n++)
+									{
+										if (m == casesAlreadyUsed.at(n))
+										{
+											hasBeenUsed = true;
+											break;
+										}
+									}
+								}
+
+								//Record the number of sets in each class to be able to in each class.
+								numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+								//If a case in this rule has been used before, then we cannot include it.
+								if (hasBeenUsed)
+								{
+									ruleIncludesCaseAlreadyUsed = true;
+									break;
+								}
+
+							}//End of iteration over sets.
+
+							//If the rule includes a case that is in an already generated rule, continue to try next combination.
+							if (ruleIncludesCaseAlreadyUsed)
+							{
+								ruleIncludesCaseAlreadyUsed = false;
+								continue;
+							}
+
+							//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+							//then the current best rule generated.
+							if (totalPredicted != 0)
+							{
+								double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+								double precisionFirst = (double(correctlyPredictedFirst) / double(totalPredictedFirst)) * 100.0;
+
+								//If the combined attribute precision is greater then the first.
+								if (precision > precisionFirst)
+								{
+
+									if (precision >= PRECISION_THRESHOLD)
+									{
+										numRulesGenerated++;
+									}
+
+									double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+									if (precision >= PRECISION_THRESHOLD && precision >= highestPrecision && totalCoverage >= highestCoverage)
+									{
+										//Compute other values needed for rule description.
+										double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+										double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+
+										//Get other classes as a list of strings.
+										string otherClassesAsList = "";
+										for (int m = 0; m < otherClassesAsStrings.size() - 1; m++)
+										{
+											otherClassesAsList += otherClassesAsStrings.at(m) + ", ";
+										}
+										otherClassesAsList += otherClassesAsStrings.at(otherClassesAsStrings.size() - 1);
+
+										//Make this rule the new optimal rule generated.
+										string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+											" and A does not go to a block in " + secondCord + " that is dominantly class " + otherClassesAsList + " then set A is" +
+											" class: " + currentClassAsString + ". \n" +
+											"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+											"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+											"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+											"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+
+										//Record the current highest precision, current highest coverage, and current cases covered.
+										highestPrecision = precision;
+										highestCoverage = totalCoverage;
+										currentCasesAlreadyUsed = casesInRule;
+										currentBestRuleGenerated = ruleStatement;
+										ruleGenerated = true; // Set flag that a rule was generated.
+
+										//Determine the position of the rule line and save it under the current best rule data.
+										double leftPosition = 0;
+										double rightPosition = 0;
+
+										vector<pair<double, double>> currentVecRight = middleOther.at(j);
+										vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+										for (int c = 0; c < currentVecLeft.size(); c++)
+										{
+											if (currentVecLeft.at(c).first == leftAttributeVal)
+											{
+												leftPosition = currentVecLeft.at(c).second;
+												break;
+											}
+										}
+										for (int c = 0; c < currentVecRight.size(); c++)
+										{
+											if (currentVecRight.at(c).first == rightAttributeVal)
+											{
+												rightPosition = currentVecRight.at(c).second;
+												break;
+											}
+										}
+
+										pair<double, double> values;
+										values.first = leftPosition;
+										values.second = rightPosition;
+										pair<double, pair<double, double>> toAdd;
+										toAdd.first = i;
+										toAdd.second = values;
+										currentBestRuleData = toAdd;
+
+									}
+
+								}
+
+							}//End of total predicted != 0.
+
+						}//End of Condition 3.
+
+						//=====SINGLE ATTRIBUTE RULES=====//
+						//Condition 4 - Left attribute val goes through a block dominantly current class. Result - currentClass:
+						if (freqOfCurClassLeft >= FREQ_THRESHOLD)
+						{
+							//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+							int correctlyPredicted = 0;
+							int incorreclyPredicted = 0;
+							int totalPredicted = 0;
+							vector<int> numberOfCasesPerClass;
+							vector<int> casesInRule;
+
+							//Fill the vector with the number of classes.
+							for (int m = 0; m < file->getClassAmount() - 2; m++)
+							{
+								numberOfCasesPerClass.push_back(0);
+							}
+
+							//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+							for (int m = 0; m < file->getSetAmount(); m++)
+							{
+								//Check to see if the case has been used in a previous rule, flag.
+								bool hasBeenUsed = false;
+
+								//Get data about currrent set.
+								double curSetLeft = file->getData(m, i);
+								double curSetRight = file->getData(m, j);
+								int curSetClass = file->getClassOfSet(m);
+
+								//If the attribute values are the same and the class is the expected result.
+								if (curSetLeft == leftAttributeVal && curSetClass == currentClassAsInt)
+								{
+									correctlyPredicted++;
+									totalPredicted++;
+									casesInRule.push_back(m);
+
+									//Check if current case has already been used.
+									for (int n = 0; n < casesAlreadyUsed.size(); n++)
+									{
+										if (m == casesAlreadyUsed.at(n))
+										{
+											hasBeenUsed = true;
+											break;
+										}
+									}
+
+								}
+								//If the attribute values are the same and the class is not the expected result.
+								else if (curSetLeft == leftAttributeVal && curSetClass != currentClassAsInt)
+								{
+									incorreclyPredicted++;
+									totalPredicted++;
+									casesInRule.push_back(m);
+
+									//Check if current case has already been used.
+									for (int n = 0; n < casesAlreadyUsed.size(); n++)
+									{
+										if (m == casesAlreadyUsed.at(n))
+										{
+											hasBeenUsed = true;
+											break;
+										}
+									}
+								}
+
+								//Record the number of sets in each class to be able to in each class.
+								numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+								//If a case in this rule has been used before, then we cannot include it.
+								if (hasBeenUsed)
+								{
+									ruleIncludesCaseAlreadyUsed = true;
+									break;
+								}
+
+							}//End of iteration over sets.
+
+							//If the rule includes a case that is in an already generated rule, continue to try next combination.
+							if (ruleIncludesCaseAlreadyUsed)
+							{
+								ruleIncludesCaseAlreadyUsed = false;
+								continue;
+							}
+
+							//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+							//then the current best rule generated.
+							if (totalPredicted != 0)
+							{
+								
+								double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+								double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+
+								if (precision >= PRECISION_THRESHOLD)
+								{
+									numRulesGenerated++;
+								}
+
+								if (precision >= PRECISION_THRESHOLD && precision >= highestPrecision && totalCoverage >= highestCoverage)
+								{
+									//Compute other values needed for rule description.
+									double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+									double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+
+									//Make this rule the new optimal rule generated.
+									string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+										" then set A is class: " + currentClassAsString + ". \n" +
+										"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+										"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+										"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+										"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+
+									//Record the current highest precision, current highest coverage, and current cases covered.
+									highestPrecision = precision;
+									highestCoverage = totalCoverage;
+									currentCasesAlreadyUsed = casesInRule;
+									currentBestRuleGenerated = ruleStatement;
+									ruleGenerated = true; // Set flag that a rule was generated.
+
+									//Determine the position if this line for rule visuazliation and save it under the current best rule.
+									double leftPosition = 0;
+									double rightPosition = 0;
+									vector<pair<double, double>> currentVecRight = sortedVector.at(j);
+									vector<pair<double, double>> currentVecLeft = sortedVector.at(i);
+									for (int c = 0; c < currentVecLeft.size(); c++)
+									{
+										if (currentVecLeft.at(c).first == leftAttributeVal)
+										{
+											leftPosition = currentVecLeft.at(c).second;
+											break;
+										}
+									}
+									for (int c = 0; c < currentVecRight.size(); c++)
+									{
+										if (currentVecRight.at(c).first == rightAttributeVal)
+										{
+											rightPosition = currentVecRight.at(c).second;
+											break;
+										}
+									}
+
+									pair<double, double> values;
+									values.first = leftPosition;
+									values.second = -1;//Label this as a single attribute rule.
+									pair<double, pair<double, double>> toAdd;
+									toAdd.first = i;
+									toAdd.second = values;
+									currentBestRuleData = toAdd;
+
+								}
+							
+							}//End of total predicted != 0.
+
+						}//End of Condition 4.
+
+					}//End of right coordinate block iteration.
+
+				}//End of left coordinate block iteration.
+
+			}//End of iterating classes.
+
+		}//End of iterating dimensions.
+
+		//If we generated a rule.
+		if (ruleGenerated == true)
+		{
+			//Record the top rule and reset values for next.
+			toReturn.push_back(currentBestRuleGenerated);
+			highestPrecision = 0;
+			highestCoverage = 0;
+			for (int i = 0; i < currentCasesAlreadyUsed.size(); i++) //Add cases from this rule to case pool.
+			{
+				casesAlreadyUsed.push_back(currentCasesAlreadyUsed.at(i));
+			}
+			currentCasesAlreadyUsed.clear();
+
+			if (currentBestRuleData.first != -1)
+			{
+				ruleData.push_back(currentBestRuleData); //Record best rules data to visualize.
+				//Record rule for hover data.
+				rulesByCoordinate.insert({ currentBestRuleData.first, currentBestRuleGenerated }); //First coordinate.
+				rulesByCoordinate.insert({ (currentBestRuleData.first) + 1, currentBestRuleGenerated }); // Second coordinate.
+			}
+			currentBestRuleData.first = -1; //Mark curbestruledata to not be used yet.
+		}
+
+	}//End of while loop.
+
+	//Set rules generated by coordinate so they can be displayed by hover.
+	file->setDNSRulesByCoordinate(rulesByCoordinate);
+
+	//Record how many casea total are covered by all the generated rules.
+	toReturn.push_back("Total number of cases covered by all rules: " + to_string(casesAlreadyUsed.size()) + "\n\n");
+
+	return toReturn;
+}
+
 //linguisticDesc
 //Desc: Creates the linguistic description for the visualization. Result is a formatted string to be added to the linguistic desc.
 string DomNominalSet::linguisticDesc()
 {
 	//String to add to the descrption:
 	string toReturn = "--- Dominant Nominal Sets ---\n";
+	
+	
+	/*
 
 	//Get sorted vector to use.
 	vector<vector<pair<double, double>>> sortedVector = getSortByFreqency(blockHeights);
@@ -2396,8 +3657,12 @@ string DomNominalSet::linguisticDesc()
 
 	}
 
+
+	*/
+
+
 	//Get Rules.
-	vector<string> rules = determineRules();
+	vector<string> rules = file->getDNSRulesGenerated();
 
 	for (int i = 0; i < rules.size(); i++)
 	{
@@ -3106,15 +4371,825 @@ GLvoid DomNominalSet::drawGrayLines(double worldWidth)
 	file->setDNSNumSetsVisualized(numFullSets);
 }
 
+//MTBRuleGeneration
+//Desc: Algorithm for generating all possible rule with combinations of coordinates using Monotonoicity / MTBChains.
+vector<string> DomNominalSet::MTBRuleGeneration()
+{
+	//Local Vars:
+	vector<string> toReturn;
+	vector<DNSRule> finaldnsRulesGenerated;
+	bool ruleGenerated = false;
+	const double FREQ_THRESHOLD = 0.85;
+
+	//Get MTBC object:
+	MonotoneBooleanChains MTBC = MonotoneBooleanChains(14);
+	
+	//Loop until break.
+	while (true)
+	{
+		//Get the first pair of coordinates to check for rules.
+		string linkValue = MTBC.getNextLink();
+
+		//If the entire chain is resolved.
+		if (linkValue == "-1") break;
+		else if (stoi(linkValue, 0, 2) == 0)//If the value is all zeros,
+		{
+			MTBC.giveAnswer(false);
+			continue;
+		}
+		else
+		{
+			//Determine what coordinates are being used for generating rules.
+			vector<int> coordinatesToUse;
+			for (int i = 0; i < linkValue.size(); i++)
+			{
+				if (linkValue.at(i) == '1') coordinatesToUse.push_back(i);
+			}
+
+			//Now we have a list of coordinates, we have to start with the first two and see if rules can be generated.
+			//Then, move to the next and keep checking if rules can be generated.
+
+			//Values to record what attributes rules were made between.
+			vector<vector<double>> attributesUsedToMakeRules;
+			for (int i = 0; i < coordinatesToUse.size(); i++)
+			{
+				attributesUsedToMakeRules.push_back(vector<double>());
+			}
+
+			vector<bool> classGeneratedRule; // The entire class being used to generate rules yeilds a rule.
+			vector<DNSRule> dnsRulesGenerated;//Rules generated for this class.
+			vector<DNSRule> newGeneratedRules;
+
+			//Iterate over the number of classes there are and try to determine rules for each class.
+			for (int k = 1; k < file->getClassAmount() - 1; k++) // -2 for default and 'class' 
+			{
+				//Record class numbers as strings.
+				string currentClassAsString = to_string(k);
+				int currentClassAsInt = k;
+				vector<string> otherClassesAsStrings;
+				vector<int> otherClassesAsInts;
+				for (int m = 1; m < file->getClassAmount() - 1; m++)
+				{
+					if (m == k) continue;
+					otherClassesAsStrings.push_back(to_string(m));
+					otherClassesAsInts.push_back(m);
+				}
+
+				bool ruleSegmentGenerated = false; // A segment was used to make a rule between the coordinates.
+
+				//Iterate over sequential pairs of coordinates.
+				for (int i = 0; i < coordinatesToUse.size() - 1; i++)
+				{
+
+					//Bool to record if a rule was generated between the two coordinates.
+					int firstCoordinateIndex = coordinatesToUse.at(i);
+					int secondCoordinateIndex = coordinatesToUse.at(i + 1);
+
+					//Get class frequency per block per coordinate for our current left and right coordinates.
+					vector<unordered_map<double, double>*>* leftCoordinateBlocks = classPercPerBlock->at(firstCoordinateIndex);
+					vector<unordered_map<double, double>*>* rightCoordinateBlocks = classPercPerBlock->at(secondCoordinateIndex);
+
+					//Get coordinate names as strings.
+					string firstCord = *(file->getDimensionName(firstCoordinateIndex));
+					string secondCord = *(file->getDimensionName(secondCoordinateIndex));
+
+					//Get frequencies for the left and rights coordinates blocks for the class we are working with.
+					unordered_map <double, double>* leftCoordinateBlocksFreqsForCurClass = leftCoordinateBlocks->at(k - 1);
+					unordered_map <double, double>* rightCoordinateBlocksFreqsForCurClass = rightCoordinateBlocks->at(k - 1);
+
+					//If the first coordinate is the first in the combination. Load all attributes to the attributes used vector.
+					if (i == 0)
+					{
+						for (auto leftCoordinateIt = leftCoordinateBlocksFreqsForCurClass->begin();
+							leftCoordinateIt != leftCoordinateBlocksFreqsForCurClass->end(); leftCoordinateIt++)
+						{
+							attributesUsedToMakeRules.at(i).push_back(leftCoordinateIt->first);
+						}
+					}
+
+					//Iterate over the left sttirbutes used to generate rules so far and check if rules can be made with right rule.
+					for (int j = 0; j < attributesUsedToMakeRules.at(i).size(); j++)
+					{
+						for (auto rightCoordinateIt = rightCoordinateBlocksFreqsForCurClass->begin();
+							rightCoordinateIt != rightCoordinateBlocksFreqsForCurClass->end(); rightCoordinateIt++)
+						{
+							//Normalized Attribute Values:
+							double leftAttributeVal = attributesUsedToMakeRules.at(i).at(j);
+							double rightAttributeVal = rightCoordinateIt->first;
+
+							//Frequency of this current class (k) in the left and right block pair.
+							double freqOfCurClassLeft = leftCoordinateBlocksFreqsForCurClass->at(attributesUsedToMakeRules.at(i).at(j));
+							double freqOfCurClassRight = rightCoordinateIt->second;
+
+							//===Check to see if these frequencies pass any conditions===//
+
+							//Condition 1 - dominantly current class to dominantly current class. Result - current class:
+							if (freqOfCurClassLeft >= FREQ_THRESHOLD && freqOfCurClassRight >= FREQ_THRESHOLD)
+							{
+								//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+								int correctlyPredicted = 0;
+								int incorreclyPredicted = 0;
+								int totalPredicted = 0;
+								int correctlyPredictedFirst = 0;//Value for only single element.
+								int totalPredictedFirst = 0;//Value for only single element.
+								vector<int> numberOfCasesPerClass;
+								vector<int> casesInRule;
+
+								//Fill the vector with the number of classes.
+								for (int m = 0; m < file->getClassAmount() - 2; m++)
+								{
+									numberOfCasesPerClass.push_back(0);
+								}
+
+								//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+								for (int m = 0; m < file->getSetAmount(); m++)
+								{
+									//Check to see if the case has been used in a previous rule, flag.
+									bool hasBeenUsed = false;
+
+									//Get data about currrent set.
+									double curSetLeft = file->getData(m, firstCoordinateIndex);
+									double curSetRight = file->getData(m, secondCoordinateIndex);
+									int curSetClass = file->getClassOfSet(m);
+
+									//Check if the value is in the first element to be able to check if both attributes together is better
+									//than just the first attibute.
+									if (curSetLeft == leftAttributeVal && curSetClass == currentClassAsInt)
+									{
+										correctlyPredictedFirst++;
+										totalPredictedFirst++;
+									}
+									else
+									{
+										totalPredictedFirst++;
+									}
+
+									//If the attribute values are the same and the class is the expected result.
+									if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+										curSetClass == currentClassAsInt)
+									{
+										correctlyPredicted++;
+										totalPredicted++;
+										casesInRule.push_back(m);
+									}
+									//If the attribute values are the same and the class is not the expected result.
+									else if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+										curSetClass != currentClassAsInt)
+									{
+										incorreclyPredicted++;
+										totalPredicted++;
+										casesInRule.push_back(m);
+									}
+
+									//Record the number of sets in each class to be able to in each class.
+									numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+								}//End of iteration over sets.
+
+								//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+								//then the current best rule generated.
+								if (totalPredicted != 0)
+								{
+									//Calculate precision of only first attribute and pir of attributes.
+									double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+									double precisionFirst = (double(correctlyPredictedFirst) / double(totalPredictedFirst)) * 100.0;
+
+									//If the second attribute inclusion increases precision.
+									if (precision > precisionFirst)
+									{
+
+										//Compute other values needed for rule description.
+										double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+										double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+										double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+
+										//Make this rule the new optimal rule generated.
+										string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+											" and A goes to a block in " + secondCord + " that is dominantly class " + currentClassAsString + " then set A is" +
+											" class: " + currentClassAsString + ". \n" +
+											"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+											"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+											"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+											"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+										toReturn.push_back(ruleStatement);
+
+										//Determine the position if this line for rule visuazliation and save it under the current best rule.
+										double leftPosition = 0;
+										double rightPosition = 0;
+										vector<pair<double, double>> currentVecRight = sortedVector.at(secondCoordinateIndex);
+										vector<pair<double, double>> currentVecLeft = sortedVector.at(firstCoordinateIndex);
+										for (int c = 0; c < currentVecLeft.size(); c++)
+										{
+											if (currentVecLeft.at(c).first == leftAttributeVal)
+											{
+												leftPosition = currentVecLeft.at(c).second;
+												break;
+											}
+										}
+										for (int c = 0; c < currentVecRight.size(); c++)
+										{
+											if (currentVecRight.at(c).first == rightAttributeVal)
+											{
+												rightPosition = currentVecRight.at(c).second;
+												break;
+											}
+										}
+
+										pair<double, double> values;
+										values.first = leftPosition;
+										values.second = rightPosition;
+										pair<double, pair<double, double>> toAdd;
+										toAdd.first = firstCoordinateIndex;
+										toAdd.second = values;
+										ruleData.push_back(toAdd);
+
+										//Set that a rule segment was generated and record attribute.
+										ruleSegmentGenerated = true;
+										attributesUsedToMakeRules.at(i + 1).push_back(rightAttributeVal);
+
+										//Record the rule.
+										if (i == 0)//Rule hasnt been generated yet.
+										{
+											DNSRule newRule;
+											newRule.setRuleClass(k);
+											newRule.setCorrectCases(correctlyPredicted);
+											newRule.setIncorrectCases(incorreclyPredicted);
+											newRule.setTotalCases(totalPredicted);
+											newRule.addCoordinate(firstCoordinateIndex);
+											newRule.addCoordinate(secondCoordinateIndex);
+											newRule.addAttribute(leftAttributeVal);
+											newRule.addAttribute(rightAttributeVal);
+											dnsRulesGenerated.push_back(newRule);
+										}
+										else
+										{
+
+											//Iterate over generated rules:
+											for (int m = 0; m < dnsRulesGenerated.size(); m++)
+											{
+												int curRuleClass = dnsRulesGenerated.at(m).getRuleClass();
+												double curRuleLastAttribute = dnsRulesGenerated.at(m).getMostRecentAttribute();
+												bool curRuleHasChanged = dnsRulesGenerated.at(m).getHasChanged();
+
+												//If this is a contiunation of the rule, generate a new rule and add it to the new rules.
+												if (curRuleClass == k && curRuleLastAttribute == leftAttributeVal)
+												{
+													DNSRule newRule = dnsRulesGenerated.at(m);
+													newRule.addCoordinate(secondCoordinateIndex);
+													newRule.addAttribute(rightAttributeVal);
+													newGeneratedRules.push_back(newRule);
+												}
+									
+											}
+
+										}
+
+									}
+
+								}//End of total predicted != 0.
+
+							}//End of Condition 1.
+
+							//Condition 2 - dominantly current class to dominantly other class. Result - other class:
+							if (freqOfCurClassLeft >= FREQ_THRESHOLD && freqOfCurClassRight <= (1 - FREQ_THRESHOLD))
+							{
+								//We need to check this for each class that is not the current class.
+								for (int q = 0; q < otherClassesAsInts.size(); q++)
+								{
+									//If the current 'other' class is the class we are currently using, skip.
+									if (otherClassesAsInts.at(q) == currentClassAsInt) continue;
+
+									//Get the number of the other class.
+									int otherClassAsInt = otherClassesAsInts.at(q);
+									string otherClassAsString = to_string(otherClassAsInt);
+
+									//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+									int correctlyPredicted = 0;
+									int incorreclyPredicted = 0;
+									int totalPredicted = 0;
+									int correctlyPredictedFirst = 0;//Value for first attribute.
+									int totalPredictedFirst = 0;//Value for first attribute.
+									vector<int> numberOfCasesPerClass;
+									vector<int> casesInRule;
+
+									//Fill the vector with the number of classes.
+									for (int m = 0; m < file->getClassAmount() - 2; m++)
+									{
+										numberOfCasesPerClass.push_back(0);
+									}
+
+									//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+									for (int m = 0; m < file->getSetAmount(); m++)
+									{
+										//Get data about currrent set.
+										double curSetLeft = file->getData(m, firstCoordinateIndex);
+										double curSetRight = file->getData(m, secondCoordinateIndex);
+										int curSetClass = file->getClassOfSet(m);
+
+										//Check if the value is in the first element to be able to check if both attributes together is better
+										//than just the first attibute.
+										if (curSetLeft == leftAttributeVal && curSetClass == otherClassAsInt)
+										{
+											correctlyPredictedFirst++;
+											totalPredictedFirst++;
+										}
+										else
+										{
+											totalPredictedFirst++;
+										}
+
+										//If the attribute values are the same and the class is the expected result.
+										if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+											curSetClass == otherClassAsInt)
+										{
+											correctlyPredicted++;
+											totalPredicted++;
+											casesInRule.push_back(m);
+										}
+										//If the attribute values are the same and the class is not the expected result.
+										else if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+											curSetClass != otherClassAsInt)
+										{
+											incorreclyPredicted++;
+											totalPredicted++;
+											casesInRule.push_back(m);
+										}
+
+										//Record the number of sets in each class to be able to in each class.
+										numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+									}//End of iteration over sets.
+
+									//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+									//then the current best rule generated.
+									if (totalPredicted != 0)
+									{
+										double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+										double precisionFirst = (double(correctlyPredictedFirst) / double(totalPredictedFirst)) * 100.0;
+
+										//If the precision of only the first attribute is less then the two combined.
+										if (precision > precisionFirst)
+										{
+											//Compute other values needed for rule description.
+											double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+											double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(otherClassAsInt - 1))) * 100.0;
+											double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(otherClassAsInt - 1))) * 100.0;
+
+											//Make this rule the new optimal rule generated.
+											string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+												" and A goes to a block in " + secondCord + " that is dominantly class " + otherClassAsString + " then set A is" +
+												" class: " + otherClassAsString + ". \n" +
+												"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+												"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+												"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+												"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+											toReturn.push_back(ruleStatement);
+
+											//Determine the position of the rule line and save it under the current best rule data.
+											double leftPosition = 0;
+											double rightPosition = 0;
+
+											vector<pair<double, double>> currentVecRight = middleOther.at(secondCoordinateIndex);
+											vector<pair<double, double>> currentVecLeft = sortedVector.at(firstCoordinateIndex);
+											for (int c = 0; c < currentVecLeft.size(); c++)
+											{
+												if (currentVecLeft.at(c).first == leftAttributeVal)
+												{
+													leftPosition = currentVecLeft.at(c).second;
+													break;
+												}
+											}
+											for (int c = 0; c < currentVecRight.size(); c++)
+											{
+												if (currentVecRight.at(c).first == rightAttributeVal)
+												{
+													rightPosition = currentVecRight.at(c).second;
+													break;
+												}
+											}
+
+											pair<double, double> values;
+											values.first = leftPosition;
+											values.second = rightPosition;
+											pair<double, pair<double, double>> toAdd;
+											toAdd.first = firstCoordinateIndex;
+											toAdd.second = values;
+											ruleData.push_back(toAdd);
+
+											//Set that a rule segment was generated and record attribute.
+											ruleSegmentGenerated = true;
+											attributesUsedToMakeRules.at(i + 1).push_back(rightAttributeVal);
+
+											//Record the rule.
+											if (i == 0)//Rule hasnt been generated yet.
+											{
+												DNSRule newRule;
+												newRule.setRuleClass(k);
+												newRule.setCorrectCases(correctlyPredicted);
+												newRule.setIncorrectCases(incorreclyPredicted);
+												newRule.setTotalCases(totalPredicted);
+												newRule.addCoordinate(firstCoordinateIndex);
+												newRule.addCoordinate(secondCoordinateIndex);
+												newRule.addAttribute(leftAttributeVal);
+												newRule.addAttribute(rightAttributeVal);
+												dnsRulesGenerated.push_back(newRule);
+											}
+											else
+											{
+												
+												//Iterate over generated rules:
+												for (int m = 0; m < dnsRulesGenerated.size(); m++)
+												{
+													int curRuleClass = dnsRulesGenerated.at(m).getRuleClass();
+													double curRuleLastAttribute = dnsRulesGenerated.at(m).getMostRecentAttribute();
+													bool curRuleHasChanged = dnsRulesGenerated.at(m).getHasChanged();
+
+													//If this is a contiunation of the rule, generate a new rule and add it to the new rules.
+													if (curRuleClass == k && curRuleLastAttribute == leftAttributeVal)
+													{
+														DNSRule newRule = dnsRulesGenerated.at(m);
+														newRule.addCoordinate(secondCoordinateIndex);
+														newRule.addAttribute(rightAttributeVal);
+														newGeneratedRules.push_back(newRule);
+													}
+
+												}
+
+											}
+
+										}
+
+									}//End of total predicted != 0.
+
+								}//End of iteration over other classes.
+
+							}//End of Condition 2.
+
+							//Condition 3 - dominantly current class to not dominantly other class. Result - current class class:
+							if (freqOfCurClassLeft >= FREQ_THRESHOLD && freqOfCurClassRight > (1 - FREQ_THRESHOLD))
+							{
+								//Values to hold correctly predicted, incorrectly predicted, and total predicted.
+								int correctlyPredicted = 0;
+								int incorreclyPredicted = 0;
+								int totalPredicted = 0;
+								int correctlyPredictedFirst = 0;//Value for first attribute.
+								int totalPredictedFirst = 0;//Value for first attribute.
+								vector<int> numberOfCasesPerClass;
+								vector<int> casesInRule;
+
+								//Fill the vector with the number of classes.
+								for (int m = 0; m < file->getClassAmount() - 2; m++)
+								{
+									numberOfCasesPerClass.push_back(0);
+								}
+
+								//Determine what cases satisfy this condition and how many are predicted correctly and incorrectly.
+								for (int m = 0; m < file->getSetAmount(); m++)
+								{
+									//Get data about currrent set.
+									double curSetLeft = file->getData(m, firstCoordinateIndex);
+									double curSetRight = file->getData(m, secondCoordinateIndex);
+									int curSetClass = file->getClassOfSet(m);
+
+
+									//Check if the value is in the first element to be able to check if both attributes together is better
+									//than just the first attibute.
+									if (curSetLeft == leftAttributeVal && curSetClass == currentClassAsInt)
+									{
+										correctlyPredictedFirst++;
+										totalPredictedFirst++;
+									}
+									else
+									{
+										totalPredictedFirst++;
+									}
+
+									//If the attribute values are the same and the class is the expected result.
+									if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+										curSetClass == currentClassAsInt)
+									{
+										correctlyPredicted++;
+										totalPredicted++;
+										casesInRule.push_back(m);
+									}
+									//If the attribute values are the same and the class is not the expected result.
+									else if (curSetLeft == leftAttributeVal && curSetRight == rightAttributeVal &&
+										curSetClass != currentClassAsInt)
+									{
+										incorreclyPredicted++;
+										totalPredicted++;
+										casesInRule.push_back(m);
+									}
+
+									//Record the number of sets in each class to be able to in each class.
+									numberOfCasesPerClass.at(int(curSetClass) - 1) += 1;
+
+								}//End of iteration over sets.
+
+								//Check to see if the precision is above the prevision requirement and the rules precision / coverage is greater
+								//then the current best rule generated.
+								if (totalPredicted != 0)
+								{
+									double precision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+									double precisionFirst = (double(correctlyPredictedFirst) / double(totalPredictedFirst)) * 100.0;
+
+									//If the combined attribute precision is greater then the first.
+									if (precision > precisionFirst)
+									{
+										double totalCoverage = (double(totalPredicted) / double(file->getSetAmount())) * 100.0;
+										//Compute other values needed for rule description.
+										double classCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+										double correctClassCoverage = (double(correctlyPredicted) / double(numberOfCasesPerClass.at(currentClassAsInt - 1))) * 100.0;
+
+										//Get other classes as a list of strings.
+										string otherClassesAsList = "";
+										for (int m = 0; m < otherClassesAsStrings.size() - 1; m++)
+										{
+											otherClassesAsList += otherClassesAsStrings.at(m) + ", ";
+										}
+										otherClassesAsList += otherClassesAsStrings.at(otherClassesAsStrings.size() - 1);
+
+										//Make this rule the new optimal rule generated.
+										string ruleStatement = "If set A goes to a block in " + firstCord + " that is dominantly class " + currentClassAsString +
+											" and A does not go to a block in " + secondCord + " that is dominantly class " + otherClassesAsList + " then set A is" +
+											" class: " + currentClassAsString + ". \n" +
+											"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
+											"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
+											"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
+											"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+										toReturn.push_back(ruleStatement);
+
+										//Determine the position of the rule line and save it under the current best rule data.
+										double leftPosition = 0;
+										double rightPosition = 0;
+
+										vector<pair<double, double>> currentVecRight = middleOther.at(secondCoordinateIndex);
+										vector<pair<double, double>> currentVecLeft = sortedVector.at(firstCoordinateIndex);
+										for (int c = 0; c < currentVecLeft.size(); c++)
+										{
+											if (currentVecLeft.at(c).first == leftAttributeVal)
+											{
+												leftPosition = currentVecLeft.at(c).second;
+												break;
+											}
+										}
+										for (int c = 0; c < currentVecRight.size(); c++)
+										{
+											if (currentVecRight.at(c).first == rightAttributeVal)
+											{
+												rightPosition = currentVecRight.at(c).second;
+												break;
+											}
+										}
+
+										pair<double, double> values;
+										values.first = leftPosition;
+										values.second = rightPosition;
+										pair<double, pair<double, double>> toAdd;
+										toAdd.first = firstCoordinateIndex;
+										toAdd.second = values;
+										ruleData.push_back(toAdd);
+
+										//Set that a rule segment was generated and record attribute.
+										ruleSegmentGenerated = true;
+										attributesUsedToMakeRules.at(i+1).push_back(rightAttributeVal);
+
+										//Record the rule.
+										if (i == 0)//Rule hasnt been generated yet.
+										{
+											DNSRule newRule;
+											newRule.setRuleClass(k);
+											newRule.setCorrectCases(correctlyPredicted);
+											newRule.setIncorrectCases(incorreclyPredicted);
+											newRule.setTotalCases(totalPredicted);
+											newRule.addCoordinate(firstCoordinateIndex);
+											newRule.addCoordinate(secondCoordinateIndex);
+											newRule.addAttribute(leftAttributeVal);
+											newRule.addAttribute(rightAttributeVal);
+											dnsRulesGenerated.push_back(newRule);
+										}
+										else
+										{
+											//Iterate over generated rules:
+											for (int m = 0; m < dnsRulesGenerated.size(); m++)
+											{
+												int curRuleClass = dnsRulesGenerated.at(m).getRuleClass();
+												double curRuleLastAttribute = dnsRulesGenerated.at(m).getMostRecentAttribute();
+												bool curRuleHasChanged = dnsRulesGenerated.at(m).getHasChanged();
+
+												//If this is a contiunation of the rule, generate a new rule and add it to the new rules.
+												if (curRuleClass == k && curRuleLastAttribute == leftAttributeVal)
+												{
+													DNSRule newRule = dnsRulesGenerated.at(m);
+													newRule.addCoordinate(secondCoordinateIndex);
+													newRule.addAttribute(rightAttributeVal);
+													newGeneratedRules.push_back(newRule);
+												}
+
+											}
+
+										}
+
+									}
+
+								}//End of total predicted != 0.
+
+							}//End of Condition 3.
+
+						}//End of right coordinate block iteration.
+
+					}//End of left attributes iteration.
+
+
+
+					//Check to see if a rule segment was made between the two coordinates:
+					if (ruleSegmentGenerated == false)
+					{
+						//If at any time there is no connection. 
+						//This means there is no rule generated for the class with these selected coordinates.
+
+						classGeneratedRule.push_back(false);
+						dnsRulesGenerated.clear();
+						break;
+					}
+					else
+					{
+						if (i != 0)
+						{
+							dnsRulesGenerated = newGeneratedRules;//Keep the new generated rules.
+							newGeneratedRules.clear();
+						}
+						ruleSegmentGenerated = false;//Reset.
+					}
+
+
+
+				}//End of iterating sequentially over pairs of coordinates.
+
+			}//End of iteratiing over classes.
+
+			//If classes were marked as not generating rules for all classes.
+			//If only one coordinante was checked.
+			if (classGeneratedRule.size() == file->getClassAmount() - 2 || dnsRulesGenerated.size() == 0)
+			{
+				MTBC.giveAnswer(false);
+			}
+			else
+			{
+				MTBC.giveAnswer(true);
+
+				//Record all rules.
+				for (int m = 0; m < dnsRulesGenerated.size(); m++)
+				{
+					int curNumCoordinatesInRule = dnsRulesGenerated.at(m).getCoordinatesUsed().size();
+					if (curNumCoordinatesInRule == coordinatesToUse.size())
+					{
+						finaldnsRulesGenerated.push_back(dnsRulesGenerated.at(m));
+					}
+				}
+			}
+
+		}//End of else (Main Segment).
+
+	}//End of While True.
+
+	return(toReturn);
+
+}//End of MTBRuleGeneration.
+
 //visualizeRules:
 //Desc: Draws red boxes around block pairs that rules were created with.
 GLvoid DomNominalSet::visualizeRules()
 {
 	//Variables for drawing:
 	double xAxisIncrement = worldWidth / (this->file->getVisibleDimensionCount() + 1); //Get calculated x axis spacing between lines.
-	const double BOXINCDEC = 15;//Value to make height of poly.
+	const double BOXINCDEC = 20;//Value to make height of poly.
 
-	//Iterate over the dimensions:
+	//Determine what the offset of dimensions are since some may be hidden.
+	int dimensionOffset = (this->file->getDimensionAmount() - this->file->getVisibleDimensionCount());
+	int numDimensionsDrawn = 0;
+
+	//Iterate over the dimensions.
+	for (int i = 0; i < this->file->getDimensionAmount(); i++)
+	{
+		//If this dimension is visible.
+		if (file->isDimensionVisible(i))
+		{
+			numDimensionsDrawn++;
+
+			//Check if this dimension has any rules.
+			for (int j = 0; j < ruleData.size(); j++)
+			{
+				//Get the first rules data.
+				pair<double, pair<double, double>> currentRule = ruleData.at(j);
+
+				double firstCord = currentRule.first;
+				double secondCord = firstCord + 1;
+
+				//If this dimension is the current dimension we are looking for, draw rule.
+				if (firstCord == i)
+				{
+					double leftPosition = currentRule.second.first;
+					double rightPosition = currentRule.second.second;
+
+					//If this is a single attribute rule,
+					if (rightPosition == -1)
+					{
+						//Set Width:
+						GLdouble width = 3.0;
+						glLineWidth(width);
+
+						//Set Color:
+						glColor4d(0, 0, 1.0, 1);
+
+						//Draw the dominant set rectangle.
+						glBegin(GL_LINE_STRIP);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))) - 10,
+							(leftPosition - BOXINCDEC)
+						);
+
+						// draw top left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))) - 10,
+							(leftPosition + BOXINCDEC)
+						);
+
+						// draw top left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))) + 10,
+							(leftPosition + BOXINCDEC)
+						);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))) + 10,
+							(leftPosition - BOXINCDEC)
+						);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))) - 10,
+							(leftPosition - BOXINCDEC)
+						);
+
+						glEnd();
+					}
+					else //Two attribute rule.
+					{
+						//Set Width:
+						GLdouble width = 3.0;
+						glLineWidth(width);
+
+						//Set Color:
+						glColor4d(0, 0, 1.0, 1);
+
+						//Draw the dominant set rectangle.
+						glBegin(GL_LINE_STRIP);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))),
+							(leftPosition - BOXINCDEC)
+						);
+
+						// draw top left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))),
+							(leftPosition + BOXINCDEC)
+						);
+
+						// draw top right
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn + 1))),
+							(rightPosition + BOXINCDEC)
+						);
+
+						// draw bottom right
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn + 1))),
+							(rightPosition - BOXINCDEC)
+						);
+
+						// draw bottom left
+						glVertex2d(
+							((-worldWidth / 2.0) + ((xAxisIncrement) * (numDimensionsDrawn))),
+							(leftPosition - BOXINCDEC)
+						);
+
+						glEnd();
+					}
+				}
+			}
+		}
+
+	}
+
+	/*
+
+	//Iterate over the rule data:
 	for (int i = 0; i < ruleData.size(); i++) // file->getDimensionAmount()
 	{
 		//Get the first rules data.
@@ -3131,44 +5206,46 @@ GLvoid DomNominalSet::visualizeRules()
 		glLineWidth(width);
 
 		//Set Color:
-		glColor4d(1.0, 0, 0, 1);
+		glColor4d(0, 0, 1.0, 1);
 
 		//Draw the dominant set rectangle.
 		glBegin(GL_LINE_STRIP);
 
 		// draw bottom left
 		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (firstCord + 1))),
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (firstCord + 1 - dimensionOffset))),
 			(leftPosition - BOXINCDEC)
 		);
 
 		// draw top left
 		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (firstCord + 1))),
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (firstCord + 1 - dimensionOffset))),
 			(leftPosition + BOXINCDEC)
 		);
 
 		// draw top right
 		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (secondCord + 1))),
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (secondCord + 1 - dimensionOffset))),
 			(rightPosition + BOXINCDEC)
 		);
 
 		// draw bottom right
 		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (secondCord + 1))),
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (secondCord + 1 - dimensionOffset))),
 			(rightPosition - BOXINCDEC)
 		);
 
 		// draw bottom left
 		glVertex2d(
-			((-worldWidth / 2.0) + ((xAxisIncrement) * (firstCord + 1))),
+			((-worldWidth / 2.0) + ((xAxisIncrement) * (firstCord + 1 - dimensionOffset))),
 			(leftPosition - BOXINCDEC)
 		);
 
 		glEnd();
 
 	}
+
+	*/
 }
 
 //getRuleData:

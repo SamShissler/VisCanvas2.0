@@ -14,7 +14,8 @@ void OpenGLForm::COpenGL::visualizeDomNomVisualization()
 // Desc: Tells the Dominant nomianl visualization to generate rules.
 void OpenGLForm::COpenGL::generateRulesDNS()
 {
-	domNomVisualization->determineRules();
+	vector<string> rules = domNomVisualization->MTBRuleGeneration();
+	file->setDNSRulesGenerated(rules);
 }
 
 // setDomNomSetVisualizatonL

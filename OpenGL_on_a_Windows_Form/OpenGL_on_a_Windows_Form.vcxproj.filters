@@ -124,6 +124,12 @@
     <ClCompile Include="OpenGL.cpp">
       <Filter>Source Files\Main UI / Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="MonotoneBooleanChains.cpp">
+      <Filter>Source Files\Dominant Nominal Set Visualization</Filter>
+    </ClCompile>
+    <ClCompile Include="DNSRule.cpp">
+      <Filter>Source Files\Dominant Nominal Set Visualization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -234,6 +240,12 @@
     <ClInclude Include="OpenGL.h">
       <Filter>Header Files\Main UI / Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="MonotoneBooleanChains.h">
+      <Filter>Header Files\Dominant Nominal Set Visualization</Filter>
+    </ClInclude>
+    <ClInclude Include="DNSRule.h">
+      <Filter>Header Files\Dominant Nominal Set Visualization</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VisCanvas.resX">
@@ -302,6 +314,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="DNSGenerateRules.Image.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="DNSHideCoordinate.Image.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -233,11 +233,13 @@
     <ClCompile Include="DataNode.cpp" />
     <ClCompile Include="DataSet.cpp" />
     <ClCompile Include="Dimension.cpp" />
+    <ClCompile Include="DNSRule.cpp" />
     <ClCompile Include="DomNominalSet.cpp" />
     <ClCompile Include="GraphNote.cpp" />
     <ClCompile Include="AdditionalSettings.cpp" />
     <ClCompile Include="IntervalGrouping.cpp" />
     <ClCompile Include="IntervalGroupStarting.cpp" />
+    <ClCompile Include="MonotoneBooleanChains.cpp" />
     <ClCompile Include="NominalColorPicker.cpp" />
     <ClCompile Include="NominalGrouping.cpp" />
     <ClCompile Include="NominalSubgroupBuilder.cpp" />
@@ -270,6 +272,7 @@
     <ClInclude Include="DataNode.h" />
     <ClInclude Include="DataSet.h" />
     <ClInclude Include="Dimension.h" />
+    <ClInclude Include="DNSRule.h" />
     <ClInclude Include="DomNominalSet.h" />
     <ClInclude Include="GraphNote.h" />
     <ClInclude Include="AdditionalSettings.h">
@@ -278,6 +281,7 @@
     <ClInclude Include="IntervalGrouping.h" />
     <ClInclude Include="IntervalGroupStarting.h" />
     <ClInclude Include="KVPair.h" />
+    <ClInclude Include="MonotoneBooleanChains.h" />
     <ClInclude Include="NominalColorPicker.h" />
     <ClInclude Include="NominalGrouping.h" />
     <ClInclude Include="NominalSubgroupBuilder.h" />
@@ -358,6 +362,7 @@
     <Image Include="..\Button Icons\tile.png" />
     <Image Include="button1.Image.png" />
     <Image Include="DNSGenerateRules.Image.bmp" />
+    <Image Include="DNSHideCoordinate.Image.bmp" />
     <Image Include="DNSRuleVisualization.Image.bmp" />
     <Image Include="nominalSetsImage.png" />
   </ItemGroup>

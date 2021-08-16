@@ -36,10 +36,12 @@ public:
 	vector<vector<pair<double, double>>> getSortByFreqency(vector<unordered_map<double, double>*>* blockHeights);
 	vector<vector<pair<double, double>>> getSortByClass(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
 	
-	//Drawing:
+	//Drawing Starting Visualizaation:
 	GLvoid drawVisualization();
 	GLvoid drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
 	GLvoid drawLines(double worldWidth);
+	GLvoid drawSelectorBoxes(double worldWidth);
+	GLvoid drawHoverInfo(double worldWidth);
 
 	//Color Precent Visualization!
 	GLvoid drawColorPercentVisualization();
@@ -53,6 +55,8 @@ public:
 	//Analysis:
 	string linguisticDesc();
 	vector<string> determineRules();
+	vector<string> ruleGenerationSequential();
+	vector<string> MTBRuleGeneration();
 	GLvoid visualizeRules();
 
 	//Getters and Setters:
@@ -78,6 +82,7 @@ private:
 	vector<vector<pair<double, double>>> sortedByFreqVector; //Blocks sorted by the highest frequency.
 	vector<vector<pair<double, double>>> sortedByClassVector; //Blocks sorted by class.
 	vector<pair<double, pair<double, double>>> ruleData; //Rule data pair <starting coordinate, pair(value1,value2)>
+	vector<vector<int>> casesPerCoordinate; // Records the number of cases to be used when drawing the hover info.
 };
 
 #endif 

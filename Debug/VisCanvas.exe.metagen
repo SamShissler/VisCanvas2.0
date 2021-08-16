@@ -64,8 +64,10 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getWorldHeight(): PrivateScope, Public, HideBySig
     hypercube(): PrivateScope, Public, HideBySig
     setManualSortToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    setHideManualToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     setManualInvertToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     getManualInvertToggle(): PrivateScope, Public, HideBySig
+    getHideManualToggle(): PrivateScope, Public, HideBySig
     getManualSortToggle(): PrivateScope, Public, HideBySig
     setManualShiftToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     getManualShiftToggle(): PrivateScope, Public, HideBySig
@@ -152,6 +154,8 @@ Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 previousClassAmount : Public
     Boolean sortToggleState : Public
     Boolean shifToggleState : Public
+Struct DNSRule: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
 Class CppCLRWinformsProjekt.IntervalGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
