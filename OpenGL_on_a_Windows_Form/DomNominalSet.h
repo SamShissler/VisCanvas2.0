@@ -57,6 +57,7 @@ public:
 	vector<string> determineRules();
 	vector<string> ruleGenerationSequential();
 	vector<string> MTBRuleGeneration();
+	vector<string> MTBRuleGenerationV2();
 	GLvoid visualizeRules();
 
 	//Getters and Setters:

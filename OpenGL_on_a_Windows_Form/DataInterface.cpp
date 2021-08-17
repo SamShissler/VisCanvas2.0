@@ -3885,6 +3885,15 @@ int DataInterface::getDNSnDPointsVisualized()
 
 void DataInterface::addDimensionToHideDNS(int index)
 {
+	for (auto it = dimensionsHide.begin(); it != dimensionsHide.end(); it++)
+	{
+		if (*it == index)
+		{
+			dimensionsHide.erase(it);
+			return;
+		}
+	}
+
 	this->dimensionsHide.push_back(index);
 }
 

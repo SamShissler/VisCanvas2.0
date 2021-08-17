@@ -1,280 +1,222 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2084,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "Microsoft.VisualBasic.PowerPacks.Vs". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2705,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2705,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
-  AdditionalSettings.cpp
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\AdditionalSettings.cpp(1,1): warning C4005: '__CLR_VER': macro redefinition
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\stdafx.cpp : message : see previous definition of '__CLR_VER'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\AdditionalSettings.cpp(1,1): warning C4651: '/D__CLR_VER=40804390' specified for precompiled header but not for current compile
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1330,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1393,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1455,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1478,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1604,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1822,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2105,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2153,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2172,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2415,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2424,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2436,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2447,14): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2593,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2616,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2625,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2703,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2726,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2734,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  DataInterface.cpp
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1,1): warning C4005: '__CLR_VER': macro redefinition
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\stdafx.cpp : message : see previous definition of '__CLR_VER'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1,1): warning C4651: '/D__CLR_VER=40804390' specified for precompiled header but not for current compile
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1330,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1393,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1455,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1478,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1604,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1822,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2105,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2153,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2172,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2415,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2424,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2436,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2447,14): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2593,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2616,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2625,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2703,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2726,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2734,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1749,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1799,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(405,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(413,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(421,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(429,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(437,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(453,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(460,21): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(488,17): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(497,25): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(546,35): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(556,35): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(740,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(746,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(763,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(769,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(783,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(789,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(810,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(826,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(845,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(862,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(869,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1019,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1086,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1198,30): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1530,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1549,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1553,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1565,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1605,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1638,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1667,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1677,28): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1715,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1729,14): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1751,14): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1773,14): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1790,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1806,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1822,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1929,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1974,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1992,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2039,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2106,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2136,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2184,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2208,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2219,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2221,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2239,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2250,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2260,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2310,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2325,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2337,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2352,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2369,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2385,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2397,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2412,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2429,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2435,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2437,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2464,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2476,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2482,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2484,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2512,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2529,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2556,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2568,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2583,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2602,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2609,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2635,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2648,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2678,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2685,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2711,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2724,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2813,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2827,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2838,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2848,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2850,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2946,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2960,40): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2970,40): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3008,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3019,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3031,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3040,48): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3077,26): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3174,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3176,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3353,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3365,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3400,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3414,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3453,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3461,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3471,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3585,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3659,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3893,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3904,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3914,20): warning C4018: '<': signed/unsigned mismatch
-  OpenGL.cpp
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(1,1): warning C4005: '__CLR_VER': macro redefinition
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\stdafx.cpp : message : see previous definition of '__CLR_VER'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(1,1): warning C4651: '/D__CLR_VER=40804390' specified for precompiled header but not for current compile
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1330,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1393,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1455,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1478,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1604,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1822,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2105,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2153,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2172,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2415,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2424,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2436,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2447,14): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2593,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2616,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2625,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2703,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2726,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2734,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  Settings.cpp
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.cpp(1,1): warning C4005: '__CLR_VER': macro redefinition
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\stdafx.cpp : message : see previous definition of '__CLR_VER'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.cpp(1,1): warning C4651: '/D__CLR_VER=40804390' specified for precompiled header but not for current compile
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1330,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1393,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1455,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1478,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1604,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1822,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2105,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2153,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2172,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2415,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2424,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2436,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2447,14): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2593,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2616,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2625,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2703,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2726,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2734,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-  VisCanvas.cpp
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.cpp(2,1): warning C4005: '__CLR_VER': macro redefinition
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\stdafx.cpp : message : see previous definition of '__CLR_VER'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.cpp(2,1): warning C4651: '/D__CLR_VER=40804390' specified for precompiled header but not for current compile
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1330,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1393,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1455,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1478,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1604,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1822,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1832,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2105,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2153,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2172,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2415,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2424,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2436,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2447,14): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2593,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2616,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2625,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2703,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2726,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2734,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1749,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1799,22): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(620): warning C4172: returning address of local variable or temporary: str
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(242): warning C4715: 'DataInterface::saveToFile': not all control paths return a value
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2182,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "Microsoft.VisualBasic.PowerPacks.Vs". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2805,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2805,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
+  DomNominalSet.cpp
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(119,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(140,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(180,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(267,64): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(316,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(361,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(409,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(414,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(485,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(496,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(518,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(542,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(626,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(640,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(652,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(674,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1022,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1035,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1053,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1067,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1082,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1096,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1110,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1125,24): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1126,25): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1138,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1140,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1158,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1177,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1182,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1356,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1358,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+          with
+          [
+              _Ty=boolean
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1487,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1556,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1640,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1653,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1677,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1697,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1709,70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1967,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1990,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1995,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2002,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2156,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2166,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2271,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2282,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2374,51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2375,54): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2376,41): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2378,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2393,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2405,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2420,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2432,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2446,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2458,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2659,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2770,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2789,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2864,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2872,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2900,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2956,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2975,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3050,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3058,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3135,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3154,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3208,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3237,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3245,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3306,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3324,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3393,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3401,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3441,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3779,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3786,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3790,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3830,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3842,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4150,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4163,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4181,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4195,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4210,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4224,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4238,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4253,24): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4254,25): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4266,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4268,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4286,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4305,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4310,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4475,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4477,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+          with
+          [
+              _Ty=boolean
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4516,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4526,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4553,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4583,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4693,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4701,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4740,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4769,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4866,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4874,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4913,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5018,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5040,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5048,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5086,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5154,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5203,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5216,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5249,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5273,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5291,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5386,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5405,19): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5449,19): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\utility(193,16): warning C4244: 'initializing': conversion from 'double' to '_Ty1', possible loss of data
+          with
+          [
+              _Ty1=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3451): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double &,
+              _Other2=std::string &
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3451): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double &,
+              _Other2=std::string &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\utility(193,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty1=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3452): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double,
+              _Other2=std::string &
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3452): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double,
+              _Other2=std::string &
+          ]
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  OpenGL_on_a_Windows_Form.vcxproj -> C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\Debug\VisCanvas.exe
+  OpenGL_on_a_Windows_Form.vcxproj -> C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\Debug\VisCanvas.exe

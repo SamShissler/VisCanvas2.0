@@ -2032,7 +2032,7 @@ vector<string> DomNominalSet::determineRules()
 	//Record the number of rules.
 	int ruleCount = 1;
 
-	//Record what cases are in this rule.
+	//Record what cases are in each rule.
 	vector<vector<int>>RuleCaseCounts;
 
 	//Iterate over the dimensions.
@@ -2651,6 +2651,7 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 	bool ruleGenerated = true;
 	int numRulesGenerated = 0;
 	unordered_map<int, string> rulesByCoordinate;
+	vector<vector<int>>RuleCaseCounts; //Record what cases are in each rule (Overlap Table).
 	
 	//=====Rule Generation=====//
 
@@ -2845,7 +2846,8 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 											"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
 											"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
 											"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
-											"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+											"Total Coverage = " + to_string(totalCoverage) + "%. \n" +
+											"Left: " + to_string(leftAttributeVal) + " Right: " + to_string(rightAttributeVal) + "\n\n";
 
 										//Record the current highest precision, current highest coverage, and current cases covered.
 										highestPrecision = precision;
@@ -3029,7 +3031,8 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 												"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
 												"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
 												"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
-												"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+												"Total Coverage = " + to_string(totalCoverage) + "%. \n" +
+												"Left: " + to_string(leftAttributeVal) + " Right: " + to_string(rightAttributeVal) + "\n\n";
 
 											//Record the current highest precision, current highest coverage, and current cases covered.
 											highestPrecision = precision;
@@ -3215,7 +3218,8 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 											"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
 											"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
 											"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
-											"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+											"Total Coverage = " + to_string(totalCoverage) + "%. \n" +
+											"Left: " + to_string(leftAttributeVal) + " Right: " + to_string(rightAttributeVal) + "\n\n";
 
 										//Record the current highest precision, current highest coverage, and current cases covered.
 										highestPrecision = precision;
@@ -3371,7 +3375,8 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 										"Predicted correctly: " + to_string(correctlyPredicted) + ", predicted incorrectly: " + to_string(incorreclyPredicted) + ". \n" +
 										"Total predicted: " + to_string(totalPredicted) + ", Precision = " + to_string(precision) + "%. \n" +
 										"Class Coverage = " + to_string(classCoverage) + "%, Correct Class Coverage = " + to_string(correctClassCoverage) + "%. \n" +
-										"Total Coverage = " + to_string(totalCoverage) + "%. \n\n";
+										"Total Coverage = " + to_string(totalCoverage) + "%. \n" +
+										"Left: " + to_string(leftAttributeVal) + "\n\n";
 
 									//Record the current highest precision, current highest coverage, and current cases covered.
 									highestPrecision = precision;
@@ -3428,9 +3433,11 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 		if (ruleGenerated == true)
 		{
 			//Record the top rule and reset values for next.
+			currentBestRuleGenerated = "Rule " + to_string(ruleCount) + ".) " + currentBestRuleGenerated;//Add rule num.
 			toReturn.push_back(currentBestRuleGenerated);
 			highestPrecision = 0;
 			highestCoverage = 0;
+			RuleCaseCounts.push_back(currentCasesAlreadyUsed);//Add the cases in this rule.
 			for (int i = 0; i < currentCasesAlreadyUsed.size(); i++) //Add cases from this rule to case pool.
 			{
 				casesAlreadyUsed.push_back(currentCasesAlreadyUsed.at(i));
@@ -3445,6 +3452,7 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 				rulesByCoordinate.insert({ (currentBestRuleData.first) + 1, currentBestRuleGenerated }); // Second coordinate.
 			}
 			currentBestRuleData.first = -1; //Mark curbestruledata to not be used yet.
+			ruleCount++;
 		}
 
 	}//End of while loop.
@@ -3454,6 +3462,110 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 
 	//Record how many casea total are covered by all the generated rules.
 	toReturn.push_back("Total number of cases covered by all rules: " + to_string(casesAlreadyUsed.size()) + "\n\n");
+
+	/*
+
+	//=====Overlap Table=====//
+
+
+
+	//Calculate overlap percentage and unique cases #.
+	double overlapTable[100][100];
+	int numUniqueCases[100][100];
+
+	//Open File:
+	SaveFileDialog^ sfd = gcnew SaveFileDialog;
+	sfd->InitialDirectory = ""; // NOTE "c:\\" for future reference.
+	sfd->Filter = "Text Files (*.csv, *.txt, *text)|*.csv, *txt, *text|All Files (*.*)|*.*";
+	sfd->FilterIndex = 1;
+	sfd->RestoreDirectory = true;
+
+	System::String^ path;
+
+	if (sfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		path = sfd->FileName;
+	}
+
+	//Write Data:
+	std::ofstream outFile;
+	std::string outDir = msclr::interop::marshal_as<std::string>(path);
+	std::string temp = "";
+
+	outFile.open(outDir);
+
+	//Add top lables:
+	outFile << " ,";
+	for (int i = 1; i < ruleCount; i++)
+	{
+		outFile << msclr::interop::marshal_as<std::string>("Rule " + i + ",");
+	}
+	outFile << "\n";
+
+	//Itterate over rows:
+	for (int i = 0; i < ruleCount - 1; i++)
+	{
+		vector<int>columnCases = RuleCaseCounts.at(i);
+
+		outFile << "Rule " + to_string(i+1) + ",";
+
+		for (int j = 0; j < ruleCount - 1; j++)
+		{
+
+			vector<int>rowCases = RuleCaseCounts.at(j);
+
+			int overlapCount = 0;
+
+			//Go over column cases and check if they are in the row cases.
+			for (int k = 0; k < columnCases.size(); k++)
+			{
+				for (int m = 0; m < rowCases.size(); m++)
+				{
+					if (rowCases.at(m) == columnCases.at(k))
+					{
+						overlapCount++;
+					}
+				}
+			}
+
+			//Calculate how many total cases are in both rules.
+			int totalCases = rowCases.size() + columnCases.size() - (overlapCount);
+
+			//Calculate the remaining cases after removed overlap:
+			int remainingCases = rowCases.size() + columnCases.size() - (overlapCount * 2);
+
+			//Record the number Unique Cases.
+			numUniqueCases[i][j] = totalCases;
+
+			//Record percent.
+			if (remainingCases != 0)
+			{
+				overlapTable[i][j] = (double(overlapCount) / double(totalCases)) * 100.0;
+			}
+			else
+			{
+				overlapTable[i][j] = -1;
+			}
+
+			//Calculate the number of values if just one rule is used.
+			int columnOnly = columnCases.size() - overlapCount;
+			int rowOnly = rowCases.size() - overlapCount;
+
+			outFile << "" + to_string(overlapTable[i][j]) + " | " + to_string(totalCases) +
+				" | R:" + to_string(columnOnly) +" | C:"+ to_string(rowOnly) +" | OL:" + to_string(overlapCount) +" ,";
+		}
+
+		outFile << "\n";
+	}
+
+	//Write to the file:
+	outFile.close();
+
+
+
+	//======================//
+
+	*/
 
 	return toReturn;
 }
@@ -5050,6 +5162,199 @@ vector<string> DomNominalSet::MTBRuleGeneration()
 			}
 
 		}//End of else (Main Segment).
+
+	}//End of While True.
+
+	return(toReturn);
+
+}//End of MTBRuleGeneration.
+
+//MTBRuleGenerationV2
+//Desc: Algorithm for generating all possible rule with combinations of coordinates using Monotonoicity / MTBChains.
+//This one has easier requirements.
+vector<string> DomNominalSet::MTBRuleGenerationV2()
+{
+	//Local Vars:
+	vector<string> toReturn;
+	vector<DNSRule> finalDNSRulesGenerated;
+	bool ruleGenerated = false;
+	const double PRECISION_THRESHOLD = 95;
+
+	//Get MTBC object:
+	MonotoneBooleanChains MTBC = MonotoneBooleanChains(7);
+
+	//Loop until break.
+	while (true)
+	{
+		//Get the first pair of coordinates to check for rules.
+		string linkValue = MTBC.getNextLink();
+
+		//If the entire chain is resolved.
+		if (linkValue == "-1") break;
+		else if (stoi(linkValue, 0, 2) == 0)//If the value is all zeros,
+		{
+			MTBC.giveAnswer(false);
+			continue;
+		}
+		else //check chain.
+		{
+			//Determine what coordinates are being used for generating rules.
+			vector<int> coordinatesToUse;
+			for (int i = 0; i < linkValue.size(); i++)
+			{
+				if (linkValue.at(i) == '1') coordinatesToUse.push_back(i);
+			}
+
+			//Now we have a list of coordinates, we have to start with the first two and see if rules can be generated.
+			//Then, move to the next and keep checking if rules can be generated.
+
+			bool linkGeneratedRule = false;
+			vector<vector<double>> attributeCombinations;
+			vector<vector<double>> newAttributeCombinations;
+
+			//Iterate over the coordinates:
+			for (int i = 0; i < coordinatesToUse.size(); i++)
+			{
+				int curCoordinateIndex = coordinatesToUse.at(i);
+				unordered_map<double, double> curCoordinateBlocks; //We wil just be using the fist class.
+
+				//Iterate over the number of classes and add any val.
+				for (int j = 0; j < file->getClassAmount() - 2; j++)
+				{
+					unordered_map<double, double> curClassAttributesAtCoord = *(classPercPerBlock->at(curCoordinateIndex)->at(j));
+					for (auto it = curClassAttributesAtCoord.begin(); it != curClassAttributesAtCoord.end(); it++)
+					{
+						double key = it->first;
+						if (curCoordinateBlocks.find(key) == curCoordinateBlocks.end())
+						{
+							curCoordinateBlocks.insert({ key, 0 });
+						}
+					}
+				}
+				
+				//If this is the first coordinate, just fill.
+				if (i == 0)
+				{
+					//Add all possible attributes.
+					for (auto blockIt = curCoordinateBlocks.begin(); blockIt != curCoordinateBlocks.end(); blockIt++)
+					{
+						vector<double> toAdd;
+						toAdd.push_back(blockIt->first);
+						attributeCombinations.push_back(toAdd);
+					}
+				}
+				else //If this is not the first coordinate 
+				{
+					//Iterate over the current combinantions
+					for (int j = 0; j < attributeCombinations.size(); j++)
+					{
+						vector<double> currentComb = attributeCombinations.at(j);
+
+						//Iterate over the attributes in this coordinate.
+						for (auto blockIt = curCoordinateBlocks.begin(); blockIt != curCoordinateBlocks.end(); blockIt++)
+						{
+							vector<double> toAdd = currentComb;
+							toAdd.push_back(blockIt->first);
+							newAttributeCombinations.push_back(toAdd);
+						}
+
+					}
+
+					//Clear temp NewAtttributeCombos and reassign.
+					attributeCombinations = newAttributeCombinations;
+					newAttributeCombinations.clear();
+				}
+
+			}//End iterate over coords.
+
+			//=====Check For Rules=====//
+
+			//Iterate over the attribute combinantions.
+			for (int i = 0; i < attributeCombinations.size(); i++)
+			{
+				vector<double> currentAttributeCombinantion = attributeCombinations.at(i);
+				int predictedCorrecly = 0;
+				int predictedIncorrectly = 0;
+				int predictedTotal = 0;
+				double precision = 0.0;
+
+				//Iterate over classes:
+				for (int j = 0; j < file->getClassAmount() - 2; j++) // -2 for default and class.
+				{
+					//Iterate over the sets:
+					for (int k = 0; k < file->getSetAmount(); k++)
+					{
+						//Check if the set goes through each attirbute and is in the right class.
+						bool goesToEachAttribute = true;
+						double currentSetClass = file->getClassOfSet(k);
+
+						for (int m = 0; m < coordinatesToUse.size(); m++)
+						{
+
+							if (file->getData(k, m) != currentAttributeCombinantion.at(m))
+							{
+								goesToEachAttribute = false;
+								break;
+							}
+
+						}//End of iterating over coords.
+
+						//Record predicted.
+						if (goesToEachAttribute && (currentSetClass == (j + 1)))
+						{
+							predictedCorrecly++;
+							predictedTotal++;
+						}
+						
+						if (goesToEachAttribute && (currentSetClass != (j + 1)))
+						{
+							predictedIncorrectly++;
+							predictedTotal++;
+						}
+
+					}//End iterating over sets.
+
+					//Check if the precision passes the threshold.
+					if (predictedTotal != 0)
+					{
+						precision = (double(predictedCorrecly) / double(predictedTotal)) * 100.0;
+						if (precision >= PRECISION_THRESHOLD)
+						{
+							DNSRule newRule;
+							newRule.setAttributesUsed(currentAttributeCombinantion);
+							newRule.setCoordinatesUsed(coordinatesToUse);
+							newRule.setCorrectCases(predictedCorrecly);
+							newRule.setIncorrectCases(predictedIncorrectly);
+							newRule.setTotalCases(predictedTotal);
+							newRule.setRuleClass(j + 1);
+							finalDNSRulesGenerated.push_back(newRule);
+							
+							linkGeneratedRule = true;
+						}
+					}
+
+					predictedCorrecly = 0;
+					predictedIncorrectly = 0;
+					predictedTotal = 0;
+					precision = 0.0;
+
+				}//End of iterating over classes.
+
+			}//End of iterating over attribute combinantions.
+
+			//Answer the chain.
+			if (linkGeneratedRule)
+			{
+				MTBC.giveAnswer(true);
+			}
+			else
+			{
+				MTBC.giveAnswer(false);
+			}
+
+			//=========================//
+
+		}//End if chain check.
 
 	}//End of While True.
 
