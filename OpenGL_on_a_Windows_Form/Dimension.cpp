@@ -107,7 +107,7 @@ double Dimension::getData(int dataIndex) const {
 		return 0.0;
 	}
 	double dataReturn = (*data[dataIndex]).getData();
-	if (inverted) {
+	if (inverted && dataReturn > 0) { // If value is an empty spot leave at bottom of graph
 		dataReturn = 1 - dataReturn;
 	}
 	dataReturn += shiftAmount;
@@ -120,8 +120,8 @@ double Dimension::getCalibratedData(int dataIndex) const {
 		return 0.0;
 	}
 	double dataReturn = (*data[dataIndex]).getData();
-	if (inverted) {
-		dataReturn = 1 - dataReturn;
+	if (inverted && dataReturn > 0) { //If value is an empty spot leave at bottom of graph
+			dataReturn = 1 - dataReturn;
 	}
 	return dataReturn;
 }
