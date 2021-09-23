@@ -882,9 +882,8 @@ namespace OpenGLForm
 
 		//Testing Dom Nom Sets.
 		void setDomNomSetVisualization(DataInterface* file, double worldHeight, double worldWidth);
-
 		void generateRulesDNS();
-		
+		void DNScalculateLinePosition();
 		void visualizeDomNomVisualization();
 		
 

@@ -260,10 +260,7 @@ void MonotoneBooleanChains::giveAnswer(bool ans)
 {
 	results.at(currentChainIndex).at(currentLinkIndex) = ans; //Record answer.
 	chainStatus.at(currentChainIndex).at(currentLinkIndex) = true; //Mark as answered.
-	if (ans == false)//If the answer is false, we can expand below. If true, we still want to check those combinations for rules.
-	{
-		//expand(ans);
-	}
+	testExpand(ans);
 }
 
 //expand
@@ -299,7 +296,7 @@ void MonotoneBooleanChains::expand(bool ans)
 			}
 		}
 	}
-	else //Expand above.
+	else//ans == true;
 	{
 		//Go over chains.
 		for (int j = 0; j < MTBChains.size(); j++)
@@ -328,6 +325,86 @@ void MonotoneBooleanChains::expand(bool ans)
 		}
 	}
 }
+
+void MonotoneBooleanChains::testExpand(bool ans)
+{
+	//Expand results.
+	if (ans == false) //Expand below.
+	{
+		//Go over chains.
+		for (int j = 0; j < MTBChains.size(); j++)
+		{
+			vector<string> curChain = MTBChains.at(j);
+
+			//If the bottom value in the chain is less then answered 
+			//value, expand until it value less then is not found.
+			int firstVal = stoi(curChain.at(0), 0, 2);
+
+			if (firstVal < answeredQuestionVal)
+			{
+				//Go up list.
+				for (int k = 0; k <= curChain.size() - 1; k++)
+				{
+					//If value in chain is less than answered value.
+					int curVal = stoi(curChain.at(k), 0, 2);
+					if (curVal < answeredQuestionVal)
+					{
+						chainStatus.at(j).at(k) = true;
+						results.at(j).at(k) = ans;
+					}
+					else break;//If higher we are done with this chain.
+				}
+			}
+		}
+	}
+	else//ans == true;
+	{
+		//How we expand:
+		//1.) Find the right most 1 in the answered chain. Ex. 000110(1)000
+		//2.) Mark as true and answered all values that are the past the 1. Ex. 0001101111.
+
+		string answeredLink = MTBChains.at(currentChainIndex).at(currentLinkIndex);
+
+		//1.) Find right most 1.
+		int rightmostOnePosition = -1;
+		for (int j = 0; j < answeredLink.size(); j++)
+		{
+			if (answeredLink[j] == '1')
+			{
+				rightmostOnePosition = j;
+			}
+		}
+
+		//2.) Mark all other values as checked,
+		//Go over chains.
+		for (int j = 0; j < MTBChains.size(); j++)
+		{
+			vector<string> curChain = MTBChains.at(j);
+
+			//Go down list.
+			for (int k = MTBChains.at(j).size() - 1; k >= 0; k--)
+			{
+				string linkToCheck = MTBChains.at(j).at(k);
+
+				//Check if chains match:
+				bool correctBits = true;
+				for (int m = 0; m <= rightmostOnePosition; m++)
+				{
+					if (linkToCheck.at(m) != answeredLink.at(m)) correctBits = false;
+				}
+
+				if (correctBits)
+				{
+					chainStatus.at(j).at(k) = true;
+					results.at(j).at(k) = ans;
+				}
+
+			}
+		}
+	}
+
+}
+
 
 //smartExpand:
 //Desc: expands downwards to every value if the link has two 1's.
@@ -465,5 +542,5 @@ void MonotoneBooleanChains::smartExpand(bool ans)
 void MonotoneBooleanChains::markAsEvaluated()
 {
 	chainStatus.at(currentChainIndex).at(currentLinkIndex) = true;
-	results.at(currentChainIndex).at(currentLinkIndex) = false;
+	results.at(currentChainIndex).at(currentLinkIndex) = true;
 }

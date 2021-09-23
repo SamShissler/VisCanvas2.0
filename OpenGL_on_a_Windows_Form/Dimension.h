@@ -42,6 +42,8 @@ public:
 	void setName(string* newName);
 	// sets the data of the set at the passed index(dataIndex) to the passed value(newData), alters the original data
 	void setData(int dataIndex, double newData);
+	// deletes the set at the passed index (dataIndex)
+	void deleteData(int dataIndex);
 
 
 	// multiplies all the data in the dimension by the passed double, does not alter original data

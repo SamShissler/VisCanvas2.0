@@ -9,6 +9,8 @@
 #define DOMNOMINALSET_H
 
 #include "DataInterface.h"
+#include "DomNomSetsLinesBetweenCords.h"
+#include "DNSRule.h"
 #include <unordered_map>
 #include <vector>
 #include <windows.h>
@@ -25,6 +27,12 @@ public:
 	DomNominalSet();
 	DomNominalSet(DataInterface* file, double worldHeight, double worldWidth);
 	
+
+	//TESTING.
+	vector<int> casesToRemove;
+
+
+
 	//Data Compiling:
 
 	//===Dom-Nom-Set Version===
@@ -35,8 +43,9 @@ public:
 	vector<vector<pair<double, double>>> getSortByPurity(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
 	vector<vector<pair<double, double>>> getSortByFreqency(vector<unordered_map<double, double>*>* blockHeights);
 	vector<vector<pair<double, double>>> getSortByClass(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
+	void calculateLinePositions(double worldWidth);
 	
-	//Drawing Starting Visualizaation:
+	//Drawing Starting Visualization:
 	GLvoid drawVisualization();
 	GLvoid drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
 	GLvoid drawLines(double worldWidth);
@@ -56,12 +65,18 @@ public:
 	string linguisticDesc();
 	vector<string> determineRules();
 	vector<string> ruleGenerationSequential();
-	vector<string> MTBRuleGeneration();
-	vector<string> MTBRuleGenerationV2();
+	vector<string> MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass);
+	vector<DNSRule> MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass);
+	vector<string> MTBRuleGenResults(double precisionThresh, vector<vector<int>>groups, int targetClass);
+	vector<string> ParetoFrontRuleGenWithOverlap(double precisionThresh, vector<vector<int>>groups, int targetClass);
+	vector<DNSRule> calculateParetoFront(vector<DNSRule> generatedRules);
+	vector<DNSRule> trueConvex(vector<DNSRule> paretoFront);
 	GLvoid visualizeRules();
+	GLvoid drawOval(float x_center, float y_center, float w, float h, int n);
 
 	//Getters and Setters:
 	vector<pair<double, pair<double, double>>> getRuleData();
+	string getGeneratedMTBRuleData();
 
 private:
 
@@ -84,6 +99,8 @@ private:
 	vector<vector<pair<double, double>>> sortedByClassVector; //Blocks sorted by class.
 	vector<pair<double, pair<double, double>>> ruleData; //Rule data pair <starting coordinate, pair(value1,value2)>
 	vector<vector<int>> casesPerCoordinate; // Records the number of cases to be used when drawing the hover info.
+	vector<DomNomSetsLinesBetweenCords> linePosiitons;
+	string generatedRuleDataMTBRG;
 };
 
 #endif 

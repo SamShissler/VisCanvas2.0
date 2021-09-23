@@ -53,8 +53,6 @@ public:
 	bool isReadClassNames();
 
 
-	void confusion();
-
 	//A string to add to edit to add to a linguistic description.
 	string linguisticAddition = "";
 
@@ -72,6 +70,8 @@ public:
 	bool isDimensionInverted(int dimensionIndex);
 	// gets the data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
 	double getData(int setIndex, int indexOfData) const;
+	// deletes the set for the passed index (setIndex)
+	void deleteSet(int setIndex);
 	// gets the original data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
 	double getOriginalData(int setIndex, int indexOfData) const;
 	// sets the data in the set of the passed index(setIndex), for the passed dimension(indexOfData), to the passed value(newDataValue)
@@ -366,6 +366,8 @@ public:
 	void setReOrderMode(bool);
 	bool getReOrderMode();
 	void setShiftMode(bool);
+	bool getInvertMode();
+	void setInvertMode(bool);
 	bool getShiftMode();
 	void setNominalSetsMode(bool);
 	bool getNominalSetsMode();
@@ -377,6 +379,10 @@ public:
 	bool getDNSRuleVisualizationMode();
 	void setDNSHideCoordinatesMode(bool);
 	bool getDNSHideCoordinatesMode();
+	void setDNSSetLinesTransparentMode(bool);
+	bool getDNSSetLinesTransparentMode();
+	bool getDNSGreenBorderMode();
+	void setDNSGreenBorderMode(bool);
 	void setPurityPerc(int);
 	int getPurityPerc();
 	void setTranspLineThresh(int);
@@ -419,10 +425,13 @@ private:
 	bool overlapMode;
 	bool reOrderMode = false;
 	bool shiftMode = false;
+	bool invertMode = false;
 	bool nominalSetsMode;
 	bool domNominalSetsMode;
 	bool DNSRuleVisualizationMode = false;
 	bool DNSHideCoordinatesMode = false;
+	bool DNSSetLinesTransparentMode = false;
+	bool DNSGreenBorderMode = false;
 	bool histogramMode;
 	bool frequencyMode;
 	bool quadMode;

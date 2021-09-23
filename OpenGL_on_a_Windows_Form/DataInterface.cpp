@@ -323,10 +323,6 @@ bool DataInterface::isDimensionInverted(int dimensionIndex) {
 	return (dataDimensions[dimensionIndex])->isInverted();
 }
 
-
-
-
-
 // gets the data in the passed set at the passed index
 double DataInterface::getData(int setIndex, int indexOfData) const {
 	// check if indexes are in bounds
@@ -339,6 +335,24 @@ double DataInterface::getData(int setIndex, int indexOfData) const {
 
 	// get data
 	return (*dataDimensions[indexOfData]).getData(setIndex);
+}
+
+// deletes the set in the passed set index.
+void DataInterface::deleteSet(int setIndex)
+{
+	if (setIndex >= getSetAmount() || setIndex < 0)
+	{
+		return;
+	}
+	
+	//Iterate over the data dimensions and delete the indiviual sets.
+	for (int i = 0; i < dataDimensions.size(); i++)
+	{
+		Dimension *curDim = dataDimensions.at(i);
+
+		//Remove set.
+		curDim->deleteData(setIndex);
+	}
 }
 
 // gets the original data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
@@ -369,7 +383,7 @@ double DataInterface::setData(int setIndex, int indexOfData, double newDataValue
 	// get data
 	double oldData = (*dataDimensions[indexOfData]).getOriginalData(setIndex);
 	(*dataDimensions[indexOfData]).setData(setIndex, newDataValue);
-	(*dataDimensions[indexOfData]).calibrateData();
+	//(*dataDimensions[indexOfData]).calibrateData();
 	return oldData;
 }
 
@@ -3777,6 +3791,16 @@ bool DataInterface::getShiftMode()
 	return this->shiftMode;
 }
 
+bool DataInterface::getInvertMode()
+{
+	return this->invertMode;
+}
+
+void DataInterface::setInvertMode(bool toSet)
+{
+	this->invertMode = toSet;
+}
+
 void DataInterface::setNominalSetsMode(bool NominalSetsMode) {
 	this->nominalSetsMode = NominalSetsMode;
 }
@@ -3811,6 +3835,26 @@ void DataInterface::setDNSHideCoordinatesMode(bool toSet)
 bool DataInterface::getDNSHideCoordinatesMode()
 {
 	return this->DNSHideCoordinatesMode;
+}
+
+void DataInterface::setDNSSetLinesTransparentMode(bool toSet)
+{
+	DNSSetLinesTransparentMode = toSet;
+}
+
+bool DataInterface::getDNSSetLinesTransparentMode()
+{
+	return DNSSetLinesTransparentMode;
+}
+
+bool DataInterface::getDNSGreenBorderMode()
+{
+	return DNSGreenBorderMode;
+}
+
+void DataInterface::setDNSGreenBorderMode(bool toSet)
+{
+	this->DNSGreenBorderMode = toSet;
 }
 
 void DataInterface::setPurityPerc(int p)
@@ -3899,11 +3943,17 @@ void DataInterface::addDimensionToHideDNS(int index)
 
 void DataInterface::hideListedDimensionsDNS()
 {
-	for (int i = 0; i < this->dimensionsHide.size(); i++)
+	for (int i = 0; i < getDimensionAmount(); i++)
 	{
-		if (dimensionsHide.at(i) != -1)
+		bool isKept = false;
+		for (int j = 0; j < dimensionsHide.size(); j++)
 		{
-			this->dataDimensions[dimensionsHide.at(i)]->setVisibility(false);
+			if (dimensionsHide.at(j) == i) isKept = true;
+		}
+
+		if (!isKept)
+		{
+			this->dataDimensions[i]->setVisibility(false);
 		}
 	}
 }

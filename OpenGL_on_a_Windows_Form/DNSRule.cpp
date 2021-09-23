@@ -46,6 +46,16 @@ vector<int> DNSRule::getCoordinatesUsed()
 	return coordinatesUsed;
 }
 
+void DNSRule::setCasesUsed(vector<int> toSet)
+{
+	this->casesUsed = toSet;
+}
+
+vector<int> DNSRule::getCasesUsed()
+{
+	return casesUsed;
+}
+
 void DNSRule::setCorrectCases(int toSet)
 {
 	this->correctCases = toSet;
@@ -94,4 +104,24 @@ void DNSRule::setHasChanged(bool toSet)
 bool DNSRule::getHasChanged()
 {
 	return hasChanged;
+}
+
+void DNSRule::setPrecision(double toSet)
+{
+	this->precision = toSet;
+}
+
+double DNSRule::getPrecision()
+{
+	return this->precision;
+}
+
+void DNSRule::setTotalCoverage(double toSet)
+{
+	this->totalCoverage = toSet;
+}
+
+double DNSRule::getTotalCoverage()
+{
+	return this->totalCoverage;
 }

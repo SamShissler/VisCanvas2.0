@@ -15,6 +15,8 @@ Purpose: CS 481 Project
 #include "Subsets.h"
 #include "SchemeEditor.h"
 #include "NominalColorPicker.h"
+#include "NonMonotonicSelector.h"
+#include "NonMonotonicChoice.h"
 #include "UserInputPopUp.h"
 
 namespace VisCanvas {
@@ -142,6 +144,9 @@ namespace VisCanvas {
 	private: System::Windows::Forms::Button^ DNSRuleVisualizationButton;
 	private: System::Windows::Forms::Button^ DNSGenerateRulesButton;
 	private: System::Windows::Forms::Button^ DNSHidCoordinatesButton;
+	private: System::Windows::Forms::Button^ DNSSetLinesTransparentButton;
+	private: System::Windows::Forms::Button^ DNSGreenBorderButton;
+	private: System::Windows::Forms::Button^ DNSNonMonotonicButton;
 	private: System::Windows::Forms::Button^ sideButton;
 	private: System::Windows::Forms::Button^ subsetButton;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
@@ -212,6 +217,9 @@ namespace VisCanvas {
 				 this->DNSRuleVisualizationButton = (gcnew System::Windows::Forms::Button());
 				 this->DNSGenerateRulesButton = (gcnew System::Windows::Forms::Button());
 				 this->DNSHidCoordinatesButton = (gcnew System::Windows::Forms::Button());
+				 this->DNSSetLinesTransparentButton = (gcnew System::Windows::Forms::Button());
+				 this->DNSGreenBorderButton = (gcnew System::Windows::Forms::Button());
+				 this->DNSNonMonotonicButton = (gcnew System::Windows::Forms::Button());
 				 this->sideButton = (gcnew System::Windows::Forms::Button());
 				 this->subsetButton = (gcnew System::Windows::Forms::Button());
 
@@ -626,6 +634,9 @@ namespace VisCanvas {
 				 this->Tools->Controls->Add(this->DNSRuleVisualizationButton);
 				 this->Tools->Controls->Add(this->DNSGenerateRulesButton);
 				 this->Tools->Controls->Add(this->DNSHidCoordinatesButton);
+				 this->Tools->Controls->Add(this->DNSSetLinesTransparentButton);
+				 this->Tools->Controls->Add(this->DNSGreenBorderButton);
+				 this->Tools->Controls->Add(this->DNSNonMonotonicButton);
 				 this->Tools->Controls->Add(this->button3);
 				 this->Tools->Controls->Add(this->label3);
 				 this->Tools->Controls->Add(this->button2);
@@ -817,6 +828,42 @@ namespace VisCanvas {
 				 this->DNSHidCoordinatesButton->UseVisualStyleBackColor = false;
 				 this->DNSHidCoordinatesButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSHidRulesButton);
 				 this->DNSHidCoordinatesButton->Visible = false;
+				 //
+				 // DNSSetLinesTransparentButtons
+				 //
+				 this->DNSSetLinesTransparentButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->DNSSetLinesTransparentButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DNSSetLinesTransparent.Image")));
+				 this->DNSSetLinesTransparentButton->Location = System::Drawing::Point(64, 188);
+				 this->DNSSetLinesTransparentButton->Name = L"DNS Set Lines Transparent Button";
+				 this->DNSSetLinesTransparentButton->Size = System::Drawing::Size(45, 45);
+				 this->DNSSetLinesTransparentButton->TabIndex = 23;
+				 this->DNSSetLinesTransparentButton->UseVisualStyleBackColor = false;
+				 this->DNSSetLinesTransparentButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSSetLinesTransparent_Click);
+				 this->DNSSetLinesTransparentButton->Visible = false;
+				 //
+				 // DNSGreenBorderButton
+				 //
+				 this->DNSGreenBorderButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->DNSGreenBorderButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DNSGreenBorder.Image")));
+				 this->DNSGreenBorderButton->Location = System::Drawing::Point(14 + 50, 393 - 155); 
+				 this->DNSGreenBorderButton->Name = L"DNS Green Border Button";
+				 this->DNSGreenBorderButton->Size = System::Drawing::Size(45, 45);
+				 this->DNSGreenBorderButton->TabIndex = 23;
+				 this->DNSGreenBorderButton->UseVisualStyleBackColor = false;
+				 this->DNSGreenBorderButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSGreenBorderButton_Click);
+				 this->DNSGreenBorderButton->Visible = false;
+				 //
+				 // DNSNonMonotonicButton
+				 //
+				 this->DNSNonMonotonicButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+				 this->DNSNonMonotonicButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DNSNonMono.Image")));
+				 this->DNSNonMonotonicButton->Location = System::Drawing::Point(14, 393 - 155);
+				 this->DNSNonMonotonicButton->Name = L"DNS Non Monotonic Button";
+				 this->DNSNonMonotonicButton->Size = System::Drawing::Size(45, 45);
+				 this->DNSNonMonotonicButton->TabIndex = 23;
+				 this->DNSNonMonotonicButton->UseVisualStyleBackColor = false;
+				 this->DNSNonMonotonicButton->Click += gcnew System::EventHandler(this, &VisCanvas::click_DNSNonMono_Click);
+				 this->DNSNonMonotonicButton->Visible = false;
 				 // 
 				 // sortAscend
 				 // 
@@ -2223,6 +2270,11 @@ namespace VisCanvas {
 				this->reorderToolStripMenuItem->Checked = false;
 				this->OpenGL->file->setReOrderMode(false);
 				this->sortManual();
+
+				if (this->OpenGL->file->getDomNominalSetsMode())
+				{
+					this->OpenGL->DNScalculateLinePosition();
+				}
 			}
 		}
 
@@ -2253,6 +2305,11 @@ namespace VisCanvas {
 				this->dimensionShiftingToolStripMenuItem->Checked = false;
 				OpenGL->file->setShiftMode(false);
 				this->shiftManual();
+
+				if (this->OpenGL->file->getDomNominalSetsMode())
+				{
+					this->OpenGL->DNScalculateLinePosition();
+				}
 			}
 		}
 
@@ -2279,9 +2336,15 @@ namespace VisCanvas {
 				this->manualSort->BackColor = System::Drawing::SystemColors::ButtonFace;
 				this->manualShift->BackColor = System::Drawing::SystemColors::ButtonFace;
 				this->invertManual();
+				this->OpenGL->file->setInvertMode(true);
 			} else {
 				this->toggleDimensionInvertToolStripMenuItem->Checked = false;
 				this->invertManual();
+				this->OpenGL->file->setInvertMode(false);
+				if (this->OpenGL->file->getDomNominalSetsMode())
+				{
+					this->OpenGL->DNScalculateLinePosition();
+				}
 			}
 		}
 
@@ -2467,6 +2530,7 @@ namespace VisCanvas {
 		if (OpenGL->file->getDNSHideCoordinatesMode() == false)
 		{
 			OpenGL->file->hideListedDimensionsDNS();
+			OpenGL->DNScalculateLinePosition();
 		}
 	}
 
@@ -2481,36 +2545,8 @@ namespace VisCanvas {
 		//If the dominiant nominal sets is being turned on, get information from the user.
 		if (OpenGL->file->getDomNominalSetsMode() != true)
 		{
-			//Ask User for percentage
-			CppCLRWinformsProjekt::UserInputPopUp^ popupG = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What purity percentage would you like \nfor green borders?");
-			CppCLRWinformsProjekt::UserInputPopUp^ popupPS = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What frequency percentage would you like \nfor purity sorting?");
-			CppCLRWinformsProjekt::UserInputPopUp^ popupTL = gcnew CppCLRWinformsProjekt::UserInputPopUp("Transparent Lines", "What line percentage would you like \nas a threshold to make lines transparent?");
-
-			popupG->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			popupG->ShowDialog();
-
-			popupPS->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			popupPS->ShowDialog();
-
-			popupTL->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
-			popupTL->ShowDialog();
-
-			String^ resultFromUserM = popupG->getResult();
-			string resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
-			int userInG = stoi(resultFromUser);
-
-			resultFromUserM = popupPS->getResult();
-			resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
-			int userInPS = stoi(resultFromUser);
-
-			resultFromUserM = popupTL->getResult();
-			resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
-			int userInTL = stoi(resultFromUser);
-
-			//Set values in datainterface.
-			OpenGL->file->setPurityPerc(userInG);
-			OpenGL->file->setFreqSmall(userInPS);
-			OpenGL->file->setTranspLineThresh(userInTL);
+			//Reset Green Border.
+			OpenGL->file->setPurityPerc(MAXINT);
 
 			//Hide other UI buttons:
 			nominalSetsButton->Visible = false;
@@ -2533,9 +2569,26 @@ namespace VisCanvas {
 			DNSRuleVisualizationButton->Visible = true;
 			DNSGenerateRulesButton->Visible = true;
 			DNSHidCoordinatesButton->Visible = true;
+			DNSSetLinesTransparentButton->Visible = true;
+			DNSGreenBorderButton->Visible = true;
+			DNSNonMonotonicButton->Visible = true;
+
+			//Hide Right UI:
+			statsList->Visible = false;
+			goToPoint->Visible = false;
+			cubeRatio->Visible = false;
+			currentCubeTotal->Visible = false;
+			currentCube->Visible = false;
+			goToCube->Visible = false;
+			currCubeInput->Visible = false;
+			currPointInput->Visible = false;
+			pointList->Visible = false;
+			boundaryList->Visible = false;
+			currentPoint->Visible = false;
+			currentCubeRatio->Visible = false;
 
 			//Re-Position Buttons:
-			domNominalSetsButton->Location = System::Drawing::Point(64, 188);
+			domNominalSetsButton->Location = System::Drawing::Point(14, 288);
 			ling->Location = System::Drawing::Point(14 + 50, 290 - 206);
 
 			//Calculate positions of the lines to draw and give them to OpenGL->file
@@ -2564,6 +2617,23 @@ namespace VisCanvas {
 			DNSRuleVisualizationButton->Visible = false;
 			DNSGenerateRulesButton->Visible = false;
 			DNSHidCoordinatesButton->Visible = false;
+			DNSSetLinesTransparentButton->Visible = false;
+			DNSGreenBorderButton->Visible = false;
+			DNSNonMonotonicButton->Visible = false;
+
+			//Right UI:
+			statsList->Visible = true;
+			goToPoint->Visible = true;
+			cubeRatio->Visible = true;
+			currentCubeTotal->Visible = true;
+			currentCube->Visible = true;
+			goToCube->Visible = true;
+			currCubeInput->Visible = true;
+			currPointInput->Visible = true;
+			pointList->Visible = true;
+			boundaryList->Visible = true;
+			currentPoint->Visible = true;
+			currentCubeRatio->Visible = true;
 
 			//Return buttons to original position:
 			domNominalSetsButton->Location = System::Drawing::Point(14, 488);
@@ -2572,6 +2642,191 @@ namespace VisCanvas {
 		}
 
 		OpenGL->file->setDomNominalSetsMode(!(OpenGL->file->getDomNominalSetsMode()));
+	}
+
+	private: System::Void click_DNSSetLinesTransparent_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (!OpenGL->file->getDNSSetLinesTransparentMode())
+		{
+			OpenGL->file->setDNSSetLinesTransparentMode(true);
+			CppCLRWinformsProjekt::UserInputPopUp^ popupTL = gcnew CppCLRWinformsProjekt::UserInputPopUp("Transparent Lines", "What line percentage would you like \nas a threshold to make lines transparent?");
+			popupTL->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			popupTL->ShowDialog();
+			String^ resultFromUserM = popupTL->getResult();
+			string resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+			int userInTL = stoi(resultFromUser);
+
+			//Set values in datainterface.
+			OpenGL->file->setTranspLineThresh(userInTL);
+		}
+		else
+		{
+			OpenGL->file->setDNSSetLinesTransparentMode(false);
+			OpenGL->file->setTranspLineThresh(0);
+		}
+	}
+
+	private: System::Void click_DNSGreenBorderButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (!OpenGL->file->getDNSGreenBorderMode())
+		{
+			OpenGL->file->setDNSGreenBorderMode(true);
+			
+			//Ask User for percentage
+			CppCLRWinformsProjekt::UserInputPopUp^ popupG = gcnew CppCLRWinformsProjekt::UserInputPopUp("Block Purity", "What purity percentage would you like \nfor green borders?");
+
+			popupG->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			popupG->ShowDialog();
+
+			String^ resultFromUserM = popupG->getResult();
+			string resultFromUser = msclr::interop::marshal_as<std::string>(resultFromUserM);
+			int userInG = stoi(resultFromUser);
+
+			//Set values in datainterface.
+			OpenGL->file->setPurityPerc(userInG);
+		}
+		else
+		{
+			OpenGL->file->setDNSGreenBorderMode(false);
+			OpenGL->file->setPurityPerc(MAXINT);
+		}
+	}
+
+	private: System::Void click_DNSNonMono_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		//Create a vector of all avalible coordinates.
+		vector<int>* avalibleCoordinates = new vector<int>();
+		for (int i = 1; i <= OpenGL->file->getDimensionAmount(); i++)
+		{
+			avalibleCoordinates->push_back(i);
+		}
+		
+		//Allow the user to select what coordinates are non-monotonic.
+		CppCLRWinformsProjekt::NonMonotonicSelector^ monotonicSelection = gcnew CppCLRWinformsProjekt::NonMonotonicSelector(avalibleCoordinates);
+		monotonicSelection->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+		monotonicSelection->ShowDialog();
+
+		//Retrive all non-monotonic coordinates.
+		vector<int>* NonMonotonicCoordinates = monotonicSelection->getSelectedCoordinates();
+	
+		//Iterate over all non-monotonic coordinates and allow the user to make them monotonic.
+		for (int i = 0; i < NonMonotonicCoordinates->size(); i++)
+		{
+			//Get the coordinate that we are working with.
+			int coordinateVal = NonMonotonicCoordinates->at(i);
+
+			vector<double>* coordinateAttributes = new vector<double>();
+			//Get attributes of coordinate.
+			for (int j = 0; j < OpenGL->file->getSetAmount(); j++)
+			{
+				double possibleAttribute = OpenGL->file->getOriginalData(j, coordinateVal - 1);
+
+				bool notContained = true;
+				for (int k = 0; k < coordinateAttributes->size(); k++)
+				{
+					if (coordinateAttributes->at(k) == possibleAttribute)
+					{
+						notContained = false;
+						break;
+					}
+				}
+
+				if (notContained)
+				{
+					coordinateAttributes->push_back(possibleAttribute);
+				}
+			}
+			
+			//Determine new values.
+			CppCLRWinformsProjekt::NonMonotonicChoice^ coordinateWindow = gcnew CppCLRWinformsProjekt::NonMonotonicChoice(coordinateAttributes, coordinateVal);
+			coordinateWindow->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			coordinateWindow->ShowDialog();
+
+			bool inflictonUsed = coordinateWindow->getiInflictionBool();
+
+			if (inflictonUsed)
+			{
+				bool mergeUsed = coordinateWindow->getiInflictionKind();
+
+				if (mergeUsed)
+				{
+					//Calculate values accoridng to scale.
+					vector<pair<double, double>>* editedAttributes;
+					for (int i = 0; i < coordinateAttributes->size(); i++)
+					{
+						double attributeVal = coordinateAttributes->at(i);
+						pair<double, double> newPair;
+						newPair.first = attributeVal;
+						if (attributeVal < inflictonUsed)
+						{
+							newPair.second = (2 * inflictonUsed);
+						}
+						else if (attributeVal > inflictonUsed)
+						{
+							newPair.second = (2*(attributeVal)-inflictonUsed);
+						}
+						else
+						{
+							newPair.second = inflictonUsed;
+						}
+					}
+
+					//Assign new attribute values.
+					for (int j = 0; j < OpenGL->file->getSetAmount(); j++)
+					{
+						double unchangedAttribute = OpenGL->file->getOriginalData(j, coordinateVal - 1);
+						for (int k = 0; k < editedAttributes->size(); k++)
+						{
+							pair<double, double> curPair = editedAttributes->at(k);
+
+							double prevVal = curPair.first;
+							double newVal = curPair.second;
+
+							//If the key is the same. replace with new value.
+							if (prevVal == unchangedAttribute)
+							{
+								OpenGL->file->setData(j, coordinateVal - 1, newVal);
+							}
+						}
+					}
+
+					//Re normalize the data.
+					OpenGL->file->calibrateData();
+				}
+				else
+				{
+					vector<pair<double, double>>* newLeftCoord = coordinateWindow->getSplitLeftCord();
+					vector<pair<double, double>>* newRightCoord = coordinateWindow->getSplitRightCord();
+				}
+
+			}
+			else
+			{
+				vector<pair<double, double>>* editedAttributes = coordinateWindow->getResult();
+
+				//Assign new attribute values.
+				for (int j = 0; j < OpenGL->file->getSetAmount(); j++)
+				{
+					double unchangedAttribute = OpenGL->file->getOriginalData(j, coordinateVal - 1);
+					for (int k = 0; k < editedAttributes->size(); k++)
+					{
+						pair<double, double> curPair = editedAttributes->at(k);
+
+						double prevVal = curPair.first;
+						double newVal = curPair.second;
+
+						//If the key is the same. replace with new value.
+						if (prevVal == unchangedAttribute)
+						{
+							OpenGL->file->setData(j, coordinateVal - 1, newVal);
+						}
+					}
+				}
+
+				//Re normalize the data.
+				OpenGL->file->calibrateData();
+			}
+		}
 	}
 
 	private: System::Void click_hist(System::Object^ sender, System::EventArgs^ e) {

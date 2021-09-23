@@ -23,6 +23,7 @@ private:
 	void fillStatus();
 	void expand(bool ans);
 	void smartExpand(bool ans);
+	void testExpand(bool ans);
 	bool isResolved();
 
 	//Private Member values.

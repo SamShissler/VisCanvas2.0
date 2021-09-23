@@ -228,6 +228,9 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ClassScheme.cpp" />
     <ClCompile Include="ColorCustom.cpp" />
+    <ClCompile Include="CoordinateGroupGeneralizer.cpp" />
+    <ClCompile Include="CoordinateGroupingWindow.cpp" />
+    <ClCompile Include="CoordinateGroupMaker.cpp" />
     <ClCompile Include="DataClass.cpp" />
     <ClCompile Include="DataInterface.cpp" />
     <ClCompile Include="DataNode.cpp" />
@@ -235,6 +238,7 @@
     <ClCompile Include="Dimension.cpp" />
     <ClCompile Include="DNSRule.cpp" />
     <ClCompile Include="DomNominalSet.cpp" />
+    <ClCompile Include="DomNomSetsLinesBetweenCords.cpp" />
     <ClCompile Include="GraphNote.cpp" />
     <ClCompile Include="AdditionalSettings.cpp" />
     <ClCompile Include="IntervalGrouping.cpp" />
@@ -243,6 +247,7 @@
     <ClCompile Include="NominalColorPicker.cpp" />
     <ClCompile Include="NominalGrouping.cpp" />
     <ClCompile Include="NominalSubgroupBuilder.cpp" />
+    <ClCompile Include="NonMonotonicSelector.cpp" />
     <ClCompile Include="NSGGroupAssingment.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="OrderScheme.cpp" />
@@ -267,6 +272,9 @@
     <ClInclude Include="..\..\..\..\..\..\source\repos\CarData_Project\CarData_Project\Resource.h" />
     <ClInclude Include="ClassScheme.h" />
     <ClInclude Include="ColorCustom.h" />
+    <ClInclude Include="CoordinateGroupGeneralizer.h" />
+    <ClInclude Include="CoordinateGroupingMainWindow.h" />
+    <ClInclude Include="CoordinateGroupMaker.h" />
     <ClInclude Include="DataClass.h" />
     <ClInclude Include="DataInterface.h" />
     <ClInclude Include="DataNode.h" />
@@ -274,6 +282,7 @@
     <ClInclude Include="Dimension.h" />
     <ClInclude Include="DNSRule.h" />
     <ClInclude Include="DomNominalSet.h" />
+    <ClInclude Include="DomNomSetsLinesBetweenCords.h" />
     <ClInclude Include="GraphNote.h" />
     <ClInclude Include="AdditionalSettings.h">
       <FileType>CppForm</FileType>
@@ -281,10 +290,14 @@
     <ClInclude Include="IntervalGrouping.h" />
     <ClInclude Include="IntervalGroupStarting.h" />
     <ClInclude Include="KVPair.h" />
+    <ClInclude Include="LoadingScreen.h" />
     <ClInclude Include="MonotoneBooleanChains.h" />
     <ClInclude Include="NominalColorPicker.h" />
     <ClInclude Include="NominalGrouping.h" />
     <ClInclude Include="NominalSubgroupBuilder.h" />
+    <ClInclude Include="NonMonotonicChoice.h" />
+    <ClInclude Include="NonMonotonicInfliction.h" />
+    <ClInclude Include="NonMonotonicSelector.h" />
     <ClInclude Include="NSG.h" />
     <ClInclude Include="NSGGroupAssingment.h" />
     <ClInclude Include="OrderScheme.h" />
@@ -362,8 +375,11 @@
     <Image Include="..\Button Icons\tile.png" />
     <Image Include="button1.Image.png" />
     <Image Include="DNSGenerateRules.Image.bmp" />
+    <Image Include="DNSGreenBorder.Image.bmp" />
     <Image Include="DNSHideCoordinate.Image.bmp" />
+    <Image Include="DNSNonMono.Image.bmp" />
     <Image Include="DNSRuleVisualization.Image.bmp" />
+    <Image Include="DNSSetLinesTransparent.Image.bmp" />
     <Image Include="nominalSetsImage.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

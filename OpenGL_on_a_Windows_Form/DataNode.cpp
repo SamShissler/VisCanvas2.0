@@ -34,6 +34,11 @@ void DataNode::setData(double newData) {
 	originalData = newData;
 }
 
+// sets the data the node holds
+void DataNode::setDataCurrent(double newData) {
+	currentData = newData;
+}
+
 // sets the data to the original
 void DataNode::resetData() {
 	currentData = originalData;
