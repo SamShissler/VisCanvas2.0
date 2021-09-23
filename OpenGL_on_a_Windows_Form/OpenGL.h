@@ -335,6 +335,17 @@ namespace OpenGLForm
 			}
 		}
 
+		// Set the toggle for DNS hide manual.
+		System::Void setHideManualToggle(bool isToggled)
+		{
+			this->hideManual = isToggled;
+			if (isToggled) {
+				this->zoom = 0;
+				this->tempXWorldMouseDifference = 0;
+				this->tempYWorldMouseDifference = 0;
+			}
+		}
+
 		/**
 		 * Set the toggle state for manual invert
 		 * @param isToggled
@@ -357,6 +368,11 @@ namespace OpenGLForm
 		bool getManualInvertToggle(System::Void)
 		{
 			return this->invertDimensionToggled;
+		}
+
+		bool getHideManualToggle(System::Void)
+		{
+			return this->hideManual;
 		}
 
 		/**
@@ -866,8 +882,10 @@ namespace OpenGLForm
 
 		//Testing Dom Nom Sets.
 		void setDomNomSetVisualization(DataInterface* file, double worldHeight, double worldWidth);
-
+		void generateRulesDNS();
+		void DNScalculateLinePosition();
 		void visualizeDomNomVisualization();
+		
 
 	private:
 
@@ -906,6 +924,7 @@ namespace OpenGLForm
 
 		bool shiftHorizontal;
 		bool shiftVertical;
+		bool hideManual;
 
 		int font_list_base_2d; // set the start of the display lists for the 2d font
 		const char* font; // sets the font
@@ -1070,20 +1089,40 @@ namespace OpenGLForm
 
 		// this method takes the passed mouse click coordinates and finds the dimension clicked on
 		int findClickedDimension(double xMouseWorldPosition, double yMouseWorldPosition) {
-			double xAxisIncrement = (this->worldWidth) / (this->file->getDimensionAmount() + 1); // +1 instead of +2
+
+			//double xAxisIncrement = (this->worldWidth) / (this->file->getDimensionAmount() + 1); // +1 instead of +2
+
+			int numDimensionsHidden = 0;//Keep track of dimensions hidden for offset.
+			for (int i = 0; i < file->getDimensionAmount(); i++)
+			{
+				if (!this->file->isDimensionVisible(i))
+				{
+					numDimensionsHidden++;
+				}
+			}
+
+			double xAxisIncrement = (this->worldWidth) / (this->file->getDimensionAmount() + 1 - numDimensionsHidden); // +1 instead of +2
+
+			numDimensionsHidden = 0;
 
 			for (int i = 0; i < file->getDimensionAmount(); i++)
 			{
-				double shiftAmount = this->file->getDimensionShift(i);
-				double dimensionX = ((-this->worldWidth) / 2.0) + ((xAxisIncrement) * (i + 1));
+				//As long as the dimension is not hidden:
+				if (this->file->isDimensionVisible(i))
+				{
+					double shiftAmount = this->file->getDimensionShift(i);
+					double dimensionX = ((-this->worldWidth) / 2.0) + ((xAxisIncrement) * (i + 1 - numDimensionsHidden));
 
-				double dimensionYMax = (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.75);
-				double dimensionYMin = (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.1);
+					double dimensionYMax = (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.75);
+					double dimensionYMin = (shiftAmount * (this->worldHeight * 0.5) + this->worldHeight * 0.1);
 
-				// creates the bound for the parallel lines
-				if (xMouseWorldPosition - (dimensionX) >= -15 && xMouseWorldPosition - (dimensionX) <= 15) {
-					return i;
+					// creates the bound for the parallel lines
+					if (xMouseWorldPosition - (dimensionX) >= -15 && xMouseWorldPosition - (dimensionX) <= 15) {
+						return i;
+					}
 				}
+				else numDimensionsHidden++;
+				
 			}
 			return -1;
 		}
@@ -1145,8 +1184,8 @@ namespace OpenGLForm
 
 
 		GLvoid Display(GLvoid) {
-			//Set the lines that will mark the x values of the window
 
+			//Set the lines that will mark the x values of the window
 			glLineWidth(2.0);
 			glClear(GL_COLOR_BUFFER_BIT);
 
@@ -1164,6 +1203,7 @@ namespace OpenGLForm
 			glText2d(-(this->worldWidth / 2.0), this->worldHeight / 2.0, "HELLO THIS IS A TEST TO SEE HOW MANY CHARACTERS I CAN PUT ON THE SCREEN!");
 			glFlush();
 			*/
+
 			if (this->uploadedFile()) {
 				int dimensionCount = 0;
 				double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); // +1 instead of +2
@@ -2736,8 +2776,6 @@ namespace OpenGLForm
 		// THIS IS WHERE ANY BUTTON CLICKS GO // the parent window will need to handle the other key presses
 		virtual void WndProc(Message% msg) override
 		{
-
-
 			switch (msg.Msg)
 			{
 
@@ -2753,12 +2791,16 @@ namespace OpenGLForm
 				// ensures that the clicked dimension is valid
 				this->clickedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY); //1					
 
-
 				if (this->invertDimensionToggled)
 				{
 					this->file->invertDimension(this->clickedDimension);
 				}
 
+				//If the DNS Hide Coordinates is selected:
+				if (this->file->getDNSHideCoordinatesMode())
+				{
+					this->file->addDimensionToHideDNS(this->clickedDimension);
+				}
 
 				double shiftAmount = this->file->getDimensionShift(clickedDimension);
 				this->drawingDragged = true;
@@ -2774,6 +2816,12 @@ namespace OpenGLForm
 
 				// get the dropped dimension
 				int droppedDimension = this->findClickedDimension(this->worldMouseX, this->worldMouseY);
+
+				//If DNS active:
+				if (file->getDomNominalSetsMode() && droppedDimension != -1)
+				{
+					file->setDimensionHover(droppedDimension);
+				}
 
 				// update by swapping while passing over dimension
 				if (this->drawingDragged && this->shiftHorizontal && this->file->moveData(this->clickedDimension, droppedDimension)) {

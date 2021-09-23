@@ -323,10 +323,6 @@ bool DataInterface::isDimensionInverted(int dimensionIndex) {
 	return (dataDimensions[dimensionIndex])->isInverted();
 }
 
-
-
-
-
 // gets the data in the passed set at the passed index
 double DataInterface::getData(int setIndex, int indexOfData) const {
 	// check if indexes are in bounds
@@ -339,6 +335,24 @@ double DataInterface::getData(int setIndex, int indexOfData) const {
 
 	// get data
 	return (*dataDimensions[indexOfData]).getData(setIndex);
+}
+
+// deletes the set in the passed set index.
+void DataInterface::deleteSet(int setIndex)
+{
+	if (setIndex >= getSetAmount() || setIndex < 0)
+	{
+		return;
+	}
+	
+	//Iterate over the data dimensions and delete the indiviual sets.
+	for (int i = 0; i < dataDimensions.size(); i++)
+	{
+		Dimension *curDim = dataDimensions.at(i);
+
+		//Remove set.
+		curDim->deleteData(setIndex);
+	}
 }
 
 // gets the original data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
@@ -369,7 +383,7 @@ double DataInterface::setData(int setIndex, int indexOfData, double newDataValue
 	// get data
 	double oldData = (*dataDimensions[indexOfData]).getOriginalData(setIndex);
 	(*dataDimensions[indexOfData]).setData(setIndex, newDataValue);
-	(*dataDimensions[indexOfData]).calibrateData();
+	//(*dataDimensions[indexOfData]).calibrateData();
 	return oldData;
 }
 
@@ -669,9 +683,18 @@ bool DataInterface::setVisible(int setIndex, bool newVisible) {
 	return dataSets[setIndex].setVisible(newVisible);
 }
 
+void DataInterface::setDimensionVisible(int dimensionIndex, bool newVisible)
+{
+	if (dimensionIndex < this->getDimensionAmount() && dimensionIndex >= 0)
+	{
+		this->dataDimensions[dimensionIndex]->setVisibility(newVisible);
+	}
+}
 
-
-
+bool DataInterface::isDimensionVisible(int dimensionIndex)
+{
+	return this->dataDimensions[dimensionIndex]->isVisible();
+}
 
 // gets the amount the dimension is shifted by
 double DataInterface::getDimensionShift(int dimensionIndex) {
@@ -3508,8 +3531,6 @@ string DataInterface::domNominalSetLinguistic()
 	//Get lingusitic description:
 	string toReturn = visualization.linguisticDesc();
 
-	ruleData = visualization.getRuleData();
-
 	return toReturn;
 }
 
@@ -3770,6 +3791,16 @@ bool DataInterface::getShiftMode()
 	return this->shiftMode;
 }
 
+bool DataInterface::getInvertMode()
+{
+	return this->invertMode;
+}
+
+void DataInterface::setInvertMode(bool toSet)
+{
+	this->invertMode = toSet;
+}
+
 void DataInterface::setNominalSetsMode(bool NominalSetsMode) {
 	this->nominalSetsMode = NominalSetsMode;
 }
@@ -3794,6 +3825,36 @@ void DataInterface::setDNSRuleVisualizationMode(bool toSet)
 bool DataInterface::getDNSRuleVisualizationMode()
 {
 	return this->DNSRuleVisualizationMode;
+}
+
+void DataInterface::setDNSHideCoordinatesMode(bool toSet)
+{
+	this->DNSHideCoordinatesMode = toSet;
+}
+
+bool DataInterface::getDNSHideCoordinatesMode()
+{
+	return this->DNSHideCoordinatesMode;
+}
+
+void DataInterface::setDNSSetLinesTransparentMode(bool toSet)
+{
+	DNSSetLinesTransparentMode = toSet;
+}
+
+bool DataInterface::getDNSSetLinesTransparentMode()
+{
+	return DNSSetLinesTransparentMode;
+}
+
+bool DataInterface::getDNSGreenBorderMode()
+{
+	return DNSGreenBorderMode;
+}
+
+void DataInterface::setDNSGreenBorderMode(bool toSet)
+{
+	this->DNSGreenBorderMode = toSet;
 }
 
 void DataInterface::setPurityPerc(int p)
@@ -3866,6 +3927,74 @@ int DataInterface::getDNSnDPointsVisualized()
 	return this->DNSnDPointsVisualized;
 }
 
+void DataInterface::addDimensionToHideDNS(int index)
+{
+	for (auto it = dimensionsHide.begin(); it != dimensionsHide.end(); it++)
+	{
+		if (*it == index)
+		{
+			dimensionsHide.erase(it);
+			return;
+		}
+	}
+
+	this->dimensionsHide.push_back(index);
+}
+
+void DataInterface::hideListedDimensionsDNS()
+{
+	for (int i = 0; i < getDimensionAmount(); i++)
+	{
+		bool isKept = false;
+		for (int j = 0; j < dimensionsHide.size(); j++)
+		{
+			if (dimensionsHide.at(j) == i) isKept = true;
+		}
+
+		if (!isKept)
+		{
+			this->dataDimensions[i]->setVisibility(false);
+		}
+	}
+}
+
+bool DataInterface::dimensionInHideListDNS(int index)
+{
+	for (int i = 0; i < dimensionsHide.size(); i++)
+	{
+		if (dimensionsHide.at(i) == index) return true;
+	}
+	return false;
+}
+
+void DataInterface::resetHideDimensionDataDNS()
+{
+	this->dimensionsHide.clear();
+	for (int i = 0; i < dataDimensions.size(); i++)
+	{
+		this->dataDimensions[i]->setVisibility(true);
+	}
+}
+
+void DataInterface::setDNSRulesGenerated(vector<string> toSet)
+{
+	this->DNSRulesGenerated = toSet;
+}
+
+vector<string> DataInterface::getDNSRulesGenerated()
+{
+	return DNSRulesGenerated;
+}
+
+void DataInterface::setDimensionHover(int index)
+{
+	DNSDimensionHover = index;
+}
+
+int DataInterface::getDimensionHover()
+{
+	return DNSDimensionHover;
+}
 
 void DataInterface::setDNSLinesTransparent(int LT)
 {
@@ -3880,6 +4009,16 @@ int DataInterface::getDNSLinesTransparent()
 vector<pair<double, pair<double, double>>> DataInterface::getRuleData()
 {
 	return ruleData;
+}
+
+void DataInterface::setDNSRulesByCoordinate(unordered_map<int, string> toSet)
+{
+	DNSRulesByCoordinate = toSet;
+}
+
+unordered_map<int, string> DataInterface::getDNSRulesByCoordinate()
+{
+	return DNSRulesByCoordinate;
 }
 
 vector<SetCluster> * DataInterface::getOverlaps() {
