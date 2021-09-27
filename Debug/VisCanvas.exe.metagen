@@ -39,6 +39,31 @@ Class CppCLRWinformsProjekt.ClassScheme: AutoLayout, AnsiClass, Class, Public, B
     Void .ctor(System.String, System.Windows.Forms.DataGridView, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getSchemeMap(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.CoordinateGroupGeneralizer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(std.vector<std::vector<int\,std::allocator<int> >\,std::allocator<std::vector<int\,std::allocator<int> > > >*, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getSelectedCoordinates(): PrivateScope, Public, HideBySig
+    getGroupsUsed(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.CoordinateGroupingMainWindow: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(std.vector<int\,std::allocator<int> >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getCoordinateGroups(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.CoordinateGroupMaker: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(std.vector<int\,std::allocator<int> >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getSelectedCoordinates(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.UserInputPopUp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getResult(): PrivateScope, Public, HideBySig
+Struct DomNomSetsLinesBetweenCords: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
+Struct DNSRule: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
 Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.NativeWindow
     Void .ctor(System.Windows.Forms.Form, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -68,8 +93,10 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     getWorldHeight(): PrivateScope, Public, HideBySig
     hypercube(): PrivateScope, Public, HideBySig
     setManualSortToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    setHideManualToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     setManualInvertToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     getManualInvertToggle(): PrivateScope, Public, HideBySig
+    getHideManualToggle(): PrivateScope, Public, HideBySig
     getManualSortToggle(): PrivateScope, Public, HideBySig
     setManualShiftToggle(Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     getManualShiftToggle(): PrivateScope, Public, HideBySig
@@ -119,6 +146,8 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Render(): PrivateScope, Public, HideBySig
     SwapOpenGLBuffers(): PrivateScope, Public, HideBySig
     setDomNomSetVisualization(DataInterface*, Double, Double): PrivateScope, Public, HideBySig
+    generateRulesDNS(): PrivateScope, Public, HideBySig
+    DNScalculateLinePosition(): PrivateScope, Public, HideBySig
     visualizeDomNomVisualization(): PrivateScope, Public, HideBySig
 Class VisCanvas.AdditionalSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
@@ -143,11 +172,26 @@ Class CppCLRWinformsProjekt.NominalColorPicker: AutoLayout, AnsiClass, Class, Pu
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getResult(): PrivateScope, Public, HideBySig
-Class CppCLRWinformsProjekt.UserInputPopUp: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class CppCLRWinformsProjekt.NonMonotonicSelector: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(std.vector<int\,std::allocator<int> >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getSelectedCoordinates(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.NonMonotonicInfliciton: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getKindBool(): PrivateScope, Public, HideBySig
+    getInflictionPoint(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.NonMonotonicChoice: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(std.vector<double\,std::allocator<double> >*, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getResult(): PrivateScope, Public, HideBySig
+    getSplitLeftCord(): PrivateScope, Public, HideBySig
+    getSplitRightCord(): PrivateScope, Public, HideBySig
+    getiInflictionBool(): PrivateScope, Public, HideBySig
+    getiInflictionKind(): PrivateScope, Public, HideBySig
 Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -196,6 +240,13 @@ Class CppCLRWinformsProjekt.NominalSubGroupBuilder: AutoLayout, AnsiClass, Class
     Void .ctor(NSG*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getSchemeMap(vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.LoadingScreen: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.String, System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    setDimensionsCurrent(Int32): PrivateScope, Public, HideBySig
+    setTotalDimensionToTest(Int32): PrivateScope, Public, HideBySig
+    updateTime(): PrivateScope, Public, HideBySig
 Class CppCLRWinformsProjekt.RatioGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -17,6 +17,7 @@
 #include <sstream>
 #include <algorithm>
 #include <map>
+#include <unordered_map>
 /*
 Author: Daniel Ortyn
 Last Update: 2018/22/01
@@ -52,8 +53,6 @@ public:
 	bool isReadClassNames();
 
 
-	void confusion();
-
 	//A string to add to edit to add to a linguistic description.
 	string linguisticAddition = "";
 
@@ -71,6 +70,8 @@ public:
 	bool isDimensionInverted(int dimensionIndex);
 	// gets the data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
 	double getData(int setIndex, int indexOfData) const;
+	// deletes the set for the passed index (setIndex)
+	void deleteSet(int setIndex);
 	// gets the original data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
 	double getOriginalData(int setIndex, int indexOfData) const;
 	// sets the data in the set of the passed index(setIndex), for the passed dimension(indexOfData), to the passed value(newDataValue)
@@ -141,6 +142,10 @@ public:
 	// sets the set visible or not visible
 	bool setVisible(int setIndex, bool newVisible);
 
+	//Set Dimension visible
+	void setDimensionVisible(int dimensionIndex, bool newVisible);
+	//Get if Dimension is visible.
+	bool isDimensionVisible(int dimensionIndex);
 
 
 	// gets the amount the dimension is shifted by
@@ -361,13 +366,23 @@ public:
 	void setReOrderMode(bool);
 	bool getReOrderMode();
 	void setShiftMode(bool);
+	bool getInvertMode();
+	void setInvertMode(bool);
 	bool getShiftMode();
 	void setNominalSetsMode(bool);
 	bool getNominalSetsMode();
+
+
 	void setDomNominalSetsMode(bool);
 	bool getDomNominalSetsMode();
 	void setDNSRuleVisualizationMode(bool);
 	bool getDNSRuleVisualizationMode();
+	void setDNSHideCoordinatesMode(bool);
+	bool getDNSHideCoordinatesMode();
+	void setDNSSetLinesTransparentMode(bool);
+	bool getDNSSetLinesTransparentMode();
+	bool getDNSGreenBorderMode();
+	void setDNSGreenBorderMode(bool);
 	void setPurityPerc(int);
 	int getPurityPerc();
 	void setTranspLineThresh(int);
@@ -382,29 +397,46 @@ public:
 	int getDNSNumSetsVisualized();
 	void setDNSnDPointsVisualized(int);
 	int getDNSnDPointsVisualized();
+	void hideListedDimensionsDNS();
+	void addDimensionToHideDNS(int);
+	bool dimensionInHideListDNS(int);
+	void resetHideDimensionDataDNS();
+	void setDNSRulesGenerated(vector<string>);
+	vector<string> getDNSRulesGenerated();
+	void setDimensionHover(int);
+	int getDimensionHover();
 	vector<pair<double, pair<double, double>>> getRuleData(); //Rule Data.
+	void setDNSRulesByCoordinate(unordered_map<int, string>);
+	unordered_map<int, string> getDNSRulesByCoordinate();
 	void setFreqSmall(int);
 	int getFreqSmall();
-	vector<SetCluster> * getOverlaps();
+
+
+	vector<SetCluster>* getOverlaps();
 	int getImpurities(int index);
 	map<string, double> getAboveOne();
 	
 private:
 	
 	map<string, double> aboveOne;
-	
 	vector<SetCluster> overlaps;
+	vector<int>dimensionsHide;
 
 	bool overlapMode;
 	bool reOrderMode = false;
 	bool shiftMode = false;
+	bool invertMode = false;
 	bool nominalSetsMode;
 	bool domNominalSetsMode;
-	bool DNSRuleVisualizationMode;
+	bool DNSRuleVisualizationMode = false;
+	bool DNSHideCoordinatesMode = false;
+	bool DNSSetLinesTransparentMode = false;
+	bool DNSGreenBorderMode = false;
 	bool histogramMode;
 	bool frequencyMode;
 	bool quadMode;
 
+	//===DNS Data===//
 	int purityPerc;
 	int freqSmall;
 	int transpLineThresh;
@@ -413,7 +445,11 @@ private:
 	int DNSSmallLines;
 	int DNSNumSetsVisualized;
 	int DNSnDPointsVisualized;
+	int DNSDimensionHover = -1;
+	vector<string> DNSRulesGenerated;
+	unordered_map<int, string> DNSRulesByCoordinate;
 	vector<pair<double, pair<double, double>>> ruleData;
+	//=============//
 
 	int combinationMode;
 	bool willCombine;

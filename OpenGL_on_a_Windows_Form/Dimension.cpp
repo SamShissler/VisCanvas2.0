@@ -90,13 +90,13 @@ void Dimension::calibrateData() {
 	{
 		for (int i = 0; i < data.size(); i++)
 		{
-			(*data[i]).setData(0.5);
+			(*data[i]).setDataCurrent(0.5);
 		}
 	}
 	else
 	{
 		for (unsigned int i = 0; i < data.size(); i++) {
-			(*data[i]).setData(((*data[i]).getData() - minimum) / range);
+			(*data[i]).setDataCurrent(((*data[i]).getData() - minimum) / range);
 		}
 	}
 }
@@ -153,7 +153,23 @@ void Dimension::setData(int dataIndex, double newData) {
 	(*data[dataIndex]).setData(newData);
 }
 
+// deletes the data at the passed index.
+void Dimension::deleteData(int dataIndex)
+{
+	//Go over data.
+	int index = 0;
+	for (auto it = data.begin(); it != data.end(); it++)
+	{
+		if (index == dataIndex)
+		{
+			data.erase(it);
+			break;
+		}
 
+		it++;
+		index++;
+	}
+}
 
 
 // multiplies all the data in the dimension by the passed double, does not alter original data
