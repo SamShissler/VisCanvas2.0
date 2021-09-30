@@ -3674,7 +3674,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		const double COVERAGETHRESHOLD = 1.5;//%
 
 		//Generate all possible rules.
-		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass);
+		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, 0);
 
 		//Calculate pareto front.
 		paretoFrontRules = calculateParetoFront(allGeneratedRules);
@@ -4708,7 +4708,7 @@ GLvoid DomNominalSet::drawGrayLines(double worldWidth)
 //MTBRuleGenerationAlgorithm
 //Desc: Algorithm for generating all possible rule with combinations of coordinates using Monotonoicity / MTBChains.
 //This one has easier requirements.
-vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass)
+vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass, int totalCasesInTarget)
 {
 	//Local Vars:
 	string rulesToString;
@@ -4835,7 +4835,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						int predictedCorrecly = 0;
 						int predictedIncorrectly = 0;
 						int predictedTotal = 0;
-						int numberOFCasesInClass = 0;
 						double precision = 0.0;
 						double coverage = 0.0;
 
@@ -4900,12 +4899,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 								casesInRule.push_back(k);
 							}
 
-							//Record the number of sets in this class.
-							if (currentSetClass == targetClass)
-							{
-								numberOFCasesInClass++;
-							}
-
 						}//End iterating over sets.
 
 						linkGeneratedRule = true;
@@ -4914,7 +4907,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						if (predictedTotal != 0)
 						{
 							precision = (double(predictedCorrecly) / double(predictedTotal)) * 100.0;
-							coverage = (double(predictedTotal) / double(numberOFCasesInClass)) * 100.0;
+							coverage = (double(predictedTotal) / double(totalCasesInTarget)) * 100.0;
 
 							if (precision >= PRECISION_THRESHOLD && coverage >= COVERAGE_THRESHOLD)
 							{
@@ -4965,7 +4958,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 										casesCoveredByAllRules.push_back(curCaseID);
 
 										//Check if we have covered all cases.
-										if (casesCoveredByAllRules.size() == numberOFCasesInClass)
+										if (casesCoveredByAllRules.size() == totalCasesInTarget)
 										{
 											return(finalRules);
 										}
@@ -4993,7 +4986,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 				int predictedCorrecly = 0;
 				int predictedIncorrectly = 0;
 				int predictedTotal = 0;
-				int numberOFCasesInClass = 0;
 				double precision = 0.0;
 				double coverage = 0.0;
 
@@ -5033,12 +5025,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						casesInRule.push_back(k);
 					}
 
-					//Record the number of sets in this class.
-					if (currentSetClass == (targetClass))
-					{
-						numberOFCasesInClass++;
-					}
-
 				}//End iterating over sets.
 
 				linkGeneratedRule = true;
@@ -5047,7 +5033,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 				if (predictedTotal != 0)
 				{
 					precision = (double(predictedCorrecly) / double(predictedTotal)) * 100.0;
-					coverage = (double(predictedTotal) / double(numberOFCasesInClass)) * 100.0;
+					coverage = (double(predictedTotal) / double(totalCasesInTarget)) * 100.0;
 
 					if (precision >= PRECISION_THRESHOLD && coverage >= COVERAGE_THRESHOLD)
 					{
@@ -5096,7 +5082,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 								casesCoveredByAllRules.push_back(curCaseID);
 
 								//Check if we have covered all cases.
-								if (casesCoveredByAllRules.size() == numberOFCasesInClass)
+								if (casesCoveredByAllRules.size() == totalCasesInTarget)
 								{
 									return(finalRules);
 								}
@@ -5194,7 +5180,7 @@ vector<string> DomNominalSet::MTBRuleGenResults(double precisionThresh, vector<v
 		const double COVERAGETHRESHOLD = 1.5;//%
 
 		//Generate all possible rules.
-		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass);
+		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, 0);
 
 		//Determine all cases covered by group.
 		for (int i = 0; i < allGeneratedRules.size(); i++)
@@ -5288,7 +5274,18 @@ vector<string> DomNominalSet::MTBRuleGenResults(double precisionThresh, vector<v
 		toReturn.push_back(toAdd);
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size())));
+	//Determine how many cases of the target class are covered.
+	int casesInTargetClass = 0;
+	for (int i = 0; i < allGroupCases.size(); i++)
+	{
+		if (file->getClassOfSet(allGroupCases.at(i)) == targetClass)
+		{
+			casesInTargetClass++;
+		}
+
+	}
+
+	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
 	return toReturn;
 }
 
@@ -5299,6 +5296,21 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 	vector<string> toReturn;
 	vector<int> allGroupCases;
 	vector<DNSRule> allGroupRules;
+	vector<int> coorainteAppearance;
+	double totalCasesInTargetClass = 0;
+	double totalCasesInData = file->getSetAmount();
+
+	//Determine total number of cases in target class.
+	for(int i = 0; i < file->getSetAmount(); i++)
+	{
+		if (file->getClassOfSet(i) == targetClass) totalCasesInTargetClass++;
+	}
+
+	//Setting up vector to count the number of times a coordinate is used.
+	for (int i = 0; i < file->getDimensionAmount(); i++)
+	{
+		coorainteAppearance.push_back(0);
+	}
 
 	//Go over all groups.
 	for (int n = 0; n < groups.size(); n++)
@@ -5307,8 +5319,20 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 		string toAdd;
 		vector<int> casesCovered;
 		vector<DNSRule> paretoFrontRules;
-		const double COVERAGETHRESHOLD = 1.5;//%
+		//const double COVERAGETHRESHOLD = 1.5;//%
 		const double OVERLAPTHRESHOLD = 50.0;//% was 18
+
+		//Determine number of sets in target class.
+		double numTargetClassRemaning = 0;
+		for (int i = 0; i < file->getSetAmount(); i++)
+		{
+			if (file->getClassOfSet(i) == targetClass) numTargetClassRemaning++;
+		}
+
+		//Calc coverage threshold:
+		double calcCoverageThreshold = (((numTargetClassRemaning) / 10) / totalCasesInData) * 100.0;
+
+		if (calcCoverageThreshold > 1.5  || n != -1) calcCoverageThreshold = 0;//TESTING!
 
 		//Iterate over all dimensions.
 		for (int m = 1; m <= groups.at(n).size(); m++)
@@ -5326,7 +5350,7 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 			}
 
 			//Generate all possible rules for each subgroup.
-			allGeneratedRules = MTBRuleGeneration(precisionThresh, dimensionsToUse, COVERAGETHRESHOLD, targetClass);
+			allGeneratedRules = MTBRuleGeneration(precisionThresh, dimensionsToUse, calcCoverageThreshold, targetClass, totalCasesInTargetClass);
 			
 			//Get all cases covered by all rules.
 			vector<int> allCasesCoveredByGeneral;
@@ -5487,11 +5511,62 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 			}
 		}
 
-		//Record:
-		toAdd = "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(paretoFrontRules.size()) + ", Cases Covered = " + to_string(casesCovered.size()) + ".\n" +
+		//Count the number of times each cordinate shows up.
+		for (int i = 0; i < paretoFrontRules.size(); i++)
+		{
+			DNSRule r = paretoFrontRules.at(i);
+
+			vector<int> ruleAttributes = r.getCoordinatesUsed();
+			for (int j = 0; j < ruleAttributes.size(); j++)
+			{
+				//Increment count by one.
+				coorainteAppearance.at(ruleAttributes.at(j)) = (coorainteAppearance.at(ruleAttributes.at(j)) + 1);
+			}
+		}
+
+
+		//====================================================Record:======================================================//
+		toAdd += "Coordinate Appearance = ";
+		for (int i = 0; i < coorainteAppearance.size() - 1; i++)
+		{
+			toAdd += "X" + to_string(i + 1) + ": " + to_string(coorainteAppearance.at(i)) + ", ";
+		}
+		toAdd += "X" + to_string(coorainteAppearance.size() - 1) + ": " + to_string(coorainteAppearance.at(coorainteAppearance.size() - 1)) + "\n ";
+		toAdd += "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(paretoFrontRules.size()) + ", Cases Covered = " + to_string(casesCovered.size()) + ".\n" +
 			"Cases Class 1: " + to_string(numCasesClass1) + " Cases Class 2: " + to_string(numCasesClass2) + " Cases Class 1 Total: " + to_string(totalClass1) + "\n";
 		toReturn.push_back(toAdd);
+		//================================================================================================================//
+
+		//Clear coordinate apperance vector for next group.
+		coorainteAppearance.clear();
+		for (int i = 0; i < file->getDimensionAmount(); i++)
+		{
+			coorainteAppearance.push_back(0);
+		}
+
+		/*
+		vector<int> removedCases;
+
+		//Remove cases used in this group.
+		for (int i = 0; i < casesCovered.size(); i++)
+		{
+			//count how many cases below were deleted and re compute the index.
+			int caseIndex = casesCovered.at(i);
+			int numBelow = 0;
+			for (int j = 0; j < removedCases.size(); j++)
+			{
+				if (removedCases.at(j) < caseIndex) numBelow++;
+			}
+
+			int computedCaseIndex = caseIndex - numBelow;
+
+			file->deleteSet(computedCaseIndex);
+			removedCases.push_back(caseIndex);
+		}
+		*/
 	}
+
+	//file->returnToOriginalDataDimensions();
 
 	//Determine how many cases of the target class are covered.
 	int casesInTargetClass = 0;
@@ -5501,13 +5576,11 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 		{
 			casesInTargetClass++;
 		}
-
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
-
+	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + 
+		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
 	this->casesToRemove = allGroupCases;
-
 	return toReturn;
 }
 

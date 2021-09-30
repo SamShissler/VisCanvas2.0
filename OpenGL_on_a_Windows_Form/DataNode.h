@@ -33,6 +33,8 @@ public:
 	void divideData(double divisor);
 	// add the passed value(addend) to the data held by the node
 	void addToData(double addend);
+	// returns pointer of passed value.
+	DataNode* copyOfDataNode();
 
 private:
 	// the field holding the original value of the node's data

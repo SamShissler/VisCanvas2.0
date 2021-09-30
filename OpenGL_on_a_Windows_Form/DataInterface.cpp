@@ -278,8 +278,11 @@ bool DataInterface::isReadClassNames() {
 }
 
 
-
-
+// returns datadimensions to originally calculated data.
+void DataInterface::returnToOriginalDataDimensions()
+{
+	dataDimensions = originalDataDimensions;
+}
 
 
 
@@ -487,14 +490,27 @@ void DataInterface::addToDimension(int dimensionIndex, double amountToAdd) {
 	dataDimensions[dimensionIndex]->addToData(amountToAdd);
 }
 
-vector<Dimension*> * DataInterface::getDataDimensions() {
+vector<Dimension*>* DataInterface::getDataDimensions() {
 	return &dataDimensions;
 }
 
+vector<Dimension*> DataInterface::getDataDimensionsCopy() {
+	vector<Dimension*> toReturn;
+	
+	for (int i = 0; i < dataDimensions.size(); i++)
+	{
+		Dimension* Dptr = dataDimensions.at(i)->copyDimensionToPtr(*dataDimensions.at(i));
+		toReturn.push_back(Dptr);
+	}
+
+	return dataDimensions;
+}
 
 
-
-
+void DataInterface::setDataDimensions(vector<Dimension*> toSet)
+{
+	this->dataDimensions = toSet;
+}
 
 // gets the name of the class at the passed index
 // full implementation after file parsing
@@ -1444,6 +1460,7 @@ std::vector<double>* DataInterface::getBackgroundColor() {
 void DataInterface::init() {
 
 	dataDimensions = std::vector<Dimension*>();
+	originalDataDimensions = std::vector<Dimension*>();
 	// create and set the fields
 	dataClasses = std::vector<DataClass>();
 	dataClasses.push_back(DataClass(0, "Default"));
@@ -1645,7 +1662,9 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 		{
 
 			dataDimensions.push_back(new Dimension(i - off, setNumber));
+			originalDataDimensions.push_back(new Dimension(i - off, setNumber));
 			dataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
+			originalDataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
 			dimensionsToClean.push_back(map<int, std::string>());
 
 			// populate dimensions with data
@@ -1677,12 +1696,14 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 			}
 
 			dataDimensions[i - off]->calibrateData();
+			originalDataDimensions[i - off]->calibrateData();
 
 			for (int j = 0; j < dimensionsToClean.size(); j++)
 			{
 				for (auto entry : dimensionsToClean[j])
 				{
 					dataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
+					originalDataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
 				}
 			}
 		}
@@ -3022,7 +3043,9 @@ void DataInterface::readCustomFile(std::vector<std::vector<std::string>*>* fileC
 	for (int i = 2; i < (*fileContents)[0]->size(); i++) {
 		std::string newDimensionName = (*(*fileContents)[0])[i];
 		dataDimensions.push_back(new Dimension(i - 2, setNumber));
+		originalDataDimensions.push_back(new Dimension(i - 2, setNumber));
 		dataDimensions[i - 2]->setName(&newDimensionName);
+		originalDataDimensions[i - 2]->setName(&newDimensionName);
 	}
 
 	// create data sets

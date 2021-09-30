@@ -66,7 +66,7 @@ public:
 	vector<string> determineRules();
 	vector<string> ruleGenerationSequential();
 	vector<string> MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass);
-	vector<DNSRule> MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass);
+	vector<DNSRule> MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass, int totalCasesInTarget);
 	vector<string> MTBRuleGenResults(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<string> ParetoFrontRuleGenWithOverlap(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<DNSRule> calculateParetoFront(vector<DNSRule> generatedRules);
