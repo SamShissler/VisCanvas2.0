@@ -35,8 +35,9 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 	
 	rules.push_back("\n\n=============75%===============\n\n");
-	vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
 	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+	vector < string> Per75 = this->domNomVisualization->MTBRGSequential(75.0, groups, classToTest);
 	for (int i = 0; i < Per75.size(); i++)
 	{
 		rules.push_back(Per75.at(i));
@@ -45,8 +46,9 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 	
 	rules.push_back("\n\n=============85%===============\n\n");
-	vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
+	//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
 	//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
+	vector < string> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
 	for (int i = 0; i < Per85.size(); i++)
 	{
 		rules.push_back(Per85.at(i));
@@ -55,17 +57,15 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	
 	
 	rules.push_back("\n\n=============95%===============\n\n");
-	vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
+	//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
 	//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
+	vector < string> Per95 = this->domNomVisualization->MTBRGSequential(95.0, groups, classToTest);
 	for (int i = 0; i < Per95.size(); i++)
 	{
 		rules.push_back(Per95.at(i));
 	}
 	
-
-
 	file->setDNSRulesGenerated(rules);
-
 }
 
 // setDomNomSetVisualizatonL

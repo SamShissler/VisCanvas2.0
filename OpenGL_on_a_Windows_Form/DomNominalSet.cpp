@@ -3660,134 +3660,201 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	vector<string> toReturn;
 	vector<int> allGroupCases;
 	vector<DNSRule> allGroupRules;
+	int numCasesInTarget = 0;
+
+	//Determine total number of cases in target class.
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		if (file->getClassOfSet(i) == targetClass) numCasesInTarget++;
+	}
+
+	bool fullyCovered = false;
 
 	//Go over all groups.
 	for (int n = 0; n < groups.size(); n++)
 	{
-		//////////////////////////////
 		string toAdd;
-		vector<DNSRule> overlapThresholdRules;
-		vector<DNSRule> finalRules;
 		vector<int> casesCovered;
 		vector<DNSRule> allGeneratedRules;
-		vector<DNSRule> paretoFrontRules;
-		const double COVERAGETHRESHOLD = 1.5;//%
+		vector<DNSRule> selectedRules;
+		const double COVERAGETHRESHOLD = 0.5;//%
 
 		//Generate all possible rules.
-		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, 0);
+		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, numCasesInTarget);
 
-		//Calculate pareto front.
-		paretoFrontRules = calculateParetoFront(allGeneratedRules);
-		paretoFrontRules = trueConvex(paretoFrontRules);//Make sure pareto front is truly convex.
-
-		//Apply other thresholds (Such as overlap).
-		double highestCoverage = 0.0;
+		//Select the rule with the highest coverage of the target class:
 		bool ruleSelected = true;
-		vector<int> allCasesForOverlap;
-		vector<int> selectedRuleCases;
-		int selectedRuleIndex = -1;
-
-		//Select rules.
 		while (ruleSelected)
 		{
 			ruleSelected = false;
+			auto vecIt = allGeneratedRules.begin();
+			vector<DNSRule>::iterator bestRule;
+			int highestCoverageOfRemaining = 0;
+			double highestPrecision = 0.0;
 
-			for (int i = 0; i < paretoFrontRules.size(); i++)
+			//Iterate over all rules generated.
+			for (int i = 0; i < allGeneratedRules.size(); i++)
 			{
-				if (paretoFrontRules.at(i).getTotalCoverage() >= highestCoverage)
+				vector<int> currentRuleCases = allGeneratedRules.at(i).getCasesUsed();
+				double currentRulePrecision = allGeneratedRules.at(i).getPrecision();
+				int numCasesTargetNotIncluded = 0;
+
+				//Count how many cases are not contained in the final coverage for yet.
+				for (int j = 0; j < currentRuleCases.size(); j++)
 				{
-					vector<int> curCases = paretoFrontRules.at(i).getCasesUsed();
-					int overlap = 0;
-					for (int j = 0; j < curCases.size(); j++)
+					//If this cases is of the target class.
+					if (file->getClassOfSet(currentRuleCases.at(j)) == targetClass)
 					{
-						for (int k = 0; k < allCasesForOverlap.size(); k++)
+						bool notContained = true;
+
+						//Groups cases.
+						for (int k = 0; k < casesCovered.size(); k++)
 						{
-							if (curCases.at(j) == allCasesForOverlap.at(k))
+							if (casesCovered.at(k) == currentRuleCases.at(j))
 							{
-								overlap++;
+								notContained = false;
+								break;
 							}
 						}
-					}
 
-					double overlapPerc;
-					if (allCasesForOverlap.size() <= 0)
-					{
-						overlapPerc = 0;
-					}
-					else
-					{
-						overlapPerc = (double(overlap) / double(allCasesForOverlap.size())) * 100.0;
-					}
+						//All Groups cases.
+						for (int k = 0; k < allGroupCases.size(); k++)
+						{
+							if (allGroupCases.at(k) == currentRuleCases.at(j))
+							{
+								notContained = false;
+								break;
+							}
+						}
 
-					if (overlapPerc <= 100)
-					{
-						highestCoverage = paretoFrontRules.at(i).getTotalCoverage();
-						selectedRuleCases = paretoFrontRules.at(i).getCasesUsed();
-						selectedRuleIndex = i;
-						ruleSelected = true;
+						if (notContained)
+						{
+							numCasesTargetNotIncluded++;
+						}
 					}
 				}
+
+				//If the current rule covers more cases, 
+				if (numCasesTargetNotIncluded > highestCoverageOfRemaining && currentRulePrecision > highestPrecision)
+				{
+					ruleSelected = true;
+					highestCoverageOfRemaining = numCasesTargetNotIncluded;
+					highestPrecision = currentRulePrecision;
+					bestRule = vecIt;
+				}
+
+				vecIt++;
 			}
 
 			if (ruleSelected)
 			{
-				finalRules.push_back(paretoFrontRules.at(selectedRuleIndex));
+				//Add selected rule to vector and remove.
+				DNSRule selected = *bestRule;
+				selectedRules.push_back(selected);
 
-				for (int i = 0; i < selectedRuleCases.size(); i++)
+				//Record the number of cases covered,.
+				vector<int> casesUsedBySelected = selected.getCasesUsed();
+				for (int i = 0; i < casesUsedBySelected.size(); i++)
 				{
-					bool caseIncluded = false;
-					for (int j = 0; j < allCasesForOverlap.size(); j++)
+					int ruleID = casesUsedBySelected.at(i);
+					bool notContained = true;
+					for (int j = 0; j < casesCovered.size(); j++)
 					{
-						if (selectedRuleCases.at(i) == allCasesForOverlap.at(j))
+						if (casesCovered.at(j) == ruleID)
 						{
-							caseIncluded = true;
+							notContained = false;
 							break;
 						}
 					}
 
-					if (!caseIncluded)
+					if (notContained)
 					{
-						allCasesForOverlap.push_back(selectedRuleCases.at(i));
+						casesCovered.push_back(ruleID);
 					}
 				}
 
-				paretoFrontRules.at(selectedRuleIndex).setTotalCoverage(-1);
-				highestCoverage = 0.0;
-				selectedRuleIndex = -1;
+				//Check to see if the target class fully covered.
+				int targetCases = 0;
+				for (int i = 0; i < casesCovered.size(); i++)
+				{
+					if (file->getClassOfSet(casesCovered.at(i)) == targetClass)
+					{
+						targetCases++;
+					}
+				}
+
+				if (targetCases == numCasesInTarget)
+				{
+					fullyCovered = true;
+					break;
+				}
+
 			}
 
+			if (fullyCovered == true) break;
 		}
 
-		for (int j = 0; j < allCasesForOverlap.size(); j++)
+		//Add group rules to all rules.
+		for (int i = 0; i < selectedRules.size(); i++)
 		{
-			bool isContained = false;
-			for (int k = 0; k < allGroupCases.size(); k++)
+			allGroupRules.push_back(selectedRules.at(i));
+		}
+
+		//record all cases covered.
+		for (int i = 0; i < casesCovered.size(); i++)
+		{
+			bool notContained = true;
+			for (int j = 0; j < allGroupCases.size(); j++)
 			{
-				if (allCasesForOverlap.at(j) == allGroupCases.at(k))
+				if (allGroupCases.at(j) == casesCovered.at(i))
 				{
-					isContained = true;
+					notContained = false;
 					break;
 				}
 			}
 
-			if (!isContained)
+			if (notContained)
 			{
-				allGroupCases.push_back(allCasesForOverlap.at(j));
+				allGroupCases.push_back(casesCovered.at(i));
 			}
 		}
 
-		//Pushback all the rules.
-		for (int i = 0; i < finalRules.size(); i++)
+		int numCasesClass1 = 0;
+		int numCasesClass2 = 0;
+
+		for (int i = 0; i < casesCovered.size(); i++)
 		{
-			allGroupRules.push_back(finalRules.at(i));
+			int curClass = file->getClassOfSet(casesCovered.at(i));
+			if (curClass == 1)
+			{
+				numCasesClass1++;
+			}
+			else if (curClass == 2)
+			{
+				numCasesClass2++;
+			}
 		}
 
 		//Record:
-		toAdd = "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(finalRules.size()) + ", Cases Covered = " + to_string(allCasesForOverlap.size()) + ".\n";
+		toAdd = "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(selectedRules.size()) + ", Cases Covered = " + to_string(casesCovered.size()) + ".\n";
+		toAdd += "C1: " + to_string(numCasesClass1) + ", C2: " + to_string(numCasesClass2) + "\n";
 		toReturn.push_back(toAdd);
+
+		if (fullyCovered == true) break;
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size())));
+	//Determine how many cases of the target class are covered.
+	int casesInTargetClass = 0;
+	for (int i = 0; i < allGroupCases.size(); i++)
+	{
+		if (file->getClassOfSet(allGroupCases.at(i)) == targetClass)
+		{
+			casesInTargetClass++;
+		}
+	}
+
+	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " +
+		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
 
 	return toReturn;
 }//End of rule generation sequential all attributes.
@@ -5332,7 +5399,7 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 		//Calc coverage threshold:
 		double calcCoverageThreshold = (((numTargetClassRemaning) / 10) / totalCasesInData) * 100.0;
 
-		if (calcCoverageThreshold > 1.5  || n != -1) calcCoverageThreshold = 0;//TESTING!
+		if (calcCoverageThreshold > 1.5  || n != -1) calcCoverageThreshold = 0.5;//TESTING!
 
 		//Iterate over all dimensions.
 		for (int m = 1; m <= groups.at(n).size(); m++)
