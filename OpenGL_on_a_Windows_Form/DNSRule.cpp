@@ -36,6 +36,16 @@ vector<double> DNSRule::getAttributesUsed()
 	return attributesUsed;
 }
 
+void DNSRule::setNegatedAttributesUsed(vector<double> toSet)
+{
+	this->negatedAttributes = toSet;
+}
+
+vector<double> DNSRule::getNegatedAttributesUsed()
+{
+	return this->negatedAttributes;
+}
+
 void DNSRule::setCoordinatesUsed(vector<int> toSet)
 {
 	this->coordinatesUsed = toSet;

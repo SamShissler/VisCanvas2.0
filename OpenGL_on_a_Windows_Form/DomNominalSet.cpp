@@ -3660,7 +3660,35 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	vector<string> toReturn;
 	vector<int> allGroupCases;
 	vector<DNSRule> allGroupRules;
+	vector<int> targetCasesCovered;
 	int numCasesInTarget = 0;
+
+	//TESTING===================================
+	int cor = 0;
+	int incor = 0;
+	int tot = 0;
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		double val8 = file->getOriginalData(i, 7);
+		double val12 = file->getOriginalData(i, 11);
+		double val21 = file->getOriginalData(i, 20);
+		int classOfS = file->getClassOfSet(i);
+		if (val8 == 2 && ((val12 == 3 || val12 == 2) || val21 == 2) )
+		{
+			if (classOfS == targetClass)
+			{
+				cor++;
+				tot++;
+			}
+			else if (classOfS != targetClass)
+			{
+				incor++;
+				tot++;
+			}
+		}
+	}
+
+	//TESTING===================================
 
 	//Determine total number of cases in target class.
 	for (int i = 0; i < file->getSetAmount(); i++)
@@ -3682,81 +3710,96 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		//Generate all possible rules.
 		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, numCasesInTarget);
 
-		//Select the rule with the highest coverage of the target class:
-		bool ruleSelected = true;
-		while (ruleSelected)
+		//Create vector of pairs of coverage and rules.
+		vector<pair<double, int>> coveragePerRuleIndex;
+		for (int i = 0; i < allGeneratedRules.size(); i++)
 		{
-			ruleSelected = false;
-			auto vecIt = allGeneratedRules.begin();
-			vector<DNSRule>::iterator bestRule;
-			int highestCoverageOfRemaining = 0;
-			double highestPrecision = 0.0;
+			DNSRule curRule = allGeneratedRules.at(i);
+			double curCov = curRule.getTotalCoverage();
 
-			//Iterate over all rules generated.
-			for (int i = 0; i < allGeneratedRules.size(); i++)
+			pair<double, int> newPair;
+			newPair.first = curCov;
+			newPair.second = i;
+
+			coveragePerRuleIndex.push_back(newPair);
+		}
+
+		//Sort the pairs and reverse so we have highest coverage in decending order.
+		sort(coveragePerRuleIndex.begin(), coveragePerRuleIndex.end());
+		reverse(coveragePerRuleIndex.begin(), coveragePerRuleIndex.end());
+
+		//Select the rule with the highest coverage.
+		int curRuleIndex = 0;
+		while ( (targetCasesCovered.size() != numCasesInTarget) && (selectedRules.size() != allGeneratedRules.size()) && curRuleIndex != coveragePerRuleIndex.size())
+		{
+			//Current rule info.
+			int ruleIndex = coveragePerRuleIndex.at(curRuleIndex).second;
+			DNSRule curRule = allGeneratedRules.at(ruleIndex);
+			vector<int> curRuleCases = allGeneratedRules.at(ruleIndex).getCasesUsed();
+
+			//Determine how many cases in the current rule are the target class.
+			vector<int> curRuleTargetIDs;
+			for (int i = 0; i < curRuleCases.size(); i++)
 			{
-				vector<int> currentRuleCases = allGeneratedRules.at(i).getCasesUsed();
-				double currentRulePrecision = allGeneratedRules.at(i).getPrecision();
-				int numCasesTargetNotIncluded = 0;
-
-				//Count how many cases are not contained in the final coverage for yet.
-				for (int j = 0; j < currentRuleCases.size(); j++)
+				if (file->getClassOfSet(curRuleCases.at(i)) == targetClass)
 				{
-					//If this cases is of the target class.
-					if (file->getClassOfSet(currentRuleCases.at(j)) == targetClass)
+					curRuleTargetIDs.push_back(curRuleCases.at(i));
+				}
+			}
+
+			//Determine if there are any new cases between this rule and the target cases already covered.
+			vector<int> targetCasesNotContianed;
+			for (int i = 0; i < curRuleTargetIDs.size(); i++)
+			{
+				bool notContained = true;
+				for (int j = 0; j < targetCasesCovered.size(); j++)
+				{
+					if (targetCasesCovered.at(j) == curRuleTargetIDs.at(i))
 					{
-						bool notContained = true;
-
-						//Groups cases.
-						for (int k = 0; k < casesCovered.size(); k++)
-						{
-							if (casesCovered.at(k) == currentRuleCases.at(j))
-							{
-								notContained = false;
-								break;
-							}
-						}
-
-						//All Groups cases.
-						for (int k = 0; k < allGroupCases.size(); k++)
-						{
-							if (allGroupCases.at(k) == currentRuleCases.at(j))
-							{
-								notContained = false;
-								break;
-							}
-						}
-
-						if (notContained)
-						{
-							numCasesTargetNotIncluded++;
-						}
+						notContained = false;
+						break;
 					}
 				}
 
-				//If the current rule covers more cases, 
-				if (numCasesTargetNotIncluded > highestCoverageOfRemaining && currentRulePrecision > highestPrecision)
+				if (notContained)
 				{
-					ruleSelected = true;
-					highestCoverageOfRemaining = numCasesTargetNotIncluded;
-					highestPrecision = currentRulePrecision;
-					bestRule = vecIt;
+					targetCasesNotContianed.push_back(curRuleTargetIDs.at(i));
 				}
-
-				vecIt++;
 			}
 
-			if (ruleSelected)
+			//If there are new target cases in this class, record.
+			if (targetCasesNotContianed.size() != 0)
 			{
-				//Add selected rule to vector and remove.
-				DNSRule selected = *bestRule;
-				selectedRules.push_back(selected);
+				//Record rule.
+				selectedRules.push_back(allGeneratedRules.at(ruleIndex));
 
-				//Record the number of cases covered,.
-				vector<int> casesUsedBySelected = selected.getCasesUsed();
-				for (int i = 0; i < casesUsedBySelected.size(); i++)
+				//Record how many cases have been covered of the target class.
+				for (int i = 0; i < curRuleCases.size(); i++)
 				{
-					int ruleID = casesUsedBySelected.at(i);
+					bool notContained = true;
+					for (int j = 0; j < targetCasesCovered.size(); j++)
+					{
+						if (targetCasesCovered.at(j) == curRuleCases.at(i))
+						{
+							notContained = false;
+							break;
+						}
+					}
+
+					if (notContained)
+					{
+						//If this is a case for the target class:
+						if (file->getClassOfSet(curRuleCases.at(i)) == targetClass)
+						{
+							targetCasesCovered.push_back(curRuleCases.at(i));
+						}
+					}
+				}
+			
+				//Record all cases covered overall.
+				for (int i = 0; i < curRuleCases.size(); i++)
+				{
+					int ruleID = curRuleCases.at(i);
 					bool notContained = true;
 					for (int j = 0; j < casesCovered.size(); j++)
 					{
@@ -3773,26 +3816,17 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 					}
 				}
 
-				//Check to see if the target class fully covered.
-				int targetCases = 0;
-				for (int i = 0; i < casesCovered.size(); i++)
-				{
-					if (file->getClassOfSet(casesCovered.at(i)) == targetClass)
-					{
-						targetCases++;
-					}
-				}
-
-				if (targetCases == numCasesInTarget)
+				//Record if fully covered.
+				if (targetCasesCovered.size() == numCasesInTarget)
 				{
 					fullyCovered = true;
 					break;
 				}
+			
+			}//End of if rule has new target cases.
 
-			}
-
-			if (fullyCovered == true) break;
-		}
+			curRuleIndex++;
+		}// End of while iterating over rules.
 
 		//Add group rules to all rules.
 		for (int i = 0; i < selectedRules.size(); i++)
@@ -3853,8 +3887,43 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		}
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " +
-		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
+ 	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " +
+		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n\n"));
+
+	//Print out all rules in a readable format:
+	for (int i = 0; i < allGroupRules.size(); i++)
+	{
+		DNSRule curRule = allGroupRules.at(i);
+
+		toReturn.push_back("Rule " + to_string(i + 1) + "\n");
+		toReturn.push_back("Precision: " + to_string(curRule.getPrecision()) + "%\n");
+		toReturn.push_back("Coverage: " + to_string(curRule.getTotalCoverage()) + "%\n");
+		toReturn.push_back("Total cases predicted: " + to_string(curRule.getTotalCases()) + "\n");
+		toReturn.push_back("Correctly predicted: " + to_string(curRule.getCorrectCases()) + "\n");
+		toReturn.push_back("Incorrectly predicted: " + to_string(curRule.getIncorrectCases()) + "\n");
+		toReturn.push_back("Attributes and coordinates used: \n");
+		vector<int> curCoord = curRule.getCoordinatesUsed();
+		vector<double> curAttri = curRule.getAttributesUsed();
+		for (int j = 0; j < curCoord.size() - 1; j++)
+		{
+			string s = to_string(curAttri.at(j));
+			toReturn.push_back("X" + to_string(curCoord.at(j) + 1) + " -> " + s + "\n");
+		}
+		string s = to_string(curAttri.at(curCoord.size() - 1));
+		toReturn.push_back("X" + to_string(curCoord.at(curCoord.size() - 1) + 1) + " -> " + s + "\n\n");
+
+		toReturn.push_back("Negated Attributes: \n");
+		vector<double> negatedAttri = curRule.getNegatedAttributesUsed();
+		
+		if (negatedAttri.size() >= 1)
+		{
+			for (int j = 0; j < negatedAttri.size() - 1; j++)
+			{
+				toReturn.push_back(to_string(negatedAttri.at(j)) + ", ");
+			}
+			toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)) + "\n\n\n");
+		}
+	}
 
 	return toReturn;
 }//End of rule generation sequential all attributes.
@@ -4978,8 +5047,31 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 
 							if (precision >= PRECISION_THRESHOLD && coverage >= COVERAGE_THRESHOLD)
 							{
+								//Generate correct attribute values.
+								vector<double> decodedAttributeVals(currentAttributeCombinantion.size());
+								for (int k = 0; k < coordinatesToUse.size(); k++)
+								{
+									for (int m = 0; m < file->getSetAmount(); m++)
+									{
+										double normalized = file->getData(m, coordinatesToUse.at(k));
+
+										if (normalized == currentAttributeCombinantion.at(k))
+										{
+											decodedAttributeVals.at(k) = file->getOriginalData(m, coordinatesToUse.at(k));
+										}
+									}
+								}
+
+								//Generate correct negated attribute values.
+								vector<double> decodedNegated;
+								for (int k = 0; k < curNegatedGroup.size(); k++)
+								{
+									decodedNegated.push_back(curNegatedGroup.at(k));
+								}
+
 								DNSRule newRule;
-								newRule.setAttributesUsed(currentAttributeCombinantion);
+								newRule.setAttributesUsed(decodedAttributeVals);
+								newRule.setNegatedAttributesUsed(decodedNegated);
 								newRule.setCoordinatesUsed(coordinatesToUse);
 								newRule.setCasesUsed(casesInRule);
 								newRule.setCorrectCases(predictedCorrecly);
@@ -5023,12 +5115,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 									if (notContained)
 									{
 										casesCoveredByAllRules.push_back(curCaseID);
-
-										//Check if we have covered all cases.
-										if (casesCoveredByAllRules.size() == totalCasesInTarget)
-										{
-											return(finalRules);
-										}
 									}
 								}
 							}
@@ -5044,8 +5130,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 
 				//========================================================//
 
-
-
+	
 				//======Normal attribute combination Test========//
 				currentAttributeCombinantion = attributeCombinations.at(i);
 				vector<int> casesInRule;
@@ -5104,8 +5189,23 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 
 					if (precision >= PRECISION_THRESHOLD && coverage >= COVERAGE_THRESHOLD)
 					{
+						//Generate correct attribute values.
+						vector<double> decodedAttributeVals(currentAttributeCombinantion.size());
+						for (int k = 0; k < coordinatesToUse.size(); k++)
+						{
+							for (int m = 0; m < file->getSetAmount(); m++)
+							{
+								double normalized = file->getData(m, coordinatesToUse.at(k));
+
+								if (normalized == currentAttributeCombinantion.at(k))
+								{
+									decodedAttributeVals.at(k) = file->getOriginalData(m, k);
+								}
+							}
+						}
+
 						DNSRule newRule;
-						newRule.setAttributesUsed(currentAttributeCombinantion);
+						newRule.setAttributesUsed(decodedAttributeVals);
 						newRule.setCoordinatesUsed(coordinatesToUse);
 						newRule.setCasesUsed(casesInRule);
 						newRule.setCorrectCases(predictedCorrecly);
@@ -5147,13 +5247,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 							if (notContained)
 							{
 								casesCoveredByAllRules.push_back(curCaseID);
-
-								//Check if we have covered all cases.
-								if (casesCoveredByAllRules.size() == totalCasesInTarget)
-								{
-									return(finalRules);
-								}
-
 							}
 						}
 					}
@@ -5184,6 +5277,12 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 			//=========================//
 
 		}//End if chain check.
+
+		//Check if we have covered all cases.
+		if (casesCoveredByAllRules.size() == totalCasesInTarget)
+		{
+			break;
+		}
 
 	}//End of While True.
 

@@ -32,7 +32,6 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	vector<vector<int>> groups = *coordinateGrouping->getCoordinateGroups();
 
 	const int classToTest = 1;
-
 	
 	rules.push_back("\n\n=============75%===============\n\n");
 	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
