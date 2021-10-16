@@ -3685,6 +3685,11 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		}
 	}
 
+
+	//Combine Rules:
+
+	allGeneratedRules = combineRulesGenerated(allGeneratedRules, targetClass, numCasesInTarget, precisionThresh);
+
 	//==================Selection Process=========================//
 
 	string toAdd;
@@ -3790,8 +3795,19 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		double t2 = targetCasesCovered.size();
 		prevPrecision = (t2 / t1) * 100.0;
 
-
 		//===================================================================//
+
+		//Check to see if this is the first rule we are adding. If so, make sure that it has a high enough precision.
+		//If the first rule has not been selected, make sure it is 100% precision. If not continue to the next.
+		if (selectedRules.size() == 0)
+		{
+			if (newPrecision != 100)
+			{
+				curRuleIndex++;
+				continue;
+			}
+
+		}
 
 		//If there are new target cases in this class, record.
 		if (targetCasesNotContianed.size() != 0 && newPrecision >= prevPrecision)
@@ -3979,6 +3995,322 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 
 	return toReturn;
 }//End of rule generation sequential all attributes.
+
+vector<DNSRule> DomNominalSet::combineRulesGenerated(vector<DNSRule> allGeneratedRules, int targetClass, int numCasesInTargetClass, double precThresh)
+{
+
+	vector<DNSRule> basicCombinations;
+
+	//Create vector of pairs complexity of rules.
+	vector<pair<int, int>> complexityPerRuleIndex;
+	for (int i = 0; i < allGeneratedRules.size(); i++)
+	{
+		DNSRule curRule = allGeneratedRules.at(i);
+		vector<int> curRuleCoordinates = curRule.getCoordinatesUsed();
+		vector<double> curRuleNegatedPositions = curRule.getNegatedAttributesUsed();
+
+		int ruleComplexity = 0;
+
+		for (int j = 0; j < curRuleCoordinates.size(); j++)
+		{
+			//Find if this is a negated cooridnate.
+			bool isNegated = false;
+			for (int k = 0; k < curRuleNegatedPositions.size(); k++)
+			{
+				if (curRuleNegatedPositions.at(k) == j)
+				{
+					isNegated = true;
+					break;
+				}
+			}
+
+			if (isNegated)
+			{
+				//Determine number of unique values in coordinate.
+				vector<double> coordValues;
+				for (int k = 0; k < file->getSetAmount(); k++)
+				{
+					double curData = file->getData(k, curRuleCoordinates.at(j));
+					bool isContained = false;
+					for (int m = 0; m < coordValues.size(); m++)
+					{
+						if (coordValues.at(m) == curData)
+						{
+							isContained = true;
+							break;
+						}
+					}
+
+					if (!isContained)
+					{
+						coordValues.push_back(curData);
+					}
+				}
+				ruleComplexity = ruleComplexity + coordValues.size();
+			}
+			else
+			{
+				ruleComplexity++;
+			}
+		}
+
+		pair<int, int> newPair;
+		newPair.first = ruleComplexity;
+		newPair.second = i;
+
+		complexityPerRuleIndex.push_back(newPair);
+	}
+
+	//Sort the pairs and reverse so we have lowest complexity in ascending order.
+	sort(complexityPerRuleIndex.begin(), complexityPerRuleIndex.end());
+
+	for(int n = 0; n < complexityPerRuleIndex.size(); n++)
+	{
+		//Current rule info.
+		int ruleIndex = complexityPerRuleIndex.at(n).second;
+		DNSRule curRule = allGeneratedRules.at(ruleIndex);
+		vector<int> curRuleCases = allGeneratedRules.at(ruleIndex).getCasesUsed();
+
+		//Determine if any other rules can be combined with this current rule.
+		bool ruleCombined = false;
+		DNSRule combinedRule = curRule;
+		
+		for (int i = 0; i < complexityPerRuleIndex.size(); i++)
+		{
+			//Dont combine with self.
+			if (i == n) continue;
+			int candidateRuleIndex = complexityPerRuleIndex.at(i).second;
+			DNSRule candidateRule = allGeneratedRules.at(candidateRuleIndex);
+
+			//Get data of the two rules used to determine if they can be combined.
+			vector<int> candidateCoordinatesUsed = candidateRule.getCoordinatesUsed();
+			vector<int> curRuleCoordinatesUsed = combinedRule.getCoordinatesUsed();
+			vector<double> candidateCoordinateNegated = candidateRule.getNegatedAttributesUsed();
+			vector<double> curRuleCoordinateNegated = combinedRule.getNegatedAttributesUsed();
+
+			//Check to see if rule can be combined.
+			bool canBeCombined = true;
+			for (int j = 0; j < curRuleCoordinatesUsed.size(); j++)
+			{
+				canBeCombined = true;
+
+				//Check to see if this is a negated coordinate.
+				bool curRuleCoordIsNegated = false;
+				for (int m = 0; m < curRuleCoordinateNegated.size(); m++)
+				{
+					if (curRuleCoordinateNegated.at(m) == j)
+					{
+						curRuleCoordIsNegated = true;
+						break;
+					}
+				}
+
+				//Check to see if the candidate rule has this coordinate.
+				bool hasCoordinate = false;
+				for (int k = 0; k < candidateCoordinatesUsed.size(); k++)
+				{
+					hasCoordinate = false;
+					//If the corodinate is contained.
+					if (curRuleCoordinatesUsed.at(j) == candidateCoordinatesUsed.at(k))
+					{
+						//check if candidtae rule is negated.
+						bool candidateCoordIsNegated = false;
+						for (int m = 0; m < candidateCoordinateNegated.size(); m++)
+						{
+							if (candidateCoordinateNegated.at(m) == k)
+							{
+								candidateCoordIsNegated = true;
+								break;
+							}
+						}
+
+						//If both of the coordinates are negated:
+						//if (candidateCoordIsNegated && curRuleCoordIsNegated)
+						//{
+							//hasCoordinate = true;
+						//}
+						//If both of the coordinates are not negated:
+						if (!candidateCoordIsNegated && !curRuleCoordIsNegated)
+						{
+							hasCoordinate = true;
+						}
+										
+					}
+
+					if (!hasCoordinate)
+					{
+						canBeCombined = false;
+						break;
+					}
+				}
+
+				if (!hasCoordinate)
+				{
+					canBeCombined = false;
+					break;
+				}
+			}
+
+			//If the two rules can be combined, combine them and add to final list.
+			if (canBeCombined)
+			{
+				//Determine coordinates used.
+				vector<int> combinedRuleCoordinatesUsed;
+				for (int j = 0; j < curRuleCoordinatesUsed.size(); j++)
+				{
+					combinedRuleCoordinatesUsed.push_back(curRuleCoordinatesUsed.at(j));
+				}
+
+				for (int j = 0; j < candidateCoordinatesUsed.size(); j++)
+				{
+					combinedRuleCoordinatesUsed.push_back(candidateCoordinatesUsed.at(j));
+				}
+				combinedRule.setCoordinatesUsed(combinedRuleCoordinatesUsed);
+
+				//Determine what attributes were used.
+				vector<double> combinedAttributesUsed;
+				vector<double> curRuleAttributesUsed = combinedRule.getAttributesUsed();
+				vector<double> candidtateRuleAttirbutesUsed = candidateRule.getAttributesUsed();
+				for (int j = 0; j < curRuleAttributesUsed.size(); j++)
+				{
+					combinedAttributesUsed.push_back(curRuleAttributesUsed.at(j));
+				}
+
+				for (int j = 0; j < candidtateRuleAttirbutesUsed.size(); j++)
+				{
+					combinedAttributesUsed.push_back(candidtateRuleAttirbutesUsed.at(j));
+				}
+				combinedRule.setAttributesUsed(combinedAttributesUsed);
+
+				//Determine negated attributes;
+				vector<double> combinedNegatedAttributes;
+				for (int j = 0; j < curRuleCoordinateNegated.size(); j++)
+				{
+					combinedNegatedAttributes.push_back(curRuleCoordinateNegated.at(j));
+				}
+
+				for (int j = 0; j < candidateCoordinateNegated.size(); j++)
+				{
+					combinedNegatedAttributes.push_back(candidateCoordinateNegated.at(j) + curRuleCoordinatesUsed.size());
+				}
+				combinedRule.setNegatedAttributesUsed(combinedNegatedAttributes);
+
+				//========Recalculate==========//
+
+				//Find larges value.
+				int largestCoord = 0;
+				for (int j = 0; j < combinedRuleCoordinatesUsed.size(); j++)
+				{
+
+					if (combinedRuleCoordinatesUsed.at(j) > largestCoord)
+					{
+						largestCoord = combinedRuleCoordinatesUsed.at(j);
+					}
+				
+				}
+
+				//Start by combining the attributes with theirt attribute values.
+				vector<vector<double>> attributesAndAttributeValues(largestCoord + 1);
+				for (int j = 0; j < combinedRuleCoordinatesUsed.size(); j++)
+				{
+					attributesAndAttributeValues.at(combinedRuleCoordinatesUsed.at(j)).push_back(combinedAttributesUsed.at(j));
+				}
+
+				//Determine cases covered by iterating over sets.
+				int correctlyPredicted = 0;
+				int incorrectlyPredicted = 0;
+				int totalPredicted = 0;
+				vector<int> casesUsed;
+				for (int j = 0; j < file->getSetAmount(); j++)
+				{
+
+					//Check each coordinate grouping.
+					bool doesSatisfy = true;
+					for (int k = 0; k < combinedRuleCoordinatesUsed.size(); k++)
+					{
+
+						double originalDataAtCoordForSet = file->getOriginalData(j, combinedRuleCoordinatesUsed.at(k));
+
+						//Get attributes.
+						vector<double> attributesForCurCoord = attributesAndAttributeValues.at(combinedRuleCoordinatesUsed.at(k));
+
+						//Determine if attributes are all negated or all non negated.
+						bool negatedAttri = false;
+						for (int m = 0; m < combinedNegatedAttributes.size(); m++)
+						{
+							if (combinedNegatedAttributes.at(m) == k)
+							{
+								negatedAttri = true;
+								break;
+							}
+						}
+
+						//Handle negated attribute values different then normal attribute values.
+						if (!negatedAttri)
+						{
+							bool correct = false;
+							for (int m = 0; m < attributesForCurCoord.size(); m++)
+							{
+								if (attributesForCurCoord.at(m) == originalDataAtCoordForSet)
+								{
+									correct = true;
+								}
+							}
+
+							if (!correct)
+							{
+								doesSatisfy = false;
+								break;
+							}
+						}
+					}
+				
+					if (doesSatisfy)
+					{
+						totalPredicted++;
+						casesUsed.push_back(j);
+
+						if (file->getClassOfSet(j) == targetClass)
+						{
+							correctlyPredicted++;
+						}
+						else
+						{
+							incorrectlyPredicted++;
+						}
+					}
+				
+				}//End iterating over sets.
+
+				//Calculate and set values.
+				double newCoverage = (double(totalPredicted) / double(numCasesInTargetClass)) * 100.0;
+				double newPrecision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+				combinedRule.setTotalCoverage(newCoverage);
+				combinedRule.setPrecision(newPrecision);
+				combinedRule.setCorrectCases(correctlyPredicted);
+				combinedRule.setIncorrectCases(incorrectlyPredicted);
+				combinedRule.setTotalCases(totalPredicted);
+				combinedRule.setCasesUsed(casesUsed);
+
+				//Record to add at the end.
+				basicCombinations.push_back(combinedRule);
+
+			}//End of rule combination.
+
+		}//End of testing combining rules.
+
+	}// End of iterating over rules.
+
+	//Add all combined rules to the passed rules.
+
+	for (int i = 0; i < basicCombinations.size(); i++)
+	{
+		allGeneratedRules.push_back(basicCombinations.at(i));
+	}
+
+	return allGeneratedRules;
+}
+
 
 //linguisticDesc
 //Desc: Creates the linguistic description for the visualization. Result is a formatted string to be added to the linguistic desc.
