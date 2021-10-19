@@ -898,8 +898,22 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 				//Get perc from user.
 				double percFU = file->getPurityPerc();
 
+				//Find value using key.
+				int originalVal = -1;
+				for (int m = 0; m < file->getSetAmount(); m++)
+				{
+					double dataAtCurSet = file->getData(m, i);
 
-				if ((domPerc) >= (percFU / 100) && !(freq <= 0.014))
+					if (dataAtCurSet == key)
+					{
+						originalVal = file->getOriginalData(m, i);
+						break;
+					}
+				}
+
+				string *dimName = file->getDimensionName(i);
+
+				if ((*dimName == "X5" && originalVal == 7) || (*dimName == "X7" && originalVal == 2) || (*dimName == "X9" && originalVal == 7) || (*dimName == "X11" && originalVal == 2))//((domPerc) >= (percFU / 100) && !(freq <= 0.014))
 				{
 					//==Draw border==:
 					glBegin(GL_LINE_STRIP);
@@ -3667,6 +3681,34 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	const double COVERAGETHRESHOLD = 0.5;//%
 	bool fullyCovered = false;
 
+	//=-=-=-=-=-=-=-=-=-=-=-=-Testin-=-=-=-=-=-=-=-=-=-=-=-=-=//
+	/*
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		double dataAtX5 = file->getOriginalData(i, 4);
+		double dataAtX7 = file->getOriginalData(i, 6);
+		double dataAtX9 = file->getOriginalData(i, 8);
+		double dataAtX11 = file->getOriginalData(i, 10);
+		double classOfSet = file->getClassOfSet(i);
+
+		if (dataAtX5 != 7 && dataAtX7 != 2 && dataAtX9 != 7 && dataAtX11 != 2)
+		{
+			if (classOfSet == targetClass)
+			{
+				file->deleteSet(i);
+			}
+			else if (classOfSet != targetClass)
+			{
+				continue;
+			}
+		}
+		file->deleteSet(i);
+	}
+
+	return toReturn;
+	*/
+	//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
+
 	//Determine total number of cases in target class.
 	for (int i = 0; i < file->getSetAmount(); i++)
 	{
@@ -4310,7 +4352,6 @@ vector<DNSRule> DomNominalSet::combineRulesGenerated(vector<DNSRule> allGenerate
 
 	return allGeneratedRules;
 }
-
 
 //linguisticDesc
 //Desc: Creates the linguistic description for the visualization. Result is a formatted string to be added to the linguistic desc.
@@ -5583,7 +5624,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 
 								if (normalized == currentAttributeCombinantion.at(k))
 								{
-									decodedAttributeVals.at(k) = file->getOriginalData(m, k);
+									decodedAttributeVals.at(k) = file->getOriginalData(m, coordinatesToUse.at(k));
 								}
 							}
 						}

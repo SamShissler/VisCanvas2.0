@@ -33,7 +33,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 	const int classToTest = 1;
 	
-	
+	/*
 	rules.push_back("\n\n=============75%===============\n\n");
 	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
 	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
@@ -54,7 +54,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		rules.push_back(Per85.at(i));
 	}
 	
-
+	*/
 	rules.push_back("\n\n=============95%===============\n\n");
 	//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
 	//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
