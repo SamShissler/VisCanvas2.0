@@ -3680,6 +3680,13 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	int numCasesInTarget = 0;
 	const double COVERAGETHRESHOLD = 0.5;//%
 	bool fullyCovered = false;
+	vector<int> coorainteAppearance;
+
+	//Fill coordinate appearance with 0s.
+	for (int i = 0; i < file->getDimensionAmount(); i++)
+	{
+		coorainteAppearance.push_back(0);
+	}
 
 	//=-=-=-=-=-=-=-=-=-=-=-=-Testin-=-=-=-=-=-=-=-=-=-=-=-=-=//
 	/*
@@ -3721,7 +3728,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		vector<DNSRule> curGroupRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, numCasesInTarget);
 
 		//Store all rules.
-		for (int i = 0; i < curGroupRules.size(); i++)
+ 		for (int i = 0; i < curGroupRules.size(); i++)
 		{
 			allGeneratedRules.push_back(curGroupRules.at(i));
 		}
@@ -4034,6 +4041,29 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 			toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)) + "\n\n\n");
 		}
 	}
+
+	//Count the number of times each cordinate shows up.
+	for (int i = 0; i < allGroupRules.size(); i++)
+	{
+		DNSRule r = allGroupRules.at(i);
+
+		vector<int> ruleAttributes = r.getCoordinatesUsed();
+		for (int j = 0; j < ruleAttributes.size(); j++)
+		{
+			//Increment count by one.
+			coorainteAppearance.at(ruleAttributes.at(j)) = (coorainteAppearance.at(ruleAttributes.at(j)) + 1);
+		}
+	}
+
+	toAdd = "";
+	toAdd += "Coordinate Appearance = ";
+	for (int i = 0; i < coorainteAppearance.size() - 1; i++)
+	{
+		toAdd += "X" + to_string(i + 1) + ": " + to_string(coorainteAppearance.at(i)) + ", ";
+	}
+	toAdd += "X" + to_string(coorainteAppearance.size()) + ": " + to_string(coorainteAppearance.at(coorainteAppearance.size() - 1)) + "\n ";
+
+	toReturn.push_back(toAdd);
 
 	return toReturn;
 }//End of rule generation sequential all attributes.
