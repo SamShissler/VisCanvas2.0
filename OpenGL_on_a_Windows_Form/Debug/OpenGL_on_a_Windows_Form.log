@@ -27,6 +27,8 @@ C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(41,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(52,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(62,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
