@@ -24,6 +24,9 @@ public:
 	// delete the object
 	~Dimension();
 
+
+	// copies Dimension Pointer.
+	Dimension* copyDimensionToPtr(Dimension& toCopy);
 	// get the index of the the dimension was created with
 	int getOriginalIndex() const;
 	// set the index of the the dimension, and returns the old index
@@ -81,6 +84,8 @@ public:
 
 	// gets all the data in the dimension
 	vector<DataNode*> getAllData();
+	// sets all the data in the dimension
+	void setAllData(vector<DataNode*> toSet);
 	// gets whether this dimension is drawn or not
 	bool isVisible();
 	// sets whether this dimension is drawn or not

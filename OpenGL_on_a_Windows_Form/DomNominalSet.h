@@ -63,10 +63,11 @@ public:
 
 	//Analysis:
 	string linguisticDesc();
-	vector<string> determineRules();
-	vector<string> ruleGenerationSequential();
+	vector<string> determineRules();//Old
+	vector<string> ruleGenerationSequential();//Old
 	vector<string> MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass);
-	vector<DNSRule> MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass);
+	vector<DNSRule> combineRulesGenerated(vector<DNSRule> generatedRules, int targetClass, int numCasesInTargetClass, double precThresh);
+	vector<DNSRule> MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass, int totalCasesInTarget);
 	vector<string> MTBRuleGenResults(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<string> ParetoFrontRuleGenWithOverlap(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<DNSRule> calculateParetoFront(vector<DNSRule> generatedRules);

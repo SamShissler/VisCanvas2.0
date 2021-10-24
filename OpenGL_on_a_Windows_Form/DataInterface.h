@@ -52,6 +52,9 @@ public:
 	// returns whether class names will be read from basic files 
 	bool isReadClassNames();
 
+	// returns datadimensions to originally calculated data.
+	void returnToOriginalDataDimensions();
+
 
 	//A string to add to edit to add to a linguistic description.
 	string linguisticAddition = "";
@@ -64,6 +67,8 @@ public:
 	// gets the number of dimensions in the data
 	int getDimensionAmount() const;
 	vector<Dimension*>* getDataDimensions();
+	// gets a non pointer copy of the data dimensions.
+	vector<Dimension*> getDataDimensionsCopy();
 	// inverts the dimension
 	void invertDimension(int dimensionIndex);
 	// checks whether the dimension is inverted
@@ -411,6 +416,7 @@ public:
 	void setFreqSmall(int);
 	int getFreqSmall();
 
+	void setDataDimensions(vector<Dimension*> toSet);
 
 	vector<SetCluster>* getOverlaps();
 	int getImpurities(int index);
@@ -464,7 +470,8 @@ private:
 
 	// a vector to hold the dimensions containing the data for the sets
 	std::vector<Dimension*> dataDimensions;
-
+	//a vector to hold the original dimensions for the data that is kept un edited
+	std::vector<Dimension*> originalDataDimensions;
 	// a vector to hold the data class
 	std::vector<DataClass> dataClasses;
 	// a vector to hold the data sets

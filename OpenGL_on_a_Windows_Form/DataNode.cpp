@@ -58,3 +58,12 @@ void DataNode::divideData(double divisor) {
 void DataNode::addToData(double addend) {
 	currentData += addend;
 }
+
+// returns pointer of passed value.
+DataNode* DataNode::copyOfDataNode()
+{
+	DataNode* toReturn = new DataNode();
+	toReturn->setData(this->originalData);
+	toReturn->setDataCurrent(this->getData());
+	return(toReturn);
+}
