@@ -3688,34 +3688,6 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		coorainteAppearance.push_back(0);
 	}
 
-	//=-=-=-=-=-=-=-=-=-=-=-=-Testin-=-=-=-=-=-=-=-=-=-=-=-=-=//
-	/*
-	for (int i = 0; i < file->getSetAmount(); i++)
-	{
-		double dataAtX5 = file->getOriginalData(i, 4);
-		double dataAtX7 = file->getOriginalData(i, 6);
-		double dataAtX9 = file->getOriginalData(i, 8);
-		double dataAtX11 = file->getOriginalData(i, 10);
-		double classOfSet = file->getClassOfSet(i);
-
-		if (dataAtX5 != 7 && dataAtX7 != 2 && dataAtX9 != 7 && dataAtX11 != 2)
-		{
-			if (classOfSet == targetClass)
-			{
-				file->deleteSet(i);
-			}
-			else if (classOfSet != targetClass)
-			{
-				continue;
-			}
-		}
-		file->deleteSet(i);
-	}
-
-	return toReturn;
-	*/
-	//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=//
-
 	//Determine total number of cases in target class.
 	for (int i = 0; i < file->getSetAmount(); i++)
 	{
@@ -3743,6 +3715,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 
 	string toAdd;
 	vector<int> casesCovered;
+	vector<int> incorrectCases;
 	vector<DNSRule> selectedRules;
 
 	//Create vector of pairs of coverage and rules.
@@ -3834,6 +3807,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		double newTotal = (nonTargetCasesCovered.size() + nonTargetCasesNotContianed.size()) + (targetCasesCovered.size() + targetCasesNotContianed.size());
 		double newPrecision = ((targetCasesCovered.size() + targetCasesNotContianed.size()) / newTotal) * 100.0;
 		double prevPrecision;
+		
 		//Starting calc
 		if (curRuleIndex == 0)
 		{
@@ -3848,6 +3822,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 
 		//Check to see if this is the first rule we are adding. If so, make sure that it has a high enough precision.
 		//If the first rule has not been selected, make sure it is 100% precision. If not continue to the next.
+		/*
 		if (selectedRules.size() == 0)
 		{
 			if (newPrecision != 100)
@@ -3857,12 +3832,38 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 			}
 
 		}
+		*/
 
 		//If there are new target cases in this class, record.
 		if (targetCasesNotContianed.size() != 0 && newPrecision >= prevPrecision)
 		{
 			//Record rule.
 			selectedRules.push_back(allGeneratedRules.at(ruleIndex));
+
+			//Record incorrect cases.
+			for (int i = 0; i < curRuleCases.size(); i++)
+			{
+				//If this is an incorrect case.
+				if (this->file->getClassOfSet(curRuleCases.at(i)) != targetClass)
+				{
+					//Check if in our list already.
+					bool isContained = false;
+					for (int j = 0; j < incorrectCases.size(); j++)
+					{
+						if (incorrectCases.at(j) == curRuleCases.at(i))
+						{
+							isContained = true;
+							break;
+						}
+					}
+
+					if (!isContained)
+					{
+						incorrectCases.push_back(curRuleCases.at(i));
+					}
+
+				}
+			}
 
 			//Record how many cases have been covered of the target class.
 			for (int i = 0; i < curRuleCases.size(); i++)
@@ -3945,6 +3946,84 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 
 	//============================================================================//
 
+	//Generate rules to correct incorrectly predicted cases.
+	
+	//Go over all groups and generate all rules.
+	allGeneratedRules.clear();
+	const int NON_TARGET_CLASS = 2;
+	for (int n = 0; n < groups.size(); n++)
+	{
+		vector<DNSRule> curGroupRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, NON_TARGET_CLASS, numCasesInTarget);
+
+		//Store all rules.
+		for (int i = 0; i < curGroupRules.size(); i++)
+		{
+			allGeneratedRules.push_back(curGroupRules.at(i));
+		}
+	}
+
+	//Go over all generated rules for non-target class and see if any will reduce the number of incorrect cases.
+	for (int i = 0; i < allGeneratedRules.size(); i++)
+	{
+		DNSRule curRule = allGeneratedRules.at(i);
+		vector<int> curRuleCases = curRule.getCasesUsed();
+		double curRulePrecision = curRule.getPrecision();
+
+		//If this is a 100% precision rule,
+		if (curRulePrecision == 100)
+		{
+			vector<int> curRuleCases = curRule.getCasesUsed();
+
+			//Determine if any incorrect cases are covered,
+			int numCasesIncorrect = 0; //Count of how many cases were predicted incorrectly.
+			for (int j = 0; j < curRuleCases.size(); j++)
+			{
+				for (int k = 0; k < incorrectCases.size(); k++)
+				{
+					if (curRuleCases.at(j) == incorrectCases.at(k))
+					{
+						numCasesIncorrect++;
+						break;
+					}
+				}
+			}
+
+			//If this is a benifical rule,
+			if (numCasesIncorrect != 0)
+			{
+				//Add this rule to our final rules.
+				selectedRules.push_back(curRule);
+
+				//Remove all newly covered incorrectly predicted cases.
+				for (int j = 0; j < curRuleCases.size(); j++)
+				{
+					bool needsRemoved = false;
+					auto removeIt = incorrectCases.begin();
+					for (auto it = incorrectCases.begin(); it != incorrectCases.end(); it++)
+					{
+						if (curRuleCases.at(j) == *it)
+						{
+							needsRemoved = true;
+							break;
+						}
+						removeIt++;
+					}
+
+					if (needsRemoved)
+					{
+						incorrectCases.erase(removeIt);
+					}
+				}
+			}
+		}
+
+		//End addition of rules if all incorrect cases are covered.
+		if (incorrectCases.size() == 0)
+		{
+			break;
+		}
+	}
+
 	//Add group rules to all rules.
 	for (int i = 0; i < selectedRules.size(); i++)
 	{
@@ -3986,14 +4065,6 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		}
 	}
 
-	/*
-	//Record:
-	toAdd = "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(selectedRules.size()) + ", Cases Covered = " + to_string(casesCovered.size()) + ".\n";
-	toAdd += "C1: " + to_string(numCasesClass1) + ", C2: " + to_string(numCasesClass2) + "\n";
-	toReturn.push_back(toAdd);
-
-	*/
-
 	//Determine how many cases of the target class are covered.
 	int casesInTargetClass = 0;
 	for (int i = 0; i < allGroupCases.size(); i++)
@@ -4005,7 +4076,8 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	}
 
 	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " +
-		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n\n"));
+		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) +
+		" Total incorrectly predicted cases: " + to_string(incorrectCases.size()) + "\n\n"));
 
 	//Print out all rules in a readable format:
 	for (int i = 0; i < allGroupRules.size(); i++)
@@ -4013,6 +4085,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		DNSRule curRule = allGroupRules.at(i);
 
 		toReturn.push_back("Rule " + to_string(i + 1) + "\n");
+		toReturn.push_back("Class predicted: " + to_string(curRule.getRuleClass()) + "\n");
 		toReturn.push_back("Precision: " + to_string(curRule.getPrecision()) + "%\n");
 		toReturn.push_back("Coverage: " + to_string(curRule.getTotalCoverage()) + "%\n");
 		toReturn.push_back("Total cases predicted: " + to_string(curRule.getTotalCases()) + "\n");
@@ -4068,6 +4141,8 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	return toReturn;
 }//End of rule generation sequential all attributes.
 
+//combineRulesGenerated:
+//Desc: Takes a list of generated rules and adds simple combinations of rules to the end.
 vector<DNSRule> DomNominalSet::combineRulesGenerated(vector<DNSRule> allGeneratedRules, int targetClass, int numCasesInTargetClass, double precThresh)
 {
 
@@ -5535,6 +5610,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 								newRule.setRuleClass(targetClass);
 								newRule.setPrecision(precision);
 								newRule.setTotalCoverage(coverage);
+								newRule.setRuleClass(targetClass);
 								DNSRulesGenerated.push_back(newRule);
 
 								//Check to see if the precision is high enough to expand upwards.
@@ -5669,6 +5745,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						newRule.setRuleClass(targetClass);
 						newRule.setPrecision(precision);
 						newRule.setTotalCoverage(coverage);
+						newRule.setRuleClass(targetClass);
 						DNSRulesGenerated.push_back(newRule);
 
 						if (precision >= 95.0)

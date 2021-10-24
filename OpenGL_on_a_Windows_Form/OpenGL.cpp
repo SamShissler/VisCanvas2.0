@@ -31,8 +31,55 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	vector<string> rules;
 	vector<vector<int>> groups = *coordinateGrouping->getCoordinateGroups();
 
+	//==================***TESTING***=====================//
+	groups.clear();
+	int arrOfVals[90] = {16, 19, 5
+						 ,22, 16, 14
+						 ,7, 4, 22
+						 ,13, 18, 19
+						 ,6, 8, 9
+						 ,16, 21, 11
+						 ,22, 17, 20
+						 ,6, 13, 17
+						 ,6, 18, 8
+						 ,7, 20, 19
+						 ,1, 9, 10
+						 ,1, 7, 19
+						 ,12, 1, 14
+						 ,5, 9, 8
+						 ,22, 7, 5
+						 ,19, 14, 3
+						 ,13, 11, 5
+						 ,4, 21, 14
+						 ,16, 14, 21
+						 ,9, 17, 3
+						 ,3, 22, 1
+						 ,5, 18, 14
+						 ,2, 22, 1
+						 ,1, 11, 3
+						 ,12, 20, 7
+						 ,14, 3, 11
+						 ,16, 9, 18
+						 ,6, 2, 8
+						 ,9, 15, 6
+						 ,4, 12, 15};
+
+	for (int i = 0; i < 90; i += 3)
+	{
+		vector<int> toAdd;
+		toAdd.push_back(arrOfVals[i]);
+		toAdd.push_back(arrOfVals[i+1]);
+		toAdd.push_back(arrOfVals[i+2]);
+
+		groups.push_back(toAdd);
+	}
+
+
+
+
+	//====================================================//
+
 	const int classToTest = 1;
-	
 	
 	rules.push_back("\n\n=============75%===============\n\n");
 	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
@@ -53,7 +100,6 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	{
 		rules.push_back(Per85.at(i));
 	}
-	
 	
 	rules.push_back("\n\n=============95%===============\n\n");
 	//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
