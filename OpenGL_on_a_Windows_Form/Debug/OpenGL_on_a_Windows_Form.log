@@ -1,35 +1,318 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2182,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "Microsoft.VisualBasic.PowerPacks.Vs". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2805,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2805,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
-  OpenGL.cpp
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(24,22): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(113,20): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(88,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(99,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(108,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
+  DomNominalSet.cpp
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(126,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(147,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(190,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(289,65): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(339,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(384,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(432,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(437,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(508,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(519,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(541,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(565,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(649,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(662,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(680,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(694,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(709,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(723,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(737,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(752,24): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(753,25): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(821,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(835,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(847,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(869,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(910,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1236,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1238,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1256,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1275,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1280,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1454,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1456,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+          with
+          [
+              _Ty=boolean
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1585,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1654,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1738,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1751,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1775,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1795,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1807,70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2065,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2088,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2093,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2100,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2254,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2264,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2369,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2380,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2472,51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2473,54): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2474,41): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2476,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2491,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2503,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2518,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2530,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2544,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2556,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2757,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2868,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2887,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2962,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2970,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2998,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3054,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3073,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3148,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3156,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3233,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3252,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3306,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3335,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3343,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3404,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3422,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3491,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3499,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3539,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3699,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3704,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3724,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3757,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3771,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3774,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3790,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3793,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3845,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3852,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3870,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3873,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3893,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3896,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3916,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3920,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3955,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3960,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3967,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3980,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3982,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3999,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4029,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4035,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4038,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4056,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4071,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4084,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4098,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4111,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4120,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4125,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4134,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4154,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4162,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4166,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4183,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4215,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4226,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4241,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4247,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4258,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4266,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4307,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4312,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4322,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4327,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4335,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4340,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4350,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4362,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4377,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4387,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4400,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4454,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4668,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4675,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4679,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4719,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4731,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5039,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5052,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5070,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5084,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5099,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5113,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5127,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5142,24): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5143,25): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5155,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5157,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5175,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5194,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5199,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5364,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5366,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+          with
+          [
+              _Ty=boolean
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5413,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5428,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5461,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5485,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5492,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5496,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5517,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5583,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5598,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5633,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5637,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5685,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5726,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5766,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5770,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5826,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5839,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5842,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5873,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5885,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5889,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5892,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5910,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5914,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5917,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5952,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5965,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5978,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6015,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6037,21): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6052,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6056,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6061,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6064,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6082,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6087,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6089,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6109,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6125,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6130,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6133,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6158,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6164,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6167,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6200,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6214,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6219,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6229,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6272,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6315,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6330,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6356,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6402,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6425,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6427,10): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6516,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6522,37): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6534,37): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6602,37): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6680,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6738,96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6738,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6744,19): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6875,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\utility(193,16): warning C4244: 'initializing': conversion from 'double' to '_Ty1', possible loss of data
+          with
+          [
+              _Ty1=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3549): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double &,
+              _Other2=std::string &
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3549): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double &,
+              _Other2=std::string &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include\utility(193,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+          and
+          [
+              _Ty1=int
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3550): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double,
+              _Other2=std::string &
+          ]
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3550): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Kty=int,
+              _Ty=std::string,
+              _Ty1=double,
+              _Other1=double,
+              _Other2=std::string &
+          ]
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   OpenGL_on_a_Windows_Form.vcxproj -> C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\Debug\VisCanvas.exe

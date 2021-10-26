@@ -72,6 +72,7 @@ public:
 	vector<string> ParetoFrontRuleGenWithOverlap(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<DNSRule> calculateParetoFront(vector<DNSRule> generatedRules);
 	vector<DNSRule> trueConvex(vector<DNSRule> paretoFront);
+	vector<string> tenFoldCrossValidation(int targetClass);
 	GLvoid visualizeRules();
 	GLvoid drawOval(float x_center, float y_center, float w, float h, int n);
 

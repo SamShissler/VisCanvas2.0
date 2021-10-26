@@ -3,6 +3,7 @@
 #include "MonotoneBooleanChains.h"
 #include <msclr\marshal_cppstd.h>
 #include <math.h>
+#include <cstdlib>
 
 using namespace System::Windows::Forms;
 
@@ -6406,6 +6407,8 @@ vector<DNSRule> DomNominalSet::calculateParetoFront(vector<DNSRule> generatedRul
 	return paretoFront;
 }
 
+//trueConvex:
+//Desc: A function to ensure that the pareto front is truly convex.
 vector<DNSRule> DomNominalSet::trueConvex(vector<DNSRule> paretoFront)
 {
 
@@ -6452,6 +6455,205 @@ vector<DNSRule> DomNominalSet::trueConvex(vector<DNSRule> paretoFront)
 	}
 
 	return paretoFront;
+}
+
+//tenFoldCrossValidation:
+//Desc: Ten cross fold validation to calculate accuracy. 
+vector<string> DomNominalSet::tenFoldCrossValidation(int targetClass)
+{
+	//Locat data:
+	vector<string> toReturn;
+	vector<vector<int>> partitions;
+	vector<int> caseIDs;
+	int partitionNumber = 10;
+
+	//Fill partition vector:
+	for (int i = 0; i < partitionNumber; i++)
+	{
+		vector<int> toAdd;
+		partitions.push_back(toAdd);
+	}
+	
+	//Fill the case IDs with the set IDs so it can be manipulated.
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		caseIDs.push_back(i);
+	}
+
+	//While there are cases to choose from.
+	while (caseIDs.size() != 0)
+	{
+		//Randomly select IDs for partitions.
+		for (int i = 0; i < partitionNumber; i++) //Iterate over groups.
+		{
+
+			//Determine a random index in remaining cases.
+			int index = rand() % caseIDs.size();
+
+			//Add the index to the current data
+			partitions.at(i).push_back(index);
+
+			//Remove the case ID at the index.
+			int count = 0;
+			for (auto it = caseIDs.begin(); it != caseIDs.end(); it++)
+			{
+				if (count == index)
+				{
+					caseIDs.erase(it);
+					break;
+				}
+				count++;
+			}
+
+			//If there are no more cases, return.
+			if (caseIDs.size() == 0) break;
+		}
+	}
+	
+	//Use the partitions seqentially as test data:
+	double totalOurAccuracy = 0;
+	double totalCompAccuracy = 0;
+	for (int i = 0; i < partitions.size(); i++)
+	{
+		vector<int> testPartition = partitions.at(i);
+
+		//Determine the number of target class cases in this partition so we can see how many are missed.
+		int numTargetClassCases = 0;
+		for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
+		{
+			int curCase = testPartition.at(caseIndex);
+			if (file->getClassOfSet(curCase) == targetClass)
+			{
+				numTargetClassCases++;
+			}
+		}
+
+		//Iterate over test partition and predict for our rules.
+		double correctlyPredicted = 0;
+		
+		for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
+		{
+			int curCase = testPartition.at(caseIndex);
+			int curCaseClass = file->getClassOfSet(curCase);
+			double valAt5 = file->getOriginalData(curCase, 4);
+			double valAt9 = file->getOriginalData(curCase, 8);
+			double valAt15 = file->getOriginalData(curCase, 14);
+			double valAt19 = file->getOriginalData(curCase, 18);
+			double valAt20 = file->getOriginalData(curCase, 19);
+			double valAt21 = file->getOriginalData(curCase, 20);
+			double valAt22 = file->getOriginalData(curCase, 21);
+
+			//Rule definitions:
+			if (valAt5 == 3 || valAt5 == 4 || valAt5 == 5 || valAt5 == 6 || valAt5 == 8 || valAt5 == 9)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+			else if (valAt9 == 6 || valAt9 == 3)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+			else if (valAt19 == 2 && valAt20 == 8 && valAt21 != 2 && valAt22 != 2)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+			else if (valAt15 == 3 || valAt15 == 2 || valAt15 == 9)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+			else if (valAt19 != 2 && valAt20 != 6 && valAt21 == 5 && valAt22 == 1)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+			else if (valAt19 == 6 && valAt20 == 5 && valAt21 != 1 && valAt22 != 6)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+			else if (valAt20 == 8 && valAt21 == 2 && valAt22 != 6)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredicted++;
+				}
+			}
+		}
+
+		//Iterate over test partition and perdict for competitiors rules.
+		double correctlyPredictedComp = 0;
+
+
+		for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
+		{
+			int curCase = testPartition.at(caseIndex);
+			int curCaseClass = file->getClassOfSet(curCase);
+			double valAt5 = file->getOriginalData(curCase, 4);
+			double valAt8 = file->getOriginalData(curCase, 7);
+			double valAt12 = file->getOriginalData(curCase, 11);
+			double valAt20 = file->getOriginalData(curCase, 19);
+			double valAt21 = file->getOriginalData(curCase, 20);
+		
+			if (valAt5 != 1 && valAt5 != 2 && valAt5 != 7)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredictedComp++;
+				}
+			}
+			else if (valAt20 == 5)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredictedComp++;
+				}
+			}
+			else if (valAt8 == 2 && (valAt12 == 3 || valAt12 == 2) && valAt21 == 2)
+			{
+				if (curCaseClass == targetClass)
+				{
+					correctlyPredictedComp++;
+				}
+			}
+		}
+
+		//Accuracy calculation:
+		double compAccuracy = (correctlyPredictedComp / numTargetClassCases) * 100.0;
+		double ourAccuracy = (correctlyPredicted / numTargetClassCases) * 100.0;
+
+		//Add to total to get average.
+		totalOurAccuracy += ourAccuracy;
+		totalCompAccuracy += compAccuracy;
+
+		//Record test results.
+		string toAdd = "Test " + to_string(i + 1) + ":\n";
+		toAdd += "Accuracy for our rules = " + to_string(ourAccuracy) + "%\n";
+		toAdd += "Accuracy for the competitors rules = " + to_string(compAccuracy) + "%\n\n";
+		toReturn.push_back(toAdd);
+	}
+
+	double finalAverageOurRules = totalOurAccuracy / partitionNumber;
+	double finalAverageCompRules = totalCompAccuracy / partitionNumber;
+
+	string averages = "Our accurcy avrg = " + to_string(finalAverageOurRules) + "% Comp avrg = " + to_string(finalAverageCompRules) + "%\n\n";
+	toReturn.push_back(averages);
+
+	return toReturn;
 }
 
 //visualizeRules:
