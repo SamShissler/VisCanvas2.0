@@ -52,9 +52,11 @@ public:
 	// returns whether class names will be read from basic files 
 	bool isReadClassNames();
 
-	// returns datadimensions to originally calculated data.
+	// returns datadimensions to save state.
 	void returnToOriginalDataDimensions();
 
+	// records data dimensions for a save state.
+	void recordOriginalDataDimensions();
 
 	//A string to add to edit to add to a linguistic description.
 	string linguisticAddition = "";

@@ -65,14 +65,14 @@ public:
 	string linguisticDesc();
 	vector<string> determineRules();//Old
 	vector<string> ruleGenerationSequential();//Old
-	vector<string> MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass);
+	pair<vector<string>, vector<DNSRule>> MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<DNSRule> combineRulesGenerated(vector<DNSRule> generatedRules, int targetClass, int numCasesInTargetClass, double precThresh);
 	vector<DNSRule> MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass, int totalCasesInTarget);
 	vector<string> MTBRuleGenResults(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<string> ParetoFrontRuleGenWithOverlap(double precisionThresh, vector<vector<int>>groups, int targetClass);
 	vector<DNSRule> calculateParetoFront(vector<DNSRule> generatedRules);
 	vector<DNSRule> trueConvex(vector<DNSRule> paretoFront);
-	vector<string> tenFoldCrossValidation(int targetClass);
+	vector<string> tenFoldCrossValidation(int targetClass, vector<vector<int>> groups);
 	GLvoid visualizeRules();
 	GLvoid drawOval(float x_center, float y_center, float w, float h, int n);
 

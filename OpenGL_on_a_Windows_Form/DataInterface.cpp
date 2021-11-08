@@ -277,11 +277,26 @@ bool DataInterface::isReadClassNames() {
 	return readClassNamesBasic;
 }
 
-
 // returns datadimensions to originally calculated data.
 void DataInterface::returnToOriginalDataDimensions()
 {
-	dataDimensions = originalDataDimensions;
+	dataDimensions.clear();
+	for (int i = 0; i < originalDataDimensions.size(); i++)
+	{
+		Dimension* toAdd = originalDataDimensions.at(i)->copyDimensionToPtr(*originalDataDimensions.at(i));
+		dataDimensions.push_back(toAdd);
+	}
+}
+
+// records data dimensions for a save state.
+void  DataInterface::recordOriginalDataDimensions()
+{
+	originalDataDimensions.clear();
+	for (int i = 0; i < dataDimensions.size(); i++)
+	{
+		Dimension* toAdd = dataDimensions.at(i)->copyDimensionToPtr(*dataDimensions.at(i));
+		originalDataDimensions.push_back(toAdd);
+	}
 }
 
 

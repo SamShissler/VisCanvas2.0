@@ -4,6 +4,7 @@
 #include <msclr\marshal_cppstd.h>
 #include <math.h>
 #include <cstdlib>
+#include <ctime>
 
 using namespace System::Windows::Forms;
 
@@ -3670,7 +3671,7 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 
 //MTBRGSequential:
 //Desc: Generates rules sequentailly to ensure there is little overlap. Uses Pareto front rules and applies thresholds.
-vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass)
+pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass)
 {
 	vector<string> toReturn;
 	vector<int> allGroupCases;
@@ -3823,6 +3824,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 
 		//Check to see if this is the first rule we are adding. If so, make sure that it has a high enough precision.
 		//If the first rule has not been selected, make sure it is 100% precision. If not continue to the next.
+		
 		/*
 		if (selectedRules.size() == 0)
 		{
@@ -3971,7 +3973,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 		double curRulePrecision = curRule.getPrecision();
 
 		//If this is a 100% precision rule,
-		if (curRulePrecision == 100)
+		if (true /*curRulePrecision == 100*/)
 		{
 			vector<int> curRuleCases = curRule.getCasesUsed();
 
@@ -3990,7 +3992,7 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 			}
 
 			//If this is a benifical rule,
-			if (numCasesIncorrect != 0)
+			if (numCasesIncorrect != 0 && numCasesIncorrect >= curRule.getIncorrectCases())
 			{
 				//Add this rule to our final rules.
 				selectedRules.push_back(curRule);
@@ -4139,7 +4141,11 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 
 	toReturn.push_back(toAdd);
 
-	return toReturn;
+	pair<vector<string>, vector<DNSRule>> finalResults;
+	finalResults.first = toReturn;
+	finalResults.second = allGroupRules;
+
+	return finalResults;
 }//End of rule generation sequential all attributes.
 
 //combineRulesGenerated:
@@ -5395,6 +5401,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 	while (true)
 	{
 		//Get the first pair of coordinates to check for rules.
+
 		string linkValue = MTBC.getNextLink();
 
 		//If the entire chain is resolved.
@@ -6459,199 +6466,272 @@ vector<DNSRule> DomNominalSet::trueConvex(vector<DNSRule> paretoFront)
 
 //tenFoldCrossValidation:
 //Desc: Ten cross fold validation to calculate accuracy. 
-vector<string> DomNominalSet::tenFoldCrossValidation(int targetClass)
+vector<string> DomNominalSet::tenFoldCrossValidation(int targetClass, vector<vector<int>> groups)
 {
+	//Record original data since data will be mutated.
+	file->recordOriginalDataDimensions();
+
 	//Locat data:
 	vector<string> toReturn;
-	vector<vector<int>> partitions;
-	vector<int> caseIDs;
-	int partitionNumber = 10;
+	double runningAverageOur = 0;
+	double runningAverageComp = 0;
 
-	//Fill partition vector:
-	for (int i = 0; i < partitionNumber; i++)
+	for(int n = 0; n < 1; n++)
 	{
-		vector<int> toAdd;
-		partitions.push_back(toAdd);
-	}
-	
-	//Fill the case IDs with the set IDs so it can be manipulated.
-	for (int i = 0; i < file->getSetAmount(); i++)
-	{
-		caseIDs.push_back(i);
-	}
+		vector<vector<int>> partitions;
+		vector<int> caseIDs;
+		int partitionNumber = 10;
 
-	//While there are cases to choose from.
-	while (caseIDs.size() != 0)
-	{
-		//Randomly select IDs for partitions.
-		for (int i = 0; i < partitionNumber; i++) //Iterate over groups.
+		//Fill partition vector:
+		for (int i = 0; i < partitionNumber; i++)
 		{
-
-			//Determine a random index in remaining cases.
-			int index = rand() % caseIDs.size();
-
-			//Add the index to the current data
-			partitions.at(i).push_back(index);
-
-			//Remove the case ID at the index.
-			int count = 0;
-			for (auto it = caseIDs.begin(); it != caseIDs.end(); it++)
-			{
-				if (count == index)
-				{
-					caseIDs.erase(it);
-					break;
-				}
-				count++;
-			}
-
-			//If there are no more cases, return.
-			if (caseIDs.size() == 0) break;
+			vector<int> toAdd;
+			partitions.push_back(toAdd);
 		}
-	}
-	
-	//Use the partitions seqentially as test data:
-	double totalOurAccuracy = 0;
-	double totalCompAccuracy = 0;
-	for (int i = 0; i < partitions.size(); i++)
-	{
-		vector<int> testPartition = partitions.at(i);
 
-		//Determine the number of target class cases in this partition so we can see how many are missed.
-		int numTargetClassCases = 0;
-		for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
+		//Fill the case IDs with the set IDs so it can be manipulated.
+		for (int i = 0; i < file->getSetAmount(); i++)
 		{
-			int curCase = testPartition.at(caseIndex);
-			if (file->getClassOfSet(curCase) == targetClass)
+			caseIDs.push_back(i);
+		}
+
+		//While there are cases to choose from.
+		while (caseIDs.size() != 0)
+		{
+			//Randomly select IDs for partitions.
+			for (int i = 0; i < partitionNumber; i++) //Iterate over groups.
 			{
-				numTargetClassCases++;
+
+				//Determine a random index in remaining cases.
+				std::srand(std::time(nullptr));
+				int index = rand() % caseIDs.size();
+
+				//Add the index to the current data
+				partitions.at(i).push_back(index);
+
+				//Remove the case ID at the index.
+				int count = 0;
+				for (auto it = caseIDs.begin(); it != caseIDs.end(); it++)
+				{
+					if (count == index)
+					{
+						caseIDs.erase(it);
+						break;
+					}
+					count++;
+				}
+
+				//If there are no more cases, return.
+				if (caseIDs.size() == 0) break;
 			}
 		}
 
-		//Iterate over test partition and predict for our rules.
-		double correctlyPredicted = 0;
-		
-		for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
+		//Use the partitions seqentially as test data:
+		for (int i = 0; i < partitions.size(); i++)
 		{
-			int curCase = testPartition.at(caseIndex);
-			int curCaseClass = file->getClassOfSet(curCase);
-			double valAt5 = file->getOriginalData(curCase, 4);
-			double valAt9 = file->getOriginalData(curCase, 8);
-			double valAt15 = file->getOriginalData(curCase, 14);
-			double valAt19 = file->getOriginalData(curCase, 18);
-			double valAt20 = file->getOriginalData(curCase, 19);
-			double valAt21 = file->getOriginalData(curCase, 20);
-			double valAt22 = file->getOriginalData(curCase, 21);
+			//Determine test partition.
+			vector<int> testData = partitions.at(i);
 
-			//Rule definitions:
-			if (valAt5 == 3 || valAt5 == 4 || valAt5 == 5 || valAt5 == 6 || valAt5 == 8 || valAt5 == 9)
+			//Remove data from test partition.
+			for (int j = 0; j < testData.size(); j++)
 			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
+				file->deleteSet(testData.at(j));
 			}
-			else if (valAt9 == 6 || valAt9 == 3)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
-			}
-			else if (valAt19 == 2 && valAt20 == 8 && valAt21 != 2 && valAt22 != 2)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
-			}
-			else if (valAt15 == 3 || valAt15 == 2 || valAt15 == 9)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
-			}
-			else if (valAt19 != 2 && valAt20 != 6 && valAt21 == 5 && valAt22 == 1)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
-			}
-			else if (valAt19 == 6 && valAt20 == 5 && valAt21 != 1 && valAt22 != 6)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
-			}
-			else if (valAt20 == 8 && valAt21 == 2 && valAt22 != 6)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredicted++;
-				}
-			}
-		}
 
-		//Iterate over test partition and perdict for competitiors rules.
-		double correctlyPredictedComp = 0;
+			//Generate rules with remaininig data.
+			pair<vector<string>, vector<DNSRule>> ruleGenResults = MTBRGSequential(75.0, groups, targetClass);
 
+			//Determine accuracy by testing rules with test data.
+			vector<DNSRule> generatedRules = ruleGenResults.second; //Get rules.
 
-		for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
-		{
-			int curCase = testPartition.at(caseIndex);
-			int curCaseClass = file->getClassOfSet(curCase);
-			double valAt5 = file->getOriginalData(curCase, 4);
-			double valAt8 = file->getOriginalData(curCase, 7);
-			double valAt12 = file->getOriginalData(curCase, 11);
-			double valAt20 = file->getOriginalData(curCase, 19);
-			double valAt21 = file->getOriginalData(curCase, 20);
-		
-			if (valAt5 != 1 && valAt5 != 2 && valAt5 != 7)
+			vector<int> casesPredicted;
+			vector<int> casesCorrectltyPredicted;
+			vector<int> casesIncorrectlyPredicted;
+			
+			for (int k = 0; k < generatedRules.size(); k++)
 			{
-				if (curCaseClass == targetClass)
+				DNSRule curRule = generatedRules.at(k);
+
+				//Get what attributes the coordinate used
+				vector<int> coordinatesUsed = curRule.getCoordinatesUsed();
+
+				//Get attribute values for the coordinates uesd
+				vector<double> attributesUsed = curRule.getAttributesUsed();
+
+				//Get negated coordinate indexes
+				vector<double> negatedIndex = curRule.getNegatedAttributesUsed();
+
+				//Determine values test data.
+				for (int j = 0; j < testData.size(); j++)
 				{
-					correctlyPredictedComp++;
+
+					bool isClassifed = true; //Check if case is classified by rule
+
+					int curCaseID = testData.at(j);
+					int curCaseClass = file->getClassOfSet(curCaseID);
+
+					//Values at each coordinate in order.
+					vector<double> valuesAtRuleCoordinates;
+
+					for (int coord = 0; coord < coordinatesUsed.size(); coord++)
+					{
+						double curData = file->getOriginalData(curCaseID, coordinatesUsed.at(coord));
+						valuesAtRuleCoordinates.push_back(curData);
+					}
+
+					//Check if the cur case data is the same as rule.
+					for (int valuePos = 0; valuePos < attributesUsed.size(); valuePos++)
+					{
+						//Check if this is negated val or not.
+						bool isNegatedVal = false;
+						for (int q = 0; q < negatedIndex.size(); q++)
+						{
+							if (negatedIndex.at(q) == valuePos)
+							{
+								isNegatedVal = true;
+							}
+						}
+
+						if (isNegatedVal)
+						{
+							//If this is the negated attribute.
+							if (attributesUsed.at(valuePos) == valuesAtRuleCoordinates.at(valuePos))
+							{
+								isClassifed = false;
+								break;
+							}
+						}
+						else //Not negated thus must be equal to be classified.
+						{
+							//Check for multiple attribute values for one attribute.
+							int curCoord = coordinatesUsed.at(valuePos); //Get current coord.
+							vector<int> curCoordIndices;
+							for (int count = 0; count < coordinatesUsed.size(); count++) //Record what indecies have this coordinate.
+							{
+								if (coordinatesUsed.at(count) == curCoord)
+								{
+									curCoordIndices.push_back(count);
+								}
+							}
+
+							//Go over all indices and check if all are not equal.
+							bool isNeverEqual = true;
+							for (int count = 0; count < curCoordIndices.size(); count++)
+							{
+								//If equal, it means value is equal for one of coordinate indecies.
+								if (attributesUsed.at(count) == valuesAtRuleCoordinates.at(count))
+								{
+									isNeverEqual = false;
+									break;
+								}
+							}
+
+							if (isNeverEqual)
+							{
+								isClassifed = false;
+							}
+
+						}
+
+						if (isClassifed == false) break;
+					}
+
+					//Check to see if it is classifed.
+					if (isClassifed)
+					{
+						//Record all cases predicted.
+						bool isNotContainted = true;
+						for (int k = 0; k < casesPredicted.size(); k++)
+						{
+							if (casesPredicted.at(k) == curCaseID)
+							{
+								isNotContainted = false;
+								break;
+							}
+						}
+
+						if (isNotContainted)
+						{
+							casesPredicted.push_back(curCaseID);
+						}
+
+						//Check to see if predicted correctly.
+						if (curCaseClass == curRule.getRuleClass())
+						{
+							//Record correctly predicted.
+							bool isNotContainted = true;
+							for (int k = 0; k < casesCorrectltyPredicted.size(); k++)
+							{
+								if (casesCorrectltyPredicted.at(k) == curCaseID)
+								{
+									isNotContainted = false;
+									break;
+								}
+							}
+
+							if (isNotContainted)
+							{
+								casesCorrectltyPredicted.push_back(curCaseID);
+
+								//Remove from incorrect if currently in incorrect.
+								for (auto it = casesIncorrectlyPredicted.begin(); it != casesIncorrectlyPredicted.end(); it++)
+								{
+									if (*it == curCaseID)
+									{
+										casesIncorrectlyPredicted.erase(it);
+										break;
+									}
+								}
+							}
+						}
+						else //Predicted incorrectly.
+						{
+							//Record correctly predicted.
+							bool isNotContainted = true;
+							for (int k = 0; k < casesIncorrectlyPredicted.size(); k++)
+							{
+								if (casesIncorrectlyPredicted.at(k) == curCaseID)
+								{
+									isNotContainted = false;
+									break;
+								}
+							}
+
+							if (isNotContainted)
+							{
+								casesIncorrectlyPredicted.push_back(curCaseID);
+							}
+						}
+
+					}
+
+				}//End going over cases.
+			
+			}//End iterating over rules.
+
+			int numTarInTest = 0;
+			for (int j = 0; j < testData.size(); j++)
+			{
+				if (file->getClassOfSet(testData.at(j)) == targetClass)
+				{
+					numTarInTest++;
 				}
 			}
-			else if (valAt20 == 5)
+
+			string s = "Cases predicted correctly: " + to_string(casesCorrectltyPredicted.size()) + ", Cases predicted incorrectly: " + to_string(casesIncorrectlyPredicted.size()) +
+				", Total Predicted: " + to_string(casesPredicted.size()) + ", Cases in target class: " + to_string(numTarInTest) + "\n\n";
+			toReturn.push_back(s);
+
+			for (int j = 0; j < ruleGenResults.first.size(); j++)
 			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredictedComp++;
-				}
+				toReturn.push_back(ruleGenResults.first.at(j));
 			}
-			else if (valAt8 == 2 && (valAt12 == 3 || valAt12 == 2) && valAt21 == 2)
-			{
-				if (curCaseClass == targetClass)
-				{
-					correctlyPredictedComp++;
-				}
-			}
-		}
 
-		//Accuracy calculation:
-		double compAccuracy = (correctlyPredictedComp / numTargetClassCases) * 100.0;
-		double ourAccuracy = (correctlyPredicted / numTargetClassCases) * 100.0;
+			file->returnToOriginalDataDimensions();
 
-		//Add to total to get average.
-		totalOurAccuracy += ourAccuracy;
-		totalCompAccuracy += compAccuracy;
+		}//End iterating over partitons.
 
-		//Record test results.
-		string toAdd = "Test " + to_string(i + 1) + ":\n";
-		toAdd += "Accuracy for our rules = " + to_string(ourAccuracy) + "%\n";
-		toAdd += "Accuracy for the competitors rules = " + to_string(compAccuracy) + "%\n\n";
-		toReturn.push_back(toAdd);
-	}
-
-	double finalAverageOurRules = totalOurAccuracy / partitionNumber;
-	double finalAverageCompRules = totalCompAccuracy / partitionNumber;
-
-	string averages = "Our accurcy avrg = " + to_string(finalAverageOurRules) + "% Comp avrg = " + to_string(finalAverageCompRules) + "%\n\n";
-	toReturn.push_back(averages);
+	}//End iterating tests.
 
 	return toReturn;
 }
