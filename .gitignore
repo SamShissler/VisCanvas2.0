@@ -1,2 +1,10 @@
 
 .vs/VisCanvas/v16/Browse.VC.opendb
+*.db
+*.obj
+.vs/VisCanvas/v16/Browse.VC.db-shm
+.vs/VisCanvas/v16/Browse.VC.db-wal
+*.ipch
+*.log
+*.tlog
+*.cache
