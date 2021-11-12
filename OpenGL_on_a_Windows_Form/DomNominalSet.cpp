@@ -898,8 +898,22 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 				//Get perc from user.
 				double percFU = file->getPurityPerc();
 
+				//Find value using key.
+				int originalVal = -1;
+				for (int m = 0; m < file->getSetAmount(); m++)
+				{
+					double dataAtCurSet = file->getData(m, i);
 
-				if ((domPerc) >= (percFU / 100) && !(freq <= 0.014))
+					if (dataAtCurSet == key)
+					{
+						originalVal = file->getOriginalData(m, i);
+						break;
+					}
+				}
+
+				string *dimName = file->getDimensionName(i);
+
+				if ((*dimName == "X5" && originalVal == 7) || (*dimName == "X7" && originalVal == 2) || (*dimName == "X9" && originalVal == 7) || (*dimName == "X11" && originalVal == 2))//((domPerc) >= (percFU / 100) && !(freq <= 0.014))
 				{
 					//==Draw border==:
 					glBegin(GL_LINE_STRIP);
@@ -3660,137 +3674,789 @@ vector<string> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vec
 	vector<string> toReturn;
 	vector<int> allGroupCases;
 	vector<DNSRule> allGroupRules;
+	vector<DNSRule> allGeneratedRules;
+	vector<int> targetCasesCovered;
+	vector<int> nonTargetCasesCovered;
+	int numCasesInTarget = 0;
+	const double COVERAGETHRESHOLD = 0.5;//%
+	bool fullyCovered = false;
+	vector<int> coorainteAppearance;
 
-	//Go over all groups.
+	//Fill coordinate appearance with 0s.
+	for (int i = 0; i < file->getDimensionAmount(); i++)
+	{
+		coorainteAppearance.push_back(0);
+	}
+
+	//Determine total number of cases in target class.
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		if (file->getClassOfSet(i) == targetClass) numCasesInTarget++;
+	}
+
+	//Go over all groups and generate all rules.
 	for (int n = 0; n < groups.size(); n++)
 	{
-		//////////////////////////////
-		string toAdd;
-		vector<DNSRule> overlapThresholdRules;
-		vector<DNSRule> finalRules;
-		vector<int> casesCovered;
-		vector<DNSRule> allGeneratedRules;
-		vector<DNSRule> paretoFrontRules;
-		const double COVERAGETHRESHOLD = 1.5;//%
+		vector<DNSRule> curGroupRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, numCasesInTarget);
 
-		//Generate all possible rules.
-		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass);
-
-		//Calculate pareto front.
-		paretoFrontRules = calculateParetoFront(allGeneratedRules);
-		paretoFrontRules = trueConvex(paretoFrontRules);//Make sure pareto front is truly convex.
-
-		//Apply other thresholds (Such as overlap).
-		double highestCoverage = 0.0;
-		bool ruleSelected = true;
-		vector<int> allCasesForOverlap;
-		vector<int> selectedRuleCases;
-		int selectedRuleIndex = -1;
-
-		//Select rules.
-		while (ruleSelected)
+		//Store all rules.
+ 		for (int i = 0; i < curGroupRules.size(); i++)
 		{
-			ruleSelected = false;
+			allGeneratedRules.push_back(curGroupRules.at(i));
+		}
+	}
 
-			for (int i = 0; i < paretoFrontRules.size(); i++)
+
+	//Combine Rules:
+
+	allGeneratedRules = combineRulesGenerated(allGeneratedRules, targetClass, numCasesInTarget, precisionThresh);
+
+	//==================Selection Process=========================//
+
+	string toAdd;
+	vector<int> casesCovered;
+	vector<int> incorrectCases;
+	vector<DNSRule> selectedRules;
+
+	//Create vector of pairs of coverage and rules.
+	vector<pair<double, int>> coveragePerRuleIndex;
+	for (int i = 0; i < allGeneratedRules.size(); i++)
+	{
+		DNSRule curRule = allGeneratedRules.at(i);
+		double curCov = curRule.getTotalCoverage();
+
+		pair<double, int> newPair;
+		newPair.first = curCov;
+		newPair.second = i;
+
+		coveragePerRuleIndex.push_back(newPair);
+	}
+
+	//Sort the pairs and reverse so we have highest coverage in decending order.
+	sort(coveragePerRuleIndex.begin(), coveragePerRuleIndex.end());
+	reverse(coveragePerRuleIndex.begin(), coveragePerRuleIndex.end());
+
+	//Select the rule with the highest coverage.
+	int curRuleIndex = 0;
+	while ((targetCasesCovered.size() != numCasesInTarget) && (selectedRules.size() != allGeneratedRules.size()) && curRuleIndex != coveragePerRuleIndex.size())
+	{
+		//Current rule info.
+		int ruleIndex = coveragePerRuleIndex.at(curRuleIndex).second;
+		DNSRule curRule = allGeneratedRules.at(ruleIndex);
+		vector<int> curRuleCases = allGeneratedRules.at(ruleIndex).getCasesUsed();
+
+		//=========================Conditions ==============================//
+		//Condition 1: The addition of this rule to the final rules must contribute newly predicted
+		// target class cases.
+		//Condition 2: The number of new non target cases used must be less then the new target cases used.
+
+		//Determine how many cases in the current rule are the target class.
+		vector<int> curRuleTargetIDs;
+		vector<int> curRuleNonTargetIDs;
+		for (int i = 0; i < curRuleCases.size(); i++)
+		{
+			if (file->getClassOfSet(curRuleCases.at(i)) == targetClass)
 			{
-				if (paretoFrontRules.at(i).getTotalCoverage() >= highestCoverage)
-				{
-					vector<int> curCases = paretoFrontRules.at(i).getCasesUsed();
-					int overlap = 0;
-					for (int j = 0; j < curCases.size(); j++)
-					{
-						for (int k = 0; k < allCasesForOverlap.size(); k++)
-						{
-							if (curCases.at(j) == allCasesForOverlap.at(k))
-							{
-								overlap++;
-							}
-						}
-					}
-
-					double overlapPerc;
-					if (allCasesForOverlap.size() <= 0)
-					{
-						overlapPerc = 0;
-					}
-					else
-					{
-						overlapPerc = (double(overlap) / double(allCasesForOverlap.size())) * 100.0;
-					}
-
-					if (overlapPerc <= 100)
-					{
-						highestCoverage = paretoFrontRules.at(i).getTotalCoverage();
-						selectedRuleCases = paretoFrontRules.at(i).getCasesUsed();
-						selectedRuleIndex = i;
-						ruleSelected = true;
-					}
-				}
+				curRuleTargetIDs.push_back(curRuleCases.at(i));
 			}
-
-			if (ruleSelected)
+			else
 			{
-				finalRules.push_back(paretoFrontRules.at(selectedRuleIndex));
-
-				for (int i = 0; i < selectedRuleCases.size(); i++)
-				{
-					bool caseIncluded = false;
-					for (int j = 0; j < allCasesForOverlap.size(); j++)
-					{
-						if (selectedRuleCases.at(i) == allCasesForOverlap.at(j))
-						{
-							caseIncluded = true;
-							break;
-						}
-					}
-
-					if (!caseIncluded)
-					{
-						allCasesForOverlap.push_back(selectedRuleCases.at(i));
-					}
-				}
-
-				paretoFrontRules.at(selectedRuleIndex).setTotalCoverage(-1);
-				highestCoverage = 0.0;
-				selectedRuleIndex = -1;
+				curRuleNonTargetIDs.push_back(curRuleCases.at(i));
 			}
-
 		}
 
-		for (int j = 0; j < allCasesForOverlap.size(); j++)
+		//Determine if there are any new target cases between this rule and the target cases already covered.
+		vector<int> targetCasesNotContianed;
+		for (int i = 0; i < curRuleTargetIDs.size(); i++)
 		{
-			bool isContained = false;
-			for (int k = 0; k < allGroupCases.size(); k++)
+			bool notContained = true;
+			for (int j = 0; j < targetCasesCovered.size(); j++)
 			{
-				if (allCasesForOverlap.at(j) == allGroupCases.at(k))
+				if (targetCasesCovered.at(j) == curRuleTargetIDs.at(i))
 				{
-					isContained = true;
+					notContained = false;
 					break;
 				}
 			}
 
-			if (!isContained)
+			if (notContained)
 			{
-				allGroupCases.push_back(allCasesForOverlap.at(j));
+				targetCasesNotContianed.push_back(curRuleTargetIDs.at(i));
 			}
 		}
 
-		//Pushback all the rules.
-		for (int i = 0; i < finalRules.size(); i++)
+		vector<int> nonTargetCasesNotContianed;
+		for (int i = 0; i < curRuleNonTargetIDs.size(); i++)
 		{
-			allGroupRules.push_back(finalRules.at(i));
+			bool notContained = true;
+			for (int j = 0; j < nonTargetCasesCovered.size(); j++)
+			{
+				if (nonTargetCasesCovered.at(j) == curRuleNonTargetIDs.at(i))
+				{
+					notContained = false;
+					break;
+				}
+			}
+
+			if (notContained)
+			{
+				nonTargetCasesNotContianed.push_back(curRuleNonTargetIDs.at(i));
+			}
 		}
 
-		//Record:
-		toAdd = "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(finalRules.size()) + ", Cases Covered = " + to_string(allCasesForOverlap.size()) + ".\n";
-		toReturn.push_back(toAdd);
+		double newTotal = (nonTargetCasesCovered.size() + nonTargetCasesNotContianed.size()) + (targetCasesCovered.size() + targetCasesNotContianed.size());
+		double newPrecision = ((targetCasesCovered.size() + targetCasesNotContianed.size()) / newTotal) * 100.0;
+		double prevPrecision;
+		
+		//Starting calc
+		if (curRuleIndex == 0)
+		{
+			prevPrecision = 0;
+		}
+
+		double t1 = (targetCasesCovered.size() + nonTargetCasesCovered.size());
+		double t2 = targetCasesCovered.size();
+		prevPrecision = (t2 / t1) * 100.0;
+
+		//===================================================================//
+
+		//Check to see if this is the first rule we are adding. If so, make sure that it has a high enough precision.
+		//If the first rule has not been selected, make sure it is 100% precision. If not continue to the next.
+		/*
+		if (selectedRules.size() == 0)
+		{
+			if (newPrecision != 100)
+			{
+				curRuleIndex++;
+				continue;
+			}
+
+		}
+		*/
+
+		//If there are new target cases in this class, record.
+		if (targetCasesNotContianed.size() != 0 && newPrecision >= prevPrecision)
+		{
+			//Record rule.
+			selectedRules.push_back(allGeneratedRules.at(ruleIndex));
+
+			//Record incorrect cases.
+			for (int i = 0; i < curRuleCases.size(); i++)
+			{
+				//If this is an incorrect case.
+				if (this->file->getClassOfSet(curRuleCases.at(i)) != targetClass)
+				{
+					//Check if in our list already.
+					bool isContained = false;
+					for (int j = 0; j < incorrectCases.size(); j++)
+					{
+						if (incorrectCases.at(j) == curRuleCases.at(i))
+						{
+							isContained = true;
+							break;
+						}
+					}
+
+					if (!isContained)
+					{
+						incorrectCases.push_back(curRuleCases.at(i));
+					}
+
+				}
+			}
+
+			//Record how many cases have been covered of the target class.
+			for (int i = 0; i < curRuleCases.size(); i++)
+			{
+				bool notContained = true;
+				for (int j = 0; j < targetCasesCovered.size(); j++)
+				{
+					if (targetCasesCovered.at(j) == curRuleCases.at(i))
+					{
+						notContained = false;
+						break;
+					}
+				}
+
+				if (notContained)
+				{
+					//If this is a case for the target class:
+					if (file->getClassOfSet(curRuleCases.at(i)) == targetClass)
+					{
+						targetCasesCovered.push_back(curRuleCases.at(i));
+					}
+				}
+			}
+
+			//Record how many cases have been covered of the non target classes.
+			for (int i = 0; i < curRuleCases.size(); i++)
+			{
+				bool notContained = true;
+				for (int j = 0; j < nonTargetCasesCovered.size(); j++)
+				{
+					if (nonTargetCasesCovered.at(j) == curRuleCases.at(i))
+					{
+						notContained = false;
+						break;
+					}
+				}
+
+				if (notContained)
+				{
+					//If this is a case for the target class:
+					if (file->getClassOfSet(curRuleCases.at(i)) != targetClass)
+					{
+						nonTargetCasesCovered.push_back(curRuleCases.at(i));
+					}
+				}
+			}
+
+			//Record all cases covered overall.
+			for (int i = 0; i < curRuleCases.size(); i++)
+			{
+				int ruleID = curRuleCases.at(i);
+				bool notContained = true;
+				for (int j = 0; j < casesCovered.size(); j++)
+				{
+					if (casesCovered.at(j) == ruleID)
+					{
+						notContained = false;
+						break;
+					}
+				}
+
+				if (notContained)
+				{
+					casesCovered.push_back(ruleID);
+				}
+			}
+
+			//Record if fully covered.
+			if (targetCasesCovered.size() == numCasesInTarget)
+			{
+				fullyCovered = true;
+				break;
+			}
+
+		}//End of if rule has new target cases.
+
+		curRuleIndex++;
+
+	}// End of while iterating over rules.
+
+	//============================================================================//
+
+	//Generate rules to correct incorrectly predicted cases.
+	
+	//Go over all groups and generate all rules.
+	allGeneratedRules.clear();
+	const int NON_TARGET_CLASS = 2;
+	for (int n = 0; n < groups.size(); n++)
+	{
+		vector<DNSRule> curGroupRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, NON_TARGET_CLASS, numCasesInTarget);
+
+		//Store all rules.
+		for (int i = 0; i < curGroupRules.size(); i++)
+		{
+			allGeneratedRules.push_back(curGroupRules.at(i));
+		}
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size())));
+	//Go over all generated rules for non-target class and see if any will reduce the number of incorrect cases.
+	for (int i = 0; i < allGeneratedRules.size(); i++)
+	{
+		DNSRule curRule = allGeneratedRules.at(i);
+		vector<int> curRuleCases = curRule.getCasesUsed();
+		double curRulePrecision = curRule.getPrecision();
+
+		//If this is a 100% precision rule,
+		if (curRulePrecision == 100)
+		{
+			vector<int> curRuleCases = curRule.getCasesUsed();
+
+			//Determine if any incorrect cases are covered,
+			int numCasesIncorrect = 0; //Count of how many cases were predicted incorrectly.
+			for (int j = 0; j < curRuleCases.size(); j++)
+			{
+				for (int k = 0; k < incorrectCases.size(); k++)
+				{
+					if (curRuleCases.at(j) == incorrectCases.at(k))
+					{
+						numCasesIncorrect++;
+						break;
+					}
+				}
+			}
+
+			//If this is a benifical rule,
+			if (numCasesIncorrect != 0)
+			{
+				//Add this rule to our final rules.
+				selectedRules.push_back(curRule);
+
+				//Remove all newly covered incorrectly predicted cases.
+				for (int j = 0; j < curRuleCases.size(); j++)
+				{
+					bool needsRemoved = false;
+					auto removeIt = incorrectCases.begin();
+					for (auto it = incorrectCases.begin(); it != incorrectCases.end(); it++)
+					{
+						if (curRuleCases.at(j) == *it)
+						{
+							needsRemoved = true;
+							break;
+						}
+						removeIt++;
+					}
+
+					if (needsRemoved)
+					{
+						incorrectCases.erase(removeIt);
+					}
+				}
+			}
+		}
+
+		//End addition of rules if all incorrect cases are covered.
+		if (incorrectCases.size() == 0)
+		{
+			break;
+		}
+	}
+
+	//Add group rules to all rules.
+	for (int i = 0; i < selectedRules.size(); i++)
+	{
+		allGroupRules.push_back(selectedRules.at(i));
+	}
+
+	//record all cases covered.
+	for (int i = 0; i < casesCovered.size(); i++)
+	{
+		bool notContained = true;
+		for (int j = 0; j < allGroupCases.size(); j++)
+		{
+			if (allGroupCases.at(j) == casesCovered.at(i))
+			{
+				notContained = false;
+				break;
+			}
+		}
+
+		if (notContained)
+		{
+			allGroupCases.push_back(casesCovered.at(i));
+		}
+	}
+
+	int numCasesClass1 = 0;
+	int numCasesClass2 = 0;
+
+	for (int i = 0; i < casesCovered.size(); i++)
+	{
+		int curClass = file->getClassOfSet(casesCovered.at(i));
+		if (curClass == 1)
+		{
+			numCasesClass1++;
+		}
+		else if (curClass == 2)
+		{
+			numCasesClass2++;
+		}
+	}
+
+	//Determine how many cases of the target class are covered.
+	int casesInTargetClass = 0;
+	for (int i = 0; i < allGroupCases.size(); i++)
+	{
+		if (file->getClassOfSet(allGroupCases.at(i)) == targetClass)
+		{
+			casesInTargetClass++;
+		}
+	}
+
+	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " +
+		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) +
+		" Total incorrectly predicted cases: " + to_string(incorrectCases.size()) + "\n\n"));
+
+	//Print out all rules in a readable format:
+	for (int i = 0; i < allGroupRules.size(); i++)
+	{
+		DNSRule curRule = allGroupRules.at(i);
+
+		toReturn.push_back("Rule " + to_string(i + 1) + "\n");
+		toReturn.push_back("Class predicted: " + to_string(curRule.getRuleClass()) + "\n");
+		toReturn.push_back("Precision: " + to_string(curRule.getPrecision()) + "%\n");
+		toReturn.push_back("Coverage: " + to_string(curRule.getTotalCoverage()) + "%\n");
+		toReturn.push_back("Total cases predicted: " + to_string(curRule.getTotalCases()) + "\n");
+		toReturn.push_back("Correctly predicted: " + to_string(curRule.getCorrectCases()) + "\n");
+		toReturn.push_back("Incorrectly predicted: " + to_string(curRule.getIncorrectCases()) + "\n");
+		toReturn.push_back("Attributes and coordinates used: \n");
+		vector<int> curCoord = curRule.getCoordinatesUsed();
+		vector<double> curAttri = curRule.getAttributesUsed();
+		for (int j = 0; j < curCoord.size() - 1; j++)
+		{
+			string s = to_string(curAttri.at(j));
+			toReturn.push_back("X" + to_string(curCoord.at(j) + 1) + " -> " + s + "\n");
+		}
+		string s = to_string(curAttri.at(curCoord.size() - 1));
+		toReturn.push_back("X" + to_string(curCoord.at(curCoord.size() - 1) + 1) + " -> " + s + "\n\n");
+
+		toReturn.push_back("Negated Attributes: \n");
+		vector<double> negatedAttri = curRule.getNegatedAttributesUsed();
+
+		if (negatedAttri.size() >= 1)
+		{
+			for (int j = 0; j < negatedAttri.size() - 1; j++)
+			{
+				toReturn.push_back(to_string(negatedAttri.at(j)) + ", ");
+			}
+			toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)) + "\n\n\n");
+		}
+	}
+
+	//Count the number of times each cordinate shows up.
+	for (int i = 0; i < allGroupRules.size(); i++)
+	{
+		DNSRule r = allGroupRules.at(i);
+
+		vector<int> ruleAttributes = r.getCoordinatesUsed();
+		for (int j = 0; j < ruleAttributes.size(); j++)
+		{
+			//Increment count by one.
+			coorainteAppearance.at(ruleAttributes.at(j)) = (coorainteAppearance.at(ruleAttributes.at(j)) + 1);
+		}
+	}
+
+	toAdd = "";
+	toAdd += "Coordinate Appearance = ";
+	for (int i = 0; i < coorainteAppearance.size() - 1; i++)
+	{
+		toAdd += "X" + to_string(i + 1) + ": " + to_string(coorainteAppearance.at(i)) + ", ";
+	}
+	toAdd += "X" + to_string(coorainteAppearance.size()) + ": " + to_string(coorainteAppearance.at(coorainteAppearance.size() - 1)) + "\n ";
+
+	toReturn.push_back(toAdd);
 
 	return toReturn;
 }//End of rule generation sequential all attributes.
+
+//combineRulesGenerated:
+//Desc: Takes a list of generated rules and adds simple combinations of rules to the end.
+vector<DNSRule> DomNominalSet::combineRulesGenerated(vector<DNSRule> allGeneratedRules, int targetClass, int numCasesInTargetClass, double precThresh)
+{
+
+	vector<DNSRule> basicCombinations;
+
+	//Create vector of pairs complexity of rules.
+	vector<pair<int, int>> complexityPerRuleIndex;
+	for (int i = 0; i < allGeneratedRules.size(); i++)
+	{
+		DNSRule curRule = allGeneratedRules.at(i);
+		vector<int> curRuleCoordinates = curRule.getCoordinatesUsed();
+		vector<double> curRuleNegatedPositions = curRule.getNegatedAttributesUsed();
+
+		int ruleComplexity = 0;
+
+		for (int j = 0; j < curRuleCoordinates.size(); j++)
+		{
+			//Find if this is a negated cooridnate.
+			bool isNegated = false;
+			for (int k = 0; k < curRuleNegatedPositions.size(); k++)
+			{
+				if (curRuleNegatedPositions.at(k) == j)
+				{
+					isNegated = true;
+					break;
+				}
+			}
+
+			if (isNegated)
+			{
+				//Determine number of unique values in coordinate.
+				vector<double> coordValues;
+				for (int k = 0; k < file->getSetAmount(); k++)
+				{
+					double curData = file->getData(k, curRuleCoordinates.at(j));
+					bool isContained = false;
+					for (int m = 0; m < coordValues.size(); m++)
+					{
+						if (coordValues.at(m) == curData)
+						{
+							isContained = true;
+							break;
+						}
+					}
+
+					if (!isContained)
+					{
+						coordValues.push_back(curData);
+					}
+				}
+				ruleComplexity = ruleComplexity + coordValues.size();
+			}
+			else
+			{
+				ruleComplexity++;
+			}
+		}
+
+		pair<int, int> newPair;
+		newPair.first = ruleComplexity;
+		newPair.second = i;
+
+		complexityPerRuleIndex.push_back(newPair);
+	}
+
+	//Sort the pairs and reverse so we have lowest complexity in ascending order.
+	sort(complexityPerRuleIndex.begin(), complexityPerRuleIndex.end());
+
+	for(int n = 0; n < complexityPerRuleIndex.size(); n++)
+	{
+		//Current rule info.
+		int ruleIndex = complexityPerRuleIndex.at(n).second;
+		DNSRule curRule = allGeneratedRules.at(ruleIndex);
+		vector<int> curRuleCases = allGeneratedRules.at(ruleIndex).getCasesUsed();
+
+		//Determine if any other rules can be combined with this current rule.
+		bool ruleCombined = false;
+		DNSRule combinedRule = curRule;
+		
+		for (int i = 0; i < complexityPerRuleIndex.size(); i++)
+		{
+			//Dont combine with self.
+			if (i == n) continue;
+			int candidateRuleIndex = complexityPerRuleIndex.at(i).second;
+			DNSRule candidateRule = allGeneratedRules.at(candidateRuleIndex);
+
+			//Get data of the two rules used to determine if they can be combined.
+			vector<int> candidateCoordinatesUsed = candidateRule.getCoordinatesUsed();
+			vector<int> curRuleCoordinatesUsed = combinedRule.getCoordinatesUsed();
+			vector<double> candidateCoordinateNegated = candidateRule.getNegatedAttributesUsed();
+			vector<double> curRuleCoordinateNegated = combinedRule.getNegatedAttributesUsed();
+
+			//Check to see if rule can be combined.
+			bool canBeCombined = true;
+			for (int j = 0; j < curRuleCoordinatesUsed.size(); j++)
+			{
+				canBeCombined = true;
+
+				//Check to see if this is a negated coordinate.
+				bool curRuleCoordIsNegated = false;
+				for (int m = 0; m < curRuleCoordinateNegated.size(); m++)
+				{
+					if (curRuleCoordinateNegated.at(m) == j)
+					{
+						curRuleCoordIsNegated = true;
+						break;
+					}
+				}
+
+				//Check to see if the candidate rule has this coordinate.
+				bool hasCoordinate = false;
+				for (int k = 0; k < candidateCoordinatesUsed.size(); k++)
+				{
+					hasCoordinate = false;
+					//If the corodinate is contained.
+					if (curRuleCoordinatesUsed.at(j) == candidateCoordinatesUsed.at(k))
+					{
+						//check if candidtae rule is negated.
+						bool candidateCoordIsNegated = false;
+						for (int m = 0; m < candidateCoordinateNegated.size(); m++)
+						{
+							if (candidateCoordinateNegated.at(m) == k)
+							{
+								candidateCoordIsNegated = true;
+								break;
+							}
+						}
+
+						//If both of the coordinates are negated:
+						//if (candidateCoordIsNegated && curRuleCoordIsNegated)
+						//{
+							//hasCoordinate = true;
+						//}
+						//If both of the coordinates are not negated:
+						if (!candidateCoordIsNegated && !curRuleCoordIsNegated)
+						{
+							hasCoordinate = true;
+						}
+										
+					}
+
+					if (!hasCoordinate)
+					{
+						canBeCombined = false;
+						break;
+					}
+				}
+
+				if (!hasCoordinate)
+				{
+					canBeCombined = false;
+					break;
+				}
+			}
+
+			//If the two rules can be combined, combine them and add to final list.
+			if (canBeCombined)
+			{
+				//Determine coordinates used.
+				vector<int> combinedRuleCoordinatesUsed;
+				for (int j = 0; j < curRuleCoordinatesUsed.size(); j++)
+				{
+					combinedRuleCoordinatesUsed.push_back(curRuleCoordinatesUsed.at(j));
+				}
+
+				for (int j = 0; j < candidateCoordinatesUsed.size(); j++)
+				{
+					combinedRuleCoordinatesUsed.push_back(candidateCoordinatesUsed.at(j));
+				}
+				combinedRule.setCoordinatesUsed(combinedRuleCoordinatesUsed);
+
+				//Determine what attributes were used.
+				vector<double> combinedAttributesUsed;
+				vector<double> curRuleAttributesUsed = combinedRule.getAttributesUsed();
+				vector<double> candidtateRuleAttirbutesUsed = candidateRule.getAttributesUsed();
+				for (int j = 0; j < curRuleAttributesUsed.size(); j++)
+				{
+					combinedAttributesUsed.push_back(curRuleAttributesUsed.at(j));
+				}
+
+				for (int j = 0; j < candidtateRuleAttirbutesUsed.size(); j++)
+				{
+					combinedAttributesUsed.push_back(candidtateRuleAttirbutesUsed.at(j));
+				}
+				combinedRule.setAttributesUsed(combinedAttributesUsed);
+
+				//Determine negated attributes;
+				vector<double> combinedNegatedAttributes;
+				for (int j = 0; j < curRuleCoordinateNegated.size(); j++)
+				{
+					combinedNegatedAttributes.push_back(curRuleCoordinateNegated.at(j));
+				}
+
+				for (int j = 0; j < candidateCoordinateNegated.size(); j++)
+				{
+					combinedNegatedAttributes.push_back(candidateCoordinateNegated.at(j) + curRuleCoordinatesUsed.size());
+				}
+				combinedRule.setNegatedAttributesUsed(combinedNegatedAttributes);
+
+				//========Recalculate==========//
+
+				//Find larges value.
+				int largestCoord = 0;
+				for (int j = 0; j < combinedRuleCoordinatesUsed.size(); j++)
+				{
+
+					if (combinedRuleCoordinatesUsed.at(j) > largestCoord)
+					{
+						largestCoord = combinedRuleCoordinatesUsed.at(j);
+					}
+				
+				}
+
+				//Start by combining the attributes with theirt attribute values.
+				vector<vector<double>> attributesAndAttributeValues(largestCoord + 1);
+				for (int j = 0; j < combinedRuleCoordinatesUsed.size(); j++)
+				{
+					attributesAndAttributeValues.at(combinedRuleCoordinatesUsed.at(j)).push_back(combinedAttributesUsed.at(j));
+				}
+
+				//Determine cases covered by iterating over sets.
+				int correctlyPredicted = 0;
+				int incorrectlyPredicted = 0;
+				int totalPredicted = 0;
+				vector<int> casesUsed;
+				for (int j = 0; j < file->getSetAmount(); j++)
+				{
+
+					//Check each coordinate grouping.
+					bool doesSatisfy = true;
+					for (int k = 0; k < combinedRuleCoordinatesUsed.size(); k++)
+					{
+
+						double originalDataAtCoordForSet = file->getOriginalData(j, combinedRuleCoordinatesUsed.at(k));
+
+						//Get attributes.
+						vector<double> attributesForCurCoord = attributesAndAttributeValues.at(combinedRuleCoordinatesUsed.at(k));
+
+						//Determine if attributes are all negated or all non negated.
+						bool negatedAttri = false;
+						for (int m = 0; m < combinedNegatedAttributes.size(); m++)
+						{
+							if (combinedNegatedAttributes.at(m) == k)
+							{
+								negatedAttri = true;
+								break;
+							}
+						}
+
+						//Handle negated attribute values different then normal attribute values.
+						if (!negatedAttri)
+						{
+							bool correct = false;
+							for (int m = 0; m < attributesForCurCoord.size(); m++)
+							{
+								if (attributesForCurCoord.at(m) == originalDataAtCoordForSet)
+								{
+									correct = true;
+								}
+							}
+
+							if (!correct)
+							{
+								doesSatisfy = false;
+								break;
+							}
+						}
+					}
+				
+					if (doesSatisfy)
+					{
+						totalPredicted++;
+						casesUsed.push_back(j);
+
+						if (file->getClassOfSet(j) == targetClass)
+						{
+							correctlyPredicted++;
+						}
+						else
+						{
+							incorrectlyPredicted++;
+						}
+					}
+				
+				}//End iterating over sets.
+
+				//Calculate and set values.
+				double newCoverage = (double(totalPredicted) / double(numCasesInTargetClass)) * 100.0;
+				double newPrecision = (double(correctlyPredicted) / double(totalPredicted)) * 100.0;
+				combinedRule.setTotalCoverage(newCoverage);
+				combinedRule.setPrecision(newPrecision);
+				combinedRule.setCorrectCases(correctlyPredicted);
+				combinedRule.setIncorrectCases(incorrectlyPredicted);
+				combinedRule.setTotalCases(totalPredicted);
+				combinedRule.setCasesUsed(casesUsed);
+
+				//Record to add at the end.
+				basicCombinations.push_back(combinedRule);
+
+			}//End of rule combination.
+
+		}//End of testing combining rules.
+
+	}// End of iterating over rules.
+
+	//Add all combined rules to the passed rules.
+
+	for (int i = 0; i < basicCombinations.size(); i++)
+	{
+		allGeneratedRules.push_back(basicCombinations.at(i));
+	}
+
+	return allGeneratedRules;
+}
 
 //linguisticDesc
 //Desc: Creates the linguistic description for the visualization. Result is a formatted string to be added to the linguistic desc.
@@ -4708,7 +5374,7 @@ GLvoid DomNominalSet::drawGrayLines(double worldWidth)
 //MTBRuleGenerationAlgorithm
 //Desc: Algorithm for generating all possible rule with combinations of coordinates using Monotonoicity / MTBChains.
 //This one has easier requirements.
-vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass)
+vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> group, double covThresh, int targetClass, int totalCasesInTarget)
 {
 	//Local Vars:
 	string rulesToString;
@@ -4835,7 +5501,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						int predictedCorrecly = 0;
 						int predictedIncorrectly = 0;
 						int predictedTotal = 0;
-						int numberOFCasesInClass = 0;
 						double precision = 0.0;
 						double coverage = 0.0;
 
@@ -4900,12 +5565,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 								casesInRule.push_back(k);
 							}
 
-							//Record the number of sets in this class.
-							if (currentSetClass == targetClass)
-							{
-								numberOFCasesInClass++;
-							}
-
 						}//End iterating over sets.
 
 						linkGeneratedRule = true;
@@ -4914,12 +5573,35 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						if (predictedTotal != 0)
 						{
 							precision = (double(predictedCorrecly) / double(predictedTotal)) * 100.0;
-							coverage = (double(predictedTotal) / double(numberOFCasesInClass)) * 100.0;
+							coverage = (double(predictedTotal) / double(totalCasesInTarget)) * 100.0;
 
 							if (precision >= PRECISION_THRESHOLD && coverage >= COVERAGE_THRESHOLD)
 							{
+								//Generate correct attribute values.
+								vector<double> decodedAttributeVals(currentAttributeCombinantion.size());
+								for (int k = 0; k < coordinatesToUse.size(); k++)
+								{
+									for (int m = 0; m < file->getSetAmount(); m++)
+									{
+										double normalized = file->getData(m, coordinatesToUse.at(k));
+
+										if (normalized == currentAttributeCombinantion.at(k))
+										{
+											decodedAttributeVals.at(k) = file->getOriginalData(m, coordinatesToUse.at(k));
+										}
+									}
+								}
+
+								//Generate correct negated attribute values.
+								vector<double> decodedNegated;
+								for (int k = 0; k < curNegatedGroup.size(); k++)
+								{
+									decodedNegated.push_back(curNegatedGroup.at(k));
+								}
+
 								DNSRule newRule;
-								newRule.setAttributesUsed(currentAttributeCombinantion);
+								newRule.setAttributesUsed(decodedAttributeVals);
+								newRule.setNegatedAttributesUsed(decodedNegated);
 								newRule.setCoordinatesUsed(coordinatesToUse);
 								newRule.setCasesUsed(casesInRule);
 								newRule.setCorrectCases(predictedCorrecly);
@@ -4928,6 +5610,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 								newRule.setRuleClass(targetClass);
 								newRule.setPrecision(precision);
 								newRule.setTotalCoverage(coverage);
+								newRule.setRuleClass(targetClass);
 								DNSRulesGenerated.push_back(newRule);
 
 								//Check to see if the precision is high enough to expand upwards.
@@ -4963,12 +5646,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 									if (notContained)
 									{
 										casesCoveredByAllRules.push_back(curCaseID);
-
-										//Check if we have covered all cases.
-										if (casesCoveredByAllRules.size() == numberOFCasesInClass)
-										{
-											return(finalRules);
-										}
 									}
 								}
 							}
@@ -4984,8 +5661,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 
 				//========================================================//
 
-
-
+	
 				//======Normal attribute combination Test========//
 				currentAttributeCombinantion = attributeCombinations.at(i);
 				vector<int> casesInRule;
@@ -4993,7 +5669,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 				int predictedCorrecly = 0;
 				int predictedIncorrectly = 0;
 				int predictedTotal = 0;
-				int numberOFCasesInClass = 0;
 				double precision = 0.0;
 				double coverage = 0.0;
 
@@ -5033,12 +5708,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						casesInRule.push_back(k);
 					}
 
-					//Record the number of sets in this class.
-					if (currentSetClass == (targetClass))
-					{
-						numberOFCasesInClass++;
-					}
-
 				}//End iterating over sets.
 
 				linkGeneratedRule = true;
@@ -5047,12 +5716,27 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 				if (predictedTotal != 0)
 				{
 					precision = (double(predictedCorrecly) / double(predictedTotal)) * 100.0;
-					coverage = (double(predictedTotal) / double(numberOFCasesInClass)) * 100.0;
+					coverage = (double(predictedTotal) / double(totalCasesInTarget)) * 100.0;
 
 					if (precision >= PRECISION_THRESHOLD && coverage >= COVERAGE_THRESHOLD)
 					{
+						//Generate correct attribute values.
+						vector<double> decodedAttributeVals(currentAttributeCombinantion.size());
+						for (int k = 0; k < coordinatesToUse.size(); k++)
+						{
+							for (int m = 0; m < file->getSetAmount(); m++)
+							{
+								double normalized = file->getData(m, coordinatesToUse.at(k));
+
+								if (normalized == currentAttributeCombinantion.at(k))
+								{
+									decodedAttributeVals.at(k) = file->getOriginalData(m, coordinatesToUse.at(k));
+								}
+							}
+						}
+
 						DNSRule newRule;
-						newRule.setAttributesUsed(currentAttributeCombinantion);
+						newRule.setAttributesUsed(decodedAttributeVals);
 						newRule.setCoordinatesUsed(coordinatesToUse);
 						newRule.setCasesUsed(casesInRule);
 						newRule.setCorrectCases(predictedCorrecly);
@@ -5061,6 +5745,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						newRule.setRuleClass(targetClass);
 						newRule.setPrecision(precision);
 						newRule.setTotalCoverage(coverage);
+						newRule.setRuleClass(targetClass);
 						DNSRulesGenerated.push_back(newRule);
 
 						if (precision >= 95.0)
@@ -5094,13 +5779,6 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 							if (notContained)
 							{
 								casesCoveredByAllRules.push_back(curCaseID);
-
-								//Check if we have covered all cases.
-								if (casesCoveredByAllRules.size() == numberOFCasesInClass)
-								{
-									return(finalRules);
-								}
-
 							}
 						}
 					}
@@ -5131,6 +5809,12 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 			//=========================//
 
 		}//End if chain check.
+
+		//Check if we have covered all cases.
+		if (casesCoveredByAllRules.size() == totalCasesInTarget)
+		{
+			break;
+		}
 
 	}//End of While True.
 
@@ -5194,7 +5878,7 @@ vector<string> DomNominalSet::MTBRuleGenResults(double precisionThresh, vector<v
 		const double COVERAGETHRESHOLD = 1.5;//%
 
 		//Generate all possible rules.
-		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass);
+		allGeneratedRules = MTBRuleGeneration(precisionThresh, groups.at(n), COVERAGETHRESHOLD, targetClass, 0);
 
 		//Determine all cases covered by group.
 		for (int i = 0; i < allGeneratedRules.size(); i++)
@@ -5288,7 +5972,18 @@ vector<string> DomNominalSet::MTBRuleGenResults(double precisionThresh, vector<v
 		toReturn.push_back(toAdd);
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size())));
+	//Determine how many cases of the target class are covered.
+	int casesInTargetClass = 0;
+	for (int i = 0; i < allGroupCases.size(); i++)
+	{
+		if (file->getClassOfSet(allGroupCases.at(i)) == targetClass)
+		{
+			casesInTargetClass++;
+		}
+
+	}
+
+	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
 	return toReturn;
 }
 
@@ -5299,6 +5994,21 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 	vector<string> toReturn;
 	vector<int> allGroupCases;
 	vector<DNSRule> allGroupRules;
+	vector<int> coorainteAppearance;
+	double totalCasesInTargetClass = 0;
+	double totalCasesInData = file->getSetAmount();
+
+	//Determine total number of cases in target class.
+	for(int i = 0; i < file->getSetAmount(); i++)
+	{
+		if (file->getClassOfSet(i) == targetClass) totalCasesInTargetClass++;
+	}
+
+	//Setting up vector to count the number of times a coordinate is used.
+	for (int i = 0; i < file->getDimensionAmount(); i++)
+	{
+		coorainteAppearance.push_back(0);
+	}
 
 	//Go over all groups.
 	for (int n = 0; n < groups.size(); n++)
@@ -5307,8 +6017,20 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 		string toAdd;
 		vector<int> casesCovered;
 		vector<DNSRule> paretoFrontRules;
-		const double COVERAGETHRESHOLD = 1.5;//%
+		//const double COVERAGETHRESHOLD = 1.5;//%
 		const double OVERLAPTHRESHOLD = 50.0;//% was 18
+
+		//Determine number of sets in target class.
+		double numTargetClassRemaning = 0;
+		for (int i = 0; i < file->getSetAmount(); i++)
+		{
+			if (file->getClassOfSet(i) == targetClass) numTargetClassRemaning++;
+		}
+
+		//Calc coverage threshold:
+		double calcCoverageThreshold = (((numTargetClassRemaning) / 10) / totalCasesInData) * 100.0;
+
+		if (calcCoverageThreshold > 1.5  || n != -1) calcCoverageThreshold = 0.5;//TESTING!
 
 		//Iterate over all dimensions.
 		for (int m = 1; m <= groups.at(n).size(); m++)
@@ -5326,7 +6048,7 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 			}
 
 			//Generate all possible rules for each subgroup.
-			allGeneratedRules = MTBRuleGeneration(precisionThresh, dimensionsToUse, COVERAGETHRESHOLD, targetClass);
+			allGeneratedRules = MTBRuleGeneration(precisionThresh, dimensionsToUse, calcCoverageThreshold, targetClass, totalCasesInTargetClass);
 			
 			//Get all cases covered by all rules.
 			vector<int> allCasesCoveredByGeneral;
@@ -5487,11 +6209,62 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 			}
 		}
 
-		//Record:
-		toAdd = "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(paretoFrontRules.size()) + ", Cases Covered = " + to_string(casesCovered.size()) + ".\n" +
+		//Count the number of times each cordinate shows up.
+		for (int i = 0; i < paretoFrontRules.size(); i++)
+		{
+			DNSRule r = paretoFrontRules.at(i);
+
+			vector<int> ruleAttributes = r.getCoordinatesUsed();
+			for (int j = 0; j < ruleAttributes.size(); j++)
+			{
+				//Increment count by one.
+				coorainteAppearance.at(ruleAttributes.at(j)) = (coorainteAppearance.at(ruleAttributes.at(j)) + 1);
+			}
+		}
+
+
+		//====================================================Record:======================================================//
+		toAdd += "Coordinate Appearance = ";
+		for (int i = 0; i < coorainteAppearance.size() - 1; i++)
+		{
+			toAdd += "X" + to_string(i + 1) + ": " + to_string(coorainteAppearance.at(i)) + ", ";
+		}
+		toAdd += "X" + to_string(coorainteAppearance.size() - 1) + ": " + to_string(coorainteAppearance.at(coorainteAppearance.size() - 1)) + "\n ";
+		toAdd += "Group = " + to_string(n + 1) + " , Precision = " + to_string(precisionThresh) + "%, Rules Used = " + to_string(paretoFrontRules.size()) + ", Cases Covered = " + to_string(casesCovered.size()) + ".\n" +
 			"Cases Class 1: " + to_string(numCasesClass1) + " Cases Class 2: " + to_string(numCasesClass2) + " Cases Class 1 Total: " + to_string(totalClass1) + "\n";
 		toReturn.push_back(toAdd);
+		//================================================================================================================//
+
+		//Clear coordinate apperance vector for next group.
+		coorainteAppearance.clear();
+		for (int i = 0; i < file->getDimensionAmount(); i++)
+		{
+			coorainteAppearance.push_back(0);
+		}
+
+		/*
+		vector<int> removedCases;
+
+		//Remove cases used in this group.
+		for (int i = 0; i < casesCovered.size(); i++)
+		{
+			//count how many cases below were deleted and re compute the index.
+			int caseIndex = casesCovered.at(i);
+			int numBelow = 0;
+			for (int j = 0; j < removedCases.size(); j++)
+			{
+				if (removedCases.at(j) < caseIndex) numBelow++;
+			}
+
+			int computedCaseIndex = caseIndex - numBelow;
+
+			file->deleteSet(computedCaseIndex);
+			removedCases.push_back(caseIndex);
+		}
+		*/
 	}
+
+	//file->returnToOriginalDataDimensions();
 
 	//Determine how many cases of the target class are covered.
 	int casesInTargetClass = 0;
@@ -5501,13 +6274,11 @@ vector<string> DomNominalSet::ParetoFrontRuleGenWithOverlap(double precisionThre
 		{
 			casesInTargetClass++;
 		}
-
 	}
 
-	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
-
+	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " + 
+		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) + "\n"));
 	this->casesToRemove = allGroupCases;
-
 	return toReturn;
 }
 

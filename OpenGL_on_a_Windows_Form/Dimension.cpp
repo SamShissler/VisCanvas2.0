@@ -20,6 +20,33 @@ Dimension::Dimension() {
 	artificialMinimum = 0.0;
 }
 
+// copies pointer to a new pointer.
+Dimension* Dimension::copyDimensionToPtr(Dimension& toCopy)
+{
+	Dimension* toReturn = new Dimension();
+
+	toReturn->setOriginalIndex(toCopy.getOriginalIndex());
+	toReturn->setName(toCopy.getName());
+
+	//copy over data
+	toReturn->setAllData(toCopy.getAllData());
+	return toReturn;
+}
+
+// sets all of the data for all of the sets.
+void Dimension::setAllData(vector<DataNode*> toSet)
+{
+	vector<DataNode*> finalData;
+
+	for (int i = 0; i < toSet.size(); i++)
+	{
+		DataNode* datan = toSet.at(i)->copyOfDataNode();
+		finalData.push_back(datan);
+	}
+
+	this->data = finalData;
+}
+
 // create a dimension for the pass index(index) and passed size(size)
 Dimension::Dimension(int index, int size) {
 	originalIndex = index;
@@ -166,7 +193,6 @@ void Dimension::deleteData(int dataIndex)
 			break;
 		}
 
-		it++;
 		index++;
 	}
 }

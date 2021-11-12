@@ -17,6 +17,8 @@ public:
 	//Getters and Setters:
 	void setAttributesUsed(vector<double>);
 	vector<double> getAttributesUsed();
+	void setNegatedAttributesUsed(vector<double>);
+	vector<double> getNegatedAttributesUsed();
 	void setCoordinatesUsed(vector<int>);
 	vector<int> getCoordinatesUsed();
 	void setCasesUsed(vector<int>);
@@ -39,8 +41,9 @@ public:
 private:
 
 	vector<double> attributesUsed; //list of attributes used.
-	vector<int> coordinatesUsed;
-	vector<int> casesUsed;
+	vector<double> negatedAttributes; //list of negated attributes.
+	vector<int> coordinatesUsed; //list of coordinates used.
+	vector<int> casesUsed; //list of cases used.
 	int correctCases; //Total correct cases in the rule.
 	int incorrectCases; //Total incorrect cases in the rule.
 	int totalCases; //Total cases in the rule.
