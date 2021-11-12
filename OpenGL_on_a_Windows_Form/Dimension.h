@@ -85,6 +85,8 @@ public:
 	bool isVisible();
 	// sets whether this dimension is drawn or not
 	void setVisibility(bool isDrawn);
+	// Spaces empty spot values out along dimension axis if dimension contains only empty spots
+	double spaceForBlocks(int numEmpty, int setIndex) const;
 
 private:
 	// the vector holding all the data

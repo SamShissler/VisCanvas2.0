@@ -95,7 +95,7 @@ void Dimension::calibrateData() {
 	}
 	else
 	{
-		for (unsigned int i = 0; i < data.size(); i++) {
+		for (unsigned int i = 0; i < data.size(); i++) { //Normalize data
 			(*data[i]).setDataCurrent(((*data[i]).getData() - minimum) / range);
 		}
 	}
@@ -268,9 +268,15 @@ double Dimension::getMinimum() const {
 	}
 	double minimum = (*data[0]).getData();
 	for (unsigned int i = 1; i < data.size(); i++) {
-		if (minimum > (*data[i]).getData()) {
+		if (minimum > (*data[i]).getData() && (*data[i]).getData() >= 0.0) {//excludes empty spots
 			minimum = (*data[i]).getData();
 		}
 	}
 	return minimum;
+}
+
+double Dimension::spaceForBlocks(int numEmpty, int setIndex) const{
+	double max = 0.95;
+	double min = 0.05;
+	return (max - ((max - min) / (numEmpty - 1)) * -10 * ((data[setIndex])->getData() + 0.2));
 }

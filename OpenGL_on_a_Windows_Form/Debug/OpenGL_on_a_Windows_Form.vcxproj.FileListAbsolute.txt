@@ -87,3 +87,11 @@ C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
+C:\Users\shisslers\source\repos\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache

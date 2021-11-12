@@ -75,6 +75,7 @@ bool DataInterface::readFile(string * filePath) {
 	dataSets.clear();
 	clusters.clear();
 	notes.clear();
+	useBlocks.clear();
 	init();
 
 	try {
@@ -91,6 +92,7 @@ bool DataInterface::readFile(string * filePath) {
 		dataSets.clear();
 		clusters.clear();
 		notes.clear();
+		useBlocks.clear();
 		init();
 		finalInit();
 		return false;
@@ -332,9 +334,18 @@ double DataInterface::getData(int setIndex, int indexOfData) const {
 	if (indexOfData >= getDimensionAmount() || indexOfData < 0) {
 		return 0.0;
 	}
-
+	// For arranging empty spot data along axis.
+	//if (useBlocks[indexOfData]) {
+	//	//return 1.0;
+	//	return spaceForBlocks(setIndex, indexOfData);
+	//}
 	// get data
 	return (*dataDimensions[indexOfData]).getData(setIndex);
+}
+
+double DataInterface::spaceForBlocks(int setIndex, int indexOfData) const{
+	return (*dataDimensions[indexOfData]).spaceForBlocks(aboveOne.size(), setIndex);
+	//(*dataDimensions[indexOfData]).getData(setIndex);
 }
 
 // deletes the set in the passed set index.
@@ -836,12 +847,16 @@ double DataInterface::getMean(int setIndex) const {
 		return 0.0;
 	}
 	double sum = 0.0;
+	int count = 0;
 	// adjust each data point to the new 0 amount for its dimension
 	for (unsigned int i = 0; i < getDimensionAmount(); i++) {
 		double currentData = (*dataDimensions[i]).getCalibratedData(setIndex);
+		if (currentData < 0) {
+			count++;
+		}
 		sum += currentData;
 	}
-	return sum /= ((double)getDimensionAmount());
+	return sum /= ((double)(getDimensionAmount()-count));
 }
 
 // gets the median data value of the set at the passed index
@@ -1489,6 +1504,8 @@ void DataInterface::init() {
 	drawCenter = true;
 	drawMax = true;
 
+	useBlocks = std::vector<bool>();
+
 	yMaxName = "1.0";
 	yMinName = "0.0";
 	xAxisName = "X-Axis";
@@ -1637,7 +1654,78 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 			startRow = 1; // data starts here
 		}
 
-		
+	/*
+		// create dimensions
+		vector<map<int, std::string>> dimensionsToClean;
+		//Dimension dataDim;
+		aboveOne.clear();
+		// Boolean tracking data to make sure the column does not only contain empty spots.
+		//bool hasNum = false;
+		// A list of offsets for each colomn of data to account for removing completely empty columns
+		//vector<int> emptySpotDimensionTracker = vector<int>();
+		// A counter of empty columns to be used to create above list.
+		int esd = 0;
+		for (int i = startColumn; i < endColumn; i++)
+		{
+			//dataDim = Dimension(i - off, setNumber);
+			dataDimensions.push_back(new Dimension(i - off, setNumber));
+			dimensionsToClean.push_back(map<int, std::string>());
+			//hasNum = false;
+			//emptySpotDimensionTracker.push_back(esd);
+
+			// populate dimensions with data
+			for (int j = startRow; j < fileContents->size(); j++)
+			{
+				double newData;
+				std::string content = (*(*fileContents)[j])[i];
+				if (content.empty() || content[0] < 48 || content[0] > 57) // data doesn't start with a number
+				{
+					if (content.empty())
+					{
+						content = "Empty";
+					}
+					
+					dimensionsToClean[dimensionsToClean.size() - 1][j - off] = content;
+					
+					if (aboveOne.find(content) == aboveOne.end())
+					{
+						aboveOne[content] = 0.0 - ((aboveOne.size() + 1.0) * 0.1);
+					}
+					newData = 0;
+				}
+				else // data does start with a number
+				{
+					newData = std::stod(content);
+					//if(!hasNum)
+						//hasNum = true;
+				}
+				// add data to temp dimension
+				dataDimensions[i-off]->setData(j - off, newData);
+			}
+			// If the dimension contains data, add it to the list of dimensions
+			//if (hasNum) {
+				dataDimensions.push_back(&dataDim);
+
+				dataDimensions[i]->setName(&(*(*fileContents)[0])[i]);
+				dataDimensions[i]->calibrateData();
+
+				// Add modified values for empty spots that exist in the dimension
+				for (int j = 0; j < dimensionsToClean.size(); j++)
+				{
+					for (auto entry : dimensionsToClean[j])
+					{
+						dataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
+					}
+				}
+			//}
+			//else { // If the dimension does not contain data, increase the offset for future columns
+			//	esd++;
+			//}
+			//emptySpotDimensionTracker.push_back(esd);
+
+		}
+		*/
+
 		// create dimensions
 		vector<map<int, std::string>> dimensionsToClean;
 		aboveOne.clear();
@@ -1645,7 +1733,9 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 		{
 
 			dataDimensions.push_back(new Dimension(i - off, setNumber));
+			//originalDataDimensions.push_back(new Dimension(i - off, setNumber));
 			dataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
+			//originalDataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
 			dimensionsToClean.push_back(map<int, std::string>());
 
 			// populate dimensions with data
@@ -1659,9 +1749,9 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 					{
 						content = "Empty";
 					}
-					
+
 					dimensionsToClean[dimensionsToClean.size() - 1][j - off] = content;
-					
+
 					if (aboveOne.find(content) == aboveOne.end())
 					{
 						aboveOne[content] = 0.0 - ((aboveOne.size() + 1.0) * 0.1);
@@ -1677,12 +1767,14 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 			}
 
 			dataDimensions[i - off]->calibrateData();
+			//originalDataDimensions[i - off]->calibrateData();
 
 			for (int j = 0; j < dimensionsToClean.size(); j++)
 			{
 				for (auto entry : dimensionsToClean[j])
 				{
 					dataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
+					//originalDataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
 				}
 			}
 		}

@@ -1352,8 +1352,17 @@ namespace OpenGLForm
 								if (this->file->getDataDimensions()->at(i)->isVisible())
 								{
 									double currentData = this->file->getData(currentIndex, i);
-									glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
+									// Adds empty spot boxes to hypercube if applicable
+									if (TRUE){//currentData <= 0.0) {
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 20);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 20);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 20);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 20);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 20);
+									}
+									else {
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+									}
 									dimensionCount++;
 								}
 							}
@@ -1408,7 +1417,6 @@ namespace OpenGLForm
 									{
 										double currentData = this->file->getData(currentIndex, i);
 										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
 										dimensionCount++;
 									}
 								}
@@ -1432,10 +1440,15 @@ namespace OpenGLForm
 							if (this->file->getDataDimensions()->at(i)->isVisible())
 							{
 								double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
-								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
+								if(currentData >= 0)
+									glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+								
 								currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
-								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+								if (currentData < 0) {
+									currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
+								}
+								if(currentData >= 0)
+									glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 
 								dimensionCount++;
 							}
@@ -1513,13 +1526,15 @@ namespace OpenGLForm
 									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
 										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
+										// Adds empty spot boxes to hypercube if applicable
+										if (currentData < 0.0) {}
+										else {
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
 										dimensionCount++;
 									}
 								}
 								glEnd();
-								dimensionCount = 0;
 							} // end draw max line 
 
 							if (this->file->drawCenterLine())
@@ -1530,8 +1545,10 @@ namespace OpenGLForm
 									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
 										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getVirtualCenter(file->getDimensionAmount()).at(i);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
+										if(currentData < 0.0){}
+										else {
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
 										dimensionCount++;
 									}
 								}
@@ -1547,14 +1564,48 @@ namespace OpenGLForm
 									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
 										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
+										if (currentData < 0.0) {
+											currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
+											if(currentData > 0)
+												glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
+										else {
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
 										dimensionCount++;
 									}
 								}
 								glEnd();
 								dimensionCount = 0;
-							} // end draw mine line
+							} // end draw min line
+
+							dimensionCount = 0;
+							for (int i = 0; i < this->file->getDimensionAmount(); i++)
+							{
+								if (this->file->getDataDimensions()->at(i)->isVisible())
+								{
+									std::vector<double> currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getEmptySpots(i);
+									for (int i = 0; i < currentData.size(); i++) {
+										glColor4d(192.0, 192.0, 192.0, 1.0);
+										glBegin(GL_POLYGON);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
+										glEnd();
+										glColor4d(0.0, 0.0, 0.0, 1.0);
+										glBegin(GL_LINE_STRIP);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
+										glEnd();
+									}
+									dimensionCount++;
+								}
+							}
+							dimensionCount = 0;
 						}
 					}
 

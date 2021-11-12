@@ -20,7 +20,7 @@ public:
 	~SetCluster();
 
 	// gets the calculates the minimum value of dimension for the sets whose indexes are passed(setIndexes)
-	static double getMinimumValue(Dimension* dimension, std::vector<int>* setIndexes);
+	static std::tuple<double,double,std::vector<double>> getMinimumValue(Dimension* dimension, std::vector<int>* setIndexes);
 	// gets the calculates the mean value of dimension for the sets whose indexes are passed(setIndexes)
 	static double getMeanValue(Dimension* dimension, std::vector<int>* setIndexes);
 	// gets the calculates the median value of dimension for the sets whose indexes are passed(setIndexes)
@@ -43,10 +43,13 @@ public:
 
 	// gets the minimum value in the cluster for the dimension at the passed index 
 	double getMinimum(int dimensionIndex) const;
+	double getMinimumPositive(int dimensionIndex) const;
 	// gets the mean value in the cluster for the dimension at the passed index 
 	double getMiddle(int dimensionIndex) const;
 	// gets the maximum value in the cluster for the dimension at the passed index 
 	double getMaximum(int dimensionIndex) const;
+
+	std::vector<double> getEmptySpots(int dimensionIndex) const;
 
 	// recalculates the values for the cluster using the passed dimensions
 	void calculateValues(std::vector<Dimension*>* dimensionToCalculateWith);
@@ -98,6 +101,8 @@ private:
 	ColorCustom color;
 	std::vector<int> setsInCluster;
 	std::vector<double> minimumValues;
+	std::vector<double> minimumPositiveValues;
+	std::vector<std::vector<double>> emptySpotValues;
 	std::vector<double> meanValues;
 	std::vector<double> medianValues;
 	std::vector<double> maximumValues;

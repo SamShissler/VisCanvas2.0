@@ -7,6 +7,8 @@ SetCluster::SetCluster() {
 	color = ColorCustom();
 	setsInCluster = std::vector<int>();
 	minimumValues = std::vector<double>();
+	minimumPositiveValues = std::vector<double>();
+	emptySpotValues = std::vector<std::vector<double>>();
 	meanValues = std::vector<double>();
 	medianValues = std::vector<double>();
 	maximumValues = std::vector<double>();
@@ -20,6 +22,8 @@ SetCluster::SetCluster(ColorCustom &clusterColor) {
 	color = clusterColor;
 	setsInCluster = std::vector<int>();
 	minimumValues = std::vector<double>();
+	minimumPositiveValues = std::vector<double>();
+	emptySpotValues = std::vector<std::vector<double>>();
 	meanValues = std::vector<double>();
 	medianValues = std::vector<double>();
 	maximumValues = std::vector<double>();
@@ -34,6 +38,8 @@ SetCluster::SetCluster(ColorCustom &clusterColor, std::vector<int>* newSetsInClu
 	color = clusterColor;
 	setsInCluster = std::vector<int>();
 	minimumValues = std::vector<double>();
+	minimumPositiveValues = std::vector<double>();
+	emptySpotValues = std::vector<std::vector<double>>();
 	meanValues = std::vector<double>();
 	medianValues = std::vector<double>();
 	maximumValues = std::vector<double>();
@@ -54,11 +60,13 @@ SetCluster::SetCluster(ColorCustom &clusterColor, std::vector<int>* newSetsInClu
 	color = clusterColor;
 	setsInCluster = std::vector<int>();
 	minimumValues = std::vector<double>();
+	minimumPositiveValues = std::vector<double>();
+	emptySpotValues = std::vector<std::vector<double>>();
 	meanValues = std::vector<double>();
 	medianValues = std::vector<double>();
 	maximumValues = std::vector<double>();
 	radius = 0;
-	useMean = false;
+	useMean = true;
 	displayed = true;
 	this->size = this->getSets()->size();
 
@@ -79,27 +87,39 @@ SetCluster::~SetCluster() {
 }
 
 
-// gets the calculates the minimum value of dimension for the sets whose indexes are passed(setIndexes)
-double SetCluster::getMinimumValue(Dimension* dimension, std::vector<int>* setIndexes) {
-	double minimum = 0.0;
+// calculates the minimum value of dimension for the sets whose indexes are passed(setIndexes)
+ std::tuple<double, double, vector<double>> SetCluster::getMinimumValue(Dimension* dimension, std::vector<int>* setIndexes) {
+	double minimum = 10000;
+	double minimumPositive = 10000;
+	vector<double> emptySpotValues = vector<double>();
+	
 	std::sort(setIndexes->begin(), setIndexes->end());
 	// check if the dimension has enough sets for the sets in the passed vector(setIndexes)
 	if ((*setIndexes)[setIndexes->size() - 1] >= dimension->size()) {
-		return minimum;
+		return std::make_tuple(minimum, minimumPositive, emptySpotValues);
 	}
 	// calculate the minimum
 	minimum = dimension->getCalibratedData((*setIndexes)[0]);
 	for (int i = 0; i < setIndexes->size(); i++) {
 		double dataValue = dimension->getCalibratedData((*setIndexes)[i]);
-		if (dataValue < minimum) {
-			minimum = dataValue;
+		if (dataValue < minimumPositive) {//&& dataValue >= 0) { // Exclude empty spots from minimum
+			if (dataValue >= 0.0)
+				minimumPositive = dataValue;
+			else {
+				if (dataValue < minimum)
+					minimum = dataValue;
+				if (std::find(emptySpotValues.begin(), emptySpotValues.end(), dataValue) == emptySpotValues.end()) {
+					emptySpotValues.push_back(dataValue);
+				}
+			}
 		}
-
 	}
-	return minimum;
+	if (minimumPositive > 1)
+		minimumPositive = minimum;
+	return std::make_tuple(minimum, minimumPositive, emptySpotValues);
 }
 
-// gets the calculates the mean value of dimension for the sets whose indexes are passed(setIndexes)
+// calculates the mean value of dimension for the sets whose indexes are passed(setIndexes)
 double SetCluster::getMeanValue(Dimension * dimension, std::vector<int>* setIndexes) {
 	double sum = 0.0;
 	std::sort(setIndexes->begin(), setIndexes->end());
@@ -110,8 +130,8 @@ double SetCluster::getMeanValue(Dimension * dimension, std::vector<int>* setInde
 	// calculate the minimum
 	for (int i = 0; i < setIndexes->size(); i++) {
 		double dataValue = dimension->getCalibratedData((*setIndexes)[i]);
-		sum += dataValue;
-
+		if (dataValue >= 0) // Exclude empty spots from calculated mean
+			sum += dataValue;
 	}
 	return sum / ((double)setIndexes->size());
 }
@@ -119,6 +139,7 @@ double SetCluster::getMeanValue(Dimension * dimension, std::vector<int>* setInde
 // gets the calculates the median value of dimension for the sets whose indexes are passed(setIndexes)
 double SetCluster::getMedianValue(Dimension * dimension, std::vector<int>* setIndexes) {
 	double sum = 0.0;
+	int counter = 0;
 	std::sort(setIndexes->begin(), setIndexes->end());
 	// check if the dimension has enough sets for the sets in the passed vector(setIndexes)
 	if ((*setIndexes)[setIndexes->size() - 1] >= dimension->size()||setIndexes->size()==0) {
@@ -128,22 +149,27 @@ double SetCluster::getMedianValue(Dimension * dimension, std::vector<int>* setIn
 	std::vector<double> values = std::vector<double>();
 	for (int i = 0; i < setIndexes->size(); i++) {
 		int currentIndex = setIndexes->at(i);
-		values.push_back(dimension->getData(currentIndex));
+		double val = dimension->getData(currentIndex);
+		if (val >= 0){ //Exclude empty spots from calculated median
+			values.push_back(val);
+			counter++;
+		}
 	}
+	return 0.25;
 	std::sort(values.begin(), values.end());
 
 	double median = 0.0;
-	// odd number of sets
+	// odd number of sets without empty spots
 	if (setIndexes->size() % 2 == 1) {
 		median = values[setIndexes->size() / 2];
 	}
-	// even number of sets
+	// even number of sets without empty spots
 	else {
 		median = values[setIndexes->size() / 2];
 		median += values[(setIndexes->size() - 1) / 2];
 		median /= 2.0;
 	}
-
+	return 0.5;
 	return median;
 }
 
@@ -155,7 +181,7 @@ double SetCluster::getMaximumValue(Dimension* dimension, std::vector<int>* setIn
 	if ((*setIndexes)[setIndexes->size() - 1] >= dimension->size()) {
 		return maximum;
 	}
-	// calculate the minimum
+	// calculate the maximum
 	maximum = dimension->getCalibratedData((*setIndexes)[0]);
 	for (int i = 0; i < setIndexes->size(); i++) {
 		double dataValue = dimension->getCalibratedData((*setIndexes)[i]);
@@ -216,6 +242,14 @@ double SetCluster::getMinimum(int dimensionIndex) const {
 	return minimumValues[dimensionIndex];
 }
 
+// gets the minimum value in the cluster for the dimension at the passed index 
+double SetCluster::getMinimumPositive(int dimensionIndex) const {
+	if (dimensionIndex >= minimumPositiveValues.size() || dimensionIndex < 0) {
+		return 0.0;
+	}
+	return minimumPositiveValues[dimensionIndex];
+}
+
 // gets the mean value in the cluster for the dimension at the passed index 
 double SetCluster::getMiddle(int dimensionIndex) const {
 	if (dimensionIndex >= meanValues.size() || dimensionIndex < 0) {
@@ -234,6 +268,14 @@ double SetCluster::getMaximum(int dimensionIndex) const {
 		return 0.0;
 	}
 	return maximumValues[dimensionIndex];
+}
+
+std::vector<double> SetCluster::getEmptySpots(int dimensionIndex) const
+{
+	if (dimensionIndex >= emptySpotValues.size() || dimensionIndex < 0) {
+		return std::vector<double>();
+	}
+	return emptySpotValues[dimensionIndex];
 }
 
 
@@ -260,11 +302,20 @@ void SetCluster::calculateValues(std::vector<Dimension*>* dimensionsToCalculateW
 		// there are enough sets in the dimensions to use the passed dimensions
 		// so get the data for this cluster
 		for (int i = 0; i < dimensionsToCalculateWith->size(); i++) {
-			double min = getMinimumValue((*dimensionsToCalculateWith)[i], &setsInCluster);
+			double min, minpos;
+			std::vector<double> es;
+			std::tie(min,minpos,es) = getMinimumValue((*dimensionsToCalculateWith)[i], &setsInCluster);
+			if (emptySpotValues.size() <= dimensionsToCalculateWith->size()) {
+				emptySpotValues.push_back(es);
+			}
+			else {
+				emptySpotValues[i] = es;
+			}
 			double mean = getMeanValue((*dimensionsToCalculateWith)[i], &setsInCluster);
 			double median = getMedianValue((*dimensionsToCalculateWith)[i], &setsInCluster);
 			double max = getMaximumValue((*dimensionsToCalculateWith)[i], &setsInCluster);
 			minimumValues.push_back(min);
+			minimumPositiveValues.push_back(minpos);
 			meanValues.push_back(mean);
 			medianValues.push_back(median);
 			maximumValues.push_back(max);
@@ -420,9 +471,14 @@ vector<double> SetCluster::getVirtualCenter(int numOfDimensions) {
 	{
 		double localMax = getMaximum(i);
 		double localMin = getMinimum(i);
-
-		double localCenter = localMin + ((localMax - localMin) / 2);
-		
+		double localMinPositive = getMinimumPositive(i);
+		double localCenter;
+		if (localMin >= 0) {
+			localCenter = localMin + ((localMax - localMin) / 2);
+		}
+		else {
+			localCenter = localMinPositive + ((localMax - localMinPositive) / 2);
+		}
 		center.push_back(localCenter);
 	}
 	

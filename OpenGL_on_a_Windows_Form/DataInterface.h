@@ -70,6 +70,8 @@ public:
 	bool isDimensionInverted(int dimensionIndex);
 	// gets the data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
 	double getData(int setIndex, int indexOfData) const;
+	// spaces empty spots along dimension axis if dimension contains only empty spots
+	double spaceForBlocks(int setIndex, int indexOfData) const;
 	// deletes the set for the passed index (setIndex)
 	void deleteSet(int setIndex);
 	// gets the original data in the set of the passed index(setIndex), for the passed dimension(indexOfData)
@@ -491,6 +493,10 @@ private:
 	bool drawMin;
 	bool drawCenter;
 	bool drawMax;
+
+	// holds the boolean of whether to draw blocks when drawing hyper blocks
+	// blocks are drawn when all values in a dimension are empty spots (multiple different values)
+	vector<bool> useBlocks;
 
 	// holds the clusters of the data
 	std::vector<SetCluster> clusters;
