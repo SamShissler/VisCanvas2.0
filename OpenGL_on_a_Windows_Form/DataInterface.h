@@ -478,6 +478,8 @@ private:
 	std::vector<DataClass> dataClasses;
 	// a vector to hold the data sets
 	std::vector<DataSet> dataSets;
+	// a vector tp hold saved data sets.
+	std::vector<DataSet> savedDataSets;
 	// a field to hold the color of the background set
 	ColorCustom backgroundColor;
 	// a field to hold the color of the selected set

@@ -54,26 +54,26 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 
 	//====================================================//
-	/*
+	
 	rules.push_back("\n\n=============75%===============\n\n");
 	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
 	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
-	vector < string> Per75 = this->domNomVisualization->MTBRGSequential(0.0, groups, classToTest);
-	for (int i = 0; i < Per75.size(); i++)
+	pair<vector<string>, vector<DNSRule>> Per75 = this->domNomVisualization->MTBRGSequential(75.0, groups, classToTest);
+	for (int i = 0; i < Per75.first.size(); i++)
 	{
-		rules.push_back(Per75.at(i));
+		rules.push_back(Per75.first.at(i));
 	}
 	
 	rules.push_back("\n\n=============85%===============\n\n");
 	//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
 	//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
-	vector < string> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
-	for (int i = 0; i < Per85.size(); i++)
+	pair<vector<string>, vector<DNSRule>> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
+	for (int i = 0; i < Per85.first.size(); i++)
 	{
-		rules.push_back(Per85.at(i));
+		rules.push_back(Per85.first.at(i));
 	}
 	
-	*/
+	
 	rules.push_back("\n\n=============95%===============\n\n");
 	//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
 	//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
@@ -83,9 +83,34 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		rules.push_back(Per95.first.at(i));
 	}
 	
-	//vector<string> t = this->domNomVisualization->tenFoldCrossValidation(classToTest, groups);
+	
+
+	//Determine all cases in CR1.
+	/*
+	vector<int> setsToDelete;
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		double originalVal5 = file->getOriginalData(i, 4);
+
+		if (originalVal5 == 1 || originalVal5 == 2 || originalVal5 == 7)
+		{
+			setsToDelete.push_back(i);
+		}
+	}
+	
+
+	//Remove all cases.
+	for (int i = setsToDelete.size() - 1; i >= 0; i--)
+	{
+		file->deleteSet(setsToDelete.at(i));
+	}
+	*/
 
 	/*
+	//Run 10-fold cross validation.
+	vector<string> t = this->domNomVisualization->tenFoldCrossValidation(classToTest, groups);
+
+	//Record all generated data.
 	for (int i = 0; i < t.size(); i++)
 	{
 		rules.push_back(t.at(i));
@@ -93,114 +118,173 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	*/
 
 	/*
-	double correctlyPredictedComp = 0;
-	double corR1 = 0;
-	double corR2 = 0;
-	double corR3 = 0;
-	vector<int> casesR1;
-	vector<int> casesR2;
-	vector<int> casesR3;
-	double incorrectlyPredictedComp1 = 0;
-	double incorrectlyPredictedComp2 = 0;
-	double incorrectlyPredictedComp3 = 0;
-	for (int caseIndex = 0; caseIndex < file->getSetAmount(); caseIndex++)
+	//Locat data:
+	int targetClass = 1;
+	vector<string> toReturn;
+	double runningAverageOur = 0;
+	double runningAverageComp = 0;
+
+	for (int n = 0; n < 1; n++)
 	{
-		int curCase = caseIndex;
-		int curCaseClass = file->getClassOfSet(curCase);
-		double valAt5 = file->getOriginalData(curCase, 4);
-		double valAt8 = file->getOriginalData(curCase, 7);
-		double valAt9 = file->getOriginalData(curCase, 8);
-		double valAt12 = file->getOriginalData(curCase, 11);
-		double valAt20 = file->getOriginalData(curCase, 19);
-		double valAt21 = file->getOriginalData(curCase, 20);
+		vector<vector<int>> partitions;
+		vector<int> caseIDs;
+		int partitionNumber = 10;
 
-		if (valAt5 == 1 && valAt9 != 1)
+		//Fill partition vector:
+		for (int i = 0; i < partitionNumber; i++)
 		{
-			casesR1.push_back(caseIndex);
-			if (curCaseClass == 2)
+			vector<int> toAdd;
+			partitions.push_back(toAdd);
+		}
+
+		//Fill the case IDs with the set IDs so it can be manipulated.
+		for (int i = 0; i < file->getSetAmount(); i++)
+		{
+			caseIDs.push_back(i);
+		}
+
+		//While there are cases to choose from.
+		while (caseIDs.size() != 0)
+		{
+			//Randomly select IDs for partitions.
+			for (int i = 0; i < partitionNumber; i++) //Iterate over groups.
 			{
-				correctlyPredictedComp++;
-				corR1++;
-			}
-			else
-			{
-				incorrectlyPredictedComp1++;
+
+				//Determine a random index in remaining cases.
+				//std::srand(std::time(nullptr));
+				int index = rand() % caseIDs.size();
+
+				//Add the index to the current data
+				partitions.at(i).push_back(index);
+
+				//Remove the case ID at the index.
+				int count = 0;
+				for (auto it = caseIDs.begin(); it != caseIDs.end(); it++)
+				{
+					if (count == index)
+					{
+						caseIDs.erase(it);
+						break;
+					}
+					count++;
+				}
+
+				//If there are no more cases, return.
+				if (caseIDs.size() == 0) break;
 			}
 		}
 
-		if (valAt5 == 2 && valAt9 != 1)
+		//Use the partitions seqentially as test data:
+		double totalOurAccuracy = 0;
+		double totalCompAccuracy = 0;
+		for (int i = 0; i < partitions.size(); i++)
 		{
-			casesR2.push_back(caseIndex);
-			if (curCaseClass == 2)
+			vector<int> testPartition = partitions.at(i);
+
+			//Determine the number of target class cases in this partition so we can see how many are missed.
+			int numTargetClassCases = 0;
+			for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
 			{
-				correctlyPredictedComp++;
-				corR2++;
+				int curCase = testPartition.at(caseIndex);
+				if (file->getClassOfSet(curCase) == targetClass)
+				{
+					numTargetClassCases++;
+				}
 			}
-			else
+
+			//Iterate over test partition and perdict for competitiors rules.
+			double correctlyPredictedComp = 0;
+			int cor1 = 0;
+			int cor2 = 0;
+			int cor3 = 0;
+			int incor1 = 0;
+			int incor2 = 0;
+			int incor3 = 0;
+
+
+			for (int caseIndex = 0; caseIndex < testPartition.size(); caseIndex++)
 			{
-				incorrectlyPredictedComp2++;
+				int curCase = testPartition.at(caseIndex);
+				int curCaseClass = file->getClassOfSet(curCase);
+				double valAt5 = file->getOriginalData(curCase, 4);
+				double valAt8 = file->getOriginalData(curCase, 7);
+				double valAt12 = file->getOriginalData(curCase, 11);
+				double valAt20 = file->getOriginalData(curCase, 19);
+				double valAt21 = file->getOriginalData(curCase, 20);
+
+				if (valAt5 != 1 && valAt5 != 2 && valAt5 != 7)
+				{
+					if (curCaseClass == targetClass)
+					{
+						correctlyPredictedComp++;
+						cor1++;
+					}
+					else
+					{
+						incor1++;
+					}
+				}
+				
+				else if (valAt20 == 5)
+				{
+					if (curCaseClass == targetClass)
+					{
+						correctlyPredictedComp++;
+						cor2++;
+					}
+					else
+					{
+						incor2++;
+					}
+				}
+
+
+				else if (valAt8 == 2 && ((valAt12 == 3 || valAt12 == 2) || valAt21 == 2))
+				{
+					if (curCaseClass == targetClass)
+					{
+						correctlyPredictedComp++;
+						cor3++;
+					}
+					else
+					{
+						incor3++;
+					}
+				}
 			}
+
+			//Accuracy calculation:
+			double compAccuracy = (correctlyPredictedComp / numTargetClassCases) * 100.0;
+
+			//Add to total to get average.
+			totalCompAccuracy += compAccuracy;
+
+			//Record test results.
+			string toAdd = "Test " + to_string(i + 1) + ":\n";
+			toAdd += "Accuracy for the competitors rules = " + to_string(compAccuracy) + "%" + " Predicted: " + to_string(correctlyPredictedComp) + " incor:"
+				+ to_string(numTargetClassCases - correctlyPredictedComp) + " total: " + to_string(numTargetClassCases)+ "\n\n";
+			toReturn.push_back(toAdd);
 		}
+
+		double finalAverageCompRules = totalCompAccuracy / partitionNumber;
+
+		runningAverageComp += finalAverageCompRules;
+
+		string averages = "% Comp avrg = " + to_string(finalAverageCompRules) + "%\n\n\n";
+		toReturn.push_back(averages);
 	}
 
-	//Determine overlap.
-	vector<int> overlapWithR1;
+	double overallAverComp = runningAverageComp / 10.0;
 
-	int numCasesR1R2 = 0;
-	int numCasesR1R3 = 0;
-	int numCasesR2R3 = 0;
+	string fin =  "Comp: " + to_string(overallAverComp) + "\n\n";
+	toReturn.push_back(fin);
 
-	for (int i = 0; i < casesR1.size(); i++)
+	for (int i = 0; i < toReturn.size(); i++)
 	{
-		bool contained = false;
-		for (int j = 0; j < casesR2.size(); j++)
-		{
-			if (casesR1.at(i) == casesR2.at(j))
-			{
-				contained = true;
-			}
-		}
-
-		if (contained)
-		{
-			numCasesR1R2++;
-		}
-	}
-
-	for (int i = 0; i < casesR1.size(); i++)
-	{
-		bool contained = false;
-		for (int j = 0; j < casesR3.size(); j++)
-		{
-			if (casesR1.at(i) == casesR3.at(j))
-			{
-				contained = true;
-			}
-		}
-
-		if (contained)
-		{
-			numCasesR1R3++;
-		}
-	}
-
-	for (int i = 0; i < casesR2.size(); i++)
-	{
-		bool contained = false;
-		for (int j = 0; j < casesR3.size(); j++)
-		{
-			if (casesR2.at(i) == casesR3.at(j))
-			{
-				contained = true;
-			}
-		}
-
-		if (contained)
-		{
-			numCasesR2R3++;
-		}
+		rules.push_back(toReturn.at(i));
 	}
 	*/
+	
 	file->setDNSRulesGenerated(rules);
 }
 

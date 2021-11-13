@@ -3720,6 +3720,26 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 	vector<int> incorrectCases;
 	vector<DNSRule> selectedRules;
 
+	//While the following conditions are not true:
+	//1.) Target cases covered is not as large as the actual number of targer cases.
+	//2.) Selected rules is not larger then the number of rules to select.
+	while ((targetCasesCovered.size() != numCasesInTarget) && (selectedRules.size() != allGeneratedRules.size()))
+	{
+		//Sort list by number of target cases not yet covered.
+
+
+
+		//Select highest in list. If the list is empty, end.
+
+
+
+
+
+	}
+
+
+
+
 	//Create vector of pairs of coverage and rules.
 	vector<pair<double, int>> coveragePerRuleIndex;
 	for (int i = 0; i < allGeneratedRules.size(); i++)
@@ -4077,10 +4097,18 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 			casesInTargetClass++;
 		}
 	}
+	int totalTargetInData = 0;
+	for (int i = 0; i < file->getSetAmount(); i++)
+	{
+		if (file->getClassOfSet(i) == targetClass)
+		{
+			totalTargetInData++;
+		}
+	}
 
 	toReturn.push_back(("\nAll Generated rules: " + to_string(allGroupRules.size()) + " All cases covered: " +
-		to_string(allGroupCases.size()) + " Total target class cases: " + to_string(casesInTargetClass) +
-		" Total incorrectly predicted cases: " + to_string(incorrectCases.size()) + "\n\n"));
+		to_string(allGroupCases.size()) + " Total target class cases covered by rules: " + to_string(casesInTargetClass) +
+		" Total incorrectly predicted cases: " + to_string(incorrectCases.size()) + ", Target cases in data: " + to_string(totalTargetInData) + "\n\n"));
 
 	//Print out all rules in a readable format:
 	for (int i = 0; i < allGroupRules.size(); i++)
@@ -4117,29 +4145,6 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 			toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)) + "\n\n\n");
 		}
 	}
-
-	//Count the number of times each cordinate shows up.
-	for (int i = 0; i < allGroupRules.size(); i++)
-	{
-		DNSRule r = allGroupRules.at(i);
-
-		vector<int> ruleAttributes = r.getCoordinatesUsed();
-		for (int j = 0; j < ruleAttributes.size(); j++)
-		{
-			//Increment count by one.
-			coorainteAppearance.at(ruleAttributes.at(j)) = (coorainteAppearance.at(ruleAttributes.at(j)) + 1);
-		}
-	}
-
-	toAdd = "";
-	toAdd += "Coordinate Appearance = ";
-	for (int i = 0; i < coorainteAppearance.size() - 1; i++)
-	{
-		toAdd += "X" + to_string(i + 1) + ": " + to_string(coorainteAppearance.at(i)) + ", ";
-	}
-	toAdd += "X" + to_string(coorainteAppearance.size()) + ": " + to_string(coorainteAppearance.at(coorainteAppearance.size() - 1)) + "\n ";
-
-	toReturn.push_back(toAdd);
 
 	pair<vector<string>, vector<DNSRule>> finalResults;
 	finalResults.first = toReturn;
@@ -5519,7 +5524,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 						{
 							//Check if the set goes through each attirbute and is in the right class.
 							bool goesToEachAttribute = true;
-							double currentSetClass = file->getClassOfSet(k);
+							double currentSetClass = file->getClassOfSet(k);//Causing problems.
 
 							for (int m = 0; m < coordinatesToUse.size(); m++)
 							{
@@ -6539,7 +6544,10 @@ vector<string> DomNominalSet::tenFoldCrossValidation(int targetClass, vector<vec
 			}
 
 			//Generate rules with remaininig data.
-			pair<vector<string>, vector<DNSRule>> ruleGenResults = MTBRGSequential(75.0, groups, targetClass);
+			pair<vector<string>, vector<DNSRule>> ruleGenResults = MTBRGSequential(95.0, groups, targetClass);
+
+			//Return data to original.
+			file->returnToOriginalDataDimensions();
 
 			//Determine accuracy by testing rules with test data.
 			vector<DNSRule> generatedRules = ruleGenResults.second; //Get rules.
@@ -6727,12 +6735,9 @@ vector<string> DomNominalSet::tenFoldCrossValidation(int targetClass, vector<vec
 				toReturn.push_back(ruleGenResults.first.at(j));
 			}
 
-			file->returnToOriginalDataDimensions();
-
 		}//End iterating over partitons.
 
 	}//End iterating tests.
-
 	return toReturn;
 }
 
