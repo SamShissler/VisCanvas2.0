@@ -6991,3 +6991,230 @@ GLvoid DomNominalSet::drawOval(float x_center, float y_center, float w, float h,
 	glEnd();
 	glPopMatrix();
 }
+
+vector<string> DomNominalSet::geneticAttributeGroupGeneration()
+{
+	vector<string> toReturn;
+
+	srand(time(NULL));//Set time as seed.
+
+	//Randomly generate 5 triples.
+	vector<vector<int>> groups;
+	
+	for (int i = 0; i < 5; i++)
+	{
+		vector<int> toAdd;
+		toReturn.push_back("Group " + to_string(i + 1) + ":");
+		for (int j = 0; j < 3; j++)
+		{
+			bool inserted = false;
+			while (!inserted)
+			{
+				int v = (rand() % 22) + 1;
+				bool repeat = false;
+				for (int k = 0; k < toAdd.size(); k++)
+				{
+					if (toAdd.at(k) == v)
+					{
+						repeat = true;
+						break;
+					}
+				}
+
+				if (repeat == false)
+				{
+					toAdd.push_back(v);
+					toReturn.push_back(to_string(v) + ",");
+					inserted = true;
+				}
+			}
+
+		}
+		toReturn.push_back("\n");
+		groups.push_back(toAdd);
+	}
+
+
+	for (int n = 0; n < 50; n++)
+	{
+		//Generate rules for the 5 triples.
+		vector<vector<DNSRule>> groupsRules;
+
+		vector<vector<double>> results;
+		for (int i = 0; i < 5; i++)
+		{
+			vector<vector<int>> curGrouping;
+			vector<double> res;
+			curGrouping.push_back(groups.at(i));
+			pair<vector<string>, vector<DNSRule>> temp = MTBRGSequential(95.0, curGrouping, 1);
+
+			//Record numRules.
+			res.push_back(temp.second.size());
+
+			//Determine gross coverage and average precision.
+			int gross = 0;
+			double avrgPrec = 0;
+			vector<int> ids;
+			for (int j = 0; j < temp.second.size(); j++)
+			{
+				gross += temp.second.at(j).getCorrectCases();
+				avrgPrec += temp.second.at(j).getPrecision();
+				vector<int> casesR = temp.second.at(j).getCasesUsed();
+				for (int k = 0; k < casesR.size(); k++) //Record all ids.
+				{
+					ids.push_back(casesR.at(k));
+				}
+			}
+			avrgPrec = avrgPrec / temp.second.size();
+
+			//Determine the coverage of all rules with overlap.
+			sort(ids.begin(), ids.end());
+			ids.erase(unique(ids.begin(), ids.end()), ids.end());
+
+			res.push_back(gross);
+			res.push_back(avrgPrec);
+			res.push_back(ids.size());
+			results.push_back(res);
+		}
+
+		//Determine best 2 triples.
+		double highestGross = 0;
+		double numRules = MAXIMUM_ALLOWED;
+		double avergPrec = 0;
+		double allCases = 0;
+		int parOneIndex = -1;
+
+		//Parent one.
+		for (int i = 0; i < results.size(); i++)
+		{
+			if (results.at(i).at(3) > allCases && results.at(i).at(2) >= avergPrec)
+			{
+				highestGross = results.at(i).at(1);
+				numRules = results.at(i).at(0);
+				avergPrec = results.at(i).at(2);
+				allCases = results.at(i).at(3);
+				parOneIndex = i;
+			}
+		}
+
+		//Parent two.
+		double highestGross2 = 0;
+		double numRules2 = MAXIMUM_ALLOWED;
+		double avergPrec2 = 0;
+		double allCases2 = 0;
+		int parTwoIndex = -1;
+		for (int i = 0; i < results.size(); i++)
+		{
+			if (i == parOneIndex)
+			{
+				continue;
+			}
+
+			if (results.at(i).at(3) > allCases2 && results.at(i).at(2) >= avergPrec2)
+			{
+				highestGross2 = results.at(i).at(1);
+				numRules2 = results.at(i).at(0);
+				avergPrec2 = results.at(i).at(2);
+				allCases2 = results.at(i).at(3);
+				parTwoIndex = i;
+			}
+		}
+
+		toReturn.push_back("p1: " + to_string(parOneIndex));
+		toReturn.push_back(" p2: " + to_string(parTwoIndex) + "\n");
+		toReturn.push_back("P1 Gross: " + to_string(highestGross) + "\n");
+		toReturn.push_back("P1 rules: " + to_string(numRules) + "\n");
+		toReturn.push_back("P1 avg prec: " + to_string(avergPrec) + "\n");
+		toReturn.push_back("P1 all cov: " + to_string(allCases) + "\n");
+		toReturn.push_back("P2 Gross: " + to_string(highestGross2) + "\n");
+		toReturn.push_back("P2 rules: " + to_string(numRules2) + "\n");
+		toReturn.push_back("P2 avg prec: " + to_string(avergPrec2) + "\n");
+		toReturn.push_back("P2 all cov: " + to_string(allCases2) + "\n");
+
+		//Create 5 childred of the 2 triples.
+
+		vector<int> toPickFrom;
+		for (int i = 0; i < groups.at(parOneIndex).size(); i++)
+		{
+			toPickFrom.push_back(groups.at(parOneIndex).at(i));
+		}
+
+		for (int i = 0; i < groups.at(parTwoIndex).size(); i++)
+		{
+			toPickFrom.push_back(groups.at(parTwoIndex).at(i));
+		}
+
+		groups.clear();
+
+		for (int i = 0; i < 5; i++)
+		{
+			bool addedChild = false;
+			while (!addedChild)
+			{
+				vector<int> toAdd;
+				vector<int> toAddTemp;
+
+				toReturn.push_back("Group " + to_string(i + 1) + ":");
+				for (int j = 0; j < 3; j++)
+				{
+					bool inserted = false;
+					while (!inserted)
+					{
+						int v = toPickFrom.at(rand() % toPickFrom.size());
+
+						if (i == 4 && j == 2 || i == 3 && j == 2)
+						{
+							v = (rand() % 22) + 1;
+						}
+
+						bool repeat = false;
+						for (int k = 0; k < toAdd.size(); k++)
+						{
+							if (toAdd.at(k) == v)
+							{
+								repeat = true;
+								break;
+							}
+						}
+
+						if (repeat == false)
+						{
+							toAdd.push_back(v);
+							toAddTemp.push_back(v);
+							toReturn.push_back(to_string(v) + ",");
+							inserted = true;
+						}
+					}
+
+				}
+
+				//Ensure group is new:
+				bool isDup = false;
+				sort(toAddTemp.begin(), toAddTemp.end());
+				for (int j = 0; j < groups.size(); j++)
+				{
+					vector<int> curGr = groups.at(j);
+					sort(curGr.begin(), curGr.end());
+
+					if (curGr.at(0) == toAddTemp.at(0) && curGr.at(1) == toAddTemp.at(1) && curGr.at(2) == toAddTemp.at(2))
+					{
+						isDup = true;
+						break;
+					}
+				}
+
+				if (!isDup)
+				{
+					addedChild = true;
+					toReturn.push_back("\n");
+					groups.push_back(toAdd);
+				}
+			}
+			
+		}
+
+		int x = 0;
+	}
+
+	return toReturn;
+}

@@ -31,70 +31,67 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	vector<string> rules;
 	vector<vector<int>> groups = *coordinateGrouping->getCoordinateGroups();
 	const int classToTest = 1;
-
-	//====================================================//
-	rules.push_back("\n\n=============75%===============\n\n");
-	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
-	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
-	pair<vector<string>, vector<DNSRule>> Per75 = this->domNomVisualization->MTBRGSequential(75.0, groups, classToTest);
-	for (int i = 0; i < Per75.first.size(); i++)
-	{
-		rules.push_back(Per75.first.at(i));
-	}
 	
-	rules.push_back("\n\n=============85%===============\n\n");
-	//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
-	//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
-	pair<vector<string>, vector<DNSRule>> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
-	for (int i = 0; i < Per85.first.size(); i++)
-	{
-		rules.push_back(Per85.first.at(i));
-	}
 	
-	rules.push_back("\n\n=============95%===============\n\n");
-	//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
-	//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
-	pair<vector<string>, vector<DNSRule>> Per95 = this->domNomVisualization->MTBRGSequential(95.0, groups, classToTest);
-	for (int i = 0; i < Per95.first.size(); i++)
+	//vector<string> g = this->domNomVisualization->geneticAttributeGroupGeneration();
+	//file->setDNSRulesGenerated(g);
+
+	//return;
+
+	
+	
+	groups.clear();
+	int toAddGroups[5][3] = { {5, 20, 15}, {20, 11, 5}, {15, 20, 11}, {5, 15, 21}, {11, 5, 8} };
+
+	for (int i = 0; i < 5; i++)
 	{
-		rules.push_back(Per95.first.at(i));
-	}
-
-	//Determine all cases in CR1.
-
-	/*
-	vector<int> setsToDelete;
-	for (int i = 0; i < file->getSetAmount(); i++)
-	{
-		double originalVal5 = file->getOriginalData(i, 4);
-
-		if (originalVal5 == 1 || originalVal5 == 2 || originalVal5 == 7)
+		vector<int>toAdd;
+		for (int j = 0; j < 3; j++)
 		{
-			setsToDelete.push_back(i);
+			toAdd.push_back(toAddGroups[i][j]);
 		}
+
+		groups.push_back(toAdd);
 	}
 	
+
+
 	
+		//====================================================//
+		rules.push_back("\n\n=============75%===============\n\n");
+		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+		pair<vector<string>, vector<DNSRule>> Per75 = this->domNomVisualization->MTBRGSequential(75.0, groups, classToTest);
+		for (int i = 0; i < Per75.first.size(); i++)
+		{
+			rules.push_back(Per75.first.at(i));
+		}
 
-	//Remove all cases.
-	for (int i = setsToDelete.size() - 1; i >= 0; i--)
-	{
-		file->deleteSet(setsToDelete.at(i));
-	}
-	*/
+		rules.push_back("\n\n=============85%===============\n\n");
+		//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
+		//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
+		pair<vector<string>, vector<DNSRule>> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
+		for (int i = 0; i < Per85.first.size(); i++)
+		{
+			rules.push_back(Per85.first.at(i));
+		}
 
-	/*
-	//Run 10-fold cross validation.
-	vector<string> t = this->domNomVisualization->tenFoldCrossValidation(classToTest, groups);
+		rules.push_back("\n\n=============95%===============\n\n");
+		//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
+		//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
+		pair<vector<string>, vector<DNSRule>> Per95 = this->domNomVisualization->MTBRGSequential(95.0, groups, classToTest);
+		for (int i = 0; i < Per95.first.size(); i++)
+		{
+			rules.push_back(Per95.first.at(i));
+		}
 
-	//Record all generated data.
-	for (int i = 0; i < t.size(); i++)
-	{
-		rules.push_back(t.at(i));
-	}
-	*/
+		rules.push_back("\n\n\n\n");
+	
+	//vector<string> tenFold = this->domNomVisualization->tenFoldCrossValidation(classToTest, groups);
 
+	
 	file->setDNSRulesGenerated(rules);
+	
 }
 
 // setDomNomSetVisualizatonL

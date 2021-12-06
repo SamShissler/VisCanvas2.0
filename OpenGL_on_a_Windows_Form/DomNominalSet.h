@@ -75,6 +75,7 @@ public:
 	vector<string> tenFoldCrossValidation(int targetClass, vector<vector<int>> groups);
 	GLvoid visualizeRules();
 	GLvoid drawOval(float x_center, float y_center, float w, float h, int n);
+	vector<string> geneticAttributeGroupGeneration();
 
 	//Getters and Setters:
 	vector<pair<double, pair<double, double>>> getRuleData();
