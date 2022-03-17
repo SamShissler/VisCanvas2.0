@@ -18,6 +18,7 @@ Purpose: CS 481 Project
 #include "NonMonotonicSelector.h"
 #include "NonMonotonicChoice.h"
 #include "UserInputPopUp.h"
+#include "NormalizationStyle.h"
 
 namespace VisCanvas {
 
@@ -1581,7 +1582,7 @@ namespace VisCanvas {
 			 }
 
 			 /* THIS IS FOR THE OPEN DIALOGBOX */
-	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void openToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {	 
 				 UNREFERENCED_PARAMETER(sender);
 				 UNREFERENCED_PARAMETER(e);
 				 openFile();

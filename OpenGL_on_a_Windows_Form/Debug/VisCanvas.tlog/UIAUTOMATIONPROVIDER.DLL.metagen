@@ -1,0 +1,284 @@
+  ExceptionStringTable.resources - Embedded, ContainedInManifestFile, 
+  StringTable.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly UIAutomationProvider, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly UIAutomationTypes, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=None, flags=None
+Assembly WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=None, flags=None
+Class System.Windows.Automation.Provider.AutomationInteropProvider: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    Int32 RootObjectId = -25 : Public, Static, Literal, HasDefault
+    Int32 InvalidateLimit = 20 : Public, Static, Literal, HasDefault
+    Int32 AppendRuntimeId = 3 : Public, Static, Literal, HasDefault
+    Int32 ItemsInvalidateLimit = 5 : Public, Static, Literal, HasDefault
+  Properties:
+    Boolean ClientsAreListening 'get ' : 
+  Methods:
+    HostProviderFromHandle(IntPtr): PrivateScope, Public, Static, HideBySig
+    ReturnRawElementProvider(IntPtr, IntPtr, IntPtr, IRawElementProviderSimple): PrivateScope, Public, Static, HideBySig
+    get_ClientsAreListening(): PrivateScope, Public, Static, HideBySig, SpecialName
+    RaiseAutomationPropertyChangedEvent(IRawElementProviderSimple, AutomationPropertyChangedEventArgs): PrivateScope, Public, Static, HideBySig
+    RaiseAutomationEvent(AutomationEvent, IRawElementProviderSimple, AutomationEventArgs): PrivateScope, Public, Static, HideBySig
+    RaiseStructureChangedEvent(IRawElementProviderSimple, StructureChangedEventArgs): PrivateScope, Public, Static, HideBySig
+Struct System.Windows.Automation.Provider.NavigateDirection: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Provider.NavigateDirection Parent = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.NavigateDirection NextSibling = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.NavigateDirection PreviousSibling = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.NavigateDirection FirstChild = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.NavigateDirection LastChild = 4 : Public, Static, Literal, HasDefault
+Interface System.Windows.Automation.Provider.IRawElementProviderSimple: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.Windows.Automation.Provider.ProviderOptions ProviderOptions 'get ' : 
+    System.Windows.Automation.Provider.IRawElementProviderSimple HostRawElementProvider 'get ' : 
+  Methods:
+    get_ProviderOptions(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    GetPatternProvider(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetPropertyValue(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_HostRawElementProvider(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IRawElementProviderFragment: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Windows.Automation.Provider.IRawElementProviderSimple
+  Properties:
+    System.Windows.Rect BoundingRectangle 'get ' : 
+    System.Windows.Automation.Provider.IRawElementProviderFragmentRoot FragmentRoot 'get ' : 
+  Methods:
+    Navigate(NavigateDirection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetRuntimeId(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_BoundingRectangle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    GetEmbeddedFragmentRoots(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    SetFocus(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_FragmentRoot(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IRawElementProviderFragmentRoot: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Windows.Automation.Provider.IRawElementProviderFragment
+    System.Windows.Automation.Provider.IRawElementProviderSimple
+  Methods:
+    ElementProviderFromPoint(Double, Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetFocus(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.IRawElementProviderAdviseEvents: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Windows.Automation.Provider.IRawElementProviderSimple
+  Methods:
+    AdviseEventAdded(Int32, Int32[]): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    AdviseEventRemoved(Int32, Int32[]): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.IRawElementProviderHwndOverride: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Windows.Automation.Provider.IRawElementProviderSimple
+  Methods:
+    GetOverrideProviderForHwnd(IntPtr): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Struct System.Windows.Automation.Provider.ProviderOptions: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Provider.ProviderOptions ClientSideProvider = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.ProviderOptions ServerSideProvider = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.ProviderOptions NonClientAreaProvider = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.ProviderOptions OverrideProvider = 8 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.ProviderOptions ProviderOwnsSetFocus = 16 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Provider.ProviderOptions UseComThreading = 32 : Public, Static, Literal, HasDefault
+Interface System.Windows.Automation.Provider.IDockProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.Windows.Automation.DockPosition DockPosition 'get ' : 
+  Methods:
+    SetDockPosition(DockPosition): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_DockPosition(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IExpandCollapseProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.Windows.Automation.ExpandCollapseState ExpandCollapseState 'get ' : 
+  Methods:
+    Expand(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Collapse(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_ExpandCollapseState(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IGridProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Int32 RowCount 'get ' : 
+    Int32 ColumnCount 'get ' : 
+  Methods:
+    GetItem(Int32, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_RowCount(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_ColumnCount(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IGridItemProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Int32 Row  'get ' : 
+    Int32 Column 'get ' : 
+    Int32 RowSpan 'get ' : 
+    Int32 ColumnSpan 'get ' : 
+    System.Windows.Automation.Provider.IRawElementProviderSimple ContainingGrid 'get ' : 
+  Methods:
+    get_Row(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Column(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_RowSpan(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_ColumnSpan(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_ContainingGrid(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IInvokeProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    Invoke(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.IMultipleViewProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Int32 CurrentView 'get ' : 
+  Methods:
+    GetViewName(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    SetCurrentView(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_CurrentView(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    GetSupportedViews(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.IRangeValueProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Double Value 'get ' : 
+    Boolean IsReadOnly 'get ' : 
+    Double Maximum 'get ' : 
+    Double Minimum 'get ' : 
+    Double LargeChange 'get ' : 
+    Double SmallChange 'get ' : 
+  Methods:
+    SetValue(Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_Value(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_IsReadOnly(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Maximum(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Minimum(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_LargeChange(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_SmallChange(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IScrollProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Double HorizontalScrollPercent 'get ' : 
+    Double VerticalScrollPercent 'get ' : 
+    Double HorizontalViewSize 'get ' : 
+    Double VerticalViewSize 'get ' : 
+    Boolean HorizontallyScrollable 'get ' : 
+    Boolean VerticallyScrollable 'get ' : 
+  Methods:
+    Scroll(ScrollAmount, ScrollAmount): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    SetScrollPercent(Double, Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_HorizontalScrollPercent(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_VerticalScrollPercent(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_HorizontalViewSize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_VerticalViewSize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_HorizontallyScrollable(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_VerticallyScrollable(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IScrollItemProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    ScrollIntoView(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.ISelectionProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Boolean CanSelectMultiple 'get ' : 
+    Boolean IsSelectionRequired 'get ' : 
+  Methods:
+    GetSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_CanSelectMultiple(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_IsSelectionRequired(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.ISelectionItemProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Boolean IsSelected 'get ' : 
+    System.Windows.Automation.Provider.IRawElementProviderSimple SelectionContainer 'get ' : 
+  Methods:
+    Select(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    AddToSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    RemoveFromSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_IsSelected(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_SelectionContainer(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.ISynchronizedInputProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    StartListening(SynchronizedInputType): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Cancel(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.ITableProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Windows.Automation.Provider.IGridProvider
+  Properties:
+    System.Windows.Automation.RowOrColumnMajor RowOrColumnMajor 'get ' : 
+  Methods:
+    GetRowHeaders(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetColumnHeaders(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_RowOrColumnMajor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.ITableItemProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Interfaces:
+    System.Windows.Automation.Provider.IGridItemProvider
+  Methods:
+    GetRowHeaderItems(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetColumnHeaderItems(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.ITextProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.Windows.Automation.Provider.ITextRangeProvider DocumentRange 'get ' : 
+    System.Windows.Automation.SupportedTextSelection SupportedTextSelection 'get ' : 
+  Methods:
+    GetSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetVisibleRanges(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    RangeFromChild(IRawElementProviderSimple): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    RangeFromPoint(Point): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_DocumentRange(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_SupportedTextSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.ITextRangeProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    Clone(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Compare(ITextRangeProvider): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    CompareEndpoints(TextPatternRangeEndpoint, ITextRangeProvider, TextPatternRangeEndpoint): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ExpandToEnclosingUnit(TextUnit): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    FindAttribute(Int32, Object, Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    FindText(String, Boolean(HasFieldMarshal), Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetAttributeValue(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetBoundingRectangles(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetEnclosingElement(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetText(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Move(TextUnit, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    MoveEndpointByUnit(TextPatternRangeEndpoint, TextUnit, Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    MoveEndpointByRange(TextPatternRangeEndpoint, ITextRangeProvider, TextPatternRangeEndpoint): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Select(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    AddToSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    RemoveFromSelection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    ScrollIntoView(Boolean(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetChildren(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.ITransformProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Boolean CanMove 'get ' : 
+    Boolean CanResize 'get ' : 
+    Boolean CanRotate 'get ' : 
+  Methods:
+    Move(Double, Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Resize(Double, Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Rotate(Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_CanMove(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_CanResize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_CanRotate(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IValueProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.String Value 'get ' : 
+    Boolean IsReadOnly 'get ' : 
+  Methods:
+    SetValue(String(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_Value(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_IsReadOnly(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IToggleProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.Windows.Automation.ToggleState ToggleState 'get ' : 
+  Methods:
+    Toggle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_ToggleState(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IWindowProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    Boolean Maximizable 'get ' : 
+    Boolean Minimizable 'get ' : 
+    Boolean IsModal 'get ' : 
+    System.Windows.Automation.WindowVisualState VisualState 'get ' : 
+    System.Windows.Automation.WindowInteractionState InteractionState 'get ' : 
+    Boolean IsTopmost 'get ' : 
+  Methods:
+    SetVisualState(WindowVisualState): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Close(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    WaitForInputIdle(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_Maximizable(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Minimizable(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_IsModal(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_VisualState(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_InteractionState(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_IsTopmost(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+Interface System.Windows.Automation.Provider.IVirtualizedItemProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    Realize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+Interface System.Windows.Automation.Provider.IItemContainerProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    FindItemByProperty(IRawElementProviderSimple, Int32, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract

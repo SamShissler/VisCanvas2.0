@@ -1,0 +1,1839 @@
+  Microsoft.VisualBasic.MyServices.Internal.ProgressDialog.resources - Embedded, ContainedInManifestFile, 
+  Microsoft.VisualBasic.CompilerServices.VBInputBox.resources - Embedded, ContainedInManifestFile, 
+  Microsoft.VisualBasic.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly Microsoft.VisualBasic, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Deployment, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Management, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Runtime.Remoting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class Microsoft.VisualBasic.MyServices.Internal.ContextValue`1[T]: AutoLayout, AnsiClass, Class, Public
+  Type parameter: T
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    T Value    'get set' : 
+  Methods:
+    get_Value(): PrivateScope, Public, SpecialName
+    set_Value(T): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Logging.Log: AutoLayout, AnsiClass, Class, Public, HasSecurity, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.Diagnostics.TraceSource TraceSource 'get ' : 
+    Microsoft.VisualBasic.Logging.FileLogTraceListener DefaultFileLogWriter 'get ' : 
+  Methods:
+    WriteEntry(String): PrivateScope, Public
+    WriteEntry(String, TraceEventType): PrivateScope, Public
+    WriteEntry(String, TraceEventType, Int32): PrivateScope, Public
+    WriteException(Exception): PrivateScope, Public
+    WriteException(Exception, TraceEventType, String): PrivateScope, Public
+    WriteException(Exception, TraceEventType, String, Int32): PrivateScope, Public
+    get_TraceSource(): PrivateScope, Public, SpecialName
+    get_DefaultFileLogWriter(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Logging.AspLog: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  :Microsoft.VisualBasic.Logging.Log
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.ApplicationServices.ApplicationBase: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Microsoft.VisualBasic.Logging.Log Log 'get ' : 
+    Microsoft.VisualBasic.ApplicationServices.AssemblyInfo Info 'get ' : 
+    System.Globalization.CultureInfo Culture 'get ' : 
+    System.Globalization.CultureInfo UICulture 'get ' : 
+  Methods:
+    GetEnvironmentVariable(String): PrivateScope, Public
+    get_Log(): PrivateScope, Public, SpecialName
+    get_Info(): PrivateScope, Public, SpecialName, HasSecurity
+    get_Culture(): PrivateScope, Public, SpecialName
+    get_UICulture(): PrivateScope, Public, SpecialName
+    ChangeCulture(String): PrivateScope, Public, HasSecurity
+    ChangeUICulture(String): PrivateScope, Public
+Class Microsoft.VisualBasic.ApplicationServices.AssemblyInfo: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(System.Reflection.Assembly): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.String Description 'get ' : 
+    System.String CompanyName 'get ' : 
+    System.String Title 'get ' : 
+    System.String Copyright 'get ' : 
+    System.String Trademark 'get ' : 
+    System.String ProductName 'get ' : 
+    System.Version Version 'get ' : 
+    System.String AssemblyName 'get ' : 
+    System.String DirectoryPath 'get ' : 
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.Reflection.Assembly] LoadedAssemblies 'get ' : 
+    System.String StackTrace 'get ' : 
+    Int64 WorkingSet 'get ' : 
+  Methods:
+    get_Description(): PrivateScope, Public, SpecialName
+    get_CompanyName(): PrivateScope, Public, SpecialName
+    get_Title(): PrivateScope, Public, SpecialName
+    get_Copyright(): PrivateScope, Public, SpecialName
+    get_Trademark(): PrivateScope, Public, SpecialName
+    get_ProductName(): PrivateScope, Public, SpecialName
+    get_Version(): PrivateScope, Public, SpecialName
+    get_AssemblyName(): PrivateScope, Public, SpecialName
+    get_DirectoryPath(): PrivateScope, Public, SpecialName
+    get_LoadedAssemblies(): PrivateScope, Public, SpecialName
+    get_StackTrace(): PrivateScope, Public, SpecialName
+    get_WorkingSet(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ApplicationServices.ConsoleApplicationBase: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  :Microsoft.VisualBasic.ApplicationServices.ApplicationBase
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.String] CommandLineArgs 'get ' : 
+    System.Deployment.Application.ApplicationDeployment Deployment 'get ' : 
+    Boolean IsNetworkDeployed 'get ' : 
+  Methods:
+    get_CommandLineArgs(): PrivateScope, Public, SpecialName
+    get_Deployment(): PrivateScope, Public, SpecialName
+    get_IsNetworkDeployed(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ApplicationServices.User: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.String Name 'get ' : 
+    System.Security.Principal.IPrincipal CurrentPrincipal 'get set' : 
+    Boolean IsAuthenticated 'get ' : 
+  Methods:
+    get_Name(): PrivateScope, Public, SpecialName
+    get_CurrentPrincipal(): PrivateScope, Public, SpecialName
+    set_CurrentPrincipal(IPrincipal): PrivateScope, Public, SpecialName
+    InitializeWithWindowsUser(): PrivateScope, Public
+    get_IsAuthenticated(): PrivateScope, Public, SpecialName
+    IsInRole(String): PrivateScope, Public
+    IsInRole(BuiltInRole): PrivateScope, Public
+Struct Microsoft.VisualBasic.ApplicationServices.BuiltInRole: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole AccountOperator = 548 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole Administrator = 544 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole BackupOperator = 551 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole Guest = 546 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole PowerUser = 547 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole PrintOperator = 550 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole Replicator = 552 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole SystemOperator = 549 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.BuiltInRole User = 545 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.ApplicationServices.BuiltInRoleConverter: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  :System.ComponentModel.TypeConverter
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    CanConvertTo(ITypeDescriptorContext, Type): PrivateScope, Public, Virtual, CheckAccessOnOverride
+    ConvertTo(ITypeDescriptorContext, CultureInfo, Object, Type): PrivateScope, Public, Virtual, CheckAccessOnOverride
+Class Microsoft.VisualBasic.ApplicationServices.WebUser: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  :Microsoft.VisualBasic.ApplicationServices.User
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Struct Microsoft.VisualBasic.ApplicationServices.AuthenticationMode: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.ApplicationServices.AuthenticationMode Windows = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.AuthenticationMode ApplicationDefined = 1 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.ApplicationServices.ShutdownMode: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.ApplicationServices.ShutdownMode AfterMainFormCloses = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.ApplicationServices.ShutdownMode AfterAllFormsClose = 1 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs: AutoLayout, AnsiClass, Class, Public
+  :System.Threading.ThreadExceptionEventArgs
+    Void .ctor(Boolean, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Boolean ExitApplication 'get set' : 
+  Methods:
+    get_ExitApplication(): PrivateScope, Public, SpecialName
+    set_ExitApplication(Boolean): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ApplicationServices.StartupEventArgs: AutoLayout, AnsiClass, Class, Public
+  :System.ComponentModel.CancelEventArgs
+    Void .ctor(System.Collections.ObjectModel.ReadOnlyCollection`1[System.String]): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.String] CommandLine 'get ' : 
+  Methods:
+    get_CommandLine(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventArgs: AutoLayout, AnsiClass, Class, Public
+  :System.EventArgs
+    Void .ctor(System.Collections.ObjectModel.ReadOnlyCollection`1[System.String], Boolean): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Boolean BringToForeground 'get set' : 
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.String] CommandLine 'get ' : 
+  Methods:
+    get_BringToForeground(): PrivateScope, Public, SpecialName
+    set_BringToForeground(Boolean): PrivateScope, Public, SpecialName
+    get_CommandLine(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ApplicationServices.StartupEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    BeginInvoke(Object, StartupEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    Invoke(Object, StartupEventArgs): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+Class Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    BeginInvoke(Object, StartupNextInstanceEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    Invoke(Object, StartupNextInstanceEventArgs): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+Class Microsoft.VisualBasic.ApplicationServices.ShutdownEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    BeginInvoke(Object, EventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    Invoke(Object, EventArgs): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+Class Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    BeginInvoke(Object, UnhandledExceptionEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    Invoke(Object, UnhandledExceptionEventArgs): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+Class Microsoft.VisualBasic.ApplicationServices.NoStartupFormException: AutoLayout, AnsiClass, Class, Public, Serializable
+  :System.Exception
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.ApplicationServices.CantStartSingleInstanceException: AutoLayout, AnsiClass, Class, Public, Serializable
+  :System.Exception
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.ApplicationServices.WindowsFormsApplicationBase: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  :Microsoft.VisualBasic.ApplicationServices.ConsoleApplicationBase
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(Microsoft.VisualBasic.ApplicationServices.AuthenticationMode): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.Windows.Forms.FormCollection OpenForms 'get ' : 
+    System.Windows.Forms.Form SplashScreen 'get set' : 
+    Int32 MinimumSplashScreenDisplayTime 'get set' : 
+    System.Windows.Forms.ApplicationContext ApplicationContext 'get ' : 
+    Boolean SaveMySettingsOnExit 'get set' : 
+  Events:
+    Microsoft.VisualBasic.ApplicationServices.StartupEventHandler Startup: 
+    Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventHandler StartupNextInstance: 
+    Microsoft.VisualBasic.ApplicationServices.ShutdownEventHandler Shutdown: 
+    Microsoft.VisualBasic.Devices.NetworkAvailableEventHandler NetworkAvailabilityChanged: 
+    Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventHandler UnhandledException: 
+  Methods:
+    add_Startup(StartupEventHandler): PrivateScope, Public, SpecialName
+    remove_Startup(StartupEventHandler): PrivateScope, Public, SpecialName
+    add_StartupNextInstance(StartupNextInstanceEventHandler): PrivateScope, Public, SpecialName
+    remove_StartupNextInstance(StartupNextInstanceEventHandler): PrivateScope, Public, SpecialName
+    add_Shutdown(ShutdownEventHandler): PrivateScope, Public, SpecialName
+    remove_Shutdown(ShutdownEventHandler): PrivateScope, Public, SpecialName
+    add_NetworkAvailabilityChanged(NetworkAvailableEventHandler): PrivateScope, Public, SpecialName
+    remove_NetworkAvailabilityChanged(NetworkAvailableEventHandler): PrivateScope, Public, SpecialName
+    add_UnhandledException(UnhandledExceptionEventHandler): PrivateScope, Public, SpecialName
+    remove_UnhandledException(UnhandledExceptionEventHandler): PrivateScope, Public, SpecialName
+    Run(String[]): PrivateScope, Public
+    get_OpenForms(): PrivateScope, Public, SpecialName
+    get_SplashScreen(): PrivateScope, Public, SpecialName
+    set_SplashScreen(Form): PrivateScope, Public, SpecialName
+    get_MinimumSplashScreenDisplayTime(): PrivateScope, Public, SpecialName
+    set_MinimumSplashScreenDisplayTime(Int32): PrivateScope, Public, SpecialName
+    get_ApplicationContext(): PrivateScope, Public, SpecialName
+    get_SaveMySettingsOnExit(): PrivateScope, Public, SpecialName
+    set_SaveMySettingsOnExit(Boolean): PrivateScope, Public, SpecialName
+    DoEvents(): PrivateScope, Public
+Class Microsoft.VisualBasic.Collection: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Interfaces:
+    System.Collections.ICollection
+    System.Collections.IEnumerable
+    System.Collections.IList
+    System.Runtime.Serialization.ISerializable
+    System.Runtime.Serialization.IDeserializationCallback
+  Properties:
+    System.Object Item [Int32] 'get ' : 
+    System.Object Item [System.String] 'get ' : 
+    System.Object Item [System.Object] 'get ' : 
+    Int32 Count 'get ' : 
+  Methods:
+    Add(Object, String(Optional, HasDefault), Object(Optional, HasDefault), Object(Optional, HasDefault)): PrivateScope, Public
+    Clear(): PrivateScope, Public
+    Contains(String): PrivateScope, Public
+    Remove(String): PrivateScope, Public, HideBySig
+    Remove(Int32): PrivateScope, Public, HideBySig
+    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(String): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Object): PrivateScope, Public, HideBySig, SpecialName
+    get_Count(): PrivateScope, Public, SpecialName
+    GetEnumerator(): PrivateScope, Public
+Class Microsoft.VisualBasic.Constants: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Fields:
+    Int32 vbObjectError = -2147221504 : Public, Static, Literal, HasDefault
+    System.String vbCrLf = 
+ : Public, Static, Literal, HasDefault
+    System.String vbNewLine = 
+ : Public, Static, Literal, HasDefault
+    System.String vbCr =  : Public, Static, Literal, HasDefault
+    System.String vbLf = 
+ : Public, Static, Literal, HasDefault
+    System.String vbBack =  : Public, Static, Literal, HasDefault
+    System.String vbFormFeed =  : Public, Static, Literal, HasDefault
+    System.String vbTab = 	 : Public, Static, Literal, HasDefault
+    System.String vbVerticalTab =  : Public, Static, Literal, HasDefault
+    System.String vbNullChar =   : Public, Static, Literal, HasDefault
+    System.String vbNullString =  : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle vbHide = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle vbNormalFocus = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle vbMinimizedFocus = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle vbMaximizedFocus = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle vbNormalNoFocus = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle vbMinimizedNoFocus = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType vbMethod = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType vbGet = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType vbLet = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType vbSet = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CompareMethod vbBinaryCompare = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CompareMethod vbTextCompare = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat vbGeneralDate = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat vbLongDate = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat vbShortDate = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat vbLongTime = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat vbShortTime = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbUseSystemDayOfWeek = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbSunday = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbMonday = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbTuesday = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbWednesday = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbThursday = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbFriday = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek vbSaturday = 7 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbNormal = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbReadOnly = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbHidden = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbSystem = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbVolume = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbDirectory = 16 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute vbArchive = 32 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear vbUseSystem = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear vbFirstJan1 = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear vbFirstFourDays = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear vbFirstFullWeek = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbUpperCase = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbLowerCase = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbProperCase = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbWide = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbNarrow = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbKatakana = 16 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbHiragana = 32 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbSimplifiedChinese = 256 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbTraditionalChinese = 512 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv vbLinguisticCasing = 1024 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.TriState vbUseDefault = -2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.TriState vbTrue = -1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.TriState vbFalse = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbEmpty = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbNull = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbInteger = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbLong = 20 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbSingle = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbDouble = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbCurrency = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbDate = 7 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbString = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbObject = 9 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbBoolean = 11 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbVariant = 12 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbDecimal = 14 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbByte = 17 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbUserDefinedType = 36 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType vbArray = 8192 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbOK = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbCancel = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbAbort = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbRetry = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbIgnore = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbYes = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult vbNo = 7 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbOKOnly = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbOKCancel = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbAbortRetryIgnore = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbYesNoCancel = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbYesNo = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbRetryCancel = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbCritical = 16 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbQuestion = 32 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbExclamation = 48 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbInformation = 64 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbDefaultButton1 = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbDefaultButton2 = 256 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbDefaultButton3 = 512 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbApplicationModal = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbSystemModal = 4096 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbMsgBoxHelp = 16384 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbMsgBoxRight = 524288 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbMsgBoxRtlReading = 1048576 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle vbMsgBoxSetForeground = 65536 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.ControlChars: AutoLayout, AnsiClass, Class, Public, Sealed
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Fields:
+    System.String CrLf = 
+ : Public, Static, Literal, HasDefault
+    System.String NewLine = 
+ : Public, Static, Literal, HasDefault
+    Char Cr =  : Public, Static, Literal, HasDefault
+    Char Lf = 
+ : Public, Static, Literal, HasDefault
+    Char Back =  : Public, Static, Literal, HasDefault
+    Char FormFeed =  : Public, Static, Literal, HasDefault
+    Char Tab = 	 : Public, Static, Literal, HasDefault
+    Char VerticalTab =  : Public, Static, Literal, HasDefault
+    Char NullChar =   : Public, Static, Literal, HasDefault
+    Char Quote = " : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.Conversion: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    ErrorToString(): PrivateScope, Public, Static
+    ErrorToString(Int32): PrivateScope, Public, Static
+    Fix(Int16): PrivateScope, Public, Static
+    Fix(Int32): PrivateScope, Public, Static
+    Fix(Int64): PrivateScope, Public, Static
+    Fix(Double): PrivateScope, Public, Static
+    Fix(Single): PrivateScope, Public, Static
+    Fix(Decimal): PrivateScope, Public, Static
+    Fix(Object): PrivateScope, Public, Static
+    Int(Int16): PrivateScope, Public, Static
+    Int(Int32): PrivateScope, Public, Static
+    Int(Int64): PrivateScope, Public, Static
+    Int(Double): PrivateScope, Public, Static
+    Int(Single): PrivateScope, Public, Static
+    Int(Decimal): PrivateScope, Public, Static
+    Int(Object): PrivateScope, Public, Static
+    Hex(SByte): PrivateScope, Public, Static
+    Hex(Byte): PrivateScope, Public, Static
+    Hex(Int16): PrivateScope, Public, Static
+    Hex(UInt16): PrivateScope, Public, Static
+    Hex(Int32): PrivateScope, Public, Static
+    Hex(UInt32): PrivateScope, Public, Static
+    Hex(Int64): PrivateScope, Public, Static
+    Hex(UInt64): PrivateScope, Public, Static
+    Hex(Object): PrivateScope, Public, Static
+    Oct(SByte): PrivateScope, Public, Static
+    Oct(Byte): PrivateScope, Public, Static
+    Oct(Int16): PrivateScope, Public, Static
+    Oct(UInt16): PrivateScope, Public, Static
+    Oct(Int32): PrivateScope, Public, Static
+    Oct(UInt32): PrivateScope, Public, Static
+    Oct(Int64): PrivateScope, Public, Static
+    Oct(UInt64): PrivateScope, Public, Static
+    Oct(Object): PrivateScope, Public, Static
+    Str(Object): PrivateScope, Public, Static
+    Val(String): PrivateScope, Public, Static
+    Val(Char): PrivateScope, Public, Static
+    Val(Object): PrivateScope, Public, Static
+    CTypeDynamic(Object, Type): PrivateScope, Public, Static
+    CTypeDynamic(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.DateAndTime: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Properties:
+    System.DateTime Today 'get set' : 
+    System.DateTime Now 'get ' : 
+    System.DateTime TimeOfDay 'get set' : 
+    System.String TimeString 'get set' : 
+    System.String DateString 'get set' : 
+    Double Timer 'get ' : 
+  Methods:
+    get_Today(): PrivateScope, Public, Static, SpecialName
+    set_Today(DateTime): PrivateScope, Public, Static, SpecialName, HasSecurity
+    get_Now(): PrivateScope, Public, Static, SpecialName
+    get_TimeOfDay(): PrivateScope, Public, Static, SpecialName
+    set_TimeOfDay(DateTime): PrivateScope, Public, Static, SpecialName, HasSecurity
+    get_TimeString(): PrivateScope, Public, Static, SpecialName
+    set_TimeString(String): PrivateScope, Public, Static, SpecialName, HasSecurity
+    get_DateString(): PrivateScope, Public, Static, SpecialName
+    set_DateString(String): PrivateScope, Public, Static, SpecialName, HasSecurity
+    get_Timer(): PrivateScope, Public, Static, SpecialName
+    DateAdd(DateInterval, Double, DateTime): PrivateScope, Public, Static
+    DateDiff(DateInterval, DateTime, DateTime, FirstDayOfWeek(Optional, HasDefault), FirstWeekOfYear(Optional, HasDefault)): PrivateScope, Public, Static
+    DatePart(DateInterval, DateTime, FirstDayOfWeek(Optional, HasDefault), FirstWeekOfYear(Optional, HasDefault)): PrivateScope, Public, Static
+    DateAdd(String, Double, Object): PrivateScope, Public, Static
+    DateDiff(String, Object, Object, FirstDayOfWeek(Optional, HasDefault), FirstWeekOfYear(Optional, HasDefault)): PrivateScope, Public, Static
+    DatePart(String, Object, FirstDayOfWeek(Optional, HasDefault), FirstWeekOfYear(Optional, HasDefault)): PrivateScope, Public, Static
+    DateSerial(Int32, Int32, Int32): PrivateScope, Public, Static
+    TimeSerial(Int32, Int32, Int32): PrivateScope, Public, Static
+    DateValue(String): PrivateScope, Public, Static
+    TimeValue(String): PrivateScope, Public, Static
+    Year(DateTime): PrivateScope, Public, Static
+    Month(DateTime): PrivateScope, Public, Static
+    Day(DateTime): PrivateScope, Public, Static
+    Hour(DateTime): PrivateScope, Public, Static
+    Minute(DateTime): PrivateScope, Public, Static
+    Second(DateTime): PrivateScope, Public, Static
+    Weekday(DateTime, FirstDayOfWeek(Optional, HasDefault)): PrivateScope, Public, Static
+    MonthName(Int32, Boolean(Optional, HasDefault)): PrivateScope, Public, Static
+    WeekdayName(Int32, Boolean(Optional, HasDefault), FirstDayOfWeek(Optional, HasDefault)): PrivateScope, Public, Static
+Struct Microsoft.VisualBasic.AudioPlayMode: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.AudioPlayMode WaitToComplete = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AudioPlayMode Background = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AudioPlayMode BackgroundLoop = 2 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.Devices.Audio: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    Play(String): PrivateScope, Public
+    Play(String, AudioPlayMode): PrivateScope, Public
+    Play(Byte[], AudioPlayMode): PrivateScope, Public
+    Play(Stream, AudioPlayMode): PrivateScope, Public
+    PlaySystemSound(SystemSound): PrivateScope, Public
+    Stop(): PrivateScope, Public
+Class Microsoft.VisualBasic.Devices.Clock: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.DateTime LocalTime 'get ' : 
+    System.DateTime GmtTime 'get ' : 
+    Int32 TickCount 'get ' : 
+  Methods:
+    get_LocalTime(): PrivateScope, Public, SpecialName
+    get_GmtTime(): PrivateScope, Public, SpecialName
+    get_TickCount(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.Computer: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  :Microsoft.VisualBasic.Devices.ServerComputer
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Microsoft.VisualBasic.Devices.Audio Audio 'get ' : 
+    Microsoft.VisualBasic.MyServices.ClipboardProxy Clipboard 'get ' : 
+    Microsoft.VisualBasic.Devices.Ports Ports 'get ' : 
+    Microsoft.VisualBasic.Devices.Mouse Mouse 'get ' : 
+    Microsoft.VisualBasic.Devices.Keyboard Keyboard 'get ' : 
+    System.Windows.Forms.Screen Screen 'get ' : 
+  Methods:
+    get_Audio(): PrivateScope, Public, SpecialName
+    get_Clipboard(): PrivateScope, Public, SpecialName
+    get_Ports(): PrivateScope, Public, SpecialName
+    get_Mouse(): PrivateScope, Public, SpecialName
+    get_Keyboard(): PrivateScope, Public, SpecialName
+    get_Screen(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.ComputerInfo: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    UInt64 TotalPhysicalMemory 'get ' : 
+    UInt64 AvailablePhysicalMemory 'get ' : 
+    UInt64 TotalVirtualMemory 'get ' : 
+    UInt64 AvailableVirtualMemory 'get ' : 
+    System.Globalization.CultureInfo InstalledUICulture 'get ' : 
+    System.String OSFullName 'get ' : 
+    System.String OSPlatform 'get ' : 
+    System.String OSVersion 'get ' : 
+  Methods:
+    get_TotalPhysicalMemory(): PrivateScope, Public, SpecialName
+    get_AvailablePhysicalMemory(): PrivateScope, Public, SpecialName
+    get_TotalVirtualMemory(): PrivateScope, Public, SpecialName
+    get_AvailableVirtualMemory(): PrivateScope, Public, SpecialName
+    get_InstalledUICulture(): PrivateScope, Public, SpecialName
+    get_OSFullName(): PrivateScope, Public, SpecialName
+    get_OSPlatform(): PrivateScope, Public, SpecialName
+    get_OSVersion(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.Keyboard: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Boolean ShiftKeyDown 'get ' : 
+    Boolean AltKeyDown 'get ' : 
+    Boolean CtrlKeyDown 'get ' : 
+    Boolean CapsLock 'get ' : 
+    Boolean NumLock 'get ' : 
+    Boolean ScrollLock 'get ' : 
+  Methods:
+    SendKeys(String): PrivateScope, Public
+    SendKeys(String, Boolean): PrivateScope, Public
+    get_ShiftKeyDown(): PrivateScope, Public, SpecialName
+    get_AltKeyDown(): PrivateScope, Public, SpecialName
+    get_CtrlKeyDown(): PrivateScope, Public, SpecialName
+    get_CapsLock(): PrivateScope, Public, SpecialName
+    get_NumLock(): PrivateScope, Public, SpecialName
+    get_ScrollLock(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.Mouse: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Boolean ButtonsSwapped 'get ' : 
+    Boolean WheelExists 'get ' : 
+    Int32 WheelScrollLines 'get ' : 
+  Methods:
+    get_ButtonsSwapped(): PrivateScope, Public, SpecialName
+    get_WheelExists(): PrivateScope, Public, SpecialName
+    get_WheelScrollLines(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.NetworkAvailableEventArgs: AutoLayout, AnsiClass, Class, Public
+  :System.EventArgs
+    Void .ctor(Boolean): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Boolean IsNetworkAvailable 'get ' : 
+  Methods:
+    get_IsNetworkAvailable(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.NetworkAvailableEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    BeginInvoke(Object, NetworkAvailableEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+    Invoke(Object, NetworkAvailableEventArgs): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride
+Class Microsoft.VisualBasic.Devices.Network: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Boolean IsAvailable 'get ' : 
+  Events:
+    Microsoft.VisualBasic.Devices.NetworkAvailableEventHandler NetworkAvailabilityChanged: 
+  Methods:
+    add_NetworkAvailabilityChanged(NetworkAvailableEventHandler): PrivateScope, Public, SpecialName
+    remove_NetworkAvailabilityChanged(NetworkAvailableEventHandler): PrivateScope, Public, SpecialName
+    get_IsAvailable(): PrivateScope, Public, SpecialName
+    Ping(String): PrivateScope, Public
+    Ping(Uri): PrivateScope, Public
+    Ping(String, Int32): PrivateScope, Public
+    Ping(Uri, Int32): PrivateScope, Public
+    DownloadFile(String, String): PrivateScope, Public
+    DownloadFile(Uri, String): PrivateScope, Public
+    DownloadFile(String, String, String, String): PrivateScope, Public
+    DownloadFile(Uri, String, String, String): PrivateScope, Public
+    DownloadFile(String, String, String, String, Boolean, Int32, Boolean): PrivateScope, Public
+    DownloadFile(String, String, String, String, Boolean, Int32, Boolean, UICancelOption): PrivateScope, Public
+    DownloadFile(Uri, String, String, String, Boolean, Int32, Boolean): PrivateScope, Public
+    DownloadFile(Uri, String, String, String, Boolean, Int32, Boolean, UICancelOption): PrivateScope, Public
+    DownloadFile(Uri, String, ICredentials, Boolean, Int32, Boolean): PrivateScope, Public
+    DownloadFile(Uri, String, ICredentials, Boolean, Int32, Boolean, UICancelOption): PrivateScope, Public
+    UploadFile(String, String): PrivateScope, Public
+    UploadFile(String, Uri): PrivateScope, Public
+    UploadFile(String, String, String, String): PrivateScope, Public
+    UploadFile(String, Uri, String, String): PrivateScope, Public
+    UploadFile(String, String, String, String, Boolean, Int32): PrivateScope, Public
+    UploadFile(String, String, String, String, Boolean, Int32, UICancelOption): PrivateScope, Public
+    UploadFile(String, Uri, String, String, Boolean, Int32): PrivateScope, Public
+    UploadFile(String, Uri, String, String, Boolean, Int32, UICancelOption): PrivateScope, Public
+    UploadFile(String, Uri, ICredentials, Boolean, Int32): PrivateScope, Public
+    UploadFile(String, Uri, ICredentials, Boolean, Int32, UICancelOption): PrivateScope, Public
+Class Microsoft.VisualBasic.Devices.Ports: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.String] SerialPortNames 'get ' : 
+  Methods:
+    OpenSerialPort(String): PrivateScope, Public
+    OpenSerialPort(String, Int32): PrivateScope, Public
+    OpenSerialPort(String, Int32, Parity): PrivateScope, Public
+    OpenSerialPort(String, Int32, Parity, Int32): PrivateScope, Public
+    OpenSerialPort(String, Int32, Parity, Int32, StopBits): PrivateScope, Public
+    get_SerialPortNames(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Devices.ServerComputer: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Microsoft.VisualBasic.Devices.Clock Clock 'get ' : 
+    Microsoft.VisualBasic.MyServices.FileSystemProxy FileSystem 'get ' : 
+    Microsoft.VisualBasic.Devices.ComputerInfo Info 'get ' : 
+    Microsoft.VisualBasic.Devices.Network Network 'get ' : 
+    System.String Name 'get ' : 
+    Microsoft.VisualBasic.MyServices.RegistryProxy Registry 'get ' : 
+  Methods:
+    get_Clock(): PrivateScope, Public, SpecialName
+    get_FileSystem(): PrivateScope, Public, SpecialName
+    get_Info(): PrivateScope, Public, SpecialName
+    get_Network(): PrivateScope, Public, SpecialName
+    get_Name(): PrivateScope, Public, SpecialName
+    get_Registry(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ErrObject: AutoLayout, AnsiClass, Class, Public, Sealed
+  Properties:
+    Int32 Erl  'get ' : 
+    Int32 Number 'get set' : 
+    System.String Source 'get set' : 
+    System.String Description 'get set' : 
+    System.String HelpFile 'get set' : 
+    Int32 HelpContext 'get set' : 
+    Int32 LastDllError 'get ' : 
+  Methods:
+    get_Erl(): PrivateScope, Public, SpecialName
+    get_Number(): PrivateScope, Public, SpecialName
+    set_Number(Int32): PrivateScope, Public, SpecialName
+    get_Source(): PrivateScope, Public, SpecialName
+    set_Source(String): PrivateScope, Public, SpecialName
+    get_Description(): PrivateScope, Public, SpecialName
+    set_Description(String): PrivateScope, Public, SpecialName
+    get_HelpFile(): PrivateScope, Public, SpecialName
+    set_HelpFile(String): PrivateScope, Public, SpecialName
+    get_HelpContext(): PrivateScope, Public, SpecialName
+    set_HelpContext(Int32): PrivateScope, Public, SpecialName
+    GetException(): PrivateScope, Public
+    Clear(): PrivateScope, Public
+    Raise(Int32, Object(Optional, HasDefault), Object(Optional, HasDefault), Object(Optional, HasDefault), Object(Optional, HasDefault)): PrivateScope, Public
+    get_LastDllError(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.FileIO.FileSystem: AutoLayout, AnsiClass, Class, Public, HasSecurity, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.IO.DriveInfo] Drives 'get ' : 
+    System.String CurrentDirectory 'get set' : 
+  Methods:
+    get_Drives(): PrivateScope, Public, Static, SpecialName
+    get_CurrentDirectory(): PrivateScope, Public, Static, SpecialName
+    set_CurrentDirectory(String): PrivateScope, Public, Static, SpecialName
+    CombinePath(String, String): PrivateScope, Public, Static
+    DirectoryExists(String): PrivateScope, Public, Static
+    FileExists(String): PrivateScope, Public, Static
+    FindInFiles(String, String, Boolean, SearchOption): PrivateScope, Public, Static
+    FindInFiles(String, String, Boolean, SearchOption, String[]): PrivateScope, Public, Static
+    GetDirectories(String): PrivateScope, Public, Static
+    GetDirectories(String, SearchOption, String[]): PrivateScope, Public, Static
+    GetDirectoryInfo(String): PrivateScope, Public, Static
+    GetDriveInfo(String): PrivateScope, Public, Static
+    GetFileInfo(String): PrivateScope, Public, Static
+    GetFiles(String): PrivateScope, Public, Static
+    GetFiles(String, SearchOption, String[]): PrivateScope, Public, Static
+    GetName(String): PrivateScope, Public, Static
+    GetParentPath(String): PrivateScope, Public, Static
+    GetTempFileName(): PrivateScope, Public, Static
+    OpenTextFieldParser(String): PrivateScope, Public, Static
+    OpenTextFieldParser(String, String[]): PrivateScope, Public, Static
+    OpenTextFieldParser(String, Int32[]): PrivateScope, Public, Static
+    OpenTextFileReader(String): PrivateScope, Public, Static
+    OpenTextFileReader(String, Encoding): PrivateScope, Public, Static
+    OpenTextFileWriter(String, Boolean): PrivateScope, Public, Static
+    OpenTextFileWriter(String, Boolean, Encoding): PrivateScope, Public, Static
+    ReadAllBytes(String): PrivateScope, Public, Static
+    ReadAllText(String): PrivateScope, Public, Static
+    ReadAllText(String, Encoding): PrivateScope, Public, Static
+    CopyDirectory(String, String): PrivateScope, Public, Static
+    CopyDirectory(String, String, Boolean): PrivateScope, Public, Static
+    CopyDirectory(String, String, UIOption): PrivateScope, Public, Static
+    CopyDirectory(String, String, UIOption, UICancelOption): PrivateScope, Public, Static
+    CopyFile(String, String): PrivateScope, Public, Static
+    CopyFile(String, String, Boolean): PrivateScope, Public, Static
+    CopyFile(String, String, UIOption): PrivateScope, Public, Static
+    CopyFile(String, String, UIOption, UICancelOption): PrivateScope, Public, Static
+    CreateDirectory(String): PrivateScope, Public, Static
+    DeleteDirectory(String, DeleteDirectoryOption): PrivateScope, Public, Static
+    DeleteDirectory(String, UIOption, RecycleOption): PrivateScope, Public, Static
+    DeleteDirectory(String, UIOption, RecycleOption, UICancelOption): PrivateScope, Public, Static
+    DeleteFile(String): PrivateScope, Public, Static
+    DeleteFile(String, UIOption, RecycleOption): PrivateScope, Public, Static
+    DeleteFile(String, UIOption, RecycleOption, UICancelOption): PrivateScope, Public, Static
+    MoveDirectory(String, String): PrivateScope, Public, Static
+    MoveDirectory(String, String, Boolean): PrivateScope, Public, Static
+    MoveDirectory(String, String, UIOption): PrivateScope, Public, Static
+    MoveDirectory(String, String, UIOption, UICancelOption): PrivateScope, Public, Static
+    MoveFile(String, String): PrivateScope, Public, Static
+    MoveFile(String, String, Boolean): PrivateScope, Public, Static
+    MoveFile(String, String, UIOption): PrivateScope, Public, Static
+    MoveFile(String, String, UIOption, UICancelOption): PrivateScope, Public, Static
+    RenameDirectory(String, String): PrivateScope, Public, Static
+    RenameFile(String, String): PrivateScope, Public, Static
+    WriteAllBytes(String, Byte[], Boolean): PrivateScope, Public, Static
+    WriteAllText(String, String, Boolean): PrivateScope, Public, Static
+    WriteAllText(String, String, Boolean, Encoding): PrivateScope, Public, Static
+Struct Microsoft.VisualBasic.FileIO.DeleteDirectoryOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileIO.DeleteDirectoryOption ThrowIfDirectoryNonEmpty = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileIO.DeleteDirectoryOption DeleteAllContents = 5 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FileIO.RecycleOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileIO.RecycleOption DeletePermanently = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileIO.RecycleOption SendToRecycleBin = 3 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FileIO.SearchOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileIO.SearchOption SearchTopLevelOnly = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileIO.SearchOption SearchAllSubDirectories = 3 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FileIO.UICancelOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileIO.UICancelOption DoNothing = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileIO.UICancelOption ThrowException = 3 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FileIO.UIOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileIO.UIOption OnlyErrorDialogs = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileIO.UIOption AllDialogs = 3 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.FileIO.MalformedLineException: AutoLayout, AnsiClass, Class, Public, Serializable
+  :System.Exception
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, Int64): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, Int64, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Int64 LineNumber 'get set' : 
+  Methods:
+    get_LineNumber(): PrivateScope, Public, SpecialName
+    set_LineNumber(Int64): PrivateScope, Public, SpecialName
+    GetObjectData(SerializationInfo, StreamingContext): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+    ToString(): PrivateScope, Public, Virtual, CheckAccessOnOverride
+Class Microsoft.VisualBasic.FileIO.SpecialDirectories: AutoLayout, AnsiClass, Class, Public, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.String MyDocuments 'get ' : 
+    System.String MyMusic 'get ' : 
+    System.String MyPictures 'get ' : 
+    System.String Desktop 'get ' : 
+    System.String Programs 'get ' : 
+    System.String ProgramFiles 'get ' : 
+    System.String Temp 'get ' : 
+    System.String CurrentUserApplicationData 'get ' : 
+    System.String AllUsersApplicationData 'get ' : 
+  Methods:
+    get_MyDocuments(): PrivateScope, Public, Static, SpecialName
+    get_MyMusic(): PrivateScope, Public, Static, SpecialName
+    get_MyPictures(): PrivateScope, Public, Static, SpecialName
+    get_Desktop(): PrivateScope, Public, Static, SpecialName
+    get_Programs(): PrivateScope, Public, Static, SpecialName
+    get_ProgramFiles(): PrivateScope, Public, Static, SpecialName
+    get_Temp(): PrivateScope, Public, Static, SpecialName
+    get_CurrentUserApplicationData(): PrivateScope, Public, Static, SpecialName
+    get_AllUsersApplicationData(): PrivateScope, Public, Static, SpecialName
+Class Microsoft.VisualBasic.FileIO.TextFieldParser: AutoLayout, AnsiClass, Class, Public
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.String, System.Text.Encoding): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.String, System.Text.Encoding, Boolean): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.IO.Stream): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.IO.Stream, System.Text.Encoding): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.IO.Stream, System.Text.Encoding, Boolean): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.IO.Stream, System.Text.Encoding, Boolean, Boolean): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(System.IO.TextReader): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+  Interfaces:
+    System.IDisposable
+  Properties:
+    System.String[] CommentTokens 'get set' : 
+    Boolean EndOfData 'get ' : 
+    Int64 LineNumber 'get ' : 
+    System.String ErrorLine 'get ' : 
+    Int64 ErrorLineNumber 'get ' : 
+    Microsoft.VisualBasic.FileIO.FieldType TextFieldType 'get set' : 
+    Int32[] FieldWidths 'get set' : 
+    System.String[] Delimiters 'get set' : 
+    Boolean TrimWhiteSpace 'get set' : 
+    Boolean HasFieldsEnclosedInQuotes 'get set' : 
+  Methods:
+    get_CommentTokens(): PrivateScope, Public, SpecialName
+    set_CommentTokens(String[]): PrivateScope, Public, SpecialName
+    get_EndOfData(): PrivateScope, Public, SpecialName
+    get_LineNumber(): PrivateScope, Public, SpecialName
+    get_ErrorLine(): PrivateScope, Public, SpecialName
+    get_ErrorLineNumber(): PrivateScope, Public, SpecialName
+    get_TextFieldType(): PrivateScope, Public, SpecialName
+    set_TextFieldType(FieldType): PrivateScope, Public, SpecialName
+    get_FieldWidths(): PrivateScope, Public, SpecialName
+    set_FieldWidths(Int32[]): PrivateScope, Public, SpecialName
+    get_Delimiters(): PrivateScope, Public, SpecialName
+    set_Delimiters(String[]): PrivateScope, Public, SpecialName
+    SetDelimiters(String[]): PrivateScope, Public
+    SetFieldWidths(Int32[]): PrivateScope, Public
+    get_TrimWhiteSpace(): PrivateScope, Public, SpecialName
+    set_TrimWhiteSpace(Boolean): PrivateScope, Public, SpecialName
+    ReadLine(): PrivateScope, Public
+    ReadFields(): PrivateScope, Public
+    PeekChars(Int32): PrivateScope, Public
+    ReadToEnd(): PrivateScope, Public
+    get_HasFieldsEnclosedInQuotes(): PrivateScope, Public, SpecialName
+    set_HasFieldsEnclosedInQuotes(Boolean): PrivateScope, Public, SpecialName
+    Close(): PrivateScope, Public
+    Dispose(): PrivateScope, Public, Final, Virtual, VtableLayoutMask, CheckAccessOnOverride
+Struct Microsoft.VisualBasic.FileIO.FieldType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileIO.FieldType Delimited = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileIO.FieldType FixedWidth = 1 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.FileSystem: AutoLayout, AnsiClass, Class, Public, Sealed, HasSecurity, BeforeFieldInit
+  Methods:
+    ChDir(String): PrivateScope, Public, Static
+    ChDrive(Char): PrivateScope, Public, Static
+    ChDrive(String): PrivateScope, Public, Static
+    CurDir(): PrivateScope, Public, Static
+    CurDir(Char): PrivateScope, Public, Static
+    Dir(): PrivateScope, Public, Static
+    Dir(String, FileAttribute(Optional, HasDefault)): PrivateScope, Public, Static
+    MkDir(String): PrivateScope, Public, Static
+    RmDir(String): PrivateScope, Public, Static
+    FileCopy(String, String): PrivateScope, Public, Static
+    FileDateTime(String): PrivateScope, Public, Static
+    FileLen(String): PrivateScope, Public, Static
+    GetAttr(String): PrivateScope, Public, Static
+    Kill(String): PrivateScope, Public, Static
+    SetAttr(String, FileAttribute): PrivateScope, Public, Static
+    FileOpen(Int32, String, OpenMode, OpenAccess(Optional, HasDefault), OpenShare(Optional, HasDefault), Int32(Optional, HasDefault)): PrivateScope, Public, Static
+    FileClose(Int32[]): PrivateScope, Public, Static
+    FileGetObject(Int32, Object&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, ValueType&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Array&, Int64(Optional, HasDefault), Boolean(Optional, HasDefault), Boolean(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Boolean&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Byte&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Int16&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Int32&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Int64&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Char&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Single&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Double&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, Decimal&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, String&, Int64(Optional, HasDefault), Boolean(Optional, HasDefault)): PrivateScope, Public, Static
+    FileGet(Int32, DateTime&, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePutObject(Int32, Object, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Object, Object, Object(Optional, HasDefault)): PrivateScope, Public, Static (Obsolete)
+    FilePut(Int32, ValueType, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Array, Int64(Optional, HasDefault), Boolean(Optional, HasDefault), Boolean(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Boolean, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Byte, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Int16, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Int32, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Int64, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Char, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Single, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Double, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, Decimal, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, String, Int64(Optional, HasDefault), Boolean(Optional, HasDefault)): PrivateScope, Public, Static
+    FilePut(Int32, DateTime, Int64(Optional, HasDefault)): PrivateScope, Public, Static
+    Print(Int32, Object[]): PrivateScope, Public, Static
+    PrintLine(Int32, Object[]): PrivateScope, Public, Static
+    Input(Int32, Object&): PrivateScope, Public, Static
+    Input(Int32, Boolean&): PrivateScope, Public, Static
+    Input(Int32, Byte&): PrivateScope, Public, Static
+    Input(Int32, Int16&): PrivateScope, Public, Static
+    Input(Int32, Int32&): PrivateScope, Public, Static
+    Input(Int32, Int64&): PrivateScope, Public, Static
+    Input(Int32, Char&): PrivateScope, Public, Static
+    Input(Int32, Single&): PrivateScope, Public, Static
+    Input(Int32, Double&): PrivateScope, Public, Static
+    Input(Int32, Decimal&): PrivateScope, Public, Static
+    Input(Int32, String&): PrivateScope, Public, Static
+    Input(Int32, DateTime&): PrivateScope, Public, Static
+    Write(Int32, Object[]): PrivateScope, Public, Static
+    WriteLine(Int32, Object[]): PrivateScope, Public, Static
+    InputString(Int32, Int32): PrivateScope, Public, Static
+    LineInput(Int32): PrivateScope, Public, Static
+    Lock(Int32): PrivateScope, Public, Static
+    Lock(Int32, Int64): PrivateScope, Public, Static
+    Lock(Int32, Int64, Int64): PrivateScope, Public, Static
+    Unlock(Int32): PrivateScope, Public, Static
+    Unlock(Int32, Int64): PrivateScope, Public, Static
+    Unlock(Int32, Int64, Int64): PrivateScope, Public, Static
+    FileWidth(Int32, Int32): PrivateScope, Public, Static
+    FreeFile(): PrivateScope, Public, Static
+    Seek(Int32, Int64): PrivateScope, Public, Static
+    Seek(Int32): PrivateScope, Public, Static
+    EOF(Int32): PrivateScope, Public, Static
+    Loc(Int32): PrivateScope, Public, Static
+    LOF(Int32): PrivateScope, Public, Static
+    TAB(): PrivateScope, Public, Static
+    TAB(Int16): PrivateScope, Public, Static
+    SPC(Int16): PrivateScope, Public, Static
+    FileAttr(Int32): PrivateScope, Public, Static
+    Reset(): PrivateScope, Public, Static
+    Rename(String, String): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.Financial: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    DDB(Double, Double, Double, Double, Double(Optional, HasDefault)): PrivateScope, Public, Static
+    FV(Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault)): PrivateScope, Public, Static
+    IPmt(Double, Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault)): PrivateScope, Public, Static
+    IRR(Double[]&, Double(Optional, HasDefault)): PrivateScope, Public, Static
+    MIRR(Double[]&, Double, Double): PrivateScope, Public, Static
+    NPer(Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault)): PrivateScope, Public, Static
+    NPV(Double, Double[]&): PrivateScope, Public, Static
+    Pmt(Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault)): PrivateScope, Public, Static
+    PPmt(Double, Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault)): PrivateScope, Public, Static
+    PV(Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault)): PrivateScope, Public, Static
+    Rate(Double, Double, Double, Double(Optional, HasDefault), DueDate(Optional, HasDefault), Double(Optional, HasDefault)): PrivateScope, Public, Static
+    SLN(Double, Double, Double): PrivateScope, Public, Static
+    SYD(Double, Double, Double, Double): PrivateScope, Public, Static
+Struct Microsoft.VisualBasic.VariantType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.VariantType Empty = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Null = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Short = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Integer = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Single = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Double = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Currency = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Date = 7 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType String = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Object = 9 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Error = 10 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Boolean = 11 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Variant = 12 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType DataObject = 13 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Decimal = 14 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Byte = 17 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Char = 18 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Long = 20 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType UserDefinedType = 36 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VariantType Array = 8192 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.AppWinStyle: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int16 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.AppWinStyle Hide = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle NormalFocus = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle MinimizedFocus = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle MaximizedFocus = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle NormalNoFocus = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.AppWinStyle MinimizedNoFocus = 6 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.CallType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.CallType Method = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType Get = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType Let = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CallType Set = 8 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.CompareMethod: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.CompareMethod Binary = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.CompareMethod Text = 1 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.DateFormat: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.DateFormat GeneralDate = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat LongDate = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat ShortDate = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat LongTime = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateFormat ShortTime = 4 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FirstDayOfWeek: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FirstDayOfWeek System = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Sunday = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Monday = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Tuesday = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Wednesday = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Thursday = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Friday = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstDayOfWeek Saturday = 7 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FileAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FileAttribute Normal = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute ReadOnly = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute Hidden = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute System = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute Volume = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute Directory = 16 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FileAttribute Archive = 32 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.FirstWeekOfYear: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.FirstWeekOfYear System = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear Jan1 = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear FirstFourDays = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.FirstWeekOfYear FirstFullWeek = 3 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.VbStrConv: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.VbStrConv None = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv Uppercase = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv Lowercase = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv ProperCase = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv Wide = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv Narrow = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv Katakana = 16 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv Hiragana = 32 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv SimplifiedChinese = 256 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv TraditionalChinese = 512 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.VbStrConv LinguisticCasing = 1024 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.TriState: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.TriState False = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.TriState True = -1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.TriState UseDefault = -2 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.DateInterval: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.DateInterval Year = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Quarter = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Month = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval DayOfYear = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Day = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval WeekOfYear = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Weekday = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Hour = 7 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Minute = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DateInterval Second = 9 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.DueDate: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.DueDate EndOfPeriod = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.DueDate BegOfPeriod = 1 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.OpenMode: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.OpenMode Input = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenMode Output = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenMode Random = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenMode Append = 8 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenMode Binary = 32 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.OpenAccess: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.OpenAccess Default = -1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenAccess Read = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenAccess ReadWrite = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenAccess Write = 2 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.OpenShare: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.OpenShare Default = -1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenShare Shared = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenShare LockRead = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenShare LockReadWrite = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.OpenShare LockWrite = 1 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.TabInfo: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed
+  :System.ValueType
+  Fields:
+    Int16 Column : Public
+Struct Microsoft.VisualBasic.SpcInfo: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed
+  :System.ValueType
+  Fields:
+    Int16 Count : Public
+Struct Microsoft.VisualBasic.MsgBoxResult: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.MsgBoxResult Ok = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult Cancel = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult Abort = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult Retry = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult Ignore = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult Yes = 6 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxResult No = 7 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.MsgBoxStyle: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.MsgBoxStyle OkOnly = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle OkCancel = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle AbortRetryIgnore = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle YesNoCancel = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle YesNo = 4 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle RetryCancel = 5 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle Critical = 16 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle Question = 32 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle Exclamation = 48 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle Information = 64 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle DefaultButton1 = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle DefaultButton2 = 256 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle DefaultButton3 = 512 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle ApplicationModal = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle SystemModal = 4096 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle MsgBoxHelp = 16384 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle MsgBoxRight = 524288 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle MsgBoxRtlReading = 1048576 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.MsgBoxStyle MsgBoxSetForeground = 65536 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.VBFixedStringAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(Int32): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Int32 Length 'get ' : 
+  Methods:
+    get_Length(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.VBFixedArrayAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(Int32): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(Int32, Int32): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Int32[] Bounds 'get ' : 
+    Int32 Length 'get ' : 
+  Methods:
+    get_Bounds(): PrivateScope, Public, SpecialName
+    get_Length(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.ComClassAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.String, System.String): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.String ClassID 'get ' : 
+    System.String InterfaceID 'get ' : 
+    System.String EventID 'get ' : 
+    Boolean InterfaceShadows 'get set' : 
+  Methods:
+    get_ClassID(): PrivateScope, Public, SpecialName
+    get_InterfaceID(): PrivateScope, Public, SpecialName
+    get_EventID(): PrivateScope, Public, SpecialName
+    get_InterfaceShadows(): PrivateScope, Public, SpecialName
+    set_InterfaceShadows(Boolean): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.MyGroupCollectionAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(System.String, System.String, System.String, System.String): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    System.String MyGroupName 'get ' : 
+    System.String CreateMethod 'get ' : 
+    System.String DisposeMethod 'get ' : 
+    System.String DefaultInstanceAlias 'get ' : 
+  Methods:
+    get_MyGroupName(): PrivateScope, Public, SpecialName
+    get_CreateMethod(): PrivateScope, Public, SpecialName
+    get_DisposeMethod(): PrivateScope, Public, SpecialName
+    get_DefaultInstanceAlias(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.HideModuleNameAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.Globals: AutoLayout, AnsiClass, Class, Public, Sealed
+  Properties:
+    System.String ScriptEngine 'get ' : 
+    Int32 ScriptEngineMajorVersion 'get ' : 
+    Int32 ScriptEngineMinorVersion 'get ' : 
+    Int32 ScriptEngineBuildVersion 'get ' : 
+  Methods:
+    get_ScriptEngine(): PrivateScope, Public, Static, SpecialName
+    get_ScriptEngineMajorVersion(): PrivateScope, Public, Static, SpecialName
+    get_ScriptEngineMinorVersion(): PrivateScope, Public, Static, SpecialName
+    get_ScriptEngineBuildVersion(): PrivateScope, Public, Static, SpecialName
+Class Microsoft.VisualBasic.CompilerServices.StandardModuleAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.CompilerServices.OptionTextAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.CompilerServices.OptionCompareAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.CompilerServices.DesignerGeneratedAttribute: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Attribute
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.CompilerServices.BooleanType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.ByteType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.CharArrayType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.CharType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.Conversions: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    ToBoolean(String): PrivateScope, Public, Static
+    ToBoolean(Object): PrivateScope, Public, Static
+    ToByte(String): PrivateScope, Public, Static
+    ToByte(Object): PrivateScope, Public, Static
+    ToSByte(String): PrivateScope, Public, Static
+    ToSByte(Object): PrivateScope, Public, Static
+    ToShort(String): PrivateScope, Public, Static
+    ToShort(Object): PrivateScope, Public, Static
+    ToUShort(String): PrivateScope, Public, Static
+    ToUShort(Object): PrivateScope, Public, Static
+    ToInteger(String): PrivateScope, Public, Static
+    ToInteger(Object): PrivateScope, Public, Static
+    ToUInteger(String): PrivateScope, Public, Static
+    ToUInteger(Object): PrivateScope, Public, Static
+    ToLong(String): PrivateScope, Public, Static
+    ToLong(Object): PrivateScope, Public, Static
+    ToULong(String): PrivateScope, Public, Static
+    ToULong(Object): PrivateScope, Public, Static
+    ToDecimal(Boolean): PrivateScope, Public, Static
+    ToDecimal(String): PrivateScope, Public, Static
+    ToDecimal(Object): PrivateScope, Public, Static
+    ToSingle(String): PrivateScope, Public, Static
+    ToSingle(Object): PrivateScope, Public, Static
+    ToDouble(String): PrivateScope, Public, Static
+    ToDouble(Object): PrivateScope, Public, Static
+    ToDate(String): PrivateScope, Public, Static
+    ToDate(Object): PrivateScope, Public, Static
+    ToChar(String): PrivateScope, Public, Static
+    ToChar(Object): PrivateScope, Public, Static
+    ToCharArrayRankOne(String): PrivateScope, Public, Static
+    ToCharArrayRankOne(Object): PrivateScope, Public, Static
+    ToString(Boolean): PrivateScope, Public, Static
+    ToString(Byte): PrivateScope, Public, Static
+    ToString(Char): PrivateScope, Public, Static
+    FromCharArray(Char[]): PrivateScope, Public, Static
+    FromCharAndCount(Char, Int32): PrivateScope, Public, Static
+    FromCharArraySubset(Char[], Int32, Int32): PrivateScope, Public, Static
+    ToString(Int16): PrivateScope, Public, Static
+    ToString(Int32): PrivateScope, Public, Static
+    ToString(UInt32): PrivateScope, Public, Static
+    ToString(Int64): PrivateScope, Public, Static
+    ToString(UInt64): PrivateScope, Public, Static
+    ToString(Single): PrivateScope, Public, Static
+    ToString(Double): PrivateScope, Public, Static
+    ToString(Single, NumberFormatInfo): PrivateScope, Public, Static
+    ToString(Double, NumberFormatInfo): PrivateScope, Public, Static
+    ToString(DateTime): PrivateScope, Public, Static
+    ToString(Decimal): PrivateScope, Public, Static
+    ToString(Decimal, NumberFormatInfo): PrivateScope, Public, Static
+    ToString(Object): PrivateScope, Public, Static
+    ToGenericParameter(Object): PrivateScope, Public, Static
+    ChangeType(Object, Type): PrivateScope, Public, Static
+    FallbackUserDefinedConversion(Object, Type): PrivateScope, Public, Static (Obsolete)
+Class Microsoft.VisualBasic.CompilerServices.DateType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromString(String, CultureInfo): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.DecimalType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromBoolean(Boolean): PrivateScope, Public, Static
+    FromString(String): PrivateScope, Public, Static
+    FromString(String, NumberFormatInfo): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+    FromObject(Object, NumberFormatInfo): PrivateScope, Public, Static
+    Parse(String, NumberFormatInfo): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.DoubleType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromString(String, NumberFormatInfo): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+    FromObject(Object, NumberFormatInfo): PrivateScope, Public, Static
+    Parse(String): PrivateScope, Public, Static
+    Parse(String, NumberFormatInfo): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.ExceptionUtils: AutoLayout, AnsiClass, Class, Public, Sealed
+Class Microsoft.VisualBasic.CompilerServices.InternalErrorException: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable
+  :System.Exception
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.CompilerServices.FlowControl: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    ForNextCheckR4(Single, Single, Single): PrivateScope, Public, Static
+    ForNextCheckR8(Double, Double, Double): PrivateScope, Public, Static
+    ForNextCheckDec(Decimal, Decimal, Decimal): PrivateScope, Public, Static
+    ForLoopInitObj(Object, Object, Object, Object, Object&, Object&): PrivateScope, Public, Static
+    ForNextCheckObj(Object, Object, Object&): PrivateScope, Public, Static
+    ForEachInArr(Array): PrivateScope, Public, Static
+    ForEachInObj(Object): PrivateScope, Public, Static
+    ForEachNextObj(Object&, IEnumerator): PrivateScope, Public, Static
+    CheckForSyncLockOnValueType(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.ObjectFlowControl: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    CheckForSyncLockOnValueType(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.ObjectFlowControl+ForLoopControl: AutoLayout, AnsiClass, Class, NestedPublic, Sealed
+  Methods:
+    ForLoopInitObj(Object, Object, Object, Object, Object&, Object&): PrivateScope, Public, Static
+    ForNextCheckObj(Object, Object, Object&): PrivateScope, Public, Static
+    ForNextCheckR4(Single, Single, Single): PrivateScope, Public, Static
+    ForNextCheckR8(Double, Double, Double): PrivateScope, Public, Static
+    ForNextCheckDec(Decimal, Decimal, Decimal): PrivateScope, Public, Static
+Interface Microsoft.VisualBasic.CompilerServices.IVbHost: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Methods:
+    GetParentWindow(): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride, Abstract
+    GetWindowTitle(): PrivateScope, Public, Virtual, VtableLayoutMask, CheckAccessOnOverride, Abstract
+Class Microsoft.VisualBasic.CompilerServices.HostServices: AutoLayout, AnsiClass, Class, Public, Sealed, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Properties:
+    Microsoft.VisualBasic.CompilerServices.IVbHost VBHost 'get set' : 
+  Methods:
+    get_VBHost(): PrivateScope, Public, Static, SpecialName
+    set_VBHost(IVbHost): PrivateScope, Public, Static, SpecialName
+Class Microsoft.VisualBasic.CompilerServices.IntegerType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.InternalXmlHelper: AutoLayout, AnsiClass, Class, Public, Sealed
+  Properties:
+    System.String Value [System.Collections.Generic.IEnumerable`1[System.Xml.Linq.XElement]] 'get set' : 
+    System.String AttributeValue [System.Collections.Generic.IEnumerable`1[System.Xml.Linq.XElement], System.Xml.Linq.XName] 'get set' : 
+    System.String AttributeValue [System.Xml.Linq.XElement, System.Xml.Linq.XName] 'get set' : 
+  Methods:
+    get_Value(IEnumerable`1): PrivateScope, Public, Static, SpecialName
+    set_Value(IEnumerable`1, String): PrivateScope, Public, Static, SpecialName
+    get_AttributeValue(IEnumerable`1, XName): PrivateScope, Public, Static, SpecialName
+    set_AttributeValue(IEnumerable`1, XName, String): PrivateScope, Public, Static, SpecialName
+    get_AttributeValue(XElement, XName): PrivateScope, Public, Static, SpecialName
+    set_AttributeValue(XElement, XName, String): PrivateScope, Public, Static, SpecialName
+    CreateAttribute(XName, Object): PrivateScope, Public, Static
+    CreateNamespaceAttribute(XName, XNamespace): PrivateScope, Public, Static
+    RemoveNamespaceAttributes(String[], XNamespace[], List`1, Object): PrivateScope, Public, Static
+    RemoveNamespaceAttributes(String[], XNamespace[], List`1, IEnumerable): PrivateScope, Public, Static
+    RemoveNamespaceAttributes(String[], XNamespace[], List`1, XElement): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.LateBinding: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    LateGet(Object, Type, String, Object[], String[], Boolean[]): PrivateScope, Public, Static
+    LateSetComplex(Object, Type, String, Object[], String[], Boolean, Boolean): PrivateScope, Public, Static
+    LateSet(Object, Type, String, Object[], String[]): PrivateScope, Public, Static
+    LateIndexGet(Object, Object[], String[]): PrivateScope, Public, Static
+    LateIndexSetComplex(Object, Object[], String[], Boolean, Boolean): PrivateScope, Public, Static
+    LateIndexSet(Object, Object[], String[]): PrivateScope, Public, Static
+    LateCall(Object, Type, String, Object[], String[], Boolean[]): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.LikeOperator: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    LikeObject(Object, Object, CompareMethod): PrivateScope, Public, Static
+    LikeString(String, String, CompareMethod): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.LongType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.NewLateBinding: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    LateCanEvaluate(Object, Type, String, Object[], Boolean, Boolean): PrivateScope, Public, Static
+    LateCall(Object, Type, String, Object[], String[], Type[], Boolean[], Boolean): PrivateScope, Public, Static
+    FallbackCall(Object, String, Object[], String[], Boolean): PrivateScope, Public, Static (Obsolete)
+    LateCallInvokeDefault(Object, Object[], String[], Boolean): PrivateScope, Public, Static
+    LateGetInvokeDefault(Object, Object[], String[], Boolean): PrivateScope, Public, Static
+    FallbackInvokeDefault1(Object, Object[], String[], Boolean): PrivateScope, Public, Static (Obsolete)
+    FallbackInvokeDefault2(Object, Object[], String[], Boolean): PrivateScope, Public, Static (Obsolete)
+    LateIndexGet(Object, Object[], String[]): PrivateScope, Public, Static
+    LateGet(Object, Type, String, Object[], String[], Type[], Boolean[]): PrivateScope, Public, Static
+    FallbackGet(Object, String, Object[], String[]): PrivateScope, Public, Static (Obsolete)
+    LateIndexSetComplex(Object, Object[], String[], Boolean, Boolean): PrivateScope, Public, Static
+    FallbackIndexSetComplex(Object, Object[], String[], Boolean, Boolean): PrivateScope, Public, Static (Obsolete)
+    LateIndexSet(Object, Object[], String[]): PrivateScope, Public, Static
+    FallbackIndexSet(Object, Object[], String[]): PrivateScope, Public, Static (Obsolete)
+    LateSetComplex(Object, Type, String, Object[], String[], Type[], Boolean, Boolean): PrivateScope, Public, Static
+    FallbackSetComplex(Object, String, Object[], Boolean, Boolean): PrivateScope, Public, Static (Obsolete)
+    LateSet(Object, Type, String, Object[], String[], Type[]): PrivateScope, Public, Static
+    FallbackSet(Object, String, Object[]): PrivateScope, Public, Static (Obsolete)
+    LateSet(Object, Type, String, Object[], String[], Type[], Boolean, Boolean, CallType): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.ObjectType: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Methods:
+    ObjTst(Object, Object, Boolean): PrivateScope, Public, Static
+    PlusObj(Object): PrivateScope, Public, Static
+    NegObj(Object): PrivateScope, Public, Static
+    NotObj(Object): PrivateScope, Public, Static
+    BitAndObj(Object, Object): PrivateScope, Public, Static
+    BitOrObj(Object, Object): PrivateScope, Public, Static
+    BitXorObj(Object, Object): PrivateScope, Public, Static
+    AddObj(Object, Object): PrivateScope, Public, Static
+    SubObj(Object, Object): PrivateScope, Public, Static
+    MulObj(Object, Object): PrivateScope, Public, Static
+    DivObj(Object, Object): PrivateScope, Public, Static
+    PowObj(Object, Object): PrivateScope, Public, Static
+    ModObj(Object, Object): PrivateScope, Public, Static
+    IDivObj(Object, Object): PrivateScope, Public, Static
+    ShiftLeftObj(Object, Int32): PrivateScope, Public, Static
+    ShiftRightObj(Object, Int32): PrivateScope, Public, Static
+    XorObj(Object, Object): PrivateScope, Public, Static
+    LikeObj(Object, Object, CompareMethod): PrivateScope, Public, Static
+    StrCatObj(Object, Object): PrivateScope, Public, Static
+    GetObjectValuePrimitive(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.Operators: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    FallbackInvokeUserDefinedOperator(Object, Object[]): PrivateScope, Public, Static (Obsolete)
+    CompareObjectEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    ConditionalCompareObjectEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareObjectNotEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    ConditionalCompareObjectNotEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareObjectLess(Object, Object, Boolean): PrivateScope, Public, Static
+    ConditionalCompareObjectLess(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareObjectLessEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    ConditionalCompareObjectLessEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareObjectGreaterEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    ConditionalCompareObjectGreaterEqual(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareObjectGreater(Object, Object, Boolean): PrivateScope, Public, Static
+    ConditionalCompareObjectGreater(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareObject(Object, Object, Boolean): PrivateScope, Public, Static
+    CompareString(String, String, Boolean): PrivateScope, Public, Static
+    PlusObject(Object): PrivateScope, Public, Static
+    NegateObject(Object): PrivateScope, Public, Static
+    NotObject(Object): PrivateScope, Public, Static
+    AndObject(Object, Object): PrivateScope, Public, Static
+    OrObject(Object, Object): PrivateScope, Public, Static
+    XorObject(Object, Object): PrivateScope, Public, Static
+    AddObject(Object, Object): PrivateScope, Public, Static
+    SubtractObject(Object, Object): PrivateScope, Public, Static
+    MultiplyObject(Object, Object): PrivateScope, Public, Static
+    DivideObject(Object, Object): PrivateScope, Public, Static
+    ExponentObject(Object, Object): PrivateScope, Public, Static
+    ModObject(Object, Object): PrivateScope, Public, Static
+    IntDivideObject(Object, Object): PrivateScope, Public, Static
+    LeftShiftObject(Object, Object): PrivateScope, Public, Static
+    RightShiftObject(Object, Object): PrivateScope, Public, Static
+    LikeObject(Object, Object, CompareMethod): PrivateScope, Public, Static
+    LikeString(String, String, CompareMethod): PrivateScope, Public, Static
+    ConcatenateObject(Object, Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.ProjectData: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    CreateProjectError(Int32): PrivateScope, Public, Static
+    SetProjectError(Exception): PrivateScope, Public, Static, HideBySig
+    SetProjectError(Exception, Int32): PrivateScope, Public, Static, HideBySig
+    ClearProjectError(): PrivateScope, Public, Static
+    EndApp(): PrivateScope, Public, Static, HasSecurity
+Class Microsoft.VisualBasic.CompilerServices.ShortType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.SingleType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromString(String): PrivateScope, Public, Static
+    FromString(String, NumberFormatInfo): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+    FromObject(Object, NumberFormatInfo): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.StaticLocalInitFlag: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+  Fields:
+    Int16 State : Public
+Class Microsoft.VisualBasic.CompilerServices.IncompleteInitialization: AutoLayout, AnsiClass, Class, Public, Sealed, Serializable
+  :System.Exception
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName
+Class Microsoft.VisualBasic.CompilerServices.StringType: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    FromBoolean(Boolean): PrivateScope, Public, Static
+    FromByte(Byte): PrivateScope, Public, Static
+    FromChar(Char): PrivateScope, Public, Static
+    FromShort(Int16): PrivateScope, Public, Static
+    FromInteger(Int32): PrivateScope, Public, Static
+    FromLong(Int64): PrivateScope, Public, Static
+    FromSingle(Single): PrivateScope, Public, Static
+    FromDouble(Double): PrivateScope, Public, Static
+    FromSingle(Single, NumberFormatInfo): PrivateScope, Public, Static
+    FromDouble(Double, NumberFormatInfo): PrivateScope, Public, Static
+    FromDate(DateTime): PrivateScope, Public, Static
+    FromDecimal(Decimal): PrivateScope, Public, Static
+    FromDecimal(Decimal, NumberFormatInfo): PrivateScope, Public, Static
+    FromObject(Object): PrivateScope, Public, Static
+    StrCmp(String, String, Boolean): PrivateScope, Public, Static
+    StrLike(String, String, CompareMethod): PrivateScope, Public, Static
+    StrLikeBinary(String, String): PrivateScope, Public, Static
+    StrLikeText(String, String): PrivateScope, Public, Static
+    MidStmtStr(String&, Int32, Int32, String): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.Utils: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    GetResourceString(String, String[]): PrivateScope, Public, Static
+    ThrowException(Int32): PrivateScope, Public, Static
+    SetCultureInfo(CultureInfo): PrivateScope, Public, Static, HasSecurity
+    CopyArray(Array, Array): PrivateScope, Public, Static
+    MethodToString(MethodBase): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.CompilerServices.Versioned: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    CallByName(Object, String, CallType, Object[]): PrivateScope, Public, Static
+    IsNumeric(Object): PrivateScope, Public, Static
+    TypeName(Object): PrivateScope, Public, Static
+    SystemTypeName(String): PrivateScope, Public, Static
+    VbTypeName(String): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.Information: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    Err(): PrivateScope, Public, Static
+    Erl(): PrivateScope, Public, Static
+    IsArray(Object): PrivateScope, Public, Static
+    IsDate(Object): PrivateScope, Public, Static
+    IsDBNull(Object): PrivateScope, Public, Static
+    IsNothing(Object): PrivateScope, Public, Static
+    IsError(Object): PrivateScope, Public, Static
+    IsReference(Object): PrivateScope, Public, Static
+    LBound(Array, Int32(Optional, HasDefault)): PrivateScope, Public, Static
+    UBound(Array, Int32(Optional, HasDefault)): PrivateScope, Public, Static
+    QBColor(Int32): PrivateScope, Public, Static
+    RGB(Int32, Int32, Int32): PrivateScope, Public, Static
+    VarType(Object): PrivateScope, Public, Static
+    IsNumeric(Object): PrivateScope, Public, Static
+    TypeName(Object): PrivateScope, Public, Static
+    SystemTypeName(String): PrivateScope, Public, Static
+    VbTypeName(String): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.Interaction: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    Shell(String, AppWinStyle(Optional, HasDefault), Boolean(Optional, HasDefault), Int32(Optional, HasDefault)): PrivateScope, Public, Static, HasSecurity
+    AppActivate(Int32): PrivateScope, Public, Static, HasSecurity
+    AppActivate(String): PrivateScope, Public, Static, HasSecurity
+    Command(): PrivateScope, Public, Static
+    Environ(Int32): PrivateScope, Public, Static
+    Environ(String): PrivateScope, Public, Static
+    Beep(): PrivateScope, Public, Static
+    InputBox(String, String(Optional, HasDefault), String(Optional, HasDefault), Int32(Optional, HasDefault), Int32(Optional, HasDefault)): PrivateScope, Public, Static, HasSecurity
+    MsgBox(Object, MsgBoxStyle(Optional, HasDefault), Object(Optional, HasDefault)): PrivateScope, Public, Static, HasSecurity
+    Choose(Double, Object[]): PrivateScope, Public, Static
+    IIf(Boolean, Object, Object): PrivateScope, Public, Static
+    Partition(Int64, Int64, Int64, Int64): PrivateScope, Public, Static
+    Switch(Object[]): PrivateScope, Public, Static
+    DeleteSetting(String, String(Optional, HasDefault), String(Optional, HasDefault)): PrivateScope, Public, Static, HasSecurity
+    GetAllSettings(String, String): PrivateScope, Public, Static
+    GetSetting(String, String, String, String(Optional, HasDefault)): PrivateScope, Public, Static
+    SaveSetting(String, String, String, String): PrivateScope, Public, Static
+    CreateObject(String, String(Optional, HasDefault)): PrivateScope, Public, Static, HasSecurity
+    GetObject(String(Optional, HasDefault), String(Optional, HasDefault)): PrivateScope, Public, Static, HasSecurity
+    CallByName(Object, String, CallType, Object[]): PrivateScope, Public, Static
+Struct Microsoft.VisualBasic.Logging.LogFileLocation: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.Logging.LogFileLocation TempDirectory = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.LogFileLocation LocalUserApplicationDirectory = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.LogFileLocation CommonApplicationDirectory = 2 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.LogFileLocation ExecutableDirectory = 3 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.LogFileLocation Custom = 4 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.Logging.LogFileCreationScheduleOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.Logging.LogFileCreationScheduleOption None = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.LogFileCreationScheduleOption Daily = 1 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.LogFileCreationScheduleOption Weekly = 2 : Public, Static, Literal, HasDefault
+Struct Microsoft.VisualBasic.Logging.DiskSpaceExhaustedOption: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    Microsoft.VisualBasic.Logging.DiskSpaceExhaustedOption ThrowException = 0 : Public, Static, Literal, HasDefault
+    Microsoft.VisualBasic.Logging.DiskSpaceExhaustedOption DiscardMessages = 1 : Public, Static, Literal, HasDefault
+Class Microsoft.VisualBasic.Logging.FileLogTraceListener: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Diagnostics.TraceListener
+    Void .ctor(System.String): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+    Void .ctor(): PrivateScope, Public, SpecialName, RTSpecialName, HasSecurity
+  Properties:
+    Microsoft.VisualBasic.Logging.LogFileLocation Location 'get set' : 
+    Boolean AutoFlush 'get set' : 
+    Boolean IncludeHostName 'get set' : 
+    Boolean Append 'get set' : 
+    Microsoft.VisualBasic.Logging.DiskSpaceExhaustedOption DiskSpaceExhaustedBehavior 'get set' : 
+    System.String BaseFileName 'get set' : 
+    System.String FullLogFileName 'get ' : 
+    Microsoft.VisualBasic.Logging.LogFileCreationScheduleOption LogFileCreationSchedule 'get set' : 
+    Int64 MaxFileSize 'get set' : 
+    Int64 ReserveDiskSpace 'get set' : 
+    System.String Delimiter 'get set' : 
+    System.Text.Encoding Encoding 'get set' : 
+    System.String CustomLocation 'get set' : 
+  Methods:
+    get_Location(): PrivateScope, Public, SpecialName
+    set_Location(LogFileLocation): PrivateScope, Public, SpecialName
+    get_AutoFlush(): PrivateScope, Public, SpecialName
+    set_AutoFlush(Boolean): PrivateScope, Public, SpecialName
+    get_IncludeHostName(): PrivateScope, Public, SpecialName
+    set_IncludeHostName(Boolean): PrivateScope, Public, SpecialName
+    get_Append(): PrivateScope, Public, SpecialName
+    set_Append(Boolean): PrivateScope, Public, SpecialName
+    get_DiskSpaceExhaustedBehavior(): PrivateScope, Public, SpecialName
+    set_DiskSpaceExhaustedBehavior(DiskSpaceExhaustedOption): PrivateScope, Public, SpecialName
+    get_BaseFileName(): PrivateScope, Public, SpecialName
+    set_BaseFileName(String): PrivateScope, Public, SpecialName
+    get_FullLogFileName(): PrivateScope, Public, SpecialName
+    get_LogFileCreationSchedule(): PrivateScope, Public, SpecialName
+    set_LogFileCreationSchedule(LogFileCreationScheduleOption): PrivateScope, Public, SpecialName
+    get_MaxFileSize(): PrivateScope, Public, SpecialName
+    set_MaxFileSize(Int64): PrivateScope, Public, SpecialName
+    get_ReserveDiskSpace(): PrivateScope, Public, SpecialName
+    set_ReserveDiskSpace(Int64): PrivateScope, Public, SpecialName
+    get_Delimiter(): PrivateScope, Public, SpecialName
+    set_Delimiter(String): PrivateScope, Public, SpecialName
+    get_Encoding(): PrivateScope, Public, SpecialName
+    set_Encoding(Encoding): PrivateScope, Public, SpecialName
+    get_CustomLocation(): PrivateScope, Public, SpecialName
+    set_CustomLocation(String): PrivateScope, Public, SpecialName
+    Write(String): PrivateScope, Public, Virtual, HideBySig, CheckAccessOnOverride, HasSecurity
+    WriteLine(String): PrivateScope, Public, Virtual, HideBySig, CheckAccessOnOverride, HasSecurity
+    TraceEvent(TraceEventCache, String, TraceEventType, Int32, String): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+    TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object[]): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+    TraceData(TraceEventCache, String, TraceEventType, Int32, Object): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+    TraceData(TraceEventCache, String, TraceEventType, Int32, Object[]): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+    Flush(): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+    Close(): PrivateScope, Public, Virtual, CheckAccessOnOverride, HasSecurity
+Class Microsoft.VisualBasic.VBMath: AutoLayout, AnsiClass, Class, Public, Sealed
+  Methods:
+    Rnd(): PrivateScope, Public, Static
+    Rnd(Single): PrivateScope, Public, Static
+    Randomize(): PrivateScope, Public, Static
+    Randomize(Double): PrivateScope, Public, Static
+Class Microsoft.VisualBasic.MyServices.ClipboardProxy: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  Methods:
+    GetText(): PrivateScope, Public
+    GetText(TextDataFormat): PrivateScope, Public
+    ContainsText(): PrivateScope, Public
+    ContainsText(TextDataFormat): PrivateScope, Public
+    SetText(String): PrivateScope, Public
+    SetText(String, TextDataFormat): PrivateScope, Public
+    GetImage(): PrivateScope, Public
+    ContainsImage(): PrivateScope, Public
+    SetImage(Image): PrivateScope, Public
+    GetAudioStream(): PrivateScope, Public
+    ContainsAudio(): PrivateScope, Public
+    SetAudio(Byte[]): PrivateScope, Public
+    SetAudio(Stream): PrivateScope, Public
+    GetFileDropList(): PrivateScope, Public
+    ContainsFileDropList(): PrivateScope, Public
+    SetFileDropList(StringCollection): PrivateScope, Public
+    GetData(String): PrivateScope, Public
+    ContainsData(String): PrivateScope, Public
+    SetData(String, Object): PrivateScope, Public
+    Clear(): PrivateScope, Public
+    GetDataObject(): PrivateScope, Public
+    SetDataObject(DataObject): PrivateScope, Public
+Class Microsoft.VisualBasic.MyServices.FileSystemProxy: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  Properties:
+    System.Collections.ObjectModel.ReadOnlyCollection`1[System.IO.DriveInfo] Drives 'get ' : 
+    Microsoft.VisualBasic.MyServices.SpecialDirectoriesProxy SpecialDirectories 'get ' : 
+    System.String CurrentDirectory 'get set' : 
+  Methods:
+    get_Drives(): PrivateScope, Public, SpecialName
+    get_SpecialDirectories(): PrivateScope, Public, SpecialName
+    get_CurrentDirectory(): PrivateScope, Public, SpecialName
+    set_CurrentDirectory(String): PrivateScope, Public, SpecialName
+    DirectoryExists(String): PrivateScope, Public
+    FileExists(String): PrivateScope, Public
+    CreateDirectory(String): PrivateScope, Public
+    GetDirectoryInfo(String): PrivateScope, Public
+    GetFileInfo(String): PrivateScope, Public
+    GetDriveInfo(String): PrivateScope, Public
+    GetFiles(String): PrivateScope, Public
+    GetFiles(String, SearchOption, String[]): PrivateScope, Public
+    GetDirectories(String): PrivateScope, Public
+    GetDirectories(String, SearchOption, String[]): PrivateScope, Public
+    FindInFiles(String, String, Boolean, SearchOption): PrivateScope, Public
+    FindInFiles(String, String, Boolean, SearchOption, String[]): PrivateScope, Public
+    GetParentPath(String): PrivateScope, Public
+    CombinePath(String, String): PrivateScope, Public
+    GetName(String): PrivateScope, Public
+    GetTempFileName(): PrivateScope, Public
+    ReadAllText(String): PrivateScope, Public
+    ReadAllText(String, Encoding): PrivateScope, Public
+    ReadAllBytes(String): PrivateScope, Public
+    WriteAllText(String, String, Boolean): PrivateScope, Public
+    WriteAllText(String, String, Boolean, Encoding): PrivateScope, Public
+    WriteAllBytes(String, Byte[], Boolean): PrivateScope, Public
+    CopyFile(String, String): PrivateScope, Public
+    CopyFile(String, String, Boolean): PrivateScope, Public
+    CopyFile(String, String, UIOption): PrivateScope, Public
+    CopyFile(String, String, UIOption, UICancelOption): PrivateScope, Public
+    MoveFile(String, String): PrivateScope, Public
+    MoveFile(String, String, Boolean): PrivateScope, Public
+    MoveFile(String, String, UIOption): PrivateScope, Public
+    MoveFile(String, String, UIOption, UICancelOption): PrivateScope, Public
+    CopyDirectory(String, String): PrivateScope, Public
+    CopyDirectory(String, String, Boolean): PrivateScope, Public
+    CopyDirectory(String, String, UIOption): PrivateScope, Public
+    CopyDirectory(String, String, UIOption, UICancelOption): PrivateScope, Public
+    MoveDirectory(String, String): PrivateScope, Public
+    MoveDirectory(String, String, Boolean): PrivateScope, Public
+    MoveDirectory(String, String, UIOption): PrivateScope, Public
+    MoveDirectory(String, String, UIOption, UICancelOption): PrivateScope, Public
+    DeleteFile(String): PrivateScope, Public
+    DeleteFile(String, UIOption, RecycleOption): PrivateScope, Public
+    DeleteFile(String, UIOption, RecycleOption, UICancelOption): PrivateScope, Public
+    DeleteDirectory(String, DeleteDirectoryOption): PrivateScope, Public
+    DeleteDirectory(String, UIOption, RecycleOption): PrivateScope, Public
+    DeleteDirectory(String, UIOption, RecycleOption, UICancelOption): PrivateScope, Public
+    RenameFile(String, String): PrivateScope, Public
+    RenameDirectory(String, String): PrivateScope, Public
+    OpenTextFieldParser(String): PrivateScope, Public
+    OpenTextFieldParser(String, String[]): PrivateScope, Public
+    OpenTextFieldParser(String, Int32[]): PrivateScope, Public
+    OpenTextFileReader(String): PrivateScope, Public
+    OpenTextFileReader(String, Encoding): PrivateScope, Public
+    OpenTextFileWriter(String, Boolean): PrivateScope, Public
+    OpenTextFileWriter(String, Boolean, Encoding): PrivateScope, Public
+Class Microsoft.VisualBasic.MyServices.RegistryProxy: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  Properties:
+    Microsoft.Win32.RegistryKey CurrentUser 'get ' : 
+    Microsoft.Win32.RegistryKey LocalMachine 'get ' : 
+    Microsoft.Win32.RegistryKey ClassesRoot 'get ' : 
+    Microsoft.Win32.RegistryKey Users 'get ' : 
+    Microsoft.Win32.RegistryKey PerformanceData 'get ' : 
+    Microsoft.Win32.RegistryKey CurrentConfig 'get ' : 
+    Microsoft.Win32.RegistryKey DynData 'get ' :  (Obsolete)
+  Methods:
+    get_CurrentUser(): PrivateScope, Public, SpecialName
+    get_LocalMachine(): PrivateScope, Public, SpecialName
+    get_ClassesRoot(): PrivateScope, Public, SpecialName
+    get_Users(): PrivateScope, Public, SpecialName
+    get_PerformanceData(): PrivateScope, Public, SpecialName
+    get_CurrentConfig(): PrivateScope, Public, SpecialName
+    get_DynData(): PrivateScope, Public, SpecialName
+    GetValue(String, String, Object): PrivateScope, Public
+    SetValue(String, String, Object): PrivateScope, Public
+    SetValue(String, String, Object, RegistryValueKind): PrivateScope, Public
+Class Microsoft.VisualBasic.MyServices.SpecialDirectoriesProxy: AutoLayout, AnsiClass, Class, Public, HasSecurity
+  Properties:
+    System.String MyDocuments 'get ' : 
+    System.String MyMusic 'get ' : 
+    System.String MyPictures 'get ' : 
+    System.String Desktop 'get ' : 
+    System.String Programs 'get ' : 
+    System.String ProgramFiles 'get ' : 
+    System.String Temp 'get ' : 
+    System.String CurrentUserApplicationData 'get ' : 
+    System.String AllUsersApplicationData 'get ' : 
+  Methods:
+    get_MyDocuments(): PrivateScope, Public, SpecialName
+    get_MyMusic(): PrivateScope, Public, SpecialName
+    get_MyPictures(): PrivateScope, Public, SpecialName
+    get_Desktop(): PrivateScope, Public, SpecialName
+    get_Programs(): PrivateScope, Public, SpecialName
+    get_ProgramFiles(): PrivateScope, Public, SpecialName
+    get_Temp(): PrivateScope, Public, SpecialName
+    get_CurrentUserApplicationData(): PrivateScope, Public, SpecialName
+    get_AllUsersApplicationData(): PrivateScope, Public, SpecialName
+Class Microsoft.VisualBasic.Strings: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  Methods:
+    Asc(Char): PrivateScope, Public, Static
+    Asc(String): PrivateScope, Public, Static
+    AscW(String): PrivateScope, Public, Static
+    AscW(Char): PrivateScope, Public, Static
+    Chr(Int32): PrivateScope, Public, Static
+    ChrW(Int32): PrivateScope, Public, Static
+    Filter(Object[], String, Boolean(Optional, HasDefault), CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    Filter(String[], String, Boolean(Optional, HasDefault), CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    InStr(String, String, CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    InStr(Int32, String, String, CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    InStrRev(String, String, Int32(Optional, HasDefault), CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    Join(Object[], String(Optional, HasDefault)): PrivateScope, Public, Static
+    Join(String[], String(Optional, HasDefault)): PrivateScope, Public, Static
+    LCase(String): PrivateScope, Public, Static
+    LCase(Char): PrivateScope, Public, Static
+    Len(Boolean): PrivateScope, Public, Static
+    Len(SByte): PrivateScope, Public, Static
+    Len(Byte): PrivateScope, Public, Static
+    Len(Int16): PrivateScope, Public, Static
+    Len(UInt16): PrivateScope, Public, Static
+    Len(Int32): PrivateScope, Public, Static
+    Len(UInt32): PrivateScope, Public, Static
+    Len(Int64): PrivateScope, Public, Static
+    Len(UInt64): PrivateScope, Public, Static
+    Len(Decimal): PrivateScope, Public, Static
+    Len(Single): PrivateScope, Public, Static
+    Len(Double): PrivateScope, Public, Static
+    Len(DateTime): PrivateScope, Public, Static
+    Len(Char): PrivateScope, Public, Static
+    Len(String): PrivateScope, Public, Static
+    Len(Object): PrivateScope, Public, Static
+    Replace(String, String, String, Int32(Optional, HasDefault), Int32(Optional, HasDefault), CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    Space(Int32): PrivateScope, Public, Static
+    Split(String, String(Optional, HasDefault), Int32(Optional, HasDefault), CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    LSet(String, Int32): PrivateScope, Public, Static
+    RSet(String, Int32): PrivateScope, Public, Static
+    StrDup(Int32, Object): PrivateScope, Public, Static
+    StrDup(Int32, Char): PrivateScope, Public, Static
+    StrDup(Int32, String): PrivateScope, Public, Static
+    StrReverse(String): PrivateScope, Public, Static
+    UCase(String): PrivateScope, Public, Static
+    UCase(Char): PrivateScope, Public, Static
+    Format(Object, String(Optional, HasDefault)): PrivateScope, Public, Static
+    FormatCurrency(Object, Int32(Optional, HasDefault), TriState(Optional, HasDefault), TriState(Optional, HasDefault), TriState(Optional, HasDefault)): PrivateScope, Public, Static
+    FormatDateTime(DateTime, DateFormat(Optional, HasDefault)): PrivateScope, Public, Static
+    FormatNumber(Object, Int32(Optional, HasDefault), TriState(Optional, HasDefault), TriState(Optional, HasDefault), TriState(Optional, HasDefault)): PrivateScope, Public, Static
+    FormatPercent(Object, Int32(Optional, HasDefault), TriState(Optional, HasDefault), TriState(Optional, HasDefault), TriState(Optional, HasDefault)): PrivateScope, Public, Static
+    GetChar(String, Int32): PrivateScope, Public, Static
+    Left(String, Int32): PrivateScope, Public, Static
+    LTrim(String): PrivateScope, Public, Static
+    Mid(String, Int32): PrivateScope, Public, Static
+    Mid(String, Int32, Int32): PrivateScope, Public, Static
+    Right(String, Int32): PrivateScope, Public, Static
+    RTrim(String): PrivateScope, Public, Static
+    Trim(String): PrivateScope, Public, Static
+    StrComp(String, String, CompareMethod(Optional, HasDefault)): PrivateScope, Public, Static
+    StrConv(String, VbStrConv, Int32(Optional, HasDefault)): PrivateScope, Public, Static
