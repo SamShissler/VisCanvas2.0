@@ -8,6 +8,7 @@ Purpose: CS 481 Project
 
 #include "stdafx.h"
 #include "DomNominalSet.h"
+#include "EmptySpotHBPicker.h"
 #include <atlstr.h>
 #include <vector>
 #include <unordered_map>
@@ -15,6 +16,8 @@ Purpose: CS 481 Project
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <utility>
+
+//using namespace CppCLRWinformsProjekt;
 
 using namespace System::Windows::Forms;
 
@@ -56,7 +59,7 @@ namespace OpenGLForm
 
 			// Create the data interface
 			this->file = new DataInterface();
-
+			
 			this->uploadFile = false;
 
 			// disable the toggle buttons by default
@@ -280,7 +283,15 @@ namespace OpenGLForm
 		System::Void autoCluster(System::Void)
 		{
 			//this->file->autoCluster();
-			this->file->highlightOverlap(0.0);
+			
+			string esHBs = this->file->highlightOverlap(0.0);
+			//Maybe move the EmptySpotHBPicker call here?
+			//if ((*file).hasEmpty()) {
+			//	//using namespace CppCLRWinformsProjekt;
+			//	EmptySpotHBPicker^ eshbp = gcnew EmptySpotHBPicker(file->getClusters(), file->getEmptys(), &esHBs);
+			//	eshbp->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Sizable;
+			//	eshbp->Show();
+			//}
 		}
 
 		/**
@@ -302,21 +313,36 @@ namespace OpenGLForm
 		}
 
 		/**
-		 * This creates a hypercube analysis pertaining to a particular cluster of data
+		 * This creates a hypercube analysis pertaining to a particular cluster of data Checks if two are equal
 		 * @return
 		 */
 		System::Void hypercube(System::Void)
 		{
 			if (this->file->isPaintClusters())
 			{
+				ofstream outfile;
+				outfile.open("radius.txt", std::ios_base::app);
+				outfile << "out";
+				outfile << file->getRadius();
+				outfile << "\n";
+				outfile.close();
+
 				int prev = file->getSelectedClusterIndex();
 				this->file->subHypercube(file->getSelectedSetIndex(), file->getSelectedClusterIndex(),/*file->getHypercubeThreshold()*0.01*/file->getRadius());
 				this->hypercubeToggle = false;
-				//this->file->xorClusters(prev, file->getClusters().size() - 1);
+				this->file->xorClusters(prev, file->getClusters().size() - 1);
 			}
 			else
 			{
 				int selectedSetIndex = this->file->getSelectedSetIndex();
+
+				ofstream outfile;
+				outfile.open("radius.txt", std::ios_base::app);
+				outfile << "out";
+				outfile << file->getRadius();
+				outfile << "\n";
+				outfile.close();
+
 				this->file->hypercube(selectedSetIndex, /*file->getHypercubeThreshold()*0.01*/file->getRadius());
 				this->hypercubeToggle = false;
 			}
@@ -513,7 +539,7 @@ namespace OpenGLForm
 		}
 
 		/**
-		 * Gets the amount of glusters
+		 * Gets the amount of clusters
 		 * @return The amount of hypercube clusters
 		 */
 		int getClusterAmount(System::Void)
@@ -1205,6 +1231,10 @@ namespace OpenGLForm
 			*/
 
 			if (this->uploadedFile()) {
+
+				//
+				// Draws the dimensions
+				//
 				int dimensionCount = 0;
 				double xAxisIncrement = this->worldWidth / (this->file->getVisibleDimensionCount() + 1); // +1 instead of +2
 				glColor4f(0.0f, 0.0f, 0.0f, 1.0f);
@@ -1227,6 +1257,9 @@ namespace OpenGLForm
 
 				dimensionCount = 0;
 
+				//
+				// Draws lines for empty spots if any
+				//
 				glColor4d(125.0 / 255.0, 125.0 / 255.0, 125.0 / 255.0, 155.0 / 255.0);
 				for (auto entry : file->getAboveOne())
 				{
@@ -1252,7 +1285,7 @@ namespace OpenGLForm
 				if (this->textEnabled) {
 					glTextColor2d(0.0, 0.0, 0.0, 1.0);
 					for (int i = 0; i < this->file->getDimensionAmount(); i++) {
-
+						// Displays text for empty spot lines if any
 						if (i == 0 && !(file->getAboveOne().empty()))
 						{
 							double shiftAmount = this->file->getDimensionShift(i);
@@ -1262,7 +1295,7 @@ namespace OpenGLForm
 								glText2d(((-this->worldWidth - (entry.first.length() * 10.0)) / 1.9) + ((xAxisIncrement) * (dimensionCount + 1)), ((entry.second + shiftAmount) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight), entry.first.c_str());
 							}
 						}
-
+						// Displays dimension names
 						if (file->getDataDimensions()->at(i)->isVisible())
 						{
 							// display dimension text
@@ -1353,7 +1386,7 @@ namespace OpenGLForm
 								{
 									double currentData = this->file->getData(currentIndex, i);
 									// Adds empty spot boxes to hypercube if applicable
-									if (TRUE){//currentData <= 0.0) {
+									if (currentData <= 0.0) {
 										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 20);
 										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 20);
 										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 20.0, (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 20);
@@ -1428,12 +1461,14 @@ namespace OpenGLForm
 					dimensionCount = 0;
 
 					// re-draw selected cluster border on top
+	
 
 					if (this->file->drawBorders() && this->file->getDisplayed(this->file->getSelectedClusterIndex()))
 					{
 						std::vector<double>* colorOfCurrent = this->file->getClusterColor(this->file->getDisplayed(this->file->getSelectedClusterIndex()));
 						glColor4d(192.0, 192.0, 192.0, 1.0);
 
+						/* This is the original code to create hyperblocks without empty spots.
 						glBegin(GL_QUAD_STRIP);
 						for (int i = 0; i < this->file->getDimensionAmount(); i++)
 						{
@@ -1455,7 +1490,163 @@ namespace OpenGLForm
 						}
 						glEnd();
 						dimensionCount = 0;
+						*/
+
+						for (int i = 0; i < this->file->getDimensionAmount(); i++)
+						{
+							if (this->file->getDataDimensions()->at(i)->isVisible())
+							{
+								double shift = this->file->getDimensionAmount();
+								glBegin(GL_POLYGON);
+								double currentMax = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+								double currentMin = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
+								if (currentMin < 0) {
+									currentMin = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
+								}
+								if (currentMin >= 0) {
+									if ((currentMax - currentMin) * (this->worldHeight * 0.5) < 5) {
+										//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, ((currentMax + (currentMax - currentMin) * 5.0)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, ((currentMax + (currentMax - currentMin) * 5.0)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, ((currentMin - (currentMax - currentMin) * 5.0)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, ((currentMin - (currentMax - currentMin) * 5.0)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, ((currentMax + 0.02)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, ((currentMax + 0.02)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, ((currentMin - 0.02)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, ((currentMin - 0.02)* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+									}
+									else {
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentMax * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentMax * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentMin * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentMin * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+									}
+								}
+								glEnd();
+
+								dimensionCount++;
+							}
+
+						}
+						//glEnd();
+						dimensionCount = 0;
+
+						//.
+						//.
+						/* This is potentially the code to add back in the filled in hyperblocks with empty spots.
+					
+						vector<double> hb = vector<double>(2*this->file->getDimensionAmount(),-1);
+
+						for (int i = 0; i < this->file->getDimensionAmount(); i++)
+						{
+							double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+							if (currentData >= 0)
+								hb[i + this->file->getDimensionAmount()] = currentData;
+							currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
+							if (currentData < 0) {
+								currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
+							}
+							if (currentData >= 0)
+								hb[i] = currentData;
+
+						}
+
+						bool p = false;
+						for (int i = 0; i < this->file->getDimensionAmount(); i++) {
+							if (this->file->getDataDimensions()->at(i)->isVisible()) {
+								glBegin(GL_QUAD_STRIP);
+								if (i == 0){
+									if (hb[i] >= 0) {
+										if (i + 1 < this->file->getDimensionAmount() && hb[i + 1] < 0) {
+											//glEnd();
+											//glBegin(GL_POLYGON);
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glEnd();
+											//glColor4d(0.0, 0.0, 0.0, 1.0);
+											//glBegin(GL_LINE_STRIP);
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											//glEnd();
+											//glColor4d(192.0, 192.0, 192.0, 1.0);
+											//glBegin(GL_QUAD_STRIP);
+										}
+										else {
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											p = true;
+										}
+									}
+								}
+								else {
+									if (hb[i] >= 0){
+										if (p) {
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
+										else {
+											if (i + 1 < this->file->getDimensionAmount() && hb[i + 1] >= 0) {
+												glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												p = true;
+											}
+											else {
+												//glEnd();
+												//glBegin(GL_POLYGON);
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glEnd();
+												//glColor4d(0.0, 0.0, 0.0, 1.0);
+												//glBegin(GL_LINE_LOOP);
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i + this->file->getDimensionAmount()] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (hb[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+												//glEnd();
+												//glColor4d(192.0, 192.0, 192.0, 1.0);
+												//glBegin(GL_QUAD_STRIP);
+											}
+										}
+									}
+								}
+								glEnd();
+							}
+							dimensionCount++;
+						}
+						*/
+						//.
+						//.
 					}
+					dimensionCount = 0;
+
+					dimensionCount = 0;
+					for (int i = 0; i < this->file->getDimensionAmount(); i++)
+					{
+						if (this->file->getDataDimensions()->at(i)->isVisible())
+						{
+							std::vector<double> currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getEmptySpots(i);
+							for (int i = 0; i < currentData.size(); i++) {
+								// GREY
+								glColor4d(192.0, 192.0, 192.0, 1.0);
+								// BLACK
+								//glColor4d(0.0, 0.0, 0.0, 1.0);
+								glBegin(GL_POLYGON);
+								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 10);
+								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 10);
+								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 10);
+								glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 10);
+								glEnd();
+							}
+							dimensionCount++;
+						}
+					}
+					dimensionCount = 0;
 
 
 					if (this->file->getDisplayed(this->file->getSelectedClusterIndex()))
@@ -1527,14 +1718,16 @@ namespace OpenGLForm
 									{
 										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
 										// Adds empty spot boxes to hypercube if applicable
-										if (currentData < 0.0) {}
+										/*if (currentData < 0.0) {}
 										else {
 											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-										}
+										}*/
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 										dimensionCount++;
 									}
 								}
 								glEnd();
+								dimensionCount = 0;
 							} // end draw max line 
 
 							if (this->file->drawCenterLine())
@@ -1545,10 +1738,11 @@ namespace OpenGLForm
 									if (this->file->getDataDimensions()->at(i)->isVisible())
 									{
 										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getVirtualCenter(file->getDimensionAmount()).at(i);
-										if(currentData < 0.0){}
+										/*if(currentData < 0.0){}
 										else {
 											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-										}
+										}*/
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
 										dimensionCount++;
 									}
 								}
@@ -1565,9 +1759,13 @@ namespace OpenGLForm
 									{
 										double currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
 										if (currentData < 0.0) {
-											currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
-											if(currentData > 0)
-												glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											double currentData2 = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
+											if (currentData2 < 0) {
+												glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData* (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											}
+											else {
+												glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData2 * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											}
 										}
 										else {
 											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
@@ -1586,25 +1784,58 @@ namespace OpenGLForm
 								{
 									std::vector<double> currentData = this->file->getClusters().at(file->getSelectedClusterIndex()).getEmptySpots(i);
 									for (int i = 0; i < currentData.size(); i++) {
-										glColor4d(192.0, 192.0, 192.0, 1.0);
-										glBegin(GL_POLYGON);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
-										glEnd();
 										glColor4d(0.0, 0.0, 0.0, 1.0);
-										glBegin(GL_LINE_STRIP);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 15);
-										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 15);
+										glBegin(GL_LINE_LOOP);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 10);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) + 10);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 10);
+										glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentData[i] * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight) - 10);
 										glEnd();
 									}
 									dimensionCount++;
 								}
 							}
+							dimensionCount = 0;
+
+							// DRAW HYPERBLOCK OUTLINE ON TOP OF EVERYTHING ELSE
+							for (int i = 0; i < this->file->getDimensionAmount(); i++)
+							{
+								if (this->file->getDataDimensions()->at(i)->isVisible())
+								{
+									double currentMax = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+									double currentMin = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);;
+									glColor4d(0.0, 0.0, 0.0, 1.0);
+									glBegin(GL_LINE_LOOP);
+									currentMax = this->file->getClusters().at(file->getSelectedClusterIndex()).getMaximum(i);
+									currentMin = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimum(i);
+									if (currentMin < 0) {
+										currentMin = this->file->getClusters().at(file->getSelectedClusterIndex()).getMinimumPositive(i);
+									}
+									if (currentMin >= 0) {
+										if ((currentMax - currentMin) * (this->worldHeight * 0.5) < 5) {
+											/*glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, ((currentMax + (currentMax - currentMin) * 5.0 ) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, ((currentMax + (currentMax - currentMin) * 5.0 ) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 10.0, ((currentMin - (currentMax - currentMin) * 5.0 ) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 10.0, ((currentMin - (currentMax - currentMin) * 5.0 ) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));*/
+							
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, ((currentMax + 0.02) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, ((currentMax + 0.02) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, ((currentMin - 0.02) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, ((currentMin - 0.02) * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
+										else {
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentMax * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentMax * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) + 7.0, (currentMin * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+											glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)) - 7.0, (currentMin * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
+										}
+									}
+									glEnd();
+									dimensionCount++;
+								}
+							
+							}
+							//glEnd();
 							dimensionCount = 0;
 						}
 					}
@@ -1674,7 +1905,7 @@ namespace OpenGLForm
 					}
 				}
 
-				// draw selector line
+				//// draw selector line 
 				if (!file->selectorLineIsHidden())
 				{
 					int selectedSetIndex = file->getSelectedSetIndex();
@@ -1687,7 +1918,7 @@ namespace OpenGLForm
 						{
 							double currentData = this->file->getData(selectedSetIndex, i);
 							glVertex2d((-this->worldWidth / 2.0) + ((xAxisIncrement) * (dimensionCount + 1)), (currentData * (this->worldHeight * 0.5)) + (0.175 * this->worldHeight));
-
+				
 							dimensionCount++;
 						}
 					}

@@ -145,6 +145,9 @@
     <ClCompile Include="NonMonotonicSelector.cpp">
       <Filter>Source Files\Dominant Nominal Set Visualization</Filter>
     </ClCompile>
+    <ClCompile Include="EmptySpotHBPicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -284,6 +287,9 @@
     </ClInclude>
     <ClInclude Include="NonMonotonicInfliction.h">
       <Filter>Header Files\Dominant Nominal Set Visualization</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptySpotHBPicker.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

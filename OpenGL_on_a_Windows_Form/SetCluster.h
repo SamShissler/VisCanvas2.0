@@ -97,6 +97,13 @@ public:
 	vector<double> getVirtualCenter(int numOfDimensions);
 	double getRatio(int numOfDimensions);
 
+	int getClass();
+	int getMajority();
+	void setClass(int oClass);
+	void setMajority(int mClass, int cnt);
+	void setMajority(int mClass);
+	double getPurity();
+
 private:
 	ColorCustom color;
 	std::vector<int> setsInCluster;
@@ -110,6 +117,9 @@ private:
 	int size;
 	double radius;
 	int originalSet;
+	int originalClass;
+	int majorityClass;
+	int majorityCount;
 	bool useMean;
 	bool displayed;
 	std::string name;

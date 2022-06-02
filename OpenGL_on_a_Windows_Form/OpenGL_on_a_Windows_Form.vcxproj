@@ -239,6 +239,7 @@
     <ClCompile Include="DNSRule.cpp" />
     <ClCompile Include="DomNominalSet.cpp" />
     <ClCompile Include="DomNomSetsLinesBetweenCords.cpp" />
+    <ClCompile Include="EmptySpotHBPicker.cpp" />
     <ClCompile Include="GraphNote.cpp" />
     <ClCompile Include="AdditionalSettings.cpp" />
     <ClCompile Include="IntervalGrouping.cpp" />
@@ -283,6 +284,7 @@
     <ClInclude Include="DNSRule.h" />
     <ClInclude Include="DomNominalSet.h" />
     <ClInclude Include="DomNomSetsLinesBetweenCords.h" />
+    <ClInclude Include="EmptySpotHBPicker.h" />
     <ClInclude Include="GraphNote.h" />
     <ClInclude Include="AdditionalSettings.h">
       <FileType>CppForm</FileType>

@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <map>
 #include <unordered_map>
+
 /*
 Author: Daniel Ortyn
 Last Update: 2018/22/01
@@ -314,7 +315,7 @@ public:
 
 	// auto create hypercube clusters around classes
 	void autoCluster();
-	void highlightOverlap(double threshold);
+	string highlightOverlap(double threshold);
 	void deleteEqualClusters();
 	void combineAdjacentCubes();
 
@@ -423,6 +424,8 @@ public:
 	vector<SetCluster>* getOverlaps();
 	int getImpurities(int index);
 	map<string, double> getAboveOne();
+	bool hasEmpty();
+	vector<vector<double>> getEmptys();
 	
 private:
 	
@@ -472,6 +475,8 @@ private:
 
 	// a vector to hold the dimensions containing the data for the sets
 	std::vector<Dimension*> dataDimensions;
+	// a vector to hold all of the empty spot sets. Dimensions named same as dataDimensions;
+	std::vector<std::vector<Dimension*>> emptyDimensions;
 	//a vector to hold the original dimensions for the data that is kept un edited
 	std::vector<Dimension*> originalDataDimensions;
 	// a vector to hold the data class

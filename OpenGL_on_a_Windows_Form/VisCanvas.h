@@ -15,6 +15,7 @@ Purpose: CS 481 Project
 #include "Subsets.h"
 #include "SchemeEditor.h"
 #include "NominalColorPicker.h"
+#include "EmptySpotHBPicker.h"
 #include "NonMonotonicSelector.h"
 #include "NonMonotonicChoice.h"
 #include "UserInputPopUp.h"
@@ -1755,6 +1756,14 @@ namespace VisCanvas {
 	}
 			 /* Automate Cluster Selection */
 	private: System::Void auto_Click(System::Object^  sender, System::EventArgs^  e) {
+		//if (this->OpenGL->file->hasEmpty()) {
+		//	string esHBs = this->OpenGL->autoCluster();
+		//	using namespace CppCLRWinformsProjekt;
+		//	EmptySpotHBPicker^ eshbp = gcnew EmptySpotHBPicker(this->OpenGL->file->getClusters(), this->OpenGL->file->getEmptys(), &esHBs);
+		//	eshbp->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Sizable;
+		//	eshbp->Show();
+		//	}
+		//}
 		this->OpenGL->autoCluster();
 		this->currentView->Text = "View: Hypercubes";
 		// updateClusterList(sender, e);
@@ -2502,7 +2511,6 @@ namespace VisCanvas {
 
 			OpenGL->file->setNominalColorChoice(ncp->getResult());
 		}
-
 	}
 
 	private: System::Void click_DNSRuleVisualization(System::Object^ sender, System::EventArgs^ e) 

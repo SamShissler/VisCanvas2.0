@@ -64,6 +64,9 @@ Struct DomNomSetsLinesBetweenCords: AutoLayout, AnsiClass, Class, Public, Sequen
   :System.ValueType
 Struct DNSRule: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
+Class CppCLRWinformsProjekt.EmptySpotHBPicker: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(std.vector<SetCluster\,std::allocator<SetCluster> >*, std.vector<std::vector<double\,std::allocator<double> >\,std::allocator<std::vector<double\,std::allocator<double> > > >*, std.basic_string<char\,std::char_traits<char>\,std::allocator<char> >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.NativeWindow
     Void .ctor(System.Windows.Forms.Form, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -199,16 +202,23 @@ Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 previousClassAmount : Public
     Boolean sortToggleState : Public
     Boolean shifToggleState : Public
-Class CppCLRWinformsProjekt.IntervalGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    getIntervalVector(): PrivateScope, Public, HideBySig
+Struct KVPair: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  :System.ValueType
 Class CppCLRWinformsProjekt.OrdinalGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     getOrdinalVector(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.Scheme: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(std.unordered_map<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::hash<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > >\,std::equal_to<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > >\,std::allocator<std::pair<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > const \,std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > > >*, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getSchemeMap(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.IntervalGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getIntervalVector(): PrivateScope, Public, HideBySig
 Class CppCLRWinformsProjekt.IntervalGroupStarting: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -258,10 +268,3 @@ Class CppCLRWinformsProjekt.RatioGroupStarting: AutoLayout, AnsiClass, Class, Pu
   Methods:
     getIntervalToFirst(): PrivateScope, Public, HideBySig
     getStartingPoints(): PrivateScope, Public, HideBySig
-Class CppCLRWinformsProjekt.Scheme: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(std.unordered_map<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::hash<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > >\,std::equal_to<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > >\,std::allocator<std::pair<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > const \,std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > > >*, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Methods:
-    getSchemeMap(): PrivateScope, Public, HideBySig
-Struct KVPair: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
-  :System.ValueType

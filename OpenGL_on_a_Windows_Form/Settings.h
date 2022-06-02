@@ -661,7 +661,7 @@ namespace VisCanvas {
 				 // Selector Line Toggle
 				 //
 				 this->selectorToggle->AutoSize = true;
-				 this->selectorToggle->Checked = true;
+				 this->selectorToggle->Checked = false;
 				 this->selectorToggle->Location = System::Drawing::Point(64, 200);
 				 this->selectorToggle->Name = L"minToggle";
 				 this->selectorToggle->Size = System::Drawing::Size(15, 14);

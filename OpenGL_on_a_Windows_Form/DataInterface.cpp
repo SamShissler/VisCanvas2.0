@@ -12,11 +12,14 @@
 #include <set>
 #include <list>
 #include <string>
+#include <String>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <time.h>
+#include <format>
+#include <regex>
 
 using namespace std;
 
@@ -185,10 +188,22 @@ bool DataInterface::saveToFile(std::string * filePath) {
 	}
 	saveFile << "\n";
 
+	saveFile << "Hyperblock Radii\n";
+	std::vector<std::vector<double>> hbs;
 	for (int i = 0; i < getClusterAmount(); i++) {
-		saveFile << "hypercube,";
-		saveFile << clusters[i].getOriginalSet() << ",";
-		saveFile << clusters[i].getRadius() << "\n";
+		std::vector<double> hb;
+		saveFile << "HB " << to_string(i) << ", ";
+		saveFile << clusters[i].getOriginalSet();
+		hb.push_back(clusters[i].getOriginalSet());
+		double approxRad = 0;
+		for (int j = 0; j < getDimensionAmount(); j++) {
+			approxRad = (clusters[i].getMaximum(j) - clusters[i].getMinimumPositive(j))/2;
+			saveFile << ", " << approxRad; // calculates approximate radius
+			hb.push_back(approxRad);
+		}
+		saveFile << "\n";
+		hbs.push_back(hb);
+
 	}
 
 	// print whether to use mean or median for clusters
@@ -237,6 +252,173 @@ bool DataInterface::saveToFile(std::string * filePath) {
 		}
 	}
 
+	/*
+
+	Do all the table calculation stuff.
+
+	*/
+
+	saveFile << "Empty Spot-Hypercube compatibility\n";
+	saveFile << "ES-case refers to an n-D point that contains one or more empty value\n";
+
+	// Makes a list of empty spot sets in entire data
+	std::vector<std::vector<double>> emptys;
+	std::vector<int> emptyids;
+	for (int i = 0; i < getDimensionAmount(); i++) {
+		int num = this->dataDimensions[i]->size();
+		for (int j = 0; j < num; j++) {
+			if (this->dataDimensions[i]->getData(j) < 0) {
+				if (std::find(emptyids.begin(), emptyids.end(), j) != emptyids.end()) {
+
+				}
+				else {
+					std::vector<double> es;
+					es.push_back(j);
+					emptys.push_back(es);
+					emptyids.push_back(j);
+				}
+			}
+		}
+	}
+
+	if (!emptys.empty()) {
+		// Fills in data for each dimension for each empty spot set
+		//for (int i = 0; i < getDimensionAmount(); i++) {
+		//	for (int j = 0; j < emptys.size(); j++) {
+		//		emptys[j].push_back(this->dataDimensions[i]->getData(emptys[j][0]));
+		//	}
+		//}
+		//// Checks empty spots for hyper block compatiblity
+		//for (int i = 0; i < emptys.size(); i++) {
+		//	// Specify case
+		//	saveFile << "ES-case " << emptys[i][0];
+		//	// Label dimensions.
+		//	for (int k = 0; k < getDimensionAmount(); k++) {
+		//		saveFile << ",X" << k+1;
+		//	}
+		//	saveFile << ",Compatability\n";
+		//	// check each hyperblock
+		//	for (int j = 0; j < getClusterAmount(); j++) {
+		//		saveFile << "HB" << j;
+		//		int rowtot = 0;
+		//		//check each dimension to see whether the set could fit into this hyperblock
+		//		for (int k = 0; k < getDimensionAmount(); k++) {
+		//			//index of original set:  hbs[j][0]
+		//			//radius:  hbs[j][k+1]
+		//			if (emptys[i][k + 1] <= clusters[j].getMaximum(k) && emptys[i][k + 1] >= clusters[j].getMaximum(k) - 2 * hbs[j][k + 1]) {//&& emptys[i][k + 1] <= clusters[j].getMaximum(k) - hbs[j][k + 1]) {
+		//				//for this dimension and cluster, the hb does fit
+		//				saveFile << ", 1";
+		//				rowtot++;
+		//			}
+		//			else {
+		//				//Doesn't fit.
+		//				saveFile << ", 0";
+		//			}
+		//		}
+		//		saveFile << ", " << rowtot;
+		//		saveFile << "\n";
+		//	}
+		//} // s
+
+			// Checks for empty spots in data
+		if (aboveOne.size() > 0) {
+
+			// Approximates Radius for each HB
+			std::vector<std::vector<double>> hbs;
+			for (int i = 0; i < getClusterAmount(); i++) {
+				std::vector<double> hb;
+				//saveFile << "HB " << to_string(i) << ", ";
+				//saveFile << clusters[i].getOriginalSet();
+				hb.push_back(clusters[i].getOriginalSet());
+				double approxRad = 0;
+				for (int j = 0; j < getDimensionAmount(); j++) {
+					approxRad = (clusters[i].getMaximum(j) - clusters[i].getMinimumPositive(j)) / 2;
+					//saveFile << ", " << approxRad; // calculates approximate radius
+					hb.push_back(approxRad);
+				}
+				//saveFile << "\n";
+				hbs.push_back(hb);
+			}
+
+
+			// Makes a list of empty spot sets in entire data
+			std::vector<std::vector<double>> emptys;
+			std::vector<int> emptyids;
+			for (int i = 0; i < getDimensionAmount(); i++) {
+				int num = this->dataDimensions[i]->size();
+				for (int j = 0; j < num; j++) {
+					if (this->dataDimensions[i]->getData(j) < 0) {
+						if (std::find(emptyids.begin(), emptyids.end(), j) != emptyids.end()) {
+
+						}
+						else {
+							std::vector<double> es;
+							es.push_back(j);
+							emptys.push_back(es);
+							emptyids.push_back(j);
+						}
+					}
+				}
+			}
+
+
+			// Fills in data for each dimension for each empty spot set
+			for (int i = 0; i < getDimensionAmount(); i++) {
+				for (int j = 0; j < emptys.size(); j++) {
+					emptys[j].push_back(this->dataDimensions[i]->getData(emptys[j][0]));
+				}
+			}
+
+			// Pass as string
+
+			// Initialize string with list of columns
+			string esHBs = "ES Case, HB Name, ";
+			// Lists Attribute names
+			for (int i = 0; i < getDimensionAmount(); i++) {
+				esHBs += *this->dataDimensions[i]->getName() + ", ";
+			}
+			esHBs += "Num of Included Attr, Compatibility Ratio, \n";
+
+			//// Checks empty spots for hyper block compatiblity
+			for (int i = 0; i < emptys.size(); i++) {
+				// Specify case
+				esHBs += std::to_string(int(emptys[i][0])) + "\n";
+				string tempHB = "";
+				// check each hyperblock
+				for (int j = 0; j < getClusterAmount(); j++) {
+					tempHB += ", " + *clusters[j].getName();
+					int rowtot = 0;
+					//check each dimension to see whether the set fits into this hyperblock
+					for (int k = 0; k < getDimensionAmount(); k++) {
+						//index of original set:  hbs[j][0]
+						//radius:  hbs[j][k+1]
+						if (emptys[i][k + 1] < 0) {
+							tempHB += ", ?";
+						}
+						else if (emptys[i][k + 1] <= clusters[j].getMaximum(k) && emptys[i][k + 1] >= clusters[j].getMaximum(k) - 2 * hbs[j][k + 1]) {//&& emptys[i][k + 1] <= clusters[j].getMaximum(k) - hbs[j][k + 1]) {
+							//for this dimension and cluster, the hb does fit
+							tempHB += ", 1";
+							rowtot++;
+						}
+						else {
+							//Doesn't fit.
+							tempHB += ", 0";
+						}
+					}
+					// Add row total, compatibility ratio
+					tempHB += ", " + std::to_string(rowtot) + ", " + std::to_string((double)rowtot / getDimensionAmount() * 100) + ", ";
+					tempHB += "\n";
+					// Add HB to list if there is at least one attribute included in the HB
+					if (rowtot > 0) {
+						esHBs += tempHB;
+					}
+					tempHB = "";
+				}
+			}
+
+			saveFile << esHBs;
+		}
+	}
 
 	// end the file
 	saveFile << "\n";
@@ -292,6 +474,7 @@ void DataInterface::returnToOriginalDataDimensions()
 int DataInterface::getClassAmount() const {
 	return dataClasses.size();
 }
+
 
 /*
 Gets the total number of sets in the data
@@ -847,7 +1030,7 @@ void DataInterface::level(int setIndex, double levelValue) {
 		return;
 	}
 	zeroShifts();
-	// adjust each data point to the new 0 amount for its dimension
+	// adjust each data point to the new 0 amount for its dimension ???????????????????????????
 	for (unsigned int i = 0; i < getDimensionAmount(); i++) {
 		double currentData = (*dataDimensions[i]).getCalibratedData(setIndex);
 		double change = levelValue - currentData;
@@ -869,8 +1052,8 @@ double DataInterface::getMean(int setIndex) const {
 		double currentData = (*dataDimensions[i]).getCalibratedData(setIndex);
 		if (currentData < 0) {
 			count++;
+			sum += currentData;
 		}
-		sum += currentData;
 	}
 	return sum /= ((double)(getDimensionAmount()-count));
 }
@@ -1004,7 +1187,7 @@ bool DataInterface::hypercube(int setIndex, double radius) {
 		bool withinCube = true;
 		for (int j = 0; j < getDimensionAmount(); j++)
 		{
-			if (!(getData(i, j) >= getData(setIndex, j) - radius && getData(i, j) <= getData(setIndex, j) + radius))
+			if (getData(i,j) < 0 || !(getData(i, j) >= getData(setIndex, j) - radius && getData(i, j) <= getData(setIndex, j) + radius))
 			{
 				withinCube = false;
 			}
@@ -1030,7 +1213,6 @@ bool DataInterface::hypercube(int setIndex, double radius) {
 		clusters[clusters.size() - 1].setUseMean(useMean);
 		clusters[clusters.size() - 1].calculateValues(&dataDimensions);
 	}
-
 
 	return true;
 }
@@ -1066,7 +1248,7 @@ bool DataInterface::subHypercube(int setIndex, int clusterIndex, double radius) 
 		bool withinCube = true;
 		for (int j = 0; j < getDimensionAmount(); j++)
 		{
-			if (!(getData(clusters[clusterIndex].getSets()->at(i), j) >= getData(setIndex, j) - radius && getData(clusters[clusterIndex].getSets()->at(i), j) <= getData(setIndex, j) + radius))
+			if (getData(clusters[clusterIndex].getSets()->at(i), j) < 0 || !(getData(clusters[clusterIndex].getSets()->at(i), j) >= getData(setIndex, j) - radius && getData(clusters[clusterIndex].getSets()->at(i), j) <= getData(setIndex, j) + radius))
 			{
 				withinCube = false;
 			}
@@ -1515,7 +1697,7 @@ void DataInterface::init() {
 	nominalSetsMode = false;
 	domNominalSetsMode = false;
 
-	hideSelectorLine = false;
+	hideSelectorLine = true;
 	isDrawBorders = true;
 	drawMin = true;
 	drawCenter = true;
@@ -1671,90 +1853,26 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 			startRow = 1; // data starts here
 		}
 
-	/*
 		// create dimensions
 		vector<map<int, std::string>> dimensionsToClean;
-		//Dimension dataDim;
 		aboveOne.clear();
+		//Dimension dataDim;
 		// Boolean tracking data to make sure the column does not only contain empty spots.
-		//bool hasNum = false;
-		// A list of offsets for each colomn of data to account for removing completely empty columns
-		//vector<int> emptySpotDimensionTracker = vector<int>();
-		// A counter of empty columns to be used to create above list.
-		int esd = 0;
+		bool hasNum = false;
+		bool displayed_warning = false;
+
 		for (int i = startColumn; i < endColumn; i++)
 		{
 			//dataDim = Dimension(i - off, setNumber);
-			dataDimensions.push_back(new Dimension(i - off, setNumber));
-			dimensionsToClean.push_back(map<int, std::string>());
-			//hasNum = false;
-			//emptySpotDimensionTracker.push_back(esd);
-
-			// populate dimensions with data
-			for (int j = startRow; j < fileContents->size(); j++)
-			{
-				double newData;
-				std::string content = (*(*fileContents)[j])[i];
-				if (content.empty() || content[0] < 48 || content[0] > 57) // data doesn't start with a number
-				{
-					if (content.empty())
-					{
-						content = "Empty";
-					}
-					
-					dimensionsToClean[dimensionsToClean.size() - 1][j - off] = content;
-					
-					if (aboveOne.find(content) == aboveOne.end())
-					{
-						aboveOne[content] = 0.0 - ((aboveOne.size() + 1.0) * 0.1);
-					}
-					newData = 0;
-				}
-				else // data does start with a number
-				{
-					newData = std::stod(content);
-					//if(!hasNum)
-						//hasNum = true;
-				}
-				// add data to temp dimension
-				dataDimensions[i-off]->setData(j - off, newData);
-			}
-			// If the dimension contains data, add it to the list of dimensions
-			//if (hasNum) {
-				dataDimensions.push_back(&dataDim);
-
-				dataDimensions[i]->setName(&(*(*fileContents)[0])[i]);
-				dataDimensions[i]->calibrateData();
-
-				// Add modified values for empty spots that exist in the dimension
-				for (int j = 0; j < dimensionsToClean.size(); j++)
-				{
-					for (auto entry : dimensionsToClean[j])
-					{
-						dataDimensions[j]->setData(entry.first, aboveOne[entry.second]);
-					}
-				}
-			//}
-			//else { // If the dimension does not contain data, increase the offset for future columns
-			//	esd++;
-			//}
-			//emptySpotDimensionTracker.push_back(esd);
-
-		}
-		*/
-
-		// create dimensions
-		vector<map<int, std::string>> dimensionsToClean;
-		aboveOne.clear();
-		for (int i = startColumn; i < endColumn; i++)
-		{
-
 			dataDimensions.push_back(new Dimension(i - off, setNumber));
 			originalDataDimensions.push_back(new Dimension(i - off, setNumber));
 			dataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
 			originalDataDimensions[i - off]->setName(&(*(*fileContents)[0])[i]);
 			dimensionsToClean.push_back(map<int, std::string>());
 
+			hasNum = false;
+
+			
 			// populate dimensions with data
 			for (int j = startRow; j < fileContents->size(); j++)
 			{
@@ -1778,10 +1896,19 @@ bool DataInterface::readBasicFile(std::vector<std::vector<std::string>*>* fileCo
 				else
 				{
 					newData = std::stod(content);
+					hasNum = true;
 				}
 
 				dataDimensions[i - off]->setData(j - off, newData);
 			}
+
+			// DISPLAY EMPTY DIMENSION WARNING
+			//if (!hasNum && !displayed_warning) {
+			//	//Display pop up telling user to remove dimensions with empty spots.
+			//	DialogResult result = MessageBox::Show("WARNING: The file you are opening contains one or more dimension with only empty spots. Please consider remiving these dimensions.", "Data contains empty dimension(s)", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			//	displayed_warning = true;
+
+			//}
 
 			dataDimensions[i - off]->calibrateData();
 			originalDataDimensions[i - off]->calibrateData();
@@ -1941,6 +2068,10 @@ void DataInterface::autoCluster() {
 
 		instancesInClass = dataClasses[i].getSetsInClass();
 
+		double cubeThreshold = (overallMax - overallMin) / 2;
+		ofstream file;
+		file.open("radius.txt", std::ios_base::app);
+
 		// search class for max and min
 		for (int j = 0; j < instancesInClass->size(); j++)
 		{
@@ -1953,9 +2084,17 @@ void DataInterface::autoCluster() {
 				classMax.at(k) = max(classMax.at(k), currentData);
 				classMin.at(k) = min(classMin.at(k), currentData);
 			}
+			file << "Max, Min: ";
+			file << overallMax;
+			file << ", ";
+			file << overallMin;
+			file << "\n";
 		}
 
-		double cubeThreshold = (overallMax - overallMin) / 2;
+		file << "Cube Threshold: ";
+		file << cubeThreshold;
+		file << "\n";
+		file.close();
 
 		classMedian.clear();
 
@@ -1967,13 +2106,30 @@ void DataInterface::autoCluster() {
 
 		selectedInstances.clear();
 
-		// define hypercube
+		//// define hypercube including ES
+		//for (int j = 0; j < getSetAmount(); j++)
+		//{
+		//	bool withinCube = true;
+		//	for (int k = 0; k < getDimensionAmount(); k++)
+		//	{
+		//		if (!(getData(j, k) >= classMin.at(k)/*(classMedian.at(k) - cubeThreshold)*/ && getData(j, k) <= classMax.at(k)/*(classMedian.at(k) + cubeThreshold)*/))
+		//		{
+		//			withinCube = false;
+		//		}
+		//	}
+		//	if (withinCube)
+		//	{
+		//		selectedInstances.push_back(j);
+		//	}
+		//}
+
+		// define hypercube excluding ES
 		for (int j = 0; j < getSetAmount(); j++)
 		{
 			bool withinCube = true;
 			for (int k = 0; k < getDimensionAmount(); k++)
 			{
-				if (!(getData(j, k) >= classMin.at(k)/*(classMedian.at(k) - cubeThreshold)*/ && getData(j, k) <= classMax.at(k)/*(classMedian.at(k) + cubeThreshold)*/))
+				if (getData(j, k) < 0 || !(getData(j, k) >= classMin.at(k)/*(classMedian.at(k) - cubeThreshold)*/ && getData(j, k) <= classMax.at(k)/*(classMedian.at(k) + cubeThreshold)*/))
 				{
 					withinCube = false;
 				}
@@ -1993,10 +2149,17 @@ void DataInterface::autoCluster() {
 		clusters.push_back(SetCluster(clusterColor, &selectedInstances/*, &dataDimensions*/));
 		clusters[clusters.size() - 1].setRadius(cubeThreshold);
 		clusters[clusters.size() - 1].setName(dataClasses[i].getName());
+
 	}
 }
 
-void DataInterface::highlightOverlap(double threshold)
+/*
+
+Make this better. Example 4
+
+*/
+// Actually what creates HBs in most situations.
+string DataInterface::highlightOverlap(double threshold)
 {
 	clusters.clear();
 	pureCubes.clear();
@@ -2008,23 +2171,41 @@ void DataInterface::highlightOverlap(double threshold)
 	vector<int> selectedInstances = vector<int>();
 	vector<SetCluster> blocks = vector<SetCluster>();
 
+	// Filter out ES Cases and Create initial cluster contianing all cases.
 	for (int i = 0; i < getSetAmount(); i++) // selected instances
 	{
 		selectedInstances.clear();
-		selectedInstances.push_back(i);
-
-		ColorCustom clusterColor = ColorCustom();
-		std::vector<double>* colorConponents = dataClasses[getClassOfSet(i)].getColor();
-		clusterColor.setRed((*colorConponents)[0]);
-		clusterColor.setGreen((*colorConponents)[1]);
-		clusterColor.setBlue((*colorConponents)[2]);
-		clusterColor.setAlpha((*colorConponents)[3]);
-		blocks.push_back(SetCluster(clusterColor, &selectedInstances, &dataDimensions));
-		blocks[blocks.size() - 1].setRadius(0.0);
-		string name = to_string(i);
-		blocks[blocks.size() - 1].setName(&name);
-		blocks[blocks.size() - 1].setOriginalSet(i);
-
+		bool forConsideration = true;
+		for (int j = 0; j < getDimensionAmount(); j++) {
+			if (getData(i,j) < 0.0) {
+				forConsideration = false;
+				break;
+			}
+		}
+		if(forConsideration){
+			selectedInstances.push_back(i);
+			ColorCustom clusterColor = ColorCustom();
+			std::vector<double>* colorConponents = dataClasses[getClassOfSet(i)].getColor();
+			clusterColor.setRed((*colorConponents)[0]);
+			clusterColor.setGreen((*colorConponents)[1]);
+			clusterColor.setBlue((*colorConponents)[2]);
+			clusterColor.setAlpha((*colorConponents)[3]);
+			blocks.push_back(SetCluster(clusterColor, &selectedInstances, &dataDimensions));
+			blocks[blocks.size() - 1].setRadius(0.0);
+			string name = to_string(i);
+			blocks[blocks.size() - 1].setName(&name);
+			blocks[blocks.size() - 1].setOriginalSet(i);
+		}
+	}
+	// If one or more columns are entirely empty
+	if (blocks.size() == 0) {
+		for (int i = 0; i < dataDimensions.size(); i++) {
+			if (dataDimensions[i]->getMaximum() < 0) {
+				dataDimensions.erase(dataDimensions.begin() + i);
+			}
+		}
+		string str = highlightOverlap(threshold);
+		return str;
 	}
 
 	bool actionTaken = false;
@@ -2079,7 +2260,7 @@ void DataInterface::highlightOverlap(double threshold)
 				for (int k = 0; k < getDimensionAmount(); k++)
 				{
 					double currData = getData(j, k);
-					if (!(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
+					if (currData < 0 || !(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
 					{
 						withinSpace = false;
 						break;
@@ -2161,6 +2342,8 @@ void DataInterface::highlightOverlap(double threshold)
 		vector<double> acc = vector<double>();
 		for (int i = 0; i < blocks.size(); i++)
 		{
+			// set original class based on original set
+			//blocks[i].setClass(getset())
 			// get majority class
 			int majorityClass = 0;
 			map<int, int> classCount = map<int, int>();
@@ -2186,6 +2369,7 @@ void DataInterface::highlightOverlap(double threshold)
 					majorityClass = entry.first;
 				}
 			}
+			blocks[i].setMajority(majorityClass,majorityCount);
 
 			int currCubeClass = getClassOfSet(blocks[i].getSets()->at(0));
 
@@ -2211,7 +2395,7 @@ void DataInterface::highlightOverlap(double threshold)
 				for (int k = 0; k < getDimensionAmount(); k++)
 				{
 					double currData = getData(j, k);
-					if (!(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
+					if (currData < 0.0 || !(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
 					{
 						withinSpace = false;
 						break;
@@ -2291,7 +2475,7 @@ void DataInterface::highlightOverlap(double threshold)
 				for (int k = 0; k < getDimensionAmount(); k++)
 				{
 					double currData = getData(j, k);
-					if (!(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
+					if (currData < 0.0 || !(currData <= maxPoint.at(k) && currData >= minPoint.at(k)))
 					{
 						withinSpace = false;
 						break;
@@ -2365,7 +2549,107 @@ void DataInterface::highlightOverlap(double threshold)
 		clusters[i].setName(&name);
 	}
 
+
+
+	//Do this after updating for ES-cases
 	paintClusters = true;
+
+
+	/*
+		Pop up dialog for selecting HBs for empty spots
+	*/
+
+	// Checks for empty spots in data
+	if (aboveOne.size() > 0) {
+
+		// Approximates Radius for each HB
+		std::vector<std::vector<double>> hbs;
+		for (int i = 0; i < getClusterAmount(); i++) {
+			std::vector<double> hb;
+			//saveFile << "HB " << to_string(i) << ", ";
+			//saveFile << clusters[i].getOriginalSet();
+			hb.push_back(clusters[i].getOriginalSet());
+			double approxRad = 0;
+			for (int j = 0; j < getDimensionAmount(); j++) {
+				approxRad = (clusters[i].getMaximum(j) - clusters[i].getMinimumPositive(j)) / 2;
+				//approxRad = clusters[i].getRadius(); Doesn't work but should?
+				//saveFile << ", " << approxRad; // calculates approximate radius
+				hb.push_back(approxRad);
+			}
+			//saveFile << "\n";
+			hbs.push_back(hb);
+		}
+
+
+		// Makes a list of empty spot sets in entire data
+		std::vector<std::vector<double>> emptys = getEmptys();
+
+		// Fills in data for each dimension for each empty spot set
+		for (int i = 0; i < getDimensionAmount(); i++) {
+			for (int j = 0; j < emptys.size(); j++) {
+				emptys[j].push_back(this->dataDimensions[i]->getData(emptys[j][0]));
+			}
+		}
+
+		// Pass as string
+
+		// Initialize string with list of columns
+		string esHBs = "ES Case, HB Name, ";
+		// Lists Attribute names
+		for (int i = 0; i < getDimensionAmount(); i++) {
+			esHBs += *this->dataDimensions[i]->getName() + ", ";
+		}
+		esHBs += "Num of Included Attr in HB, Compatibility %, ES Case Class, HB Dominant Class, HB Dominant Class Purity %,\n";
+
+		//// Checks empty spots for hyper block compatiblity
+		for (int i = 0; i < emptys.size(); i++) {
+			// Specify case
+			esHBs += std::to_string(int(emptys[i][0])) + ",\n";
+			string tempHB = "";
+			// check each hyperblock
+			for (int j = 0; j < getClusterAmount(); j++) {
+				tempHB += std::to_string(int(emptys[i][0]));
+				tempHB += " , " + *clusters[j].getName();
+				int rowtot = 0;
+				//check each dimension to see whether the set fits into this hyperblock
+				for (int k = 0; k < getDimensionAmount(); k++) {
+					//index of original set:  hbs[j][0]
+					//radius:  hbs[j][k+1]
+					if (emptys[i][k + 1] < 0) {
+						tempHB += ", ?";
+					}
+					else if (emptys[i][k + 1] <= clusters[j].getMaximum(k) && emptys[i][k + 1] >= clusters[j].getMaximum(k) - 2 * hbs[j][k + 1]) {//&& emptys[i][k + 1] <= clusters[j].getMaximum(k) - hbs[j][k + 1]) {
+						//for this dimension and cluster, the hb does fit
+						tempHB += ", 1";
+						rowtot++;
+					}
+					else {
+						//Doesn't fit.
+						tempHB += ", 0";
+					}
+				}
+				// Add row total, compatibility ratio
+				tempHB += ", " + to_string(rowtot) + ", " + to_string((double)rowtot / getDimensionAmount() * 100) + ", " + to_string(this->dataSets[int(emptys[i][0])].getClass()) + ", " + 
+					to_string(clusters[j].getMajority()) + ", " + to_string(clusters[j].getPurity()) + ",";
+				tempHB += "\n";
+				// Add HB to list if there is at least one attribute included in the HB
+				if (rowtot > 0) {
+					esHBs += tempHB;
+				}
+				tempHB = "";
+			}
+		}
+		//return string if emtpys else return ""
+		//Prompt user for inclusion of empty spots in hyper blocks
+		CppCLRWinformsProjekt::EmptySpotHBPicker^ eshbp = gcnew CppCLRWinformsProjekt::EmptySpotHBPicker(clusters, emptys, &esHBs);
+		eshbp->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Sizable;
+		eshbp->Show();
+
+		//OpenGL->file->setNominalColorChoice(ncp->getResult());
+		return esHBs;
+	}
+	return "";
+
 }
 
 void DataInterface::identicalCubes(set<int> * classesInCube, vector<int> * selectedInstances) {
@@ -2510,7 +2794,7 @@ void DataInterface::simpleAdjacency(set<int> * classesInCube, vector<int> * sele
 					clusters[j].addSet(temp.getSets()->at(k));
 				}
 				classesInCube->clear();
-				clusters[j].setRadius(newRadius);
+				//clusters[j].setRadius(newRadius);
 				break;
 			}
 		}
@@ -2589,7 +2873,7 @@ void DataInterface::sharedPointAdjacency(set<int> * classesInCube, vector<int> *
 					clusters[j].addSet(temp.getSets()->at(k));
 				}
 				classesInCube->clear();
-				clusters[j].setRadius(newRadius);
+				//clusters[j].setRadius(newRadius);
 				break;
 			}
 		}
@@ -2681,7 +2965,7 @@ void DataInterface::hyperBlockAdjacency(set<int> * classesInCube, vector<int> * 
 					clusters[j].addSet(temp.getSets()->at(k));
 				}
 				classesInCube->clear();
-				clusters[j].setRadius(newRadius);
+				//clusters[j].setRadius(newRadius);
 				break;
 			}
 		}
@@ -3168,6 +3452,8 @@ void DataInterface::readCustomFile(std::vector<std::vector<std::string>*>* fileC
 }
 // parses a command line from a save file
 void DataInterface::parseLine(std::vector<std::string>* lineTokens) {
+	std::regex rx("HB [0-9]+");
+	std::smatch match;
 	if (lineTokens == nullptr) {
 		// do nothing
 	}
@@ -3206,7 +3492,7 @@ void DataInterface::parseLine(std::vector<std::string>* lineTokens) {
 			}
 		}
 	}
-	else if ((*lineTokens)[0].compare("hypercube") == 0) {
+	else if (std::regex_match((*lineTokens)[0], match, rx)) {
 		if (lineTokens->size() >= 3) {
 			int index = stoi((*lineTokens)[1]);
 			double radius = stod((*lineTokens)[2]);
@@ -3314,6 +3600,7 @@ int DataInterface::countCharacters(vector<char>* characters, string* line)
 
 // an ascending(left to right) merge sort of the passed dimension list by the set at the passed index
 std::list<Dimension*>* DataInterface::mergeSortAscending(std::list<Dimension*>* listToSort, int setIndex) {
+
 	if (listToSort->size() <= 1) {
 		return listToSort;
 	}
@@ -3475,6 +3762,8 @@ std::list<Dimension*>* DataInterface::mergeSortOriginal(std::list<Dimension*>* l
 
 void DataInterface::setDisplayed(string name, bool displayed)
 {
+
+
 	for (int i = 0; i < clusters.size(); i++)
 	{
 		if (clusters[i].getName()->compare(name) == 0)
@@ -4156,4 +4445,26 @@ int DataInterface::getImpurities(int index) {
 
 map<std::string, double> DataInterface::getAboveOne() {
 	return this->aboveOne;
+}
+
+bool DataInterface::hasEmpty()
+{
+	return false;
+	return aboveOne.size() > 0;
+}
+
+std::vector<std::vector<double>> DataInterface::getEmptys() {
+	// Makes a list of empty spot sets in entire data
+	std::vector<std::vector<double>> emptys;
+	for (int i = 0; i < getDimensionAmount(); i++) {
+		int num = this->dataDimensions[i]->size();
+		for (int j = 0; j < num; j++) {
+			if (this->dataDimensions[i]->getData(j) < 0) {
+				std::vector<double> es;
+				es.push_back(j);
+				emptys.push_back(es);
+			}
+		}
+	}
+	return emptys;
 }

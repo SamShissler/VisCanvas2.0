@@ -89,8 +89,8 @@ SetCluster::~SetCluster() {
 
 // calculates the minimum value of dimension for the sets whose indexes are passed(setIndexes)
  std::tuple<double, double, vector<double>> SetCluster::getMinimumValue(Dimension* dimension, std::vector<int>* setIndexes) {
-	double minimum = 10000;
-	double minimumPositive = 10000;
+	double minimum = std::numeric_limits<double>::max();
+	double minimumPositive = std::numeric_limits<double>::max();
 	vector<double> emptySpotValues = vector<double>();
 	
 	std::sort(setIndexes->begin(), setIndexes->end());
@@ -99,22 +99,20 @@ SetCluster::~SetCluster() {
 		return std::make_tuple(minimum, minimumPositive, emptySpotValues);
 	}
 	// calculate the minimum
-	minimum = dimension->getCalibratedData((*setIndexes)[0]);
 	for (int i = 0; i < setIndexes->size(); i++) {
 		double dataValue = dimension->getCalibratedData((*setIndexes)[i]);
-		if (dataValue < minimumPositive) {//&& dataValue >= 0) { // Exclude empty spots from minimum
-			if (dataValue >= 0.0)
-				minimumPositive = dataValue;
-			else {
-				if (dataValue < minimum)
-					minimum = dataValue;
-				if (std::find(emptySpotValues.begin(), emptySpotValues.end(), dataValue) == emptySpotValues.end()) {
-					emptySpotValues.push_back(dataValue);
-				}
-			}
+
+		if (dataValue < minimumPositive && dataValue >= 0.0) {
+			minimumPositive = dataValue;
+		}
+		if (dataValue < minimum) {
+			minimum = dataValue;
+		}
+		if (dataValue < 0.0 && std::find(emptySpotValues.begin(), emptySpotValues.end(), dataValue) == emptySpotValues.end()) {
+			emptySpotValues.push_back(dataValue);
 		}
 	}
-	if (minimumPositive > 1)
+	if (minimumPositive == std::numeric_limits<double>::max() || minimum >= 0)
 		minimumPositive = minimum;
 	return std::make_tuple(minimum, minimumPositive, emptySpotValues);
 }
@@ -122,6 +120,7 @@ SetCluster::~SetCluster() {
 // calculates the mean value of dimension for the sets whose indexes are passed(setIndexes)
 double SetCluster::getMeanValue(Dimension * dimension, std::vector<int>* setIndexes) {
 	double sum = 0.0;
+	int num = 0;
 	std::sort(setIndexes->begin(), setIndexes->end());
 	// check if the dimension has enough sets for the sets in the passed vector(setIndexes)
 	if ((*setIndexes)[setIndexes->size() - 1] >= dimension->size()) {
@@ -132,8 +131,9 @@ double SetCluster::getMeanValue(Dimension * dimension, std::vector<int>* setInde
 		double dataValue = dimension->getCalibratedData((*setIndexes)[i]);
 		if (dataValue >= 0) // Exclude empty spots from calculated mean
 			sum += dataValue;
+			num += 1;
 	}
-	return sum / ((double)setIndexes->size());
+	return sum / num;
 }
 
 // gets the calculates the median value of dimension for the sets whose indexes are passed(setIndexes)
@@ -294,6 +294,7 @@ void SetCluster::calculateValues(std::vector<Dimension*>* dimensionsToCalculateW
 	}
 	else {
 		minimumValues.clear();
+		minimumPositiveValues.clear();
 		meanValues.clear();
 		medianValues.clear();
 		maximumValues.clear();
@@ -411,7 +412,12 @@ double SetCluster::getRadius() {
 double SetCluster::setRadius(double newRadius) {
 	double oldRadius = radius;
 	radius = newRadius;
-	return radius;
+	//ofstream file;
+	//file.open("radius.txt", std::ios_base::app);
+	//file << radius;
+	//file << "\n";
+	//file.close();
+	return oldRadius;
 }
 
 // gets the original set of this cluster
@@ -477,7 +483,12 @@ vector<double> SetCluster::getVirtualCenter(int numOfDimensions) {
 			localCenter = localMin + ((localMax - localMin) / 2);
 		}
 		else {
-			localCenter = localMinPositive + ((localMax - localMinPositive) / 2);
+			if (localMinPositive < 0) {
+				localCenter = localMin + ((localMax - localMin) / 2);
+			}
+			else {
+				localCenter = localMinPositive + ((localMax - localMinPositive) / 2);
+			}
 		}
 		center.push_back(localCenter);
 	}
@@ -492,4 +503,25 @@ double SetCluster::getRatio(int numOfDimensions) {
 
 int SetCluster::getSize() const {
 	return this->size;
+}
+
+int SetCluster::getClass() {
+	return this->originalClass;
+}
+
+int SetCluster::getMajority() {
+	return this->majorityClass;
+}
+
+void SetCluster::setClass(int oClass) {
+	this->originalClass = oClass;
+}
+
+void SetCluster::setMajority(int mClass, int cnt) {
+	this->majorityClass = mClass;
+	this->majorityCount = cnt;
+}
+
+double SetCluster::getPurity() {
+	return (double)majorityCount / this->setsInCluster.size() * 100;
 }
