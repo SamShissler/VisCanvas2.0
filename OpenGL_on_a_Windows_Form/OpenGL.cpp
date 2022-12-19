@@ -30,7 +30,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 	vector<string> rules;
 	vector<vector<int>> groups = *coordinateGrouping->getCoordinateGroups();
-	const int classToTest = 1;
+	const int classToTest = 2;
 	
 	
 	//vector<string> g = this->domNomVisualization->geneticAttributeGroupGeneration();
@@ -39,7 +39,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	//return;
 
 	
-	
+	/*
 	groups.clear();
 	int toAddGroups[5][3] = { {5, 20, 15}, {20, 11, 5}, {15, 20, 11}, {5, 15, 21}, {11, 5, 8} };
 
@@ -53,11 +53,29 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 		groups.push_back(toAdd);
 	}
-	
+	*/
 
 
 	
 		//====================================================//
+		rules.push_back("\n\n=============25%===============\n\n");
+		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+		pair<vector<string>, vector<DNSRule>> Per25 = this->domNomVisualization->MTBRGSequential(25.0, groups, classToTest);
+		for (int i = 0; i < Per25.first.size(); i++)
+		{
+			rules.push_back(Per25.first.at(i));
+		}
+
+		rules.push_back("\n\n=============50%===============\n\n");
+		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+		pair<vector<string>, vector<DNSRule>> Per50 = this->domNomVisualization->MTBRGSequential(50.0, groups, classToTest);
+		for (int i = 0; i < Per50.first.size(); i++)
+		{
+			rules.push_back(Per50.first.at(i));
+		}
+		/*
 		rules.push_back("\n\n=============75%===============\n\n");
 		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
 		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
@@ -66,7 +84,8 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		{
 			rules.push_back(Per75.first.at(i));
 		}
-
+		*/
+		/*
 		rules.push_back("\n\n=============85%===============\n\n");
 		//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
 		//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
@@ -84,7 +103,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		{
 			rules.push_back(Per95.first.at(i));
 		}
-
+		*/
 		rules.push_back("\n\n\n\n");
 	
 	//vector<string> tenFold = this->domNomVisualization->tenFoldCrossValidation(classToTest, groups);

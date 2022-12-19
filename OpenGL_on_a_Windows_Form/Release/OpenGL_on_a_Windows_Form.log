@@ -1,0 +1,30 @@
+﻿  OpenGL.cpp
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(24,22): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(113,20): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(65,21): warning C4018: '<': signed/unsigned mismatch
+I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
+  LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+  OpenGL_on_a_Windows_Form.vcxproj -> I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\Release\VisCanvas.exe

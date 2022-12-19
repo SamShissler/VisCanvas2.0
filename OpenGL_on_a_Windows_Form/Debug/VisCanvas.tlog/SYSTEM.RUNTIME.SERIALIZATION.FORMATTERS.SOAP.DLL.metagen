@@ -1,0 +1,41 @@
+  SoapFormatter.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly System.Runtime.Serialization.Formatters.Soap, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class System.Runtime.Serialization.Formatters.Soap.SoapFormatter: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Runtime.Serialization.ISurrogateSelector, System.Runtime.Serialization.StreamingContext): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.Runtime.Remoting.Messaging.IRemotingFormatter
+    System.Runtime.Serialization.IFormatter
+  Properties:
+    System.Runtime.Serialization.Formatters.ISoapMessage TopObject 'get set' : 
+    System.Runtime.Serialization.Formatters.FormatterTypeStyle TypeFormat 'get set' : 
+    System.Runtime.Serialization.Formatters.FormatterAssemblyStyle AssemblyFormat 'get set' : 
+    System.Runtime.Serialization.Formatters.TypeFilterLevel FilterLevel 'get set' : 
+    System.Runtime.Serialization.ISurrogateSelector SurrogateSelector 'get set' : 
+    System.Runtime.Serialization.SerializationBinder Binder 'get set' : 
+    System.Runtime.Serialization.StreamingContext Context 'get set' : 
+  Methods:
+    get_TopObject(): PrivateScope, Public, HideBySig, SpecialName
+    set_TopObject(ISoapMessage): PrivateScope, Public, HideBySig, SpecialName
+    get_TypeFormat(): PrivateScope, Public, HideBySig, SpecialName
+    set_TypeFormat(FormatterTypeStyle): PrivateScope, Public, HideBySig, SpecialName
+    get_AssemblyFormat(): PrivateScope, Public, HideBySig, SpecialName
+    set_AssemblyFormat(FormatterAssemblyStyle): PrivateScope, Public, HideBySig, SpecialName
+    get_FilterLevel(): PrivateScope, Public, HideBySig, SpecialName
+    set_FilterLevel(TypeFilterLevel): PrivateScope, Public, HideBySig, SpecialName
+    Deserialize(Stream): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Deserialize(Stream, HeaderHandler): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Serialize(Stream, Object): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    Serialize(Stream, Object, Header[]): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    get_SurrogateSelector(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_SurrogateSelector(ISurrogateSelector): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Binder(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Binder(SerializationBinder): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Context(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Context(StreamingContext): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
