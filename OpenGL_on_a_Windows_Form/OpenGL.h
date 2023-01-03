@@ -8,7 +8,7 @@ Purpose: CS 481 Project
 
 #include "stdafx.h"
 #include "DomNominalSet.h"
-#include <atlstr.h>
+//#include <atlstr.h>
 #include <vector>
 #include <unordered_map>
 #include <windows.h>

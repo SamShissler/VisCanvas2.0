@@ -3,6 +3,9 @@
 #include "OpenGL.h"
 #include "CoordinateGroupingMainWindow.h"
 #include <time.h>
+#include <fstream>
+#include <cstdlib>
+#include <iostream>
 
 //Set up for code cleanup.
 
@@ -30,7 +33,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 	vector<string> rules;
 	vector<vector<int>> groups = *coordinateGrouping->getCoordinateGroups();
-	const int classToTest = 2;
+	const int classToTest = 1;
 	
 	
 	//vector<string> g = this->domNomVisualization->geneticAttributeGroupGeneration();
@@ -39,11 +42,10 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	//return;
 
 	
-	/*
 	groups.clear();
-	int toAddGroups[5][3] = { {5, 20, 15}, {20, 11, 5}, {15, 20, 11}, {5, 15, 21}, {11, 5, 8} };
+	int toAddGroups[2][3] = { {1, 2, 3}, {4, 5, 6} };
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		vector<int>toAdd;
 		for (int j = 0; j < 3; j++)
@@ -53,58 +55,86 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 
 		groups.push_back(toAdd);
 	}
+
+	string fileName = "PrecisionThresholds.txt";
+	ifstream precThreshInp;
+	precThreshInp.open(fileName);
+	vector<float> precThreshs;
+
+	if (!precThreshInp.is_open())
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	while (precThreshInp.good())
+	{
+		string strPrec;
+		precThreshInp >> strPrec;
+		precThreshs.push_back(stod(strPrec));
+	}
+
+	for (int i = 0; i < precThreshs.size(); i++)
+	{
+		string beg = "\n\n=============";
+		string mid = to_string(precThreshs[i]);
+		string end = "===============\n\n";
+		rules.push_back(beg + mid + end);
+		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+		pair<vector<string>, vector<DNSRule>> Per = this->domNomVisualization->MTBRGSequential(precThreshs[i], groups, classToTest);
+		for (int i = 0; i < Per.first.size(); i++)
+		{
+			rules.push_back(Per.first.at(i));
+		}
+	}
+	/*//====================================================//
+	rules.push_back("\n\n=============25%===============\n\n");
+	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+	pair<vector<string>, vector<DNSRule>> Per25 = this->domNomVisualization->MTBRGSequential(25.0, groups, classToTest);
+	for (int i = 0; i < Per25.first.size(); i++)
+	{
+		rules.push_back(Per25.first.at(i));
+	}
+
+	rules.push_back("\n\n=============50%===============\n\n");
+	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+	pair<vector<string>, vector<DNSRule>> Per50 = this->domNomVisualization->MTBRGSequential(50.0, groups, classToTest);
+	for (int i = 0; i < Per50.first.size(); i++)
+	{
+		rules.push_back(Per50.first.at(i));
+	}
+	/*
+	rules.push_back("\n\n=============75%===============\n\n");
+	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
+	//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+	pair<vector<string>, vector<DNSRule>> Per75 = this->domNomVisualization->MTBRGSequential(75.0, groups, classToTest);
+	for (int i = 0; i < Per75.first.size(); i++)
+	{
+		rules.push_back(Per75.first.at(i));
+	}
 	*/
+	/*
+	rules.push_back("\n\n=============85%===============\n\n");
+	//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
+	//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
+	pair<vector<string>, vector<DNSRule>> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
+	for (int i = 0; i < Per85.first.size(); i++)
+	{
+		rules.push_back(Per85.first.at(i));
+	}
 
-
-	
-		//====================================================//
-		rules.push_back("\n\n=============25%===============\n\n");
-		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
-		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
-		pair<vector<string>, vector<DNSRule>> Per25 = this->domNomVisualization->MTBRGSequential(25.0, groups, classToTest);
-		for (int i = 0; i < Per25.first.size(); i++)
-		{
-			rules.push_back(Per25.first.at(i));
-		}
-
-		rules.push_back("\n\n=============50%===============\n\n");
-		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
-		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
-		pair<vector<string>, vector<DNSRule>> Per50 = this->domNomVisualization->MTBRGSequential(50.0, groups, classToTest);
-		for (int i = 0; i < Per50.first.size(); i++)
-		{
-			rules.push_back(Per50.first.at(i));
-		}
-		/*
-		rules.push_back("\n\n=============75%===============\n\n");
-		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
-		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
-		pair<vector<string>, vector<DNSRule>> Per75 = this->domNomVisualization->MTBRGSequential(75.0, groups, classToTest);
-		for (int i = 0; i < Per75.first.size(); i++)
-		{
-			rules.push_back(Per75.first.at(i));
-		}
-		*/
-		/*
-		rules.push_back("\n\n=============85%===============\n\n");
-		//vector < string> Per85 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(85.0, groups, classToTest);
-		//vector < string> Per85 = this->domNomVisualization->MTBRuleGenResults(85.0, groups, classToTest);
-		pair<vector<string>, vector<DNSRule>> Per85 = this->domNomVisualization->MTBRGSequential(85.0, groups, classToTest);
-		for (int i = 0; i < Per85.first.size(); i++)
-		{
-			rules.push_back(Per85.first.at(i));
-		}
-
-		rules.push_back("\n\n=============95%===============\n\n");
-		//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
-		//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
-		pair<vector<string>, vector<DNSRule>> Per95 = this->domNomVisualization->MTBRGSequential(95.0, groups, classToTest);
-		for (int i = 0; i < Per95.first.size(); i++)
-		{
-			rules.push_back(Per95.first.at(i));
-		}
-		*/
-		rules.push_back("\n\n\n\n");
+	rules.push_back("\n\n=============95%===============\n\n");
+	//vector < string> Per95 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(95.0, groups, classToTest);
+	//vector < string> Per95 = this->domNomVisualization->MTBRuleGenResults(95.0, groups, classToTest);
+	pair<vector<string>, vector<DNSRule>> Per95 = this->domNomVisualization->MTBRGSequential(95.0, groups, classToTest);
+	for (int i = 0; i < Per95.first.size(); i++)
+	{
+		rules.push_back(Per95.first.at(i));
+	}
+	*/
+	rules.push_back("\n\n\n\n");
 	
 	//vector<string> tenFold = this->domNomVisualization->tenFoldCrossValidation(classToTest, groups);
 

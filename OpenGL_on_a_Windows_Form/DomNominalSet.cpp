@@ -4133,27 +4133,49 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 		toReturn.push_back("Attributes and coordinates used: \n");
 		vector<int> curCoord = curRule.getCoordinatesUsed();
 		vector<double> curAttri = curRule.getAttributesUsed();
+
 		for (int j = 0; j < curCoord.size() - 1; j++)
 		{
 			string s = to_string(curAttri.at(j));
 			toReturn.push_back("X" + to_string(curCoord.at(j) + 1) + " -> " + s + "\n");
 		}
 		string s = to_string(curAttri.at(curCoord.size() - 1));
-		toReturn.push_back("X" + to_string(curCoord.at(curCoord.size() - 1) + 1) + " -> " + s + "\n\n");
+		toReturn.push_back("X" + to_string(curCoord.at(curCoord.size() - 1) + 1) + " -> " + s + "\n-\n");
 
-		toReturn.push_back("Negated Attributes: \n");
+		toReturn.push_back("Negated Used Attributes: ");
 		vector<double> negatedAttri = curRule.getNegatedAttributesUsed();
 
 		if (negatedAttri.size() >= 1)
 		{
-			for (int j = 0; j < negatedAttri.size() - 1; j++)
+			int negAttriInt;
+			for (int j = 0; j < negatedAttri.size(); j++)
 			{
-				toReturn.push_back(to_string(negatedAttri.at(j)) + ", ");
-			}
-			toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)) + "\n\n\n");
-		}
-	}
+				string suffex;
+				negAttriInt = int(negatedAttri.at(j)) + 1;
+				if (negAttriInt % 10 == 1 && negAttriInt % 100 != 11)
+					suffex = "st";
+				else if (negAttriInt % 10 == 2 && negAttriInt % 100 != 12)
+					suffex = "nd";
+				else if (negAttriInt % 10 == 3 && negAttriInt % 100 != 13)
+					suffex = "rd";
+				else
+					suffex = "th";
 
+				if (j == negatedAttri.size())
+				{
+					toReturn.push_back(to_string(negAttriInt) + suffex);
+					continue;
+				}
+				toReturn.push_back(to_string(negAttriInt) + suffex + ", ");
+			}
+			//toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)));
+		}
+		else
+		{
+			toReturn.push_back("None");
+		}
+		toReturn.push_back("\n\n\n");
+	}
 	pair<vector<string>, vector<DNSRule>> finalResults;
 	finalResults.first = toReturn;
 	finalResults.second = allGroupRules;

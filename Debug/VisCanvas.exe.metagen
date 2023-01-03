@@ -28,10 +28,6 @@ Assembly UIAutomationProvider, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly UIAutomationTypes, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
 	hash=None, flags=None
-Assembly Interop.AcroPDFLib.1.0, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
-	hash=None, flags=None
-Assembly AxInterop.AcroPDFLib.1.0, Version=1.0.*, Culture=Invariant Language (Invariant Country): 
-	hash=None, flags=None
 Assembly Microsoft.VisualC.STLCLR, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
 	hash=None, flags=None
 Class CppCLRWinformsProjekt.ClassScheme: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -72,6 +68,7 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     DataInterface* file : Public
   Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
     SetFilePath(basic_string<char\,std::char_traits<char>\,std::allocator<char> >*): PrivateScope, Public, HideBySig
     incrementSelectedSet(): PrivateScope, Public, HideBySig
     incrementSelectedSetIndexCluster(): PrivateScope, Public, HideBySig
@@ -148,7 +145,6 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     generateRulesDNS(): PrivateScope, Public, HideBySig
     DNScalculateLinePosition(): PrivateScope, Public, HideBySig
     visualizeDomNomVisualization(): PrivateScope, Public, HideBySig
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class VisCanvas.AdditionalSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(OpenGLForm.COpenGL): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

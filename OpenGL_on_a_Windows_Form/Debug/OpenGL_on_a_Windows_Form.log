@@ -1,475 +1,295 @@
-﻿  stdafx.cpp
-  AssemblyInfo.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\AssemblyInfo.cpp(40,46): warning C4947: 'System::Security::Permissions::SecurityAction::RequestMinimum': marked as obsolete
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\AssemblyInfo.cpp(40,2): message : Message: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
-  ClassScheme.cpp
-  ColorCustom.cpp
-  CoordinateGroupGeneralizer.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupGeneralizer.cpp(18,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupGeneralizer.cpp(37,20): warning C4018: '<': signed/unsigned mismatch
-  CoordinateGroupingWindow.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(46,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(65,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(99,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(121,19): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(129,21): warning C4018: '<': signed/unsigned mismatch
-  CoordinateGroupMaker.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupMaker.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-  DataClass.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataClass.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataClass.cpp(105,20): warning C4018: '<': signed/unsigned mismatch
-  DataInterface.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(152,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(200,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1796,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1846,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2714,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2726,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2756,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2761,11): warning C4804: '<': unsafe use of type 'bool' in operation
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2765,16): warning C4804: '>': unsafe use of type 'bool' in operation
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2812,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(284,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(291,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(303,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(311,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(383,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(466,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(474,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(482,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(490,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(498,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(514,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(521,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(544,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(562,17): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(571,25): warning C4018: '<=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(620,35): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(630,35): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(814,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(820,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(837,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(843,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(857,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(863,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(884,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(900,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(919,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(936,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(943,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1093,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1160,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1272,30): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1605,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1624,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1628,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1640,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1680,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1715,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1745,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1756,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1794,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1808,14): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1830,14): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1852,14): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1869,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1885,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1901,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2008,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2053,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2071,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2118,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2185,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2215,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2263,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2287,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2298,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2300,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2318,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2329,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2339,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2389,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2404,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2416,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2431,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2448,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2464,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2476,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2491,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2508,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2514,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2516,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2543,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2555,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2561,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2563,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2591,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2608,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2635,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2647,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2662,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2681,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2688,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2714,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2727,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2757,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2764,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2790,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2803,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2892,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2906,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2917,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2927,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2929,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3025,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3039,40): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3049,40): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3087,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3100,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3112,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3121,48): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3158,26): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3255,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3257,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3434,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3446,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3481,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3495,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3534,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3542,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3552,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3666,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3740,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4016,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4030,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4040,20): warning C4018: '<': signed/unsigned mismatch
-  DataNode.cpp
-  DataSet.cpp
-  Dimension.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(41,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(118,21): warning C4018: '<': signed/unsigned mismatch
-  DNSRule.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2203,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "Microsoft.VisualBasic.PowerPacks.Vs". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2827,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2827,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
   DomNominalSet.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(127,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(148,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(191,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(290,65): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(340,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(385,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(433,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(438,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(509,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(520,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(542,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(566,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(650,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(663,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(681,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(695,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(710,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(724,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(738,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(753,24): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(127,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(148,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(191,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(290,65): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(340,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(385,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(433,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(438,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(509,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(520,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(542,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(566,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(650,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(663,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(681,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(695,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(710,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(724,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(738,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(753,24): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(754,25): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(754,25): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(822,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(836,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(848,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(870,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(911,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1237,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1239,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(822,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(836,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(848,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(870,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(911,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1237,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1239,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=double
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1257,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1276,32): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1257,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1276,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=double
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1281,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1455,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1457,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1281,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1455,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1457,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
           with
           [
               _Ty=boolean
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1586,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1655,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1739,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1752,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1776,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1796,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1808,70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2066,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2089,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2094,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1586,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1655,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1739,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1752,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1776,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1796,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1808,70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2066,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2089,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2094,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=double
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2101,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2255,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2265,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2370,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2381,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2473,33): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2474,34): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2475,25): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2477,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2492,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2504,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2519,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2531,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2545,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2557,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2758,33): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2869,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2888,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2963,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2971,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2999,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3055,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3074,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3149,30): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3157,30): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3234,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3253,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3307,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3336,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3344,29): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3405,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3423,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3492,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3500,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3540,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3700,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3705,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3730,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3736,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3743,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3776,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3788,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3818,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3828,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3831,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3867,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3874,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3892,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3895,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3915,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3918,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3938,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3942,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3985,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3990,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3997,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4010,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4012,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4029,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4059,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4065,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4068,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4086,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4101,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4122,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4136,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4149,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4173,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4181,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4185,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4202,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4234,19): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4245,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4260,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4266,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4277,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4285,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4326,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4331,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4341,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4346,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4354,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4359,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4369,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4381,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4396,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4406,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4419,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4473,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4687,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4694,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4698,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4738,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4750,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5058,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5071,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5089,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5103,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5118,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5132,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5146,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5161,24): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2101,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2255,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2265,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2370,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2381,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2473,51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2474,54): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2475,41): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2477,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2492,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2504,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2519,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2531,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2545,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2557,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2758,33): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2869,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2888,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2963,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2971,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2999,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3055,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3074,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3149,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3157,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3234,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3253,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3307,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3336,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3344,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3405,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3423,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3492,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3500,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3540,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3700,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3705,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3730,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3736,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3743,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3776,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3788,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3818,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3828,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3831,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3867,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3874,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3892,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3895,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3915,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3918,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3938,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3942,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3985,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3990,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3997,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4010,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4012,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4029,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4059,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4065,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4068,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4086,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4101,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4122,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4137,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4151,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4195,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4203,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4207,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4224,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4256,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4267,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4282,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4288,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4299,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4307,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4348,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4353,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4363,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4368,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4376,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4381,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4391,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4403,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4418,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4428,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4441,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4495,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4709,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4716,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4720,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4760,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4772,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5080,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5093,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5111,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5125,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5140,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5154,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5168,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5183,24): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5162,25): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5184,25): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5174,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5176,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5196,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5198,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=double
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5194,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5213,32): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5216,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5235,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=double
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5218,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5383,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5385,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5240,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5405,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5407,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
           with
           [
               _Ty=boolean
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5433,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5448,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5481,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5505,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5512,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5516,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5537,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5603,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5618,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5653,27): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5657,28): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5705,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5746,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5786,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5790,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5846,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5859,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5862,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5893,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5905,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5909,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5912,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5930,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5934,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5937,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5972,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5985,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5998,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6035,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6057,21): warning C4018: '<=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6072,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6076,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6081,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6084,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6102,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6107,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6109,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6129,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6145,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6150,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6153,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6178,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6184,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6187,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6220,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6234,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6239,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6249,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6292,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6335,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6350,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6376,19): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6422,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6445,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6447,10): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6519,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6543,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6551,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6569,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6585,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6595,32): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6602,38): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6606,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6628,34): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6638,34): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6667,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6686,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6714,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6736,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6748,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6780,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6838,96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6838,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6844,19): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6975,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6999,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7015,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7058,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7063,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7088,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7106,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7137,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7142,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7171,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7194,23): warning C4018: '<': signed/unsigned mismatch
-D:\Program Files\Microsoft Visual Studio\2022\VC\Tools\MSVC\14.34.31933\include\utility(172,16): warning C4244: 'initializing': conversion from 'double' to '_Ty1', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5455,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5470,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5503,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5527,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5534,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5538,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5559,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5625,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5640,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5675,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5679,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5727,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5768,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5808,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5812,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5868,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5881,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5884,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5915,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5927,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5931,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5934,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5952,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5956,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5959,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5994,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6007,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6020,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6057,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6079,21): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6094,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6098,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6103,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6106,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6124,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6129,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6131,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6151,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6167,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6172,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6175,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6200,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6206,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6209,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6242,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6256,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6261,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6271,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6314,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6357,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6372,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6398,19): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6444,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6467,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6469,10): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6541,25): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6565,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6573,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6591,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6607,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6617,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6624,38): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6628,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6650,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6660,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6689,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6708,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6736,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6758,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6770,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6802,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6860,96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6860,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6866,19): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6997,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7021,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7037,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7080,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7085,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7110,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7128,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7159,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7164,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7193,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(7216,23): warning C4018: '<': signed/unsigned mismatch
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(186,16): warning C4244: 'initializing': conversion from 'double' to '_Ty1', possible loss of data
           with
           [
               _Ty1=int
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3550,85): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3550): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
           with
           [
               _Kty=int,
@@ -478,7 +298,7 @@ I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dom
               _Other1=double &,
               _Other2=std::string &
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3550,29): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3550): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
           with
           [
               _Kty=int,
@@ -487,7 +307,7 @@ I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dom
               _Other1=double &,
               _Other2=std::string &
           ]
-D:\Program Files\Microsoft Visual Studio\2022\VC\Tools\MSVC\14.34.31933\include\utility(172,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(186,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
           with
           [
               _Ty=double
@@ -496,7 +316,7 @@ D:\Program Files\Microsoft Visual Studio\2022\VC\Tools\MSVC\14.34.31933\include\
           [
               _Ty1=int
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3551,91): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3551): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
           with
           [
               _Kty=int,
@@ -505,7 +325,7 @@ I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dom
               _Other1=double,
               _Other2=std::string &
           ]
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3551,29): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3551): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
           with
           [
               _Kty=int,
@@ -514,245 +334,5 @@ I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dom
               _Other1=double,
               _Other2=std::string &
           ]
-  DomNomSetsLinesBetweenCords.cpp
-  GraphNote.cpp
-  AdditionalSettings.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  IntervalGrouping.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\IntervalGrouping.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-  IntervalGroupStarting.cpp
-  MonotoneBooleanChains.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(44,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(47,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(56,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(59,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(69,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(78,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(86,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(109,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(123,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(133,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(137,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(149,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(153,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(171,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(175,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(194,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(200,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(221,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(247,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(249,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(274,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(285,23): warning C4018: '<=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(302,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(335,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(346,23): warning C4018: '<=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(370,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(380,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(423,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(448,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(459,23): warning C4018: '<=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(468,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(496,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(516,25): warning C4018: '<': signed/unsigned mismatch
-  NominalColorPicker.cpp
-  Generating Code...
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(241): warning C4715: 'MonotoneBooleanChains::getNextLink': not all control paths return a value
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(694): warning C4172: returning address of local variable or temporary: str
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(242): warning C4715: 'DataInterface::saveToFile': not all control paths return a value
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779): warning C4700: uninitialized local variable 'editedAttributes' used
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-  Compiling...
-  NominalGrouping.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(14,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(83,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(86,18): warning C4018: '>': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(93,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(96,18): warning C4018: '<': signed/unsigned mismatch
-  NominalSubgroupBuilder.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(15,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(42,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(48,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(63,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(120,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(123,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(207,20): warning C4018: '<': signed/unsigned mismatch
-  NonMonotonicSelector.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicSelector.cpp(28,20): warning C4018: '<': signed/unsigned mismatch
-  NSGGroupAssingment.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(15,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(67,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(82,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(86,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(99,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(105,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(110,26): warning C4018: '<': signed/unsigned mismatch
-  OpenGL.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(24,22): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(113,20): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(65,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(74,21): warning C4018: '<': signed/unsigned mismatch
-  OrderScheme.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(154,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(175,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(186,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(212,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(215,18): warning C4018: '>': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(222,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(225,18): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(249,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(276,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(302,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(330,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(358,20): warning C4018: '<': signed/unsigned mismatch
-  OrdinalGrouping.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrdinalGrouping.cpp(14,20): warning C4018: '<': signed/unsigned mismatch
-  pch.cpp
-  RatioGroupStarting.cpp
-  RatioGrouping.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\RatioGrouping.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-  Scheme.cpp
-  SchemeEditor.cpp
-  SetCluster.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(45,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(66,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(92,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(111,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(129,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(160,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(173,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(186,20): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(202,27): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(213,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(221,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(233,21): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(262,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(280,32): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(294,23): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(294,64): warning C4018: '>=': signed/unsigned mismatch
-  Settings.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-  VisCanvas.cpp
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(152,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(200,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1796,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1846,22): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2714,21): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2726,23): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2756,24): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2761,11): warning C4804: '<': unsafe use of type 'bool' in operation
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2765,16): warning C4804: '>': unsafe use of type 'bool' in operation
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779,25): warning C4018: '<': signed/unsigned mismatch
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2812,24): warning C4018: '<': signed/unsigned mismatch
-  VisCanvasHelp.cpp
-  Generating Code...
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779): warning C4700: uninitialized local variable 'editedAttributes' used
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  OpenGL_on_a_Windows_Form.vcxproj -> I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\Debug\VisCanvas.exe
+  OpenGL_on_a_Windows_Form.vcxproj -> C:\Users\infer\Desktop\Github2\VisCanvas2.0\Debug\VisCanvas.exe
