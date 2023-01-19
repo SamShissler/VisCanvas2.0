@@ -352,7 +352,6 @@ vector<vector<pair<double, double>>> DomNominalSet::getSortByPurity(vector<unord
 
 			//Add the found dominant frequency to the vector.
 			keyDomFreqs.at(i).push_back({ domFreq, key });
-
 		}
 
 	}
@@ -402,7 +401,7 @@ vector<vector<pair<double, double>>> DomNominalSet::getSortByPurity(vector<unord
 
 	//At this point, the values are sorted from largest to smallest. Now we want to put the smaller frequencies on top
 	//to reduce the occlusion of the mutliple small lines over large blocks.
-	for (int i = 0; i < this->file->getDimensionAmount(); i++)
+	/*for (int i = 0; i < this->file->getDimensionAmount(); i++)
 	{
 
 		vector<pair<double, double>> curDim = sortedVector.at(i);
@@ -443,7 +442,7 @@ vector<vector<pair<double, double>>> DomNominalSet::getSortByPurity(vector<unord
 		//Assign. 
 		sortedVector.at(i) = curDim;
 
-	}
+	}*/
 
 	return sortedVector;
 
@@ -1277,7 +1276,7 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 			}
 
 			glColor4d((*color)[0], (*color)[1], (*color)[2], alpha);
-			double width = (frequency[k] / (file->getSetAmount(classVal) / 15));
+			double width = (frequency[k] / (file->getSetAmount(classVal) / 100));
 			glLineWidth(width);
 			double leftData = leftCoordinate[k];
 			double rightData = rightCoordinate[k];
@@ -3723,7 +3722,7 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 	//While the following conditions are not true:
 	//1.) Target cases covered is not as large as the actual number of targer cases.
 	//2.) Selected rules is not larger then the number of rules to select.
-	while ((targetCasesCovered.size() != numCasesInTarget) && (selectedRules.size() != allGeneratedRules.size()))
+	while (true)
 	{
 		//Sort list by number of target cases not yet covered.
 		vector<pair<int, int>> newTargetCasesPerRuleIndex;
@@ -4133,48 +4132,22 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 		toReturn.push_back("Attributes and coordinates used: \n");
 		vector<int> curCoord = curRule.getCoordinatesUsed();
 		vector<double> curAttri = curRule.getAttributesUsed();
-
-		for (int j = 0; j < curCoord.size() - 1; j++)
-		{
-			string s = to_string(curAttri.at(j));
-			toReturn.push_back("X" + to_string(curCoord.at(j) + 1) + " -> " + s + "\n");
-		}
-		string s = to_string(curAttri.at(curCoord.size() - 1));
-		toReturn.push_back("X" + to_string(curCoord.at(curCoord.size() - 1) + 1) + " -> " + s + "\n-\n");
-
-		toReturn.push_back("Negated Used Attributes: ");
 		vector<double> negatedAttri = curRule.getNegatedAttributesUsed();
 
-		if (negatedAttri.size() >= 1)
+		for (int j = 0; j < curCoord.size(); j++)
 		{
-			int negAttriInt;
-			for (int j = 0; j < negatedAttri.size(); j++)
+			string s = to_string(curAttri.at(j));
+			if (negatedAttri.size() >= 1 && j == (int)negatedAttri.front())
 			{
-				string suffex;
-				negAttriInt = int(negatedAttri.at(j)) + 1;
-				if (negAttriInt % 10 == 1 && negAttriInt % 100 != 11)
-					suffex = "st";
-				else if (negAttriInt % 10 == 2 && negAttriInt % 100 != 12)
-					suffex = "nd";
-				else if (negAttriInt % 10 == 3 && negAttriInt % 100 != 13)
-					suffex = "rd";
-				else
-					suffex = "th";
-
-				if (j == negatedAttri.size())
-				{
-					toReturn.push_back(to_string(negAttriInt) + suffex);
-					continue;
-				}
-				toReturn.push_back(to_string(negAttriInt) + suffex + ", ");
+				toReturn.push_back("X" + to_string(curCoord.at(j) + 1) + "=\\ " + s + "\n");
+				negatedAttri.erase(negatedAttri.begin());
 			}
-			//toReturn.push_back(to_string(negatedAttri.at(negatedAttri.size() - 1)));
+			else
+			{
+				toReturn.push_back("X" + to_string(curCoord.at(j) + 1) + " = " + s + "\n");
+			}
 		}
-		else
-		{
-			toReturn.push_back("None");
-		}
-		toReturn.push_back("\n\n\n");
+		toReturn.push_back("\n");
 	}
 	pair<vector<string>, vector<DNSRule>> finalResults;
 	finalResults.first = toReturn;

@@ -56,6 +56,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		groups.push_back(toAdd);
 	}
 
+	//reads file PrecisionThresholds.txt which contains a list of precisions. Those precisions are fed into the method one at a time
 	string fileName = "PrecisionThresholds.txt";
 	ifstream precThreshInp;
 	precThreshInp.open(fileName);
