@@ -48,7 +48,7 @@ public:
 	//Drawing Starting Visualization:
 	GLvoid drawVisualization();
 	GLvoid drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth);
-	GLvoid drawLines(double worldWidth);
+	GLvoid drawLines(double worldWidth, int minClassCaseLineCutOff);
 	GLvoid drawSelectorBoxes(double worldWidth);
 	GLvoid drawHoverInfo(double worldWidth);
 

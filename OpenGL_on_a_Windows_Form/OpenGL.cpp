@@ -6,7 +6,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
-
+#include <sstream>
 //Set up for code cleanup.
 
 // visualizeDomNomVisualization:
@@ -57,21 +57,37 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	}
 
 	//reads file PrecisionThresholds.txt which contains a list of precisions. Those precisions are fed into the method one at a time
-	string fileName = "PrecisionThresholds.txt";
+	string fileName = "config.txt";
 	ifstream precThreshInp;
 	precThreshInp.open(fileName);
 	vector<float> precThreshs;
-
+	//string strPrec = "";
+	std::size_t found;
 	if (!precThreshInp.is_open())
 	{
 		exit(EXIT_FAILURE);
 	}
 
-	while (precThreshInp.good())
+	for(string strPrec; getline(precThreshInp, strPrec);)
 	{
-		string strPrec;
-		precThreshInp >> strPrec;
-		precThreshs.push_back(stod(strPrec));
+		found = strPrec.find("PrecisionThresholds");
+		if (found != string::npos)
+		{
+			istringstream iss(strPrec);
+			string val;
+			iss >> val;
+			while(iss)
+			{
+				iss >> val;
+				if (val.find(";") != string::npos)
+				{
+					break;
+				}
+				precThreshs.push_back(stod(val));
+				//precThreshInp >> strPrec;
+			} 
+			break;
+		}
 	}
 
 	for (int i = 0; i < precThreshs.size(); i++)

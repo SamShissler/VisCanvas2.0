@@ -1,0 +1,3 @@
+//be sure to leave a space between the last value and the semi-colon
+PrecisionThresholds 65.5 75 85 95 ; //insert as many values as needed, in any order
+MinClassCaseLineDrawCutOff 1 ; //do not go above 25. There is not meant to be more than 1 value inserted

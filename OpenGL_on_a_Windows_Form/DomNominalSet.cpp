@@ -5,6 +5,8 @@
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
+#include <iostream>
 
 using namespace System::Windows::Forms;
 
@@ -777,13 +779,46 @@ void DomNominalSet::calculateLinePositions(double worldWidth)
 GLvoid DomNominalSet::drawVisualization()
 {
 	reCalculateData();
+	//reads file PrecisionThresholds.txt which contains a list of precisions. Those precisions are fed into the method one at a time
+	
+	string fileName = "config.txt";
+	ifstream precThreshInp;
+	precThreshInp.open(fileName);
+	int minClassCaseLineCutOff;
+	std::size_t found;
+	if (!precThreshInp.is_open())
+	{
+		exit(EXIT_FAILURE);
+	}
+
+	for (string strPrec; getline(precThreshInp, strPrec);)
+	{
+		found = strPrec.find("MinClassCaseLineDrawCutOff");
+		if (found != string::npos)
+		{
+			istringstream iss(strPrec);
+			string val;
+			iss >> val;
+			while (iss)
+			{
+				iss >> val;
+				if (val.find(";") != string::npos)
+				{
+					break;
+				}
+				minClassCaseLineCutOff = stoi(val);
+				//precThreshInp >> strPrec;
+			}
+			break;
+		}
+	}
 
 	//If the coordinates are being reordered or shifted, only draw blocks.
 	//This is to keep the program from lagging too much.
 	if (file->getReOrderMode() == false && file->getShiftMode() == false && file->getInvertMode() == false)
 	{
 		drawRectangles(this->sortedByPurityVector, this->classPercPerBlock, this->worldWidth);
-		drawLines(this->worldWidth);
+		drawLines(this->worldWidth, minClassCaseLineCutOff);
 		if (this->file->getDNSHideCoordinatesMode()) drawSelectorBoxes(this->worldWidth);
 		if (ruleData.size() != 0 && file->getDNSRuleVisualizationMode()) visualizeRules();
 		drawHoverInfo(this->worldWidth);
@@ -1160,7 +1195,7 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 
 //drawLines:
 //Desc: Draws line sections between coordinates in the OPENGL window.
-GLvoid DomNominalSet::drawLines(double worldWidth)
+GLvoid DomNominalSet::drawLines(double worldWidth, int minClassCaseLineCutOff)
 {
 	int dimensionCount = 0; // Variable for the dimension index.
 	int colorChoice = file->getNominalColor();
@@ -1275,8 +1310,9 @@ GLvoid DomNominalSet::drawLines(double worldWidth)
 				numNDPoints += frequency.at(k);
 			}
 
+			//width of lines
 			glColor4d((*color)[0], (*color)[1], (*color)[2], alpha);
-			double width = (frequency[k] / (file->getSetAmount(classVal) / 100));
+			double width = (frequency[k] / (file->getSetAmount(classVal) / (float)minClassCaseLineCutOff));
 			glLineWidth(width);
 			double leftData = leftCoordinate[k];
 			double rightData = rightCoordinate[k];
