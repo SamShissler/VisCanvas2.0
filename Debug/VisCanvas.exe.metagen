@@ -1,4 +1,5 @@
   VisCanvas.AdditionalSettings.resources - Embedded, ContainedInManifestFile, 
+  VisCanvas.loadingForm.resources - Embedded, ContainedInManifestFile, 
   VisCanvas.SchemeEditor.resources - Embedded, ContainedInManifestFile, 
   VisCanvas.Settings.resources - Embedded, ContainedInManifestFile, 
   VisCanvas.VisCanvas.resources - Embedded, ContainedInManifestFile, 
@@ -195,6 +196,9 @@ Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 previousClassAmount : Public
     Boolean sortToggleState : Public
     Boolean shifToggleState : Public
+Class VisCanvas.loadingForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinformsProjekt.IntervalGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

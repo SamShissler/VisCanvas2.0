@@ -18,3 +18,12 @@ I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Rel
 I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\VisCanvas.VisCanvasHelp.resources
 I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
 I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\VisCanvas.AdditionalSettings.resources
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\VisCanvas.SchemeEditor.resources
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\VisCanvas.Settings.resources
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\VisCanvas.VisCanvas.resources
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\VisCanvas.VisCanvasHelp.resources
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Release\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete

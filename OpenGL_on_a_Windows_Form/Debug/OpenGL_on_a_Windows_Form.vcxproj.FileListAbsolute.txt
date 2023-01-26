@@ -134,3 +134,4 @@ C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCa
 C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
 C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
 C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.loadingForm.resources

@@ -1,0 +1,604 @@
+  ExceptionStringTable.resources - Embedded, ContainedInManifestFile, 
+  StringTable.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly UIAutomationTypes, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
+	hash=None, flags=None
+Class System.Windows.Automation.AutomationIdentifier: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  Interfaces:
+    System.IComparable
+  Properties:
+    Int32 Id   'get ' : 
+    System.String ProgrammaticName 'get ' : 
+  Methods:
+    get_Id(): PrivateScope, Public, HideBySig, SpecialName
+    get_ProgrammaticName(): PrivateScope, Public, HideBySig, SpecialName
+    Equals(Object): PrivateScope, Public, Virtual, HideBySig
+    GetHashCode(): PrivateScope, Public, Virtual, HideBySig
+    CompareTo(Object): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+Class System.Windows.Automation.AutomationPattern: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Automation.AutomationIdentifier
+  Methods:
+    LookupById(Int32): PrivateScope, Public, Static, HideBySig
+Class System.Windows.Automation.AutomationProperty: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Automation.AutomationIdentifier
+  Methods:
+    LookupById(Int32): PrivateScope, Public, Static, HideBySig
+Class System.Windows.Automation.AutomationEvent: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Automation.AutomationIdentifier
+  Methods:
+    LookupById(Int32): PrivateScope, Public, Static, HideBySig
+Class System.Windows.Automation.AutomationTextAttribute: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Automation.AutomationIdentifier
+  Methods:
+    LookupById(Int32): PrivateScope, Public, Static, HideBySig
+Class System.Windows.Automation.ControlType: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Automation.AutomationIdentifier
+  Fields:
+    System.Windows.Automation.ControlType Button : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Calendar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType CheckBox : Public, Static, InitOnly
+    System.Windows.Automation.ControlType ComboBox : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Edit : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Hyperlink : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Image : Public, Static, InitOnly
+    System.Windows.Automation.ControlType ListItem : Public, Static, InitOnly
+    System.Windows.Automation.ControlType List : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Menu : Public, Static, InitOnly
+    System.Windows.Automation.ControlType MenuBar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType MenuItem : Public, Static, InitOnly
+    System.Windows.Automation.ControlType ProgressBar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType RadioButton : Public, Static, InitOnly
+    System.Windows.Automation.ControlType ScrollBar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Slider : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Spinner : Public, Static, InitOnly
+    System.Windows.Automation.ControlType StatusBar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Tab : Public, Static, InitOnly
+    System.Windows.Automation.ControlType TabItem : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Text : Public, Static, InitOnly
+    System.Windows.Automation.ControlType ToolBar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType ToolTip : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Tree : Public, Static, InitOnly
+    System.Windows.Automation.ControlType TreeItem : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Custom : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Group : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Thumb : Public, Static, InitOnly
+    System.Windows.Automation.ControlType DataGrid : Public, Static, InitOnly
+    System.Windows.Automation.ControlType DataItem : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Document : Public, Static, InitOnly
+    System.Windows.Automation.ControlType SplitButton : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Window : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Pane : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Header : Public, Static, InitOnly
+    System.Windows.Automation.ControlType HeaderItem : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Table : Public, Static, InitOnly
+    System.Windows.Automation.ControlType TitleBar : Public, Static, InitOnly
+    System.Windows.Automation.ControlType Separator : Public, Static, InitOnly
+  Properties:
+    System.String LocalizedControlType 'get ' : 
+  Methods:
+    LookupById(Int32): PrivateScope, Public, Static, HideBySig
+    GetRequiredPatternSets(): PrivateScope, Public, HideBySig
+    GetNeverSupportedPatterns(): PrivateScope, Public, HideBySig
+    GetRequiredProperties(): PrivateScope, Public, HideBySig
+    get_LocalizedControlType(): PrivateScope, Public, HideBySig, SpecialName
+Class System.Windows.Automation.AutomationElementIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Object NotSupported : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsControlElementProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ControlTypeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsContentElementProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty LabeledByProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty NativeWindowHandleProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty AutomationIdProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ItemTypeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsPasswordProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty LocalizedControlTypeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty NameProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty AcceleratorKeyProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty AccessKeyProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty HasKeyboardFocusProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsKeyboardFocusableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsEnabledProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty BoundingRectangleProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ProcessIdProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RuntimeIdProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ClassNameProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty HelpTextProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ClickablePointProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CultureProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsOffscreenProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty OrientationProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty FrameworkIdProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsRequiredForFormProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ItemStatusProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty LiveSettingProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsDockPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsExpandCollapsePatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsGridItemPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsGridPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsInvokePatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsMultipleViewPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsRangeValuePatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsSelectionItemPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsSelectionPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsScrollPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsScrollItemPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsSynchronizedInputPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsVirtualizedItemPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsItemContainerPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsTablePatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsTableItemPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsTextPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsTogglePatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsTransformPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsValuePatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsWindowPatternAvailableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent ToolTipOpenedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent ToolTipClosedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent StructureChangedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent MenuOpenedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent AutomationPropertyChangedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent AutomationFocusChangedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent AsyncContentLoadedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent MenuClosedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent LayoutInvalidatedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent LiveRegionChangedEvent : Public, Static, InitOnly
+Struct System.Windows.Automation.DockPosition: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.DockPosition Top = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.DockPosition Left = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.DockPosition Bottom = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.DockPosition Right = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.DockPosition Fill = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.DockPosition None = 5 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.DockPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty DockPositionProperty : Public, Static, InitOnly
+Struct System.Windows.Automation.ExpandCollapseState: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.ExpandCollapseState Collapsed = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ExpandCollapseState Expanded = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ExpandCollapseState PartiallyExpanded = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ExpandCollapseState LeafNode = 3 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.ExpandCollapsePatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ExpandCollapseStateProperty : Public, Static, InitOnly
+Class System.Windows.Automation.GridItemPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RowProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ColumnProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RowSpanProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ColumnSpanProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ContainingGridProperty : Public, Static, InitOnly
+Class System.Windows.Automation.GridPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RowCountProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ColumnCountProperty : Public, Static, InitOnly
+Class System.Windows.Automation.InvokePatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent InvokedEvent : Public, Static, InitOnly
+Class System.Windows.Automation.MultipleViewPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CurrentViewProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty SupportedViewsProperty : Public, Static, InitOnly
+Class System.Windows.Automation.RangeValuePatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ValueProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsReadOnlyProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty MinimumProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty MaximumProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty LargeChangeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty SmallChangeProperty : Public, Static, InitOnly
+Struct System.Windows.Automation.ScrollAmount: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.ScrollAmount LargeDecrement = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ScrollAmount SmallDecrement = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ScrollAmount NoAmount = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ScrollAmount LargeIncrement = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ScrollAmount SmallIncrement = 4 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.ScrollPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty HorizontalScrollPercentProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty HorizontalViewSizeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty VerticalScrollPercentProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty VerticalViewSizeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty HorizontallyScrollableProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty VerticallyScrollableProperty : Public, Static, InitOnly
+    Double NoScroll = -1 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.ScrollItemPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+Class System.Windows.Automation.SelectionPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty SelectionProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CanSelectMultipleProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsSelectionRequiredProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent InvalidatedEvent : Public, Static, InitOnly
+Class System.Windows.Automation.SelectionItemPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsSelectedProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty SelectionContainerProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent ElementAddedToSelectionEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent ElementRemovedFromSelectionEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent ElementSelectedEvent : Public, Static, InitOnly
+Struct System.Windows.Automation.SynchronizedInputType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.SynchronizedInputType KeyUp = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SynchronizedInputType KeyDown = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SynchronizedInputType MouseLeftButtonUp = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SynchronizedInputType MouseLeftButtonDown = 8 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SynchronizedInputType MouseRightButtonUp = 16 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SynchronizedInputType MouseRightButtonDown = 32 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.SynchronizedInputPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent InputReachedTargetEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent InputReachedOtherElementEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent InputDiscardedEvent : Public, Static, InitOnly
+Class System.Windows.Automation.TableItemPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RowHeaderItemsProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ColumnHeaderItemsProperty : Public, Static, InitOnly
+Struct System.Windows.Automation.RowOrColumnMajor: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.RowOrColumnMajor RowMajor = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.RowOrColumnMajor ColumnMajor = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.RowOrColumnMajor Indeterminate = 2 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.TablePatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RowHeadersProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ColumnHeadersProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty RowOrColumnMajorProperty : Public, Static, InitOnly
+Struct System.Windows.Automation.SupportedTextSelection: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.SupportedTextSelection None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SupportedTextSelection Single = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.SupportedTextSelection Multiple = 2 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.TextPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Object MixedAttributeValue : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute AnimationStyleAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute BackgroundColorAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute BulletStyleAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute CapStyleAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute CultureAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute FontNameAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute FontSizeAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute FontWeightAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute ForegroundColorAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute HorizontalTextAlignmentAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IndentationFirstLineAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IndentationLeadingAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IndentationTrailingAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IsHiddenAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IsItalicAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IsReadOnlyAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IsSubscriptAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute IsSuperscriptAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute MarginBottomAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute MarginLeadingAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute MarginTopAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute MarginTrailingAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute OutlineStylesAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute OverlineColorAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute OverlineStyleAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute StrikethroughColorAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute StrikethroughStyleAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute TabsAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute TextFlowDirectionsAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute UnderlineColorAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationTextAttribute UnderlineStyleAttribute : Public, Static, InitOnly
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent TextSelectionChangedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent TextChangedEvent : Public, Static, InitOnly
+Class System.Windows.Automation.TransformPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CanMoveProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CanResizeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CanRotateProperty : Public, Static, InitOnly
+Struct System.Windows.Automation.ToggleState: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.ToggleState Off = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ToggleState On = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.ToggleState Indeterminate = 2 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.TogglePatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ToggleStateProperty : Public, Static, InitOnly
+Class System.Windows.Automation.ValuePatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty ValueProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsReadOnlyProperty : Public, Static, InitOnly
+Struct System.Windows.Automation.WindowVisualState: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.WindowVisualState Normal = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.WindowVisualState Maximized = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.WindowVisualState Minimized = 2 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.WindowInteractionState: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.WindowInteractionState Running = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.WindowInteractionState Closing = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.WindowInteractionState ReadyForUserInteraction = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.WindowInteractionState BlockedByModalWindow = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.WindowInteractionState NotResponding = 4 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.WindowPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CanMaximizeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty CanMinimizeProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsModalProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty WindowVisualStateProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty WindowInteractionStateProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationProperty IsTopmostProperty : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent WindowOpenedEvent : Public, Static, InitOnly
+    System.Windows.Automation.AutomationEvent WindowClosedEvent : Public, Static, InitOnly
+Class System.Windows.Automation.VirtualizedItemPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+Class System.Windows.Automation.ItemContainerPatternIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
+  Fields:
+    System.Windows.Automation.AutomationPattern Pattern : Public, Static, InitOnly
+Struct System.Windows.Automation.OrientationType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.OrientationType None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.OrientationType Horizontal = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.OrientationType Vertical = 2 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.TreeScope: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.TreeScope Element = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.TreeScope Children = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.TreeScope Descendants = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.TreeScope Parent = 8 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.TreeScope Ancestors = 16 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.TreeScope Subtree = 7 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.AsyncContentLoadedState: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.AsyncContentLoadedState Beginning = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.AsyncContentLoadedState Progress = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.AsyncContentLoadedState Completed = 2 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.ProxyAssemblyNotLoadedException: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+  :System.Exception
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetObjectData(SerializationInfo, StreamingContext): PrivateScope, Public, Virtual, HideBySig, HasSecurity
+Class System.Windows.Automation.NoClickablePointException: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+  :System.Exception
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetObjectData(SerializationInfo, StreamingContext): PrivateScope, Public, Virtual, HideBySig, HasSecurity
+Class System.Windows.Automation.ElementNotEnabledException: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+  :System.InvalidOperationException
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetObjectData(SerializationInfo, StreamingContext): PrivateScope, Public, Virtual, HideBySig, HasSecurity
+Class System.Windows.Automation.ElementNotAvailableException: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
+  :System.SystemException
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.String, System.Exception): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(System.Exception): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetObjectData(SerializationInfo, StreamingContext): PrivateScope, Public, Virtual, HideBySig, HasSecurity
+Class System.Windows.Automation.AsyncContentLoadedEventArgs: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Windows.Automation.AutomationEventArgs
+    Void .ctor(System.Windows.Automation.AsyncContentLoadedState, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Windows.Automation.AsyncContentLoadedState AsyncContentLoadedState 'get ' : 
+    Double PercentComplete 'get ' : 
+  Methods:
+    get_AsyncContentLoadedState(): PrivateScope, Public, HideBySig, SpecialName
+    get_PercentComplete(): PrivateScope, Public, HideBySig, SpecialName
+Class System.Windows.Automation.AutomationEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Object, AutomationEventArgs): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Object, AutomationEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class System.Windows.Automation.AutomationEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(System.Windows.Automation.AutomationEvent): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Windows.Automation.AutomationEvent EventId 'get ' : 
+  Methods:
+    get_EventId(): PrivateScope, Public, HideBySig, SpecialName
+Class System.Windows.Automation.AutomationPropertyChangedEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Object, AutomationPropertyChangedEventArgs): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Object, AutomationPropertyChangedEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Class System.Windows.Automation.AutomationPropertyChangedEventArgs: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Windows.Automation.AutomationEventArgs
+    Void .ctor(System.Windows.Automation.AutomationProperty, System.Object, System.Object): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Windows.Automation.AutomationProperty Property 'get ' : 
+    System.Object OldValue 'get ' : 
+    System.Object NewValue 'get ' : 
+  Methods:
+    get_Property(): PrivateScope, Public, HideBySig, SpecialName
+    get_OldValue(): PrivateScope, Public, HideBySig, SpecialName
+    get_NewValue(): PrivateScope, Public, HideBySig, SpecialName
+Class System.Windows.Automation.StructureChangedEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.MulticastDelegate
+    Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    Invoke(Object, StructureChangedEventArgs): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    BeginInvoke(Object, StructureChangedEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+Struct System.Windows.Automation.StructureChangeType: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.StructureChangeType ChildAdded = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.StructureChangeType ChildRemoved = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.StructureChangeType ChildrenInvalidated = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.StructureChangeType ChildrenBulkAdded = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.StructureChangeType ChildrenBulkRemoved = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.StructureChangeType ChildrenReordered = 5 : Public, Static, Literal, HasDefault
+Class System.Windows.Automation.StructureChangedEventArgs: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Windows.Automation.AutomationEventArgs
+    Void .ctor(System.Windows.Automation.StructureChangeType, Int32[]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Windows.Automation.StructureChangeType StructureChangeType 'get ' : 
+  Methods:
+    GetRuntimeId(): PrivateScope, Public, HideBySig
+    get_StructureChangeType(): PrivateScope, Public, HideBySig, SpecialName
+Class System.Windows.Automation.WindowClosedEventArgs: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
+  :System.Windows.Automation.AutomationEventArgs
+    Void .ctor(Int32[]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetRuntimeId(): PrivateScope, Public, HideBySig
+Struct System.Windows.Automation.Text.AnimationStyle: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.AnimationStyle None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle LasVegasLights = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle BlinkingBackground = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle SparkleText = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle MarchingBlackAnts = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle MarchingRedAnts = 5 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle Shimmer = 6 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.AnimationStyle Other = -1 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.BulletStyle: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.BulletStyle None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.BulletStyle HollowRoundBullet = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.BulletStyle FilledRoundBullet = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.BulletStyle HollowSquareBullet = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.BulletStyle FilledSquareBullet = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.BulletStyle DashBullet = 5 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.BulletStyle Other = -1 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.CapStyle: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.CapStyle None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle SmallCap = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle AllCap = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle AllPetiteCaps = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle PetiteCaps = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle Unicase = 5 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle Titling = 6 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.CapStyle Other = -1 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.FlowDirections: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.FlowDirections Default = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.FlowDirections RightToLeft = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.FlowDirections BottomToTop = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.FlowDirections Vertical = 4 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.HorizontalTextAlignment: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.HorizontalTextAlignment Left = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.HorizontalTextAlignment Centered = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.HorizontalTextAlignment Right = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.HorizontalTextAlignment Justified = 3 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.OutlineStyles: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.OutlineStyles None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.OutlineStyles Outline = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.OutlineStyles Shadow = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.OutlineStyles Engraved = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.OutlineStyles Embossed = 8 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.TextPatternRangeEndpoint: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.TextPatternRangeEndpoint Start = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextPatternRangeEndpoint End = 1 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.TextUnit: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.TextUnit Character = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextUnit Format = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextUnit Word = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextUnit Line = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextUnit Paragraph = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextUnit Page = 5 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextUnit Document = 6 : Public, Static, Literal, HasDefault
+Struct System.Windows.Automation.Text.TextDecorationLineStyle: AutoLayout, AnsiClass, Class, Public, Sealed
+  :System.Enum
+  Fields:
+    Int32 value__ : Public, SpecialName, RTSpecialName
+    System.Windows.Automation.Text.TextDecorationLineStyle None = 0 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle Single = 1 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle WordsOnly = 2 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle Double = 3 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle Dot = 4 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle Dash = 5 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle DashDot = 6 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle DashDotDot = 7 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle Wavy = 8 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickSingle = 9 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle DoubleWavy = 11 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickWavy = 12 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle LongDash = 13 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickDash = 14 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickDashDot = 15 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickDashDotDot = 16 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickDot = 17 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle ThickLongDash = 18 : Public, Static, Literal, HasDefault
+    System.Windows.Automation.Text.TextDecorationLineStyle Other = -1 : Public, Static, Literal, HasDefault

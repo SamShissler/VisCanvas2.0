@@ -89,7 +89,6 @@ namespace OpenGLForm
 			}
 		}
 
-
 		// SET THE FILE PATH THAT WILL BE USED TO GRAPH THE DATA
 		bool SetFilePath(std::string filepath)
 		{

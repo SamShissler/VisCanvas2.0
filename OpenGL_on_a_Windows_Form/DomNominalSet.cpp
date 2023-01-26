@@ -7,22 +7,35 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include "OpenGL.h"
+#include <cmath>
+#include <windows.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <utility>
+#include "loadingForm.h"
 
 using namespace System::Windows::Forms;
 
 //Default Constructor:
 DomNominalSet::DomNominalSet()
-{
+{/*
+ 	VisCanvas::loadingForm form;
+	Application::Run(% form);*/
 	file = nullptr;
 }
 
 //Constructor:
+
+
 DomNominalSet::DomNominalSet(DataInterface *file, double worldHeight, double worldWidth)
 {
 	//Save passed values.
 	this->file = file;
 	this->worldHeight = worldHeight;
 	this->worldWidth = worldWidth;
+
+	this->loadBarWidth = 0;
 
 	//Calculate data.
 	//Get the frequency of values per class to use to calulate dominance percentage and 
@@ -830,9 +843,18 @@ GLvoid DomNominalSet::drawVisualization()
 		if (this->file->getDNSHideCoordinatesMode()) drawSelectorBoxes(this->worldWidth);
 		drawHoverInfo(this->worldWidth);
 	}
-
+	drawALine();
 }
-
+GLvoid DomNominalSet::drawALine()
+{
+	glColor4d(0, 0, 1.0, 1);
+	glLineWidth(10);
+	glBegin(GL_LINES);
+	glVertex2d(0, -20);
+	glVertex2d(sin(loadBarWidth) * 50, -20);
+	loadBarWidth += 0.1;
+	glEnd();
+}
 //drawRectangles:
 //Desc: Draws the rectangles and calculates positions for lines.
 GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sortedByPurityVector, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock, double worldWidth)
@@ -935,6 +957,7 @@ GLvoid DomNominalSet::drawRectangles(vector<vector<pair<double, double>>> sorted
 				double percFU = file->getPurityPerc();
 
 				//Find value using key.
+				//set = case
 				int originalVal = -1;
 				for (int m = 0; m < file->getSetAmount(); m++)
 				{
@@ -3708,6 +3731,7 @@ vector<string> DomNominalSet::ruleGenerationSequential()
 //Desc: Generates rules sequentailly to ensure there is little overlap. Uses Pareto front rules and applies thresholds.
 pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double precisionThresh, vector<vector<int>>groups, int targetClass)
 {
+
 	vector<string> toReturn;
 	vector<int> allGroupCases;
 	vector<DNSRule> allGroupRules;
@@ -3758,6 +3782,9 @@ pair<vector<string>, vector<DNSRule>> DomNominalSet::MTBRGSequential(double prec
 	//While the following conditions are not true:
 	//1.) Target cases covered is not as large as the actual number of targer cases.
 	//2.) Selected rules is not larger then the number of rules to select.
+	float linePos = 0.2;
+
+
 	while (true)
 	{
 		//Sort list by number of target cases not yet covered.
@@ -5444,6 +5471,7 @@ vector<DNSRule> DomNominalSet::MTBRuleGeneration(double PrecThresh, vector<int> 
 	//Loop until break.
 	while (true)
 	{
+		std::cout << "fart";
 		//Get the first pair of coordinates to check for rules.
 
 		string linkValue = MTBC.getNextLink();

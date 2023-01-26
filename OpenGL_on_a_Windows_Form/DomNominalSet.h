@@ -43,6 +43,8 @@ public:
 	vector<vector<pair<double, double>>> getSortByPurity(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
 	vector<vector<pair<double, double>>> getSortByFreqency(vector<unordered_map<double, double>*>* blockHeights);
 	vector<vector<pair<double, double>>> getSortByClass(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
+	float loadBarWidth;
+
 	void calculateLinePositions(double worldWidth);
 	
 	//Drawing Starting Visualization:
@@ -75,6 +77,7 @@ public:
 	vector<string> tenFoldCrossValidation(int targetClass, vector<vector<int>> groups);
 	GLvoid visualizeRules();
 	GLvoid drawOval(float x_center, float y_center, float w, float h, int n);
+	GLvoid drawALine();
 	vector<string> geneticAttributeGroupGeneration();
 
 	//Getters and Setters:
