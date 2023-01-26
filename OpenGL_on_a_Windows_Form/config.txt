@@ -1,3 +1,3 @@
 //be sure to leave a space between the last value and the semi-colon
 PrecisionThresholds 65.5 75 85 95 ; //Only for dominant nominal sets. insert as many values as needed, in any order
-MinClassCaseLineDrawCutOff 1 ; //This refers to minimum class cases drawn in the dominant nominal set. The higher the number, the thicker the lines. the Dom Nom setsdo not go above 25. There is not meant to be more than 1 value inserted.
+MinClassCaseLineDrawCutOff 15 ; //There is not meant to be more than 1 value inserted. This refers to minimum class cases drawn in the dominant nominal set. The higher the number, the thicker the case lines. Do not go above 25; it messes up the layout of the case lines.
