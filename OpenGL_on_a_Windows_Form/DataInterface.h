@@ -301,7 +301,10 @@ public:
 	void setNominalColorChoice(int i);
 	// gets nominal color
 	int getNominalColor();
-
+	// sets normalization style
+	void setNormalizationStyle(int i);
+	// gets normalization style
+	int getNormalizationStyle();
 
 
 	// sets the color for the background
@@ -468,6 +471,7 @@ private:
 	bool readDimensionNamesBasic;
 	bool readClassNamesBasic;
 	int nominalColorChoice;
+	int normalizationStyle;
 
 
 	// a vector to hold the dimensions containing the data for the sets

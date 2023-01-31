@@ -145,7 +145,7 @@
     <ClCompile Include="NonMonotonicSelector.cpp">
       <Filter>Source Files\Dominant Nominal Set Visualization</Filter>
     </ClCompile>
-    <ClCompile Include="loadingForm.cpp">
+    <ClCompile Include="NormalizationStyle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -288,7 +288,7 @@
     <ClInclude Include="NonMonotonicInfliction.h">
       <Filter>Header Files\Dominant Nominal Set Visualization</Filter>
     </ClInclude>
-    <ClInclude Include="loadingForm.h">
+    <ClInclude Include="NormalizationStyle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

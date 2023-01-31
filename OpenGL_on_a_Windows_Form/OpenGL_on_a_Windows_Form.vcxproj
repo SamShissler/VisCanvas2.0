@@ -260,6 +260,7 @@
     <ClCompile Include="SchemeEditor.cpp" />
     <ClCompile Include="SetCluster.cpp" />
     <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="NormalizationStyle.cpp" />
     <ClCompile Include="VisCanvas.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -288,6 +289,7 @@
     <ClInclude Include="AdditionalSettings.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="NormalizationStyle.h" />
     <ClInclude Include="IntervalGrouping.h" />
     <ClInclude Include="IntervalGroupStarting.h" />
     <ClInclude Include="KVPair.h" />

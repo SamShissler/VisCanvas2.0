@@ -33,6 +33,15 @@ Struct System.Windows.Automation.Provider.NavigateDirection: AutoLayout, AnsiCla
     System.Windows.Automation.Provider.NavigateDirection PreviousSibling = 2 : Public, Static, Literal, HasDefault
     System.Windows.Automation.Provider.NavigateDirection FirstChild = 3 : Public, Static, Literal, HasDefault
     System.Windows.Automation.Provider.NavigateDirection LastChild = 4 : Public, Static, Literal, HasDefault
+Interface System.Windows.Automation.Provider.IRawElementProviderSimple: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
+  Properties:
+    System.Windows.Automation.Provider.ProviderOptions ProviderOptions 'get ' : 
+    System.Windows.Automation.Provider.IRawElementProviderSimple HostRawElementProvider 'get ' : 
+  Methods:
+    get_ProviderOptions(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    GetPatternProvider(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    GetPropertyValue(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    get_HostRawElementProvider(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
 Interface System.Windows.Automation.Provider.IRawElementProviderFragment: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
   Interfaces:
     System.Windows.Automation.Provider.IRawElementProviderSimple
@@ -74,15 +83,6 @@ Struct System.Windows.Automation.Provider.ProviderOptions: AutoLayout, AnsiClass
     System.Windows.Automation.Provider.ProviderOptions OverrideProvider = 8 : Public, Static, Literal, HasDefault
     System.Windows.Automation.Provider.ProviderOptions ProviderOwnsSetFocus = 16 : Public, Static, Literal, HasDefault
     System.Windows.Automation.Provider.ProviderOptions UseComThreading = 32 : Public, Static, Literal, HasDefault
-Interface System.Windows.Automation.Provider.IRawElementProviderSimple: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
-  Properties:
-    System.Windows.Automation.Provider.ProviderOptions ProviderOptions 'get ' : 
-    System.Windows.Automation.Provider.IRawElementProviderSimple HostRawElementProvider 'get ' : 
-  Methods:
-    get_ProviderOptions(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    GetPatternProvider(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    GetPropertyValue(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
-    get_HostRawElementProvider(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
 Interface System.Windows.Automation.Provider.IDockProvider: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
   Properties:
     System.Windows.Automation.DockPosition DockPosition 'get ' : 

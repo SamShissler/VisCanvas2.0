@@ -77,7 +77,6 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     DataInterface* file : Public
   Methods:
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
     SetFilePath(basic_string<char\,std::char_traits<char>\,std::allocator<char> >*): PrivateScope, Public, HideBySig
     incrementSelectedSet(): PrivateScope, Public, HideBySig
     incrementSelectedSetIndexCluster(): PrivateScope, Public, HideBySig
@@ -154,6 +153,7 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     generateRulesDNS(): PrivateScope, Public, HideBySig
     DNScalculateLinePosition(): PrivateScope, Public, HideBySig
     visualizeDomNomVisualization(): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class VisCanvas.AdditionalSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(OpenGLForm.COpenGL): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -197,6 +197,11 @@ Class CppCLRWinformsProjekt.NonMonotonicChoice: AutoLayout, AnsiClass, Class, Pu
     getSplitRightCord(): PrivateScope, Public, HideBySig
     getiInflictionBool(): PrivateScope, Public, HideBySig
     getiInflictionKind(): PrivateScope, Public, HideBySig
+Class CppCLRWinformsProjekt.NormalizationStyle: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    getStyle(): PrivateScope, Public, HideBySig
 Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

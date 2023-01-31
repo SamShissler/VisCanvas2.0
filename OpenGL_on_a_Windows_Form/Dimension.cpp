@@ -99,31 +99,80 @@ void Dimension::setVisibility(bool isDrawn) {
 }
 
 // calibrate the data to the [0,1] space
-void Dimension::calibrateData() {
-	// reset data
-	for (int i = 0; i < this->size(); i++) {
-		(data[i])->resetData();
-	}
-
-	double maximum = getMaximum();
-	double minimum = getMinimum();
-	if (useArtificialCalibration) {
-		maximum = artificialMaximum;
-		minimum = artificialMinimum;
-	}
-	double range = maximum - minimum;
-
-	if (fabs(maximum - minimum) < 0.01)
+void Dimension::calibrateData(int style) {
+	if (style == 1)
 	{
+		// reset data
+		for (int i = 0; i < this->size(); i++)
+			(data[i])->resetData();
+
+		double sum = 0;
+
 		for (int i = 0; i < data.size(); i++)
+			sum += (*data[i]).getData();
+
+		double mean = sum / data.size();
+		double sd = 0;
+
+		for (int i = 0; i < data.size(); i++)
+			sd += pow((*data[i]).getData() - mean, 2);
+
+		sd /= data.size();
+		sd = sqrt(sd);
+
+		if (sd < 0.01)
+			sd = 2;
+
+		for (int i = 0; i < data.size(); i++)
+			(*data[i]).setDataCurrent(((*data[i]).getData() - mean) / sd);
+
+		double max = getMaximum();
+		double min = getMinimum();
+		if (useArtificialCalibration) {
+			max = artificialMaximum;
+			min = artificialMinimum;
+		}
+
+		double range = max - min;
+
+		if (fabs(range) < 0.01)
 		{
-			(*data[i]).setDataCurrent(0.5);
+			for (int i = 0; i < data.size(); i++)
+				(*data[i]).setDataCurrent(0.5);
+		}
+		else
+		{
+			for (unsigned int i = 0; i < data.size(); i++)
+				(*data[i]).setDataCurrent(((*data[i]).getData() - min) / range);
 		}
 	}
 	else
 	{
-		for (unsigned int i = 0; i < data.size(); i++) {
-			(*data[i]).setDataCurrent(((*data[i]).getData() - minimum) / range);
+		// reset data
+		for (int i = 0; i < this->size(); i++) {
+			(data[i])->resetData();
+		}
+
+		double maximum = getMaximum();
+		double minimum = getMinimum();
+		if (useArtificialCalibration) {
+			maximum = artificialMaximum;
+			minimum = artificialMinimum;
+		}
+		double range = maximum - minimum;
+
+		if (fabs(maximum - minimum) < 0.01)
+		{
+			for (int i = 0; i < data.size(); i++)
+			{
+				(*data[i]).setDataCurrent(0.5);
+			}
+		}
+		else
+		{
+			for (unsigned int i = 0; i < data.size(); i++) {
+				(*data[i]).setDataCurrent(((*data[i]).getData() - minimum) / range);
+			}
 		}
 	}
 }
@@ -250,17 +299,17 @@ bool Dimension::isArtificiallyCalibrated() {
 }
 
 // sets the calibration to use the data's(not the artificial) maximum and minimum
-void Dimension::clearArtificialCalibration() {
+void Dimension::clearArtificialCalibration(int style) {
 	useArtificialCalibration = false;
-	calibrateData();
+	calibrateData(style);
 }
 
 // sets the bounds to be used for artificial calibration
-void Dimension::setCalibrationBounds(double newMaximum, double newMinimum) {
+void Dimension::setCalibrationBounds(double newMaximum, double newMinimum, int style) {
 	useArtificialCalibration = true;
 	artificialMaximum = newMaximum;
 	artificialMinimum = newMinimum;
-	calibrateData();
+	calibrateData(style);
 }
 
 // gets the artficial calibration maximum for the dimension

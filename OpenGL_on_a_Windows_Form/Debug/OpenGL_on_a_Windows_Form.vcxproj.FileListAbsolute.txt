@@ -78,6 +78,7 @@ C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
 C:\Users\elijm\OneDrive\Desktop\Research\Github\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxprojAssemblyReference.cache
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
@@ -85,53 +86,32 @@ C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
 C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
-C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.SuggestedBindingRedirects.cache
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
-I:\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.SuggestedBindingRedirects.cache
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
-I:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.SuggestedBindingRedirects.cache
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
-D:\Work\OriginalEliCrossFoldValidation\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
-C:\Users\infer\Desktop\Github2\VisCanvas2.0-Michael\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
-C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.loadingForm.resources
+C:\Users\Eli McCoy\Desktop\Research\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
+D:\Resarch Jobs\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
+D:\Resarch Jobs\Projects\VisCanvas2.0-main\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.AssemblyReference.cache
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.SuggestedBindingRedirects.cache
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.ResolveComReference.cache
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.AdditionalSettings.resources
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.SchemeEditor.resources
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.Settings.resources
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvas.resources
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\VisCanvas.VisCanvasHelp.resources
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.GenerateResource.cache
+D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Debug\OpenGL_on_a_Windows_Form.vcxproj.CopyComplete

@@ -5,12 +5,6 @@ Assembly UIAutomationTypes, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31b
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
-	hash=None, flags=None
-Assembly Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
-	hash=None, flags=None
-Assembly WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35: 
-	hash=None, flags=None
 Class System.Windows.Automation.AutomationIdentifier: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Interfaces:
     System.IComparable
@@ -119,7 +113,6 @@ Class System.Windows.Automation.AutomationElementIdentifiers: AutoLayout, AnsiCl
     System.Windows.Automation.AutomationProperty FrameworkIdProperty : Public, Static, InitOnly
     System.Windows.Automation.AutomationProperty IsRequiredForFormProperty : Public, Static, InitOnly
     System.Windows.Automation.AutomationProperty ItemStatusProperty : Public, Static, InitOnly
-    System.Windows.Automation.AutomationProperty LiveSettingProperty : Public, Static, InitOnly
     System.Windows.Automation.AutomationProperty IsDockPatternAvailableProperty : Public, Static, InitOnly
     System.Windows.Automation.AutomationProperty IsExpandCollapsePatternAvailableProperty : Public, Static, InitOnly
     System.Windows.Automation.AutomationProperty IsGridItemPatternAvailableProperty : Public, Static, InitOnly
@@ -150,7 +143,6 @@ Class System.Windows.Automation.AutomationElementIdentifiers: AutoLayout, AnsiCl
     System.Windows.Automation.AutomationEvent AsyncContentLoadedEvent : Public, Static, InitOnly
     System.Windows.Automation.AutomationEvent MenuClosedEvent : Public, Static, InitOnly
     System.Windows.Automation.AutomationEvent LayoutInvalidatedEvent : Public, Static, InitOnly
-    System.Windows.Automation.AutomationEvent LiveRegionChangedEvent : Public, Static, InitOnly
 Struct System.Windows.Automation.DockPosition: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -431,6 +423,13 @@ Class System.Windows.Automation.ElementNotAvailableException: AutoLayout, AnsiCl
     Void .ctor(System.Exception): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     GetObjectData(SerializationInfo, StreamingContext): PrivateScope, Public, Virtual, HideBySig, HasSecurity
+Class System.Windows.Automation.AutomationEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(System.Windows.Automation.AutomationEvent): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Properties:
+    System.Windows.Automation.AutomationEvent EventId 'get ' : 
+  Methods:
+    get_EventId(): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Automation.AsyncContentLoadedEventArgs: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Windows.Automation.AutomationEventArgs
     Void .ctor(System.Windows.Automation.AsyncContentLoadedState, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -447,13 +446,6 @@ Class System.Windows.Automation.AutomationEventHandler: AutoLayout, AnsiClass, C
     Invoke(Object, AutomationEventArgs): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     BeginInvoke(Object, AutomationEventArgs, AsyncCallback, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     EndInvoke(IAsyncResult): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-Class System.Windows.Automation.AutomationEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.EventArgs
-    Void .ctor(System.Windows.Automation.AutomationEvent): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-  Properties:
-    System.Windows.Automation.AutomationEvent EventId 'get ' : 
-  Methods:
-    get_EventId(): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Automation.AutomationPropertyChangedEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.MulticastDelegate
     Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
