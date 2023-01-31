@@ -8,7 +8,6 @@
 #include <iostream>
 #include <sstream>
 #include "threadedLoadingForm.h"
-#include <thread>
 //Set up for code cleanup.
 
 // visualizeDomNomVisualization:
@@ -94,12 +93,9 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 			break;
 		}
 	}
-	//loading variable used to terminate loadaing thread
-	bool loading = true;
-	
+
 	threadedLoadingForm thread;
-	//calls a function from another file to start the loading form.
-	std::thread thread_obj(&threadedLoadingForm::loadLoadingFormFunc, &thread, &loading);
+	thread.loadLoadingForm();
 
 	//calls MTBRG for every defined precision threshold from precThreshs
 	for (int i = 0; i < precThreshs.size(); i++)
@@ -115,12 +111,7 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		}
 	}
 
-	//the loading is done, now join threads
-	loading = false;
-	//join thread after termination; loading form closed
-	thread_obj.join();
-	//reset loading for the next rule generation
-	loading = true;
+	thread.terminateLoadingForm();
 	/*//====================================================//
 	rules.push_back("\n\n=============25%===============\n\n");
 	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);

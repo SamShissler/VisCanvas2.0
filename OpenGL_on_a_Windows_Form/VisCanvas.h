@@ -20,7 +20,6 @@ Purpose: CS 481 Project
 #include "UserInputPopUp.h"
 #include "NormalizationStyle.h"
 #include "threadedLoadingForm.h"
-#include <thread>
 
 namespace VisCanvas {
 
@@ -1758,23 +1757,17 @@ namespace VisCanvas {
 	}
 			 /* Automate Cluster Selection */
 	private: System::Void auto_Click(System::Object^  sender, System::EventArgs^  e) {
-		bool loading = true;
 
 		threadedLoadingForm thread;
-		//calls a function from another file to start the loading form.
-		std::thread thread_obj(&threadedLoadingForm::loadLoadingFormFunc, &thread, &loading);
+		thread.loadLoadingForm();
 
 		this->OpenGL->autoCluster();
 		this->currentView->Text = "View: Hyperblocks";
 		// updateClusterList(sender, e);
 		update_options();
 
-		//the loading is done, now join threads
-		loading = false;
-		//join thread after termination; loading form closed
-		thread_obj.join();
-		//reset loading for the next rule generation
-		loading = true;
+		thread.terminateLoadingForm();
+
 	}
 
 	private: System::Void update_options() {
