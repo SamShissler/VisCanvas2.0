@@ -8,9 +8,6 @@
 #include <fstream>
 #include <iostream>
 #include <cmath>
-#include "loadingForm.h"
-#include <chrono>
-#include <thread>
 
 using namespace System::Windows::Forms;
 

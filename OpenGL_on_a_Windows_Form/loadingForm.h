@@ -8,7 +8,6 @@ namespace VisCanvas {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
 	/// <summary>
 	/// Summary for loadingForm
 	/// </summary>
@@ -42,6 +41,7 @@ namespace VisCanvas {
 	{
 		this->loadingLabel->Text = text;
 	}
+
 
 	private:
 		/// <summary>

@@ -7,13 +7,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
-#include "loadingForm.h"
-#include <chrono>
+#include "threadedLoadingForm.h"
 #include <thread>
-
-
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono; // nanoseconds, system_clock, seconds
 //Set up for code cleanup.
 
 // visualizeDomNomVisualization:
@@ -23,34 +18,6 @@ void OpenGLForm::COpenGL::visualizeDomNomVisualization()
 	domNomVisualization->drawVisualization();
 }
 
-//used as a thread to start up loading form
-void loadLoadingFormFunc(bool* loading)
-{
-	VisCanvas::loadingForm^ form = gcnew VisCanvas::loadingForm();
-	form->Show();
-	form->Update();
-	int n = 0;
-	while (*loading)
-	{
-		string formText;
-		if (n == 0)
-			form->updateLabel("loading");
-		else if (n == 1)
-			form->updateLabel("loading.");
-		else if (n == 2)
-			form->updateLabel("loading..");
-		else if (n == 3)
-		{
-			form->updateLabel("loading...");
-			n = -1;//this way n = 0 upon n++ below
-		}
-		n++;
-
-		form->Update();
-		sleep_until(system_clock::now() + milliseconds(500));//half a second between every update
-	}
-	form->Close();
-}
 
 // generateRulesDNS:
 // Desc: Tells the Dominant nomianl visualization to generate rules.
@@ -129,7 +96,10 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 	}
 	//loading variable used to terminate loadaing thread
 	bool loading = true;
-	std::thread thread_obj(loadLoadingFormFunc, &loading);
+	
+	threadedLoadingForm thread;
+	//calls a function from another file to start the loading form.
+	std::thread thread_obj(&threadedLoadingForm::loadLoadingFormFunc, &thread, &loading);
 
 	//calls MTBRG for every defined precision threshold from precThreshs
 	for (int i = 0; i < precThreshs.size(); i++)
