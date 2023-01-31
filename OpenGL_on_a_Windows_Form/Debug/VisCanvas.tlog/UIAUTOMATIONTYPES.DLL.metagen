@@ -78,11 +78,11 @@ Class System.Windows.Automation.ControlType: AutoLayout, AnsiClass, Class, Publi
   Properties:
     System.String LocalizedControlType 'get ' : 
   Methods:
+    get_LocalizedControlType(): PrivateScope, Public, HideBySig, SpecialName
     LookupById(Int32): PrivateScope, Public, Static, HideBySig
     GetRequiredPatternSets(): PrivateScope, Public, HideBySig
     GetNeverSupportedPatterns(): PrivateScope, Public, HideBySig
     GetRequiredProperties(): PrivateScope, Public, HideBySig
-    get_LocalizedControlType(): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Automation.AutomationElementIdentifiers: AutoLayout, AnsiClass, Class, Public, Abstract, Sealed, BeforeFieldInit
   Fields:
     System.Object NotSupported : Public, Static, InitOnly
@@ -487,8 +487,8 @@ Class System.Windows.Automation.StructureChangedEventArgs: AutoLayout, AnsiClass
   Properties:
     System.Windows.Automation.StructureChangeType StructureChangeType 'get ' : 
   Methods:
-    GetRuntimeId(): PrivateScope, Public, HideBySig
     get_StructureChangeType(): PrivateScope, Public, HideBySig, SpecialName
+    GetRuntimeId(): PrivateScope, Public, HideBySig
 Class System.Windows.Automation.WindowClosedEventArgs: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Windows.Automation.AutomationEventArgs
     Void .ctor(Int32[]): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

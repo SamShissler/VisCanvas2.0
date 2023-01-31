@@ -149,6 +149,9 @@ Class System.Windows.Forms.DataVisualization.Charting.Annotation: AutoLayout, An
     Boolean AllowPathEditing 'get set' : 
     System.String ToolTip 'get set' : 
   Methods:
+    GetGraphics(): PrivateScope, Assembly, HideBySig
+    GetSelectionHandle(PointF): PrivateScope, Assembly, HideBySig
+    GetAxes(Axis&, Axis&): PrivateScope, Assembly, HideBySig
     get_Name(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_Name(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_AnnotationType(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
@@ -268,9 +271,6 @@ Class System.Windows.Forms.DataVisualization.Charting.Annotation: AutoLayout, An
     ResetCurrentRelativePosition(): PrivateScope, Assembly, HideBySig
     ReplaceKeywords(String): PrivateScope, Assembly, HideBySig
     IsAnchorVisible(): PrivateScope, Assembly, HideBySig
-    GetGraphics(): PrivateScope, Assembly, HideBySig
-    GetSelectionHandle(PointF): PrivateScope, Assembly, HideBySig
-    GetAxes(Axis&, Axis&): PrivateScope, Assembly, HideBySig
 Class System.Windows.Forms.DataVisualization.Charting.AnnotationPositionChangingEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.EventArgs
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -2986,6 +2986,50 @@ Class System.Windows.Forms.DataVisualization.Charting.DataPointCustomProperties:
     Int32 LabelBorderWidth 'get set' : 
     System.String LabelToolTip 'get set' : 
   Methods:
+    ShouldSerializeAxisLabel(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelFormat(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeIsValueShownAsLabel(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBorderColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBorderDashStyle(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBorderWidth(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerBorderWidth(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackImage(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackImageWrapMode(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackImageTransparentColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackImageAlignment(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackGradientStyle(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackSecondaryColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeBackHatchStyle(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeFont(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelForeColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelAngle(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerStyle(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerSize(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerImage(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerImageTransparentColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeMarkerBorderColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeToolTip(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeIsVisibleInLegend(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLegendText(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLegendToolTip(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelToolTip(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelBackColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelBorderColor(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelBorderDashStyle(): PrivateScope, Assembly, HideBySig
+    ShouldSerializeLabelBorderWidth(): PrivateScope, Assembly, HideBySig
+    ResetLabel(): PrivateScope, Assembly, HideBySig
+    ResetAxisLabel(): PrivateScope, Assembly, HideBySig
+    ResetLabelFormat(): PrivateScope, Assembly, HideBySig
+    ResetIsValueShownAsLabel(): PrivateScope, Public, HideBySig
+    ResetColor(): PrivateScope, Assembly, HideBySig
+    ResetBorderColor(): PrivateScope, Assembly, HideBySig
+    ResetBorderDashStyle(): PrivateScope, Assembly, HideBySig
+    ResetBorderWidth(): PrivateScope, Assembly, HideBySig
+    ResetMarkerBorderWidth(): PrivateScope, Assembly, HideBySig
+    ResetBackImage(): PrivateScope, Assembly, HideBySig
+    ResetBackImageWrapMode(): PrivateScope, Assembly, HideBySig
     ResetBackImageTransparentColor(): PrivateScope, Assembly, HideBySig
     ResetBackSecondaryColor(): PrivateScope, Assembly, HideBySig
     ResetBackHatchStyle(): PrivateScope, Assembly, HideBySig
@@ -3094,50 +3138,6 @@ Class System.Windows.Forms.DataVisualization.Charting.DataPointCustomProperties:
     set_LabelToolTip(String): PrivateScope, Public, HideBySig, SpecialName
     get_LabelToolTip(): PrivateScope, Public, HideBySig, SpecialName
     ShouldSerializeLabel(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeAxisLabel(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelFormat(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeIsValueShownAsLabel(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBorderColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBorderDashStyle(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBorderWidth(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerBorderWidth(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackImage(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackImageWrapMode(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackImageTransparentColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackImageAlignment(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackGradientStyle(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackSecondaryColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeBackHatchStyle(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeFont(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelForeColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelAngle(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerStyle(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerSize(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerImage(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerImageTransparentColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeMarkerBorderColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeToolTip(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeIsVisibleInLegend(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLegendText(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLegendToolTip(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelToolTip(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelBackColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelBorderColor(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelBorderDashStyle(): PrivateScope, Assembly, HideBySig
-    ShouldSerializeLabelBorderWidth(): PrivateScope, Assembly, HideBySig
-    ResetLabel(): PrivateScope, Assembly, HideBySig
-    ResetAxisLabel(): PrivateScope, Assembly, HideBySig
-    ResetLabelFormat(): PrivateScope, Assembly, HideBySig
-    ResetIsValueShownAsLabel(): PrivateScope, Public, HideBySig
-    ResetColor(): PrivateScope, Assembly, HideBySig
-    ResetBorderColor(): PrivateScope, Assembly, HideBySig
-    ResetBorderDashStyle(): PrivateScope, Assembly, HideBySig
-    ResetBorderWidth(): PrivateScope, Assembly, HideBySig
-    ResetMarkerBorderWidth(): PrivateScope, Assembly, HideBySig
-    ResetBackImage(): PrivateScope, Assembly, HideBySig
-    ResetBackImageWrapMode(): PrivateScope, Assembly, HideBySig
 Class System.Windows.Forms.DataVisualization.Charting.DataPoint: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.DataVisualization.Charting.DataPointCustomProperties
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -3940,6 +3940,53 @@ Class System.Windows.Forms.DataVisualization.Charting.Axis: AutoLayout, AnsiClas
     Boolean AutoMaximum 'get ' : 
     Boolean AutoMinimum 'get ' : 
   Methods:
+    GetAxisIntervalType(): PrivateScope, Assembly, HideBySig
+    GetAxisValuesType(): PrivateScope, Assembly, HideBySig
+    GetArrowSize(ArrowOrientation&(Out)): PrivateScope, Assembly, HideBySig
+    GetPixelInterval(Double): PrivateScope, Assembly, HideBySig
+    get_IsAxisOnAreaEdge(): PrivateScope, Assembly, HideBySig, SpecialName
+    GetAxisPosition(): PrivateScope, Assembly, HideBySig
+    GetAxisPosition(Boolean): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride
+    GetAxisProjectionAngle(): PrivateScope, Assembly, HideBySig
+    get_LabelStyle(): PrivateScope, Public, HideBySig, SpecialName
+    set_LabelStyle(LabelStyle): PrivateScope, Public, HideBySig, SpecialName
+    get_CustomLabels(): PrivateScope, Public, HideBySig, SpecialName
+    IsCustomGridLines(): PrivateScope, Assembly, HideBySig
+    IsCustomTickMarks(): PrivateScope, Assembly, HideBySig
+    GetAxisType(): PrivateScope, Assembly, HideBySig
+    GetAxisSeries(): PrivateScope, Assembly, HideBySig
+    GetOtherTypeAxis(): PrivateScope, Assembly, HideBySig
+    PostFillLabels(): PrivateScope, Assembly, HideBySig
+    FillLabels(Boolean): PrivateScope, Assembly, HideBySig
+    get_AxisPosition(): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride, SpecialName
+    set_AxisPosition(AxisPosition): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride, SpecialName
+    get_IntervalAutoMode(): PrivateScope, Public, HideBySig, SpecialName
+    set_IntervalAutoMode(IntervalAutoMode): PrivateScope, Public, HideBySig, SpecialName
+    get_IsReversed(): PrivateScope, Public, HideBySig, SpecialName
+    set_IsReversed(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_IsStartedFromZero(): PrivateScope, Public, HideBySig, SpecialName
+    set_IsStartedFromZero(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_IsMarginVisible(): PrivateScope, Public, HideBySig, SpecialName
+    set_IsMarginVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_InternalIntervalType(): PrivateScope, Assembly, HideBySig, SpecialName
+    set_InternalIntervalType(DateTimeIntervalType): PrivateScope, Assembly, HideBySig, SpecialName
+    set_SetInterval(Double): PrivateScope, Assembly, HideBySig, SpecialName
+    SetIntervalAndType(Double, DateTimeIntervalType): PrivateScope, Assembly, HideBySig
+    get_Maximum(): PrivateScope, Public, HideBySig, SpecialName
+    set_Maximum(Double): PrivateScope, Public, HideBySig, SpecialName
+    get_Minimum(): PrivateScope, Public, HideBySig, SpecialName
+    set_Minimum(Double): PrivateScope, Public, HideBySig, SpecialName
+    get_Crossing(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Crossing(Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Enabled(): PrivateScope, Public, HideBySig, SpecialName
+    set_Enabled(AxisEnabled): PrivateScope, Public, HideBySig, SpecialName
+    get_IsLogarithmic(): PrivateScope, Public, HideBySig, SpecialName
+    set_IsLogarithmic(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_LogarithmBase(): PrivateScope, Public, HideBySig, SpecialName
+    set_LogarithmBase(Double): PrivateScope, Public, HideBySig, SpecialName
+    get_ScaleBreakStyle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_ScaleBreakStyle(AxisScaleBreakStyle): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_ScaleSegments(): PrivateScope, Assembly, HideBySig, SpecialName
     get_ScaleView(): PrivateScope, Public, HideBySig, SpecialName
     set_ScaleView(AxisScaleView): PrivateScope, Public, HideBySig, SpecialName
     get_ScrollBar(): PrivateScope, Public, HideBySig, SpecialName
@@ -4054,53 +4101,6 @@ Class System.Windows.Forms.DataVisualization.Charting.Axis: AutoLayout, AnsiClas
     GetGroupLabelLevelCount(): PrivateScope, Assembly, HideBySig
     GetSubAxis(String): PrivateScope, Assembly, HideBySig
     GetIsMarksNextToAxis(): PrivateScope, Assembly, HideBySig
-    GetAxisIntervalType(): PrivateScope, Assembly, HideBySig
-    GetAxisValuesType(): PrivateScope, Assembly, HideBySig
-    GetArrowSize(ArrowOrientation&(Out)): PrivateScope, Assembly, HideBySig
-    GetPixelInterval(Double): PrivateScope, Assembly, HideBySig
-    get_IsAxisOnAreaEdge(): PrivateScope, Assembly, HideBySig, SpecialName
-    GetAxisPosition(): PrivateScope, Assembly, HideBySig
-    GetAxisPosition(Boolean): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride
-    GetAxisProjectionAngle(): PrivateScope, Assembly, HideBySig
-    get_LabelStyle(): PrivateScope, Public, HideBySig, SpecialName
-    set_LabelStyle(LabelStyle): PrivateScope, Public, HideBySig, SpecialName
-    get_CustomLabels(): PrivateScope, Public, HideBySig, SpecialName
-    IsCustomGridLines(): PrivateScope, Assembly, HideBySig
-    IsCustomTickMarks(): PrivateScope, Assembly, HideBySig
-    GetAxisType(): PrivateScope, Assembly, HideBySig
-    GetAxisSeries(): PrivateScope, Assembly, HideBySig
-    GetOtherTypeAxis(): PrivateScope, Assembly, HideBySig
-    PostFillLabels(): PrivateScope, Assembly, HideBySig
-    FillLabels(Boolean): PrivateScope, Assembly, HideBySig
-    get_AxisPosition(): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride, SpecialName
-    set_AxisPosition(AxisPosition): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride, SpecialName
-    get_IntervalAutoMode(): PrivateScope, Public, HideBySig, SpecialName
-    set_IntervalAutoMode(IntervalAutoMode): PrivateScope, Public, HideBySig, SpecialName
-    get_IsReversed(): PrivateScope, Public, HideBySig, SpecialName
-    set_IsReversed(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_IsStartedFromZero(): PrivateScope, Public, HideBySig, SpecialName
-    set_IsStartedFromZero(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_IsMarginVisible(): PrivateScope, Public, HideBySig, SpecialName
-    set_IsMarginVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_InternalIntervalType(): PrivateScope, Assembly, HideBySig, SpecialName
-    set_InternalIntervalType(DateTimeIntervalType): PrivateScope, Assembly, HideBySig, SpecialName
-    set_SetInterval(Double): PrivateScope, Assembly, HideBySig, SpecialName
-    SetIntervalAndType(Double, DateTimeIntervalType): PrivateScope, Assembly, HideBySig
-    get_Maximum(): PrivateScope, Public, HideBySig, SpecialName
-    set_Maximum(Double): PrivateScope, Public, HideBySig, SpecialName
-    get_Minimum(): PrivateScope, Public, HideBySig, SpecialName
-    set_Minimum(Double): PrivateScope, Public, HideBySig, SpecialName
-    get_Crossing(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Crossing(Double): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Enabled(): PrivateScope, Public, HideBySig, SpecialName
-    set_Enabled(AxisEnabled): PrivateScope, Public, HideBySig, SpecialName
-    get_IsLogarithmic(): PrivateScope, Public, HideBySig, SpecialName
-    set_IsLogarithmic(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_LogarithmBase(): PrivateScope, Public, HideBySig, SpecialName
-    set_LogarithmBase(Double): PrivateScope, Public, HideBySig, SpecialName
-    get_ScaleBreakStyle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_ScaleBreakStyle(AxisScaleBreakStyle): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_ScaleSegments(): PrivateScope, Assembly, HideBySig, SpecialName
 Struct System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -4714,6 +4714,44 @@ Class System.Windows.Forms.DataVisualization.Charting.ChartArea: AutoLayout, Ans
     System.Collections.Generic.List`1[System.String] Series 'get ' : 
     System.Collections.ArrayList ChartTypes 'get ' : 
   Methods:
+    TransformPoints(Point3D[]): PrivateScope, Public, HideBySig
+    DrawArea3DScene(ChartGraphics, RectangleF): PrivateScope, Assembly, HideBySig
+    IsBottomSceneWallVisible(): PrivateScope, Assembly, HideBySig
+    IsMainSceneWallOnFront(): PrivateScope, Assembly, HideBySig
+    IsSideSceneWallOnLeft(): PrivateScope, Assembly, HideBySig
+    GetSeriesZPosition(Series): PrivateScope, Public, HideBySig
+    GetSeriesDepth(Series): PrivateScope, Public, HideBySig
+    GetSeriesZPositionAndDepth(Series, Single&(Out), Single&(Out)): PrivateScope, Assembly, HideBySig
+    GetNumberOfClusters(): PrivateScope, Assembly, HideBySig
+    GetSeriesClusterIndex(Series): PrivateScope, Assembly, HideBySig
+    Estimate3DInterval(ChartGraphics): PrivateScope, Assembly, HideBySig
+    GetRealYAngle(): PrivateScope, Assembly, HideBySig
+    ShouldDrawOnSurface(SurfaceNames, Boolean, Boolean): PrivateScope, Assembly, HideBySig
+    DrawPointsInReverseOrder(): PrivateScope, Assembly, HideBySig
+    DrawPointsToCenter(COPCoordinates&): PrivateScope, Assembly, HideBySig
+    DrawSeriesToCenter(): PrivateScope, Assembly, HideBySig
+    PaintChartSeries3D(ChartGraphics): PrivateScope, Assembly, HideBySig
+    GetClusterSeriesNames(String): PrivateScope, Assembly, HideBySig
+    GetSeriesStackGroupIndex(Series, String&): PrivateScope, Assembly, HideBySig
+    GetDataPointDrawingOrder(List`1, IChartType, Boolean, COPCoordinates, IComparer, Int32, Boolean): PrivateScope, Assembly, HideBySig
+    GetCenterOfProjection(COPCoordinates): PrivateScope, Assembly, HideBySig
+    get_IsSubAxesSupported(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_Series(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_ChartTypes(): PrivateScope, Assembly, HideBySig, SpecialName
+    GetAxis(AxisName, AxisType, String): PrivateScope, Assembly, HideBySig
+    SetDefaultAxesValues(): PrivateScope, Assembly, HideBySig
+    SeriesIntegerType(AxisName, String): PrivateScope, Assembly, HideBySig
+    SeriesDateTimeType(AxisName, String): PrivateScope, Assembly, HideBySig
+    SetData(): PrivateScope, Assembly, HideBySig
+    SetData(Boolean, Boolean): PrivateScope, Assembly, HideBySig
+    GetSeriesFromChartType(String): PrivateScope, Assembly, HideBySig
+    GetSeries(): PrivateScope, Assembly, HideBySig
+    GetXAxesSeries(AxisType, String): PrivateScope, Assembly, HideBySig
+    GetYAxesSeries(AxisType, String): PrivateScope, Assembly, HideBySig
+    GetFirstSeries(): PrivateScope, Assembly, HideBySig
+    GetPointsInterval(Boolean, Double): PrivateScope, Assembly, HideBySig
+    GetPointsInterval(List`1, Boolean, Double, Boolean, Boolean&(Out)): PrivateScope, Assembly, HideBySig
+    GetPointsInterval(List`1, Boolean, Double, Boolean, Boolean&(Out), Series&(Out)): PrivateScope, Assembly, HideBySig
     get_CursorX(): PrivateScope, Public, HideBySig, SpecialName
     set_CursorX(Cursor): PrivateScope, Public, HideBySig, SpecialName
     get_CursorY(): PrivateScope, Public, HideBySig, SpecialName
@@ -4798,44 +4836,6 @@ Class System.Windows.Forms.DataVisualization.Charting.ChartArea: AutoLayout, Ans
     set_Area3DStyle(ChartArea3DStyle): PrivateScope, Public, HideBySig, SpecialName
     get_ReverseSeriesOrder(): PrivateScope, Assembly, HideBySig, SpecialName
     get_StackGroupNames(): PrivateScope, Assembly, HideBySig, SpecialName
-    TransformPoints(Point3D[]): PrivateScope, Public, HideBySig
-    DrawArea3DScene(ChartGraphics, RectangleF): PrivateScope, Assembly, HideBySig
-    IsBottomSceneWallVisible(): PrivateScope, Assembly, HideBySig
-    IsMainSceneWallOnFront(): PrivateScope, Assembly, HideBySig
-    IsSideSceneWallOnLeft(): PrivateScope, Assembly, HideBySig
-    GetSeriesZPosition(Series): PrivateScope, Public, HideBySig
-    GetSeriesDepth(Series): PrivateScope, Public, HideBySig
-    GetSeriesZPositionAndDepth(Series, Single&(Out), Single&(Out)): PrivateScope, Assembly, HideBySig
-    GetNumberOfClusters(): PrivateScope, Assembly, HideBySig
-    GetSeriesClusterIndex(Series): PrivateScope, Assembly, HideBySig
-    Estimate3DInterval(ChartGraphics): PrivateScope, Assembly, HideBySig
-    GetRealYAngle(): PrivateScope, Assembly, HideBySig
-    ShouldDrawOnSurface(SurfaceNames, Boolean, Boolean): PrivateScope, Assembly, HideBySig
-    DrawPointsInReverseOrder(): PrivateScope, Assembly, HideBySig
-    DrawPointsToCenter(COPCoordinates&): PrivateScope, Assembly, HideBySig
-    DrawSeriesToCenter(): PrivateScope, Assembly, HideBySig
-    PaintChartSeries3D(ChartGraphics): PrivateScope, Assembly, HideBySig
-    GetClusterSeriesNames(String): PrivateScope, Assembly, HideBySig
-    GetSeriesStackGroupIndex(Series, String&): PrivateScope, Assembly, HideBySig
-    GetDataPointDrawingOrder(List`1, IChartType, Boolean, COPCoordinates, IComparer, Int32, Boolean): PrivateScope, Assembly, HideBySig
-    GetCenterOfProjection(COPCoordinates): PrivateScope, Assembly, HideBySig
-    get_IsSubAxesSupported(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_Series(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_ChartTypes(): PrivateScope, Assembly, HideBySig, SpecialName
-    GetAxis(AxisName, AxisType, String): PrivateScope, Assembly, HideBySig
-    SetDefaultAxesValues(): PrivateScope, Assembly, HideBySig
-    SeriesIntegerType(AxisName, String): PrivateScope, Assembly, HideBySig
-    SeriesDateTimeType(AxisName, String): PrivateScope, Assembly, HideBySig
-    SetData(): PrivateScope, Assembly, HideBySig
-    SetData(Boolean, Boolean): PrivateScope, Assembly, HideBySig
-    GetSeriesFromChartType(String): PrivateScope, Assembly, HideBySig
-    GetSeries(): PrivateScope, Assembly, HideBySig
-    GetXAxesSeries(AxisType, String): PrivateScope, Assembly, HideBySig
-    GetYAxesSeries(AxisType, String): PrivateScope, Assembly, HideBySig
-    GetFirstSeries(): PrivateScope, Assembly, HideBySig
-    GetPointsInterval(Boolean, Double): PrivateScope, Assembly, HideBySig
-    GetPointsInterval(List`1, Boolean, Double, Boolean, Boolean&(Out)): PrivateScope, Assembly, HideBySig
-    GetPointsInterval(List`1, Boolean, Double, Boolean, Boolean&(Out), Series&(Out)): PrivateScope, Assembly, HideBySig
 Class System.Windows.Forms.DataVisualization.Charting.ChartArea+ChartTypeAndSeriesInfo: AutoLayout, AnsiClass, Class, NestedAssembly, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -5281,6 +5281,49 @@ Class System.Windows.Forms.DataVisualization.Charting.ChartGraphics: AutoLayout,
     Boolean IsClipEmpty 'get ' : 
     System.Drawing.Graphics Graphics 'get set' : 
   Methods:
+    GetVisibleSurfaces(RectangleF, Single, Single, Matrix3D): PrivateScope, Assembly, HideBySig
+    GetVisibleSurfacesWithPerspective(RectangleF, Single, Single, Matrix3D): PrivateScope, Assembly, HideBySig
+    GetVisibleSurfacesWithPerspective(Point3D[]): PrivateScope, Assembly, HideBySig
+    IsSurfaceVisible(Point3D, Point3D, Point3D): PrivateScope, Assembly, Static, HideBySig
+    GetLinesIntersection(Single, Single, Single, Single, Single, Single, Single, Single): PrivateScope, Assembly, Static, HideBySig
+    Fill3DRectangleAsCylinder(RectangleF, Single, Single, Matrix3D, LightStyle, Color, Single, Single, Color, Int32, ChartDashStyle, Boolean, DrawingOperationTypes): PrivateScope, Assembly, HideBySig
+    AddEllipseSegment(GraphicsPath, GraphicsPath, GraphicsPath, Boolean, Single, PointF&(Out), PointF&(Out)): PrivateScope, Assembly, HideBySig
+    DrawLine(Pen, PointF, PointF): PrivateScope, Assembly, HideBySig
+    DrawLine(Pen, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
+    DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit, ImageAttributes): PrivateScope, Assembly, HideBySig
+    DrawEllipse(Pen, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
+    DrawCurve(Pen, PointF[], Int32, Int32, Single): PrivateScope, Assembly, HideBySig
+    DrawRectangle(Pen, Int32, Int32, Int32, Int32): PrivateScope, Assembly, HideBySig
+    DrawPolygon(Pen, PointF[]): PrivateScope, Assembly, HideBySig
+    DrawString(String, Font, Brush, RectangleF, StringFormat): PrivateScope, Assembly, HideBySig
+    DrawString(String, Font, Brush, PointF, StringFormat): PrivateScope, Assembly, HideBySig
+    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes): PrivateScope, Assembly, HideBySig
+    DrawRectangle(Pen, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
+    DrawPath(Pen, GraphicsPath): PrivateScope, Assembly, HideBySig
+    DrawPie(Pen, Single, Single, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
+    DrawEllipse(Pen, RectangleF): PrivateScope, Assembly, HideBySig
+    DrawLines(Pen, PointF[]): PrivateScope, Assembly, HideBySig
+    FillEllipse(Brush, RectangleF): PrivateScope, Assembly, HideBySig
+    FillPath(Brush, GraphicsPath): PrivateScope, Assembly, HideBySig
+    FillRegion(Brush, Region): PrivateScope, Assembly, HideBySig
+    FillRectangle(Brush, RectangleF): PrivateScope, Assembly, HideBySig
+    FillRectangle(Brush, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
+    FillPolygon(Brush, PointF[]): PrivateScope, Assembly, HideBySig
+    FillPie(Brush, Single, Single, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
+    StartHotRegion(String, String): PrivateScope, Assembly, HideBySig
+    StartHotRegion(DataPoint): PrivateScope, Assembly, HideBySig
+    StartHotRegion(DataPoint, Boolean): PrivateScope, Assembly, HideBySig
+    EndHotRegion(): PrivateScope, Assembly, HideBySig
+    MeasureString(String, Font, SizeF, StringFormat): PrivateScope, Assembly, HideBySig
+    MeasureString(String, Font): PrivateScope, Assembly, HideBySig
+    Save(): PrivateScope, Assembly, HideBySig
+    Restore(GraphicsState): PrivateScope, Assembly, HideBySig
+    ResetClip(): PrivateScope, Assembly, HideBySig
+    SetClipAbs(RectangleF): PrivateScope, Assembly, HideBySig
+    TranslateTransform(Single, Single): PrivateScope, Assembly, HideBySig
+    get_RenderingObject(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_ActiveRenderingType(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_TextRenderingHint(): PrivateScope, Assembly, HideBySig, SpecialName
     set_TextRenderingHint(TextRenderingHint): PrivateScope, Assembly, HideBySig, SpecialName
     get_Transform(): PrivateScope, Assembly, HideBySig, SpecialName
     set_Transform(Matrix): PrivateScope, Assembly, HideBySig, SpecialName
@@ -5374,49 +5417,6 @@ Class System.Windows.Forms.DataVisualization.Charting.ChartGraphics: AutoLayout,
     Fill3DRectangle(RectangleF, Single, Single, Matrix3D, LightStyle, Color, Color, Int32, ChartDashStyle, DrawingOperationTypes): PrivateScope, Assembly, HideBySig
     Fill3DRectangle(RectangleF, Single, Single, Matrix3D, LightStyle, Color, Single, Single, Color, Int32, ChartDashStyle, BarDrawingStyle, Boolean, DrawingOperationTypes): PrivateScope, Assembly, HideBySig
     DrawMarker3D(Matrix3D, LightStyle, Single, PointF, MarkerStyle, Int32, Color, Color, Int32, String, Color, Int32, Color, RectangleF, DrawingOperationTypes): PrivateScope, Assembly, HideBySig
-    GetVisibleSurfaces(RectangleF, Single, Single, Matrix3D): PrivateScope, Assembly, HideBySig
-    GetVisibleSurfacesWithPerspective(RectangleF, Single, Single, Matrix3D): PrivateScope, Assembly, HideBySig
-    GetVisibleSurfacesWithPerspective(Point3D[]): PrivateScope, Assembly, HideBySig
-    IsSurfaceVisible(Point3D, Point3D, Point3D): PrivateScope, Assembly, Static, HideBySig
-    GetLinesIntersection(Single, Single, Single, Single, Single, Single, Single, Single): PrivateScope, Assembly, Static, HideBySig
-    Fill3DRectangleAsCylinder(RectangleF, Single, Single, Matrix3D, LightStyle, Color, Single, Single, Color, Int32, ChartDashStyle, Boolean, DrawingOperationTypes): PrivateScope, Assembly, HideBySig
-    AddEllipseSegment(GraphicsPath, GraphicsPath, GraphicsPath, Boolean, Single, PointF&(Out), PointF&(Out)): PrivateScope, Assembly, HideBySig
-    DrawLine(Pen, PointF, PointF): PrivateScope, Assembly, HideBySig
-    DrawLine(Pen, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
-    DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit, ImageAttributes): PrivateScope, Assembly, HideBySig
-    DrawEllipse(Pen, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
-    DrawCurve(Pen, PointF[], Int32, Int32, Single): PrivateScope, Assembly, HideBySig
-    DrawRectangle(Pen, Int32, Int32, Int32, Int32): PrivateScope, Assembly, HideBySig
-    DrawPolygon(Pen, PointF[]): PrivateScope, Assembly, HideBySig
-    DrawString(String, Font, Brush, RectangleF, StringFormat): PrivateScope, Assembly, HideBySig
-    DrawString(String, Font, Brush, PointF, StringFormat): PrivateScope, Assembly, HideBySig
-    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes): PrivateScope, Assembly, HideBySig
-    DrawRectangle(Pen, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
-    DrawPath(Pen, GraphicsPath): PrivateScope, Assembly, HideBySig
-    DrawPie(Pen, Single, Single, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
-    DrawEllipse(Pen, RectangleF): PrivateScope, Assembly, HideBySig
-    DrawLines(Pen, PointF[]): PrivateScope, Assembly, HideBySig
-    FillEllipse(Brush, RectangleF): PrivateScope, Assembly, HideBySig
-    FillPath(Brush, GraphicsPath): PrivateScope, Assembly, HideBySig
-    FillRegion(Brush, Region): PrivateScope, Assembly, HideBySig
-    FillRectangle(Brush, RectangleF): PrivateScope, Assembly, HideBySig
-    FillRectangle(Brush, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
-    FillPolygon(Brush, PointF[]): PrivateScope, Assembly, HideBySig
-    FillPie(Brush, Single, Single, Single, Single, Single, Single): PrivateScope, Assembly, HideBySig
-    StartHotRegion(String, String): PrivateScope, Assembly, HideBySig
-    StartHotRegion(DataPoint): PrivateScope, Assembly, HideBySig
-    StartHotRegion(DataPoint, Boolean): PrivateScope, Assembly, HideBySig
-    EndHotRegion(): PrivateScope, Assembly, HideBySig
-    MeasureString(String, Font, SizeF, StringFormat): PrivateScope, Assembly, HideBySig
-    MeasureString(String, Font): PrivateScope, Assembly, HideBySig
-    Save(): PrivateScope, Assembly, HideBySig
-    Restore(GraphicsState): PrivateScope, Assembly, HideBySig
-    ResetClip(): PrivateScope, Assembly, HideBySig
-    SetClipAbs(RectangleF): PrivateScope, Assembly, HideBySig
-    TranslateTransform(Single, Single): PrivateScope, Assembly, HideBySig
-    get_RenderingObject(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_ActiveRenderingType(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_TextRenderingHint(): PrivateScope, Assembly, HideBySig, SpecialName
 Struct System.Windows.Forms.DataVisualization.Charting.SurfaceNames: AutoLayout, AnsiClass, Class, Sealed
   :System.Enum
   Fields:
@@ -6215,6 +6215,21 @@ Class System.Windows.Forms.DataVisualization.Charting.Legend: AutoLayout, AnsiCl
     System.Windows.Forms.DataVisualization.Charting.LegendSeparatorStyle TitleSeparator 'get set' : 
     System.Drawing.Color TitleSeparatorColor 'get set' : 
   Methods:
+    get_TitleForeColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_TitleForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    get_TitleBackColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_TitleBackColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    get_TitleFont(): PrivateScope, Public, HideBySig, SpecialName
+    set_TitleFont(Font): PrivateScope, Public, HideBySig, SpecialName
+    get_TitleAlignment(): PrivateScope, Public, HideBySig, SpecialName
+    set_TitleAlignment(StringAlignment): PrivateScope, Public, HideBySig, SpecialName
+    get_TitleSeparator(): PrivateScope, Public, HideBySig, SpecialName
+    set_TitleSeparator(LegendSeparatorStyle): PrivateScope, Public, HideBySig, SpecialName
+    get_TitleSeparatorColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_TitleSeparatorColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    GetSeparatorSize(LegendSeparatorStyle): PrivateScope, Assembly, HideBySig
+    IsEnabled(): PrivateScope, Assembly, HideBySig
+    Invalidate(Boolean): PrivateScope, Assembly, HideBySig
     CalcLegendPosition(ChartGraphics, RectangleF&, Single): PrivateScope, Assembly, HideBySig
     SelectLegendBackground(): PrivateScope, Assembly, HideBySig
     Paint(ChartGraphics): PrivateScope, Assembly, HideBySig
@@ -6299,21 +6314,6 @@ Class System.Windows.Forms.DataVisualization.Charting.Legend: AutoLayout, AnsiCl
     set_InterlacedRowsColor(Color): PrivateScope, Public, HideBySig, SpecialName
     get_Title(): PrivateScope, Public, HideBySig, SpecialName
     set_Title(String): PrivateScope, Public, HideBySig, SpecialName
-    get_TitleForeColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_TitleForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    get_TitleBackColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_TitleBackColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    get_TitleFont(): PrivateScope, Public, HideBySig, SpecialName
-    set_TitleFont(Font): PrivateScope, Public, HideBySig, SpecialName
-    get_TitleAlignment(): PrivateScope, Public, HideBySig, SpecialName
-    set_TitleAlignment(StringAlignment): PrivateScope, Public, HideBySig, SpecialName
-    get_TitleSeparator(): PrivateScope, Public, HideBySig, SpecialName
-    set_TitleSeparator(LegendSeparatorStyle): PrivateScope, Public, HideBySig, SpecialName
-    get_TitleSeparatorColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_TitleSeparatorColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    GetSeparatorSize(LegendSeparatorStyle): PrivateScope, Assembly, HideBySig
-    IsEnabled(): PrivateScope, Assembly, HideBySig
-    Invalidate(Boolean): PrivateScope, Assembly, HideBySig
 Class System.Windows.Forms.DataVisualization.Charting.LegendCollection: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.DataVisualization.Charting.ChartNamedElementCollection`1[System.Windows.Forms.DataVisualization.Charting.Legend]
     Void .ctor(System.Windows.Forms.DataVisualization.Charting.ChartPicture): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
@@ -8382,6 +8382,11 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     System.String DiagnosticActivityError 'get ' : 
     System.String DiagnosticChartImageServedFailNotFound 'get ' : 
   Methods:
+    AccessibilityLegendTitleName(String): PrivateScope, Public, Static, HideBySig
+    AccessibilityChartAreaName(String): PrivateScope, Public, Static, HideBySig
+    AccessibilityChartAxisTitleName(String): PrivateScope, Public, Static, HideBySig
+    AccessibilityChartAxisMajorGridlinesName(String): PrivateScope, Public, Static, HideBySig
+    AccessibilityChartAxisMinorGridlinesName(String): PrivateScope, Public, Static, HideBySig
     ExceptionNameAlreadyExistsInCollection(String, String): PrivateScope, Public, Static, HideBySig
     ExceptionNameNotFound(String, String): PrivateScope, Public, Static, HideBySig
     ActionListSeriesDataGroup(String): PrivateScope, Public, Static, HideBySig
@@ -8392,44 +8397,6 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     DiagnosticChartImageServed(String): PrivateScope, Public, Static, HideBySig
     DiagnosticChartImageServedFail(String, String): PrivateScope, Public, Static, HideBySig
     DiagnosticChartImageServedFailPrivacyFail(String): PrivateScope, Public, Static, HideBySig
-    ExceptionTitleNameAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionTitleNameNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionDataSeriesNameNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionDataSeriesPointTypeUnsupported(String): PrivateScope, Public, Static, HideBySig
-    ExceptionDataSeriesYValueIndexNotExists(String, String): PrivateScope, Public, Static, HideBySig
-    ExceptionDataSeriesKeywordFormatInvalid(String): PrivateScope, Public, Static, HideBySig
-    ExceptionDataSeriesChartAreaInvalid(String, String): PrivateScope, Public, Static, HideBySig
-    ExceptionSeriesNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionSeriesNameAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionEditorChartTypeRegistryServiceInObjectInaccessible(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendDesignerMarginObjectInvalid(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartAreaAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartAreaInsertedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartAreaAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
-    ExceptionAxisLabelsIntervalTypeUnsupported(String): PrivateScope, Public, Static, HideBySig
-    ExceptionSubAxisNameNotFoundShort(String): PrivateScope, Public, Static, HideBySig
-    ExceptionSubAxisNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionEnumInvalid(String): PrivateScope, Public, Static, HideBySig
-    ExceptionNamedImageNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionNamedImageAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionNamedImageInsertedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendDockedChartAreaIsMissing(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendReferencedInSeriesNotFound(String, String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendSeparatorTypeUnknown(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendCellTypeUnknown(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendColumnAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendCellNameAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendCellNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendCellColumnNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionLegendCellColumnAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartAreaNameReferenceInvalid(String, String): PrivateScope, Public, Static, HideBySig
-    ExceptionTraceManagerUnsupportedType(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartTypeRegistryUnsupportedType(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartTypeNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionChartTypeUnknown(String): PrivateScope, Public, Static, HideBySig
     ExceptionChartTypeRequiresYValues(String, String): PrivateScope, Public, Static, HideBySig
     ExceptionChartTypeSecondaryYAxisUnsupported(String): PrivateScope, Public, Static, HideBySig
     ExceptionChartTypeSecondaryXAxisUnsupported(String): PrivateScope, Public, Static, HideBySig
@@ -8515,11 +8482,95 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     AccessibilitySeriesName(String): PrivateScope, Public, Static, HideBySig
     AccessibilityDataPointName(Int32): PrivateScope, Public, Static, HideBySig
     AccessibilityDataPointLabelName(Int32): PrivateScope, Public, Static, HideBySig
-    AccessibilityLegendTitleName(String): PrivateScope, Public, Static, HideBySig
-    AccessibilityChartAreaName(String): PrivateScope, Public, Static, HideBySig
-    AccessibilityChartAxisTitleName(String): PrivateScope, Public, Static, HideBySig
-    AccessibilityChartAxisMajorGridlinesName(String): PrivateScope, Public, Static, HideBySig
-    AccessibilityChartAxisMinorGridlinesName(String): PrivateScope, Public, Static, HideBySig
+    get_CategoryAttributeMap(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeMapArea(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeLabel(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeShape(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeMisc(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeSerializer(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeSubAxes(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeSeriesItems(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeDataView(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeCharttitle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeLegend(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeAction(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeScale(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeAnnotations(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeAnchor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeBehavior(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeCursor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeAnchorAxes(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CategoryAttributeAccessibility(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_FormatErrorString(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ActionListSeriesChartType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ActionListSeriesXValueMember(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ActionListSeriesYValueMembers(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticSettingsHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticSettingsKey(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticSettingsValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticSettingsInfo(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticQueueStateHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticQueueStateName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticQueueStateAccess(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticQueueStateAccessOK(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticQueueStateAccessFail(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticQueueStateAccessInfo(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticActivityHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticActivityTime(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticActivityMessage(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticActivityError(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DiagnosticChartImageServedFailNotFound(): PrivateScope, Public, Static, HideBySig, SpecialName
+    ExceptionImageLoaderUnsupportedType(String): PrivateScope, Public, Static, HideBySig
+    ExceptionImageLoaderIncorrectImageUrl(String): PrivateScope, Public, Static, HideBySig
+    ExceptionImageLoaderIncorrectImageLocation(String): PrivateScope, Public, Static, HideBySig
+    ExceptionAnnotationNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionAnnotationNameAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
+    ExceptionAnnotationNameNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionTitleNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionTitleNameAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionTitleNameNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionDataSeriesNameNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionDataSeriesPointTypeUnsupported(String): PrivateScope, Public, Static, HideBySig
+    ExceptionDataSeriesYValueIndexNotExists(String, String): PrivateScope, Public, Static, HideBySig
+    ExceptionDataSeriesKeywordFormatInvalid(String): PrivateScope, Public, Static, HideBySig
+    ExceptionDataSeriesChartAreaInvalid(String, String): PrivateScope, Public, Static, HideBySig
+    ExceptionSeriesNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionSeriesNameAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionEditorChartTypeRegistryServiceInObjectInaccessible(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendDesignerMarginObjectInvalid(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartAreaAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartAreaInsertedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartAreaAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
+    ExceptionAxisLabelsIntervalTypeUnsupported(String): PrivateScope, Public, Static, HideBySig
+    ExceptionSubAxisNameNotFoundShort(String): PrivateScope, Public, Static, HideBySig
+    ExceptionSubAxisNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionEnumInvalid(String): PrivateScope, Public, Static, HideBySig
+    ExceptionNamedImageNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionNamedImageAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionNamedImageInsertedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendAddedIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendDockedChartAreaIsMissing(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendReferencedInSeriesNotFound(String, String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendSeparatorTypeUnknown(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendCellTypeUnknown(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendColumnAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendCellNameAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendCellNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendCellColumnNotFound(String): PrivateScope, Public, Static, HideBySig
+    ExceptionLegendCellColumnAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartAreaNameReferenceInvalid(String, String): PrivateScope, Public, Static, HideBySig
+    ExceptionTraceManagerUnsupportedType(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartTypeRegistryUnsupportedType(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartTypeNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
+    ExceptionChartTypeUnknown(String): PrivateScope, Public, Static, HideBySig
+    get_DescriptionAttributeCustomLabel_GridTicks(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeImageAnnotation_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCellColumn_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitle_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeLegendCell_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeLegend_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -8601,92 +8652,6 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_CategoryAttributeChart(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_CategoryAttributeLocation(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_CategoryAttributeToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeMap(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeMapArea(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeLabel(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeShape(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeMisc(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeSerializer(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeSubAxes(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeSeriesItems(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeDataView(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeCharttitle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeLegend(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeAction(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeScale(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeAnnotations(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeAnchor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeBehavior(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeCursor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeAnchorAxes(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CategoryAttributeAccessibility(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_FormatErrorString(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ActionListSeriesChartType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ActionListSeriesXValueMember(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ActionListSeriesYValueMembers(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticSettingsHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticSettingsKey(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticSettingsValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticSettingsInfo(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticQueueStateHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticQueueStateName(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticQueueStateAccess(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticQueueStateAccessOK(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticQueueStateAccessFail(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticQueueStateAccessInfo(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticActivityHeader(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticActivityTime(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticActivityMessage(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticActivityError(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DiagnosticChartImageServedFailNotFound(): PrivateScope, Public, Static, HideBySig, SpecialName
-    ExceptionImageLoaderUnsupportedType(String): PrivateScope, Public, Static, HideBySig
-    ExceptionImageLoaderIncorrectImageUrl(String): PrivateScope, Public, Static, HideBySig
-    ExceptionImageLoaderIncorrectImageLocation(String): PrivateScope, Public, Static, HideBySig
-    ExceptionAnnotationNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    ExceptionAnnotationNameAlreadyExistsInCollection(String): PrivateScope, Public, Static, HideBySig
-    ExceptionAnnotationNameNotFound(String): PrivateScope, Public, Static, HideBySig
-    ExceptionTitleNameIsNotUnique(String): PrivateScope, Public, Static, HideBySig
-    get_DescriptionAttributeCursor_UserEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBorderSkin_FrameBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScaleSegment_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisDataView_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitle_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursor_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSubAxis_ParentAxis(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationCollectionEditor_AnnotationCollectionEditor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBottom(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeMargins_Bottom(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScaleBreakStyle_AxisScaleBreakStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_HeaderSeparator(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea3DStyle_PointDepth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationGroup_AnnotationGroup(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationPathPointCollection_AnnotationPathPointCollection(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeStripLine_StripWidthType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabel_From(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributePoint3D_PointF(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeMarkerBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursor_SelectionEnd(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLineAnnotation_LineAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationSmartLabels_AnnotationSmartLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationGroup_Visible(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea_Visible(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitle_Visible(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeVisible(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_Separator(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCell_CellType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_Serializer(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisX(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea_AxisX(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeImageType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursor_SelectionStart(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabelsAutoFit(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCellColumn_HeaderText(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeMapEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeAxisDataView_Zoomable(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeDataManager_PaletteCustomColors(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeChart_PaletteCustomColors(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -8772,10 +8737,94 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_DescriptionAttributeAxisScaleSegment_ScaleMaximum(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeScrollBarEventArgs_MousePositionX(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeLabel_TruncatedLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabel_GridTicks(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeImageAnnotation_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCellColumn_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitle_Alignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTickMark_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScaleSegment_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisDataView_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScrollBar_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeViewEventArgs_NewSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeries_XAxisType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAllowOutsidePlotArea(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_MarkerStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeMarkerStyle4(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCell_ImageSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeView(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeriesCollection_SeriesCollection(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursorEventArgs_NewPosition(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeViewEventArgs_NewPosition(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCell_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeNamedImage_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeImageAnnotation_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCustomLabel_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScaleSegment_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeIntervalOffset3(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabel_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeIntervalOffset6(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeStripLine_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_DockInsideChartArea(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitle_DockInsideChartArea(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_RenderType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScaleBreakStyle_CollapsibleSpaceThreshold(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartEvent_AxisViewChanging(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabelCalloutStyle_LabelCalloutStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributePath(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_SeriesPointIndex(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeMapAreas(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTickMark_TickMark(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCellColumn_LegendCellColumn(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_LegendItem(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitleAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeStripLine_TitleAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_TitleAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeElementPosition_ElementPosition(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCustomLabel_To(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabel_FontAngle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeIntervalAutoMode(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeStripLine_StripWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_UserEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBorderSkin_FrameBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScaleSegment_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisDataView_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitle_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_Position(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSubAxis_ParentAxis(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationCollectionEditor_AnnotationCollectionEditor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBottom(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeMargins_Bottom(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScaleBreakStyle_AxisScaleBreakStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_HeaderSeparator(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea3DStyle_PointDepth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationGroup_AnnotationGroup(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationPathPointCollection_AnnotationPathPointCollection(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeStripLine_StripWidthType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCustomLabel_From(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributePoint3D_PointF(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeMarkerBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_SelectionEnd(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLineAnnotation_LineAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationSmartLabels_AnnotationSmartLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationGroup_Visible(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea_Visible(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitle_Visible(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeVisible(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_Separator(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCell_CellType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_Serializer(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisX(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea_AxisX(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeImageType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_SelectionStart(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabelsAutoFit(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCellColumn_HeaderText(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeMapEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBackGradientStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeDataSource(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCustomLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeArrowAnnotation_ArrowAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeCursor_AxisType(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeLegendItem_Cells(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -8858,92 +8907,6 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_DescriptionAttributeLegendCell_Margins(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeLegendItem_MarkerColor(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeMarkerColor3(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTickMark_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScaleSegment_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisDataView_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScrollBar_Size(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeViewEventArgs_NewSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeries_XAxisType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAllowOutsidePlotArea(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_MarkerStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeMarkerStyle4(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCell_ImageSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeView(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeriesCollection_SeriesCollection(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursorEventArgs_NewPosition(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeViewEventArgs_NewPosition(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCell_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeNamedImage_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeImageAnnotation_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabel_Image(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScaleSegment_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeIntervalOffset3(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabel_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursor_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeIntervalOffset6(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeStripLine_IntervalOffset(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_DockInsideChartArea(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitle_DockInsideChartArea(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_RenderType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScaleBreakStyle_CollapsibleSpaceThreshold(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartEvent_AxisViewChanging(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabelCalloutStyle_LabelCalloutStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributePath(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_SeriesPointIndex(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeMapAreas(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTickMark_TickMark(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCellColumn_LegendCellColumn(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_LegendItem(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitleAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeStripLine_TitleAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_TitleAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeElementPosition_ElementPosition(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabel_To(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabel_FontAngle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeIntervalAutoMode(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeStripLine_StripWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCellColumn_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabel_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitle_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCell_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeries_ValueMemberX(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeArrows(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeries_Type(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBorder3DAnnotation_Border3DAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_Images(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabel_CustomLabel(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartEvent_AnnotationPlaced(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCalloutBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeFrameBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTitleBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabelBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeHeaderBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabel_ShowEndLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabelToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeries_MarkerStep(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTickMark_Style(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttribute_TextOrientation(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_Style(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea3DStyle_Rotation(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSizeAlwaysRelative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSizeAlwaysRelative3(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationGroup_SizeAlwaysRelative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_BorderlineWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeries_XValueIndexed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeEllipseAnnotation_EllipseAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnchorAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeElementPosition_Width(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisXName(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea3DStyle_Inclination(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCollection_LegendCollection(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisYName(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeAxisScaleSegment_Spacing(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeAxisScaleBreakStyle_Spacing(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeSelected(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9029,9 +8992,93 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_DescriptionAttributeLegendCellColumn_SeriesSymbolSize(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeDisabled(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeChartSerializer_ResetWhenLoading(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBackGradientStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeDataSource(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeDataPoint_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCellColumn_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCustomLabel_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_Cursor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnchorX(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_TableStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeDataPoint_Empty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeScrollBarEventArgs_Handled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisLabel(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationGroup_AllowPathEditing(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAllowPathEditing3(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_OnPaint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCalloutAnnotation_AnchorOffsetX(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnchorOffsetX3(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCalloutAnnotation_AnchorOffsetY(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnchorOffsetY3(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartEvent_CursorPositionChanging(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeScrollBarEventArgs_ButtonType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabelsAutoFitStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabelStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeStripLine_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabel_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeIntervalOffsetType4(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCursor_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeIntervalOffsetType6(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisScaleSegment_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeReverse(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeries_Points(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBorderSkin_SkinStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea3DStyle_Clustered(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnchorDataPointName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartEvent_AnnotationPositionChanged(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea3DStyle_PointGapDepth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_Reversed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotation_AnnotationType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTextAnnotation_AnnotationType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBorderSkin_FrameBorderDashStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_HeaderSeparatorColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartEvent_AnnotationSelectionChanged(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeFont(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegend_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCellColumn_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabel_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitle_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCell_Font(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeries_ValueMemberX(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeArrows(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeries_Type(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBorder3DAnnotation_Border3DAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_Images(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCustomLabel_CustomLabel(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartEvent_AnnotationPlaced(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeCalloutBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeFrameBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTitleBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabelBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeHeaderBackColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabel_ShowEndLabels(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLabelToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeries_MarkerStep(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeTickMark_Style(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttribute_TextOrientation(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendItem_Style(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea3DStyle_Rotation(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSizeAlwaysRelative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSizeAlwaysRelative3(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnnotationGroup_SizeAlwaysRelative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_BorderlineWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeSeries_XValueIndexed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeEllipseAnnotation_EllipseAnnotation(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAnchorAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeElementPosition_Width(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisXName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartArea3DStyle_Inclination(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeLegendCollection_LegendCollection(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeAxisYName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChartImageType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeMultiValueSeparator(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeDataSeriesGroupID(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeSuppressCodeExceptions(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeNoDataMessage(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9115,92 +9162,6 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_DescriptionAttributeAxis_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeNamedImage_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeSubAxis_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeDataPoint_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendCellColumn_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegendItem_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCustomLabel_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea_Name(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursor_Cursor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnchorX(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeToolTip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_TableStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeDataPoint_Empty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeScrollBarEventArgs_Handled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisLabel(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationGroup_AllowPathEditing(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAllowPathEditing3(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_OnPaint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCalloutAnnotation_AnchorOffsetX(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnchorOffsetX3(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCalloutAnnotation_AnchorOffsetY(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnchorOffsetY3(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartEvent_CursorPositionChanging(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeScrollBarEventArgs_ButtonType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabelsAutoFitStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabelStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeStripLine_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLabel_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeIntervalOffsetType4(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeCursor_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeIntervalOffsetType6(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAxisScaleSegment_IntervalOffsetType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeReverse(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeSeries_Points(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBorderSkin_SkinStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea3DStyle_Clustered(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnchorDataPointName(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartEvent_AnnotationPositionChanged(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartArea3DStyle_PointGapDepth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_Reversed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotation_AnnotationType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeTextAnnotation_AnnotationType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeAnnotationType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeBorderSkin_FrameBorderDashStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeLegend_HeaderSeparatorColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartEvent_AnnotationSelectionChanged(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeFont(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeKagiReversalAmount(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeErrorBarType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChart_ImageStorageMode(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordAverageYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordAxisLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordIndexDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordYValuePercentTotal(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordIndexDataPoint2(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordLegendText(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordMaximumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordMinimumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordSeriesName(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordTotalYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordXValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordFirstPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordLastPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameIndexDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameXValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameTotalYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameYValuePercentTotal(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameIndexTheDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameAxisLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameLegendText(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameSeriesName(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameAverageYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameMaximumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameMinimumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameLastPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionKeyWordNameFirstPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypeCurrency(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypeDecimal(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypeScientific(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypeFixedPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypeGeneral(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypeNumber(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionNumberFormatTypePercent(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionTypeNone(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionTypeCustom(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionTypeEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionTypePoint(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9286,8 +9247,92 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_DescriptionAttributeAnnotationHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeAnnotationClipToChartArea(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionAttributeAnnotationBaseX(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeChartImageType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionAttributeMultiValueSeparator(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeCollectedSliceExploded(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeCollectedThresholdUsePercent(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeFunnelNeckHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeFunnelNeckWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePyramidPointGap(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeFunnelPointGap(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeLabelsHorizontalLineSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeDoughnutRadius(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePolarCircularLabelsStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeRadarCircularLabelsStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeOpenCloseStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeBubbleMaxSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeMaxPixelPointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePyramidMinPointHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeFunnelMinPointHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeMinimumRelativePieSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeMinPixelPointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeErrorBarSeries(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeNumberOfLinesInBreak(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePyramidOutsideLabelPlacement(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeFunnelOutsideLabelPlacement(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeBoxPlotPercentile(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeBoxPlotWhiskerPercentile(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeBarLabelStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeLabelsRadialLineSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeReversalAmount(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePolarAreaDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeRadarAreaDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeStackedGroupName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeLineTension(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeCandlePriceUpColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeBarsPriceUpColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePriceDownColor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeUsedYValueHigh(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeUsedYValueLow(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeRenkoUsedYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeThreeLineBreakUsedYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePyramidInsideLabelAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeFunnelInsideLabelAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeErrorBarStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributePixelPointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeLabelValueType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeUsedYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeKagiReversalAmount(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionCustomAttributeErrorBarType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionAttributeChart_ImageStorageMode(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordAverageYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordAxisLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordIndexDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordYValuePercentTotal(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordIndexDataPoint2(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordLegendText(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordMaximumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordMinimumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordSeriesName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordTotalYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordXValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordFirstPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordLastPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameIndexDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameXValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameTotalYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameYValuePercentTotal(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameIndexTheDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameAxisLabelDataPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameLegendText(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameSeriesName(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameAverageYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameMaximumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameMinimumYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameLastPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionKeyWordNameFirstPointYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypeCurrency(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypeDecimal(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypeScientific(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypeFixedPoint(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypeGeneral(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypeNumber(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionNumberFormatTypePercent(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_DescriptionTypeNone(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionPointAndFigureReversalAmountInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionPointAndFigureUsedYValueHighInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionPointAndFigureUsedYValueLowInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionFastPointMarkerStyleUnknown(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9372,92 +9417,6 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_DescriptionCustomAttributePyramid3DDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionCustomAttributeDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DescriptionCustomAttributePieDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeCollectedSliceExploded(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeCollectedThresholdUsePercent(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeFunnelNeckHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeFunnelNeckWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePyramidPointGap(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeFunnelPointGap(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeLabelsHorizontalLineSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeDoughnutRadius(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePolarCircularLabelsStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeRadarCircularLabelsStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeOpenCloseStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeBubbleMaxSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeMaxPixelPointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePyramidMinPointHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeFunnelMinPointHeight(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeMinimumRelativePieSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeMinPixelPointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeErrorBarSeries(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeNumberOfLinesInBreak(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePyramidOutsideLabelPlacement(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeFunnelOutsideLabelPlacement(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeBoxPlotPercentile(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeBoxPlotWhiskerPercentile(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeBarLabelStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeLabelsRadialLineSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeReversalAmount(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePolarAreaDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeRadarAreaDrawingStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeStackedGroupName(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeLineTension(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeCandlePriceUpColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeBarsPriceUpColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePriceDownColor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeUsedYValueHigh(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeUsedYValueLow(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeRenkoUsedYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeThreeLineBreakUsedYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePyramidInsideLabelAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeFunnelInsideLabelAlignment(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeErrorBarStyle(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributePixelPointWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeLabelValueType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_DescriptionCustomAttributeUsedYValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionBorderTypeHasNoInterface(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerContentFlagUnsupported(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerContentStringFormatInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerClassNameUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerPropertyNameUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerWriterObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerReaderObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerDestinationObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerSourceObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerBinaryIgnoreUnknownAttributesUnsupported(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerBinaryFromatInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartSerializerPropertyNotFound(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorPointCountIsZero(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorIndexUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorIndexFormatInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorGroupedSeriesNotSorted(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorGroupingFormulaUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorGroupingFormulaUnsupported(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorGroupingInputSeriesUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManipulatorGroupingInputOutputSeriesNumberMismatch(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataBindYValuesToString(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataBindXValuesToString(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataBindSeriesToString(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataBindSeriesGroupByParameterIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionImageUrlIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionImageUrlInvalidFormatters(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionImageUrlInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionImageUrlMissedFormatter(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataManager100StackedSeriesPointsNumeberMismatch(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionFormulaModuleHasNoInterface(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointConverterInvalidSorting(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointConverterWrongTypes(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointInsertionXValuesQtyIsLessYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointValueNameInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointValueNameYIndexOutOfRange(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointValueNameYIndexIsNotPositive(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointInsertionNoDataSource(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointBindingYValueNotSpecified(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionDataPointInsertionYValueNotSpecified(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAttributeUnableToDelete(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAttributeNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAttributeInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionAttributeDrawSideBySideInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionLabelBorderIsNotPositive(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionBorderWidthIsNotPositive(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9543,7 +9502,91 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_ExceptionPointAndFigureNullReference(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionPointAndFigureUsedYValueHighOutOfRange(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionPointAndFigureUsedYValueLowOutOfrange(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionPointAndFigureReversalAmountInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAxisScaleBreaksLineWidthInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAxisScaleSegmentsPositionInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAxisScaleSegmentsSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAxisScaleSegmentsSpacingInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionTickMarksIntervalIsZero(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionTickMarksIntervalIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionScrollBarSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionScrollBarZoomResetsNumberInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMarkerStepNegativeValue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionTextThresholdIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionNamedImageObjectRequired(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionNamedImageInsertedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendAddedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendInsertedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionBackSecondaryColorIsTransparent(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendAutoFitMinFontSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendMaximumAutoSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendColumnSpacingInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendMarkerBorderWidthIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendItemAddedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendItemInsertedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendColumnIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionSeriesSymbolSizeIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMinimumCellWidthIsWrong(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMaximumCellWidthIsWrong(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendCellNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendCellImageSizeIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendCellSeriesSymbolSizeIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionLegendCellSpanIsLessThenOne(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMarginTopIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMarginBottomIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMarginLeftIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionMarginRightIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionElementPositionArgumentOutOfRange(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartHeightIsNotInPixels(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartWidthIsNotInPixels(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartBorderIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartCompressionInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartDataPointsAlignmentFaild(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartDataPointsAlignmentFaildAxisLabelsInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartDataPointsInsertionFailedYValuesEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartTypeHasNoInterface(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionBorderTypeHasNoInterface(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerContentFlagUnsupported(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerContentStringFormatInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerClassNameUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerPropertyNameUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerWriterObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerReaderObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerDestinationObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerSourceObjectInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerBinaryIgnoreUnknownAttributesUnsupported(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerBinaryFromatInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionChartSerializerPropertyNotFound(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorPointCountIsZero(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorIndexUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorIndexFormatInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorGroupedSeriesNotSorted(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorGroupingFormulaUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorGroupingFormulaUnsupported(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorGroupingInputSeriesUndefined(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManipulatorGroupingInputOutputSeriesNumberMismatch(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataBindYValuesToString(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataBindXValuesToString(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataBindSeriesToString(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataBindSeriesGroupByParameterIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionImageUrlIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionImageUrlInvalidFormatters(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionImageUrlInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionImageUrlMissedFormatter(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataManager100StackedSeriesPointsNumeberMismatch(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionFormulaModuleHasNoInterface(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointConverterInvalidSorting(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointConverterWrongTypes(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointInsertionXValuesQtyIsLessYValues(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointValueNameInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointValueNameYIndexOutOfRange(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointValueNameYIndexIsNotPositive(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointInsertionNoDataSource(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointBindingYValueNotSpecified(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionDataPointInsertionYValueNotSpecified(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAttributeUnableToDelete(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAttributeNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ExceptionAttributeInvalidFormat(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_Culture(): PrivateScope, Public, Static, HideBySig, SpecialName
     set_Culture(CultureInfo): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionElementPositionConverter(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9628,49 +9671,6 @@ Class System.Windows.Forms.DataVisualization.Charting.SR: AutoLayout, AnsiClass,
     get_ExceptionAxisScaleBreaksNumberInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionAxisScaleBreaksCollapsibleSpaceInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_ExceptionAxisScaleBreaksSpacingInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAxisScaleBreaksLineWidthInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAxisScaleSegmentsPositionInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAxisScaleSegmentsSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionAxisScaleSegmentsSpacingInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionTickMarksIntervalIsZero(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionTickMarksIntervalIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionScrollBarSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionScrollBarZoomResetsNumberInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMarkerStepNegativeValue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionTextThresholdIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionNamedImageObjectRequired(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionNamedImageInsertedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendAddedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendInsertedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionBackSecondaryColorIsTransparent(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendAutoFitMinFontSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendMaximumAutoSizeInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendColumnSpacingInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendMarkerBorderWidthIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendItemAddedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendItemInsertedHasWrongType(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendColumnIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionSeriesSymbolSizeIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMinimumCellWidthIsWrong(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMaximumCellWidthIsWrong(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendCellNameIsEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendCellImageSizeIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendCellSeriesSymbolSizeIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionLegendCellSpanIsLessThenOne(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMarginTopIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMarginBottomIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMarginLeftIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionMarginRightIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionElementPositionArgumentOutOfRange(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartHeightIsNotInPixels(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartWidthIsNotInPixels(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartBorderIsNegative(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartCompressionInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartDataPointsAlignmentFaild(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartDataPointsAlignmentFaildAxisLabelsInvalid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartDataPointsInsertionFailedYValuesEmpty(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ExceptionChartTypeHasNoInterface(): PrivateScope, Public, Static, HideBySig, SpecialName
 Class System.Windows.Forms.DataVisualization.Charting.SR+Keys: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   Fields:
     System.String ExceptionElementPositionConverter = ExceptionElementPositionConverter : Public, Static, Literal, HasDefault
@@ -11453,6 +11453,48 @@ Class System.Windows.Forms.DataVisualization.Charting.Chart: AutoLayout, AnsiCla
     System.EventHandler AnnotationPlaced: 
     System.EventHandler`1[System.Windows.Forms.DataVisualization.Charting.FormatNumberEventArgs] FormatNumber: 
   Methods:
+    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
+    HitTest(Int32, Int32, Boolean): PrivateScope, Public, HideBySig
+    HitTest(Int32, Int32, ChartElementType): PrivateScope, Public, HideBySig
+    HitTest(Int32, Int32, Boolean, ChartElementType[]): PrivateScope, Public, HideBySig
+    GetChartElementOutline(Object, ChartElementType): PrivateScope, Public, HideBySig
+    BeginInit(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    EndInit(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    OnChartMouseDown(MouseEventArgs): PrivateScope, Assembly, HideBySig
+    OnChartMouseUp(MouseEventArgs): PrivateScope, Assembly, HideBySig
+    OnChartMouseMove(MouseEventArgs): PrivateScope, Assembly, HideBySig
+    add_GetToolTipText(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_GetToolTipText(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    IsToolTipEventUsed(): PrivateScope, Assembly, HideBySig
+    OnGetToolTipText(ToolTipEventArgs): PrivateScope, Assembly, HideBySig
+    add_CursorPositionChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_CursorPositionChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_CursorPositionChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_CursorPositionChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectionRangeChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectionRangeChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectionRangeChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectionRangeChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    OnCursorPositionChanging(CursorEventArgs): PrivateScope, Assembly, HideBySig
+    OnCursorPositionChanged(CursorEventArgs): PrivateScope, Assembly, HideBySig
+    OnSelectionRangeChanging(CursorEventArgs): PrivateScope, Assembly, HideBySig
+    OnSelectionRangeChanged(CursorEventArgs): PrivateScope, Assembly, HideBySig
+    add_AxisViewChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AxisViewChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AxisViewChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AxisViewChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    OnAxisViewChanging(ViewEventArgs): PrivateScope, Assembly, HideBySig
+    OnAxisViewChanged(ViewEventArgs): PrivateScope, Assembly, HideBySig
+    add_AxisScrollBarClicked(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AxisScrollBarClicked(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    OnAxisScrollBarClicked(ScrollBarEventArgs): PrivateScope, Assembly, HideBySig
+    add_PostPaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_PostPaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_PrePaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_PrePaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    CallOnPrePaint(ChartPaintEventArgs): PrivateScope, Assembly, HideBySig
+    CallOnPostPaint(ChartPaintEventArgs): PrivateScope, Assembly, HideBySig
+    add_Customize(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_Customize(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     CallOnCustomize(): PrivateScope, Assembly, HideBySig
     add_CustomizeLegend(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
@@ -11568,48 +11610,6 @@ Class System.Windows.Forms.DataVisualization.Charting.Chart: AutoLayout, AnsiCla
     ApplyPaletteColors(): PrivateScope, Public, HideBySig
     IsDesignMode(): PrivateScope, Assembly, HideBySig
     ResetAutoValues(): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32, Boolean): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32, ChartElementType): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32, Boolean, ChartElementType[]): PrivateScope, Public, HideBySig
-    GetChartElementOutline(Object, ChartElementType): PrivateScope, Public, HideBySig
-    BeginInit(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    EndInit(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    OnChartMouseDown(MouseEventArgs): PrivateScope, Assembly, HideBySig
-    OnChartMouseUp(MouseEventArgs): PrivateScope, Assembly, HideBySig
-    OnChartMouseMove(MouseEventArgs): PrivateScope, Assembly, HideBySig
-    add_GetToolTipText(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_GetToolTipText(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    IsToolTipEventUsed(): PrivateScope, Assembly, HideBySig
-    OnGetToolTipText(ToolTipEventArgs): PrivateScope, Assembly, HideBySig
-    add_CursorPositionChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_CursorPositionChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    add_CursorPositionChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_CursorPositionChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectionRangeChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectionRangeChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectionRangeChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectionRangeChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    OnCursorPositionChanging(CursorEventArgs): PrivateScope, Assembly, HideBySig
-    OnCursorPositionChanged(CursorEventArgs): PrivateScope, Assembly, HideBySig
-    OnSelectionRangeChanging(CursorEventArgs): PrivateScope, Assembly, HideBySig
-    OnSelectionRangeChanged(CursorEventArgs): PrivateScope, Assembly, HideBySig
-    add_AxisViewChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_AxisViewChanging(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    add_AxisViewChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_AxisViewChanged(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    OnAxisViewChanging(ViewEventArgs): PrivateScope, Assembly, HideBySig
-    OnAxisViewChanged(ViewEventArgs): PrivateScope, Assembly, HideBySig
-    add_AxisScrollBarClicked(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_AxisScrollBarClicked(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    OnAxisScrollBarClicked(ScrollBarEventArgs): PrivateScope, Assembly, HideBySig
-    add_PostPaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_PostPaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    add_PrePaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    remove_PrePaint(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
-    CallOnPrePaint(ChartPaintEventArgs): PrivateScope, Assembly, HideBySig
-    CallOnPostPaint(ChartPaintEventArgs): PrivateScope, Assembly, HideBySig
-    add_Customize(EventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.EventArgs
     Void .ctor(System.Windows.Forms.DataVisualization.Charting.LegendItemsCollection): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

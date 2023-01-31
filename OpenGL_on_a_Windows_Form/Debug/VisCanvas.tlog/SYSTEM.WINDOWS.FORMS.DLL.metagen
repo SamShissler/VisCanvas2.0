@@ -864,13 +864,49 @@ Class System.Windows.Forms.Control: AutoLayout, AnsiClass, Class, Public
     System.EventHandler ParentChanged: 
     System.EventHandler ImeModeChanged: 
   Methods:
-    SuspendLayout(): PrivateScope, Public, HideBySig
-    Update(): PrivateScope, Public, HideBySig
     get_ImeMode(): PrivateScope, Public, HideBySig, SpecialName
     set_ImeMode(ImeMode): PrivateScope, Public, HideBySig, SpecialName
     add_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     ResetImeMode(): PrivateScope, Public, HideBySig
+    PerformLayout(): PrivateScope, Public, HideBySig
+    PerformLayout(Control, String): PrivateScope, Public, HideBySig
+    PointToClient(Point): PrivateScope, Public, HideBySig
+    PointToScreen(Point): PrivateScope, Public, HideBySig
+    PreProcessMessage(Message&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, HasSecurity
+    PreProcessControlMessage(Message&): PrivateScope, Public, HideBySig, HasSecurity
+    ResetBackColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetCursor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetFont(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetForeColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetRightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    RectangleToClient(Rectangle): PrivateScope, Public, HideBySig
+    RectangleToScreen(Rectangle): PrivateScope, Public, HideBySig
+    Refresh(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetText(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResumeLayout(): PrivateScope, Public, HideBySig
+    ResumeLayout(Boolean): PrivateScope, Public, HideBySig
+    Scale(Single): PrivateScope, Public, HideBySig (Obsolete)
+    Scale(Single, Single): PrivateScope, Public, HideBySig (Obsolete)
+    Scale(SizeF): PrivateScope, Public, HideBySig
+    Select(): PrivateScope, Public, HideBySig
+    SelectNextControl(Control, Boolean, Boolean, Boolean, Boolean): PrivateScope, Public, HideBySig
+    SendToBack(): PrivateScope, Public, HideBySig
+    SetBounds(Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    SetBounds(Int32, Int32, Int32, Int32, BoundsSpecified): PrivateScope, Public, HideBySig
+    Show(): PrivateScope, Public, HideBySig
+    SuspendLayout(): PrivateScope, Public, HideBySig
+    Update(): PrivateScope, Public, HideBySig
+    remove_Resize(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SystemColorsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SystemColorsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_ParentChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_ParentChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -902,63 +938,6 @@ Class System.Windows.Forms.Control: AutoLayout, AnsiClass, Class, Public
     Invoke(Delegate, Object[]): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     IsKeyLocked(Keys): PrivateScope, Public, Static, HideBySig
     IsMnemonic(Char, String): PrivateScope, Public, Static, HideBySig
-    PerformLayout(): PrivateScope, Public, HideBySig
-    PerformLayout(Control, String): PrivateScope, Public, HideBySig
-    PointToClient(Point): PrivateScope, Public, HideBySig
-    PointToScreen(Point): PrivateScope, Public, HideBySig
-    PreProcessMessage(Message&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, HasSecurity
-    PreProcessControlMessage(Message&): PrivateScope, Public, HideBySig, HasSecurity
-    ResetBackColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetCursor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetFont(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetForeColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetRightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    RectangleToClient(Rectangle): PrivateScope, Public, HideBySig
-    RectangleToScreen(Rectangle): PrivateScope, Public, HideBySig
-    Refresh(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetText(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResumeLayout(): PrivateScope, Public, HideBySig
-    ResumeLayout(Boolean): PrivateScope, Public, HideBySig
-    Scale(Single): PrivateScope, Public, HideBySig (Obsolete)
-    Scale(Single, Single): PrivateScope, Public, HideBySig (Obsolete)
-    Scale(SizeF): PrivateScope, Public, HideBySig
-    Select(): PrivateScope, Public, HideBySig
-    SelectNextControl(Control, Boolean, Boolean, Boolean, Boolean): PrivateScope, Public, HideBySig
-    SendToBack(): PrivateScope, Public, HideBySig
-    SetBounds(Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    SetBounds(Int32, Int32, Int32, Int32, BoundsSpecified): PrivateScope, Public, HideBySig
-    Show(): PrivateScope, Public, HideBySig
-    get_Right(): PrivateScope, Public, HideBySig, SpecialName
-    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    add_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Site(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Site(ISite): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_Size(): PrivateScope, Public, HideBySig, SpecialName
-    set_Size(Size): PrivateScope, Public, HideBySig, SpecialName
-    add_SizeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SizeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_TabIndex(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
-    add_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Tag(): PrivateScope, Public, HideBySig, SpecialName
-    set_Tag(Object): PrivateScope, Public, HideBySig, SpecialName
-    get_Text(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Text(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Top(): PrivateScope, Public, HideBySig, SpecialName
-    set_Top(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_TopLevelControl(): PrivateScope, Public, HideBySig, SpecialName
-    get_UseWaitCursor(): PrivateScope, Public, HideBySig, SpecialName
-    set_UseWaitCursor(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_Visible(): PrivateScope, Public, HideBySig, SpecialName
     set_Visible(Boolean): PrivateScope, Public, HideBySig, SpecialName
     add_VisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_VisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -1044,16 +1023,89 @@ Class System.Windows.Forms.Control: AutoLayout, AnsiClass, Class, Public
     add_PreviewKeyDown(PreviewKeyDownEventHandler): PrivateScope, Public, HideBySig, SpecialName, HasSecurity
     remove_PreviewKeyDown(PreviewKeyDownEventHandler): PrivateScope, Public, HideBySig, SpecialName, HasSecurity
     add_Resize(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Resize(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SystemColorsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SystemColorsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DockChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Enabled(): PrivateScope, Public, HideBySig, SpecialName
+    set_Enabled(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_EnabledChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_EnabledChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Focused(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Font(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Font(Font(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    add_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ForeColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_ForeColor(Color): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    add_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    GetPreferredSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    get_Handle(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_HasChildren(): PrivateScope, Public, HideBySig, SpecialName
+    get_Height(): PrivateScope, Public, HideBySig, SpecialName
+    set_Height(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_IsHandleCreated(): PrivateScope, Public, HideBySig, SpecialName
+    get_InvokeRequired(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_IsAccessible(): PrivateScope, Public, HideBySig, SpecialName
+    set_IsAccessible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_IsMirrored(): PrivateScope, Public, HideBySig, SpecialName
+    get_Left(): PrivateScope, Public, HideBySig, SpecialName
+    set_Left(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Location(): PrivateScope, Public, HideBySig, SpecialName
+    set_Location(Point): PrivateScope, Public, HideBySig, SpecialName
+    add_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Margin(): PrivateScope, Public, HideBySig, SpecialName
+    set_Margin(Padding): PrivateScope, Public, HideBySig, SpecialName
+    add_MarginChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MarginChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_MaximumSize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_MaximumSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_MinimumSize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_MinimumSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_ModifierKeys(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MouseButtons(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MousePosition(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Name(): PrivateScope, Public, HideBySig, SpecialName
+    set_Name(String): PrivateScope, Public, HideBySig, SpecialName
+    get_Parent(): PrivateScope, Public, HideBySig, SpecialName
+    set_Parent(Control): PrivateScope, Public, HideBySig, SpecialName
+    get_ProductName(): PrivateScope, Public, HideBySig, SpecialName
+    get_ProductVersion(): PrivateScope, Public, HideBySig, SpecialName
+    get_RecreatingHandle(): PrivateScope, Public, HideBySig, SpecialName
+    get_Region(): PrivateScope, Public, HideBySig, SpecialName
+    set_Region(Region): PrivateScope, Public, HideBySig, SpecialName
+    add_RegionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RegionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Right(): PrivateScope, Public, HideBySig, SpecialName
+    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    add_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Site(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Site(ISite): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_Size(): PrivateScope, Public, HideBySig, SpecialName
+    set_Size(Size): PrivateScope, Public, HideBySig, SpecialName
+    add_SizeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SizeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_TabIndex(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Tag(): PrivateScope, Public, HideBySig, SpecialName
+    set_Tag(Object): PrivateScope, Public, HideBySig, SpecialName
+    get_Text(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Text(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Top(): PrivateScope, Public, HideBySig, SpecialName
+    set_Top(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_TopLevelControl(): PrivateScope, Public, HideBySig, SpecialName
+    get_UseWaitCursor(): PrivateScope, Public, HideBySig, SpecialName
+    set_UseWaitCursor(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_Visible(): PrivateScope, Public, HideBySig, SpecialName
     get_AccessibilityObject(): PrivateScope, Public, HideBySig, SpecialName
     get_AccessibleDefaultActionDescription(): PrivateScope, Public, HideBySig, SpecialName
     set_AccessibleDefaultActionDescription(String): PrivateScope, Public, HideBySig, SpecialName
@@ -1135,58 +1187,6 @@ Class System.Windows.Forms.Control: AutoLayout, AnsiClass, Class, Public
     get_Dock(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Dock(DockStyle): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     add_DockChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DockChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Enabled(): PrivateScope, Public, HideBySig, SpecialName
-    set_Enabled(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_EnabledChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_EnabledChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Focused(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Font(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Font(Font(HasFieldMarshal)): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    add_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ForeColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_ForeColor(Color): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    add_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    GetPreferredSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    get_Handle(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_HasChildren(): PrivateScope, Public, HideBySig, SpecialName
-    get_Height(): PrivateScope, Public, HideBySig, SpecialName
-    set_Height(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_IsHandleCreated(): PrivateScope, Public, HideBySig, SpecialName
-    get_InvokeRequired(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_IsAccessible(): PrivateScope, Public, HideBySig, SpecialName
-    set_IsAccessible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_IsMirrored(): PrivateScope, Public, HideBySig, SpecialName
-    get_Left(): PrivateScope, Public, HideBySig, SpecialName
-    set_Left(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_Location(): PrivateScope, Public, HideBySig, SpecialName
-    set_Location(Point): PrivateScope, Public, HideBySig, SpecialName
-    add_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Margin(): PrivateScope, Public, HideBySig, SpecialName
-    set_Margin(Padding): PrivateScope, Public, HideBySig, SpecialName
-    add_MarginChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MarginChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_MaximumSize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_MaximumSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_MinimumSize(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_MinimumSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_ModifierKeys(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MouseButtons(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MousePosition(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Name(): PrivateScope, Public, HideBySig, SpecialName
-    set_Name(String): PrivateScope, Public, HideBySig, SpecialName
-    get_Parent(): PrivateScope, Public, HideBySig, SpecialName
-    set_Parent(Control): PrivateScope, Public, HideBySig, SpecialName
-    get_ProductName(): PrivateScope, Public, HideBySig, SpecialName
-    get_ProductVersion(): PrivateScope, Public, HideBySig, SpecialName
-    get_RecreatingHandle(): PrivateScope, Public, HideBySig, SpecialName
-    get_Region(): PrivateScope, Public, HideBySig, SpecialName
-    set_Region(Region): PrivateScope, Public, HideBySig, SpecialName
-    add_RegionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RegionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.NativeWindow: AutoLayout, AnsiClass, Class, Public, HasSecurity
   :System.MarshalByRefObject
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -1575,6 +1575,31 @@ Class System.Windows.Forms.AxHost: AutoLayout, AnsiClass, Class, Public, Abstrac
     System.Windows.Forms.UICuesEventHandler ChangeUICues: 
     System.EventHandler StyleChanged: 
   Methods:
+    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    set_Site(ISite): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    DrawToBitmap(Bitmap, Rectangle): PrivateScope, Public, HideBySig
+    PreProcessMessage(Message&): PrivateScope, Public, Virtual, HideBySig
+    get_OcxState(): PrivateScope, Public, HideBySig, SpecialName
+    set_OcxState(State): PrivateScope, Public, HideBySig, SpecialName
+    get_ContainingControl(): PrivateScope, Public, HideBySig, SpecialName
+    set_ContainingControl(ContainerControl): PrivateScope, Public, HideBySig, SpecialName
+    DoVerb(Int32): PrivateScope, Public, HideBySig
+    InvokeEditMode(): PrivateScope, Public, HideBySig
     GetOcx(): PrivateScope, Public, HideBySig
     HasPropertyPages(): PrivateScope, Public, HideBySig
     MakeDirty(): PrivateScope, Public, HideBySig
@@ -1667,31 +1692,6 @@ Class System.Windows.Forms.AxHost: AutoLayout, AnsiClass, Class, Public, Abstrac
     remove_Layout(LayoutEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    set_Site(ISite): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    DrawToBitmap(Bitmap, Rectangle): PrivateScope, Public, HideBySig
-    PreProcessMessage(Message&): PrivateScope, Public, Virtual, HideBySig
-    get_OcxState(): PrivateScope, Public, HideBySig, SpecialName
-    set_OcxState(State): PrivateScope, Public, HideBySig, SpecialName
-    get_ContainingControl(): PrivateScope, Public, HideBySig, SpecialName
-    set_ContainingControl(ContainerControl): PrivateScope, Public, HideBySig, SpecialName
-    DoVerb(Int32): PrivateScope, Public, HideBySig
-    InvokeEditMode(): PrivateScope, Public, HideBySig
 Class System.Windows.Forms.AxHost+ClsidAttribute: AutoLayout, AnsiClass, Class, NestedPublic, Sealed, BeforeFieldInit
   :System.Attribute
     Void .ctor(System.String): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -2010,6 +2010,32 @@ Class System.Windows.Forms.ToolStrip: AutoLayout, AnsiClass, Class, Public, Befo
     System.Windows.Forms.PaintEventHandler PaintGrip: 
     System.EventHandler RendererChanged: 
   Methods:
+    get_Orientation(): PrivateScope, Public, HideBySig, SpecialName
+    add_PaintGrip(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_PaintGrip(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Stretch(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Stretch(Boolean): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Renderer(): PrivateScope, Public, HideBySig, SpecialName
+    set_Renderer(ToolStripRenderer): PrivateScope, Public, HideBySig, SpecialName
+    add_RendererChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RendererChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RenderMode(): PrivateScope, Public, HideBySig, SpecialName
+    set_RenderMode(ToolStripRenderMode): PrivateScope, Public, HideBySig, SpecialName
+    get_ShowItemToolTips(): PrivateScope, Public, HideBySig, SpecialName
+    set_ShowItemToolTips(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_TextDirection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_TextDirection(ToolStripTextDirection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_VerticalScroll(): PrivateScope, Public, HideBySig, SpecialName
+    GetNextItem(ToolStripItem, ArrowDirection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    GetChildAtPoint(Point): PrivateScope, Public, HideBySig
+    GetChildAtPoint(Point, GetChildAtPointSkip): PrivateScope, Public, HideBySig
+    GetItemAt(Int32, Int32): PrivateScope, Public, HideBySig
+    GetItemAt(Point): PrivateScope, Public, HideBySig
+    ResetMinimumSize(): PrivateScope, Public, HideBySig
+    SetAutoScrollMargin(Int32, Int32): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_AutoSize(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_AutoSize(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
     add_AutoSizeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -2095,32 +2121,6 @@ Class System.Windows.Forms.ToolStrip: AutoLayout, AnsiClass, Class, Public, Befo
     remove_LayoutStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_LayoutEngine(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_OverflowButton(): PrivateScope, Public, HideBySig, SpecialName
-    get_Orientation(): PrivateScope, Public, HideBySig, SpecialName
-    add_PaintGrip(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_PaintGrip(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Stretch(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Stretch(Boolean): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Renderer(): PrivateScope, Public, HideBySig, SpecialName
-    set_Renderer(ToolStripRenderer): PrivateScope, Public, HideBySig, SpecialName
-    add_RendererChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RendererChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RenderMode(): PrivateScope, Public, HideBySig, SpecialName
-    set_RenderMode(ToolStripRenderMode): PrivateScope, Public, HideBySig, SpecialName
-    get_ShowItemToolTips(): PrivateScope, Public, HideBySig, SpecialName
-    set_ShowItemToolTips(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_TextDirection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_TextDirection(ToolStripTextDirection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_VerticalScroll(): PrivateScope, Public, HideBySig, SpecialName
-    GetNextItem(ToolStripItem, ArrowDirection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    GetChildAtPoint(Point): PrivateScope, Public, HideBySig
-    GetChildAtPoint(Point, GetChildAtPointSkip): PrivateScope, Public, HideBySig
-    GetItemAt(Int32, Int32): PrivateScope, Public, HideBySig
-    GetItemAt(Point): PrivateScope, Public, HideBySig
-    ResetMinimumSize(): PrivateScope, Public, HideBySig
-    SetAutoScrollMargin(Int32, Int32): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
 Class System.Windows.Forms.ToolStrip+ToolStripAccessibleObject: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   :System.Windows.Forms.Control+ControlAccessibleObject
     Void .ctor(System.Windows.Forms.ToolStrip): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -2220,6 +2220,67 @@ Class System.Windows.Forms.ToolStripItem: AutoLayout, AnsiClass, Class, Public, 
     System.EventHandler TextChanged: 
     System.EventHandler VisibleChanged: 
   Methods:
+    PerformClick(): PrivateScope, Public, HideBySig
+    Select(): PrivateScope, Public, HideBySig
+    ResetBackColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetDisplayStyle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetForeColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetFont(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetImage(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetMargin(): PrivateScope, Public, HideBySig
+    ResetPadding(): PrivateScope, Public, HideBySig
+    ResetRightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ResetTextDirection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+    add_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Margin(): PrivateScope, Public, HideBySig, SpecialName
+    set_Margin(Padding): PrivateScope, Public, HideBySig, SpecialName
+    get_MergeAction(): PrivateScope, Public, HideBySig, SpecialName
+    set_MergeAction(MergeAction): PrivateScope, Public, HideBySig, SpecialName
+    get_MergeIndex(): PrivateScope, Public, HideBySig, SpecialName
+    set_MergeIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Name(): PrivateScope, Public, HideBySig, SpecialName
+    set_Name(String): PrivateScope, Public, HideBySig, SpecialName
+    get_Owner(): PrivateScope, Public, HideBySig, SpecialName
+    set_Owner(ToolStrip): PrivateScope, Public, HideBySig, SpecialName
+    get_OwnerItem(): PrivateScope, Public, HideBySig, SpecialName
+    add_OwnerChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_OwnerChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Overflow(): PrivateScope, Public, HideBySig, SpecialName
+    set_Overflow(ToolStripItemOverflow): PrivateScope, Public, HideBySig, SpecialName
+    get_Padding(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Padding(Padding): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Placement(): PrivateScope, Public, HideBySig, SpecialName
+    get_Pressed(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    add_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_QueryAccessibilityHelp(QueryAccessibilityHelpEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_QueryAccessibilityHelp(QueryAccessibilityHelpEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_RightToLeftAutoMirrorImage(): PrivateScope, Public, HideBySig, SpecialName
+    set_RightToLeftAutoMirrorImage(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Selected(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Size(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Size(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Tag(): PrivateScope, Public, HideBySig, SpecialName
     set_Tag(Object): PrivateScope, Public, HideBySig, SpecialName
     get_Text(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Text(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
@@ -2244,18 +2305,6 @@ Class System.Windows.Forms.ToolStripItem: AutoLayout, AnsiClass, Class, Public, 
     GetPreferredSize(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Invalidate(): PrivateScope, Public, HideBySig
     Invalidate(Rectangle): PrivateScope, Public, HideBySig
-    PerformClick(): PrivateScope, Public, HideBySig
-    Select(): PrivateScope, Public, HideBySig
-    ResetBackColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetDisplayStyle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetForeColor(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetFont(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetImage(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetMargin(): PrivateScope, Public, HideBySig
-    ResetPadding(): PrivateScope, Public, HideBySig
-    ResetRightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ResetTextDirection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_AccessibilityObject(): PrivateScope, Public, HideBySig, SpecialName
     get_AccessibleDefaultActionDescription(): PrivateScope, Public, HideBySig, SpecialName
     set_AccessibleDefaultActionDescription(String): PrivateScope, Public, HideBySig, SpecialName
@@ -2339,55 +2388,6 @@ Class System.Windows.Forms.ToolStripItem: AutoLayout, AnsiClass, Class, Public, 
     get_IsDisposed(): PrivateScope, Public, HideBySig, SpecialName
     get_IsOnDropDown(): PrivateScope, Public, HideBySig, SpecialName
     get_IsOnOverflow(): PrivateScope, Public, HideBySig, SpecialName
-    add_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Margin(): PrivateScope, Public, HideBySig, SpecialName
-    set_Margin(Padding): PrivateScope, Public, HideBySig, SpecialName
-    get_MergeAction(): PrivateScope, Public, HideBySig, SpecialName
-    set_MergeAction(MergeAction): PrivateScope, Public, HideBySig, SpecialName
-    get_MergeIndex(): PrivateScope, Public, HideBySig, SpecialName
-    set_MergeIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Name(): PrivateScope, Public, HideBySig, SpecialName
-    set_Name(String): PrivateScope, Public, HideBySig, SpecialName
-    get_Owner(): PrivateScope, Public, HideBySig, SpecialName
-    set_Owner(ToolStrip): PrivateScope, Public, HideBySig, SpecialName
-    get_OwnerItem(): PrivateScope, Public, HideBySig, SpecialName
-    add_OwnerChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_OwnerChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Overflow(): PrivateScope, Public, HideBySig, SpecialName
-    set_Overflow(ToolStripItemOverflow): PrivateScope, Public, HideBySig, SpecialName
-    get_Padding(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Padding(Padding): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Placement(): PrivateScope, Public, HideBySig, SpecialName
-    get_Pressed(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    add_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_QueryAccessibilityHelp(QueryAccessibilityHelpEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_QueryAccessibilityHelp(QueryAccessibilityHelpEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_RightToLeftAutoMirrorImage(): PrivateScope, Public, HideBySig, SpecialName
-    set_RightToLeftAutoMirrorImage(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Selected(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Size(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Size(Size): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Tag(): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.ToolStripItem+ToolStripItemAccessibleObject: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   :System.Windows.Forms.AccessibleObject
     Void .ctor(System.Windows.Forms.ToolStripItem): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -2545,6 +2545,14 @@ Class System.Windows.Forms.BindingSource: AutoLayout, AnsiClass, Class, Public, 
     System.ComponentModel.ListChangedEventHandler ListChanged: 
     System.EventHandler PositionChanged: 
   Methods:
+    RemoveSort(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    ApplySort(ListSortDescriptionCollection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    get_SortDescriptions(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Filter(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Filter(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    RemoveFilter(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    get_SupportsAdvancedSorting(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_SupportsFiltering(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     get_CurrencyManager(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     GetRelatedCurrencyManager(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     get_Current(): PrivateScope, Public, HideBySig, SpecialName
@@ -2623,14 +2631,6 @@ Class System.Windows.Forms.BindingSource: AutoLayout, AnsiClass, Class, Public, 
     get_SortDirection(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     ApplySort(PropertyDescriptor, ListSortDirection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Find(PropertyDescriptor, Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    RemoveSort(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    ApplySort(ListSortDescriptionCollection): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    get_SortDescriptions(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Filter(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Filter(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    RemoveFilter(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    get_SupportsAdvancedSorting(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_SupportsFiltering(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
 Struct System.Windows.Forms.BootMode: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -3020,6 +3020,11 @@ Class System.Windows.Forms.ListBox: AutoLayout, AnsiClass, Class, Public, Before
     System.Windows.Forms.MeasureItemEventHandler MeasureItem: 
     System.EventHandler SelectedIndexChanged: 
   Methods:
+    Refresh(): PrivateScope, Public, Virtual, HideBySig
+    ResetBackColor(): PrivateScope, Public, Virtual, HideBySig
+    ResetForeColor(): PrivateScope, Public, Virtual, HideBySig
+    SetSelected(Int32, Boolean): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_BackColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_BackColor(Color): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_BackgroundImage(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -3105,11 +3110,6 @@ Class System.Windows.Forms.ListBox: AutoLayout, AnsiClass, Class, Public, Before
     GetSelected(Int32): PrivateScope, Public, HideBySig
     IndexFromPoint(Point): PrivateScope, Public, HideBySig
     IndexFromPoint(Int32, Int32): PrivateScope, Public, HideBySig
-    Refresh(): PrivateScope, Public, Virtual, HideBySig
-    ResetBackColor(): PrivateScope, Public, Virtual, HideBySig
-    ResetForeColor(): PrivateScope, Public, Virtual, HideBySig
-    SetSelected(Int32, Boolean): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
 Class System.Windows.Forms.ListBox+ObjectCollection: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
     Void .ctor(System.Windows.Forms.ListBox): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(System.Windows.Forms.ListBox, ObjectCollection): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -3658,6 +3658,16 @@ Class System.Windows.Forms.ComboBox: AutoLayout, AnsiClass, Class, Public, Befor
     System.EventHandler TextUpdate: 
     System.EventHandler DropDownClosed: 
   Methods:
+    EndUpdate(): PrivateScope, Public, HideBySig
+    FindString(String): PrivateScope, Public, HideBySig
+    FindString(String, Int32): PrivateScope, Public, HideBySig
+    FindStringExact(String): PrivateScope, Public, HideBySig
+    FindStringExact(String, Int32): PrivateScope, Public, HideBySig
+    GetItemHeight(Int32): PrivateScope, Public, HideBySig
+    ResetText(): PrivateScope, Public, Virtual, HideBySig
+    Select(Int32, Int32): PrivateScope, Public, HideBySig
+    SelectAll(): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_AutoCompleteMode(): PrivateScope, Public, HideBySig, SpecialName
     set_AutoCompleteMode(AutoCompleteMode): PrivateScope, Public, HideBySig, SpecialName
     get_AutoCompleteSource(): PrivateScope, Public, HideBySig, SpecialName
@@ -3744,16 +3754,6 @@ Class System.Windows.Forms.ComboBox: AutoLayout, AnsiClass, Class, Public, Befor
     add_DropDownClosed(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_DropDownClosed(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     BeginUpdate(): PrivateScope, Public, HideBySig
-    EndUpdate(): PrivateScope, Public, HideBySig
-    FindString(String): PrivateScope, Public, HideBySig
-    FindString(String, Int32): PrivateScope, Public, HideBySig
-    FindStringExact(String): PrivateScope, Public, HideBySig
-    FindStringExact(String, Int32): PrivateScope, Public, HideBySig
-    GetItemHeight(Int32): PrivateScope, Public, HideBySig
-    ResetText(): PrivateScope, Public, Virtual, HideBySig
-    Select(Int32, Int32): PrivateScope, Public, HideBySig
-    SelectAll(): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
 Class System.Windows.Forms.ComboBox+ObjectCollection: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
     Void .ctor(System.Windows.Forms.ComboBox): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
@@ -3946,6 +3946,41 @@ Class System.Windows.Forms.ToolStripDropDown: AutoLayout, AnsiClass, Class, Publ
     System.EventHandler Validated: 
     System.ComponentModel.CancelEventHandler Validating: 
   Methods:
+    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Stretch(): PrivateScope, Public, HideBySig, SpecialName
+    set_Stretch(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_TextDirection(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_TextDirection(ToolStripTextDirection): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_TopLevel(): PrivateScope, Public, HideBySig, SpecialName
+    set_TopLevel(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_TabIndex(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Visible(): PrivateScope, Public, HideBySig, SpecialName
+    set_Visible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    Close(): PrivateScope, Public, HideBySig
+    Close(ToolStripDropDownCloseReason): PrivateScope, Public, HideBySig
+    Show(): PrivateScope, Public, HideBySig
+    Show(Control, Point): PrivateScope, Public, HideBySig
+    Show(Control, Point, ToolStripDropDownDirection): PrivateScope, Public, HideBySig
+    Show(Control, Int32, Int32): PrivateScope, Public, HideBySig
+    Show(Point): PrivateScope, Public, HideBySig
+    Show(Point, ToolStripDropDownDirection): PrivateScope, Public, HideBySig
+    Show(Int32, Int32): PrivateScope, Public, HideBySig
     get_AllowItemReorder(): PrivateScope, Public, HideBySig, SpecialName
     set_AllowItemReorder(Boolean): PrivateScope, Public, HideBySig, SpecialName
     get_AllowTransparency(): PrivateScope, Public, HideBySig, SpecialName
@@ -4030,41 +4065,6 @@ Class System.Windows.Forms.ToolStripDropDown: AutoLayout, AnsiClass, Class, Publ
     set_Region(Region): PrivateScope, Public, HideBySig, SpecialName
     add_RegionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_RegionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Stretch(): PrivateScope, Public, HideBySig, SpecialName
-    set_Stretch(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_TextDirection(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_TextDirection(ToolStripTextDirection): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_TopLevel(): PrivateScope, Public, HideBySig, SpecialName
-    set_TopLevel(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_TabIndex(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
-    add_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Validated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Validating(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Visible(): PrivateScope, Public, HideBySig, SpecialName
-    set_Visible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    Close(): PrivateScope, Public, HideBySig
-    Close(ToolStripDropDownCloseReason): PrivateScope, Public, HideBySig
-    Show(): PrivateScope, Public, HideBySig
-    Show(Control, Point): PrivateScope, Public, HideBySig
-    Show(Control, Point, ToolStripDropDownDirection): PrivateScope, Public, HideBySig
-    Show(Control, Int32, Int32): PrivateScope, Public, HideBySig
-    Show(Point): PrivateScope, Public, HideBySig
-    Show(Point, ToolStripDropDownDirection): PrivateScope, Public, HideBySig
-    Show(Int32, Int32): PrivateScope, Public, HideBySig
 Class System.Windows.Forms.ToolStripDropDown+ToolStripDropDownAccessibleObject: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   :System.Windows.Forms.ToolStrip+ToolStripAccessibleObject
     Void .ctor(System.Windows.Forms.ToolStripDropDown): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -4548,15 +4548,6 @@ Class System.Windows.Forms.DataGrid: AutoLayout, AnsiClass, Class, Public, Befor
     System.EventHandler BackButtonClick: 
     System.EventHandler ShowParentDetailsButtonClick: 
   Methods:
-    get_VisibleColumnCount(): PrivateScope, Public, HideBySig, SpecialName
-    get_VisibleRowCount(): PrivateScope, Public, HideBySig, SpecialName
-    get_Item(Int32, Int32): PrivateScope, Public, HideBySig, SpecialName
-    set_Item(Int32, Int32, Object): PrivateScope, Public, HideBySig, SpecialName
-    get_Item(DataGridCell): PrivateScope, Public, HideBySig, SpecialName
-    set_Item(DataGridCell, Object): PrivateScope, Public, HideBySig, SpecialName
-    add_Navigate(NavigateEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Navigate(NavigateEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Scroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_Scroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_Site(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_Site(ISite): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -4582,6 +4573,62 @@ Class System.Windows.Forms.DataGrid: AutoLayout, AnsiClass, Class, Public, Befor
     Select(Int32): PrivateScope, Public, HideBySig
     SubObjectsSiteChange(Boolean): PrivateScope, Public, HideBySig
     UnSelect(Int32): PrivateScope, Public, HideBySig
+    set_LinkColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    ResetLinkColor(): PrivateScope, Public, HideBySig
+    get_LinkHoverColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_LinkHoverColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    ResetLinkHoverColor(): PrivateScope, Public, HideBySig
+    get_AllowNavigation(): PrivateScope, Public, HideBySig, SpecialName
+    set_AllowNavigation(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_AllowNavigationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_AllowNavigationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Cursor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Cursor(Cursor): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_BackgroundImage(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_BackgroundImage(Image): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_BackgroundImageLayout(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_BackgroundImageLayout(ImageLayout): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ParentRowsBackColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_ParentRowsBackColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    get_ParentRowsForeColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_ParentRowsForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    get_PreferredColumnWidth(): PrivateScope, Public, HideBySig, SpecialName
+    set_PreferredColumnWidth(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_PreferredRowHeight(): PrivateScope, Public, HideBySig, SpecialName
+    set_PreferredRowHeight(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_ReadOnly(): PrivateScope, Public, HideBySig, SpecialName
+    set_ReadOnly(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ColumnHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
+    set_ColumnHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_ParentRowsVisible(): PrivateScope, Public, HideBySig, SpecialName
+    set_ParentRowsVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_ParentRowsVisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ParentRowsVisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeaderWidth(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeaderWidth(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_Text(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Text(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_VisibleColumnCount(): PrivateScope, Public, HideBySig, SpecialName
+    get_VisibleRowCount(): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Int32, Int32): PrivateScope, Public, HideBySig, SpecialName
+    set_Item(Int32, Int32, Object): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(DataGridCell): PrivateScope, Public, HideBySig, SpecialName
+    set_Item(DataGridCell, Object): PrivateScope, Public, HideBySig, SpecialName
+    add_Navigate(NavigateEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Navigate(NavigateEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Scroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_AllowSorting(): PrivateScope, Public, HideBySig, SpecialName
     set_AllowSorting(Boolean): PrivateScope, Public, HideBySig, SpecialName
     get_AlternatingBackColor(): PrivateScope, Public, HideBySig, SpecialName
@@ -4657,53 +4704,6 @@ Class System.Windows.Forms.DataGrid: AutoLayout, AnsiClass, Class, Public, Befor
     set_HeaderForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
     ResetHeaderForeColor(): PrivateScope, Public, HideBySig
     get_LinkColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_LinkColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    ResetLinkColor(): PrivateScope, Public, HideBySig
-    get_LinkHoverColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_LinkHoverColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    ResetLinkHoverColor(): PrivateScope, Public, HideBySig
-    get_AllowNavigation(): PrivateScope, Public, HideBySig, SpecialName
-    set_AllowNavigation(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_AllowNavigationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_AllowNavigationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Cursor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Cursor(Cursor): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_BackgroundImage(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_BackgroundImage(Image): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_BackgroundImageLayout(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_BackgroundImageLayout(ImageLayout): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ParentRowsBackColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_ParentRowsBackColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    get_ParentRowsForeColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_ParentRowsForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    get_PreferredColumnWidth(): PrivateScope, Public, HideBySig, SpecialName
-    set_PreferredColumnWidth(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_PreferredRowHeight(): PrivateScope, Public, HideBySig, SpecialName
-    set_PreferredRowHeight(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_ReadOnly(): PrivateScope, Public, HideBySig, SpecialName
-    set_ReadOnly(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ColumnHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
-    set_ColumnHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_ParentRowsVisible(): PrivateScope, Public, HideBySig, SpecialName
-    set_ParentRowsVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_ParentRowsVisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ParentRowsVisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeaderWidth(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeaderWidth(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_Text(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Text(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.DataGrid+HitTestInfo: AutoLayout, AnsiClass, Class, NestedPublic, Sealed, BeforeFieldInit
   Fields:
     HitTestInfo Nowhere : Public, Static, InitOnly
@@ -4936,6 +4936,25 @@ Class System.Windows.Forms.DataGridTableStyle: AutoLayout, AnsiClass, Class, Pub
     System.EventHandler MappingNameChanged: 
     System.EventHandler ReadOnlyChanged: 
   Methods:
+    ResetSelectionBackColor(): PrivateScope, Public, HideBySig
+    get_SelectionForeColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_SelectionForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectionForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectionForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    ResetSelectionForeColor(): PrivateScope, Public, HideBySig
+    get_MappingName(): PrivateScope, Public, HideBySig, SpecialName
+    set_MappingName(String): PrivateScope, Public, HideBySig, SpecialName
+    add_MappingNameChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MappingNameChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_GridColumnStyles(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_DataGrid(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_DataGrid(DataGrid): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_ReadOnly(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_ReadOnly(Boolean): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    add_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    BeginEdit(DataGridColumnStyle, Int32): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
+    EndEdit(DataGridColumnStyle, Int32, Boolean): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     get_AllowSorting(): PrivateScope, Public, HideBySig, SpecialName
     set_AllowSorting(Boolean): PrivateScope, Public, HideBySig, SpecialName
     add_AllowSortingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -5013,25 +5032,6 @@ Class System.Windows.Forms.DataGridTableStyle: AutoLayout, AnsiClass, Class, Pub
     set_SelectionBackColor(Color): PrivateScope, Public, HideBySig, SpecialName
     add_SelectionBackColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_SelectionBackColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    ResetSelectionBackColor(): PrivateScope, Public, HideBySig
-    get_SelectionForeColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_SelectionForeColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectionForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectionForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    ResetSelectionForeColor(): PrivateScope, Public, HideBySig
-    get_MappingName(): PrivateScope, Public, HideBySig, SpecialName
-    set_MappingName(String): PrivateScope, Public, HideBySig, SpecialName
-    add_MappingNameChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MappingNameChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_GridColumnStyles(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_DataGrid(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_DataGrid(DataGrid): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_ReadOnly(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_ReadOnly(Boolean): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    add_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    BeginEdit(DataGridColumnStyle, Int32): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    EndEdit(DataGridColumnStyle, Int32, Boolean): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
 Class System.Windows.Forms.GridTableStylesCollection: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.BaseCollection
   Interfaces:
@@ -5097,6 +5097,15 @@ Class System.Windows.Forms.TextBoxBase: AutoLayout, AnsiClass, Class, Public, Ab
     System.EventHandler ReadOnlyChanged: 
     System.Windows.Forms.PaintEventHandler Paint: 
   Methods:
+    GetPositionFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    GetFirstCharIndexFromLine(Int32): PrivateScope, Public, HideBySig
+    GetFirstCharIndexOfCurrentLine(): PrivateScope, Public, HideBySig
+    ScrollToCaret(): PrivateScope, Public, HideBySig
+    DeselectAll(): PrivateScope, Public, HideBySig
+    Select(Int32, Int32): PrivateScope, Public, HideBySig
+    SelectAll(): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+    Undo(): PrivateScope, Public, HideBySig
     get_AcceptsTab(): PrivateScope, Public, HideBySig, SpecialName
     set_AcceptsTab(Boolean): PrivateScope, Public, HideBySig, SpecialName
     add_AcceptsTabChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -5175,15 +5184,6 @@ Class System.Windows.Forms.TextBoxBase: AutoLayout, AnsiClass, Class, Public, Ab
     GetCharFromPosition(Point): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     GetCharIndexFromPosition(Point): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     GetLineFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    GetPositionFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    GetFirstCharIndexFromLine(Int32): PrivateScope, Public, HideBySig
-    GetFirstCharIndexOfCurrentLine(): PrivateScope, Public, HideBySig
-    ScrollToCaret(): PrivateScope, Public, HideBySig
-    DeselectAll(): PrivateScope, Public, HideBySig
-    Select(Int32, Int32): PrivateScope, Public, HideBySig
-    SelectAll(): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
-    Undo(): PrivateScope, Public, HideBySig
 Class System.Windows.Forms.TextBox: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.TextBoxBase
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -5484,6 +5484,68 @@ Class System.Windows.Forms.DataGridView: AutoLayout, AnsiClass, Class, Public, B
     UpdateRowErrorText(Int32): PrivateScope, Public, HideBySig
     UpdateRowErrorText(Int32, Int32): PrivateScope, Public, HideBySig
     UpdateRowHeightInfo(Int32, Boolean): PrivateScope, Public, HideBySig
+    DisplayedColumnCount(Boolean): PrivateScope, Public, HideBySig
+    DisplayedRowCount(Boolean): PrivateScope, Public, HideBySig
+    EndEdit(): PrivateScope, Public, HideBySig
+    EndEdit(DataGridViewDataErrorContexts): PrivateScope, Public, HideBySig
+    GetCellCount(DataGridViewElementStates): PrivateScope, Public, HideBySig
+    GetCellDisplayRectangle(Int32, Int32, Boolean): PrivateScope, Public, HideBySig
+    GetClipboardContent(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    GetColumnDisplayRectangle(Int32, Boolean): PrivateScope, Public, HideBySig
+    GetRowDisplayRectangle(Int32, Boolean): PrivateScope, Public, HideBySig
+    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
+    InvalidateCell(DataGridViewCell): PrivateScope, Public, HideBySig
+    InvalidateCell(Int32, Int32): PrivateScope, Public, HideBySig
+    InvalidateColumn(Int32): PrivateScope, Public, HideBySig
+    InvalidateRow(Int32): PrivateScope, Public, HideBySig
+    NotifyCurrentCellDirty(Boolean): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    add_RowErrorTextChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowErrorTextChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowErrorTextNeeded(DataGridViewRowErrorTextNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowErrorTextNeeded(DataGridViewRowErrorTextNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeaderMouseClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeaderMouseClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeaderMouseDoubleClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeaderMouseDoubleClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeaderCellChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeaderCellChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeightInfoNeeded(DataGridViewRowHeightInfoNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeightInfoNeeded(DataGridViewRowHeightInfoNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeightInfoPushed(DataGridViewRowHeightInfoPushedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeightInfoPushed(DataGridViewRowHeightInfoPushedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowLeave(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowLeave(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowMinimumHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowMinimumHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowPostPaint(DataGridViewRowPostPaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowPostPaint(DataGridViewRowPostPaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowPrePaint(DataGridViewRowPrePaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowPrePaint(DataGridViewRowPrePaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowsAdded(DataGridViewRowsAddedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowsAdded(DataGridViewRowsAddedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowsRemoved(DataGridViewRowsRemovedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowsRemoved(DataGridViewRowsRemovedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowStateChanged(DataGridViewRowStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowStateChanged(DataGridViewRowStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowUnshared(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowUnshared(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowValidated(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowValidated(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RowValidating(DataGridViewCellCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowValidating(DataGridViewCellCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SortCompare(DataGridViewSortCompareEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SortCompare(DataGridViewSortCompareEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Sorted(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Sorted(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_UserAddedRow(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_UserAddedRow(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_UserDeletedRow(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_UserDeletedRow(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -5507,21 +5569,10 @@ Class System.Windows.Forms.DataGridView: AutoLayout, AnsiClass, Class, Public, B
     CancelEdit(): PrivateScope, Public, HideBySig
     ClearSelection(): PrivateScope, Public, HideBySig
     CommitEdit(DataGridViewDataErrorContexts): PrivateScope, Public, HideBySig
-    DisplayedColumnCount(Boolean): PrivateScope, Public, HideBySig
-    DisplayedRowCount(Boolean): PrivateScope, Public, HideBySig
-    EndEdit(): PrivateScope, Public, HideBySig
-    EndEdit(DataGridViewDataErrorContexts): PrivateScope, Public, HideBySig
-    GetCellCount(DataGridViewElementStates): PrivateScope, Public, HideBySig
-    GetCellDisplayRectangle(Int32, Int32, Boolean): PrivateScope, Public, HideBySig
-    GetClipboardContent(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    GetColumnDisplayRectangle(Int32, Boolean): PrivateScope, Public, HideBySig
-    GetRowDisplayRectangle(Int32, Boolean): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
-    InvalidateCell(DataGridViewCell): PrivateScope, Public, HideBySig
-    InvalidateCell(Int32, Int32): PrivateScope, Public, HideBySig
-    InvalidateColumn(Int32): PrivateScope, Public, HideBySig
-    InvalidateRow(Int32): PrivateScope, Public, HideBySig
-    NotifyCurrentCellDirty(Boolean): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    remove_CellPainting(DataGridViewCellPaintingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_CellParsing(DataGridViewCellParsingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_CellParsing(DataGridViewCellParsingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_CellStateChanged(DataGridViewCellStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_CellStateChanged(DataGridViewCellStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_CellStyleChanged(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_CellStyleChanged(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -5603,91 +5654,6 @@ Class System.Windows.Forms.DataGridView: AutoLayout, AnsiClass, Class, Public, B
     remove_RowDividerHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_RowEnter(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_RowEnter(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowErrorTextChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowErrorTextChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowErrorTextNeeded(DataGridViewRowErrorTextNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowErrorTextNeeded(DataGridViewRowErrorTextNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeaderMouseClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeaderMouseClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeaderMouseDoubleClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeaderMouseDoubleClick(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeaderCellChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeaderCellChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeightInfoNeeded(DataGridViewRowHeightInfoNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeightInfoNeeded(DataGridViewRowHeightInfoNeededEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeightInfoPushed(DataGridViewRowHeightInfoPushedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeightInfoPushed(DataGridViewRowHeightInfoPushedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowLeave(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowLeave(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowMinimumHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowMinimumHeightChanged(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowPostPaint(DataGridViewRowPostPaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowPostPaint(DataGridViewRowPostPaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowPrePaint(DataGridViewRowPrePaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowPrePaint(DataGridViewRowPrePaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowsAdded(DataGridViewRowsAddedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowsAdded(DataGridViewRowsAddedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowsRemoved(DataGridViewRowsRemovedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowsRemoved(DataGridViewRowsRemovedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowStateChanged(DataGridViewRowStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowStateChanged(DataGridViewRowStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowUnshared(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowUnshared(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowValidated(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowValidated(DataGridViewCellEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RowValidating(DataGridViewCellCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowValidating(DataGridViewCellCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Scroll(ScrollEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SortCompare(DataGridViewSortCompareEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SortCompare(DataGridViewSortCompareEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Sorted(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Sorted(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_UserAddedRow(DataGridViewRowEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_HorizontalScrollingOffset(): PrivateScope, Public, HideBySig, SpecialName
-    set_HorizontalScrollingOffset(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_IsCurrentCellDirty(): PrivateScope, Public, HideBySig, SpecialName
-    get_IsCurrentCellInEditMode(): PrivateScope, Public, HideBySig, SpecialName
-    get_IsCurrentRowDirty(): PrivateScope, Public, HideBySig, SpecialName
-    get_MultiSelect(): PrivateScope, Public, HideBySig, SpecialName
-    set_MultiSelect(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_MultiSelectChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MultiSelectChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_NewRowIndex(): PrivateScope, Public, HideBySig, SpecialName
-    get_Padding(): PrivateScope, Public, HideBySig, SpecialName
-    set_Padding(Padding): PrivateScope, Public, HideBySig, SpecialName
-    add_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ReadOnly(): PrivateScope, Public, HideBySig, SpecialName
-    set_ReadOnly(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RowCount(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowCount(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeadersBorderStyle(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeadersBorderStyle(DataGridViewHeaderBorderStyle): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeadersBorderStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeadersBorderStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeadersDefaultCellStyle(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeadersDefaultCellStyle(DataGridViewCellStyle): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeadersDefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeadersDefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeadersWidth(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeadersWidth(Int32): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeadersWidthChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeadersWidthChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RowHeadersWidthSizeMode(): PrivateScope, Public, HideBySig, SpecialName
-    set_RowHeadersWidthSizeMode(DataGridViewRowHeadersWidthSizeMode): PrivateScope, Public, HideBySig, SpecialName
-    add_RowHeadersWidthSizeModeChanged(DataGridViewAutoSizeModeEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RowHeadersWidthSizeModeChanged(DataGridViewAutoSizeModeEventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_Rows(): PrivateScope, Public, HideBySig, SpecialName
     get_RowsDefaultCellStyle(): PrivateScope, Public, HideBySig, SpecialName
     set_RowsDefaultCellStyle(DataGridViewCellStyle): PrivateScope, Public, HideBySig, SpecialName
@@ -5773,10 +5739,91 @@ Class System.Windows.Forms.DataGridView: AutoLayout, AnsiClass, Class, Public, B
     add_CellMouseUp(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_CellMouseUp(DataGridViewCellMouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_CellPainting(DataGridViewCellPaintingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_CellPainting(DataGridViewCellPaintingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_CellParsing(DataGridViewCellParsingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_CellParsing(DataGridViewCellParsingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_CellStateChanged(DataGridViewCellStateChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ColumnHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
+    set_ColumnHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_Columns(): PrivateScope, Public, HideBySig, SpecialName
+    get_CurrentCell(): PrivateScope, Public, HideBySig, SpecialName
+    set_CurrentCell(DataGridViewCell): PrivateScope, Public, HideBySig, SpecialName
+    get_CurrentCellAddress(): PrivateScope, Public, HideBySig, SpecialName
+    get_CurrentRow(): PrivateScope, Public, HideBySig, SpecialName
+    get_DataMember(): PrivateScope, Public, HideBySig, SpecialName
+    set_DataMember(String): PrivateScope, Public, HideBySig, SpecialName
+    add_DataMemberChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DataMemberChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_DataSource(): PrivateScope, Public, HideBySig, SpecialName
+    set_DataSource(Object): PrivateScope, Public, HideBySig, SpecialName
+    add_DataSourceChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DataSourceChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_DefaultCellStyle(): PrivateScope, Public, HideBySig, SpecialName
+    set_DefaultCellStyle(DataGridViewCellStyle): PrivateScope, Public, HideBySig, SpecialName
+    add_DefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_DisplayRectangle(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_EditMode(): PrivateScope, Public, HideBySig, SpecialName
+    set_EditMode(DataGridViewEditMode): PrivateScope, Public, HideBySig, SpecialName
+    add_EditModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_EditModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_EditingControl(): PrivateScope, Public, HideBySig, SpecialName
+    get_EditingPanel(): PrivateScope, Public, HideBySig, SpecialName
+    get_EnableHeadersVisualStyles(): PrivateScope, Public, HideBySig, SpecialName
+    set_EnableHeadersVisualStyles(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_FirstDisplayedCell(): PrivateScope, Public, HideBySig, SpecialName
+    set_FirstDisplayedCell(DataGridViewCell): PrivateScope, Public, HideBySig, SpecialName
+    get_FirstDisplayedScrollingColumnHiddenWidth(): PrivateScope, Public, HideBySig, SpecialName
+    get_FirstDisplayedScrollingColumnIndex(): PrivateScope, Public, HideBySig, SpecialName
+    set_FirstDisplayedScrollingColumnIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_FirstDisplayedScrollingRowIndex(): PrivateScope, Public, HideBySig, SpecialName
+    set_FirstDisplayedScrollingRowIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_ForeColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_ForeColor(Color): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Font(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Font(Font): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_GridColor(): PrivateScope, Public, HideBySig, SpecialName
+    set_GridColor(Color): PrivateScope, Public, HideBySig, SpecialName
+    add_GridColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_GridColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_HorizontalScrollingOffset(): PrivateScope, Public, HideBySig, SpecialName
+    set_HorizontalScrollingOffset(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_IsCurrentCellDirty(): PrivateScope, Public, HideBySig, SpecialName
+    get_IsCurrentCellInEditMode(): PrivateScope, Public, HideBySig, SpecialName
+    get_IsCurrentRowDirty(): PrivateScope, Public, HideBySig, SpecialName
+    get_MultiSelect(): PrivateScope, Public, HideBySig, SpecialName
+    set_MultiSelect(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_MultiSelectChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MultiSelectChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_NewRowIndex(): PrivateScope, Public, HideBySig, SpecialName
+    get_Padding(): PrivateScope, Public, HideBySig, SpecialName
+    set_Padding(Padding): PrivateScope, Public, HideBySig, SpecialName
+    add_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ReadOnly(): PrivateScope, Public, HideBySig, SpecialName
+    set_ReadOnly(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ReadOnlyChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RowCount(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowCount(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeadersBorderStyle(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeadersBorderStyle(DataGridViewHeaderBorderStyle): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeadersBorderStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeadersBorderStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeadersDefaultCellStyle(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeadersDefaultCellStyle(DataGridViewCellStyle): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeadersDefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeadersDefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeadersWidth(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeadersWidth(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeadersWidthChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeadersWidthChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RowHeadersWidthSizeMode(): PrivateScope, Public, HideBySig, SpecialName
+    set_RowHeadersWidthSizeMode(DataGridViewRowHeadersWidthSizeMode): PrivateScope, Public, HideBySig, SpecialName
+    add_RowHeadersWidthSizeModeChanged(DataGridViewAutoSizeModeEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RowHeadersWidthSizeModeChanged(DataGridViewAutoSizeModeEventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_AdjustedTopLeftHeaderBorderStyle(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     get_AdvancedCellBorderStyle(): PrivateScope, Public, HideBySig, SpecialName
     get_AdvancedColumnHeadersBorderStyle(): PrivateScope, Public, HideBySig, SpecialName
@@ -5863,53 +5910,6 @@ Class System.Windows.Forms.DataGridView: AutoLayout, AnsiClass, Class, Public, B
     set_ColumnHeadersHeightSizeMode(DataGridViewColumnHeadersHeightSizeMode): PrivateScope, Public, HideBySig, SpecialName
     add_ColumnHeadersHeightSizeModeChanged(DataGridViewAutoSizeModeEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_ColumnHeadersHeightSizeModeChanged(DataGridViewAutoSizeModeEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ColumnHeadersVisible(): PrivateScope, Public, HideBySig, SpecialName
-    set_ColumnHeadersVisible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_Columns(): PrivateScope, Public, HideBySig, SpecialName
-    get_CurrentCell(): PrivateScope, Public, HideBySig, SpecialName
-    set_CurrentCell(DataGridViewCell): PrivateScope, Public, HideBySig, SpecialName
-    get_CurrentCellAddress(): PrivateScope, Public, HideBySig, SpecialName
-    get_CurrentRow(): PrivateScope, Public, HideBySig, SpecialName
-    get_DataMember(): PrivateScope, Public, HideBySig, SpecialName
-    set_DataMember(String): PrivateScope, Public, HideBySig, SpecialName
-    add_DataMemberChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DataMemberChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_DataSource(): PrivateScope, Public, HideBySig, SpecialName
-    set_DataSource(Object): PrivateScope, Public, HideBySig, SpecialName
-    add_DataSourceChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DataSourceChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_DefaultCellStyle(): PrivateScope, Public, HideBySig, SpecialName
-    set_DefaultCellStyle(DataGridViewCellStyle): PrivateScope, Public, HideBySig, SpecialName
-    add_DefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DefaultCellStyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_DisplayRectangle(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_EditMode(): PrivateScope, Public, HideBySig, SpecialName
-    set_EditMode(DataGridViewEditMode): PrivateScope, Public, HideBySig, SpecialName
-    add_EditModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_EditModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_EditingControl(): PrivateScope, Public, HideBySig, SpecialName
-    get_EditingPanel(): PrivateScope, Public, HideBySig, SpecialName
-    get_EnableHeadersVisualStyles(): PrivateScope, Public, HideBySig, SpecialName
-    set_EnableHeadersVisualStyles(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_FirstDisplayedCell(): PrivateScope, Public, HideBySig, SpecialName
-    set_FirstDisplayedCell(DataGridViewCell): PrivateScope, Public, HideBySig, SpecialName
-    get_FirstDisplayedScrollingColumnHiddenWidth(): PrivateScope, Public, HideBySig, SpecialName
-    get_FirstDisplayedScrollingColumnIndex(): PrivateScope, Public, HideBySig, SpecialName
-    set_FirstDisplayedScrollingColumnIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_FirstDisplayedScrollingRowIndex(): PrivateScope, Public, HideBySig, SpecialName
-    set_FirstDisplayedScrollingRowIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_ForeColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_ForeColor(Color): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Font(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Font(Font): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_FontChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_GridColor(): PrivateScope, Public, HideBySig, SpecialName
-    set_GridColor(Color): PrivateScope, Public, HideBySig, SpecialName
-    add_GridColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_GridColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.DataGridView+DataGridViewControlCollection: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   :System.Windows.Forms.Control+ControlCollection
     Void .ctor(System.Windows.Forms.DataGridView): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -8036,6 +8036,7 @@ Class System.Windows.Forms.DateTimePicker: AutoLayout, AnsiClass, Class, Public,
     System.EventHandler ValueChanged: 
     System.EventHandler DropDown: 
   Methods:
+    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_BackColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_BackColor(Color): PrivateScope, Public, Virtual, HideBySig, SpecialName
     add_BackColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -8115,7 +8116,6 @@ Class System.Windows.Forms.DateTimePicker: AutoLayout, AnsiClass, Class, Public,
     remove_ValueChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_DropDown(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_DropDown(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    ToString(): PrivateScope, Public, Virtual, HideBySig
 Class System.Windows.Forms.DateTimePicker+DateTimePickerAccessibleObject: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   :System.Windows.Forms.Control+ControlAccessibleObject
     Void .ctor(System.Windows.Forms.DateTimePicker): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -9027,6 +9027,65 @@ Class System.Windows.Forms.Form: AutoLayout, AnsiClass, Class, Public, BeforeFie
     System.EventHandler ResizeBegin: 
     System.EventHandler ResizeEnd: 
   Methods:
+    RemoveOwnedForm(Form): PrivateScope, Public, HideBySig
+    add_ResizeBegin(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ResizeBegin(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ResizeEnd(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ResizeEnd(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    SetDesktopBounds(Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    SetDesktopLocation(Int32, Int32): PrivateScope, Public, HideBySig
+    Show(IWin32Window): PrivateScope, Public, HideBySig
+    ShowDialog(): PrivateScope, Public, HideBySig
+    ShowDialog(IWin32Window): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+    ValidateChildren(): PrivateScope, Public, Virtual, HideBySig
+    ValidateChildren(ValidationConstraints): PrivateScope, Public, Virtual, HideBySig
+    get_RightToLeftLayout(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_RightToLeftLayout(Boolean): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_ShowInTaskbar(): PrivateScope, Public, HideBySig, SpecialName
+    set_ShowInTaskbar(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_ShowIcon(): PrivateScope, Public, HideBySig, SpecialName
+    set_ShowIcon(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_Size(): PrivateScope, Public, HideBySig, SpecialName
+    set_Size(Size): PrivateScope, Public, HideBySig, SpecialName
+    get_SizeGripStyle(): PrivateScope, Public, HideBySig, SpecialName
+    set_SizeGripStyle(SizeGripStyle): PrivateScope, Public, HideBySig, SpecialName
+    get_StartPosition(): PrivateScope, Public, HideBySig, SpecialName
+    set_StartPosition(FormStartPosition): PrivateScope, Public, HideBySig, SpecialName
+    get_TabIndex(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
+    add_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Text(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Text(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_TopLevel(): PrivateScope, Public, HideBySig, SpecialName
+    set_TopLevel(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_TopMost(): PrivateScope, Public, HideBySig, SpecialName
+    set_TopMost(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    get_TransparencyKey(): PrivateScope, Public, HideBySig, SpecialName
+    set_TransparencyKey(Color): PrivateScope, Public, HideBySig, SpecialName
+    get_WindowState(): PrivateScope, Public, HideBySig, SpecialName
+    set_WindowState(FormWindowState): PrivateScope, Public, HideBySig, SpecialName
+    add_Activated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Activated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Closing(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Closing(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Closed(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Closed(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Deactivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Deactivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_FormClosing(FormClosingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_FormClosing(FormClosingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_FormClosed(FormClosedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_FormClosed(FormClosedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Load(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Load(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MdiChildActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MdiChildActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_MenuComplete(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_MenuComplete(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_MenuStart(EventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -9044,19 +9103,6 @@ Class System.Windows.Forms.Form: AutoLayout, AnsiClass, Class, Public, BeforeFie
     Close(): PrivateScope, Public, HideBySig
     GetAutoScaleSize(Font): PrivateScope, Public, Static, HideBySig (Obsolete)
     LayoutMdi(MdiLayout): PrivateScope, Public, HideBySig
-    RemoveOwnedForm(Form): PrivateScope, Public, HideBySig
-    add_ResizeBegin(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ResizeBegin(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ResizeEnd(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ResizeEnd(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    SetDesktopBounds(Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    SetDesktopLocation(Int32, Int32): PrivateScope, Public, HideBySig
-    Show(IWin32Window): PrivateScope, Public, HideBySig
-    ShowDialog(): PrivateScope, Public, HideBySig
-    ShowDialog(IWin32Window): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
-    ValidateChildren(): PrivateScope, Public, Virtual, HideBySig
-    ValidateChildren(ValidationConstraints): PrivateScope, Public, Virtual, HideBySig
     get_AcceptButton(): PrivateScope, Public, HideBySig, SpecialName
     set_AcceptButton(IButtonControl): PrivateScope, Public, HideBySig, SpecialName
     get_ActiveForm(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -9142,52 +9188,6 @@ Class System.Windows.Forms.Form: AutoLayout, AnsiClass, Class, Public, BeforeFie
     get_Owner(): PrivateScope, Public, HideBySig, SpecialName
     set_Owner(Form): PrivateScope, Public, HideBySig, SpecialName
     get_RestoreBounds(): PrivateScope, Public, HideBySig, SpecialName
-    get_RightToLeftLayout(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_RightToLeftLayout(Boolean): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_ShowInTaskbar(): PrivateScope, Public, HideBySig, SpecialName
-    set_ShowInTaskbar(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_ShowIcon(): PrivateScope, Public, HideBySig, SpecialName
-    set_ShowIcon(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_Size(): PrivateScope, Public, HideBySig, SpecialName
-    set_Size(Size): PrivateScope, Public, HideBySig, SpecialName
-    get_SizeGripStyle(): PrivateScope, Public, HideBySig, SpecialName
-    set_SizeGripStyle(SizeGripStyle): PrivateScope, Public, HideBySig, SpecialName
-    get_StartPosition(): PrivateScope, Public, HideBySig, SpecialName
-    set_StartPosition(FormStartPosition): PrivateScope, Public, HideBySig, SpecialName
-    get_TabIndex(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabIndex(Int32): PrivateScope, Public, HideBySig, SpecialName
-    add_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Text(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Text(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_TopLevel(): PrivateScope, Public, HideBySig, SpecialName
-    set_TopLevel(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_TopMost(): PrivateScope, Public, HideBySig, SpecialName
-    set_TopMost(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    get_TransparencyKey(): PrivateScope, Public, HideBySig, SpecialName
-    set_TransparencyKey(Color): PrivateScope, Public, HideBySig, SpecialName
-    get_WindowState(): PrivateScope, Public, HideBySig, SpecialName
-    set_WindowState(FormWindowState): PrivateScope, Public, HideBySig, SpecialName
-    add_Activated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Activated(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Closing(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Closing(CancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Closed(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Closed(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Deactivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Deactivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_FormClosing(FormClosingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_FormClosing(FormClosingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_FormClosed(FormClosedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_FormClosed(FormClosedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Load(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Load(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MdiChildActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MdiChildActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.Form+ControlCollection: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
   :System.Windows.Forms.Control+ControlCollection
     Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -9770,6 +9770,11 @@ Class System.Windows.Forms.HtmlElement: AutoLayout, AnsiClass, Class, Public, Se
     System.Windows.Forms.HtmlElementEventHandler MouseEnter: 
     System.Windows.Forms.HtmlElementEventHandler MouseLeave: 
   Methods:
+    remove_MouseLeave(HtmlElementEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    op_Equality(HtmlElement, HtmlElement): PrivateScope, Public, Static, HideBySig, SpecialName
+    op_Inequality(HtmlElement, HtmlElement): PrivateScope, Public, Static, HideBySig, SpecialName
+    GetHashCode(): PrivateScope, Public, Virtual, HideBySig
+    Equals(Object): PrivateScope, Public, Virtual, HideBySig
     get_All(): PrivateScope, Public, HideBySig, SpecialName
     get_Children(): PrivateScope, Public, HideBySig, SpecialName
     get_CanHaveChildren(): PrivateScope, Public, HideBySig, SpecialName
@@ -9855,11 +9860,6 @@ Class System.Windows.Forms.HtmlElement: AutoLayout, AnsiClass, Class, Public, Se
     add_MouseEnter(HtmlElementEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_MouseEnter(HtmlElementEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_MouseLeave(HtmlElementEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseLeave(HtmlElementEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    op_Equality(HtmlElement, HtmlElement): PrivateScope, Public, Static, HideBySig, SpecialName
-    op_Inequality(HtmlElement, HtmlElement): PrivateScope, Public, Static, HideBySig, SpecialName
-    GetHashCode(): PrivateScope, Public, Virtual, HideBySig
-    Equals(Object): PrivateScope, Public, Virtual, HideBySig
 Struct System.Windows.Forms.HtmlElementInsertionOrientation: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -10981,6 +10981,54 @@ Class System.Windows.Forms.ListView: AutoLayout, AnsiClass, Class, Public, Befor
     System.EventHandler SelectedIndexChanged: 
     System.Windows.Forms.ListViewVirtualItemsSelectionRangeChangedEventHandler VirtualItemsSelectionRangeChanged: 
   Methods:
+    RedrawItems(Int32, Int32, Boolean): PrivateScope, Public, HideBySig
+    Sort(): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+    set_VirtualListSize(Int32): PrivateScope, Public, HideBySig, SpecialName
+    get_VirtualMode(): PrivateScope, Public, HideBySig, SpecialName
+    set_VirtualMode(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_AfterLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_AfterLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_BeforeLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BeforeLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_CacheVirtualItems(CacheVirtualItemsEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_CacheVirtualItems(CacheVirtualItemsEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ColumnClick(ColumnClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ColumnClick(ColumnClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ColumnReordered(ColumnReorderedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ColumnReordered(ColumnReorderedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ColumnWidthChanged(ColumnWidthChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ColumnWidthChanged(ColumnWidthChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ColumnWidthChanging(ColumnWidthChangingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ColumnWidthChanging(ColumnWidthChangingEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_DrawColumnHeader(DrawListViewColumnHeaderEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DrawColumnHeader(DrawListViewColumnHeaderEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_DrawItem(DrawListViewItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DrawItem(DrawListViewItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_DrawSubItem(DrawListViewSubItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DrawSubItem(DrawListViewSubItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemCheck(ItemCheckEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemCheck(ItemCheckEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemChecked(ItemCheckedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemChecked(ItemCheckedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemMouseHover(ListViewItemMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemMouseHover(ListViewItemMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemSelectionChanged(ListViewItemSelectionChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemSelectionChanged(ListViewItemSelectionChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Padding(): PrivateScope, Public, HideBySig, SpecialName
+    set_Padding(Padding): PrivateScope, Public, HideBySig, SpecialName
+    add_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RetrieveVirtualItem(RetrieveVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RetrieveVirtualItem(RetrieveVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SearchForVirtualItem(SearchForVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SearchForVirtualItem(SearchForVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_SelectedIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_SelectedIndexChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_VirtualItemsSelectionRangeChanged(ListViewVirtualItemsSelectionRangeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -11003,9 +11051,6 @@ Class System.Windows.Forms.ListView: AutoLayout, AnsiClass, Class, Public, Befor
     GetItemRect(Int32, ItemBoundsPortion): PrivateScope, Public, HideBySig
     HitTest(Point): PrivateScope, Public, HideBySig
     HitTest(Int32, Int32): PrivateScope, Public, HideBySig
-    RedrawItems(Int32, Int32, Boolean): PrivateScope, Public, HideBySig
-    Sort(): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_Activation(): PrivateScope, Public, HideBySig, SpecialName
     set_Activation(ItemActivation): PrivateScope, Public, HideBySig, SpecialName
     get_Alignment(): PrivateScope, Public, HideBySig, SpecialName
@@ -11091,51 +11136,6 @@ Class System.Windows.Forms.ListView: AutoLayout, AnsiClass, Class, Public, Befor
     get_View(): PrivateScope, Public, HideBySig, SpecialName
     set_View(View): PrivateScope, Public, HideBySig, SpecialName
     get_VirtualListSize(): PrivateScope, Public, HideBySig, SpecialName
-    set_VirtualListSize(Int32): PrivateScope, Public, HideBySig, SpecialName
-    get_VirtualMode(): PrivateScope, Public, HideBySig, SpecialName
-    set_VirtualMode(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_AfterLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_AfterLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_BeforeLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BeforeLabelEdit(LabelEditEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_CacheVirtualItems(CacheVirtualItemsEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_CacheVirtualItems(CacheVirtualItemsEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ColumnClick(ColumnClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ColumnClick(ColumnClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ColumnReordered(ColumnReorderedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ColumnReordered(ColumnReorderedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ColumnWidthChanged(ColumnWidthChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ColumnWidthChanged(ColumnWidthChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ColumnWidthChanging(ColumnWidthChangingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ColumnWidthChanging(ColumnWidthChangingEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_DrawColumnHeader(DrawListViewColumnHeaderEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DrawColumnHeader(DrawListViewColumnHeaderEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_DrawItem(DrawListViewItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DrawItem(DrawListViewItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_DrawSubItem(DrawListViewSubItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DrawSubItem(DrawListViewSubItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemActivate(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemCheck(ItemCheckEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemCheck(ItemCheckEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemChecked(ItemCheckedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemChecked(ItemCheckedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemMouseHover(ListViewItemMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemMouseHover(ListViewItemMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemSelectionChanged(ListViewItemSelectionChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemSelectionChanged(ListViewItemSelectionChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Padding(): PrivateScope, Public, HideBySig, SpecialName
-    set_Padding(Padding): PrivateScope, Public, HideBySig, SpecialName
-    add_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_PaddingChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RetrieveVirtualItem(RetrieveVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RetrieveVirtualItem(RetrieveVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SearchForVirtualItem(SearchForVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SearchForVirtualItem(SearchForVirtualItemEventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.ListView+CheckedIndexCollection: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
     Void .ctor(System.Windows.Forms.ListView): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
@@ -11687,6 +11687,9 @@ Class System.Windows.Forms.MaskedTextBox: AutoLayout, AnsiClass, Class, Public, 
     System.EventHandler TextAlignChanged: 
     System.Windows.Forms.TypeValidationEventHandler TypeValidationCompleted: 
   Methods:
+    ScrollToCaret(): PrivateScope, Public, HideBySig
+    Undo(): PrivateScope, Public, HideBySig
+    ValidateText(): PrivateScope, Public, HideBySig
     get_AcceptsTab(): PrivateScope, Public, HideBySig, SpecialName
     set_AcceptsTab(Boolean): PrivateScope, Public, HideBySig, SpecialName
     get_AllowPromptAsInput(): PrivateScope, Public, HideBySig, SpecialName
@@ -11769,9 +11772,6 @@ Class System.Windows.Forms.MaskedTextBox: AutoLayout, AnsiClass, Class, Public, 
     GetFirstCharIndexFromLine(Int32): PrivateScope, Public, HideBySig
     GetLineFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig
     GetPositionFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig
-    ScrollToCaret(): PrivateScope, Public, HideBySig
-    Undo(): PrivateScope, Public, HideBySig
-    ValidateText(): PrivateScope, Public, HideBySig
 Struct System.Windows.Forms.MaskFormat: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -12212,6 +12212,23 @@ Class System.Windows.Forms.MonthCalendar: AutoLayout, AnsiClass, Class, Public, 
     System.Windows.Forms.PaintEventHandler Paint: 
     System.EventHandler RightToLeftLayoutChanged: 
   Methods:
+    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    GetDisplayRange(Boolean): PrivateScope, Public, HideBySig
+    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
+    HitTest(Point): PrivateScope, Public, HideBySig
+    RemoveAllAnnuallyBoldedDates(): PrivateScope, Public, HideBySig
+    RemoveAllBoldedDates(): PrivateScope, Public, HideBySig
+    RemoveAllMonthlyBoldedDates(): PrivateScope, Public, HideBySig
+    RemoveAnnuallyBoldedDate(DateTime): PrivateScope, Public, HideBySig
+    RemoveBoldedDate(DateTime): PrivateScope, Public, HideBySig
+    RemoveMonthlyBoldedDate(DateTime): PrivateScope, Public, HideBySig
+    SetCalendarDimensions(Int32, Int32): PrivateScope, Public, HideBySig
+    SetDate(DateTime): PrivateScope, Public, HideBySig
+    SetSelectionRange(DateTime, DateTime): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
+    UpdateBoldedDates(): PrivateScope, Public, HideBySig
     get_AnnuallyBoldedDates(): PrivateScope, Public, HideBySig, SpecialName
     set_AnnuallyBoldedDates(DateTime[]): PrivateScope, Public, HideBySig, SpecialName
     get_BackColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -12296,23 +12313,6 @@ Class System.Windows.Forms.MonthCalendar: AutoLayout, AnsiClass, Class, Public, 
     add_MouseDoubleClick(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_MouseDoubleClick(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    GetDisplayRange(Boolean): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
-    HitTest(Point): PrivateScope, Public, HideBySig
-    RemoveAllAnnuallyBoldedDates(): PrivateScope, Public, HideBySig
-    RemoveAllBoldedDates(): PrivateScope, Public, HideBySig
-    RemoveAllMonthlyBoldedDates(): PrivateScope, Public, HideBySig
-    RemoveAnnuallyBoldedDate(DateTime): PrivateScope, Public, HideBySig
-    RemoveBoldedDate(DateTime): PrivateScope, Public, HideBySig
-    RemoveMonthlyBoldedDate(DateTime): PrivateScope, Public, HideBySig
-    SetCalendarDimensions(Int32, Int32): PrivateScope, Public, HideBySig
-    SetDate(DateTime): PrivateScope, Public, HideBySig
-    SetSelectionRange(DateTime, DateTime): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
-    UpdateBoldedDates(): PrivateScope, Public, HideBySig
 Class System.Windows.Forms.MonthCalendar+HitTestInfo: AutoLayout, AnsiClass, Class, NestedPublic, Sealed, BeforeFieldInit
   Properties:
     System.Drawing.Point Point 'get ' : 
@@ -13316,6 +13316,27 @@ Class System.Windows.Forms.PropertyGrid: AutoLayout, AnsiClass, Class, Public, H
     System.Windows.Forms.SelectedGridItemChangedEventHandler SelectedGridItemChanged: 
     System.EventHandler SelectedObjectsChanged: 
   Methods:
+    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_PropertyValueChanged(PropertyValueChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_PropertyValueChanged(PropertyValueChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_PropertyTabChanged(PropertyTabChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_PropertyTabChanged(PropertyTabChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_PropertySortChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_PropertySortChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectedGridItemChanged(SelectedGridItemChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectedGridItemChanged(SelectedGridItemChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectedObjectsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectedObjectsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    CollapseAllGridItems(): PrivateScope, Public, HideBySig
+    ExpandAllGridItems(): PrivateScope, Public, HideBySig
+    Refresh(): PrivateScope, Public, Virtual, HideBySig
+    RefreshTabs(PropertyTabScope): PrivateScope, Public, HideBySig
+    ResetSelectedProperty(): PrivateScope, Public, HideBySig
+    get_UseCompatibleTextRendering(): PrivateScope, Public, HideBySig, SpecialName
+    set_UseCompatibleTextRendering(Boolean): PrivateScope, Public, HideBySig, SpecialName
     get_AutoScroll(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_AutoScroll(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_BackColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -13400,27 +13421,6 @@ Class System.Windows.Forms.PropertyGrid: AutoLayout, AnsiClass, Class, Public, H
     remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_PropertyValueChanged(PropertyValueChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_PropertyValueChanged(PropertyValueChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_PropertyTabChanged(PropertyTabChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_PropertyTabChanged(PropertyTabChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_PropertySortChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_PropertySortChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectedGridItemChanged(SelectedGridItemChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectedGridItemChanged(SelectedGridItemChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectedObjectsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectedObjectsChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    CollapseAllGridItems(): PrivateScope, Public, HideBySig
-    ExpandAllGridItems(): PrivateScope, Public, HideBySig
-    Refresh(): PrivateScope, Public, Virtual, HideBySig
-    RefreshTabs(PropertyTabScope): PrivateScope, Public, HideBySig
-    ResetSelectedProperty(): PrivateScope, Public, HideBySig
-    get_UseCompatibleTextRendering(): PrivateScope, Public, HideBySig, SpecialName
-    set_UseCompatibleTextRendering(Boolean): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.PropertyGrid+PropertyTabCollection: AutoLayout, AnsiClass, Class, NestedPublic, HasSecurity, BeforeFieldInit
   Interfaces:
     System.Collections.ICollection
@@ -13713,6 +13713,39 @@ Class System.Windows.Forms.RichTextBox: AutoLayout, AnsiClass, Class, Public, Be
     System.EventHandler SelectionChanged: 
     System.EventHandler VScroll: 
   Methods:
+    remove_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_HScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_HScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_LinkClicked(LinkClickedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_LinkClicked(LinkClickedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ImeChange(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ImeChange(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Protected(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Protected(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_VScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_VScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    CanPaste(Format): PrivateScope, Public, HideBySig
+    DrawToBitmap(Bitmap, Rectangle): PrivateScope, Public, HideBySig
+    Find(String): PrivateScope, Public, HideBySig
+    Find(String, RichTextBoxFinds): PrivateScope, Public, HideBySig
+    Find(String, Int32, RichTextBoxFinds): PrivateScope, Public, HideBySig
+    Find(String, Int32, Int32, RichTextBoxFinds): PrivateScope, Public, HideBySig
+    Find(Char[]): PrivateScope, Public, HideBySig
+    Find(Char[], Int32): PrivateScope, Public, HideBySig
+    Find(Char[], Int32, Int32): PrivateScope, Public, HideBySig
+    GetCharIndexFromPosition(Point): PrivateScope, Public, Virtual, HideBySig
+    GetLineFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig
+    GetPositionFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig
+    LoadFile(String): PrivateScope, Public, HideBySig
+    LoadFile(String, RichTextBoxStreamType): PrivateScope, Public, HideBySig
+    LoadFile(Stream, RichTextBoxStreamType): PrivateScope, Public, HideBySig
+    Paste(Format): PrivateScope, Public, HideBySig
+    Redo(): PrivateScope, Public, HideBySig
+    SaveFile(String): PrivateScope, Public, HideBySig
+    SaveFile(String, RichTextBoxStreamType): PrivateScope, Public, HideBySig
+    SaveFile(Stream, RichTextBoxStreamType): PrivateScope, Public, HideBySig
     get_AllowDrop(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     set_AllowDrop(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_AutoSize(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -13803,39 +13836,6 @@ Class System.Windows.Forms.RichTextBox: AutoLayout, AnsiClass, Class, Public, Be
     add_GiveFeedback(GiveFeedbackEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_GiveFeedback(GiveFeedbackEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_HScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_HScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_LinkClicked(LinkClickedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_LinkClicked(LinkClickedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ImeChange(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ImeChange(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Protected(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Protected(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_SelectionChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_VScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_VScroll(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    CanPaste(Format): PrivateScope, Public, HideBySig
-    DrawToBitmap(Bitmap, Rectangle): PrivateScope, Public, HideBySig
-    Find(String): PrivateScope, Public, HideBySig
-    Find(String, RichTextBoxFinds): PrivateScope, Public, HideBySig
-    Find(String, Int32, RichTextBoxFinds): PrivateScope, Public, HideBySig
-    Find(String, Int32, Int32, RichTextBoxFinds): PrivateScope, Public, HideBySig
-    Find(Char[]): PrivateScope, Public, HideBySig
-    Find(Char[], Int32): PrivateScope, Public, HideBySig
-    Find(Char[], Int32, Int32): PrivateScope, Public, HideBySig
-    GetCharIndexFromPosition(Point): PrivateScope, Public, Virtual, HideBySig
-    GetLineFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig
-    GetPositionFromCharIndex(Int32): PrivateScope, Public, Virtual, HideBySig
-    LoadFile(String): PrivateScope, Public, HideBySig
-    LoadFile(String, RichTextBoxStreamType): PrivateScope, Public, HideBySig
-    LoadFile(Stream, RichTextBoxStreamType): PrivateScope, Public, HideBySig
-    Paste(Format): PrivateScope, Public, HideBySig
-    Redo(): PrivateScope, Public, HideBySig
-    SaveFile(String): PrivateScope, Public, HideBySig
-    SaveFile(String, RichTextBoxStreamType): PrivateScope, Public, HideBySig
-    SaveFile(Stream, RichTextBoxStreamType): PrivateScope, Public, HideBySig
 Struct System.Windows.Forms.RichTextBoxFinds: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -14979,6 +14979,25 @@ Class System.Windows.Forms.SystemInformation: AutoLayout, AnsiClass, Class, Publ
     System.Drawing.Size SmallCaptionButtonSize 'get ' : 
     System.Drawing.Size MenuBarButtonSize 'get ' : 
   Methods:
+    get_IsMenuAnimationEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_IsSelectionFadeEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_IsToolTipAnimationEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_UIEffectsEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_IsActiveWindowTrackingEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ActiveWindowTrackingDelay(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_IsMinimizeRestoreAnimationEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_BorderMultiplierFactor(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CaretBlinkTime(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_CaretWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MouseWheelScrollDelta(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_VerticalFocusThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_HorizontalFocusThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_VerticalResizeBorderThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_HorizontalResizeBorderThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_ScreenOrientation(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SizingBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SmallCaptionButtonSize(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MenuBarButtonSize(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_DragFullWindows(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_HighContrast(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MouseWheelScrollLines(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -15064,25 +15083,6 @@ Class System.Windows.Forms.SystemInformation: AutoLayout, AnsiClass, Class, Publ
     get_IsTitleBarGradientEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_IsHotTrackingEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_IsListBoxSmoothScrollingEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_IsMenuAnimationEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_IsSelectionFadeEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_IsToolTipAnimationEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_UIEffectsEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_IsActiveWindowTrackingEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ActiveWindowTrackingDelay(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_IsMinimizeRestoreAnimationEnabled(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_BorderMultiplierFactor(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CaretBlinkTime(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_CaretWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MouseWheelScrollDelta(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_VerticalFocusThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_HorizontalFocusThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_VerticalResizeBorderThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_HorizontalResizeBorderThickness(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_ScreenOrientation(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SizingBorderWidth(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SmallCaptionButtonSize(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MenuBarButtonSize(): PrivateScope, Public, Static, HideBySig, SpecialName
 Struct System.Windows.Forms.SystemParameter: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -15154,6 +15154,10 @@ Class System.Windows.Forms.TabControl: AutoLayout, AnsiClass, Class, Public, Bef
     System.Windows.Forms.TabControlEventHandler Deselected: 
     System.Windows.Forms.PaintEventHandler Paint: 
   Methods:
+    SelectTab(Int32): PrivateScope, Public, HideBySig
+    SelectTab(TabPage): PrivateScope, Public, HideBySig
+    SelectTab(String): PrivateScope, Public, HideBySig
+    ToString(): PrivateScope, Public, Virtual, HideBySig
     get_Alignment(): PrivateScope, Public, HideBySig, SpecialName
     set_Alignment(TabAlignment): PrivateScope, Public, HideBySig, SpecialName
     get_Appearance(): PrivateScope, Public, HideBySig, SpecialName
@@ -15225,10 +15229,6 @@ Class System.Windows.Forms.TabControl: AutoLayout, AnsiClass, Class, Public, Bef
     DeselectTab(String): PrivateScope, Public, HideBySig
     GetControl(Int32): PrivateScope, Public, HideBySig
     GetTabRect(Int32): PrivateScope, Public, HideBySig
-    SelectTab(Int32): PrivateScope, Public, HideBySig
-    SelectTab(TabPage): PrivateScope, Public, HideBySig
-    SelectTab(String): PrivateScope, Public, HideBySig
-    ToString(): PrivateScope, Public, Virtual, HideBySig
 Class System.Windows.Forms.TabControl+TabPageCollection: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
     Void .ctor(System.Windows.Forms.TabControl): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
@@ -17843,6 +17843,40 @@ Class System.Windows.Forms.TreeView: AutoLayout, AnsiClass, Class, Public, Befor
     System.Windows.Forms.TreeNodeMouseClickEventHandler NodeMouseDoubleClick: 
     System.EventHandler RightToLeftLayoutChanged: 
   Methods:
+    remove_BeforeCollapse(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_AfterCollapse(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_AfterCollapse(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_BeforeExpand(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BeforeExpand(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_AfterExpand(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_AfterExpand(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_DrawNode(DrawTreeNodeEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DrawNode(DrawTreeNodeEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_NodeMouseHover(TreeNodeMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_NodeMouseHover(TreeNodeMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_BeforeSelect(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BeforeSelect(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_AfterSelect(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_AfterSelect(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_NodeMouseClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_NodeMouseClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_NodeMouseDoubleClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_NodeMouseDoubleClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    BeginUpdate(): PrivateScope, Public, HideBySig
+    CollapseAll(): PrivateScope, Public, HideBySig
+    EndUpdate(): PrivateScope, Public, HideBySig
+    ExpandAll(): PrivateScope, Public, HideBySig
+    HitTest(Point): PrivateScope, Public, HideBySig
+    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
+    GetNodeCount(Boolean): PrivateScope, Public, HideBySig
+    GetNodeAt(Point): PrivateScope, Public, HideBySig
+    GetNodeAt(Int32, Int32): PrivateScope, Public, HideBySig
     Sort(): PrivateScope, Public, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
     get_BackColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -17930,40 +17964,6 @@ Class System.Windows.Forms.TreeView: AutoLayout, AnsiClass, Class, Public, Befor
     add_AfterCheck(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_AfterCheck(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_BeforeCollapse(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BeforeCollapse(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_AfterCollapse(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_AfterCollapse(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_BeforeExpand(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BeforeExpand(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_AfterExpand(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_AfterExpand(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_DrawNode(DrawTreeNodeEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DrawNode(DrawTreeNodeEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ItemDrag(ItemDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_NodeMouseHover(TreeNodeMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_NodeMouseHover(TreeNodeMouseHoverEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_BeforeSelect(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BeforeSelect(TreeViewCancelEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_AfterSelect(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_AfterSelect(TreeViewEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Paint(PaintEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_NodeMouseClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_NodeMouseClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_NodeMouseDoubleClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_NodeMouseDoubleClick(TreeNodeMouseClickEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    BeginUpdate(): PrivateScope, Public, HideBySig
-    CollapseAll(): PrivateScope, Public, HideBySig
-    EndUpdate(): PrivateScope, Public, HideBySig
-    ExpandAll(): PrivateScope, Public, HideBySig
-    HitTest(Point): PrivateScope, Public, HideBySig
-    HitTest(Int32, Int32): PrivateScope, Public, HideBySig
-    GetNodeCount(Boolean): PrivateScope, Public, HideBySig
-    GetNodeAt(Point): PrivateScope, Public, HideBySig
-    GetNodeAt(Int32, Int32): PrivateScope, Public, HideBySig
 Struct System.Windows.Forms.TreeViewAction: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -18246,6 +18246,36 @@ Class System.Windows.Forms.WebBrowserBase: AutoLayout, AnsiClass, Class, Public,
     System.Windows.Forms.UICuesEventHandler ChangeUICues: 
     System.EventHandler StyleChanged: 
   Methods:
+    add_DoubleClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DoubleClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_KeyDown(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_KeyDown(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_KeyPress(KeyPressEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_KeyPress(KeyPressEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_KeyUp(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_KeyUp(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_Layout(LayoutEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_Layout(LayoutEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_ActiveXInstance(): PrivateScope, Public, HideBySig, SpecialName
     DrawToBitmap(Bitmap, Rectangle): PrivateScope, Public, HideBySig
     set_Site(ISite): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -18324,36 +18354,6 @@ Class System.Windows.Forms.WebBrowserBase: AutoLayout, AnsiClass, Class, Public,
     remove_QueryContinueDrag(QueryContinueDragEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_QueryAccessibilityHelp(QueryAccessibilityHelpEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_QueryAccessibilityHelp(QueryAccessibilityHelpEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_DoubleClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DoubleClick(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_KeyDown(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_KeyDown(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_KeyPress(KeyPressEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_KeyPress(KeyPressEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_KeyUp(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_KeyUp(KeyEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_Layout(LayoutEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_Layout(LayoutEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseDown(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseEnter(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseLeave(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseHover(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseMove(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseUp(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_MouseWheel(MouseEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ChangeUICues(UICuesEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_StyleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Windows.Forms.WebBrowser: AutoLayout, AnsiClass, Class, Public, HasSecurity, BeforeFieldInit
   :System.Windows.Forms.WebBrowserBase
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName, HasSecurity
@@ -18944,6 +18944,60 @@ Class System.Windows.Forms.PrintPreviewDialog: AutoLayout, AnsiClass, Class, Pub
     System.EventHandler FontChanged: 
     System.EventHandler ContextMenuChanged: 
   Methods:
+    add_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Tag(): PrivateScope, Public, HideBySig, SpecialName
+    set_Tag(Object): PrivateScope, Public, HideBySig, SpecialName
+    get_AllowDrop(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_AllowDrop(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_Cursor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Cursor(Cursor): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_BackgroundImage(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_BackgroundImage(Image): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_BackgroundImageLayout(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_BackgroundImageLayout(ImageLayout): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ImeMode(): PrivateScope, Public, HideBySig, SpecialName
+    set_ImeMode(ImeMode): PrivateScope, Public, HideBySig, SpecialName
+    add_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_AutoScrollMargin(): PrivateScope, Public, HideBySig, SpecialName
+    set_AutoScrollMargin(Size): PrivateScope, Public, HideBySig, SpecialName
+    get_AutoScrollMinSize(): PrivateScope, Public, HideBySig, SpecialName
+    set_AutoScrollMinSize(Size): PrivateScope, Public, HideBySig, SpecialName
+    get_Anchor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Anchor(AnchorStyles): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_Visible(): PrivateScope, Public, HideBySig, SpecialName
+    set_Visible(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_VisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_VisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_ForeColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_ForeColor(Color): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_RightToLeftLayout(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_RightToLeftLayout(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
+    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
+    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Text(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Text(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
+    get_Dock(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    set_Dock(DockStyle): PrivateScope, Public, Virtual, HideBySig, SpecialName
     add_DockChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_DockChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_Font(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -19057,60 +19111,6 @@ Class System.Windows.Forms.PrintPreviewDialog: AutoLayout, AnsiClass, Class, Pub
     remove_EnabledChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_Location(): PrivateScope, Public, HideBySig, SpecialName
     set_Location(Point): PrivateScope, Public, HideBySig, SpecialName
-    add_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_LocationChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Tag(): PrivateScope, Public, HideBySig, SpecialName
-    set_Tag(Object): PrivateScope, Public, HideBySig, SpecialName
-    get_AllowDrop(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_AllowDrop(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_Cursor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Cursor(Cursor): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_CursorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_BackgroundImage(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_BackgroundImage(Image): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BackgroundImageChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_BackgroundImageLayout(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_BackgroundImageLayout(ImageLayout): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_BackgroundImageLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ImeMode(): PrivateScope, Public, HideBySig, SpecialName
-    set_ImeMode(ImeMode): PrivateScope, Public, HideBySig, SpecialName
-    add_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ImeModeChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_AutoScrollMargin(): PrivateScope, Public, HideBySig, SpecialName
-    set_AutoScrollMargin(Size): PrivateScope, Public, HideBySig, SpecialName
-    get_AutoScrollMinSize(): PrivateScope, Public, HideBySig, SpecialName
-    set_AutoScrollMinSize(Size): PrivateScope, Public, HideBySig, SpecialName
-    get_Anchor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Anchor(AnchorStyles): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_Visible(): PrivateScope, Public, HideBySig, SpecialName
-    set_Visible(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_VisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_VisibleChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_ForeColor(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_ForeColor(Color): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_ForeColorChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_RightToLeft(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_RightToLeft(RightToLeft): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_RightToLeftLayout(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_RightToLeftLayout(Boolean): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RightToLeftChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_RightToLeftLayoutChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_TabStop(): PrivateScope, Public, HideBySig, SpecialName
-    set_TabStop(Boolean): PrivateScope, Public, HideBySig, SpecialName
-    add_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TabStopChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Text(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Text(String): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    add_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_TextChanged(EventHandler): PrivateScope, Public, HideBySig, SpecialName
-    get_Dock(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    set_Dock(DockStyle): PrivateScope, Public, Virtual, HideBySig, SpecialName
 Interface System.Windows.Forms.PropertyGridInternal.IRootGridEntry: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
   Properties:
     System.ComponentModel.AttributeCollection BrowsableAttributes 'get set' : 

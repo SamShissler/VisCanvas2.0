@@ -2877,6 +2877,8 @@ Class System.ComponentModel.MaskedTextProvider: AutoLayout, AnsiClass, Class, Pu
     Boolean SkipLiterals 'get set' : 
     Char Item [Int32] 'get ' : 
   Methods:
+    VerifyString(String): PrivateScope, Public, HideBySig
+    VerifyString(String, Int32&(Out), MaskedTextResultHint&(Out)): PrivateScope, Public, HideBySig
     get_AllowPromptAsInput(): PrivateScope, Public, HideBySig, SpecialName
     get_AssignedEditPositionCount(): PrivateScope, Public, HideBySig, SpecialName
     get_AvailableEditPositionCount(): PrivateScope, Public, HideBySig, SpecialName
@@ -2956,8 +2958,6 @@ Class System.ComponentModel.MaskedTextProvider: AutoLayout, AnsiClass, Class, Pu
     ToString(Boolean, Boolean, Boolean, Int32, Int32): PrivateScope, Public, HideBySig
     VerifyChar(Char, Int32, MaskedTextResultHint&(Out)): PrivateScope, Public, HideBySig
     VerifyEscapeChar(Char, Int32): PrivateScope, Public, HideBySig
-    VerifyString(String): PrivateScope, Public, HideBySig
-    VerifyString(String, Int32&(Out), MaskedTextResultHint&(Out)): PrivateScope, Public, HideBySig
 Struct System.ComponentModel.MaskedTextResultHint: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -4825,9 +4825,9 @@ Class System.CodeDom.Compiler.CodeGenerator: AutoLayout, AnsiClass, Class, Publi
   Interfaces:
     System.CodeDom.Compiler.ICodeGenerator
   Methods:
-    GenerateCodeFromMember(CodeTypeMember, TextWriter, CodeGeneratorOptions): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     IsValidLanguageIndependentIdentifier(String): PrivateScope, Public, Static, HideBySig
     ValidateIdentifiers(CodeObject): PrivateScope, Public, Static, HideBySig
+    GenerateCodeFromMember(CodeTypeMember, TextWriter, CodeGeneratorOptions): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
 Interface System.CodeDom.Compiler.ICodeCompiler: AutoLayout, AnsiClass, Class, Public, ClassSemanticsMask, Abstract
   Methods:
     CompileAssemblyFromDom(CompilerParameters, CodeCompileUnit): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, HasSecurity
@@ -8577,6 +8577,10 @@ Class System.Net.HttpWebRequest: AutoLayout, AnsiClass, Class, Public, Serializa
     System.DateTime IfModifiedSince 'get set' : 
     System.DateTime Date 'get set' : 
   Methods:
+    AddRange(String, Int32, Int32): PrivateScope, Public, HideBySig
+    AddRange(String, Int64, Int64): PrivateScope, Public, HideBySig
+    AddRange(String, Int32): PrivateScope, Public, HideBySig
+    AddRange(String, Int64): PrivateScope, Public, HideBySig
     get_AllowAutoRedirect(): PrivateScope, Public, HideBySig, SpecialName
     set_AllowAutoRedirect(Boolean): PrivateScope, Public, HideBySig, SpecialName
     get_AllowWriteStreamBuffering(): PrivateScope, Public, HideBySig, SpecialName
@@ -8668,10 +8672,6 @@ Class System.Net.HttpWebRequest: AutoLayout, AnsiClass, Class, Public, Serializa
     AddRange(Int64, Int64): PrivateScope, Public, HideBySig
     AddRange(Int32): PrivateScope, Public, HideBySig
     AddRange(Int64): PrivateScope, Public, HideBySig
-    AddRange(String, Int32, Int32): PrivateScope, Public, HideBySig
-    AddRange(String, Int64, Int64): PrivateScope, Public, HideBySig
-    AddRange(String, Int32): PrivateScope, Public, HideBySig
-    AddRange(String, Int64): PrivateScope, Public, HideBySig
 Class System.Net.HttpWebResponse: AutoLayout, AnsiClass, Class, Public, Serializable, BeforeFieldInit
   :System.Net.WebResponse
   Properties:
@@ -9035,6 +9035,21 @@ Class System.Net.WebClient: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     System.Net.DownloadProgressChangedEventHandler DownloadProgressChanged: 
     System.Net.UploadProgressChangedEventHandler UploadProgressChanged: 
   Methods:
+    add_UploadFileCompleted(UploadFileCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_UploadFileCompleted(UploadFileCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    UploadFileAsync(Uri, String): PrivateScope, Public, HideBySig, HasSecurity
+    UploadFileAsync(Uri, String, String): PrivateScope, Public, HideBySig, HasSecurity
+    UploadFileAsync(Uri, String, String, Object): PrivateScope, Public, HideBySig, HasSecurity
+    add_UploadValuesCompleted(UploadValuesCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_UploadValuesCompleted(UploadValuesCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    UploadValuesAsync(Uri, NameValueCollection): PrivateScope, Public, HideBySig, HasSecurity
+    UploadValuesAsync(Uri, String, NameValueCollection): PrivateScope, Public, HideBySig, HasSecurity
+    UploadValuesAsync(Uri, String, NameValueCollection, Object): PrivateScope, Public, HideBySig, HasSecurity
+    CancelAsync(): PrivateScope, Public, HideBySig
+    add_DownloadProgressChanged(DownloadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_DownloadProgressChanged(DownloadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    add_UploadProgressChanged(UploadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_UploadProgressChanged(UploadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     get_Encoding(): PrivateScope, Public, HideBySig, SpecialName
     set_Encoding(Encoding): PrivateScope, Public, HideBySig, SpecialName
     get_BaseAddress(): PrivateScope, Public, HideBySig, SpecialName
@@ -9112,21 +9127,6 @@ Class System.Net.WebClient: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     UploadDataAsync(Uri, Byte[]): PrivateScope, Public, HideBySig, HasSecurity
     UploadDataAsync(Uri, String, Byte[]): PrivateScope, Public, HideBySig, HasSecurity
     UploadDataAsync(Uri, String, Byte[], Object): PrivateScope, Public, HideBySig, HasSecurity
-    add_UploadFileCompleted(UploadFileCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_UploadFileCompleted(UploadFileCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    UploadFileAsync(Uri, String): PrivateScope, Public, HideBySig, HasSecurity
-    UploadFileAsync(Uri, String, String): PrivateScope, Public, HideBySig, HasSecurity
-    UploadFileAsync(Uri, String, String, Object): PrivateScope, Public, HideBySig, HasSecurity
-    add_UploadValuesCompleted(UploadValuesCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_UploadValuesCompleted(UploadValuesCompletedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    UploadValuesAsync(Uri, NameValueCollection): PrivateScope, Public, HideBySig, HasSecurity
-    UploadValuesAsync(Uri, String, NameValueCollection): PrivateScope, Public, HideBySig, HasSecurity
-    UploadValuesAsync(Uri, String, NameValueCollection, Object): PrivateScope, Public, HideBySig, HasSecurity
-    CancelAsync(): PrivateScope, Public, HideBySig
-    add_DownloadProgressChanged(DownloadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_DownloadProgressChanged(DownloadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_UploadProgressChanged(UploadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_UploadProgressChanged(UploadProgressChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
 Class System.Net.OpenReadCompletedEventHandler: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.MulticastDelegate
     Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -10028,6 +10028,48 @@ Class System.Net.Sockets.Socket: AutoLayout, AnsiClass, Class, Public, BeforeFie
     Boolean MulticastLoopback 'get set' : 
     Boolean EnableBroadcast 'get set' : 
   Methods:
+    GetSocketOption(SocketOptionLevel, SocketOptionName, Byte[]): PrivateScope, Public, HideBySig
+    GetSocketOption(SocketOptionLevel, SocketOptionName, Int32): PrivateScope, Public, HideBySig
+    Poll(Int32, SelectMode): PrivateScope, Public, HideBySig
+    Select(IList, IList, IList, Int32): PrivateScope, Public, Static, HideBySig
+    BeginSendFile(String, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginConnect(EndPoint, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    DuplicateAndClose(Int32): PrivateScope, Public, HideBySig
+    BeginConnect(String, Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginConnect(IPAddress, Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginConnect(IPAddress[], Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginDisconnect(Boolean, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    Disconnect(Boolean): PrivateScope, Public, HideBySig
+    EndConnect(IAsyncResult): PrivateScope, Public, HideBySig
+    EndDisconnect(IAsyncResult): PrivateScope, Public, HideBySig
+    BeginSend(Byte[], Int32, Int32, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginSend(Byte[], Int32, Int32, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginSendFile(String, Byte[], Byte[], TransmitFileOptions, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginSend(IList`1, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginSend(IList`1, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    EndSend(IAsyncResult): PrivateScope, Public, HideBySig
+    EndSend(IAsyncResult, SocketError&(Out)): PrivateScope, Public, HideBySig
+    EndSendFile(IAsyncResult): PrivateScope, Public, HideBySig
+    BeginSendTo(Byte[], Int32, Int32, SocketFlags, EndPoint, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    EndSendTo(IAsyncResult): PrivateScope, Public, HideBySig
+    BeginReceive(Byte[], Int32, Int32, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginReceive(Byte[], Int32, Int32, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginReceive(IList`1, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginReceive(IList`1, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    EndReceive(IAsyncResult): PrivateScope, Public, HideBySig
+    EndReceive(IAsyncResult, SocketError&(Out)): PrivateScope, Public, HideBySig
+    BeginReceiveMessageFrom(Byte[], Int32, Int32, SocketFlags, EndPoint&, AsyncCallback, Object): PrivateScope, Public, HideBySig
+    EndReceiveMessageFrom(IAsyncResult, SocketFlags&, EndPoint&, IPPacketInformation&(Out)): PrivateScope, Public, HideBySig
+    BeginReceiveFrom(Byte[], Int32, Int32, SocketFlags, EndPoint&, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    EndReceiveFrom(IAsyncResult, EndPoint&): PrivateScope, Public, HideBySig
+    BeginAccept(AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginAccept(Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    BeginAccept(Socket, Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
+    EndAccept(IAsyncResult): PrivateScope, Public, HideBySig
+    EndAccept(Byte[]&(Out), IAsyncResult): PrivateScope, Public, HideBySig
+    EndAccept(Byte[]&(Out), Int32&(Out), IAsyncResult): PrivateScope, Public, HideBySig
+    Shutdown(SocketShutdown): PrivateScope, Public, HideBySig
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     AcceptAsync(SocketAsyncEventArgs): PrivateScope, Public, HideBySig
     ConnectAsync(SocketAsyncEventArgs): PrivateScope, Public, HideBySig
     ConnectAsync(SocketType, ProtocolType, SocketAsyncEventArgs): PrivateScope, Public, Static, HideBySig
@@ -10122,48 +10164,6 @@ Class System.Net.Sockets.Socket: AutoLayout, AnsiClass, Class, Public, BeforeFie
     SetSocketOption(SocketOptionLevel, SocketOptionName, Boolean): PrivateScope, Public, HideBySig
     SetSocketOption(SocketOptionLevel, SocketOptionName, Object): PrivateScope, Public, HideBySig
     GetSocketOption(SocketOptionLevel, SocketOptionName): PrivateScope, Public, HideBySig
-    GetSocketOption(SocketOptionLevel, SocketOptionName, Byte[]): PrivateScope, Public, HideBySig
-    GetSocketOption(SocketOptionLevel, SocketOptionName, Int32): PrivateScope, Public, HideBySig
-    Poll(Int32, SelectMode): PrivateScope, Public, HideBySig
-    Select(IList, IList, IList, Int32): PrivateScope, Public, Static, HideBySig
-    BeginSendFile(String, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginConnect(EndPoint, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    DuplicateAndClose(Int32): PrivateScope, Public, HideBySig
-    BeginConnect(String, Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginConnect(IPAddress, Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginConnect(IPAddress[], Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginDisconnect(Boolean, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    Disconnect(Boolean): PrivateScope, Public, HideBySig
-    EndConnect(IAsyncResult): PrivateScope, Public, HideBySig
-    EndDisconnect(IAsyncResult): PrivateScope, Public, HideBySig
-    BeginSend(Byte[], Int32, Int32, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginSend(Byte[], Int32, Int32, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginSendFile(String, Byte[], Byte[], TransmitFileOptions, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginSend(IList`1, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginSend(IList`1, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    EndSend(IAsyncResult): PrivateScope, Public, HideBySig
-    EndSend(IAsyncResult, SocketError&(Out)): PrivateScope, Public, HideBySig
-    EndSendFile(IAsyncResult): PrivateScope, Public, HideBySig
-    BeginSendTo(Byte[], Int32, Int32, SocketFlags, EndPoint, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    EndSendTo(IAsyncResult): PrivateScope, Public, HideBySig
-    BeginReceive(Byte[], Int32, Int32, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginReceive(Byte[], Int32, Int32, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginReceive(IList`1, SocketFlags, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginReceive(IList`1, SocketFlags, SocketError&(Out), AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    EndReceive(IAsyncResult): PrivateScope, Public, HideBySig
-    EndReceive(IAsyncResult, SocketError&(Out)): PrivateScope, Public, HideBySig
-    BeginReceiveMessageFrom(Byte[], Int32, Int32, SocketFlags, EndPoint&, AsyncCallback, Object): PrivateScope, Public, HideBySig
-    EndReceiveMessageFrom(IAsyncResult, SocketFlags&, EndPoint&, IPPacketInformation&(Out)): PrivateScope, Public, HideBySig
-    BeginReceiveFrom(Byte[], Int32, Int32, SocketFlags, EndPoint&, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    EndReceiveFrom(IAsyncResult, EndPoint&): PrivateScope, Public, HideBySig
-    BeginAccept(AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginAccept(Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    BeginAccept(Socket, Int32, AsyncCallback, Object): PrivateScope, Public, HideBySig, HasSecurity
-    EndAccept(IAsyncResult): PrivateScope, Public, HideBySig
-    EndAccept(Byte[]&(Out), IAsyncResult): PrivateScope, Public, HideBySig
-    EndAccept(Byte[]&(Out), Int32&(Out), IAsyncResult): PrivateScope, Public, HideBySig
-    Shutdown(SocketShutdown): PrivateScope, Public, HideBySig
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
 Struct System.Net.Sockets.SocketAsyncOperation: AutoLayout, AnsiClass, Class, Public, Sealed
   :System.Enum
   Fields:
@@ -13691,6 +13691,14 @@ Class System.Diagnostics.Process: AutoLayout, AnsiClass, Class, Public, HasSecur
     System.Diagnostics.DataReceivedEventHandler ErrorDataReceived: 
     System.EventHandler Exited: 
   Methods:
+    WaitForExit(Int32): PrivateScope, Public, HideBySig
+    WaitForExit(): PrivateScope, Public, HideBySig
+    WaitForInputIdle(Int32): PrivateScope, Public, HideBySig
+    WaitForInputIdle(): PrivateScope, Public, HideBySig
+    BeginOutputReadLine(): PrivateScope, Public, HideBySig
+    BeginErrorReadLine(): PrivateScope, Public, HideBySig
+    CancelOutputRead(): PrivateScope, Public, HideBySig
+    CancelErrorRead(): PrivateScope, Public, HideBySig
     add_OutputDataReceived(DataReceivedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_OutputDataReceived(DataReceivedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_ErrorDataReceived(DataReceivedEventHandler): PrivateScope, Public, HideBySig, SpecialName
@@ -13774,14 +13782,6 @@ Class System.Diagnostics.Process: AutoLayout, AnsiClass, Class, Public, HasSecur
     Start(ProcessStartInfo): PrivateScope, Public, Static, HideBySig
     Kill(): PrivateScope, Public, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
-    WaitForExit(Int32): PrivateScope, Public, HideBySig
-    WaitForExit(): PrivateScope, Public, HideBySig
-    WaitForInputIdle(Int32): PrivateScope, Public, HideBySig
-    WaitForInputIdle(): PrivateScope, Public, HideBySig
-    BeginOutputReadLine(): PrivateScope, Public, HideBySig
-    BeginErrorReadLine(): PrivateScope, Public, HideBySig
-    CancelOutputRead(): PrivateScope, Public, HideBySig
-    CancelErrorRead(): PrivateScope, Public, HideBySig
 Class System.Diagnostics.ProcessModule: AutoLayout, AnsiClass, Class, Public, HasSecurity, BeforeFieldInit
   :System.ComponentModel.Component
   Properties:
