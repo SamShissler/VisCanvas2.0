@@ -61,6 +61,14 @@ Struct DomNomSetsLinesBetweenCords: AutoLayout, AnsiClass, Class, Public, Sequen
   :System.ValueType
 Struct DNSRule: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
+Class VisCanvas.loadingForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean loading : Public
+  Methods:
+    updateLabel(String): PrivateScope, Public, HideBySig
+    InitializeComponent(): PrivateScope, Public, HideBySig
 Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.NativeWindow
     Void .ctor(System.Windows.Forms.Form, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -196,9 +204,6 @@ Class VisCanvas.VisCanvas: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Int32 previousClassAmount : Public
     Boolean sortToggleState : Public
     Boolean shifToggleState : Public
-Class VisCanvas.loadingForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CppCLRWinformsProjekt.IntervalGrouping: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.DataGridView, std.vector<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> >\,std::allocator<std::basic_string<char\,std::char_traits<char>\,std::allocator<char> > > >*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

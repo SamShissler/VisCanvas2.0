@@ -7,6 +7,13 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include "loadingForm.h"
+#include <chrono>
+#include <thread>
+
+
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
 //Set up for code cleanup.
 
 // visualizeDomNomVisualization:
@@ -14,6 +21,35 @@
 void OpenGLForm::COpenGL::visualizeDomNomVisualization()
 {
 	domNomVisualization->drawVisualization();
+}
+
+//used as a thread to start up loading form
+void loadLoadingFormFunc(bool* loading)
+{
+	VisCanvas::loadingForm^ form = gcnew VisCanvas::loadingForm();
+	form->Show();
+	form->Update();
+	int n = 0;
+	while (*loading)
+	{
+		string formText;
+		if (n == 0)
+			form->updateLabel("loading");
+		else if (n == 1)
+			form->updateLabel("loading.");
+		else if (n == 2)
+			form->updateLabel("loading..");
+		else if (n == 3)
+		{
+			form->updateLabel("loading...");
+			n = -1;//this way n = 0 upon n++ below
+		}
+		n++;
+
+		form->Update();
+		sleep_until(system_clock::now() + milliseconds(500));//half a second between every update
+	}
+	form->Close();
 }
 
 // generateRulesDNS:
@@ -56,18 +92,20 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 		groups.push_back(toAdd);
 	}
 
-	//reads file PrecisionThresholds.txt which contains a list of precisions. Those precisions are fed into the method one at a time
+	//opens the config file
 	string fileName = "config.txt";
 	ifstream precThreshInp;
 	precThreshInp.open(fileName);
 	vector<float> precThreshs;
-	//string strPrec = "";
+
+	//checks to see if config file was properly opened / found
 	std::size_t found;
 	if (!precThreshInp.is_open())
 	{
 		exit(EXIT_FAILURE);
 	}
 
+	//finds the line in the config file which has "precisionThresholds" and fills precThreshs with all values
 	for(string strPrec; getline(precThreshInp, strPrec);)
 	{
 		found = strPrec.find("PrecisionThresholds");
@@ -89,21 +127,30 @@ void OpenGLForm::COpenGL::generateRulesDNS()
 			break;
 		}
 	}
+	//loading variable used to terminate loadaing thread
+	bool loading = true;
+	std::thread thread_obj(loadLoadingFormFunc, &loading);
 
+	//calls MTBRG for every defined precision threshold from precThreshs
 	for (int i = 0; i < precThreshs.size(); i++)
 	{
 		string beg = "\n\n=============";
 		string mid = to_string(precThreshs[i]);
 		string end = "===============\n\n";
-		rules.push_back(beg + mid + end);
-		//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);
-		//vector < string> Per75 = this->domNomVisualization->MTBRuleGenResults(75.0, groups, classToTest);
+		rules.push_back(beg + mid + end);		
 		pair<vector<string>, vector<DNSRule>> Per = this->domNomVisualization->MTBRGSequential(precThreshs[i], groups, classToTest);
 		for (int i = 0; i < Per.first.size(); i++)
 		{
 			rules.push_back(Per.first.at(i));
 		}
 	}
+
+	//the loading is done, now join threads
+	loading = false;
+	//join thread after termination; loading form closed
+	thread_obj.join();
+	//reset loading for the next rule generation
+	loading = true;
 	/*//====================================================//
 	rules.push_back("\n\n=============25%===============\n\n");
 	//vector <string> Per75 = this->domNomVisualization->ParetoFrontRuleGenWithOverlap(75.0, groups, classToTest);

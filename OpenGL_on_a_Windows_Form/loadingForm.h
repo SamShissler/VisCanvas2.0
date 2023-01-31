@@ -15,7 +15,7 @@ namespace VisCanvas {
 	public ref class loadingForm : public System::Windows::Forms::Form
 	{
 	public:
-		loadingForm(void)
+		loadingForm()
 		{
 			InitializeComponent();
 			//
@@ -34,14 +34,22 @@ namespace VisCanvas {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ loadingLabel;
+
 	protected:
+	private: System::Windows::Forms::Label^ loadingLabel;
+
+	public: void updateLabel(String^ text)
+	{
+		this->loadingLabel->Text = text;
+	}
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+
+	public: bool loading = true;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -58,7 +66,7 @@ namespace VisCanvas {
 			this->loadingLabel->AutoSize = true;
 			this->loadingLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->loadingLabel->Location = System::Drawing::Point(68, 9);
+			this->loadingLabel->Location = System::Drawing::Point(0, 0);
 			this->loadingLabel->Name = L"loadingLabel";
 			this->loadingLabel->Size = System::Drawing::Size(134, 31);
 			this->loadingLabel->TabIndex = 0;
@@ -68,14 +76,17 @@ namespace VisCanvas {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 57);
+			this->ClientSize = System::Drawing::Size(237, 42);
 			this->Controls->Add(this->loadingLabel);
 			this->Name = L"loadingForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"loadingForm";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

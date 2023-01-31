@@ -17,6 +17,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <utility>
+#include "loadingForm.h"
 
 class DomNominalSet 
 {
@@ -35,6 +36,7 @@ public:
 
 	//Data Compiling:
 
+
 	//===Dom-Nom-Set Version===
 	void reCalculateData();
 	vector<unordered_map<double, double>*>* getBlockHeights(vector<vector<unordered_map<double, double>*>*>* valueFreqPerClass);
@@ -43,7 +45,6 @@ public:
 	vector<vector<pair<double, double>>> getSortByPurity(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
 	vector<vector<pair<double, double>>> getSortByFreqency(vector<unordered_map<double, double>*>* blockHeights);
 	vector<vector<pair<double, double>>> getSortByClass(vector<unordered_map<double, double>*>* blockHeights, vector<vector<unordered_map<double, double>*>*>* classPercPerBlock);
-	float loadBarWidth;
 
 	void calculateLinePositions(double worldWidth);
 	
