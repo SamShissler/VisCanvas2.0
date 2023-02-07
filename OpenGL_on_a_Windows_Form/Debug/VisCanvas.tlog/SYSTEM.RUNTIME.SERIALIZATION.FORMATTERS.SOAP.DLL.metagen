@@ -27,15 +27,15 @@ Class System.Runtime.Serialization.Formatters.Soap.SoapFormatter: AutoLayout, An
     set_TypeFormat(FormatterTypeStyle): PrivateScope, Public, HideBySig, SpecialName
     get_AssemblyFormat(): PrivateScope, Public, HideBySig, SpecialName
     set_AssemblyFormat(FormatterAssemblyStyle): PrivateScope, Public, HideBySig, SpecialName
-    get_FilterLevel(): PrivateScope, Public, HideBySig, SpecialName
     set_FilterLevel(TypeFilterLevel): PrivateScope, Public, HideBySig, SpecialName
+    get_FilterLevel(): PrivateScope, Public, HideBySig, SpecialName
+    get_SurrogateSelector(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_SurrogateSelector(ISurrogateSelector): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Binder(SerializationBinder): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Binder(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Context(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    set_Context(StreamingContext): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
     Deserialize(Stream): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Deserialize(Stream, HeaderHandler): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Serialize(Stream, Object): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Serialize(Stream, Object, Header[]): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
-    get_SurrogateSelector(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_SurrogateSelector(ISurrogateSelector): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Binder(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Binder(SerializationBinder): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    get_Context(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName
-    set_Context(StreamingContext): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask, SpecialName

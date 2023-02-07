@@ -1,4 +1,5 @@
   VisCanvas.AdditionalSettings.resources - Embedded, ContainedInManifestFile, 
+  VisCanvas.loadingForm.resources - Embedded, ContainedInManifestFile, 
   VisCanvas.SchemeEditor.resources - Embedded, ContainedInManifestFile, 
   VisCanvas.Settings.resources - Embedded, ContainedInManifestFile, 
   VisCanvas.VisCanvas.resources - Embedded, ContainedInManifestFile, 
@@ -60,6 +61,14 @@ Struct DomNomSetsLinesBetweenCords: AutoLayout, AnsiClass, Class, Public, Sequen
   :System.ValueType
 Struct DNSRule: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
+Class VisCanvas.loadingForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean loading : Public
+  Methods:
+    updateLabel(String): PrivateScope, Public, HideBySig
+    InitializeComponent(): PrivateScope, Public, HideBySig
 Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.NativeWindow
     Void .ctor(System.Windows.Forms.Form, Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -68,6 +77,7 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     DataInterface* file : Public
   Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
     SetFilePath(basic_string<char\,std::char_traits<char>\,std::allocator<char> >*): PrivateScope, Public, HideBySig
     incrementSelectedSet(): PrivateScope, Public, HideBySig
     incrementSelectedSetIndexCluster(): PrivateScope, Public, HideBySig
@@ -144,7 +154,6 @@ Class OpenGLForm.COpenGL: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     generateRulesDNS(): PrivateScope, Public, HideBySig
     DNScalculateLinePosition(): PrivateScope, Public, HideBySig
     visualizeDomNomVisualization(): PrivateScope, Public, HideBySig
-    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class VisCanvas.AdditionalSettings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(OpenGLForm.COpenGL): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

@@ -1301,7 +1301,7 @@ namespace VisCanvas {
 				 // 
 				 // Column1
 				 // 
-				 this->Column1->HeaderText = L"Set Name";
+				 this->Column1->HeaderText = L"Case Name";
 				 this->Column1->Name = L"Column1";
 				 this->Column1->ReadOnly = true;
 				 this->Column1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
@@ -1309,7 +1309,7 @@ namespace VisCanvas {
 				 // 
 				 // dataGridViewTextBoxColumn1
 				 // 
-				 this->dataGridViewTextBoxColumn1->HeaderText = L"Set Data";
+				 this->dataGridViewTextBoxColumn1->HeaderText = L"Case Data";
 				 this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
 				 this->dataGridViewTextBoxColumn1->Resizable = System::Windows::Forms::DataGridViewTriState::True;
 				 this->dataGridViewTextBoxColumn1->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;

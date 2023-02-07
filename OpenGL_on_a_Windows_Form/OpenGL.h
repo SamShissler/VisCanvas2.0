@@ -8,7 +8,7 @@ Purpose: CS 481 Project
 
 #include "stdafx.h"
 #include "DomNominalSet.h"
-#include <atlstr.h>
+//#include <atlstr.h>
 #include <vector>
 #include <unordered_map>
 #include <windows.h>
@@ -88,7 +88,6 @@ namespace OpenGLForm
 				this->Init();
 			}
 		}
-
 
 		// SET THE FILE PATH THAT WILL BE USED TO GRAPH THE DATA
 		bool SetFilePath(std::string filepath)

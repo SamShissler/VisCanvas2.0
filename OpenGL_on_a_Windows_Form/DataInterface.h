@@ -52,9 +52,11 @@ public:
 	// returns whether class names will be read from basic files 
 	bool isReadClassNames();
 
-	// returns datadimensions to originally calculated data.
+	// returns datadimensions to save state.
 	void returnToOriginalDataDimensions();
 
+	// records data dimensions for a save state.
+	void recordOriginalDataDimensions();
 
 	//A string to add to edit to add to a linguistic description.
 	string linguisticAddition = "";
@@ -480,6 +482,8 @@ private:
 	std::vector<DataClass> dataClasses;
 	// a vector to hold the data sets
 	std::vector<DataSet> dataSets;
+	// a vector tp hold saved data sets.
+	std::vector<DataSet> savedDataSets;
 	// a field to hold the color of the background set
 	ColorCustom backgroundColor;
 	// a field to hold the color of the selected set

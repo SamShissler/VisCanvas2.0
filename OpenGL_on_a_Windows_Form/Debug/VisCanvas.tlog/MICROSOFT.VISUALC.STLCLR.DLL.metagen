@@ -19,8 +19,8 @@ Interface Microsoft.VisualC.StlClr.Generic.INode`1[TValue]: AutoLayout, AnsiClas
   Properties:
     TValue& _Value 'get set' : 
   Methods:
-    get__Value(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     set__Value(TValue&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get__Value(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     container(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     is_head(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     next_node(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -172,8 +172,8 @@ Class Microsoft.VisualC.StlClr.Generic.ReverseRandomAccessIterator`1[TValue]: Au
   Properties:
     TValue Item [Int32] 'get set' : 
   Methods:
-    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
     set_Item(Int32, TValue): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
     op_Assign(ReverseRandomAccessIterator`1 IsImplicitlyDereferenced): PrivateScope, Public, HideBySig, SpecialName
     op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
     base(): PrivateScope, Public, HideBySig
@@ -353,8 +353,8 @@ Class Microsoft.VisualC.StlClr.Generic.ContainerRandomAccessIterator`1[TValue]: 
   Properties:
     TValue Item [Int32] 'get set' : 
   Methods:
-    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
     set_Item(Int32, TValue): PrivateScope, Public, HideBySig, SpecialName
+    get_Item(Int32): PrivateScope, Public, HideBySig, SpecialName
     op_Assign(ContainerRandomAccessIterator`1 IsImplicitlyDereferenced): PrivateScope, Public, HideBySig, SpecialName
     op_Implicit(): PrivateScope, Public, HideBySig, SpecialName
     Clone(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
@@ -466,12 +466,12 @@ Interface Microsoft.VisualC.StlClr.IDeque`1[TValue]: AutoLayout, AnsiClass, Clas
     TValue back_item 'get set' : 
     TValue front_item 'get set' : 
   Methods:
+    set_Item(Int32, TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_Item(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    set_back_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_back_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     get_front_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     set_front_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    get_back_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    set_back_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    get_Item(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    set_Item(Int32, TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     at(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     front(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     back(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -509,8 +509,8 @@ Class Microsoft.VisualC.StlClr.DequeEnumeratorBase`1[TValue]: AutoLayout, AnsiCl
   Properties:
     System.Object Current 'get set' : 
   Methods:
-    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Current(Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     MoveNext(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Reset(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
 Class Microsoft.VisualC.StlClr.DequeEnumerator`1[TValue]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -523,8 +523,8 @@ Class Microsoft.VisualC.StlClr.DequeEnumerator`1[TValue]: AutoLayout, AnsiClass,
   Properties:
     TValue Current 'get set' : 
   Methods:
-    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Current(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     MoveNext(): PrivateScope, Public, Virtual, HideBySig
     Reset(): PrivateScope, Public, Virtual, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
@@ -558,10 +558,10 @@ Interface Microsoft.VisualC.StlClr.IList`1[TValue]: AutoLayout, AnsiClass, Class
     TValue back_item 'get set' : 
     TValue front_item 'get set' : 
   Methods:
-    get_front_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    set_front_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     get_back_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     set_back_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    set_front_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_front_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     front(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     back(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     begin(ContainerBidirectionalIterator`1&): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -645,8 +645,8 @@ Interface Microsoft.VisualC.StlClr.IPriorityQueue`2[TValue,TCont]: AutoLayout, A
   Properties:
     TValue top_item 'get set' : 
   Methods:
-    get_top_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     set_top_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_top_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     top(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     get_container(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     value_comp(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -663,8 +663,8 @@ Interface Microsoft.VisualC.StlClr.IStack`2[TValue,TCont]: AutoLayout, AnsiClass
   Properties:
     TValue top_item 'get set' : 
   Methods:
-    get_top_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     set_top_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_top_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     top(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     get_container(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     size(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -699,12 +699,12 @@ Interface Microsoft.VisualC.StlClr.IVector`1[TValue]: AutoLayout, AnsiClass, Cla
     TValue back_item 'get set' : 
     TValue front_item 'get set' : 
   Methods:
-    get_front_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    set_front_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    get_back_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
-    set_back_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     get_Item(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     set_Item(Int32, TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    set_back_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_back_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    get_front_item(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
+    set_front_item(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     at(Int32): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     front(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
     back(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
@@ -754,8 +754,8 @@ Class Microsoft.VisualC.StlClr.VectorEnumerator`1[TValue]: AutoLayout, AnsiClass
   Properties:
     TValue Current 'get set' : 
   Methods:
-    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Current(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     MoveNext(): PrivateScope, Public, Virtual, HideBySig
     Reset(): PrivateScope, Public, Virtual, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
@@ -820,8 +820,8 @@ Class Microsoft.VisualC.StlClr.HashEnumerator`2[TKey,TValue]: AutoLayout, AnsiCl
   Properties:
     TValue Current 'get set' : 
   Methods:
-    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Current(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     MoveNext(): PrivateScope, Public, Virtual, HideBySig
     Reset(): PrivateScope, Public, Virtual, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
@@ -865,8 +865,8 @@ Class Microsoft.VisualC.StlClr.TreeEnumeratorBase`2[TKey,TValue]: AutoLayout, An
   Properties:
     System.Object Current 'get set' : 
   Methods:
-    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Current(Object): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     MoveNext(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     Reset(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
 Class Microsoft.VisualC.StlClr.TreeEnumerator`2[TKey,TValue]: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
@@ -880,8 +880,8 @@ Class Microsoft.VisualC.StlClr.TreeEnumerator`2[TKey,TValue]: AutoLayout, AnsiCl
   Properties:
     TValue Current 'get set' : 
   Methods:
-    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     set_Current(TValue): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
+    get_Current(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     MoveNext(): PrivateScope, Public, Virtual, HideBySig
     Reset(): PrivateScope, Public, Virtual, HideBySig
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig

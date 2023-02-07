@@ -1,738 +1,247 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2929,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
-C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2929,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
-  stdafx.cpp
-  AssemblyInfo.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\AssemblyInfo.cpp(40,29): warning C4947: 'System::Security::Permissions::SecurityAction::RequestMinimum': marked as obsolete
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\AssemblyInfo.cpp(40,29): message : Message: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
-  ClassScheme.cpp
-  ColorCustom.cpp
-  CoordinateGroupGeneralizer.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupGeneralizer.cpp(18,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupGeneralizer.cpp(37,20): warning C4018: '<': signed/unsigned mismatch
-  CoordinateGroupingWindow.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(46,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(65,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(99,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(121,19): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupingWindow.cpp(129,21): warning C4018: '<': signed/unsigned mismatch
-  CoordinateGroupMaker.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\CoordinateGroupMaker.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-  DataClass.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataClass.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataClass.cpp(105,20): warning C4018: '<': signed/unsigned mismatch
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2203,5): warning MSB3245: Could not resolve this reference. Could not locate the assembly "Microsoft.VisualBasic.PowerPacks.Vs". Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2827,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2827,5): warning MSB3284: Cannot get the file path for type library "05bfd3f1-6319-4f30-b752-c7a22889bcc4" version 1.0. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
   DataInterface.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(152,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(200,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1797,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1847,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2714,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2726,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2756,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2761,11): warning C4804: '<': unsafe use of type 'bool' in operation
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2765,16): warning C4804: '>': unsafe use of type 'bool' in operation
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2812,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(354,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(424,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(432,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(440,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(448,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(456,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(472,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(479,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(502,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(520,17): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(529,25): warning C4018: '<=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(578,35): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(588,35): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(772,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(778,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(795,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(801,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(815,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(821,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(842,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(858,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(877,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(894,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(901,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1051,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1118,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1230,30): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1575,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1594,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1598,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1610,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1650,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1693,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1725,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1736,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1774,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1788,14): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1810,14): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1832,14): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1849,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1865,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1881,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1988,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2033,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2051,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2098,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2165,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2195,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2243,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2267,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2278,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2280,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2298,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2309,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2319,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2369,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2384,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2396,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2411,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2428,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2444,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2456,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2471,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2488,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2494,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2496,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2523,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2535,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2541,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2543,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2571,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2588,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2615,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2627,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2642,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2661,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2668,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2694,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2707,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2737,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2744,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2770,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2783,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2872,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2886,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2897,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2907,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2909,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3005,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3019,40): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3029,40): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3067,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3080,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3101,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3110,48): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3147,26): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3244,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3246,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3423,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3435,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3470,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3484,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3523,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3531,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3541,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3655,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3729,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4005,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4019,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4029,20): warning C4018: '<': signed/unsigned mismatch
-  DataNode.cpp
-  DataSet.cpp
-  Dimension.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(41,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(111,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(117,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(126,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(140,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Dimension.cpp(166,22): warning C4018: '<': signed/unsigned mismatch
-  DNSRule.cpp
-  DomNominalSet.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(125,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(146,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(189,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(288,65): warning C4244: 'argument': conversion from 'double' to 'const unsigned int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(338,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(383,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(431,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(436,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(507,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(518,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(540,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(564,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(648,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(661,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(679,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(693,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(708,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(722,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(736,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(751,24): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(752,25): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(820,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(834,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(846,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(868,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(909,42): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1235,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1237,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1255,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1274,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1279,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1453,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1455,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
-          with
-          [
-              _Ty=boolean
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1584,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1653,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1737,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1750,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1774,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1794,17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(1806,70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2064,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2087,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2092,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2099,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2253,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2263,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2368,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2379,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2471,51): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2472,54): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2473,41): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2475,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2490,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2502,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2517,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2529,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2543,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2555,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2756,33): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2867,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2886,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2961,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2969,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(2997,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3053,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3072,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3147,30): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3155,30): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3232,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3251,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3305,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3334,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3342,29): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3403,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3421,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3490,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3498,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3538,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3698,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3703,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3723,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3756,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3770,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3773,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3789,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3792,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3844,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3851,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3869,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3872,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3892,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3895,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3915,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3919,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3954,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3959,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3966,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3979,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3981,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3998,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4028,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4034,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4037,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4055,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4070,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4083,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4097,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4110,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4119,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4124,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4133,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4153,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4161,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4165,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4182,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4214,19): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4225,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4240,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4246,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4257,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4265,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4306,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4311,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4321,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4326,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4334,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4339,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4349,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4361,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4376,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4386,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4399,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4453,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4667,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4674,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4678,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4718,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(4730,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5038,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5051,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5069,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5083,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5098,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5112,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5126,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5141,24): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5142,25): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5154,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5156,17): warning C4244: 'initializing': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5174,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5193,35): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5198,16): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5363,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5365,35): warning C4805: '==': unsafe mix of type '_Ty' and type 'bool' in operation
-          with
-          [
-              _Ty=boolean
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5412,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5427,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5460,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5484,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5491,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5495,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5516,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5582,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5597,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5632,27): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5636,28): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5684,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5725,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5765,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5769,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5825,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5838,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5841,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5872,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5884,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5888,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5891,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5909,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5913,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5916,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5951,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5964,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(5977,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6014,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6036,21): warning C4018: '<=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6051,112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6055,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6060,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6063,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6081,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6086,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6088,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6108,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6124,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6129,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6132,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6157,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6163,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6166,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6199,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6213,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6218,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6228,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6271,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6314,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6329,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6355,19): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6401,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6422,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6424,10): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6478,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6536,96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6536,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6542,19): warning C4244: 'argument': conversion from 'GLdouble' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(6673,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(193,16): warning C4244: 'initializing': conversion from 'double' to '_Ty1', possible loss of data
-          with
-          [
-              _Ty1=int
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3548): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
-          with
-          [
-              _Kty=int,
-              _Ty=std::string,
-              _Ty1=double,
-              _Other1=double &,
-              _Other2=std::string &
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3548): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1&,std::string&,0>(_Other1,_Other2) noexcept(false)' being compiled
-          with
-          [
-              _Kty=int,
-              _Ty=std::string,
-              _Ty1=double,
-              _Other1=double &,
-              _Other2=std::string &
-          ]
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\utility(193,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
-          with
-          [
-              _Ty=double
-          ]
-          and
-          [
-              _Ty1=int
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3549): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
-          with
-          [
-              _Kty=int,
-              _Ty=std::string,
-              _Ty1=double,
-              _Other1=double,
-              _Other2=std::string &
-          ]
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DomNominalSet.cpp(3549): message : see reference to function template instantiation 'std::pair<const _Kty,_Ty>::pair<_Ty1,std::string&,0>(_Other1 &&,_Other2) noexcept(false)' being compiled
-          with
-          [
-              _Kty=int,
-              _Ty=std::string,
-              _Ty1=double,
-              _Other1=double,
-              _Other2=std::string &
-          ]
-  DomNomSetsLinesBetweenCords.cpp
-  GraphNote.cpp
-  AdditionalSettings.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-  IntervalGrouping.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\IntervalGrouping.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-  IntervalGroupStarting.cpp
-  MonotoneBooleanChains.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(44,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(47,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(56,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(59,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(69,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(78,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(86,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(109,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(123,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(133,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(137,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(149,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(153,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(171,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(175,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(194,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(200,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(221,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(247,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(249,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(274,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(285,23): warning C4018: '<=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(302,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(335,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(346,23): warning C4018: '<=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(370,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(380,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(423,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(448,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(459,23): warning C4018: '<=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(468,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(496,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(516,25): warning C4018: '<': signed/unsigned mismatch
-  NominalColorPicker.cpp
-  Generating Code...
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\MonotoneBooleanChains.cpp(241): warning C4715: 'MonotoneBooleanChains::getNextLink': not all control paths return a value
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(652): warning C4172: returning address of local variable or temporary: str
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(244): warning C4715: 'DataInterface::saveToFile': not all control paths return a value
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779): warning C4700: uninitialized local variable 'editedAttributes' used
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-  Compiling...
-  NominalGrouping.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(14,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(83,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(86,18): warning C4018: '>': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(93,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalGrouping.cpp(96,18): warning C4018: '<': signed/unsigned mismatch
-  NominalSubgroupBuilder.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(15,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(42,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(48,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(63,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(120,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(123,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NominalSubgroupBuilder.cpp(207,20): warning C4018: '<': signed/unsigned mismatch
-  NonMonotonicSelector.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicSelector.cpp(28,20): warning C4018: '<': signed/unsigned mismatch
-  NSGGroupAssingment.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(15,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(67,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(82,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(86,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(99,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(105,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NSGGroupAssingment.cpp(110,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1328,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1391,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1453,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1476,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1602,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1820,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2103,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2151,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2170,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2413,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2422,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2434,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2445,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2591,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2614,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2623,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2701,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2724,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2732,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(152,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(200,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1805,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1855,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2723,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2735,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2765,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2770,11): warning C4804: '<': unsafe use of type 'bool' in operation
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2774,16): warning C4804: '>': unsafe use of type 'bool' in operation
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2788,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2821,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(286,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(293,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(305,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(313,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(385,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(468,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(476,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(484,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(492,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(500,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(516,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(523,21): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(546,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(564,17): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(573,25): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(622,35): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(632,35): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(816,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(822,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(839,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(845,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(859,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(865,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(886,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(902,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(921,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(938,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(945,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1095,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1162,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1274,30): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1619,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1638,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1642,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1654,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1694,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1737,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1769,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1780,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1818,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1832,14): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1854,14): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1876,14): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1893,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1909,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(1925,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2032,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2077,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2095,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2142,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2209,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2239,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2287,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2311,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2322,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2324,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2342,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2353,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2363,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2413,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2428,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2440,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2455,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2472,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2488,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2500,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2515,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2532,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2538,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2540,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2567,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2579,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2585,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2587,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2615,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2632,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2659,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2671,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2686,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2705,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2712,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2738,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2751,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2781,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2788,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2814,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2827,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2916,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2930,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2941,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2951,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(2953,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3049,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3063,40): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3073,40): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3111,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3124,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3145,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3154,48): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3191,26): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3288,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3290,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3467,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3479,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3514,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3528,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3567,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3575,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3585,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3699,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(3773,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4049,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4063,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(4073,20): warning C4018: '<': signed/unsigned mismatch
   OpenGL.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(24,22): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(113,20): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(88,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(99,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(108,20): warning C4018: '<': signed/unsigned mismatch
-  OrderScheme.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(154,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(175,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(186,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(212,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(215,18): warning C4018: '>': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(222,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(225,18): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(249,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(276,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(302,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(330,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrderScheme.cpp(358,20): warning C4018: '<': signed/unsigned mismatch
-  OrdinalGrouping.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OrdinalGrouping.cpp(14,20): warning C4018: '<': signed/unsigned mismatch
-  pch.cpp
-  RatioGroupStarting.cpp
-  RatioGrouping.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\RatioGrouping.cpp(31,20): warning C4018: '<': signed/unsigned mismatch
-  Scheme.cpp
-  SchemeEditor.cpp
-  SetCluster.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(45,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(66,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(92,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(111,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(129,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(160,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(173,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(186,20): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(202,27): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(213,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(221,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(233,21): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(262,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(280,32): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(294,23): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\SetCluster.cpp(294,64): warning C4018: '>=': signed/unsigned mismatch
-  Settings.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-  NormalizationStyle.cpp
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(24,22): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\LoadingScreen.h(113,20): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1328,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1391,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1453,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1476,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1602,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1820,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2103,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2151,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2170,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2413,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2422,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2434,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2445,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2591,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2614,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2623,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2701,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2724,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2732,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(90,31): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(101,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.cpp(108,21): warning C4018: '<': signed/unsigned mismatch
+  threadedLoadingForm.cpp
   VisCanvas.cpp
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1329,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1392,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1454,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1477,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1603,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1821,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1831,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2104,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2152,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2171,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2414,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2423,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2435,26): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2446,14): warning C4018: '>=': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2592,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2615,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2624,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2702,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2725,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2733,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(152,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(200,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1797,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1847,22): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2714,21): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2726,23): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2756,24): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2761,11): warning C4804: '<': unsafe use of type 'bool' in operation
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2765,16): warning C4804: '>': unsafe use of type 'bool' in operation
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779,25): warning C4018: '<': signed/unsigned mismatch
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2812,24): warning C4018: '<': signed/unsigned mismatch
-  VisCanvasHelp.cpp
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1328,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1391,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1453,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1476,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1602,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1820,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,1): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,60): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,43): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(1830,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2103,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2151,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2170,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2413,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2422,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2434,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2445,14): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2591,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2614,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2623,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2701,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2724,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(2732,19): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1806,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1841,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(1880,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Settings.h(2269,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(232,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(251,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(281,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\Subsets.h(296,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(152,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\NonMonotonicChoice.h(200,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1805,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(1855,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2723,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2735,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2765,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2770,11): warning C4804: '<': unsafe use of type 'bool' in operation
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2774,16): warning C4804: '>': unsafe use of type 'bool' in operation
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2788,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2821,24): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2779): warning C4700: uninitialized local variable 'editedAttributes' used
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-D:\Resarch Jobs\Project Clones\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(127): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(126): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2788): warning C4700: uninitialized local variable 'editedAttributes' used
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(126): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(696): warning C4172: returning address of local variable or temporary: str
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\DataInterface.cpp(244): warning C4715: 'DataInterface::saveToFile': not all control paths return a value
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\VisCanvas.h(2788): warning C4700: uninitialized local variable 'editedAttributes' used
+C:\Users\infer\Desktop\Github2\VisCanvas2.0\OpenGL_on_a_Windows_Form\OpenGL.h(126): warning C4715: 'OpenGLForm::COpenGL::SetFilePath': not all control paths return a value
   AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  OpenGL_on_a_Windows_Form.vcxproj -> D:\Resarch Jobs\Project Clones\VisCanvas2.0\Debug\VisCanvas.exe
+  OpenGL_on_a_Windows_Form.vcxproj -> C:\Users\infer\Desktop\Github2\VisCanvas2.0\Debug\VisCanvas.exe

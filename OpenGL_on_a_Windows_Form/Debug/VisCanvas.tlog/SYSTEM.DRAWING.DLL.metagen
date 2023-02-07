@@ -271,6 +271,49 @@ Class System.Drawing.Brushes: AutoLayout, AnsiClass, Class, Public, Sealed, Befo
     System.Drawing.Brush Yellow 'get ' : 
     System.Drawing.Brush YellowGreen 'get ' : 
   Methods:
+    get_MediumPurple(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MidnightBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MintCream(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MistyRose(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Moccasin(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_NavajoWhite(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Navy(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OldLace(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Olive(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OliveDrab(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Orange(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OrangeRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Orchid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleGoldenrod(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PapayaWhip(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PeachPuff(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Peru(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Pink(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Plum(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PowderBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Purple(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Red(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_RosyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_RoyalBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SaddleBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Salmon(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SandyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SeaShell(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Sienna(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Silver(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SkyBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SlateGray(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Snow(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_SpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_SteelBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_Tan(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -369,49 +412,6 @@ Class System.Drawing.Brushes: AutoLayout, AnsiClass, Class, Public, Sealed, Befo
     get_MediumAquamarine(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MediumBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MediumOrchid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumPurple(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MidnightBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MintCream(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MistyRose(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Moccasin(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_NavajoWhite(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Navy(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OldLace(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Olive(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OliveDrab(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Orange(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OrangeRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Orchid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleGoldenrod(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PapayaWhip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PeachPuff(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Peru(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Pink(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Plum(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PowderBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Purple(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Red(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_RosyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_RoyalBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SaddleBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Salmon(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SandyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SeaShell(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Sienna(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Silver(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SkyBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SlateGray(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Snow(): PrivateScope, Public, Static, HideBySig, SpecialName
 Class System.Drawing.BufferedGraphics: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   Interfaces:
     System.IDisposable
@@ -597,6 +597,49 @@ Struct System.Drawing.Color: AutoLayout, AnsiClass, Class, Public, SequentialLay
     Boolean IsSystemColor 'get ' : 
     System.String Name 'get ' : 
   Methods:
+    get_MediumPurple(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MidnightBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MintCream(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MistyRose(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Moccasin(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_NavajoWhite(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Navy(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OldLace(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Olive(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OliveDrab(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Orange(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OrangeRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Orchid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleGoldenrod(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PapayaWhip(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PeachPuff(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Peru(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Pink(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Plum(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PowderBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Purple(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Red(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_RosyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_RoyalBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SaddleBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Salmon(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SandyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SeaShell(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Sienna(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Silver(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SkyBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SlateGray(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Snow(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_SpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_SteelBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_Tan(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -720,49 +763,6 @@ Struct System.Drawing.Color: AutoLayout, AnsiClass, Class, Public, SequentialLay
     get_MediumAquamarine(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MediumBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MediumOrchid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumPurple(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MidnightBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MintCream(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MistyRose(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Moccasin(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_NavajoWhite(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Navy(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OldLace(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Olive(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OliveDrab(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Orange(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OrangeRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Orchid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleGoldenrod(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PapayaWhip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PeachPuff(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Peru(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Pink(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Plum(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PowderBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Purple(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Red(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_RosyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_RoyalBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SaddleBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Salmon(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SandyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SeaShell(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Sienna(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Silver(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SkyBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SlateGray(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Snow(): PrivateScope, Public, Static, HideBySig, SpecialName
 Class System.Drawing.ColorConverter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.ComponentModel.TypeConverter
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -867,47 +867,6 @@ Class System.Drawing.Graphics: AutoLayout, AnsiClass, Class, Public, Sealed, Bef
     System.Drawing.RectangleF VisibleClipBounds 'get ' : 
     Boolean IsVisibleClipEmpty 'get ' : 
   Methods:
-    MeasureString(String, Font, SizeF): PrivateScope, Public, HideBySig
-    MeasureString(String, Font, SizeF, StringFormat): PrivateScope, Public, HideBySig
-    MeasureString(String, Font): PrivateScope, Public, HideBySig
-    MeasureString(String, Font, Int32): PrivateScope, Public, HideBySig
-    MeasureString(String, Font, Int32, StringFormat): PrivateScope, Public, HideBySig
-    MeasureCharacterRanges(String, Font, RectangleF, StringFormat): PrivateScope, Public, HideBySig
-    DrawIcon(Icon, Int32, Int32): PrivateScope, Public, HideBySig
-    DrawIcon(Icon, Rectangle): PrivateScope, Public, HideBySig
-    DrawIconUnstretched(Icon, Rectangle): PrivateScope, Public, HideBySig
-    DrawImage(Image, PointF): PrivateScope, Public, HideBySig
-    DrawImage(Image, Single, Single): PrivateScope, Public, HideBySig
-    DrawImage(Image, RectangleF): PrivateScope, Public, HideBySig
-    DrawImage(Image, Single, Single, Single, Single): PrivateScope, Public, HideBySig
-    DrawImage(Image, Point): PrivateScope, Public, HideBySig
-    DrawImage(Image, Int32, Int32): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle): PrivateScope, Public, HideBySig
-    DrawImage(Image, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    DrawImageUnscaled(Image, Point): PrivateScope, Public, HideBySig
-    DrawImageUnscaled(Image, Int32, Int32): PrivateScope, Public, HideBySig
-    DrawImageUnscaled(Image, Rectangle): PrivateScope, Public, HideBySig
-    DrawImageUnscaled(Image, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    DrawImageUnscaledAndClipped(Image, Rectangle): PrivateScope, Public, HideBySig
-    DrawImage(Image, PointF[]): PrivateScope, Public, HideBySig
-    DrawImage(Image, Point[]): PrivateScope, Public, HideBySig
-    DrawImage(Image, Single, Single, RectangleF, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, Int32, Int32, Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, RectangleF, RectangleF, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle, Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, PointF[], RectangleF, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, PointF[], RectangleF, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
-    DrawImage(Image, PointF[], RectangleF, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
-    DrawImage(Image, PointF[], RectangleF, GraphicsUnit, ImageAttributes, DrawImageAbort, Int32): PrivateScope, Public, HideBySig
-    DrawImage(Image, Point[], Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, Point[], Rectangle, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
-    DrawImage(Image, Point[], Rectangle, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
-    DrawImage(Image, Point[], Rectangle, GraphicsUnit, ImageAttributes, DrawImageAbort, Int32): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes, DrawImageAbort, IntPtr): PrivateScope, Public, HideBySig
-    DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit): PrivateScope, Public, HideBySig
     DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
     DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
     DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit, ImageAttributes, DrawImageAbort, IntPtr): PrivateScope, Public, HideBySig
@@ -987,6 +946,91 @@ Class System.Drawing.Graphics: AutoLayout, AnsiClass, Class, Public, Sealed, Bef
     BeginContainer(Rectangle, Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
     AddMetafileComment(Byte[]): PrivateScope, Public, HideBySig
     GetHalftonePalette(): PrivateScope, Public, Static, HideBySig
+    DrawCurve(Pen, PointF[], Single): PrivateScope, Public, HideBySig
+    DrawCurve(Pen, PointF[], Int32, Int32): PrivateScope, Public, HideBySig
+    DrawCurve(Pen, PointF[], Int32, Int32, Single): PrivateScope, Public, HideBySig
+    DrawCurve(Pen, Point[]): PrivateScope, Public, HideBySig
+    DrawCurve(Pen, Point[], Single): PrivateScope, Public, HideBySig
+    DrawCurve(Pen, Point[], Int32, Int32, Single): PrivateScope, Public, HideBySig
+    DrawClosedCurve(Pen, PointF[]): PrivateScope, Public, HideBySig
+    DrawClosedCurve(Pen, PointF[], Single, FillMode): PrivateScope, Public, HideBySig
+    DrawClosedCurve(Pen, Point[]): PrivateScope, Public, HideBySig
+    DrawClosedCurve(Pen, Point[], Single, FillMode): PrivateScope, Public, HideBySig
+    Clear(Color): PrivateScope, Public, HideBySig
+    FillRectangle(Brush, RectangleF): PrivateScope, Public, HideBySig
+    FillRectangle(Brush, Single, Single, Single, Single): PrivateScope, Public, HideBySig
+    FillRectangle(Brush, Rectangle): PrivateScope, Public, HideBySig
+    FillRectangle(Brush, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    FillRectangles(Brush, RectangleF[]): PrivateScope, Public, HideBySig
+    FillRectangles(Brush, Rectangle[]): PrivateScope, Public, HideBySig
+    FillPolygon(Brush, PointF[]): PrivateScope, Public, HideBySig
+    FillPolygon(Brush, PointF[], FillMode): PrivateScope, Public, HideBySig
+    FillPolygon(Brush, Point[]): PrivateScope, Public, HideBySig
+    FillPolygon(Brush, Point[], FillMode): PrivateScope, Public, HideBySig
+    FillEllipse(Brush, RectangleF): PrivateScope, Public, HideBySig
+    FillEllipse(Brush, Single, Single, Single, Single): PrivateScope, Public, HideBySig
+    FillEllipse(Brush, Rectangle): PrivateScope, Public, HideBySig
+    FillEllipse(Brush, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    FillPie(Brush, Rectangle, Single, Single): PrivateScope, Public, HideBySig
+    FillPie(Brush, Single, Single, Single, Single, Single, Single): PrivateScope, Public, HideBySig
+    FillPie(Brush, Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    FillPath(Brush, GraphicsPath): PrivateScope, Public, HideBySig
+    FillClosedCurve(Brush, PointF[]): PrivateScope, Public, HideBySig
+    FillClosedCurve(Brush, PointF[], FillMode): PrivateScope, Public, HideBySig
+    FillClosedCurve(Brush, PointF[], FillMode, Single): PrivateScope, Public, HideBySig
+    FillClosedCurve(Brush, Point[]): PrivateScope, Public, HideBySig
+    FillClosedCurve(Brush, Point[], FillMode): PrivateScope, Public, HideBySig
+    FillClosedCurve(Brush, Point[], FillMode, Single): PrivateScope, Public, HideBySig
+    FillRegion(Brush, Region): PrivateScope, Public, HideBySig
+    DrawString(String, Font, Brush, Single, Single): PrivateScope, Public, HideBySig
+    DrawString(String, Font, Brush, PointF): PrivateScope, Public, HideBySig
+    DrawString(String, Font, Brush, Single, Single, StringFormat): PrivateScope, Public, HideBySig
+    DrawString(String, Font, Brush, PointF, StringFormat): PrivateScope, Public, HideBySig
+    DrawString(String, Font, Brush, RectangleF): PrivateScope, Public, HideBySig
+    DrawString(String, Font, Brush, RectangleF, StringFormat): PrivateScope, Public, HideBySig
+    MeasureString(String, Font, SizeF, StringFormat, Int32&(Out), Int32&(Out)): PrivateScope, Public, HideBySig
+    MeasureString(String, Font, PointF, StringFormat): PrivateScope, Public, HideBySig
+    MeasureString(String, Font, SizeF): PrivateScope, Public, HideBySig
+    MeasureString(String, Font, SizeF, StringFormat): PrivateScope, Public, HideBySig
+    MeasureString(String, Font): PrivateScope, Public, HideBySig
+    MeasureString(String, Font, Int32): PrivateScope, Public, HideBySig
+    MeasureString(String, Font, Int32, StringFormat): PrivateScope, Public, HideBySig
+    MeasureCharacterRanges(String, Font, RectangleF, StringFormat): PrivateScope, Public, HideBySig
+    DrawIcon(Icon, Int32, Int32): PrivateScope, Public, HideBySig
+    DrawIcon(Icon, Rectangle): PrivateScope, Public, HideBySig
+    DrawIconUnstretched(Icon, Rectangle): PrivateScope, Public, HideBySig
+    DrawImage(Image, PointF): PrivateScope, Public, HideBySig
+    DrawImage(Image, Single, Single): PrivateScope, Public, HideBySig
+    DrawImage(Image, RectangleF): PrivateScope, Public, HideBySig
+    DrawImage(Image, Single, Single, Single, Single): PrivateScope, Public, HideBySig
+    DrawImage(Image, Point): PrivateScope, Public, HideBySig
+    DrawImage(Image, Int32, Int32): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle): PrivateScope, Public, HideBySig
+    DrawImage(Image, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    DrawImageUnscaled(Image, Point): PrivateScope, Public, HideBySig
+    DrawImageUnscaled(Image, Int32, Int32): PrivateScope, Public, HideBySig
+    DrawImageUnscaled(Image, Rectangle): PrivateScope, Public, HideBySig
+    DrawImageUnscaled(Image, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    DrawImageUnscaledAndClipped(Image, Rectangle): PrivateScope, Public, HideBySig
+    DrawImage(Image, PointF[]): PrivateScope, Public, HideBySig
+    DrawImage(Image, Point[]): PrivateScope, Public, HideBySig
+    DrawImage(Image, Single, Single, RectangleF, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, Int32, Int32, Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, RectangleF, RectangleF, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle, Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, PointF[], RectangleF, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, PointF[], RectangleF, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
+    DrawImage(Image, PointF[], RectangleF, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
+    DrawImage(Image, PointF[], RectangleF, GraphicsUnit, ImageAttributes, DrawImageAbort, Int32): PrivateScope, Public, HideBySig
+    DrawImage(Image, Point[], Rectangle, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, Point[], Rectangle, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
+    DrawImage(Image, Point[], Rectangle, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
+    DrawImage(Image, Point[], Rectangle, GraphicsUnit, ImageAttributes, DrawImageAbort, Int32): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes, DrawImageAbort): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle, Single, Single, Single, Single, GraphicsUnit, ImageAttributes, DrawImageAbort, IntPtr): PrivateScope, Public, HideBySig
+    DrawImage(Image, Rectangle, Int32, Int32, Int32, Int32, GraphicsUnit): PrivateScope, Public, HideBySig
     FromHdc(IntPtr): PrivateScope, Public, Static, HideBySig
     FromHdcInternal(IntPtr): PrivateScope, Public, Static, HideBySig, HasSecurity
     FromHdc(IntPtr, IntPtr): PrivateScope, Public, Static, HideBySig
@@ -1072,50 +1116,6 @@ Class System.Drawing.Graphics: AutoLayout, AnsiClass, Class, Public, Sealed, Bef
     DrawPolygon(Pen, Point[]): PrivateScope, Public, HideBySig
     DrawPath(Pen, GraphicsPath): PrivateScope, Public, HideBySig
     DrawCurve(Pen, PointF[]): PrivateScope, Public, HideBySig
-    DrawCurve(Pen, PointF[], Single): PrivateScope, Public, HideBySig
-    DrawCurve(Pen, PointF[], Int32, Int32): PrivateScope, Public, HideBySig
-    DrawCurve(Pen, PointF[], Int32, Int32, Single): PrivateScope, Public, HideBySig
-    DrawCurve(Pen, Point[]): PrivateScope, Public, HideBySig
-    DrawCurve(Pen, Point[], Single): PrivateScope, Public, HideBySig
-    DrawCurve(Pen, Point[], Int32, Int32, Single): PrivateScope, Public, HideBySig
-    DrawClosedCurve(Pen, PointF[]): PrivateScope, Public, HideBySig
-    DrawClosedCurve(Pen, PointF[], Single, FillMode): PrivateScope, Public, HideBySig
-    DrawClosedCurve(Pen, Point[]): PrivateScope, Public, HideBySig
-    DrawClosedCurve(Pen, Point[], Single, FillMode): PrivateScope, Public, HideBySig
-    Clear(Color): PrivateScope, Public, HideBySig
-    FillRectangle(Brush, RectangleF): PrivateScope, Public, HideBySig
-    FillRectangle(Brush, Single, Single, Single, Single): PrivateScope, Public, HideBySig
-    FillRectangle(Brush, Rectangle): PrivateScope, Public, HideBySig
-    FillRectangle(Brush, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    FillRectangles(Brush, RectangleF[]): PrivateScope, Public, HideBySig
-    FillRectangles(Brush, Rectangle[]): PrivateScope, Public, HideBySig
-    FillPolygon(Brush, PointF[]): PrivateScope, Public, HideBySig
-    FillPolygon(Brush, PointF[], FillMode): PrivateScope, Public, HideBySig
-    FillPolygon(Brush, Point[]): PrivateScope, Public, HideBySig
-    FillPolygon(Brush, Point[], FillMode): PrivateScope, Public, HideBySig
-    FillEllipse(Brush, RectangleF): PrivateScope, Public, HideBySig
-    FillEllipse(Brush, Single, Single, Single, Single): PrivateScope, Public, HideBySig
-    FillEllipse(Brush, Rectangle): PrivateScope, Public, HideBySig
-    FillEllipse(Brush, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    FillPie(Brush, Rectangle, Single, Single): PrivateScope, Public, HideBySig
-    FillPie(Brush, Single, Single, Single, Single, Single, Single): PrivateScope, Public, HideBySig
-    FillPie(Brush, Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    FillPath(Brush, GraphicsPath): PrivateScope, Public, HideBySig
-    FillClosedCurve(Brush, PointF[]): PrivateScope, Public, HideBySig
-    FillClosedCurve(Brush, PointF[], FillMode): PrivateScope, Public, HideBySig
-    FillClosedCurve(Brush, PointF[], FillMode, Single): PrivateScope, Public, HideBySig
-    FillClosedCurve(Brush, Point[]): PrivateScope, Public, HideBySig
-    FillClosedCurve(Brush, Point[], FillMode): PrivateScope, Public, HideBySig
-    FillClosedCurve(Brush, Point[], FillMode, Single): PrivateScope, Public, HideBySig
-    FillRegion(Brush, Region): PrivateScope, Public, HideBySig
-    DrawString(String, Font, Brush, Single, Single): PrivateScope, Public, HideBySig
-    DrawString(String, Font, Brush, PointF): PrivateScope, Public, HideBySig
-    DrawString(String, Font, Brush, Single, Single, StringFormat): PrivateScope, Public, HideBySig
-    DrawString(String, Font, Brush, PointF, StringFormat): PrivateScope, Public, HideBySig
-    DrawString(String, Font, Brush, RectangleF): PrivateScope, Public, HideBySig
-    DrawString(String, Font, Brush, RectangleF, StringFormat): PrivateScope, Public, HideBySig
-    MeasureString(String, Font, SizeF, StringFormat, Int32&(Out), Int32&(Out)): PrivateScope, Public, HideBySig
-    MeasureString(String, Font, PointF, StringFormat): PrivateScope, Public, HideBySig
 Class System.Drawing.Graphics+DrawImageAbort: AutoLayout, AnsiClass, Class, NestedPublic, Sealed
   :System.MulticastDelegate
     Void .ctor(System.Object, IntPtr): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -1582,6 +1582,49 @@ Class System.Drawing.Pens: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeF
     System.Drawing.Pen Yellow 'get ' : 
     System.Drawing.Pen YellowGreen 'get ' : 
   Methods:
+    get_MediumPurple(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumSpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MediumVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MidnightBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MintCream(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_MistyRose(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Moccasin(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_NavajoWhite(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Navy(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OldLace(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Olive(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OliveDrab(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Orange(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_OrangeRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Orchid(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleGoldenrod(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PaleVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PapayaWhip(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PeachPuff(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Peru(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Pink(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Plum(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_PowderBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Purple(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Red(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_RosyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_RoyalBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SaddleBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Salmon(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SandyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SeaShell(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Sienna(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Silver(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SkyBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_SlateGray(): PrivateScope, Public, Static, HideBySig, SpecialName
+    get_Snow(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_SpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_SteelBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_Tan(): PrivateScope, Public, Static, HideBySig, SpecialName
@@ -1680,49 +1723,6 @@ Class System.Drawing.Pens: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeF
     get_MediumAquamarine(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MediumBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
     get_MediumOrchid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumPurple(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumSpringGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MediumVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MidnightBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MintCream(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_MistyRose(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Moccasin(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_NavajoWhite(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Navy(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OldLace(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Olive(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OliveDrab(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Orange(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_OrangeRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Orchid(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleGoldenrod(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleTurquoise(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PaleVioletRed(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PapayaWhip(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PeachPuff(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Peru(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Pink(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Plum(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_PowderBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Purple(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Red(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_RosyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_RoyalBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SaddleBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Salmon(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SandyBrown(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SeaGreen(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SeaShell(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Sienna(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Silver(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SkyBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SlateBlue(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_SlateGray(): PrivateScope, Public, Static, HideBySig, SpecialName
-    get_Snow(): PrivateScope, Public, Static, HideBySig, SpecialName
 Struct System.Drawing.Point: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, Serializable, BeforeFieldInit
   :System.ValueType
     Void .ctor(Int32, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -3047,6 +3047,17 @@ Class System.Drawing.Drawing2D.GraphicsPath: AutoLayout, AnsiClass, Class, Publi
     Byte[] PathTypes 'get ' : 
     System.Drawing.PointF[] PathPoints 'get ' : 
   Methods:
+    Flatten(Matrix, Single): PrivateScope, Public, HideBySig
+    Widen(Pen): PrivateScope, Public, HideBySig
+    Widen(Pen, Matrix): PrivateScope, Public, HideBySig
+    Widen(Pen, Matrix, Single): PrivateScope, Public, HideBySig
+    Warp(PointF[], RectangleF): PrivateScope, Public, HideBySig
+    Warp(PointF[], RectangleF, Matrix): PrivateScope, Public, HideBySig
+    Warp(PointF[], RectangleF, Matrix, WarpMode): PrivateScope, Public, HideBySig
+    Warp(PointF[], RectangleF, Matrix, WarpMode, Single): PrivateScope, Public, HideBySig
+    get_PointCount(): PrivateScope, Public, HideBySig, SpecialName
+    get_PathTypes(): PrivateScope, Public, HideBySig, SpecialName
+    get_PathPoints(): PrivateScope, Public, HideBySig, SpecialName
     Clone(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig, VtableLayoutMask
     Reset(): PrivateScope, Public, HideBySig
@@ -3126,17 +3137,6 @@ Class System.Drawing.Drawing2D.GraphicsPath: AutoLayout, AnsiClass, Class, Publi
     GetBounds(Matrix, Pen): PrivateScope, Public, HideBySig
     Flatten(): PrivateScope, Public, HideBySig
     Flatten(Matrix): PrivateScope, Public, HideBySig
-    Flatten(Matrix, Single): PrivateScope, Public, HideBySig
-    Widen(Pen): PrivateScope, Public, HideBySig
-    Widen(Pen, Matrix): PrivateScope, Public, HideBySig
-    Widen(Pen, Matrix, Single): PrivateScope, Public, HideBySig
-    Warp(PointF[], RectangleF): PrivateScope, Public, HideBySig
-    Warp(PointF[], RectangleF, Matrix): PrivateScope, Public, HideBySig
-    Warp(PointF[], RectangleF, Matrix, WarpMode): PrivateScope, Public, HideBySig
-    Warp(PointF[], RectangleF, Matrix, WarpMode, Single): PrivateScope, Public, HideBySig
-    get_PointCount(): PrivateScope, Public, HideBySig, SpecialName
-    get_PathTypes(): PrivateScope, Public, HideBySig, SpecialName
-    get_PathPoints(): PrivateScope, Public, HideBySig, SpecialName
 Class System.Drawing.Drawing2D.GraphicsPathIterator: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.MarshalByRefObject
     Void .ctor(System.Drawing.Drawing2D.GraphicsPath): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

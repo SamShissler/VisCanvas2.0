@@ -113,7 +113,7 @@ namespace VisCanvas {
 				 this->tabPage1->Padding = System::Windows::Forms::Padding(3);
 				 this->tabPage1->Size = System::Drawing::Size(404, 203);
 				 this->tabPage1->TabIndex = 0;
-				 this->tabPage1->Text = L"Hyperblock";
+				 this->tabPage1->Text = L"Hypercube";
 				 // 
 				 // applyButton
 				 // 

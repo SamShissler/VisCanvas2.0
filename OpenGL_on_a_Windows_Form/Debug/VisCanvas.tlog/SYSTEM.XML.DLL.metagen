@@ -367,6 +367,46 @@ Class System.Xml.XmlConvert: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     Char[] crt : Assembly, Static
     Char[] WhitespaceChars : Assembly, Static, InitOnly
   Methods:
+    ToDateTime(String, String[]): PrivateScope, Public, Static, HideBySig
+    ToDateTime(String, XmlDateTimeSerializationMode): PrivateScope, Public, Static, HideBySig
+    ToDateTimeOffset(String): PrivateScope, Public, Static, HideBySig
+    ToDateTimeOffset(String, String): PrivateScope, Public, Static, HideBySig
+    ToDateTimeOffset(String, String[]): PrivateScope, Public, Static, HideBySig
+    ToGuid(String): PrivateScope, Public, Static, HideBySig
+    TryToGuid(String, Guid&(Out)): PrivateScope, Assembly, Static, HideBySig
+    ToUri(String): PrivateScope, Assembly, Static, HideBySig
+    TryToUri(String, Uri&(Out)): PrivateScope, Assembly, Static, HideBySig
+    StrEqual(Char[], Int32, Int32, String): PrivateScope, Assembly, Static, HideBySig
+    TrimString(String): PrivateScope, Assembly, Static, HideBySig
+    TrimStringStart(String): PrivateScope, Assembly, Static, HideBySig
+    TrimStringEnd(String): PrivateScope, Assembly, Static, HideBySig
+    SplitString(String): PrivateScope, Assembly, Static, HideBySig
+    SplitString(String, StringSplitOptions): PrivateScope, Assembly, Static, HideBySig
+    IsNegativeZero(Double): PrivateScope, Assembly, Static, HideBySig
+    VerifyCharData(String, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    VerifyCharData(String, ExceptionType, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    VerifyCharData(Char[], Int32, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    EscapeValueForDebuggerDisplay(String): PrivateScope, Assembly, Static, HideBySig
+    CreateException(String, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateException(String, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateException(String, String, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateException(String, String, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateException(String, String[], ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateException(String, String[], ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidSurrogatePairException(Char, Char): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidSurrogatePairException(Char, Char, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidSurrogatePairException(Char, Char, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidHighSurrogateCharException(Char): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidHighSurrogateCharException(Char, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidHighSurrogateCharException(Char, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidCharException(Char[], Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidCharException(Char[], Int32, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidCharException(String, Int32): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidCharException(String, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidCharException(Char, Char): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidCharException(Char, Char, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidNameCharException(String, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
+    CreateInvalidNameArgumentException(String, String): PrivateScope, Assembly, Static, HideBySig
     EncodeName(String): PrivateScope, Public, Static, HideBySig
     EncodeNmToken(String): PrivateScope, Public, Static, HideBySig
     EncodeLocalName(String): PrivateScope, Public, Static, HideBySig
@@ -452,46 +492,6 @@ Class System.Xml.XmlConvert: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     TryToTimeSpan(String, TimeSpan&(Out)): PrivateScope, Assembly, Static, HideBySig
     ToDateTime(String): PrivateScope, Public, Static, HideBySig (Obsolete)
     ToDateTime(String, String): PrivateScope, Public, Static, HideBySig
-    ToDateTime(String, String[]): PrivateScope, Public, Static, HideBySig
-    ToDateTime(String, XmlDateTimeSerializationMode): PrivateScope, Public, Static, HideBySig
-    ToDateTimeOffset(String): PrivateScope, Public, Static, HideBySig
-    ToDateTimeOffset(String, String): PrivateScope, Public, Static, HideBySig
-    ToDateTimeOffset(String, String[]): PrivateScope, Public, Static, HideBySig
-    ToGuid(String): PrivateScope, Public, Static, HideBySig
-    TryToGuid(String, Guid&(Out)): PrivateScope, Assembly, Static, HideBySig
-    ToUri(String): PrivateScope, Assembly, Static, HideBySig
-    TryToUri(String, Uri&(Out)): PrivateScope, Assembly, Static, HideBySig
-    StrEqual(Char[], Int32, Int32, String): PrivateScope, Assembly, Static, HideBySig
-    TrimString(String): PrivateScope, Assembly, Static, HideBySig
-    TrimStringStart(String): PrivateScope, Assembly, Static, HideBySig
-    TrimStringEnd(String): PrivateScope, Assembly, Static, HideBySig
-    SplitString(String): PrivateScope, Assembly, Static, HideBySig
-    SplitString(String, StringSplitOptions): PrivateScope, Assembly, Static, HideBySig
-    IsNegativeZero(Double): PrivateScope, Assembly, Static, HideBySig
-    VerifyCharData(String, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    VerifyCharData(String, ExceptionType, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    VerifyCharData(Char[], Int32, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    EscapeValueForDebuggerDisplay(String): PrivateScope, Assembly, Static, HideBySig
-    CreateException(String, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateException(String, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateException(String, String, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateException(String, String, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateException(String, String[], ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateException(String, String[], ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidSurrogatePairException(Char, Char): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidSurrogatePairException(Char, Char, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidSurrogatePairException(Char, Char, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidHighSurrogateCharException(Char): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidHighSurrogateCharException(Char, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidHighSurrogateCharException(Char, ExceptionType, Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidCharException(Char[], Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidCharException(Char[], Int32, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidCharException(String, Int32): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidCharException(String, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidCharException(Char, Char): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidCharException(Char, Char, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidNameCharException(String, Int32, ExceptionType): PrivateScope, Assembly, Static, HideBySig
-    CreateInvalidNameArgumentException(String, String): PrivateScope, Assembly, Static, HideBySig
 Class System.Xml.XmlDownloadManager: AutoLayout, AnsiClass, Class, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
@@ -1681,6 +1681,19 @@ Class System.Xml.XmlReader: AutoLayout, AnsiClass, Class, Public, Abstract, Befo
     Boolean IsDefaultInternal 'get ' : 
     System.Xml.IDtdInfo DtdInfo 'get ' : 
   Methods:
+    Create(String, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
+    Create(String, XmlReaderSettings, XmlParserContext): PrivateScope, Public, Static, HideBySig
+    Create(Stream): PrivateScope, Public, Static, HideBySig
+    Create(Stream, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
+    Create(Stream, XmlReaderSettings, String): PrivateScope, Public, Static, HideBySig
+    Create(Stream, XmlReaderSettings, XmlParserContext): PrivateScope, Public, Static, HideBySig
+    Create(TextReader): PrivateScope, Public, Static, HideBySig
+    Create(TextReader, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
+    Create(TextReader, XmlReaderSettings, String): PrivateScope, Public, Static, HideBySig
+    Create(TextReader, XmlReaderSettings, XmlParserContext): PrivateScope, Public, Static, HideBySig
+    Create(XmlReader, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
+    CreateSqlReader(Stream, XmlReaderSettings, XmlParserContext): PrivateScope, Assembly, Static, HideBySig
+    CalcBufferSize(Stream): PrivateScope, Assembly, Static, HideBySig
     get_Settings(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
     get_NodeType(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract, SpecialName
     get_Name(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, SpecialName
@@ -1798,19 +1811,6 @@ Class System.Xml.XmlReader: AutoLayout, AnsiClass, Class, Public, Abstract, Befo
     GetEncoding(XmlReader): PrivateScope, Assembly, Static, HideBySig
     GetV1ConformanceLevel(XmlReader): PrivateScope, Assembly, Static, HideBySig
     Create(String): PrivateScope, Public, Static, HideBySig
-    Create(String, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
-    Create(String, XmlReaderSettings, XmlParserContext): PrivateScope, Public, Static, HideBySig
-    Create(Stream): PrivateScope, Public, Static, HideBySig
-    Create(Stream, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
-    Create(Stream, XmlReaderSettings, String): PrivateScope, Public, Static, HideBySig
-    Create(Stream, XmlReaderSettings, XmlParserContext): PrivateScope, Public, Static, HideBySig
-    Create(TextReader): PrivateScope, Public, Static, HideBySig
-    Create(TextReader, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
-    Create(TextReader, XmlReaderSettings, String): PrivateScope, Public, Static, HideBySig
-    Create(TextReader, XmlReaderSettings, XmlParserContext): PrivateScope, Public, Static, HideBySig
-    Create(XmlReader, XmlReaderSettings): PrivateScope, Public, Static, HideBySig
-    CreateSqlReader(Stream, XmlReaderSettings, XmlParserContext): PrivateScope, Assembly, Static, HideBySig
-    CalcBufferSize(Stream): PrivateScope, Assembly, Static, HideBySig
 Class System.Xml.XmlWrappingReader: AutoLayout, AnsiClass, Class, BeforeFieldInit
   :System.Xml.XmlReader
     Void .ctor(System.Xml.XmlReader): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
@@ -2463,6 +2463,52 @@ Class System.Xml.XmlTextReaderImpl: AutoLayout, AnsiClass, Class, BeforeFieldIni
     System.Xml.ConformanceLevel V1ComformanceLevel 'get ' : 
     Boolean DisableUndeclaredEntityCheck 'set' : 
   Methods:
+    set_DtdParserProxy_CurrentPosition(Int32): PrivateScope, Assembly, HideBySig, SpecialName
+    get_DtdParserProxy_EntityStackLength(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_DtdParserProxy_IsEntityEolNormalized(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_DtdParserProxy_ValidationEventHandling(): PrivateScope, Assembly, HideBySig, SpecialName
+    set_DtdParserProxy_ValidationEventHandling(IValidationEventHandling): PrivateScope, Assembly, HideBySig, SpecialName
+    DtdParserProxy_OnNewLine(Int32): PrivateScope, Assembly, HideBySig
+    get_DtdParserProxy_LineNo(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_DtdParserProxy_LineStartPosition(): PrivateScope, Assembly, HideBySig, SpecialName
+    DtdParserProxy_ReadData(): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_ParseNumericCharRef(StringBuilder): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_ParseNamedCharRef(Boolean, StringBuilder): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_ParsePI(StringBuilder): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_ParseComment(StringBuilder): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_PushEntity(IDtdEntityInfo, Int32&(Out)): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_PopEntity(IDtdEntityInfo&(Out), Int32&(Out)): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_PushExternalSubset(String, String): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_PushInternalDtd(String, String): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_Throw(Exception): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_OnSystemId(String, LineInfo, LineInfo): PrivateScope, Assembly, HideBySig
+    DtdParserProxy_OnPublicId(String, LineInfo, LineInfo): PrivateScope, Assembly, HideBySig
+    Close(Boolean): PrivateScope, Assembly, HideBySig
+    get_DtdInfo(): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride, SpecialName
+    SetDtdInfo(IDtdInfo): PrivateScope, Assembly, HideBySig
+    set_ValidationEventHandling(IValidationEventHandling): PrivateScope, Assembly, HideBySig, SpecialName
+    set_OnDefaultAttributeUse(OnDefaultAttributeUseDelegate): PrivateScope, Assembly, HideBySig, SpecialName
+    set_XmlValidatingReaderCompatibilityMode(Boolean): PrivateScope, Assembly, HideBySig, SpecialName
+    get_FragmentType(): PrivateScope, Assembly, HideBySig, SpecialName
+    ChangeCurrentNodeType(XmlNodeType): PrivateScope, Assembly, HideBySig
+    GetResolver(): PrivateScope, Assembly, HideBySig
+    get_InternalSchemaType(): PrivateScope, Assembly, HideBySig, SpecialName
+    set_InternalSchemaType(Object): PrivateScope, Assembly, HideBySig, SpecialName
+    get_InternalTypedValue(): PrivateScope, Assembly, HideBySig, SpecialName
+    set_InternalTypedValue(Object): PrivateScope, Assembly, HideBySig, SpecialName
+    get_StandAlone(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_NamespaceManager(): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride, SpecialName
+    get_V1Compat(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_V1ComformanceLevel(): PrivateScope, Assembly, HideBySig, SpecialName
+    AddDefaultAttributeNonDtd(SchemaAttDef): PrivateScope, Assembly, HideBySig
+    set_DisableUndeclaredEntityCheck(Boolean): PrivateScope, Assembly, HideBySig, SpecialName
+    AdjustLineInfo(Char[], Int32, Int32, Boolean, LineInfo&): PrivateScope, Assembly, Static, HideBySig
+    AdjustLineInfo(String, Int32, Int32, Boolean, LineInfo&): PrivateScope, Assembly, Static, HideBySig
+    AdjustLineInfo(Char*, Int32, Boolean, LineInfo&): PrivateScope, Assembly, Static, HideBySig
+    StripSpaces(String): PrivateScope, Assembly, Static, HideBySig
+    StripSpaces(Char[], Int32, Int32&): PrivateScope, Assembly, Static, HideBySig
+    BlockCopyChars(Char[], Int32, Char[], Int32, Int32): PrivateScope, Assembly, Static, HideBySig
+    BlockCopy(Byte[], Int32, Byte[], Int32, Int32): PrivateScope, Assembly, Static, HideBySig
     get_Settings(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_NodeType(): PrivateScope, Public, Virtual, HideBySig, SpecialName
     get_Name(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -2541,52 +2587,6 @@ Class System.Xml.XmlTextReaderImpl: AutoLayout, AnsiClass, Class, BeforeFieldIni
     get_DtdParserProxy_ParsingBuffer(): PrivateScope, Assembly, HideBySig, SpecialName
     get_DtdParserProxy_ParsingBufferLength(): PrivateScope, Assembly, HideBySig, SpecialName
     get_DtdParserProxy_CurrentPosition(): PrivateScope, Assembly, HideBySig, SpecialName
-    set_DtdParserProxy_CurrentPosition(Int32): PrivateScope, Assembly, HideBySig, SpecialName
-    get_DtdParserProxy_EntityStackLength(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_DtdParserProxy_IsEntityEolNormalized(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_DtdParserProxy_ValidationEventHandling(): PrivateScope, Assembly, HideBySig, SpecialName
-    set_DtdParserProxy_ValidationEventHandling(IValidationEventHandling): PrivateScope, Assembly, HideBySig, SpecialName
-    DtdParserProxy_OnNewLine(Int32): PrivateScope, Assembly, HideBySig
-    get_DtdParserProxy_LineNo(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_DtdParserProxy_LineStartPosition(): PrivateScope, Assembly, HideBySig, SpecialName
-    DtdParserProxy_ReadData(): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_ParseNumericCharRef(StringBuilder): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_ParseNamedCharRef(Boolean, StringBuilder): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_ParsePI(StringBuilder): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_ParseComment(StringBuilder): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_PushEntity(IDtdEntityInfo, Int32&(Out)): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_PopEntity(IDtdEntityInfo&(Out), Int32&(Out)): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_PushExternalSubset(String, String): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_PushInternalDtd(String, String): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_Throw(Exception): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_OnSystemId(String, LineInfo, LineInfo): PrivateScope, Assembly, HideBySig
-    DtdParserProxy_OnPublicId(String, LineInfo, LineInfo): PrivateScope, Assembly, HideBySig
-    Close(Boolean): PrivateScope, Assembly, HideBySig
-    get_DtdInfo(): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride, SpecialName
-    SetDtdInfo(IDtdInfo): PrivateScope, Assembly, HideBySig
-    set_ValidationEventHandling(IValidationEventHandling): PrivateScope, Assembly, HideBySig, SpecialName
-    set_OnDefaultAttributeUse(OnDefaultAttributeUseDelegate): PrivateScope, Assembly, HideBySig, SpecialName
-    set_XmlValidatingReaderCompatibilityMode(Boolean): PrivateScope, Assembly, HideBySig, SpecialName
-    get_FragmentType(): PrivateScope, Assembly, HideBySig, SpecialName
-    ChangeCurrentNodeType(XmlNodeType): PrivateScope, Assembly, HideBySig
-    GetResolver(): PrivateScope, Assembly, HideBySig
-    get_InternalSchemaType(): PrivateScope, Assembly, HideBySig, SpecialName
-    set_InternalSchemaType(Object): PrivateScope, Assembly, HideBySig, SpecialName
-    get_InternalTypedValue(): PrivateScope, Assembly, HideBySig, SpecialName
-    set_InternalTypedValue(Object): PrivateScope, Assembly, HideBySig, SpecialName
-    get_StandAlone(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_NamespaceManager(): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride, SpecialName
-    get_V1Compat(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_V1ComformanceLevel(): PrivateScope, Assembly, HideBySig, SpecialName
-    AddDefaultAttributeNonDtd(SchemaAttDef): PrivateScope, Assembly, HideBySig
-    set_DisableUndeclaredEntityCheck(Boolean): PrivateScope, Assembly, HideBySig, SpecialName
-    AdjustLineInfo(Char[], Int32, Int32, Boolean, LineInfo&): PrivateScope, Assembly, Static, HideBySig
-    AdjustLineInfo(String, Int32, Int32, Boolean, LineInfo&): PrivateScope, Assembly, Static, HideBySig
-    AdjustLineInfo(Char*, Int32, Boolean, LineInfo&): PrivateScope, Assembly, Static, HideBySig
-    StripSpaces(String): PrivateScope, Assembly, Static, HideBySig
-    StripSpaces(Char[], Int32, Int32&): PrivateScope, Assembly, Static, HideBySig
-    BlockCopyChars(Char[], Int32, Char[], Int32, Int32): PrivateScope, Assembly, Static, HideBySig
-    BlockCopy(Byte[], Int32, Byte[], Int32, Int32): PrivateScope, Assembly, Static, HideBySig
 Class System.Xml.XmlTextReaderImpl+DtdParserProxy: AutoLayout, AnsiClass, Class, NestedAssembly, BeforeFieldInit
     Void .ctor(System.Xml.XmlTextReaderImpl): PrivateScope, Assembly, HideBySig, SpecialName, RTSpecialName
   Interfaces:
@@ -3431,6 +3431,10 @@ Class System.Xml.XPath.XPathNavigator: AutoLayout, AnsiClass, Class, Public, Abs
     UInt32 IndexInParent 'get ' : 
     System.String UniqueId 'get ' : 
   Methods:
+    GetContentKindMask(XPathNodeType): PrivateScope, Assembly, Static, HideBySig
+    GetKindMask(XPathNodeType): PrivateScope, Assembly, Static, HideBySig
+    IsText(XPathNodeType): PrivateScope, Assembly, Static, HideBySig
+    BuildSubtree(XmlReader, XmlWriter): PrivateScope, Assembly, HideBySig
     ToString(): PrivateScope, Public, Virtual, HideBySig
     get_IsNode(): PrivateScope, Public, Final, Virtual, HideBySig, SpecialName
     get_XmlType(): PrivateScope, Public, Virtual, HideBySig, SpecialName
@@ -3553,10 +3557,6 @@ Class System.Xml.XPath.XPathNavigator: AutoLayout, AnsiClass, Class, Public, Abs
     get_IndexInParent(): PrivateScope, Assembly, HideBySig, SpecialName
     get_UniqueId(): PrivateScope, Assembly, Virtual, HideBySig, VtableLayoutMask, CheckAccessOnOverride, SpecialName
     GetNamespaces(IXmlNamespaceResolver): PrivateScope, Assembly, Static, HideBySig
-    GetContentKindMask(XPathNodeType): PrivateScope, Assembly, Static, HideBySig
-    GetKindMask(XPathNodeType): PrivateScope, Assembly, Static, HideBySig
-    IsText(XPathNodeType): PrivateScope, Assembly, Static, HideBySig
-    BuildSubtree(XmlReader, XmlWriter): PrivateScope, Assembly, HideBySig
 Struct System.Xml.XPath.XPathNavigator+DebuggerDisplayProxy: AutoLayout, AnsiClass, Class, NestedAssembly, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
     Void .ctor(System.Xml.XPath.XPathNavigator): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -4182,6 +4182,24 @@ Class System.Xml.XmlDocument: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     System.Xml.XmlNodeChangedEventHandler NodeChanging: 
     System.Xml.XmlNodeChangedEventHandler NodeChanged: 
   Methods:
+    add_NodeChanged(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    remove_NodeChanged(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
+    GetEventArgs(XmlNode, XmlNode, XmlNode, String, String, XmlNodeChangedAction): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
+    GetInsertEventArgsForLoad(XmlNode, XmlNode): PrivateScope, Assembly, HideBySig
+    BeforeEvent(XmlNodeChangedEventArgs): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
+    AfterEvent(XmlNodeChangedEventArgs): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
+    GetDefaultAttribute(XmlElement, String, String, String): PrivateScope, Assembly, HideBySig
+    get_Version(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_Encoding(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_Standalone(): PrivateScope, Assembly, HideBySig, SpecialName
+    GetEntityNode(String): PrivateScope, Assembly, HideBySig
+    get_SchemaInfo(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    get_BaseURI(): PrivateScope, Public, Virtual, HideBySig, SpecialName
+    SetBaseURI(String): PrivateScope, Assembly, HideBySig
+    AppendChildForLoad(XmlNode, XmlDocument): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
+    get_XPNodeType(): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride, SpecialName
+    get_HasEntityReferences(): PrivateScope, Assembly, HideBySig, SpecialName
+    get_NamespaceXml(): PrivateScope, Assembly, HideBySig, SpecialName
     get_DtdSchemaInfo(): PrivateScope, Assembly, HideBySig, SpecialName
     set_DtdSchemaInfo(SchemaInfo): PrivateScope, Assembly, HideBySig, SpecialName
     CheckName(String): PrivateScope, Assembly, Static, HideBySig
@@ -4280,24 +4298,6 @@ Class System.Xml.XmlDocument: AutoLayout, AnsiClass, Class, Public, BeforeFieldI
     remove_NodeRemoved(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     add_NodeChanging(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
     remove_NodeChanging(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    add_NodeChanged(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    remove_NodeChanged(XmlNodeChangedEventHandler): PrivateScope, Public, HideBySig, SpecialName
-    GetEventArgs(XmlNode, XmlNode, XmlNode, String, String, XmlNodeChangedAction): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
-    GetInsertEventArgsForLoad(XmlNode, XmlNode): PrivateScope, Assembly, HideBySig
-    BeforeEvent(XmlNodeChangedEventArgs): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
-    AfterEvent(XmlNodeChangedEventArgs): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
-    GetDefaultAttribute(XmlElement, String, String, String): PrivateScope, Assembly, HideBySig
-    get_Version(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_Encoding(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_Standalone(): PrivateScope, Assembly, HideBySig, SpecialName
-    GetEntityNode(String): PrivateScope, Assembly, HideBySig
-    get_SchemaInfo(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    get_BaseURI(): PrivateScope, Public, Virtual, HideBySig, SpecialName
-    SetBaseURI(String): PrivateScope, Assembly, HideBySig
-    AppendChildForLoad(XmlNode, XmlDocument): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride
-    get_XPNodeType(): PrivateScope, Assembly, Virtual, HideBySig, CheckAccessOnOverride, SpecialName
-    get_HasEntityReferences(): PrivateScope, Assembly, HideBySig, SpecialName
-    get_NamespaceXml(): PrivateScope, Assembly, HideBySig, SpecialName
 Class System.Xml.XmlDocumentFragment: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Xml.XmlNode
   Properties:
@@ -10993,6 +10993,8 @@ Class System.Xml.Schema.XmlValueConverter: AutoLayout, AnsiClass, Class, Abstrac
 Class System.Xml.Schema.XmlBaseConverter: AutoLayout, AnsiClass, Class, Abstract, BeforeFieldInit
   :System.Xml.Schema.XmlValueConverter
   Methods:
+    DateTimeOffsetToDateTime(DateTimeOffset): PrivateScope, Assembly, Static, HideBySig
+    DecimalToInt32(Decimal): PrivateScope, Assembly, Static, HideBySig
     ToBoolean(Boolean): PrivateScope, Public, Virtual, HideBySig
     ToBoolean(DateTime): PrivateScope, Public, Virtual, HideBySig
     ToBoolean(DateTimeOffset): PrivateScope, Public, Virtual, HideBySig
@@ -11096,8 +11098,6 @@ Class System.Xml.Schema.XmlBaseConverter: AutoLayout, AnsiClass, Class, Abstract
     ChangeType(String, Type, IXmlNamespaceResolver): PrivateScope, Public, Virtual, HideBySig
     ChangeType(String, Type): PrivateScope, Public, Virtual, HideBySig
     ChangeType(Object, Type): PrivateScope, Public, Virtual, HideBySig
-    DateTimeOffsetToDateTime(DateTimeOffset): PrivateScope, Assembly, Static, HideBySig
-    DecimalToInt32(Decimal): PrivateScope, Assembly, Static, HideBySig
 Class System.Xml.Schema.XmlNumeric10Converter: AutoLayout, AnsiClass, Class, BeforeFieldInit
   :System.Xml.Schema.XmlBaseConverter
   Methods:

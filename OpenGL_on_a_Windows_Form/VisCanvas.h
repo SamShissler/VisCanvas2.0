@@ -19,6 +19,7 @@ Purpose: CS 481 Project
 #include "NonMonotonicChoice.h"
 #include "UserInputPopUp.h"
 #include "NormalizationStyle.h"
+#include "threadedLoadingForm.h"
 
 namespace VisCanvas {
 
@@ -429,7 +430,7 @@ namespace VisCanvas {
 				 this->toolsToolStripMenuItem->Name = L"toolsToolStripMenuItem";
 				 this->toolsToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>(((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Alt) 
 					 | System::Windows::Forms::Keys::T));
-				 this->toolsToolStripMenuItem->Size = System::Drawing::Size(214, 22);
+				 this->toolsToolStripMenuItem->Size = System::Drawing::Size(214, 22); // orig 214, 22
 				 this->toolsToolStripMenuItem->Text = L"Tools Panel";
 				 this->toolsToolStripMenuItem->ToolTipText = L"Tools Panel";
 				 this->toolsToolStripMenuItem->Click += gcnew System::EventHandler(this, &VisCanvas::toolsToolStripMenuItem_Click);
@@ -441,7 +442,7 @@ namespace VisCanvas {
 				 this->optionsToolStripMenuItem->Name = L"optionsToolStripMenuItem";
 				 this->optionsToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>(((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Alt) 
 					 | System::Windows::Forms::Keys::O));
-				 this->optionsToolStripMenuItem->Size = System::Drawing::Size(214, 22);
+				 this->optionsToolStripMenuItem->Size = System::Drawing::Size(214, 22); // orig 214, 22
 				 this->optionsToolStripMenuItem->Text = L"Options Panel";
 				 this->optionsToolStripMenuItem->Click += gcnew System::EventHandler(this, &VisCanvas::classesToolStripMenuItem_Click);
 				 // 
@@ -455,7 +456,7 @@ namespace VisCanvas {
 				 this->settingsToolStripMenuItem->Name = L"settingsToolStripMenuItem";
 				 this->settingsToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>(((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Alt) 
 					 | System::Windows::Forms::Keys::S));
-				 this->settingsToolStripMenuItem->Size = System::Drawing::Size(214, 22);
+				 this->settingsToolStripMenuItem->Size = System::Drawing::Size(214, 22); // orig 214, 22
 				 this->settingsToolStripMenuItem->Text = L"Settings";
 				 this->settingsToolStripMenuItem->Click += gcnew System::EventHandler(this, &VisCanvas::settingsToolStripMenuItem_Click);
 				 // 
@@ -475,7 +476,7 @@ namespace VisCanvas {
 				 this->reorderToolStripMenuItem->Name = L"reorderToolStripMenuItem";
 				 this->reorderToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>(((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Alt) 
 					 | System::Windows::Forms::Keys::Z));
-				 this->reorderToolStripMenuItem->Size = System::Drawing::Size(281, 22);
+				 this->reorderToolStripMenuItem->Size = System::Drawing::Size(281, 22); // orig 281, 22
 				 this->reorderToolStripMenuItem->Text = L"Manual Sort";
 				 this->reorderToolStripMenuItem->Click += gcnew System::EventHandler(this, &VisCanvas::reorderToolStripMenuItem_Click);
 				 // 
@@ -484,7 +485,7 @@ namespace VisCanvas {
 				 this->dimensionShiftingToolStripMenuItem->Name = L"dimensionShiftingToolStripMenuItem";
 				 this->dimensionShiftingToolStripMenuItem->ShortcutKeys = static_cast<System::Windows::Forms::Keys>(((System::Windows::Forms::Keys::Control | System::Windows::Forms::Keys::Alt) 
 					 | System::Windows::Forms::Keys::X));
-				 this->dimensionShiftingToolStripMenuItem->Size = System::Drawing::Size(281, 22);
+				 this->dimensionShiftingToolStripMenuItem->Size = System::Drawing::Size(281, 22); // orig 281, 22
 				 this->dimensionShiftingToolStripMenuItem->Text = L"Manual Shift";
 				 this->dimensionShiftingToolStripMenuItem->Click += gcnew System::EventHandler(this, &VisCanvas::dimensionShiftingToolStripMenuItem_Click);
 				 // 
@@ -1463,29 +1464,29 @@ namespace VisCanvas {
 				 // 
 				 this->minColumn->Frozen = true;
 				 this->minColumn->HeaderText = L"Min";
-				 this->minColumn->MinimumWidth = 2;
+				 this->minColumn->MinimumWidth = 4;
 				 this->minColumn->Name = L"Column2";
 				 this->minColumn->ReadOnly = true;
 				 this->minColumn->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 				 this->minColumn->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
-				 this->minColumn->Width = 33;
+				 this->minColumn->Width = 32;
 				 // 
 				 // Med Column
 				 // 
 				 this->medColumn->Frozen = true;
 				 this->medColumn->HeaderText = L"Med";
-				 this->medColumn->MinimumWidth = 2;
+				 this->medColumn->MinimumWidth = 4;
 				 this->medColumn->Name = L"Column3";
 				 this->medColumn->ReadOnly = true;
 				 this->medColumn->Resizable = System::Windows::Forms::DataGridViewTriState::False;
 				 this->medColumn->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
-				 this->medColumn->Width = 33;
+				 this->medColumn->Width = 32;
 				 // 
 				 // Max Column
 				 // 
 				 this->maxColumn->Frozen = true;
 				 this->maxColumn->HeaderText = L"Max";
-				 this->maxColumn->MinimumWidth = 2;
+				 this->maxColumn->MinimumWidth = 4;
 				 this->maxColumn->Name = L"Column4";
 				 this->maxColumn->ReadOnly = true;
 				 this->maxColumn->Resizable = System::Windows::Forms::DataGridViewTriState::False;
@@ -1741,7 +1742,7 @@ namespace VisCanvas {
 				 UNREFERENCED_PARAMETER(sender);
 				 UNREFERENCED_PARAMETER(e);
 				 OpenGL->hypercube();
-				 this->currentView->Text = "View: Hypercubes";
+				 this->currentView->Text = "View: Hyperblocks";
 			 }
 			 /* Adjust Threshold */
 	private: System::Void hypercubeRadius_Scroll(System::Object^ sender, System::EventArgs^ e) {
@@ -1756,10 +1757,17 @@ namespace VisCanvas {
 	}
 			 /* Automate Cluster Selection */
 	private: System::Void auto_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		threadedLoadingForm thread;
+		thread.loadLoadingForm();
+
 		this->OpenGL->autoCluster();
-		this->currentView->Text = "View: Hypercubes";
+		this->currentView->Text = "View: Hyperblocks";
 		// updateClusterList(sender, e);
 		update_options();
+
+		thread.terminateLoadingForm();
+
 	}
 
 	private: System::Void update_options() {
@@ -1769,14 +1777,14 @@ namespace VisCanvas {
 
 	private: System::Void update_options_text() {
 		String^ totalCubesText = gcnew String(to_string(OpenGL->file->getClusterAmount()).c_str());
-		String^ currentCubeText = gcnew String(to_string(OpenGL->file->getSelectedClusterIndex()).c_str());
+		String^ currentCubeText = gcnew String(to_string(OpenGL->file->getSelectedClusterIndex() + 1).c_str());
 		String^ totalPointsText = gcnew String(to_string(OpenGL->file->getClusters().at(OpenGL->file->getSelectedClusterIndex()).getSets()->size()).c_str());
 		String^ currentPointText = gcnew String(to_string(OpenGL->file->getSelectedSetIndex()).c_str());
 		String^ cubeRatioText = gcnew String(to_string(trunc(OpenGL->file->getClusters().at(OpenGL->file->getSelectedClusterIndex()).getRatio(OpenGL->getDimensionAmount()) * 100)).c_str());
 
 
-		this->cubeRatio->Text = "Total Cubes: " + totalCubesText;
-		this->currentCube->Text = "Current Cube: " + currentCubeText;
+		this->cubeRatio->Text = "Total Blocks: " + totalCubesText;
+		this->currentCube->Text = "Current Block: " + currentCubeText;
 		this->currentCubeTotal->Text = "Total Points: " + totalPointsText;
 		this->currentPoint->Text = "Current Point: " + currentPointText;
 		this->currentCubeRatio->Text = "Generalization: " + cubeRatioText;
@@ -1897,23 +1905,23 @@ namespace VisCanvas {
 				 toolTip->SetToolTip(this->sortAscend, "Sort Dimensions Ascending (ctrl+alt+a)");
 				 toolTip->SetToolTip(this->sortDescend, "Sort Dimensions Descending (ctrl+alt+d)");
 				 toolTip->SetToolTip(this->sortOrig, "Reset Sorted Dimension Data (ctrl+alt+s)");
-				 toolTip->SetToolTip(this->hypercube, "Hypercube Analysis (ctrl+alt+h)");
+				 toolTip->SetToolTip(this->hypercube, "Hyperblock Analysis (ctrl+alt+h)");
 				 toolTip->SetToolTip(this->meanLevel, "Mean Shift to Level (ctrl+alt+n)");
 				 toolTip->SetToolTip(this->medianLevel, "Median Shift to Level (ctrl+alt+m)");
 				 toolTip->SetToolTip(this->origData, "Reset Shift to Leveled Data (ctrl+alt+l)");
 				 toolTip->SetToolTip(this->manualSort, "Manually Sort Dimensions (ctrl+alt+z)");
 				 toolTip->SetToolTip(this->manualShift, "Manually Shift Dimensions (ctrl+alt+x)");
-				 toolTip->SetToolTip(this->button2, "Toggle Hypercube Clusters (ctrl+alt+r)");
+				 toolTip->SetToolTip(this->button2, "Toggle Hyperblock Clusters (ctrl+alt+r)");
 				 toolTip->SetToolTip(this->button3, "Toggle Inverting Dimension on Click (ctrl+alt+i)");
 				 toolTip->SetToolTip(this->button1, "Reset Zoom/Pan");
-				 toolTip->SetToolTip(this->toggleClassColors,"Toggle Hypercube Cluster Color");
-				 toolTip->SetToolTip(this->autoCluster,"Auto-Generate Hypercube Clusters");
+				 toolTip->SetToolTip(this->toggleClassColors,"Toggle Hyperblock Cluster Color");
+				 toolTip->SetToolTip(this->autoCluster,"Auto-Generate Hyperblock Clusters");
 				 toolTip->SetToolTip(this->subsetButton, "Hide Occluded Dimensions");
 				 toolTip->SetToolTip(this->histButton, "Histogram Frequency Analysis");
 				 toolTip->SetToolTip(this->freqButton, "Line Width Frequency Analysis");
 				 toolTip->SetToolTip(this->ling, "Linguistic Analysis");
-				 toolTip->SetToolTip(this->sideButton, "Side by Side View of Hypercubes");
-				 toolTip->SetToolTip(this->overlapButton, "Pair Wise Hypercube Analysis");
+				 toolTip->SetToolTip(this->sideButton, "Side by Side View of Hyperblock");
+				 toolTip->SetToolTip(this->overlapButton, "Pair Wise Hyperblock Analysis");
 
 				 // Set default view text
 				 this->currentView->Text = "View: All Data";
@@ -2212,7 +2220,7 @@ namespace VisCanvas {
 			}
 
 		}
-
+		// left window panel
 		System::Void toolPanel(System::Void) {
 			// is it checked 
 			if (this->toolsToolStripMenuItem->Checked) {
@@ -2224,7 +2232,7 @@ namespace VisCanvas {
 			}
 			this->Tools->Visible = this->toolsToolStripMenuItem->Checked;
 		}
-
+		// right window panel
 		System::Void optionPanel(System::Void) {
 			// is it checked
 			if (this->optionsToolStripMenuItem->Checked) {
@@ -2233,6 +2241,7 @@ namespace VisCanvas {
 			} else {
 				this->Options->Dock = System::Windows::Forms::DockStyle::Right;
 				this->optionsToolStripMenuItem->Checked = true;
+				// this->Options->
 			}
 			this->Options->Visible = this->optionsToolStripMenuItem->Checked;
 		}		
@@ -2425,7 +2434,7 @@ namespace VisCanvas {
 				 OpenGL->toggleClusters();
 				 if (this->OpenGL->file->isPaintClusters())
 				 {
-					 this->currentView->Text = "View: Hypercubes";
+					 this->currentView->Text = "View: Hyperblocks";
 				 }
 				 else
 				 {
